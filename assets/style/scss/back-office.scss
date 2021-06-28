@@ -1,0 +1,13 @@
+.login-page {
+    background-color: #ccc;
+    .col-4 {
+        height: 100vh;
+        position: relative;
+        .position-absolute {
+            background-color: #fff;
+            width: 100%;
+            padding: 2rem;
+            box-shadow: 4px 4px 4px #808080;
+        }
+    }
+}

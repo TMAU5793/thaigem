@@ -1,0 +1,12 @@
+.login-page {
+  background-color: #ccc; }
+  .login-page .col-4 {
+    height: 100vh;
+    position: relative; }
+    .login-page .col-4 .position-absolute {
+      background-color: #fff;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 4px 4px 4px #808080; }
+
+/*# sourceMappingURL=back-office.css.map */
