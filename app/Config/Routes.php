@@ -36,7 +36,8 @@ $routes->get('/', 'Home::index');
 
 
 //Admin path
-$routes->get('admin', 'Admin/User::index');
+$routes->get('admin', 'admin/User::index');
+//$routes->get('dashboard', 'admin/Dashboard::index');
 
 /*
  * --------------------------------------------------------------------

@@ -1,12 +1,12 @@
 .login-page {
-  background-color: #ccc; }
+  background-color: #656565; }
   .login-page .col-4 {
     height: 100vh;
     position: relative; }
     .login-page .col-4 .position-absolute {
-      background-color: #fff;
+      background-color: #ffca6b;
       width: 100%;
       padding: 2rem;
-      box-shadow: 4px 4px 4px #808080; }
+      box-shadow: 4px 4px 4px #464138; }
 
 /*# sourceMappingURL=back-office.css.map */

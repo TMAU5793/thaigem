@@ -9,7 +9,12 @@
     <link rel='shortcut icon' type='image/x-icon' href="<?= base_url('assets/images/favicon.ico'); ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/fontawesome/css/all.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/bootstrap-5/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/bootstrap-5/css/bootstrap.min.css'); ?>">    
+    
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?= base_url('assets/adminlte/css/adminlte.min.css'); ?>">
+
+    <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/back-office.css'); ?>">
 </head>
 <body>
