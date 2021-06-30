@@ -1,3 +1,7 @@
+<?= $this->extend("admin/app") ?>
+
+<?= $this->section("content") ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -131,3 +135,5 @@
         </div>
     </section>
 </div>
+
+<?= $this->endSection() ?>

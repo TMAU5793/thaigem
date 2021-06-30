@@ -36,8 +36,12 @@ $routes->get('/', 'Home::index');
 
 
 //Admin path
-$routes->get('admin', 'admin/User::index');
-//$routes->get('dashboard', 'admin/Dashboard::index');
+$routes->get('admin', 'Admin/User::index');
+// $routes->match(['get', 'post'], 'admin/register', 'admin/User::register', ['filter' => 'noauth']);
+// $routes->match(['get', 'post'], 'admin/login', 'admin/User::login', ['filter' => 'noauth']);
+//$routes->get('admin/dashboard', 'Dashboard::index');
+$routes->get('admin/profile', 'User::profile', ['filter' => 'auth']);
+$routes->get('admin/logout', 'User::logout');
 
 /*
  * --------------------------------------------------------------------

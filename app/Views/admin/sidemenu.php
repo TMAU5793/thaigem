@@ -24,7 +24,13 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item menu-open">
+                    <a href="<?= base_url('admin/register'); ?>" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>เพิ่มบัญชีผู้ดูแล</p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
                     <a href="<?= base_url('admin/dashboard'); ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>ล็อกเอ้าท์</p>

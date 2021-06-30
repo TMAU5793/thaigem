@@ -7,9 +7,16 @@ class Dashboard extends Controller
 {
 	public function index()
 	{
-		echo view('admin/header');
-		echo view('admin/sidemenu');
-		echo view('admin/dashboard');
-		echo view('admin/footer');
+		$session = session();
+		$logged_data = [
+			'logged_admin'     => TRUE
+		];
+		$session->set($logged_data);
+		//end session login
+
+		$data = [
+            'meta_title' => 'ระบบจัดการข้อมูล'
+        ];
+		echo view('admin/dashboard',$data);
 	}
 }

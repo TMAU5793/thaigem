@@ -1,3 +1,7 @@
+<?= $this->extend("admin/app") ?>
+
+<?= $this->section("content") ?>
+
 <div class="login-page">
     <div class="container">
         <div class="row justify-content-center">
@@ -19,3 +23,5 @@
         </div>            
     </div>
 </div>
+
+<?= $this->endSection() ?>

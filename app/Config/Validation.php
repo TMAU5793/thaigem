@@ -7,6 +7,9 @@ use CodeIgniter\Validation\FileRules;
 use CodeIgniter\Validation\FormatRules;
 use CodeIgniter\Validation\Rules;
 
+//เพิ่มใหม่
+use App\Validation\AdminRules;
+
 class Validation
 {
 	//--------------------------------------------------------------------
@@ -24,6 +27,9 @@ class Validation
 		FormatRules::class,
 		FileRules::class,
 		CreditCardRules::class,
+
+		//เพิ่มใหม่
+		AdminRules::class,
 	];
 
 	/**

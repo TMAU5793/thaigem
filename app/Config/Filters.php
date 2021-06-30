@@ -7,6 +7,10 @@ use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 
+//สำหรับเช็คการล็อกอิน
+use App\Filters\Auth;
+use App\Filters\Noauth;
+
 class Filters extends BaseConfig
 {
 	/**
@@ -19,6 +23,10 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+
+		//สำหรับเช็คการล็อกอิน
+		"auth" => Auth::class,
+  		"noauth" => Noauth::class,
 	];
 
 	/**
