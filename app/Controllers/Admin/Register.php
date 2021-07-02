@@ -11,6 +11,13 @@ class Register extends Controller
     {
         //include helper form
         helper(['form']);
+        $session = session();
+		$logged_data = [
+			'logged_admin'     => TRUE
+		];
+		$session->set($logged_data);
+		//end session login
+        
         $data = [
             'meta_title' => 'เพิ่มบัญชีผู้ดูแล'
         ];

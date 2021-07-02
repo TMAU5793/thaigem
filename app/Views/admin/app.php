@@ -22,8 +22,8 @@
     <?php
         $router = service('router');
         $request = service('request');
-        echo $router->get();
-        //echo '<br>getSegment : '.$request->getRoute();
+       
+        echo $router->routName();
     ?>
     <?= (session()->get('logged_admin')?$this->include('admin/sidemenu') : '') ?>
     <?= $this->renderSection("content") ?>
