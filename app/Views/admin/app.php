@@ -22,8 +22,7 @@
     <?php
         $router = service('router');
         $request = service('request');
-       
-        echo $router->routName();
+        $uri = service('uri');
     ?>
     <?= (session()->get('logged_admin')?$this->include('admin/sidemenu') : '') ?>
     <?= $this->renderSection("content") ?>

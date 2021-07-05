@@ -1,3 +1,7 @@
+<?php
+    $request = service('request');
+    $uri = service('uri');
+?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
@@ -19,19 +23,19 @@
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="<?= base_url('admin/dashboard'); ?>" class="nav-link active">
+                    <a href="<?= base_url('admin/dashboard'); ?>" class="nav-link <?= ($uri->getSegment(2)=='dashboard'?'active':''); ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="<?= base_url('admin/register'); ?>" class="nav-link">
+                    <a href="<?= base_url('admin/account'); ?>" class="nav-link <?= ($uri->getSegment(2)=='account'?'active':''); ?>">
                         <i class="nav-icon fas fa-users"></i>
-                        <p>เพิ่มบัญชีผู้ดูแล</p>
+                        <p>บัญชีผู้ดูแล</p>
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="<?= base_url('admin/dashboard'); ?>" class="nav-link">
+                    <a href="<?= base_url('admin/logout'); ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>ล็อกเอ้าท์</p>
                     </a>

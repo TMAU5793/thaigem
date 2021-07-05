@@ -46,7 +46,7 @@ $routes->get('admin', 'Admin/User::index', ['as' => 'admin']);
 $routes->group('admin', function($routes)
 {
     $routes->add('login', 'Admin\User::index');
-    $routes->add('register', 'Admin\Register::index');
+    //$routes->add('register', 'Admin\Register::register');
 });
 
 /*
