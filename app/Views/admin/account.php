@@ -24,43 +24,38 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
-            <table class="table table-striped">
+            <table class="table table-striped" id="tbl-account">
                 <thead>
                     <tr>
                         <th scope="col" width="50" class="text-end">ลำดับ</th>
-                        <th scope="col">ชื่อ - นามสกุล</th>
                         <th scope="col">ชื่อบัญชี (อีเมล)</th>
+                        <th scope="col">ชื่อ - นามสกุล</th>
+                        <th scope="col">เบอร์โทร</th>
+                        <th scope="col" width="150" class="text-center">สถานะ</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        if($info){
+                            $n=0;
+                            foreach ($info as $item) {
+                                $n++;
+                    ?>
                     <tr>
-                        <th scope="row" class="text-end">1</th>
-                        <td>Mark Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row" class="text-end"><?= $n ?></th>
+                        <td><?= $item['account'] ?></td>
+                        <td><?= $item['name'].' '.$item['lastname'] ?></td>
+                        <td><?= $item['tel'] ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/account/edit/id'); ?>">แก้ไข</a> |
-                            <a href="">ลบ</a>
+                            <button type="button" class="btn btn-status <?= ($item['status']=='1'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='1'?'เปิด' : 'ปิด') ?></button>
+                        </td>
+                        <td class="text-center">
+                            <a href="<?= base_url('admin/account/edit?id='.$item['id']); ?>">แก้ไข</a> |
+                            <a href="<?= base_url('admin/delete/'.$item['id']) ?>">ลบ</a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row" class="text-end">2</th>
-                        <td>Jacob Thornton</td>
-                        <td>@fat</td>
-                        <td class="text-center">
-                            <a href="<?= base_url('admin/account/edit/id'); ?>">แก้ไข</a> |
-                            <a href="">ลบ</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-end">3</th>
-                        <td>Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td class="text-center">
-                            <a href="<?= base_url('admin/account/edit/id'); ?>">แก้ไข</a> |
-                            <a href="">ลบ</a>
-                        </td>
-                    </tr>
+                    <?php } } ?>
                 </tbody>
             </table>
         </div>

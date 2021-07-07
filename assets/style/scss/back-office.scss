@@ -15,7 +15,6 @@
 .content-header {
     padding: 3rem 3rem 0;
     .container-fluid {
-        border-bottom: 1px solid #ced4da;
         padding-bottom: 1rem;
     }
 }
@@ -34,4 +33,13 @@
     ul {
         margin-bottom: 0;
     }
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ced4da;
+}
+
+.btn-status {
+    width: 60px;
+    padding: 0;
 }
