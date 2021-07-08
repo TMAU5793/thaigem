@@ -14,7 +14,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="loginPassword" class="form-label">รหัสผ่าน <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="loginPassword">
+                            <input type="password" class="form-control" id="loginPassword" autocomplete="new-password">
                         </div>
                         <button type="submit" class="btn btn-primary">ล็อกอิน</button>
                     </form>

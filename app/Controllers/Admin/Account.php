@@ -6,20 +6,26 @@ use CodeIgniter\Controller;
 use App\Models\UserModel;
   
 class Account extends Controller
-{
-    
+{   
+    protected $session;
     public function __construct()
     {
-        $session = session();
-		$logged_data = [
-			'logged_admin'     => TRUE
-		];
-		$session->set($logged_data);
+        $this->session = session();
+        // $logged_data = [
+		// 	'logged_admin' => TRUE
+		// ];
+		// $this->session->set($logged_data);
+        $logged = $this->session->get('logged_admin');
 		//end session login
+		//end session login
+        if(!$logged){
+            echo 'logged';
+            return redirect()->to(site_url('admin'));
+        }
     }
     
     public function index()
-    {
+    {   
         $model = new UserModel();        
         $data = [
             'meta_title' => 'บัญชีผู้ดูแล',
@@ -57,10 +63,15 @@ class Account extends Controller
   
     public function save()
     {        
-        $request = service('request');
         helper(['form']);
+        $request = service('request');
+        if ($request->getMethod() !== 'post') {
+            return redirect()->to(site_url('admin/account'));
+        }
+        
         $data = [
-            'meta_title' => 'แก้ไขข้อมูล'
+            'meta_title' => 'แก้ไขข้อมูล',
+            'action'    =>  'save'
         ];
         $rules = [
             'ac_email'          => [
@@ -98,14 +109,10 @@ class Account extends Controller
                 'status'    => $request->getVar('ac_status')
             ];
             $model->save($data);
-            return redirect()->to('admin/account');
+            return redirect()->to(site_url('admin/account'));
         }else{
-            if($request->getPost()){
-                $data['validation'] = $this->validator;
-                echo view('admin/register',$data);
-            }else{
-                return redirect()->to('admin/account');
-            }
+            $data['validation'] = $this->validator;
+            echo view('admin/register',$data);
         }
     }
 
@@ -114,7 +121,10 @@ class Account extends Controller
         helper(['form']);
         $request = service('request');
         $model = new UserModel();
-        
+        if ($request->getMethod() !== 'post') {
+            return redirect()->to(site_url('admin/account'));
+        }
+
         $id = $request->getVar('hd_id');
         $acc = $request->getVar('hd_ac_email');
         $pwd = $request->getVar('ac_password');
@@ -137,31 +147,25 @@ class Account extends Controller
             ];
 
             if($this->validate($rules)){
-                if($pwd!=''){
-                    $update = [
-                        'password' => password_hash($pwd, PASSWORD_DEFAULT),
-                        'name'    => $request->getVar('ac_name'),
-                        'lastname'    => $request->getVar('ac_lastname'),
-                        'tel'    => $request->getVar('ac_tel'),
-                        'address'    => $request->getVar('ac_address'),
-                        'status'    => $request->getVar('ac_status')
-                    ];
-                    $model->update($acc, $update);
-                    return redirect()->to('admin/account');
-                }
+                $update = [
+                    'password' => password_hash($pwd, PASSWORD_DEFAULT),
+                    'name'    => $request->getVar('ac_name'),
+                    'lastname'    => $request->getVar('ac_lastname'),
+                    'tel'    => $request->getVar('ac_tel'),
+                    'address'    => $request->getVar('ac_address'),
+                    'status'    => $request->getVar('ac_status')
+                ];
+                $model->update($id, $update);
+                return redirect()->to(site_url('admin/account'));
             }else{
-                if($request->getPost()){
-                    $data = [
-                        'meta_title' => 'แก้ไขข้อมูล',
-                        'action'    =>  'update',
-                        'validation'    =>  $this->validator,
-                        'validfail' =>  TRUE,
-                        'info'  =>  $model->where('account',$acc)->first()
-                    ];
-                    echo view('admin/register',$data);
-                }else{
-                    return redirect()->to('admin/account');
-                }
+                $data = [
+                    'meta_title' => 'แก้ไขข้อมูล',
+                    'action'    =>  'update',
+                    'validation'    =>  $this->validator,
+                    'validfail' =>  TRUE,
+                    'info'  =>  $model->where('account',$acc)->first()
+                ];
+                echo view('admin/register',$data);
             }
         }else{        
             $update = [
@@ -173,16 +177,22 @@ class Account extends Controller
             ];
             $result = $model->update($id, $update);
             if($result){
-                return redirect()->to('admin/account');
+                return redirect()->to(site_url('admin/account'));
             }
         }                
     }
 
     public function delete()
     {
+        $request = service('request');
         $model = new UserModel();
-        echo 'deleted';
-        //$data['deleted'] = $model->where('id', $id)->delete($id);
+        if($request->getPost('id')){
+            $id = $request->getPost('id');
+            $deleted = $model->where('id', $id)->delete($id);
+            echo $deleted;
+        }else{
+            return redirect()->to(site_url('admin/account'));
+        }
     }
   
 }

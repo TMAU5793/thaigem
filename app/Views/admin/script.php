@@ -1,6 +1,9 @@
 <script>
     $(document).ready(function () {
 
+        //ใช้รูปแบบตารางแบบ data table
+        $('#tbl-account').DataTable();
+
         //หน้าแก้ไขข้อมูล account : เช็คการกดปุ่มแก้ไขรหัสผ่าน
         $('#btn_changepwd').on('click',function(){
             $('.pwd-input').toggleClass('d-none');
@@ -26,8 +29,16 @@
                 $('#btn_changepwd').html('ยกเลิก');
             }
         <?php } ?>
-
-        //ใช้รูปแบบตารางแบบ data table
-        $('#tbl-account').DataTable();
+    
     });
+
+    //Function delete data
+    function Delete(id){
+		var r = confirm("ยืนยันการลบข้อมูล");
+		if (r == true) {
+			$.post("<?= base_url('admin/account/delete') ?>",{id:id},function(resp){
+				window.location.reload();
+			});
+		}
+	}
 </script>

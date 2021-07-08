@@ -37,7 +37,7 @@ $routes->get('/', 'Home::index');
 
 //Admin path
 $routes->get('admin', 'Admin/User::index');
-$routes->add('delete/(:num)', 'Admin/Account::delete/$1');
+$routes->get('admin/logout', 'Admin/User::logout');
 
 /*
  * --------------------------------------------------------------------

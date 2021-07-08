@@ -52,7 +52,7 @@
                         </td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/account/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                            <a href="<?= base_url('admin/delete/'.$item['id']) ?>">ลบ</a>
+                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
                         </td>
                     </tr>
                     <?php } } ?>
