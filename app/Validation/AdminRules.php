@@ -10,14 +10,13 @@ class AdminRules
 	// 	return true;
 	// }
 
-	public function validateLogin(string $str, string $fields, array $data){
+	public function validateAdmin(string $str, string $fields, array $data){
 		$model = new UserModel();
-		$user = $model->where('email', $data['email'])
-					  ->first();
+		$admin = $model->where('account', $data['adminEmail'])->first();
 	
-		if(!$user)
+		if(!$admin)
 		  return false;
 	
-		return password_verify($data['password'], $user['password']);
+		return password_verify($data['adminPassword'], $admin['password']);
 	  }
 }

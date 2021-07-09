@@ -7,21 +7,9 @@ use App\Models\UserModel;
   
 class Account extends Controller
 {   
-    protected $session;
     public function __construct()
     {
-        $this->session = session();
-        // $logged_data = [
-		// 	'logged_admin' => TRUE
-		// ];
-		// $this->session->set($logged_data);
-        $logged = $this->session->get('logged_admin');
-		//end session login
-		//end session login
-        if(!$logged){
-            echo 'logged';
-            return redirect()->to(site_url('admin'));
-        }
+        
     }
     
     public function index()

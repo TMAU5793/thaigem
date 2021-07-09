@@ -37,6 +37,10 @@ $routes->get('/', 'Home::index');
 
 //Admin path
 $routes->get('admin', 'Admin/User::index');
+$routes->get('admin/login', 'Admin/User::index');
+$routes->get('admin/dashboard/', 'Admin/Account::index', ['filter' => 'auth']);
+$routes->get('admin/account/', 'Admin/Account::index', ['filter' => 'auth']);
+
 $routes->get('admin/logout', 'Admin/User::logout');
 
 /*
