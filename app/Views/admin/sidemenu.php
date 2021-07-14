@@ -13,7 +13,7 @@
                 <img src="<?= base_url('assets/adminlte/images/user2-160x160.jpg'); ?>" class="img-circle elevation-2">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="javascript:void(0)" class="d-block"><?= (session()->get('name')? session()->get('name') : 'admin') ?></a>
             </div>
         </div>
 
@@ -29,11 +29,22 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
+                    <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles'?'active':''); ?>">
+                        <i class="nav-icon far fa-newspaper"></i>
+                        <p>บทความ</p>
+                    </a>
+                </li>
+                <?php
+                    if (session()->get('rules')=='superadmin') {
+                ?>
+                <li class="nav-item menu-open">
                     <a href="<?= base_url('admin/account'); ?>" class="nav-link <?= ($uri->getSegment(2)=='account'?'active':''); ?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>บัญชีผู้ดูแล</p>
                     </a>
                 </li>
+                <?php } ?>
+
                 <li class="nav-item menu-open">
                     <a href="<?= base_url('admin/logout'); ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

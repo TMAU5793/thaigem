@@ -10,13 +10,36 @@ class AdminRules
 	// 	return true;
 	// }
 
-	public function validateAdmin(string $str, string $fields, array $data){
+	public function checkedPassword(string $str, string $fields, array $data){
 		$model = new UserModel();
-		$admin = $model->where('account', $data['adminEmail'])->first();
+		$password = $model->where('account', $data['adminEmail'])->first();
 	
-		if(!$admin)
-		  return false;
+		if(!$password){
+		  	return false;
+		}else{
+			return password_verify($data['adminPassword'], $password['password']);
+		}
+	}
+
+	public function checkedEmail(string $str, string $fields, array $data){
+		$model = new UserModel();
+		$email = $model->where('account', $data['adminEmail'])->first();
 	
-		return password_verify($data['adminPassword'], $admin['password']);
-	  }
+		if(!$email){
+		  	return false;
+		}else{
+			return true;
+		}		
+	}
+
+	public function checkedStatus(string $str, string $fields, array $data){
+		$model = new UserModel();
+		$status = $model->where(['account'=>$data['adminEmail'],'status'=>'1'])->first();
+	
+		if(!$status){
+		  	return false;
+		}else{
+			return true;
+		}		
+	}
 }

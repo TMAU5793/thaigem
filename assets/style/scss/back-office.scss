@@ -43,3 +43,44 @@
     width: 60px;
     padding: 0;
 }
+
+body:not(.layout-fixed) .main-sidebar {
+    position: fixed;
+}
+
+.tab-content {
+    background-color: #fff;
+    .tab-pane {
+        padding: 2rem;
+    }
+}
+
+.content-nav {
+    position: relative;
+}
+
+.btn-action-fixed {
+    position: absolute;
+    top: -10px;
+    right: 0;
+}
+
+.img-thumbnail {
+    width: 300px;
+    img {
+        width: 100%;
+    }
+}
+
+.input-img-hide {
+    visibility: hidden;
+    height: 0px;
+}
+
+.label-img {
+    width: 100%;
+    text-align: center;
+    padding: 6px;
+    margin-bottom: 0;
+    cursor: pointer;
+}

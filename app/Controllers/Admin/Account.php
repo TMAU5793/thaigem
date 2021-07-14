@@ -14,7 +14,7 @@ class Account extends Controller
     
     public function index()
     {   
-        $model = new UserModel();        
+        $model = new UserModel();
         $data = [
             'meta_title' => 'บัญชีผู้ดูแล',
             'info' => $model->orderBy('status DESC, created_at DESC')->findAll()
@@ -25,7 +25,11 @@ class Account extends Controller
     public function register()
     {
         //include helper form
-        helper(['form']);        
+        helper(['form']);
+        $request = service('request');
+        if ($request->getMethod() !== 'post') {
+            return redirect()->to(site_url('admin/account'));
+        }
         $data = [
             'meta_title' => 'เพิ่มบัญชีผู้ดูแล',
             'action'    =>  'save',
@@ -35,12 +39,16 @@ class Account extends Controller
 
     public function edit()
     {
+        if (!session()->get('logged_admin')) {
+            return redirect()->to('/admin');
+        }
+        
         //include helper form
         helper(['form']);
         $request = service('request');
         $model = new UserModel();
-
-        $id = $request->getGet('id');
+        $id = $request->getGet('id');       
+                
         $data = [
             'meta_title' => 'แก้ไขข้อมูล',
             'action'    =>  'update',

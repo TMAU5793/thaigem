@@ -10,7 +10,7 @@
                     <?php if(isset($validation)): ?>
                         <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
                     <?php endif;?>
-                    <form id="formLogin" method="POST" action="<?= site_url('admin/user/login') ?>">
+                    <form id="formLogin" method="POST" action="<?= site_url('admin/login') ?>">
                         <div class="mb-3">
                             <label for="adminEmail" class="form-label">อีเมลผู้ใช้ <span class="text-danger">*</span></label>
                             <input type="email" class="form-control" id="adminEmail" name="adminEmail" value="<?= set_value('adminEmail'); ?>">

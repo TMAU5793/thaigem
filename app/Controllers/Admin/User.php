@@ -7,19 +7,15 @@ use App\Models\UserModel;
 
 class User extends Controller
 {
-	protected $session;
+    protected $session;
 	public function __construct()
     {
         $this->session = session();
-		// $logged_data = [
-		// 	'logged_admin'     => TRUE
-		// ];
-		// $session->set($logged_data);
-		//end session login
     }
 
 	public function index()
 	{
+        helper(['form']);
 		$data = [
             'meta_title' => 'ลงชื่อใช้งาน | ระบบจัดการข้อมูล'
         ];
@@ -30,37 +26,48 @@ class User extends Controller
     {
         helper(['form']);
         $request = service('request');
-        if ($request->getMethod() !== 'post') {
+        $model = new UserModel();
+        if ($request->getMethod() == 'post') {
+
+            $rules = [
+                'adminEmail' => [
+                    'rules' => 'required|valid_email|checkedEmail[adminEmail]|checkedStatus[adminEmail]',
+                    'errors' =>  [
+                        'required' => 'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
+                        'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง',
+                        'checkedEmail' => 'ไม่พบอีเมลผู้ใช้นี้',
+                        'checkedStatus' => 'บัญชีผู้ใช้ถูกปิดใช้งาน'
+                    ]
+                ],
+                'adminPassword' => [
+                    'rules' => 'required|min_length[6]|max_length[200]|checkedPassword[adminEmail,adminPassword]',
+                    'errors' =>  [
+                        'required' => 'กรุณากรอกรหัสผ่าน',
+                        'min_length' => 'รหัสผ่านอย่างน้อย 6 ตัวอักษร',
+                        'checkedPassword' => 'รหัสผ่านไม่ถูกต้อง'
+                    ]
+                ]
+            ];
+            
+            if($this->validate($rules)){
+                $admin = $model->where('account', $request->getVar('adminEmail'))->first();
+                $sess = [
+                    'id' => $admin['id'],
+                    'name' => $admin['name'],
+                    'lastname' => $admin['lastname'],
+                    'rules' => $admin['rules'],
+                    'logged_admin' => TRUE
+                ];
+
+                session()->set($sess);
+                return redirect()->to(site_url('admin/dashboard'));
+            }else{
+                $data['validation'] = $this->validator;
+                echo view('admin/login',$data);
+            }            
+        }else{
             return redirect()->to(site_url('admin'));
         }
-
-		$rules = [
-            'adminEmail'          => [
-                'rules' => 'required|valid_email',
-                'errors'    =>  [
-                    'required'  =>  'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
-                    'valid_email'   =>  'รูปแบบอีเมลไม่ถูกต้อง',
-                    'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
-                ]
-            ],
-            'adminPassword'       => [
-                'rules' =>  'required|min_length[6]|max_length[200]|validateAdmin[adminEmail,adminPassword]',
-                'errors'    =>  [
-                    'required'  =>  'กรุณากรอกรหัสผ่าน',
-                    'min_length'   =>  'รหัสผ่านอย่างน้อย 6 ตัวอักษร',
-					'validateAdmin' => 'รหัสผ่านไม่ถูกต้อง'
-                ]
-            ]         
-        ];
-        
-        if($this->validate($rules)){
-			$model = new UserModel();  
-			$admin = $model->where('account', $request->getVar('adminEmail'))->first();
-			print_r($admin);
-		}else{
-			$data['validation'] = $this->validator;
-            echo view('admin/login',$data);
-		}
     }
 
 	public function logout()

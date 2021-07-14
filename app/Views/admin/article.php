@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">บัญชีผู้ดูแล</h1>
+                    <h1 class="m-0">บทความ</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <div class="text-end">
-                        <a href="<?= base_url('admin/account/register') ?>" class="btn btn-success">เพิ่มบัญชี</a>
+                        <a href="<?= base_url('admin/articles/form') ?>" class="btn btn-success">เพิ่ม</a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,14 +24,14 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
-            <table class="table table-striped" id="tbl-account">
+            <table class="table table-striped" id="tbl-article">
                 <thead>
                     <tr>
                         <th scope="col" width="50" class="text-end">ลำดับ</th>
-                        <th scope="col">ชื่อบัญชี (อีเมล)</th>
-                        <th scope="col">ชื่อ - นามสกุล</th>
-                        <th scope="col">เบอร์โทร</th>
+                        <th scope="col">หัวข้อ</th>
+                        <th scope="col" width="150">จำนวนการดู</th>                        
                         <th scope="col" width="150" class="text-center">สถานะ</th>
+                        <th scope="col" width="150">วันที่สร้าง</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
                 </thead>
@@ -44,14 +44,14 @@
                     ?>
                     <tr>
                         <th scope="row" class="text-end"><?= $n ?></th>
-                        <td><?= $item['account'] ?></td>
-                        <td><?= $item['name'].' '.$item['lastname'] ?></td>
-                        <td><?= $item['tel'] ?></td>
+                        <td><?= $item['title'] ?></td>
+                        <td><?= $item['view'] ?></td>
                         <td class="text-center">
                             <button type="button" class="btn btn-status <?= ($item['status']=='1'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='1'?'เปิด' : 'ปิด') ?></button>
                         </td>
+                        <td><?= $item['created_at'] ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/account/edit?id='.$item['id']); ?>">แก้ไข</a> |
+                            <a href="<?= base_url('admin/article/edit?id='.$item['id']); ?>">แก้ไข</a> |
                             <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
                         </td>
                     </tr>
