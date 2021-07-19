@@ -12,8 +12,9 @@
             <div class="image">
                 <img src="<?= base_url('assets/adminlte/images/user2-160x160.jpg'); ?>" class="img-circle elevation-2">
             </div>
-            <div class="info">
-                <a href="javascript:void(0)" class="d-block"><?= (session()->get('name')? session()->get('name') : 'admin') ?></a>
+            <div class="info pb-0">
+                <span class="d-block text-white"><?= (session()->get('name')? session()->get('name') : 'admin') ?></span>
+                <a href="<?= base_url('admin/account/edit?id='.session()->get('id')); ?>"><i class="fas fa-edit"></i><small>แก้ไข</small></a>
             </div>
         </div>
 
@@ -34,12 +35,18 @@
                         <p>บทความ</p>
                     </a>
                 </li>
+                <li class="nav-item menu-open">
+                    <a href="<?= base_url('admin/member'); ?>" class="nav-link <?= ($uri->getSegment(2)=='member'?'active':''); ?>">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>สมาชิกเว็บไซต์</p>
+                    </a>
+                </li>
                 <?php
                     if (session()->get('rules')=='superadmin') {
                 ?>
                 <li class="nav-item menu-open">
                     <a href="<?= base_url('admin/account'); ?>" class="nav-link <?= ($uri->getSegment(2)=='account'?'active':''); ?>">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>บัญชีผู้ดูแล</p>
                     </a>
                 </li>

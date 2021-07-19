@@ -19,8 +19,7 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
-            <form id="form_admin_register" action="<?= base_url('admin/articles/'.$action); ?>" method="POST">
-                <input type="hidden" name="hd_ac_email" value="<?= (isset($info)? $info['account'] : '') ?>">
+            <form id="form_admin_register" action="<?= base_url('admin/articles/'.$action); ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="hd_id" value="<?= (isset($info)? $info['id'] : '') ?>">
                 <?php if(isset($validation)): ?>
                     <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
@@ -32,12 +31,12 @@
                         <button class="nav-link" id="nav-3" data-bs-toggle="tab" data-bs-target="#nav-content-3" type="button" role="tab" aria-controls="nav-content-3" aria-selected="false">รูป (Thumbnail)</button>
                     </div>
                     <div class="btn-action-fixed text-center">                        
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit" class="btn btn-primary me-2">บันทึก</button>
                         <a href="<?= base_url('admin/articles'); ?>" class="btn btn-warning">ยกเลิก</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
+                    <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="txt_title" class="form-label">หัวข้อ <span class="text-danger">*</span></label>
@@ -49,11 +48,11 @@
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="txt_desc" class="form-label">รายละเอียด <span class="text-danger">*</span></label>
-                                <textarea name="txt_desc" id="txt_desc" rows="5" class="form-control"><?= (isset($info)? $info['desc'] : set_value('txt_desc')) ?></textarea>
+                                <textarea name="txt_desc" id="txt_desc" class="form-control"><?= (isset($info)? $info['desc'] : set_value('txt_desc')) ?></textarea>
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="txt_tags" class="form-label">แท็ก (Tags)</label>
-                                <input type="text" class="form-control" id="txt_tags" name="txt_tags" value="<?= (isset($info)? $info['desc'] : set_value('txt_tags')) ?>">
+                                <input type="text" class="form-control" id="txt_tags" name="txt_tags" value="<?= (isset($info)? $info['tags'] : set_value('txt_tags')) ?>">
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="ddl_status" class="form-label">สถานะการใช้งาน</label>
@@ -78,10 +77,11 @@
                             <input type="text" class="form-control" id="txt_slug" name="txt_slug" value="<?= (isset($info)? $info['slug'] : set_value('txt_slug')) ?>">                        
                         </div>
                     </div>
-                    <div class="tab-pane fade show active" id="nav-content-3" role="tabpanel" aria-labelledby="nav-3">
+                    <div class="tab-pane fade" id="nav-content-3" role="tabpanel" aria-labelledby="nav-3">
                         <div class="img-thumbnail">
-                            <img src="<?= (isset($info) && $info['thumbnail']!="")?$info['thumbnail'] : site_url('assets/images/img-default.jpg') ?>" class="show-thumb">
+                            <img src="<?= (isset($info) && $info['thumbnail']!=""?site_url($info['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" class="show-thumb">
                             <input type="file" id="txt_thumb" name="txt_thumb" class="input-img-hide" onchange="ShowThumb(this)">
+                            <input type="hidden" name="hd_thumb" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
                             <label for="txt_thumb" class="d-block label-img btn-primary">เลือกรูป</label>
                         </div>
                     </div>
@@ -90,5 +90,4 @@
         </div>
     </section>
 </div>
-
 <?= $this->endSection() ?>

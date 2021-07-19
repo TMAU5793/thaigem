@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class ArticlesModel extends Model
 {
 	protected $DBGroup              = 'default';
 	protected $table                = 'tbl_articles';
@@ -14,6 +14,7 @@ class UserModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
+	protected $allowedFields        = ["title","shortdesc","desc","tags","slug","meta_title","meta_desc","status","thumbnail"];
 
 	// Dates
 	protected $useTimestamps        = true;

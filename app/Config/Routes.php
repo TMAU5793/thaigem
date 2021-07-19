@@ -40,6 +40,7 @@ $routes->get('admin', 'Admin/User::index');
 $routes->get('admin/dashboard/', 'Admin/Dashboard::index', ['filter' => 'auth']);
 $routes->get('admin/account/', 'Admin/Account::index', ['filter' => 'auth']);
 $routes->get('admin/articles/', 'Admin/Articles::index', ['filter' => 'auth']);
+$routes->get('admin/member/', 'Admin/Member::index', ['filter' => 'auth']);
 
 $routes->match(['get', 'post'], 'admin/login', 'Admin/User::login', ['filter' => 'noauth']);
 $routes->get('admin/logout', 'Admin/User::logout');

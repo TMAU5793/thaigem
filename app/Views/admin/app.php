@@ -40,6 +40,12 @@
     <!-- เรียกใช้ Library Data Table -->
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
 
+    <!-- เรียกใช้ ckeditor -->
+    <script src="<?= site_url('assets/ckeditor5/ckeditor.js'); ?>"></script>
+
+    <!-- เรียกใช้ ckfinder -->
+    <script src="<?= site_url('assets/ckfinder/ckfinder.js'); ?>"></script>
+
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/adminlte/js/adminlte.js'); ?>"></script>
     <?= $this->include('admin/script') ?>

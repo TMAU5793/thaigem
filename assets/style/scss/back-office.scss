@@ -1,3 +1,4 @@
+@import 'ckediter';
 .login-page {
     background-color: #656565;
     .col-4 {
@@ -83,4 +84,14 @@ body:not(.layout-fixed) .main-sidebar {
     padding: 6px;
     margin-bottom: 0;
     cursor: pointer;
+}
+
+.nav-fixed {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    background: #343a40;
+    padding: 1rem 4rem;
+    top: 0;
+    text-align: right !important;
 }

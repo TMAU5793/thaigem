@@ -1,0 +1,6 @@
+// ตั้งค่า path upload file สำหรับ ckfinder
+    ->assets->ckfinder->config.php
+    บรรทัด 69 : 'baseUrl'      => 'http://localhost/thaigem/uploads/ckfinder/'
+    ให้เปลี่ยน URL ก่อน /uploads/ckfinder/ เป็น URL ที่ใช้งาน
+    เช่น http://exam.com/uploads/ckfinder/
+

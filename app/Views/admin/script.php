@@ -1,6 +1,13 @@
 <script>
     $(document).ready(function () {
-
+        
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 200) {
+                $('.btn-action-fixed').addClass('nav-fixed');
+            }else{
+                $('.btn-action-fixed').removeClass('nav-fixed');
+            }
+        });
         //ใช้รูปแบบตารางแบบ data table
         $('#tbl-account').DataTable();
 
@@ -52,4 +59,24 @@
 		}
         console.log(input);
     }
+
+    // Ckediter 
+    ClassicEditor
+        .create( document.querySelector( '#txt_desc' ),{
+            ckfinder: {
+                uploadUrl: '../../assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+            },
+            toolbar: [
+                'heading', '|',
+                'ckfinder', 'imageUpload', 'blockQuote', '|',                
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'todoList', '|',               
+                'outdent', 'indent', '|',
+                'insertTable', 'mediaEmbed', '|',
+                'undo', 'redo', '|',
+            ]
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+    
 </script>
