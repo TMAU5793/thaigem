@@ -3,3 +3,122 @@
         @content;
     }
 }
+
+$ff-reg: 'Montserrat-Regular';
+$ff-medium: 'Montserrat-Medium';
+$ff-semibold: 'Montserrat-SemiBold';
+$ff-bold: 'Montserrat-Bold';
+$c-gray: #c1c1c1;
+$c-lightgray: #ebebeb;
+$c-darkgold: #665f4f;
+$c-lightgold: #cec6b2;
+$c-black: #000000;
+$c-white: #ffffff;
+body {
+    font-family: $ff-reg;
+}
+
+img {
+    width: 100%;
+}
+
+.ff-medium {
+    font-family: $ff-medium;
+}
+
+.ff-semibold {
+    font-family: $ff-semibold;
+}
+
+.ff-bold {
+    font-family: $ff-bold;
+}
+
+.ptb-2rem {
+    padding: 2rem 0;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box-shadow {
+    box-shadow: 0px 0px 4px 4px $c-gray;
+}
+
+.c-darkgold {
+    color: $c-darkgold;
+}
+
+.bg-darkgold {
+    background-color: $c-darkgold;
+}
+
+.bg-lightgold {
+    background-color: $c-lightgold;
+}
+
+.c-gray {
+    color: $c-gray;
+}
+
+.c-lightgray {
+    color: $c-lightgray;
+}
+
+.c-black {
+    color: $c-black;
+}
+
+.c-white {
+    color: $c-white;
+}
+
+.btn-black-border {
+    border: 2px solid $c-black;
+    font-family: $ff-semibold;
+}
+
+.btn-white-border {
+    border: 2px solid $c-white;
+    font-family: $ff-semibold;
+}
+
+.btn-tg-group {
+    .btn {
+        margin: 0 .5rem;
+    }
+}
+
+.slick-dots-1 {
+    li {
+        background-color: $c-white;
+        border-radius: 50px;
+        button:before {
+            content: '';
+        }
+        &.slick-active {
+            background-color: $c-darkgold;
+        }
+    }
+}
+
+.slick-dots-2 {
+    li {
+        background-color: $c-lightgold;
+        border-radius: 50px;
+        button:before {
+            content: '';
+        }
+        &.slick-active {
+            background-color: $c-darkgold;
+        }
+    }
+}
+
+.btn-darkgold {
+    background-color: $c-darkgold;
+}

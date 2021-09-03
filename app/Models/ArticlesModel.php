@@ -14,7 +14,7 @@ class ArticlesModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ["title","shortdesc","desc","tags","slug","meta_title","meta_desc","status","thumbnail"];
+	protected $allowedFields        = ["title","shortdesc","desc","tags","slug","meta_title","meta_desc","status","thumbnail","view"];
 
 	// Dates
 	protected $useTimestamps        = true;

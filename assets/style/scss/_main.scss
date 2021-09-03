@@ -1,0 +1,195 @@
+.category-home {
+    .bg-title {
+        background-image: url('../../images/home/bg-title.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .category-list {
+        background-color: $c-lightgray;
+        .cateory-item {
+            padding: 0 .5rem;
+        }
+        .item-text {
+            height: 100px;
+            background-color: $c-white;
+        }
+        .slick-5-item {
+            .slick-list {
+                padding: .5rem 0;
+            }
+            .slick-dots {
+                li {
+                    background-color: $c-lightgold;
+                    border-radius: 50px;
+                    button:before {
+                        content: '';
+                    }
+                    &.slick-active {
+                        background-color: $c-darkgold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.price-update {
+    .price-subject {
+        strong {
+            display: inline;
+            margin-left: 2rem;
+        }
+    }
+}
+
+.table-price {
+    table {
+        border: 1px solid $c-black;
+        tbody,
+        td,
+        tfoot,
+        th,
+        thead,
+        tr {
+            border-width: 1px;
+        }
+        tbody {
+            tr td:first-child {
+                background-color: $c-lightgold;
+            }
+            tr:nth-last-child(n+3) {
+                td:nth-child(n+2):nth-last-child(n+3) {
+                    background-color: $c-gray;
+                }
+            }
+        }
+    }
+}
+
+.event-home {
+    .slick-1-item {
+        background-color: $c-lightgold;
+        .slick-dots {
+            width: 41.66%;
+            bottom: 5rem;
+            right: 0;
+            li {
+                background-color: $c-white;
+                border-radius: 50px;
+                button:before {
+                    content: '';
+                }
+                &.slick-active {
+                    background-color: $c-darkgold;
+                }
+            }
+        }
+    }
+}
+
+.news-home {
+    .news-list {
+        overflow: hidden;
+        height: 600px;
+        .col-md-5 {
+            .slick-1-item {
+                .slick-dots {
+                    bottom: 2rem;
+                    li {
+                        background-color: $c-white;
+                        border-radius: 50px;
+                        button:before {
+                            content: '';
+                        }
+                        &.slick-active {
+                            background-color: $c-darkgold;
+                        }
+                    }
+                }
+            }
+        }
+        .col-md-7 {
+            .col-md-6 {
+                overflow: hidden;
+                height: 300px;
+            }
+            .col-md-6 {
+                margin-bottom: .75rem;
+            }
+            .col-md-12 {
+                margin-top: .75rem;
+            }
+            .btn,
+            a {
+                font-size: .75rem;
+            }
+        }
+        .news-item {
+            position: relative;
+            cursor: pointer;
+            &::before {
+                content: '';
+                background-color: rgba($c-black, .6);
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 99;
+            }
+            .news-desc {
+                bottom: 0;
+                width: 100%;
+                padding: 0 3rem 6rem;
+                z-index: 999;
+            }
+        }
+    }
+}
+
+.member-home {
+    .member-list {
+        margin: 0 -1rem;
+        .member-item {
+            padding: .5rem 1rem;
+        }
+        .sub-img {
+            ul {
+                list-style: none;
+                padding: 0;
+                li {
+                    width: 33.33%;
+                    float: left;
+                    &:first-child {
+                        padding-right: .5rem;
+                    }
+                    &:nth-child(2) {
+                        padding: 0 .25rem;
+                    }
+                    &:last-child {
+                        padding-left: .5rem;
+                    }
+                }
+            }
+        }
+        .slick-dots {
+            bottom: -3rem;
+        }
+    }
+}
+
+.singup-home {
+    background-color: #d6d6d6;
+    .singup-form {
+        padding: 0 10rem;
+        input {
+            background-color: transparent;
+            border: 1px solid $c-black;
+        }
+    }
+}
+
+.map-home {
+    iframe {
+        width: 100%;
+    }
+}

@@ -45,6 +45,10 @@ $routes->get('admin/member/', 'Admin/Member::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'], 'admin/login', 'Admin/User::login', ['filter' => 'noauth']);
 $routes->get('admin/logout', 'Admin/User::logout');
 
+//Api path
+$routes->post('amphurepi', 'Api/LocationApi::getAmphure');
+$routes->post('districtapi', 'Api/LocationApi::getDistrict');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

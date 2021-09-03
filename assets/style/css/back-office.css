@@ -450,7 +450,8 @@ body:not(.layout-fixed) .main-sidebar {
 
 .btn-action-fixed {
   position: absolute;
-  top: -10px;
+  z-index: 999;
+  top: -0.5rem;
   right: 0; }
 
 .img-thumbnail {
@@ -477,5 +478,12 @@ body:not(.layout-fixed) .main-sidebar {
   padding: 1rem 4rem;
   top: 0;
   text-align: right !important; }
+
+.bootstrap-tagsinput {
+  display: block; }
+  .bootstrap-tagsinput .label-info {
+    background-color: #0062cc;
+    border-radius: 4px;
+    padding: 0 6px; }
 
 /*# sourceMappingURL=back-office.css.map */

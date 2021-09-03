@@ -2,7 +2,7 @@
     $(document).ready(function () {
         
         $(window).scroll(function() {
-            if ($(window).scrollTop() > 200) {
+            if ($(window).scrollTop() > 150) {
                 $('.btn-action-fixed').addClass('nav-fixed');
             }else{
                 $('.btn-action-fixed').removeClass('nav-fixed');
@@ -36,8 +36,75 @@
                 $('#btn_changepwd').html('ยกเลิก');
             }
         <?php } ?>
-    
+        
+        $('#txt_tags').tagsinput(); // tags input
+
+        //ประเภทสมาชิกเว็บไซต์
+        var dealer = $("#rd_type2").is(":checked");
+        if(dealer){
+            $('#memberExp').removeClass('d-none');
+        }
+        $('input[name="rd_type"]').on('change',function(){
+            let dealerType = $("#rd_type2").is(":checked");
+            if(dealerType){
+                $('#memberExp').removeClass('d-none');
+            }else{
+                $('#memberExp').addClass('d-none');
+            }
+        });
+
+        //ดึงข้อมูลอำเภอตามไอดีจังหวัด
+        $('#ddl_province').on('change',function(){
+            $('#ddl_district').html('');
+            $('#txt_zipcode').val('');
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('amphurepi') ?>",
+                data: {id:$(this).val()},
+                success: function (response) {
+                    //console.log(response);
+                    var html = '<option value=""> -- กรุณาเลือกอำเภอ/เขต -- </option>';
+                    $.each(response, function (key, value) {
+                        html += '<option value="'+value.id+'"> '+value.name_th+' </option>';
+                    });
+                    if(html){
+                        $('#ddl_amphure').html(html);
+                    }else{
+                        $('#ddl_amphure').html('<option value=""> -- กรุณาเลือกอำเภอ/เขต -- </option>');
+                    }
+                }
+            });
+        });
+
+        //ดึงข้อมูลตำบลตามไอดีอำเภอ
+        $('#ddl_amphure').on('change',function(){
+            $('#txt_zipcode').val('');
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('districtapi') ?>",
+                data: {id:$(this).val(),tbl:'tbl_districts'},
+                success: function (response) {
+                    //console.log(response);
+                    var html = '<option value=""> -- กรุณาเลือกตำบล/แขวง -- </option>';
+                    $.each(response, function (key, value) {
+                        html += '<option value="'+value.id+'" data-zipcode="'+value.zip_code+'"> '+value.name_th+' </option>';
+                    });
+                    if(html){
+                        $('#ddl_district').html(html);
+                    }else{
+                        $('#ddl_district').html('<option value=""> -- กรุณาเลือกตำบล/แขวง -- </option>');
+                    }
+                }
+            });
+        });
+
+        //ข้อมูลหมายเลขรหัสไฟรษณีย๋
+        $('#ddl_district').on('change',function(){            
+            var zipcode = $('#ddl_district option:selected').data('zipcode');
+            $('#txt_zipcode').val(zipcode);
+        });
     });
+    //End ready function
 
     //Function delete data
     function Delete(id){
@@ -50,14 +117,15 @@
 	}
 
     function ShowThumb(input){
-        if (input.files && input.files[0]) {
+        let file = input.files[0];
+        if (input.files && file) {
 			var reader = new FileReader();
 			reader.onload = function (e) {
 				$('.show-thumb').attr('src', e.target.result);
+                $('#hd_thumb').val(file.name);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
-        console.log(input);
     }
 
     // Ckediter 
@@ -76,7 +144,20 @@
             ]
         } )
         .catch( error => {
-            console.error( error );
+            //console.error( error );
         } );
     
+
+    // function amphuresByProvince(id){
+    //     fetch('<?= site_url('amphures') ?>', {
+    //         method: "POST",
+    //         body: JSON.stringify(id),
+    //         headers: {"Content-type": "application/json; charset=UTF-8"}
+    //     })
+    //     .then(response => response.json()) 
+    //     .then(json => console.log(json))
+    //     .catch(err => console.log(err));
+
+    //     //console.log(id);        
+    // }
 </script>

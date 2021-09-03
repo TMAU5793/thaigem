@@ -81,7 +81,8 @@
                         <div class="img-thumbnail">
                             <img src="<?= (isset($info) && $info['thumbnail']!=""?site_url($info['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" class="show-thumb">
                             <input type="file" id="txt_thumb" name="txt_thumb" class="input-img-hide" onchange="ShowThumb(this)">
-                            <input type="hidden" name="hd_thumb" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
+                            <input type="hidden" name="hd_thumb" id="hd_thumb" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
+                            <input type="hidden" name="hd_thumb_del" id="hd_thumb_del" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
                             <label for="txt_thumb" class="d-block label-img btn-primary">เลือกรูป</label>
                         </div>
                     </div>

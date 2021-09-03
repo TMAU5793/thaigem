@@ -20,6 +20,9 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/adminlte/css/adminlte.min.css'); ?>">
 
+    <!-- tags input style -->
+    <link rel="stylesheet" href="<?= base_url('assets/tagsinput/bootstrap-tagsinput.css'); ?>">
+
     <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/back-office.css'); ?>">
 </head>
@@ -48,6 +51,10 @@
 
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/adminlte/js/adminlte.js'); ?>"></script>
+
+    <!-- tags input js -->
+    <script src="<?= base_url('assets/tagsinput/bootstrap-tagsinput.js'); ?>"></script>
+
     <?= $this->include('admin/script') ?>
 </body>
 </html>

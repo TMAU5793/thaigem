@@ -6,6 +6,9 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('front/home');
+        $data = [
+            'meta_title' => 'Thai Gem and Jewelry Traders Association'
+        ];
+        echo view('front/home', $data);
 	}
 }

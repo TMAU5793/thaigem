@@ -26,9 +26,8 @@ class Account extends Controller
     {
         //include helper form
         helper(['form']);
-        $request = service('request');
-        if ($request->getMethod() !== 'post') {
-            return redirect()->to(site_url('admin/account'));
+        if (!session()->get('logged_admin')) {
+            return redirect()->to('/admin');
         }
         $data = [
             'meta_title' => 'เพิ่มบัญชีผู้ดูแล',

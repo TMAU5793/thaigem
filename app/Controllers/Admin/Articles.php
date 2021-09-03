@@ -44,6 +44,10 @@ class Articles extends Controller
             'meta_title' => 'เพิ่มบทความ',
             'action'    =>  'save'
         ];
+        $thumb = $request->getFile('txt_thumb');
+        // echo $thumb->getName();
+        // echo '<br> hd_thumb : '.$request->getVar('hd_thumb');
+
         if ($request->getMethod() == 'post') {
             $rules = [
                 'txt_title' => [
@@ -58,7 +62,7 @@ class Articles extends Controller
                         'required' => 'กรุณากรอกรข้อมูลรายละเอียด'
                     ]
                 ],
-                'txt_thumb' => [
+                'hd_thumb' => [
                     'rules' => 'required',
                     'errors' =>  [
                         'required' => 'กรุณาใส่รูปภาพ Thumbnail'
@@ -66,8 +70,8 @@ class Articles extends Controller
                 ]
             ];
             
-            if($this->validate($rules)){                
-                $thumb = $request->getFile('txt_thumb'); //เก็บไฟล์รูปอัพโหลด                
+            if($this->validate($rules)){
+                $thumb = $request->getFile('txt_thumb'); //เก็บไฟล์รูปอัพโหลด
                 $allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
                 $ext = $thumb->getExtension();
                 $newName = "";
@@ -97,7 +101,7 @@ class Articles extends Controller
             }else{
                 $data['validation'] = $this->validator;
                 echo view('admin/article-form',$data);
-            }            
+            }
         }else{
             return redirect()->to(site_url('admin/articles'));
         }
@@ -131,14 +135,14 @@ class Articles extends Controller
         if ($request->getMethod() == 'post') {
             $id = $request->getVar('hd_id'); //เก็บค่า id
             $thumb = $request->getFile('txt_thumb'); //เก็บไฟล์รูปอัพโหลด
-            $hd_thumb = $request->getVar('hd_thumb'); //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
+            $hd_thumb_del = $request->getVar('hd_thumb_del'); //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
             $allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
             $ext = $thumb->getExtension();
             // echo $hd_thumb;
             // echo '<br> getName : '.$thumb->getName();
 
             if ($thumb->isValid() && !$thumb->hasMoved() && in_array($ext, $allowed)){
-                unlink($hd_thumb); //ลบรูปเก่าออก
+                unlink($hd_thumb_del); //ลบรูปเก่าออก
                 $newName = $thumb->getRandomName();
                 if (!is_dir('uploads/articles')) {
 					mkdir('uploads/articles', 0777, TRUE);

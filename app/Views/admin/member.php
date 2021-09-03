@@ -13,7 +13,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <div class="text-end">
-                        <a href="<?= base_url('admin/account/register') ?>" class="btn btn-success">เพิ่มบัญชี</a>
+                        <a href="<?= base_url('admin/member/form') ?>" class="btn btn-success">เพิ่มบัญชี</a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,8 +31,8 @@
                         <th scope="col">ชื่อ - นามสกุล</th>
                         <th scope="col">อีเมล</th>
                         <th scope="col">เบอร์โทร</th>
-                        <th scope="col" width="150">ประเภทสมาชิก</th>
-                        <th scope="col" width="100" class="text-center">สถานะ</th>
+                        <th scope="col" width="150" class="text-center">ประเภทสมาชิก</th>
+                        <th scope="col" width="150" class="text-center">หมดอายุ (dealer)</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
                 </thead>
@@ -47,13 +47,13 @@
                         <th scope="row" class="text-end"><?= $n ?></th>                        
                         <td><?= $item['name'].' '.$item['lastname'] ?></td>
                         <td><?= $item['email'] ?></td>
-                        <td><?= $item['tel'] ?></td>
-                        <td><?= $item['type'] ?></td>
+                        <td><?= $item['phone'] ?></td>
+                        <td align="center"><?= $item['type'] ?></td>
                         <td class="text-center">
                             <button type="button" class="btn btn-status <?= ($item['status']=='1'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='1'?'เปิด' : 'ปิด') ?></button>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/account/edit?id='.$item['id']); ?>">แก้ไข</a> |
+                            <a href="<?= base_url('admin/member/edit?id='.$item['id']); ?>">แก้ไข</a> |
                             <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
                         </td>
                     </tr>

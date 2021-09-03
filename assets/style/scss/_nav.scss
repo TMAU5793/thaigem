@@ -1,0 +1,30 @@
+.navbar {
+    border-top: 2px solid $c-gray;
+    border-bottom: 2px solid $c-gray;
+    padding: 5px 0 2px;
+}
+
+#topMenu {
+    font-family: $ff-bold;
+    justify-content: center;
+    .nav-link {
+        padding: .5rem 1.5rem;
+    }
+}
+
+.top-nav {
+    padding: 1rem 0;
+    .logo-top {
+        img {
+            max-width: 250px;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: $c-black;
+    }
+}
+
+.top-more-menu {
+    font-size: 0.8rem;
+}
