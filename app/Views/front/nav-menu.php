@@ -8,8 +8,20 @@
             <span>|</span>
             <a href="">EN</a>
         </div>
-        <div class="user-managed">
-            <a href=""><i class="far fa-user-circle"></i> LOGIN</a>
+        <div class="user-managed mt-3 d-inline-flex">
+            <div class="user-login me-3 position-relative">
+                <span class="cs-pointer user-login-name"><i class="far fa-user-circle"></i> Hi! Miss Siter</span>
+                <div class="user-menu-login d-none">
+                    <ul>
+                        <li><a href="">My Account</a></li>
+                        <li><a href="">Book Event</a></li>
+                        <li><a href="">Download and upload file</a></li>
+                        <li><a href="">Invoice</a></li>
+                        <li><a href="">Web Board</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="far fa-user-circle"></i> LOGIN</a>
             <a href="" class="ms-3"><i class="far fa-handshake"></i> HELP CENTER</a>
         </div>
     </div>

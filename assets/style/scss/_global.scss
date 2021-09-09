@@ -38,6 +38,14 @@ img {
     padding: 2rem 0;
 }
 
+.ptb-1rem {
+    padding: 1rem 0;
+}
+
+.plr-2rem {
+    padding: 0 2rem;
+}
+
 .absolute-center {
     position: absolute;
     top: 50%;
@@ -121,4 +129,8 @@ img {
 
 .btn-darkgold {
     background-color: $c-darkgold;
+}
+
+.cs-pointer {
+    cursor: pointer;
 }

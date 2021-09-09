@@ -26,17 +26,30 @@
 </head>
 <body>
     
-    <?= $this->include('front/nav-menu') ?>
+    <!-- add top menu -->
+    <?= $this->include('front/nav-menu') ?>    
+
+    <!-- run content code -->
     <?= $this->renderSection("content") ?>
-    
+
+    <!-- Login popup -->
+    <?= $this->include('front/user-popup') ?>
+
+    <!-- add copy right footer -->
+    <?= $this->include('front/copy-right') ?>
+
     <!-- jQuery -->
     <script src="<?= base_url('assets/adminlte/jquery/jquery.min.js'); ?>"></script>
 
     <!-- Bootstrap -->
     <script src="<?= base_url('assets/bootstrap-5/js/bootstrap.min.js'); ?>"></script>
-    
+    <!-- <script src="<?= base_url('assets/bootstrap-5/js/bootstrap.bundle.min.js'); ?>"></script> -->
+
     <!-- slick slide -->
-    <script src="<?= base_url('assets/slick-1.8.1/slick/slick.js'); ?>"></script>
+    <script src="<?= base_url('assets/slick-1.8.1/slick/slick.js'); ?>"></script>    
+
+    <!-- Custom script -->
+    <script src="<?= base_url('assets/style/js/custom-script.js'); ?>"></script>
 
     <?= $this->renderSection("scripts") ?>
 </body>

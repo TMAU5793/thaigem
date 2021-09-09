@@ -1,0 +1,10 @@
+.account-menu {
+    .navbar-nav {
+        flex-direction: initial;
+        .nav-link {
+            font-family: $ff-semibold;
+            text-transform: uppercase;
+            margin-right: 1rem;
+        }
+    }
+}

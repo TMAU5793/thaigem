@@ -16,6 +16,12 @@ img {
 .ptb-2rem {
   padding: 2rem 0; }
 
+.ptb-1rem {
+  padding: 1rem 0; }
+
+.plr-2rem {
+  padding: 0 2rem; }
+
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -76,6 +82,9 @@ img {
 .btn-darkgold {
   background-color: #665f4f; }
 
+.cs-pointer {
+  cursor: pointer; }
+
 .navbar {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
@@ -97,6 +106,44 @@ img {
 
 .top-more-menu {
   font-size: 0.8rem; }
+  .top-more-menu a:hover {
+    font-family: "Montserrat-Bold"; }
+  .top-more-menu .user-login span:hover {
+    font-family: "Montserrat-Bold"; }
+  .top-more-menu .user-menu-login {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    z-index: 99;
+    width: 220px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px 0px #c1c1c1; }
+    .top-more-menu .user-menu-login::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      width: 0;
+      height: 0;
+      border: 13px solid transparent;
+      border-bottom-color: #ffffff;
+      border-top: 0;
+      margin-left: -13px;
+      margin-top: -13px; }
+    .top-more-menu .user-menu-login ul {
+      padding: 1rem;
+      margin: 0;
+      list-style: none;
+      text-align: left; }
+      .top-more-menu .user-menu-login ul li:not(:last-child) {
+        margin-bottom: .5rem; }
+
+.account-menu .navbar-nav {
+  flex-direction: initial; }
+  .account-menu .navbar-nav .nav-link {
+    font-family: "Montserrat-SemiBold";
+    text-transform: uppercase;
+    margin-right: 1rem; }
 
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");
@@ -219,5 +266,54 @@ img {
 
 .map-home iframe {
   width: 100%; }
+
+.contact-home {
+  background-image: url("../../images/home/contact-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+  .contact-home .social-contact a {
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    margin-bottom: .5rem; }
+    .contact-home .social-contact a i {
+      text-align: center;
+      margin-right: .5rem;
+      width: 20px; }
+    .contact-home .social-contact a:hover {
+      font-family: "Montserrat-SemiBold"; }
+  .contact-home .follow-us strong,
+  .contact-home .follow-us a {
+    margin-right: 1rem;
+    display: inline-block;
+    color: #000000; }
+    .contact-home .follow-us strong i,
+    .contact-home .follow-us a i {
+      font-size: 1.5rem; }
+    .contact-home .follow-us strong:hover,
+    .contact-home .follow-us a:hover {
+      color: #665f4f; }
+  .contact-home .contact-form .form-group {
+    margin-bottom: 1rem; }
+    .contact-home .contact-form .form-group input {
+      background: transparent;
+      border: 1px solid #000000; }
+
+.copy-right {
+  background-color: #665f4f;
+  color: #ffffff;
+  padding: 1rem 0 .8rem; }
+  .copy-right a {
+    color: #ffffff;
+    text-decoration: none;
+    padding-left: 1rem; }
+
+.modal .modal-header {
+  border: none; }
+
+.input-nobg .form-control {
+  background: transparent;
+  border: 1px solid #000000; }
 
 /*# sourceMappingURL=style.css.map */
