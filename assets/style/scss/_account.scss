@@ -5,6 +5,116 @@
             font-family: $ff-semibold;
             text-transform: uppercase;
             margin-right: 1rem;
+            &.active {
+                border-bottom: 2px solid $c-black;
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+.account-body {
+    .album-item {
+        .slider-nav-item {
+            padding: .5rem;
+        }
+    }
+}
+
+.ac-menu-left {
+    background-color: $c-lightgold;
+    .ac-information {
+        .ac-info-item {
+            background-color: $c-yellowgold;
+            margin: .5rem -1.5rem .5rem 0;
+            border-radius: 50px 0 0 50px;
+            padding: 5px 0 5px 4rem;
+            position: relative;
+            height: 54px;
+        }
+        .ac-info-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 54px;
+            width: 54px;
+            background-color: #ffffff;
+            border-radius: 50px;
+            i {
+                font-size: 1.5rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: $c-darkgold;
+            }
+        }
+        input {
+            padding: 0 .5rem;
+            margin-top: -2px;
+            font-size: .85rem;
+        }
+    }
+    .ac-profile-img {
+        padding: 0 1rem 1rem;
+        margin-top: -8rem;
+        img {
+            border-radius: 50%;
+            box-shadow: 0px 0px 0px 6px $c-lightgold;
+        }
+    }
+}
+
+.input-disabled {
+    input,
+    textarea {
+        &:disabled {
+            background-color: transparent;
+            border: none;
+            padding: 0 !important;
+        }
+    }
+}
+
+.myfile-menu-list {
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    z-index: 99;
+    width: 94%;
+    background-color: $c-white;
+    box-shadow: 0px 0px 10px 0px #c1c1c1;
+    a {
+        text-decoration: none;
+        color: $c-black;
+        &:hover {
+            font-family: $ff-semibold;
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        width: 0;
+        height: 0;
+        border: 13px solid transparent;
+        border-bottom-color: $c-white;
+        border-top: 0;
+        margin-left: -13px;
+        margin-top: -13px;
+    }
+    ul {
+        padding: 1rem;
+        margin: 0;
+        list-style: none;
+        text-align: left;
+        li {
+            border-bottom: 1px solid $c-gray;
+            padding-bottom: .5rem;
+            &:not(:last-child) {
+                margin-bottom: .5rem;
+            }
         }
     }
 }

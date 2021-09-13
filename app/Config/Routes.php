@@ -47,6 +47,10 @@ $routes->get('admin/logout', 'Admin/User::logout');
 
 //Account path
 $routes->get('myaccount', 'Account/Myaccount::index');
+$routes->get('myevent', 'Account/Myevent::index');
+$routes->get('myfile', 'Account/Myfile::index');
+$routes->get('memberfile', 'Account/Myfile::index');
+$routes->get('eventfile', 'Account/Myfile::eventfile');
 
 //Api path
 $routes->post('amphurepi', 'Api/LocationApi::getAmphure');

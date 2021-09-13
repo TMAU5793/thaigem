@@ -85,6 +85,16 @@ img {
 .cs-pointer {
   cursor: pointer; }
 
+.ul-clean {
+  padding: 0;
+  list-style: none; }
+
+.fs-7 {
+  font-size: 0.8rem; }
+
+.border-b-darkgold {
+  border-bottom: 1px solid #665f4f; }
+
 .navbar {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
@@ -144,6 +154,89 @@ img {
     font-family: "Montserrat-SemiBold";
     text-transform: uppercase;
     margin-right: 1rem; }
+    .account-menu .navbar-nav .nav-link.active {
+      border-bottom: 2px solid #000000;
+      padding-bottom: 0; }
+
+.account-body .album-item .slider-nav-item {
+  padding: .5rem; }
+
+.ac-menu-left {
+  background-color: #cec6b2; }
+  .ac-menu-left .ac-information .ac-info-item {
+    background-color: #f6ecc9;
+    margin: .5rem -1.5rem .5rem 0;
+    border-radius: 50px 0 0 50px;
+    padding: 5px 0 5px 4rem;
+    position: relative;
+    height: 54px; }
+  .ac-menu-left .ac-information .ac-info-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 54px;
+    width: 54px;
+    background-color: #ffffff;
+    border-radius: 50px; }
+    .ac-menu-left .ac-information .ac-info-icon i {
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #665f4f; }
+  .ac-menu-left .ac-information input {
+    padding: 0 .5rem;
+    margin-top: -2px;
+    font-size: .85rem; }
+  .ac-menu-left .ac-profile-img {
+    padding: 0 1rem 1rem;
+    margin-top: -8rem; }
+    .ac-menu-left .ac-profile-img img {
+      border-radius: 50%;
+      box-shadow: 0px 0px 0px 6px #cec6b2; }
+
+.input-disabled input:disabled,
+.input-disabled textarea:disabled {
+  background-color: transparent;
+  border: none;
+  padding: 0 !important; }
+
+.myfile-menu-list {
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  z-index: 99;
+  width: 94%;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px 0px #c1c1c1; }
+  .myfile-menu-list a {
+    text-decoration: none;
+    color: #000000; }
+    .myfile-menu-list a:hover {
+      font-family: "Montserrat-SemiBold"; }
+  .myfile-menu-list::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-bottom-color: #ffffff;
+    border-top: 0;
+    margin-left: -13px;
+    margin-top: -13px; }
+  .myfile-menu-list ul {
+    padding: 1rem;
+    margin: 0;
+    list-style: none;
+    text-align: left; }
+    .myfile-menu-list ul li {
+      border-bottom: 1px solid #c1c1c1;
+      padding-bottom: .5rem; }
+      .myfile-menu-list ul li:not(:last-child) {
+        margin-bottom: .5rem; }
 
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");
