@@ -4,7 +4,7 @@ namespace App\Controllers\Account;
   
 use CodeIgniter\Controller;
   
-class Myfile extends Controller
+class Accountform extends Controller
 {   
     public function __construct()
     {
@@ -18,18 +18,18 @@ class Myfile extends Controller
     public function index()
     {   
         $data = [
-            'menu_myfile' => TRUE,
-            'title' => 'Member File'
+            'ac_form' => TRUE,
+            'title' => 'Download Form'
         ];
-        echo view('account/myfile',$data);
+        echo view('account/ac-form',$data);
     }
 
-    public function eventfile()
+    public function event()
     {
         $data = [
-            'menu_myfile' => TRUE,
-            'title' => 'Event File'
+            'ac_form' => TRUE,
+            'title' => 'Download Form Event'
         ];
-        echo view('account/myfile',$data);
+        echo view('account/ac-form',$data);
     }
 }

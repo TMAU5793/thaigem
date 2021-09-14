@@ -13,9 +13,9 @@
                 <span class="cs-pointer user-login-name"><i class="far fa-user-circle"></i> Hi! Miss Siter</span>
                 <div class="user-menu-login d-none">
                     <ul>
-                        <li><a href="<?= site_url('myaccount'); ?>">My Account</a></li>
-                        <li><a href="<?= site_url('myevent'); ?>">Book Event</a></li>
-                        <li><a href="<?= site_url('myfile'); ?>">Download and upload file</a></li>
+                        <li><a href="<?= site_url('account'); ?>">My Account</a></li>
+                        <li><a href="<?= site_url('account/event'); ?>">Book Event</a></li>
+                        <li><a href="<?= site_url('account/form'); ?>">Download and upload file</a></li>
                         <li><a href="">Invoice</a></li>
                         <li><a href="">Web Board</a></li>
                     </ul>
@@ -27,7 +27,7 @@
     </div>
     <div class="clearfix"></div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light" id="mainMenu">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topMenu" aria-controls="topMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

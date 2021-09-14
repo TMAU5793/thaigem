@@ -4,7 +4,7 @@ namespace App\Controllers\Account;
   
 use CodeIgniter\Controller;
   
-class Myaccount extends Controller
+class Event extends Controller
 {   
     public function __construct()
     {
@@ -18,8 +18,8 @@ class Myaccount extends Controller
     public function index()
     {   
         $data = [
-            'menu_myaccount' => TRUE
+            'ac_event' => TRUE
         ];
-        echo view('account/myaccount',$data);
+        echo view('account/ac-event',$data);
     }
 }

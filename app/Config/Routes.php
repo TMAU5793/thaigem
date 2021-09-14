@@ -46,11 +46,10 @@ $routes->match(['get', 'post'], 'admin/login', 'Admin/User::login', ['filter' =>
 $routes->get('admin/logout', 'Admin/User::logout');
 
 //Account path
-$routes->get('myaccount', 'Account/Myaccount::index');
-$routes->get('myevent', 'Account/Myevent::index');
-$routes->get('myfile', 'Account/Myfile::index');
-$routes->get('memberfile', 'Account/Myfile::index');
-$routes->get('eventfile', 'Account/Myfile::eventfile');
+$routes->get('account', 'Account/Account::index');
+$routes->get('account/event', 'Account/Event::index');
+$routes->get('account/form', 'Account/Accountform::index');
+$routes->get('account/form/event', 'Account/Accountform::event');
 
 //Api path
 $routes->post('amphurepi', 'Api/LocationApi::getAmphure');

@@ -5,7 +5,7 @@
         <img src="<?= site_url('assets/images/account/banner.jpg') ?>" alt="">
     </section>    
 
-    <section class="myfile-body mb-5">
+    <section class="acform-body mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -14,13 +14,13 @@
                 <div class="col-md-9">
                     <?php
                         if (session()->get('logged_member')) {
-                            echo $this->include('account/account-menu');
+                            echo $this->include('account/ac-menu');
                         }
                     ?>
                     <div class="content-body">
                         <div class="content-title"><strong class="ff-semibold fs-3"><?= $title; ?></strong></div>
                         <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
-                        <div class="event-section mt-4">
+                        <div class="acform-section mt-4">
                             <div class="row">                                
                                 <div class="col-md-6 mb-4">
                                     <div class="event-item-box box-shadow">

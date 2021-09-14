@@ -1,17 +1,17 @@
 <div class="account-menu ptb-1rem navbar-light">
     <ul class="navbar-nav">
         <li class="nav-item">            
-            <a class="nav-link <?= (isset($menu_myaccount)?'active':''); ?>" href="<?= site_url('myaccount'); ?>">My Account</a>
+            <a class="nav-link <?= (isset($ac_account)?'active':''); ?>" href="<?= site_url('account'); ?>">My Account</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= (isset($menu_myevent)?'active':''); ?>" href="<?= site_url('myevent'); ?>">Book Event</a>
+            <a class="nav-link <?= (isset($ac_event)?'active':''); ?>" href="<?= site_url('account/event'); ?>">Book Event</a>
         </li>
         <li class="nav-item position-relative">
-            <span class="nav-link cs-pointer myfile-menu <?= (isset($menu_myfile)?'active':''); ?>"> Download & Upload File</span>
+            <span class="nav-link cs-pointer myfile-menu <?= (isset($ac_form)?'active':''); ?>"> Download & Upload Form</span>
             <div class="myfile-menu-list d-none">
                 <ul>
-                    <li><a href="<?= site_url('memberfile'); ?>">Member File</a></li>
-                    <li><a href="<?= site_url('eventfile'); ?>">Event File</a></li>
+                    <li><a href="<?= site_url('account/form'); ?>">Download Form</a></li>
+                    <li><a href="<?= site_url('account/form/event'); ?>">Download Form Event</a></li>
                 </ul>
             </div>
         </li>

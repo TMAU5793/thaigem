@@ -4,7 +4,7 @@
         //buttin edit account information
         $('#edit_ac_info').on('click',function(){
             $('.ac-menu-left input').removeAttr('disabled');
-            $('#edit_ac_info_group').html('<button type="submit" class="btn btn-black-border fs-7" id="submit_ac_info">Comfirm</button>');
+            $('#edit_ac_info_group').html('<button type="button" class="btn btn-black-border fs-7" id="submit_ac_info">Comfirm</button>');
         });
 
         //buttin edit account about

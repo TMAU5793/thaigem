@@ -43,7 +43,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">                
-                <a href="<?= site_url('myaccount') ?>" class="btn-close"></a>
+                <a href="<?= site_url('account') ?>" class="btn-close"></a>
             </div>
             <div class="modal-body">
                 <div class="text-center">
@@ -51,7 +51,7 @@
                     <p>Save your information. Success</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="<?= site_url('myaccount') ?>" class="btn bg-lightgold ff-semibold text-uppercase fs-7">Comfirm</a>
+                    <a href="<?= site_url('account') ?>" class="btn bg-lightgold ff-semibold text-uppercase fs-7">Comfirm</a>
                 </div>
             </div>
         </div>
