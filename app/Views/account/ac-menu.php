@@ -16,10 +16,10 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= (isset($menu_invoice)?'active':''); ?>" href="#">Invoice</a>
+            <a class="nav-link <?= (isset($ac_invoice)?'active':''); ?>" href="<?= site_url('account/invoice'); ?>">Invoice</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= (isset($menu_webboard)?'active':''); ?>" href="#">Web board</a>
+            <a class="nav-link <?= (isset($ac_webboard)?'active':''); ?>" href="<?= site_url('account/webboard'); ?>">Web board</a>
         </li>
     </ul>
 </div>

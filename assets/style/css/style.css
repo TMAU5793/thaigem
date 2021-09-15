@@ -246,6 +246,17 @@ img {
 .event-body .event-info {
   padding: 1rem; }
 
+.acform-body .acform-item {
+  background-color: #ebebeb;
+  padding: 1rem;
+  border-radius: 6px; }
+  .acform-body .acform-item .ac-form-file i {
+    font-size: 6rem; }
+.acform-body .acform-upload {
+  background-color: #ebebeb;
+  padding: 4rem 1rem;
+  border-radius: 6px; }
+
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");
   background-size: cover;

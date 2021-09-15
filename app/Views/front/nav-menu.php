@@ -16,8 +16,8 @@
                         <li><a href="<?= site_url('account'); ?>">My Account</a></li>
                         <li><a href="<?= site_url('account/event'); ?>">Book Event</a></li>
                         <li><a href="<?= site_url('account/form'); ?>">Download and upload file</a></li>
-                        <li><a href="">Invoice</a></li>
-                        <li><a href="">Web Board</a></li>
+                        <li><a href="<?= site_url('account/invoice'); ?>">Invoice</a></li>
+                        <li><a href="<?= site_url('account/webboard'); ?>">Web Board</a></li>
                     </ul>
                 </div>
             </div>

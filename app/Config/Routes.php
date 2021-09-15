@@ -50,6 +50,7 @@ $routes->get('account', 'Account/Account::index');
 $routes->get('account/event', 'Account/Event::index');
 $routes->get('account/form', 'Account/Accountform::index');
 $routes->get('account/form/event', 'Account/Accountform::event');
+$routes->get('account/invoice', 'Account/Invoice::index');
 
 //Api path
 $routes->post('amphurepi', 'Api/LocationApi::getAmphure');

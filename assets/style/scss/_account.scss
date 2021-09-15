@@ -129,3 +129,21 @@
         padding: 1rem;
     }
 }
+
+.acform-body {
+    .acform-item {
+        background-color: $c-lightgray;
+        padding: 1rem;
+        border-radius: 6px;
+        .ac-form-file {
+            i {
+                font-size: 6rem;
+            }
+        }
+    }
+    .acform-upload {
+        background-color: $c-lightgray;
+        padding: 4rem 1rem;
+        border-radius: 6px;
+    }
+}
