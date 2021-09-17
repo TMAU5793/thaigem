@@ -48,7 +48,7 @@
                 <div class="text-center mb-3">
                     <strong class="ff-semibold fs-4">Create Account</strong>              
                 </div>
-                <form action="">
+                <form id="frm_register" action="<?= site_url('account/register'); ?>" method="POST">
                     <div class="input-nobg plr-2rem">
                         <div class="form-group mb-3">
                             <input type="email" class="form-control" name="txt_username" placeholder="Email">

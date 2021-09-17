@@ -3,6 +3,7 @@
 namespace App\Controllers\Account;
   
 use CodeIgniter\Controller;
+use App\Models\Account\AccountModel;
   
 class Account extends Controller
 {   
@@ -21,5 +22,15 @@ class Account extends Controller
             'ac_account' => TRUE
         ];
         echo view('account/ac-account',$data);
+    }
+
+    public function register()
+    {
+        helper(['form']);
+        $model = new AccountModel();
+        $request = service('request');
+        
+        $model->register($request->getPost());
+        //print_r($request->getPost());
     }
 }
