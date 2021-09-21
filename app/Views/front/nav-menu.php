@@ -9,7 +9,7 @@
             ?>
                 <a href="javascript:void(0)" class="ff-bold">TH</a>
                 <span>|</span>
-                <a href="<?= site_url('lang/en?burl='.current_url()) ?>">EN</a>
+                <a href="<?= site_url('lang/en?burl='.current_url()); ?>">EN</a>
             <?php }else{ ?>
                 <a href="<?= site_url('lang/th?burl='.current_url()); ?>">TH</a>
                 <span>|</span>
@@ -21,7 +21,10 @@
             <a href="javascript:void(0)" data-lang="en">EN</a> -->
         </div>
         <div class="user-managed mt-3 d-inline-flex">
-            <?php if(session()->get('logged_member')){ ?>
+            <?php 
+                $logged =  session()->get('logged_member');
+                if($logged){
+            ?>
                 <div class="user-login me-3 position-relative">
                     <span class="cs-pointer user-login-name"><i class="far fa-user-circle"></i> Hi! Miss Siter</span>
                     <div class="user-menu-login d-none">
