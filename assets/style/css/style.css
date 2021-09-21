@@ -107,7 +107,8 @@ img {
   font-family: "Montserrat-Bold";
   justify-content: center; }
   #topMenu .nav-link {
-    padding: .5rem 1.25rem; }
+    padding: .5rem 1.25rem;
+    text-transform: uppercase; }
 
 .top-nav {
   padding: 1rem 0; }

@@ -83,7 +83,7 @@ class App extends BaseConfig
 	 *
 	 * @var boolean
 	 */
-	public $negotiateLocale = false;
+	public $negotiateLocale = true;
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -96,7 +96,7 @@ class App extends BaseConfig
 	 *
 	 * @var string[]
 	 */
-	public $supportedLocales = ['en'];
+	public $supportedLocales = ['en','th'];
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -108,7 +108,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $appTimezone = 'America/Chicago';
+	public $appTimezone = 'Asia/Bangkok';
 
 	/**
 	 * --------------------------------------------------------------------------

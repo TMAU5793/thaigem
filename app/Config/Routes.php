@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('+/{locale}', 'Language::index');
 
 
 //Admin path
@@ -46,7 +47,7 @@ $routes->match(['get', 'post'], 'admin/login', 'Admin/User::login', ['filter' =>
 $routes->get('admin/logout', 'Admin/User::logout');
 
 //Account path
-$routes->get('account', 'Account/Account::index');
+$routes->match(['get', 'post'],'account', 'Account/Account::index');
 $routes->get('account/event', 'Account/Event::index');
 $routes->get('account/form', 'Account/Accountform::index');
 $routes->get('account/form/event', 'Account/Accountform::event');

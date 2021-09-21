@@ -21,6 +21,7 @@ class Account extends Controller
         $data = [
             'ac_account' => TRUE
         ];
+        
         echo view('account/ac-account',$data);
     }
 

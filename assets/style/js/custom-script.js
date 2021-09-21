@@ -9,7 +9,7 @@ $(function() {
     $('.user-login-name').on('click', function() {
         $('.user-menu-login').toggleClass('d-none');
     });
-    //End Click to close user menu    
+    //End Click to close user menu
 });
 
 

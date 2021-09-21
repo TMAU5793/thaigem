@@ -4,25 +4,40 @@
     </div>
     <div class="top-more-menu float-end ff-medium text-end">
         <div class="lang mt-3">
-            <a href="">TH</a>
+            <?php 
+                if(session()->get('lang')=='th'){
+            ?>
+                <a href="javascript:void(0)" class="ff-bold">TH</a>
+                <span>|</span>
+                <a href="<?= site_url('lang/en?burl='.current_url()) ?>">EN</a>
+            <?php }else{ ?>
+                <a href="<?= site_url('lang/th?burl='.current_url()); ?>">TH</a>
+                <span>|</span>
+                <a href="javascript:void(0)" class="ff-bold">EN</a>
+            <?php } ?>
+
+            <!-- <a href="javascript:void(0)" data-lang="th">TH</a>
             <span>|</span>
-            <a href="">EN</a>
+            <a href="javascript:void(0)" data-lang="en">EN</a> -->
         </div>
         <div class="user-managed mt-3 d-inline-flex">
-            <div class="user-login me-3 position-relative">
-                <span class="cs-pointer user-login-name"><i class="far fa-user-circle"></i> Hi! Miss Siter</span>
-                <div class="user-menu-login d-none">
-                    <ul>
-                        <li><a href="<?= site_url('account'); ?>">My Account</a></li>
-                        <li><a href="<?= site_url('account/event'); ?>">Book Event</a></li>
-                        <li><a href="<?= site_url('account/form'); ?>">Download and upload file</a></li>
-                        <li><a href="<?= site_url('account/invoice'); ?>">Invoice</a></li>
-                        <li><a href="<?= site_url('account/webboard'); ?>">Web Board</a></li>
-                    </ul>
+            <?php if(session()->get('logged_member')){ ?>
+                <div class="user-login me-3 position-relative">
+                    <span class="cs-pointer user-login-name"><i class="far fa-user-circle"></i> Hi! Miss Siter</span>
+                    <div class="user-menu-login d-none">
+                        <ul>
+                            <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
+                            <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
+                            <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
+                            <li><a href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a></li>
+                            <li><a href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webBoard'); ?></a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="far fa-user-circle"></i> LOGIN</a>
-            <a href="" class="ms-3"><i class="far fa-handshake"></i> HELP CENTER</a>
+            <?php }else{ ?>
+                <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
+            <?php } ?>
+            <a href="" class="ms-3"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -35,25 +50,25 @@
         <div class="collapse navbar-collapse" id="topMenu">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= site_url(); ?>">HOME</a>
+                    <a class="nav-link active" aria-current="page" href="<?= site_url(); ?>"><?= lang('MenuLang.navHome'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT US</a>
+                    <a class="nav-link" href="#"><?= lang('MenuLang.navAboutus'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">MEMBERS</a>
+                    <a class="nav-link" href="#"><?= lang('MenuLang.navMembers'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">KNOWLEDGE & NEWS</a>
+                    <a class="nav-link" href="#"><?= lang('MenuLang.navKnowledge'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">EVENTS</a>
+                    <a class="nav-link" href="#"><?= lang('MenuLang.navEvents'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">BUSINESS COMMUNITY</a>
+                    <a class="nav-link" href="#"><?= lang('MenuLang.navBusiness'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT US</a>
+                    <a class="nav-link" href="#"><?= lang('MenuLang.navContactus'); ?></a>
                 </li>
             </ul>
         </div>

@@ -10,7 +10,7 @@
                     <strong class="ff-semibold fs-4">Sign in</strong>
                     <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ip the dummy text industry.</p>                    
                 </div>
-                <form action="">
+                <form action="<?= base_url('account'); ?>" method="POST">
                     <div class="input-nobg plr-2rem">
                         <div class="form-group mb-3">
                             <input type="text" class="form-control" name="txt_username" placeholder="USERNAME">
@@ -18,7 +18,7 @@
                         <div class="form-group mb-3">
                             <input type="password" class="form-control" name="txt_password" placeholder="PASSWORD" autocomplete="new-password">
                         </div>
-                        <button type="submit" class="btn bg-lightgold ff-semibold w-100">SIGN IN</button>                                                
+                        <button type="submit" class="btn bg-lightgold ff-semibold w-100">SIGN IN</button>
                     </div>
                 </form>
                 <a href="" class="text-uppercase mt-3 d-block text-center c-black text-decoration-none">forgot password</a>

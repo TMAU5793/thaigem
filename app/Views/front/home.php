@@ -12,8 +12,8 @@
                     <div class="col-md-8">
                         <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ip the dummy text industry. Lorem Ip dummy text and typesetting industry.</p>
                         <div class="tg-title">
-                            <h3>Members</h3>
-                            <h3 class="ff-bold">Category</h3>
+                            <h3><?= lang('GlobalLang.members'); ?></h3>
+                            <h3 class="ff-bold"><?= lang('GlobalLang.category'); ?></h3>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -49,14 +49,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="tg-title">
-                        <h3><strong class="ff-bold">Price</strong> Update</h3>
+                        <h3><?= lang('GlobalLang.priceUpdate'); ?></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="text-end price-subject">
-                        <strong class="ff-bold"><i class="fas fa-square c-darkgold"></i> Diamonds</strong>
-                        <strong class="ff-bold"><i class="fas fa-square c-gray"></i> Ruby</strong>
-                        <strong class="ff-bold"><i class="fas fa-square c-lightgray"></i> Sapphire</strong>
+                        <strong class="ff-bold"><i class="fas fa-square c-darkgold"></i> <?= lang('GlobalLang.diamonds'); ?></strong>
+                        <strong class="ff-bold"><i class="fas fa-square c-gray"></i> <?= lang('GlobalLang.ruby'); ?></strong>
+                        <strong class="ff-bold"><i class="fas fa-square c-lightgray"></i> <?= lang('GlobalLang.sapphire'); ?></strong>
                     </div>
                 </div>
             </div>
@@ -71,12 +71,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="tg-title">
-                        <h3><strong class="ff-bold">Events</strong></h3>
+                        <h3><strong class="ff-bold"><?= lang('GlobalLang.events'); ?></strong></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="text-end view-all">
-                        <a href="" class="c-black ff-semibold">View All</a>
+                        <a href="" class="c-black ff-semibold"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>
@@ -92,8 +92,8 @@
                                 <h2 class="ff-semibold fs-4">Events 01</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
                                 <div class="btn-tg-group">
-                                    <a href="" class="btn btn-redmore btn-black-border">Read More</a>
-                                    <a href="" class="btn btn-booking btn-black-border">Book Now</a>
+                                    <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -110,8 +110,8 @@
                                 <h2 class="ff-semibold fs-4">Events 01</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
                                 <div class="btn-tg-group">
-                                    <a href="" class="btn btn-redmore btn-black-border">Read More</a>
-                                    <a href="" class="btn btn-booking btn-black-border">Book Now</a>
+                                    <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -128,8 +128,8 @@
                                 <h2 class="ff-semibold fs-4">Events 01</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
                                 <div class="btn-tg-group">
-                                    <a href="" class="btn btn-redmore btn-black-border">Read More</a>
-                                    <a href="" class="btn btn-booking btn-black-border">Book Now</a>
+                                    <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -144,12 +144,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="tg-title">
-                        <h3><strong class="ff-bold">Knowledge & News</strong></h3>
+                        <h3><strong class="ff-bold"><?= lang('GlobalLang.knowledgeNews'); ?></strong></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="text-end view-all">
-                        <a href="" class="c-black ff-semibold">View All</a>
+                        <a href="" class="c-black ff-semibold"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>
@@ -162,8 +162,8 @@
                                 <h2 class="ff-semibold">Knowledge & New 1</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold">Read More</a>
-                                    <a href="" class="c-white ff-semibold ms-4">View All</a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -173,8 +173,8 @@
                                 <h2 class="ff-semibold">Knowledge & New 2</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold">Read More</a>
-                                    <a href="" class="c-white ff-semibold ms-4">View All</a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -184,8 +184,8 @@
                                 <h2 class="ff-semibold">Knowledge & New 3</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold">Read More</a>
-                                    <a href="" class="c-white ff-semibold ms-4">View All</a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -200,8 +200,8 @@
                                     <h2 class="ff-semibold fs-5">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold">Read More</a>
-                                        <a href="" class="c-white ff-semibold ms-4">View All</a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -213,8 +213,8 @@
                                     <h2 class="ff-semibold fs-5">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold">Read More</a>
-                                        <a href="" class="c-white ff-semibold ms-4">View All</a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -226,8 +226,8 @@
                                     <h2 class="ff-semibold fs-5">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold">Read More</a>
-                                        <a href="" class="c-white ff-semibold ms-4">View All</a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tg-title">
-                        <h3><strong class="ff-bold">Member</strong></h3>
+                        <h3><strong class="ff-bold"><?= lang('GlobalLang.member'); ?></strong></h3>
                     </div>
                 </div>
             </div>
@@ -271,7 +271,7 @@
                                 <h2 class="ff-semibold c-darkgold fs-5">kanyaluk Wathananon <?= $i ?></h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
                                 <div class="btn-tg-group mt-5">
-                                    <a href="" class="btn btn-redmore btn-black-border ff-semibold">View Profile</a>
+                                    <a href="" class="btn btn-redmore btn-black-border ff-semibold"><?= lang('GlobalLang.viewProfile'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -287,15 +287,13 @@
             <div class="row">
                 <div class="col-md-6 position-relative">
                     <div class="absolute-center w-100 singup-form text-center">
-                        <strong class="ff-semibold c-darkgold fs-1 d-block">SIGN UP FOR</strong>
-                        <span class="c-darkgold fs-3 d-block">OUR NEWSLETTER</span>
-                        <p class="mt-4">Lorem Ipsum is simply dummy textof the printing and typesetting in</p>
+                        <?= lang('HomeLang.newsletterText'); ?>
                         <form id="frm-singup" action="" method="">
                             <div class="input-group">
-                                <input type="text" name="email" class="form-control">
+                                <input type="text" name="email" class="form-control" placeholder="<?= lang('GlobalLang.email'); ?>">
                             </div>
                             <div class="btn-singup-group mt-3">
-                                <button class="btn btn-darkgold ff-semibold c-white w-100">Subscribe</button>
+                                <button class="btn btn-darkgold ff-semibold c-white w-100"><?= lang('GlobalLang.subscribe'); ?></button>
                             </div>
                         </form>
                     </div>
@@ -320,14 +318,14 @@
                     <div class="contact-info">
                         <strong class="ff-semibold d-block fs-2">TGJTA</strong>
                         <strong class="ff-semibold d-block">Thai Gem and Jewelry Traders Association</strong>
-                        <p class="mt-4">919/119, 919/615-621 Jewelry Trade Center Bld., <br> 52nd Fl., Silom Rd., Bangkok ฺ10500</p>
+                        <p class="mt-4"><?= lang('GlobalLang.addressInfo'); ?></p>
                         <div class="social-contact">
                             <a href="tel:02-630-1390"><i class="fas fa-mobile-alt"></i> 02-630-1390</a>
                             <a href="http://www.thaigemjewelry.or.th/"><i class="fas fa-globe"></i> http://www.thaigemjewelry.or.th/</a>
                             <a href="mailto:info@thaigemjewelry.org"><i class="far fa-envelope"></i> info@thaigemjewelry.org</a>
                         </div>
                         <div class="follow-us">
-                            <strong class="ff-semibold">Follow Us</strong>
+                            <strong class="ff-semibold"><?= lang('GlobalLang.followUs'); ?></strong>
                             <a href=""><i class="fab fa-facebook-f"></i></a>
                             <a href=""><i class="fab fa-instagram"></i></a>
                             <a href=""><i class="fab fa-line"></i></a>
@@ -336,18 +334,18 @@
                 </div>
                 <div class="col-md-6">
                     <div class="contact-form">
-                        <strong class="ff-semibold d-block fs-4 mb-3">Contact Form</strong>
+                        <strong class="ff-semibold d-block fs-4 mb-3"><?= lang('GlobalLang.contactForm'); ?></strong>
                         <form action="">                            
                             <div class="form-group">
-                                <input type="text" class="form-control" name="txt_name" placeholder="Name">
+                                <input type="text" class="form-control" name="txt_name" placeholder="<?= lang('GlobalLang.name'); ?>">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="txt_email" aria-describedby="emailHelp" placeholder="Email">
+                                <input type="email" class="form-control" name="txt_email" aria-describedby="emailHelp" placeholder="<?= lang('GlobalLang.email'); ?>">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="txt_phone" placeholder="Phone Number">
+                                <input type="text" class="form-control" name="txt_phone" placeholder="<?= lang('GlobalLang.phoneNumber'); ?>">
                             </div>
-                            <button type="submit" class="btn bg-darkgold c-white ff-semibold w-100">Submit</button>
+                            <button type="submit" class="btn bg-darkgold c-white ff-semibold w-100"><?= lang('GlobalLang.submit'); ?></button>
                         </form>
                     </div>
                 </div>
