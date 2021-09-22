@@ -4,7 +4,7 @@
     <section class="banner">
         <img src="<?= site_url('assets/images/home/banner.jpg') ?>" alt="">
     </section>
-
+    
     <section class="category-home">
         <div class="bg-title ptb-2rem">
             <div class="container">

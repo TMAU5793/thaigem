@@ -33,11 +33,16 @@ class AccountModel extends Model
     {
         $info=[
             'account' => $data['txt_username'],
-            'name' => $data['txt_username'],
+            'name' => $data['txt_name'],
             'email' => $data['txt_username'],
             'password' => $data['txt_password']
 
         ];
-        print_r($info);
+
+		if($this->save($info)){
+			return true;
+		}else{
+			return false;
+		}
     }
 }

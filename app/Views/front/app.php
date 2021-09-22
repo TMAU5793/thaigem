@@ -51,6 +51,9 @@
     <!-- Custom script -->
     <script src="<?= base_url('assets/style/js/custom-script.js'); ?>"></script>
 
+    <!-- Add script with php -->
+    <?= $this->include('template/script-custom'); ?>
+
     <?= $this->renderSection("scripts") ?>
 </body>
 </html>

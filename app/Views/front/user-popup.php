@@ -48,19 +48,22 @@
                 <div class="text-center mb-3">
                     <strong class="ff-semibold fs-4">Create Account</strong>              
                 </div>
-                <form id="frm_register" action="<?= site_url('account/register'); ?>" method="POST">
+                <form id="frm_register" action="<?= site_url('account/register'); ?>" method="POST">                    
                     <div class="input-nobg plr-2rem">
+                        <?php if(isset($signup_valid)): ?>
+                            <div class="alert alert-danger"><?= $signup_valid->listErrors(); ?></div>
+                        <?php endif;?>
                         <div class="form-group mb-3">
-                            <input type="email" class="form-control" name="txt_username" placeholder="Email">
+                            <input type="email" class="form-control" name="txt_username" placeholder="Email *" value="<?= set_value('txt_username'); ?>">
                         </div>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" name="txt_name" placeholder="Name">
+                            <input type="text" class="form-control" name="txt_name" placeholder="Name *" value="<?= set_value('txt_name'); ?>">
                         </div>
                         <div class="form-group mb-3">
-                            <input type="password" class="form-control" name="txt_password" placeholder="PASSWORD" autocomplete="new-password">
+                            <input type="password" class="form-control" name="txt_password" placeholder="PASSWORD *" autocomplete="new-password">
                         </div>
                         <div class="form-group mb-3">
-                            <input type="password" class="form-control" name="txt_confirm_password" placeholder="COMFIRM PASSWORD">
+                            <input type="password" class="form-control" name="txt_confirm_password" placeholder="COMFIRM PASSWORD *">
                         </div>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="cb_newsletter">
@@ -69,7 +72,8 @@
                             </label>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="cb_term">
+                            <input type="hidden" name="txt_term" id="txt_term">
+                            <input class="form-check-input" type="checkbox" id="cb_term">
                             <label class="form-check-label" for="cb_term">
                                 ยอมรับ <a href="" class="ff-semibold c-black">ข้อกำหนด และเงื่อนไข</a>
                             </label>
