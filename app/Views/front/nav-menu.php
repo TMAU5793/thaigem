@@ -9,9 +9,9 @@
             ?>
                 <a href="javascript:void(0)" class="ff-bold">TH</a>
                 <span>|</span>
-                <a href="<?= site_url('lang/en?burl='.current_url()); ?>">EN</a>
+                <a href="<?= site_url('lang/en?burl='.urlencode(current_url())); ?>">EN</a>
             <?php }else{ ?>
-                <a href="<?= site_url('lang/th?burl='.current_url()); ?>">TH</a>
+                <a href="<?= site_url('lang/th?burl='.urlencode(current_url())); ?>">TH</a>
                 <span>|</span>
                 <a href="javascript:void(0)" class="ff-bold">EN</a>
             <?php } ?>
