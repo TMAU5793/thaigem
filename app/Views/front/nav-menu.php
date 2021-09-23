@@ -9,9 +9,9 @@
             ?>
                 <a href="javascript:void(0)" class="ff-bold">TH</a>
                 <span>|</span>
-                <a href="<?= site_url('lang/en?burl='.urlencode(current_url())); ?>">EN</a>
+                <a href="<?= site_url('lang/en?burl='.current_url()); ?>">EN</a>
             <?php }else{ ?>
-                <a href="<?= site_url('lang/th?burl='.urlencode(current_url())); ?>">TH</a>
+                <a href="<?= site_url('lang/th?burl='.current_url()); ?>">TH</a>
                 <span>|</span>
                 <a href="javascript:void(0)" class="ff-bold">EN</a>
             <?php } ?>
@@ -26,7 +26,7 @@
                 if($logged){
             ?>
                 <div class="user-login me-3 position-relative">
-                    <span class="cs-pointer user-login-name"><i class="far fa-user-circle"></i> Hi! Miss Siter</span>
+                    <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= session()->get('name') ?></span>
                     <div class="user-menu-login d-none">
                         <ul>
                             <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
@@ -34,13 +34,14 @@
                             <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
                             <li><a href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a></li>
                             <li><a href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webBoard'); ?></a></li>
+                            <li><a href="<?= site_url('account/logout') ?>"><?= lang('GlobalLang.logout'); ?></a></li>
                         </ul>
                     </div>
                 </div>
             <?php }else{ ?>
-                <a href="" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
+                <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
             <?php } ?>
-            <a href="" class="ms-3"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
+            <a href="" class="ms-3 text-uppercase"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
         </div>
     </div>
     <div class="clearfix"></div>

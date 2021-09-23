@@ -24,7 +24,6 @@ class App extends BaseConfig
 	 * @var string
 	 */
 	public $baseURL = 'http://localhost/thaigem/';
-	//public $baseURL = 'http://localhost:8080/';
 
 	/**
 	 * --------------------------------------------------------------------------

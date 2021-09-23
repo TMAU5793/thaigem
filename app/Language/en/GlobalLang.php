@@ -4,6 +4,9 @@
 return [
     'login' => 'Login',
     'signin' => 'Sign In',
+    'logout' => 'Log out',
+    'signout' => 'Sign Out',
+    'signup' => 'Sign Up',
     'forgot' => 'Forgot Password',
     'signFacebook' => 'Sign in with Facebook',
     'signGmail' => 'Sign in with Gmail',
@@ -14,7 +17,7 @@ return [
     'subscribe' => 'Subscribe',
     'termCondition' => 'Term & Condition',
     'accept' => 'Accept',
-    'userName' => 'User name',
+    'userName' => 'Username',
     'name' => 'Name',
     'lastname' => 'Last name',
     'password' => 'Password',

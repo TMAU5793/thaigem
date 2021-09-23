@@ -9,6 +9,7 @@ use CodeIgniter\Validation\Rules;
 
 //เพิ่มใหม่
 use App\Validation\AdminRules;
+use App\Validation\CustomRules;
 
 class Validation
 {
@@ -30,6 +31,7 @@ class Validation
 
 		//เพิ่มใหม่
 		AdminRules::class,
+		CustomRules::class,
 	];
 
 	/**

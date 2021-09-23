@@ -10,6 +10,7 @@ use CodeIgniter\Filters\Honeypot;
 //สำหรับเช็คการล็อกอิน
 use App\Filters\Auth;
 use App\Filters\Noauth;
+use App\Filters\MemberAuth;
 
 class Filters extends BaseConfig
 {
@@ -27,6 +28,7 @@ class Filters extends BaseConfig
 		//สำหรับเช็คการล็อกอิน
 		"auth" => Auth::class,
   		"noauth" => Noauth::class,
+		"memberAuth" => MemberAuth::class,
 	];
 
 	/**

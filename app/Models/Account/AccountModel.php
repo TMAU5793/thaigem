@@ -14,7 +14,7 @@ class AccountModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ["account","password","name","email","phone"];
+	protected $allowedFields        = ["account","password","name","lastname","email","phone"];
 
 	// Dates
 	protected $useTimestamps        = true;
@@ -31,16 +31,21 @@ class AccountModel extends Model
 
     public function register($data)
     {
+		$arr = explode(" ",$data['txt_name']);
+		$name = $arr[0];
+		$lastname = $arr[1];
+		print_r($arr);
+		echo $lastname;
         $info=[
             'account' => $data['txt_username'],
-            'name' => $data['txt_name'],
+            'name' => $name,
+			'lastname' => $lastname,
             'email' => $data['txt_username'],
-            'password' => $data['txt_password']
-
+            'password' => password_hash($data['txt_password'], PASSWORD_DEFAULT)
         ];
 
 		if($this->save($info)){
-			return true;
+			return $this->getInsertID();
 		}else{
 			return false;
 		}

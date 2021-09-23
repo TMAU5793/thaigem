@@ -5,10 +5,9 @@
             $('#registerModal').modal('show');
         }
 
-        $('#cb_term').on('click',function(){
-            if($(this).is(':checked')){
-                console.log(true);
-            }
-        });        
+        var signin_valid = '<?= (isset($signin_valid)?TRUE:FALSE) ?>';
+        if(signin_valid){
+            $('#loginModal').modal('show');
+        }
     });
 </script>

@@ -64,7 +64,7 @@ class User extends Controller
             }else{
                 $data['validation'] = $this->validator;
                 echo view('admin/login',$data);
-            }            
+            }
         }else{
             return redirect()->to(site_url('admin'));
         }

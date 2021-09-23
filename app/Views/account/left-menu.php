@@ -4,9 +4,9 @@
             <img src="<?= site_url('assets/images/account/profile.jpg'); ?>" alt="">
         </div>
         <div class="ac-personal mb-3">
-            <input type="text" class="form-control mb-1" name="txt_name" value="Chompoo Wathananon" disabled>
-            <input type="email" class="form-control mb-1" name="txt_email" value="examp@mail.com" disabled>
-            <input type="text" class="form-control mb-1" name="txt_phone" value="097-654123" disabled>
+            <input type="text" class="form-control mb-1" name="txt_name" value="<?= session()->get('name').' '.session()->get('lastname'); ?>" placeholder="<?= lang('GlobalLang.name') ?>" disabled>
+            <input type="email" class="form-control mb-1" name="txt_email" value="<?= session()->get('email'); ?>" placeholder="<?= lang('GlobalLang.email') ?>" disabled>
+            <input type="text" class="form-control mb-1" name="txt_phone" value="<?= session()->get('phone'); ?>" placeholder="<?= lang('GlobalLang.phoneNumber') ?>" disabled>
         </div>
         <div class="ac-information">
             <div class="ac-info-item">
