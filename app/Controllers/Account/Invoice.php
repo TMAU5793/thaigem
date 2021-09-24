@@ -8,11 +8,7 @@ class Invoice extends Controller
 {   
     public function __construct()
     {
-        $sess_account = [
-            'logged_member' => TRUE
-        ];
-
-        session()->set($sess_account);
+        
     }
     
     public function index()

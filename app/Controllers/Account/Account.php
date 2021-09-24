@@ -28,7 +28,7 @@ class Account extends Controller
         if ($request->getMethod() !== 'post') {
             return redirect()->to(site_url());
         }
-        if(session()->get('logged_member')){
+        if(session()->get('userdata')['logged_member']){
             return redirect()->to('account');
         }
         //print_r($request->getPost());
@@ -83,7 +83,7 @@ class Account extends Controller
                     'logged_member' => TRUE
                 ];
 
-                session()->set($sess);
+                session()->set('userdata',$sess);
                 return redirect()->to(site_url('account'));
             }
         }else{
@@ -101,7 +101,7 @@ class Account extends Controller
             return redirect()->to(site_url());
         }
 
-        if(session()->get('logged_member')){
+        if(session()->get('userdata')){
             return redirect()->to('account');
         }
 
@@ -136,7 +136,7 @@ class Account extends Controller
                 'logged_member' => TRUE
             ];
 
-            session()->set($sess);
+            session()->set('userdata',$sess);
             return redirect()->to(site_url('account'));
         }else{
             $data['signin_valid'] = $this->validator;
@@ -144,18 +144,91 @@ class Account extends Controller
         }
     }
 
+    public function loginFacebook()
+    {
+        // $request = service('request');
+        // $data = [];
+        // require_once APPPATH.'Libraries/vendor/autoload.php';
+        // $facebook = new \Facebook\Facebook([
+        //     'app_id' => '367105081821305',
+        //     'app_secret' => '788cad6087512fb28a8fdfad62dcbca3',
+        //     'default_graph_version' => 'v12.0'
+        // ]);
+        // $fb_helper = $facebook->getRedirectLoginHelper();
+        // if($request->getVar('state')){
+        //     $fb_helper->getPersistentDataHandler()->set('state',$request->getVar('state'));
+        // }
+        // if($request->getVar('code')){
+        //     if(session()->get('access_token')){
+        //         $access_token = session()->get('access_token');
+        //     }else{
+        //         $access_token = $fb_helper->getAccessToken();
+        //         session()->set('access_token',$access_token);
+        //         $facebook->setDefaultAccessToken(session()->get('access_token'));
+        //     }
+        //     $graph_response = $facebook->get('/me?fields=name,email',$access_token);
+        //     $fb_user_info = $graph_response->getGraphUser();
+
+        //     if(!empty($fb_user_info['id'])){
+        //         $fbdata = [
+        //             'profile_pic' => 'http://graph.facebook.com/'.$fb_user_info['id'].'/picture',
+        //             'user_name' => $fb_user_info['name'],
+        //             'email' => $fb_user_info['email'],
+        //             'userid' => $fb_user_info['id'],
+        //             'logged_member' => TRUE
+        //         ];
+
+        //         session()->set('userdata',$fbdata);
+
+        //         print_r(session()->get('userdata'));
+        //     }
+        // }else{
+        //     //return redirect()->to('');
+        //     print_r(session()->get('userdata'));
+        // }
+        //echo 'Login Facebook';
+        echo view('account/ac-login');
+    }
+
+    public function loginGoogle()
+    {
+        $request = service('request');
+        require_once APPPATH.'Libraries/vendor/autoload.php';
+
+        // init configuration
+        $clientID = '685479072452-0opq35kbticpb9otft4om75sfn9eega8.apps.googleusercontent.com';
+        $clientSecret = 'U6pS4afPkv9GC_Ip2uxtbd39';
+        $redirectUri = site_url('logingoogle');
+
+        // create Client Request to access Google API
+        $client = new \Google_Client();
+        $client->setClientId($clientID);
+        $client->setClientSecret($clientSecret);
+        $client->setRedirectUri($redirectUri);
+        $client->addScope("email");
+        $client->addScope("profile");
+
+        // authenticate code from Google OAuth Flow
+        if (isset($_GET['code'])) {
+            $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+            $client->setAccessToken($token['access_token']);
+            
+            // get profile info
+            $google_oauth = new \Google_Service_Oauth2($client);
+            $userdata = $google_oauth->userinfo->get();
+            $email =  $userdata->email;
+            $name =  $userdata->name;
+            print_r($userdata);
+        
+            // now you can use this profile info to create account in your website and make user logged in.
+        } else {
+            echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
+        }
+    }
+
     public function logout()
     {
-        $sess = [
-            'id' => '',
-            'account' => '',
-            'name' => '',
-            'lastname' => '',
-            'email' => '',
-            'logged_member' => FALSE
-        ];
-
-        session()->set($sess);
+        session()->remove('userdata');
 		return redirect()->to('');
     }
 }

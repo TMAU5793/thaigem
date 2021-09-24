@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/style/css/style.css'); ?>">
 </head>
 <body>
-    
+
     <!-- add top menu -->
     <?= $this->include('front/nav-menu') ?>    
 
@@ -50,6 +50,9 @@
 
     <!-- Custom script -->
     <script src="<?= base_url('assets/style/js/custom-script.js'); ?>"></script>
+
+    <!-- Load the JS SDK asynchronously -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=367105081821305&autoLogAppEvents=1" nonce="yH6j5ziR"></script>
 
     <!-- Add script with php -->
     <?= $this->include('template/script-custom'); ?>

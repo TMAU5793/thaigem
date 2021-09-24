@@ -22,11 +22,11 @@
         </div>
         <div class="user-managed mt-3 d-inline-flex">
             <?php 
-                $logged =  session()->get('logged_member');
+                $logged =  session()->get('userdata');
                 if($logged){
             ?>
                 <div class="user-login me-3 position-relative">
-                    <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= session()->get('name') ?></span>
+                    <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $logged['name']; ?></span>
                     <div class="user-menu-login d-none">
                         <ul>
                             <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>

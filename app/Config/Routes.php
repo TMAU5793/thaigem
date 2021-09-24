@@ -48,12 +48,15 @@ $routes->get('admin/logout', 'Admin/User::logout');
 
 //Account path
 $routes->match(['get', 'post'],'account', 'Account/Account::index',['filter' => 'memberAuth']);
-$routes->get('account/event', 'Account/Event::index');
-$routes->get('account/form', 'Account/Accountform::index');
-$routes->get('account/form/event', 'Account/Accountform::event');
-$routes->get('account/invoice', 'Account/Invoice::index');
+$routes->get('account/event', 'Account/Event::index',['filter' => 'memberAuth']);
+$routes->get('account/form', 'Account/Accountform::index',['filter' => 'memberAuth']);
+$routes->get('account/form/event', 'Account/Accountform::event',['filter' => 'memberAuth']);
+$routes->get('account/invoice', 'Account/Invoice::index',['filter' => 'memberAuth']);
+
 $routes->match(['get', 'post'],'account/register', 'Account/Account::register');
 $routes->post('account/login', 'Account/Account::login');
+$routes->match(['get', 'post'],'loginfacebook', 'Account/Account::loginFacebook');
+$routes->match(['get', 'post'],'logingoogle', 'Account/Account::loginGoogle');
 $routes->get('account/logout', 'Account/Account::logout');
 
 //Api path

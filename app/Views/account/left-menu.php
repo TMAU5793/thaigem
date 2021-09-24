@@ -1,12 +1,15 @@
+<?php
+    $userdata = session()->get('userdata');
+?>
 <div class="ac-menu-left input-disabled p-4">
     <form action="" method="POST">
         <div class="ac-profile-img">
             <img src="<?= site_url('assets/images/account/profile.jpg'); ?>" alt="">
         </div>
         <div class="ac-personal mb-3">
-            <input type="text" class="form-control mb-1" name="txt_name" value="<?= session()->get('name').' '.session()->get('lastname'); ?>" placeholder="<?= lang('GlobalLang.name') ?>" disabled>
-            <input type="email" class="form-control mb-1" name="txt_email" value="<?= session()->get('email'); ?>" placeholder="<?= lang('GlobalLang.email') ?>" disabled>
-            <input type="text" class="form-control mb-1" name="txt_phone" value="<?= session()->get('phone'); ?>" placeholder="<?= lang('GlobalLang.phoneNumber') ?>" disabled>
+            <input type="text" class="form-control mb-1" name="txt_name" value="<?= $userdata['name'].' '.$userdata['lastname']; ?>" placeholder="<?= lang('GlobalLang.name') ?>" disabled>
+            <input type="email" class="form-control mb-1" name="txt_email" value="<?= $userdata['email']; ?>" placeholder="<?= lang('GlobalLang.email') ?>" disabled>
+            <input type="text" class="form-control mb-1" name="txt_phone" value="<?= $userdata['phone']; ?>" placeholder="<?= lang('GlobalLang.phoneNumber') ?>" disabled>
         </div>
         <div class="ac-information">
             <div class="ac-info-item">

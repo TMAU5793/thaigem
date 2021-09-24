@@ -25,7 +25,7 @@ class MemberAuth implements FilterInterface
 	 */
 	public function before(RequestInterface $request, $arguments = null)
 	{
-		if (!session()->get('logged_member')) {
+		if (!session()->get('userdata')) {
             return redirect()->to('');
         }
 	}
