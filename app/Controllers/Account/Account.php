@@ -4,6 +4,7 @@ namespace App\Controllers\Account;
   
 use CodeIgniter\Controller;
 use App\Models\Account\AccountModel;
+use CodeIgniter\I18n\Time;
   
 class Account extends Controller
 {   
@@ -146,53 +147,52 @@ class Account extends Controller
 
     public function loginFacebook()
     {
-        // $request = service('request');
-        // $data = [];
-        // require_once APPPATH.'Libraries/vendor/autoload.php';
-        // $facebook = new \Facebook\Facebook([
-        //     'app_id' => '367105081821305',
-        //     'app_secret' => '788cad6087512fb28a8fdfad62dcbca3',
-        //     'default_graph_version' => 'v12.0'
-        // ]);
-        // $fb_helper = $facebook->getRedirectLoginHelper();
-        // if($request->getVar('state')){
-        //     $fb_helper->getPersistentDataHandler()->set('state',$request->getVar('state'));
-        // }
-        // if($request->getVar('code')){
-        //     if(session()->get('access_token')){
-        //         $access_token = session()->get('access_token');
-        //     }else{
-        //         $access_token = $fb_helper->getAccessToken();
-        //         session()->set('access_token',$access_token);
-        //         $facebook->setDefaultAccessToken(session()->get('access_token'));
-        //     }
-        //     $graph_response = $facebook->get('/me?fields=name,email',$access_token);
-        //     $fb_user_info = $graph_response->getGraphUser();
+        $request = service('request');
+        $data = [];
+        require_once APPPATH.'Libraries/vendor/autoload.php';
+        $facebook = new \Facebook\Facebook([
+            'app_id' => '367105081821305',
+            'app_secret' => '788cad6087512fb28a8fdfad62dcbca3',
+            'default_graph_version' => 'v12.0'
+        ]);
+        $fb_helper = $facebook->getRedirectLoginHelper();
+        if($request->getVar('state')){
+            $fb_helper->getPersistentDataHandler()->set('state',$request->getVar('state'));
+        }
+        if($request->getVar('code')){
+            if(session()->get('access_token')){
+                $access_token = session()->get('access_token');
+            }else{
+                $access_token = $fb_helper->getAccessToken();
+                session()->set('access_token',$access_token);
+                $facebook->setDefaultAccessToken(session()->get('access_token'));
+            }
+            $graph_response = $facebook->get('/me?fields=name,email',$access_token);
+            $fb_user_info = $graph_response->getGraphUser();
 
-        //     if(!empty($fb_user_info['id'])){
-        //         $fbdata = [
-        //             'profile_pic' => 'http://graph.facebook.com/'.$fb_user_info['id'].'/picture',
-        //             'user_name' => $fb_user_info['name'],
-        //             'email' => $fb_user_info['email'],
-        //             'userid' => $fb_user_info['id'],
-        //             'logged_member' => TRUE
-        //         ];
+            if(!empty($fb_user_info['id'])){
+                $fbdata = [
+                    'id' => $fb_user_info['id'],
+                    'account' => $fb_user_info['id'],
+                    'name' => $fb_user_info['name'],
+                    'email' => $fb_user_info['email'],
+                    'type' => 'facebook',
+                    'profile_pic' => 'http://graph.facebook.com/'.$fb_user_info['id'].'/picture',
+                    'logged_member' => TRUE
+                ];
 
-        //         session()->set('userdata',$fbdata);
-
-        //         print_r(session()->get('userdata'));
-        //     }
-        // }else{
-        //     //return redirect()->to('');
-        //     print_r(session()->get('userdata'));
-        // }
-        //echo 'Login Facebook';
-        echo view('account/ac-login');
+                //session()->set('userdata',$fbdata);
+                print_r($fbdata);
+            }
+        }else{
+            //$fb_permissions = ['email'];
+            return redirect()->to($fb_helper->getLoginUrl(site_url('loginfacebook'),['email']));
+        }
     }
 
     public function loginGoogle()
     {
-        $request = service('request');
+        $model = new AccountModel();
         require_once APPPATH.'Libraries/vendor/autoload.php';
 
         // init configuration
@@ -216,13 +216,32 @@ class Account extends Controller
             // get profile info
             $google_oauth = new \Google_Service_Oauth2($client);
             $userdata = $google_oauth->userinfo->get();
-            $email =  $userdata->email;
-            $name =  $userdata->name;
-            print_r($userdata);
-        
-            // now you can use this profile info to create account in your website and make user logged in.
-        } else {
-            echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
+            $arrdata = [
+                'id' => $userdata->id,
+                'account' => $userdata->id,
+                'name' => $userdata->name,
+                'email' => $userdata->email,
+                'type' => 'google',
+                'logged_member' => TRUE
+            ];
+            $account = $model->where('account', $userdata->id)->first();
+            if(!$account){
+                $result = $model->socialSignin($arrdata);
+                if($result){
+                    session()->set('userdata',$arrdata);
+                    return redirect()->to(site_url('account'));
+                }
+            }else{
+                $model
+                    ->where('account', $userdata->id)
+                    ->set('last_login' , new Time('now'))
+                    ->update();
+                session()->set('userdata',$arrdata);
+                return redirect()->to(site_url('account'));
+            }
+            
+        }else{
+            return redirect()->to($client->createAuthUrl());
         }
     }
 

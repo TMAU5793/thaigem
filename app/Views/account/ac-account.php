@@ -3,8 +3,8 @@
 
     <section class="banner">
         <img src="<?= site_url('assets/images/account/banner.jpg') ?>" alt="">
-    </section>    
-
+    </section>
+    
     <section class="account-body mb-5">
         <div class="container">
             <div class="row">

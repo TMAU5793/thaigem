@@ -9,6 +9,7 @@ class Home extends BaseController
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association'
         ];
+        
         echo view('front/home', $data);
 	}
 }

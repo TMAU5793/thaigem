@@ -3,6 +3,7 @@
 namespace App\Models\Account;
 
 use CodeIgniter\Model;
+use CodeIgniter\I18n\Time;
 
 class AccountModel extends Model
 {
@@ -14,7 +15,7 @@ class AccountModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ["account","password","name","lastname","email","phone"];
+	protected $allowedFields        = ["account","password","name","lastname","email","phone","social_type","social_id","last_login"];
 
 	// Dates
 	protected $useTimestamps        = true;
@@ -34,8 +35,7 @@ class AccountModel extends Model
 		$arr = explode(" ",$data['txt_name']);
 		$name = $arr[0];
 		$lastname = $arr[1];
-		print_r($arr);
-		echo $lastname;
+				
         $info=[
             'account' => $data['txt_username'],
             'name' => $name,
@@ -50,4 +50,27 @@ class AccountModel extends Model
 			return false;
 		}
     }
+
+	public function socialSignin($data)
+	{
+		$arr = explode(" ",$data['name']);
+		$name = $arr[0];
+		$lastname = $arr[1];
+		$datetime = new Time('now');
+        $info=[
+            'account' => $data['id'],
+            'name' => $name,
+			'lastname' => $lastname,
+            'email' => $data['email'],
+            'social_type' => $data['type'],
+			'social_id' => $data['id'],
+			'last_login' => $datetime
+        ];
+
+		if($this->save($info)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

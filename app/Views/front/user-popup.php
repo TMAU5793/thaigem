@@ -26,8 +26,8 @@
                 </form>
                 <a href="<?= site_url('forgotpassword') ?>" class="text-uppercase mt-3 d-block text-center c-black text-decoration-none"><?= lang('GlobalLang.forgot') ?></a>
                 <div class="login-with-social plr-2rem mt-3">
-                    <a href="javascript:void(0)" onclick="loginFacebook();" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a>                    
-                    <a href="" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100"> <?= lang('GlobalLang.signGmail') ?></a>
+                    <a href="<?= site_url('loginfacebook'); ?>" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a>                    
+                    <a href="<?= site_url('logingoogle'); ?>" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100"> <?= lang('GlobalLang.signGmail') ?></a>
                 </div>
                 <div class="signup-account text-center p-3">
                     <strong class="ff-semibold fs-4 d-block"><?= lang('GlobalLang.createAccount') ?></strong>
