@@ -34,7 +34,7 @@
                             <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
                             <li><a href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a></li>
                             <li><a href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webBoard'); ?></a></li>
-                            <li><a href="<?= site_url('account/logout') ?>"><?= lang('GlobalLang.logout'); ?></a></li>
+                            <li><a href="<?= site_url('account/logout') ?>" id="member_logout"><?= lang('GlobalLang.logout'); ?></a></li>
                         </ul>
                     </div>
                 </div>

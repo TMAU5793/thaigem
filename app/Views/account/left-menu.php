@@ -4,7 +4,16 @@
 <div class="ac-menu-left input-disabled p-4">
     <form action="" method="POST">
         <div class="ac-profile-img">
-            <img src="<?= site_url('assets/images/account/profile.jpg'); ?>" alt="">
+            <?php
+                if($userdata['type'] == 'facebook'){
+                    $profile_pic = 'https://graph.facebook.com/'.$userdata['id'].'/picture?width=400&height=400';
+                }else if($userdata['type'] == 'google'){
+                    $profile_pic = $userdata['profile_pic'];
+                }else{
+                    $profile_pic = site_url('assets/images/account/profile.jpg');
+                }
+            ?>
+            <img src="<?= $profile_pic; ?>" alt="">
         </div>
         <div class="ac-personal mb-3">
             <input type="text" class="form-control mb-1" name="txt_name" value="<?= $userdata['name'].' '.$userdata['lastname']; ?>" placeholder="<?= lang('GlobalLang.name') ?>" disabled>

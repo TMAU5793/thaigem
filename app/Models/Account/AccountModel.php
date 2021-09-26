@@ -35,13 +35,15 @@ class AccountModel extends Model
 		$arr = explode(" ",$data['txt_name']);
 		$name = $arr[0];
 		$lastname = $arr[1];
-				
+		$datetime = new Time('now');
+
         $info=[
             'account' => $data['txt_username'],
             'name' => $name,
 			'lastname' => $lastname,
             'email' => $data['txt_username'],
-            'password' => password_hash($data['txt_password'], PASSWORD_DEFAULT)
+            'password' => password_hash($data['txt_password'], PASSWORD_DEFAULT),
+			'last_login' => $datetime
         ];
 
 		if($this->save($info)){

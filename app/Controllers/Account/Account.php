@@ -136,7 +136,10 @@ class Account extends Controller
                 'email' => $member['email'],
                 'logged_member' => TRUE
             ];
-
+            $model
+                ->where('account', $member['account'])
+                ->set('last_login' , new Time('now'))
+                ->update();
             session()->set('userdata',$sess);
             return redirect()->to(site_url('account'));
         }else{
@@ -148,45 +151,36 @@ class Account extends Controller
     public function loginFacebook()
     {
         $request = service('request');
-        $data = [];
-        require_once APPPATH.'Libraries/vendor/autoload.php';
-        $facebook = new \Facebook\Facebook([
-            'app_id' => '367105081821305',
-            'app_secret' => '788cad6087512fb28a8fdfad62dcbca3',
-            'default_graph_version' => 'v12.0'
-        ]);
-        $fb_helper = $facebook->getRedirectLoginHelper();
-        if($request->getVar('state')){
-            $fb_helper->getPersistentDataHandler()->set('state',$request->getVar('state'));
+        $model = new AccountModel();
+
+        $post = $request->getPost();
+        if(!$post){
+            return redirect()->to('');
         }
-        if($request->getVar('code')){
-            if(session()->get('access_token')){
-                $access_token = session()->get('access_token');
-            }else{
-                $access_token = $fb_helper->getAccessToken();
-                session()->set('access_token',$access_token);
-                $facebook->setDefaultAccessToken(session()->get('access_token'));
-            }
-            $graph_response = $facebook->get('/me?fields=name,email',$access_token);
-            $fb_user_info = $graph_response->getGraphUser();
-
-            if(!empty($fb_user_info['id'])){
-                $fbdata = [
-                    'id' => $fb_user_info['id'],
-                    'account' => $fb_user_info['id'],
-                    'name' => $fb_user_info['name'],
-                    'email' => $fb_user_info['email'],
-                    'type' => 'facebook',
-                    'profile_pic' => 'http://graph.facebook.com/'.$fb_user_info['id'].'/picture',
-                    'logged_member' => TRUE
-                ];
-
-                //session()->set('userdata',$fbdata);
-                print_r($fbdata);
+        $arrdata = [
+            'id' => $post['id'],
+            'account' => $post['id'],
+            'name' => $post['name'],
+            'email' => $post['email'],
+            'type' => 'facebook',
+            'logged_member' => TRUE
+        ];
+        $account = $model->where('account', $post['id'])->first();
+        if(!$account){
+            $result = $model->socialSignin($arrdata);
+            if($result){
+                session()->set('userdata',$arrdata);
+                //return redirect()->to(site_url('account'));
+                echo true;
             }
         }else{
-            //$fb_permissions = ['email'];
-            return redirect()->to($fb_helper->getLoginUrl(site_url('loginfacebook'),['email']));
+            $model
+                ->where('account', $post['id'])
+                ->set('last_login' , new Time('now'))
+                ->update();
+            session()->set('userdata',$arrdata);
+            //return redirect()->to(site_url('account'));
+            echo true;
         }
     }
 
@@ -221,6 +215,7 @@ class Account extends Controller
                 'account' => $userdata->id,
                 'name' => $userdata->name,
                 'email' => $userdata->email,
+                'profile_pic' => $userdata->picture,
                 'type' => 'google',
                 'logged_member' => TRUE
             ];
