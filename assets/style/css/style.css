@@ -167,6 +167,10 @@ img {
 
 .ac-menu-left {
   background-color: #cec6b2; }
+  .ac-menu-left .img_edit {
+    position: absolute;
+    bottom: 3rem;
+    right: 2rem; }
   .ac-menu-left .ac-information .ac-info-item {
     background-color: #f6ecc9;
     margin: .5rem -1.5rem .5rem 0;
@@ -257,6 +261,22 @@ img {
   background-color: #ebebeb;
   padding: 4rem 1rem;
   border-radius: 6px; }
+
+.img_edit {
+  background-image: url("../../images/img-edit.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer; }
+  .img_edit:hover {
+    background-position: bottom; }
+
+#pic_profile {
+  width: 226px;
+  height: 226px;
+  object-fit: cover; }
 
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");

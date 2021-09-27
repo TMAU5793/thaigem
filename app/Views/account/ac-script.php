@@ -3,8 +3,13 @@
     $(function(){
         //buttin edit account information
         $('#edit_ac_info').on('click',function(){
+            $('.img_edit').removeClass('invisible');
             $('.ac-menu-left input').removeAttr('disabled');
             $('#edit_ac_info_group').html('<button type="button" class="btn btn-black-border fs-7" id="submit_ac_info">Comfirm</button>');
+        });
+
+        $("#txt_profile").change(function () {
+            readURL(this);
         });
 
         //buttin edit account about
@@ -28,4 +33,13 @@
         });
     });
 
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#pic_profile').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>

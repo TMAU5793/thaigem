@@ -23,6 +23,11 @@
 
 .ac-menu-left {
     background-color: $c-lightgold;
+    .img_edit {
+        position: absolute;
+        bottom: 3rem;
+        right: 2rem;
+    }
     .ac-information {
         .ac-info-item {
             background-color: $c-yellowgold;
@@ -146,4 +151,23 @@
         padding: 4rem 1rem;
         border-radius: 6px;
     }
+}
+
+.img_edit {
+    background-image: url('../../images/img-edit.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    &:hover {
+        background-position: bottom;
+    }
+}
+
+#pic_profile {
+    width: 226px;
+    height: 226px;
+    object-fit: cover;
 }

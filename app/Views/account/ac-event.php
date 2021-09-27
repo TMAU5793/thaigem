@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-9">
                     <?php
-                        if (session()->get('logged_member')) {
+                        if (session()->get('userdata')) {
                             echo $this->include('account/ac-menu');
                         }
                     ?>

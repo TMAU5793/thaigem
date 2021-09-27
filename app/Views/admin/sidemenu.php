@@ -30,6 +30,12 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
+                    <a href="<?= base_url('admin/product/category'); ?>" class="nav-link <?= ($uri->getSegment(3)=='category'?'active':''); ?>">
+                        <i class="nav-icon fas fa-list-ul"></i>
+                        <p>หมวดหมู่สินค้า</p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
                     <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles'?'active':''); ?>">
                         <i class="nav-icon far fa-newspaper"></i>
                         <p>บทความ</p>

@@ -15,7 +15,10 @@ class Account extends Controller
     
     public function index()
     {   
+        $model = new AccountModel();
+        $member = $model->where('account', session()->get('userdata')['account'])->first();
         $data = [
+            'info' => $member,
             'ac_account' => TRUE
         ];
         echo view('account/ac-account',$data);
