@@ -24,7 +24,7 @@ class Member extends Controller
 	public function form()
 	{
 		
-        if (!session()->get('logged_admin')) {
+        if (!session()->get('admindata')) {
             return redirect()->to('/admin');
         }
 
@@ -43,7 +43,7 @@ class Member extends Controller
 
 	public function edit()
     {
-        if (!session()->get('logged_admin')) {
+        if (!session()->get('admindata')) {
             return redirect()->to('/admin');
         }
         

@@ -7,11 +7,7 @@ use App\Models\UserModel;
   
 class Account extends Controller
 {   
-    public function __construct()
-    {
-        
-    }
-    
+
     public function index()
     {   
         $model = new UserModel();
@@ -26,7 +22,7 @@ class Account extends Controller
     {
         //include helper form
         helper(['form']);
-        if (!session()->get('logged_admin')) {
+        if (!session()->get('admindata')) {
             return redirect()->to('/admin');
         }
         $data = [
@@ -38,7 +34,7 @@ class Account extends Controller
 
     public function edit()
     {
-        if (!session()->get('logged_admin')) {
+        if (!session()->get('admindata')) {
             return redirect()->to('/admin');
         }
         

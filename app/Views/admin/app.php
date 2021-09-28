@@ -28,7 +28,7 @@
 </head>
 <body>
 
-    <?= (session()->get('logged_admin')?$this->include('admin/sidemenu') : '') ?>
+    <?= (session()->get('admindata')?$this->include('admin/sidemenu') : '') ?>
     <?= $this->renderSection("content") ?>
 
     <!-- jQuery -->

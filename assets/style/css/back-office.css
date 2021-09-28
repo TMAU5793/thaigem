@@ -486,4 +486,21 @@ body:not(.layout-fixed) .main-sidebar {
     border-radius: 4px;
     padding: 0 6px; }
 
+.p2rem {
+  padding: 2rem; }
+
+.pagination-list {
+  border-top: 1px solid #000;
+  padding-top: .5rem; }
+  .pagination-list a {
+    color: #000000; }
+  .pagination-list li {
+    margin: 0 5px;
+    padding: 0 .5rem;
+    border: 1px solid #000; }
+    .pagination-list li.active {
+      background: #000; }
+      .pagination-list li.active a {
+        color: #fff; }
+
 /*# sourceMappingURL=back-office.css.map */

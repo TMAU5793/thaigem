@@ -7,14 +7,12 @@ use App\Models\UserModel;
 
 class User extends Controller
 {
-    protected $session;
-	public function __construct()
-    {
-        $this->session = session();
-    }
 
 	public function index()
 	{
+        if(session()->get('admindata')){
+            return redirect()->to('admin/account');
+        }
         helper(['form']);
 		$data = [
             'meta_title' => 'ลงชื่อใช้งาน | ระบบจัดการข้อมูล'
@@ -59,7 +57,7 @@ class User extends Controller
                     'logged_admin' => TRUE
                 ];
 
-                session()->set($sess);
+                session()->set('admindata',$sess);
                 return redirect()->to(site_url('admin/dashboard'));
             }else{
                 $data['validation'] = $this->validator;
@@ -72,7 +70,8 @@ class User extends Controller
 
 	public function logout()
     {
-		$this->session->destroy();
+		session()->remove('admindata');
+        //session()->destroy();
 		return redirect()->to('admin');
     }
 

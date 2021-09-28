@@ -1,6 +1,7 @@
 <?php
     $request = service('request');
     $uri = service('uri');
+    $admindata = session()->get('admindata');
 ?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -13,8 +14,8 @@
                 <img src="<?= base_url('assets/adminlte/images/user2-160x160.jpg'); ?>" class="img-circle elevation-2">
             </div>
             <div class="info pb-0">
-                <span class="d-block text-white"><?= (session()->get('name')? session()->get('name') : 'admin') ?></span>
-                <a href="<?= base_url('admin/account/edit?id='.session()->get('id')); ?>"><i class="fas fa-edit"></i><small>แก้ไข</small></a>
+                <span class="d-block text-white"><?= ($admindata['name']? $admindata['name'] : 'admin') ?></span>
+                <a href="<?= base_url('admin/account/edit?id='.$admindata['id']); ?>"><i class="fas fa-edit"></i><small>แก้ไข</small></a>
             </div>
         </div>
 
@@ -30,7 +31,7 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="<?= base_url('admin/product/category'); ?>" class="nav-link <?= ($uri->getSegment(3)=='category'?'active':''); ?>">
+                    <a href="<?= base_url('admin/productcategory'); ?>" class="nav-link <?= ($uri->getSegment(2)=='productcategory'?'active':''); ?>">
                         <i class="nav-icon fas fa-list-ul"></i>
                         <p>หมวดหมู่สินค้า</p>
                     </a>
@@ -48,7 +49,7 @@
                     </a>
                 </li>
                 <?php
-                    if (session()->get('rules')=='superadmin') {
+                    if ($admindata['rules']=='superadmin') {
                 ?>
                 <li class="nav-item menu-open">
                     <a href="<?= base_url('admin/account'); ?>" class="nav-link <?= ($uri->getSegment(2)=='account'?'active':''); ?>">
