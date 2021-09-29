@@ -4,6 +4,7 @@ namespace App\Controllers\Account;
   
 use CodeIgniter\Controller;
 use App\Models\Account\AccountModel;
+use App\Models\Account\MemberModel;
 use CodeIgniter\I18n\Time;
   
 class Account extends Controller
@@ -16,14 +17,12 @@ class Account extends Controller
     public function index()
     {   
         $model = new AccountModel();
-        $member = $model->where('account', session()->get('userdata')['account'])->first();
         $data = [
-            'info' => $member,
             'ac_account' => TRUE
         ];
         echo view('account/ac-account',$data);
     }
-
+    
     public function register()
     {
         helper(['form']);

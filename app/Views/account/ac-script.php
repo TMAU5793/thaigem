@@ -5,7 +5,11 @@
         $('#edit_ac_info').on('click',function(){
             $('.img_edit').removeClass('invisible');
             $('.ac-menu-left input').removeAttr('disabled');
-            $('#edit_ac_info_group').html('<button type="button" class="btn btn-black-border fs-7" id="submit_ac_info">Comfirm</button>');
+            $('.edit-field').toggleClass('d-none');
+            $('.small-data').toggleClass('d-none');
+            $('#submit_ac_about').toggleClass('d-none');
+            $('#edit_ac_info').toggleClass('d-none');
+            
         });
 
         $("#txt_profile").change(function () {
@@ -16,7 +20,7 @@
         $('#edit_ac_about').on('click',function(){
             $('#txt_ac_about').removeAttr('disabled');
             $('#txt_ac_about').focus();
-            $('.edit_ac_about_btn').html('<button class="btn btn-black-border mt-3" id="submit_ac_about">Comfirm</button>');
+            $('.edit_ac_about_btn').html('<button type="button" class="btn btn-black-border mt-3" id="submit_ac_about">Comfirm</button>');
         });
 
         //disabled click outside modal to close
@@ -30,6 +34,12 @@
 
         $('.myfile-menu').on('click', function() {
             $('.myfile-menu-list').toggleClass('d-none');
+        });
+
+
+        //form edit profile
+        $('#submit_ac_about').on('click',function(){
+            $('#frm_profile').submit();
         });
     });
 

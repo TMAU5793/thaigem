@@ -13,8 +13,8 @@ class Productcategory extends Controller
 		$model = new ProductCategoryModel();
 		$data = [
             'meta_title' => 'หมวดหมู่สินค้า',
-			//'info' => $model->findAll()
-			'info' => $model->paginate(25),
+			'main_cate' => $model->where('maincate_id',0)->findAll(),
+			'info' => $model->orderby('maincate_id','ASC')->paginate(25),
 			'pager' => $model->pager
         ];
 		echo view('admin/product-category',$data);
@@ -34,7 +34,7 @@ class Productcategory extends Controller
 
 	public function edit()
 	{
-		if (!session()->get('logged_admin')) {
+		if (!session()->get('admindata')) {
             return redirect()->to('/admin');
         }
 		helper('form');

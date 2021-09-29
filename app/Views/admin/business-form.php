@@ -19,10 +19,13 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
-            <form id="frm_cate" action="<?= site_url('admin/productcategory/'.$action) ?>" method="POST" enctype="multipart/form-data">
+            <form id="frm_business" action="<?= site_url('admin/business/'.$action) ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="hd_id" value="<?= (isset($info)? $info['id'] : '') ?>">
                 <?php if(isset($validation)): ?>
-                    <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
+                    <div class="alert alert-danger"><?= $validation->listErrors(); ?></div>
+                <?php endif;?>
+                <?php if(isset($db_err)): ?>
+                    <div class="alert alert-danger"><?= $db_err; ?></div>
                 <?php endif;?>
                 <nav class="content-nav">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -31,22 +34,22 @@
                     </div>
                     <div class="btn-action-fixed text-center">
                         <button type="submit" class="btn btn-primary me-2">บันทึก</button>
-                        <a href="<?= base_url('admin/productcategory'); ?>" class="btn btn-warning">ยกเลิก</a>
+                        <a href="<?= base_url('admin/business'); ?>" class="btn btn-warning">ยกเลิก</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <?php
-                        if($info['maincate_id']!=0 || !isset($info)){
+                        if($info['main_type']!=0 || !isset($info)){
                     ?>
                         <div class="p2rem pb-0">
-                            <label for="txt_name" class="form-label">หมวดหมู่สินค้าหลัก <span class="text-primary">(*เลือกหมวดสินค้าหลัก หากข้อมูลนี้เป็นหมวดสินค้าย่อย)</span></label>
+                            <label for="txt_name" class="form-label">ประเภทธุรกิจหลัก <span class="text-primary">(*เลือกประเภทธุรกิจหลัก หากใช้ข้อมูลนี้เป็นประเภทธุรกิจย่อย)</span></label>
                             <select name="ddl_cate" id="ddl_cate" class="form-control">
-                                <option value="">-- หมวดหมู่ --</option>
+                                <option value="">-- ประเภท --</option>
                                 <?php
                                     if(isset($cates)){
                                         foreach($cates as $cate){
                                 ?>
-                                    <option value="<?= $cate['id'] ?>" <?= (isset($info)&&$info['maincate_id']==$cate['id']?"selected='selected'":''); ?>><?= $cate['name_th'] ?></option>
+                                    <option value="<?= $cate['id'] ?>" <?= (isset($info)&&$info['main_type']==$cate['id']?"selected='selected'":''); ?>><?= $cate['name_th'] ?></option>
                                 <?php } } ?>
                             </select>
                         </div>
@@ -54,7 +57,7 @@
                     <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
                         <div class="row">                            
                             <div class="col-12 mb-3">
-                                <label for="txt_name" class="form-label">ชื่อหมวดสินค้า <span class="text-danger">*</span></label>
+                                <label for="txt_name" class="form-label">ชื่อประเภทธุรกิจ <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="txt_name" name="txt_name" value="<?= (isset($info)? $info['name_th'] : set_value('txt_name')) ?>">                        
                             </div>
                             <div class="col-12">
@@ -67,7 +70,7 @@
                     <div class="tab-pane fade" id="nav-content-2" role="tabpanel" aria-labelledby="nav-2">
                         <div class="row">                            
                             <div class="col-12 mb-3">
-                                <label for="txt_name_en" class="form-label">ชื่อหมวดสินค้า</label>
+                                <label for="txt_name_en" class="form-label">ชื่อประเภทธุรกิจ</label>
                                 <input type="text" class="form-control" id="txt_name_en" name="txt_name_en" value="<?= (isset($info)? $info['name_en'] : set_value('txt_name_en')) ?>">                        
                             </div>
                             <div class="col-12">

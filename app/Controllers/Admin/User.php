@@ -11,7 +11,7 @@ class User extends Controller
 	public function index()
 	{
         if(session()->get('admindata')){
-            return redirect()->to('admin/account');
+            return redirect()->to('admin/dashboard');
         }
         helper(['form']);
 		$data = [

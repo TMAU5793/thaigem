@@ -13,7 +13,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <div class="text-end">
-                        <a href="<?= base_url('admin/productcategory/form') ?>" class="btn btn-success">เพิ่ม</a>
+                        <a href="<?= base_url('admin/business/form') ?>" class="btn btn-success">เพิ่ม</a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,7 +27,7 @@
             <table class="table table-striped" id="tbl-article">
                 <thead>
                     <tr>
-                        <th scope="col">หมวดหมู่สินค้า</th>
+                        <th scope="col">ประเภทธุรกิจ</th>
                         <th scope="col" width="150" class="text-center">สถานะ</th>
                         <th scope="col" width="200">วันที่สร้าง</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
@@ -41,11 +41,11 @@
                         <tr>
                             <td>
                                 <?php
-                                    if($item['maincate_id'] == 0){
+                                    if($item['main_type'] == 0){
                                         echo $item['name_th'];
                                     }else{
-                                        foreach($main_cate as $cate){
-                                            if($item['maincate_id'] == $cate['id']){
+                                        foreach($main_type as $cate){
+                                            if($item['main_type'] == $cate['id']){
                                                 echo $cate['name_th'].' -> '.$item['name_th'];
                                             }
                                         }
@@ -57,7 +57,7 @@
                             </td>
                             <td><?= $item['created_at'] ?></td>
                             <td class="text-center">
-                                <a href="<?= base_url('admin/productcategory/edit?id='.$item['id']); ?>">แก้ไข</a> |
+                                <a href="<?= base_url('admin/business/edit?id='.$item['id']); ?>">แก้ไข</a> |
                                 <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
                             </td>
                         </tr>

@@ -193,7 +193,8 @@ img {
       left: 50%;
       transform: translate(-50%, -50%);
       color: #665f4f; }
-  .ac-menu-left .ac-information input {
+  .ac-menu-left .ac-information input,
+  .ac-menu-left .ac-information select {
     padding: 0 .5rem;
     margin-top: -2px;
     font-size: .85rem; }

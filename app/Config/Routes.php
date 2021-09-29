@@ -43,7 +43,7 @@ $routes->get('admin/account/', 'Admin/Account::index', ['filter' => 'auth']);
 $routes->get('admin/articles/', 'Admin/Articles::index', ['filter' => 'auth']);
 $routes->get('admin/member/', 'Admin/Member::index', ['filter' => 'auth']);
 $routes->get('admin/productcategory/', 'Admin/Productcategory::index', ['filter' => 'auth']);
-// $routes->get('admin/product-category/form/', 'Admin/Productcategory::form', ['filter' => 'auth']);
+$routes->get('admin/business/', 'Admin/Business::index', ['filter' => 'auth']);
 
 $routes->match(['get', 'post'], 'admin/login', 'Admin/User::login', ['filter' => 'noauth']);
 $routes->get('admin/logout', 'Admin/User::logout');
