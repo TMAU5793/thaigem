@@ -16,6 +16,7 @@
 <div class="ac-menu-left input-disabled p-4">
     <form id="frm_profile" action="<?= site_url('account/member/updateprofile?burl='.current_url()); ?>" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="hd_id" value="<?= $info['id'] ?>">
+        <input type="hidden" name="hd_thumb_del" value="<?= $info['profile'] ?>">
         <div class="ac-profile-img position-relative">
             <?php
                 if($userdata['type'] == 'facebook'){
@@ -23,10 +24,10 @@
                 }else if($userdata['type'] == 'google'){
                     $profile_pic = $userdata['profile_pic'];
                 }else{
-                    $profile_pic = site_url('assets/images/img-default.png');
+                    $profile_pic = $info['profile'];
                 }
             ?>
-            <img src="<?= $profile_pic; ?>" id="pic_profile">
+            <img src="<?= (file_exists($profile_pic)?site_url($profile_pic):'assets/images/img-default.png') ?>" id="pic_profile">
             <input type="file" name="txt_profile" id="txt_profile" class="invisible h-0">
             <label for="txt_profile" class="img_edit invisible"></label>
         </div>
@@ -61,7 +62,7 @@
                                 foreach($product_type as $row){
                                     if($row->maincate_id!=0){
                         ?>
-                            <option value="<?= $row->id; ?>"><?php foreach($main_cate as $cate){if($row->maincate_id == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
+                            <option value="<?= $row->id; ?>" <?= ($info['product_type']==$row->id?'selected="selected"':''); ?>><?php foreach($main_cate as $cate){if($row->maincate_id == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
                         <?php } } }  ?>
                     </select>
                 </div>
@@ -88,7 +89,7 @@
                                 foreach($business_tpye as $row){
                                     if($row->main_type!=0){
                         ?>
-                            <option value="<?= $row->id; ?>"><?php foreach($business_main as $cate){if($row->main_type == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
+                            <option value="<?= $row->id; ?>" <?= ($info['business_type']==$row->id?'selected="selected"':''); ?>><?php foreach($business_main as $cate){if($row->main_type == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
                         <?php } } }  ?>
                     </select>
                 </div>
@@ -113,7 +114,7 @@
                             if($province){
                                 foreach($province as $row){
                         ?>
-                            <option value="<?= $row->code ?>"><?= $row->name_th ?></option>
+                            <option value="<?= $row->code ?>" <?= ($info['province']==$row->code?'selected="selected"':''); ?>><?= $row->name_th ?></option>
                         <?php } } ?>
                     </select>
                 </div>
@@ -121,7 +122,10 @@
             
             <div class="text-center mt-3 text-center" id="edit_ac_info_group">
                 <button type="button" class="btn btn-black-border fs-7" id="edit_ac_info">Edit Information</button>
-                <button type="button" class="btn btn-black-border mt-3 d-none" id="submit_ac_about">Comfirm</button>
+                <div class="btn-profile-group mt-3 d-none">
+                    <button type="button" class="btn btn-black-border" id="submit_ac_info">Comfirm</button>
+                    <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3">Cancel</a>
+                </div>
             </div>
         </div>
     </form>

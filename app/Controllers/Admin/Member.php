@@ -291,7 +291,7 @@ class Member extends Controller
 	
 	public function upload($id,$profile,$img_del)
 	{
-		helper(['form','profileystem']);
+		helper(['form','fileystem']);
 		$model = new MemberModel();
 		
 		$allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด

@@ -7,9 +7,8 @@
             $('.ac-menu-left input').removeAttr('disabled');
             $('.edit-field').toggleClass('d-none');
             $('.small-data').toggleClass('d-none');
-            $('#submit_ac_about').toggleClass('d-none');
             $('#edit_ac_info').toggleClass('d-none');
-            
+            $('.btn-profile-group').toggleClass('d-none');
         });
 
         $("#txt_profile").change(function () {
@@ -38,7 +37,7 @@
 
 
         //form edit profile
-        $('#submit_ac_about').on('click',function(){
+        $('#submit_ac_info').on('click',function(){
             $('#frm_profile').submit();
         });
     });

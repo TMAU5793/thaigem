@@ -142,7 +142,10 @@ class Articles extends Controller
             // echo '<br> getName : '.$thumb->getName();
 
             if ($thumb->isValid() && !$thumb->hasMoved() && in_array($ext, $allowed)){
-                unlink($hd_thumb_del); //ลบรูปเก่าออก
+                if(file_exists($hd_thumb_del)){
+                    unlink($hd_thumb_del); //ลบรูปเก่าออก
+                }
+
                 $newName = $thumb->getRandomName();
                 if (!is_dir('uploads/articles')) {
 					mkdir('uploads/articles', 0777, TRUE);

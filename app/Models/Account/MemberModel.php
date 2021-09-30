@@ -75,7 +75,19 @@ class MemberModel extends Model
         $info = [
             'name' => $name,
             'lastname' => $lastname,
-            
+            'email' => $data['txt_email'],
+            'phone' => $data['txt_phone'],
+            'product_type' => $data['ddl_product_type'],
+            'business_type' => $data['ddl_business_type'],
+            'province' => $data['ddl_province']
         ];
+        $builder = $this->db->table('tbl_member');
+        $builder->where('id', $data['hd_id']);
+        $query = $builder->update($info);
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
