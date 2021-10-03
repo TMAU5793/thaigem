@@ -1,3 +1,8 @@
+<?php
+    $request = service('request');
+    $uri = service('uri');
+    $segment = $uri->getSegment(1);
+?>
 <div class="top-nav container">
     <div class="logo-top float-start">
         <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="">
@@ -15,10 +20,7 @@
                 <span>|</span>
                 <a href="javascript:void(0)" class="ff-bold">EN</a>
             <?php } ?>
-
-            <!-- <a href="javascript:void(0)" data-lang="th">TH</a>
-            <span>|</span>
-            <a href="javascript:void(0)" data-lang="en">EN</a> -->
+            
         </div>
         <div class="user-managed mt-3 d-inline-flex">
             <?php 
@@ -54,10 +56,10 @@
         <div class="collapse navbar-collapse" id="topMenu">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= site_url(); ?>"><?= lang('MenuLang.navHome'); ?></a>
+                    <a class="nav-link <?= ($segment=='' || $segment=='home'?'active':'') ?>" aria-current="page" href="<?= site_url(); ?>"><?= lang('MenuLang.navHome'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= lang('MenuLang.navAboutus'); ?></a>
+                    <a class="nav-link <?= ($segment=='about'?'active':'') ?>" href="<?= site_url('about'); ?>"><?= lang('MenuLang.navAboutus'); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><?= lang('MenuLang.navMembers'); ?></a>
@@ -66,7 +68,7 @@
                     <a class="nav-link" href="#"><?= lang('MenuLang.navKnowledge'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= lang('MenuLang.navEvents'); ?></a>
+                    <a class="nav-link <?= ($segment=='event'?'active':'') ?>" href="<?= site_url('event'); ?>"><?= lang('MenuLang.navEvents'); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><?= lang('MenuLang.navBusiness'); ?></a>

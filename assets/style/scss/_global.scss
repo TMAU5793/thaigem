@@ -35,6 +35,10 @@ img {
     font-family: $ff-bold;
 }
 
+.pt-2rem {
+    padding-top: 2rem;
+}
+
 .ptb-2rem {
     padding: 2rem 0;
 }
@@ -68,6 +72,14 @@ img {
 
 .bg-lightgold {
     background-color: $c-lightgold;
+}
+
+.bg-gray {
+    background-color: $c-gray;
+}
+
+.bg-lightgray {
+    background-color: $c-lightgray;
 }
 
 .c-gray {
