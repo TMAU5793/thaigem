@@ -28,6 +28,7 @@ return [
 
     'members' => 'สมาชิก',
     'member' => 'สมาชิก',
+    'searchMember' => 'ค้นหาสมาชิก',
     'category' => 'หมวดหมู่',
     'priceUpdate' => '<strong class="ff-bold">ราคา</strong> ล่าสุด',
     'diamonds' => 'Diamonds',

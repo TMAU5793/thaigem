@@ -28,6 +28,7 @@ return [
 
     'members' => 'Members',
     'member' => 'Member',
+    'searchMember' => 'Search Member',
     'category' => 'Category',
     'priceUpdate' => '<strong class="ff-bold">Price</strong> Update',
     'diamonds' => 'Diamonds',
@@ -47,5 +48,7 @@ return [
     'bookNow' => 'Book now',
 
     'event' => 'Event',
-    'share' => 'Share'
+    'share' => 'Share',
+    'advanceSearch' => 'Advance Search',
+    'search' => 'Search'
 ];

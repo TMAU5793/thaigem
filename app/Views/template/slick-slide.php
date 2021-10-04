@@ -123,5 +123,13 @@
             dots: true,
             focusOnSelect: true
         });
+        $('.slider-nav-hidedots').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            focusOnSelect: true,
+            infinite:false
+        });
     });    
 </script>

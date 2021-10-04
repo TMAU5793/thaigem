@@ -3,18 +3,6 @@
 use Google\Service\Adsense\Site;
 ?>
 <script>
-    $(function () {
-        var signup_valid = '<?= (isset($signup_valid)?TRUE:FALSE) ?>';
-        if(signup_valid){
-            $('#registerModal').modal('show');
-        }
-
-        var signin_valid = '<?= (isset($signin_valid)?TRUE:FALSE) ?>';
-        if(signin_valid){
-            $('#loginModal').modal('show');
-        }
-    });
-
     window.fbAsyncInit = function() {
         FB.init({
             appId      : '367105081821305',
@@ -45,4 +33,23 @@ use Google\Service\Adsense\Site;
             }
         });
     }
+
+    $(function () {
+        var signup_valid = '<?= (isset($signup_valid)?TRUE:FALSE) ?>';
+        if(signup_valid){
+            $('#registerModal').modal('show');
+        }
+
+        var signin_valid = '<?= (isset($signin_valid)?TRUE:FALSE) ?>';
+        if(signin_valid){
+            $('#loginModal').modal('show');
+        }
+
+        $('#btn_advance').on('click',function () { 
+            $('.search-show').toggleClass('d-none');
+            $('.search-member .col-12').toggleClass('col-md-6');
+        })
+    });
+
+    
 </script>

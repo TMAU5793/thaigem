@@ -51,6 +51,10 @@ img {
     padding: 0 2rem;
 }
 
+.plr-4rem {
+    padding: 0 4rem;
+}
+
 .absolute-center {
     position: absolute;
     top: 50%;
@@ -60,6 +64,19 @@ img {
 
 .box-shadow {
     box-shadow: 0px 0px 4px 4px $c-gray;
+}
+
+.shadow-darkgold {
+    box-shadow: 0px 0px 10px 4px $c-darkgold;
+}
+
+.shadow-lightgold {
+    transition: all .5s;
+    border: 1px solid $c-lightgold;
+    &:hover {
+        transition: all .5s;
+        box-shadow: 0px 0px 10px 4px $c-lightgold;
+    }
 }
 
 .c-darkgold {

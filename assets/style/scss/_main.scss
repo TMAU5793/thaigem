@@ -289,3 +289,51 @@
         z-index: -1;
     }
 }
+
+.knowledge-content {
+    .knowledge-hot {
+        .row {
+            margin: 0;
+            .col-md-6 {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.search-member {
+    form {
+        .w-50:nth-child(odd) {
+            padding-right: 15px;
+        }
+        .w-50:nth-child(even) {
+            padding-left: 15px;
+        }
+        .input-group {
+            .input-group-text {
+                height: 100%;
+                border-radius: 0 .25rem .25rem 0;
+                border: 1px solid $c-darkgold;
+            }
+        }
+        select {
+            padding: .375rem .75rem;
+            border-radius: .25rem;
+            border: 1px solid #ced4da;
+        }
+        .col-md-6 {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.member-content {
+    .shadow-lightgold {
+        padding: 1rem;
+    }
+    .album-item {
+        .slider-nav-item {
+            padding: 0 .25rem;
+        }
+    }
+}

@@ -62,10 +62,10 @@
                     <a class="nav-link <?= ($segment=='about'?'active':'') ?>" href="<?= site_url('about'); ?>"><?= lang('MenuLang.navAboutus'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= lang('MenuLang.navMembers'); ?></a>
+                    <a class="nav-link <?= ($segment=='member'?'active':'') ?>" href="<?= site_url('member'); ?>"><?= lang('MenuLang.navMembers'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= lang('MenuLang.navKnowledge'); ?></a>
+                    <a class="nav-link <?= ($segment=='knowledge'?'active':'') ?>" href="<?= site_url('knowledge'); ?>"><?= lang('MenuLang.navKnowledge'); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= ($segment=='event'?'active':'') ?>" href="<?= site_url('event'); ?>"><?= lang('MenuLang.navEvents'); ?></a>

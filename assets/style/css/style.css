@@ -25,6 +25,9 @@ img {
 .plr-2rem {
   padding: 0 2rem; }
 
+.plr-4rem {
+  padding: 0 4rem; }
+
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -33,6 +36,16 @@ img {
 
 .box-shadow {
   box-shadow: 0px 0px 4px 4px #c1c1c1; }
+
+.shadow-darkgold {
+  box-shadow: 0px 0px 10px 4px #665f4f; }
+
+.shadow-lightgold {
+  transition: all .5s;
+  border: 1px solid #cec6b2; }
+  .shadow-lightgold:hover {
+    transition: all .5s;
+    box-shadow: 0px 0px 10px 4px #cec6b2; }
 
 .c-darkgold {
   color: #665f4f; }
@@ -478,5 +491,30 @@ img {
     bottom: 0;
     left: 0;
     z-index: -1; }
+
+.knowledge-content .knowledge-hot .row {
+  margin: 0; }
+  .knowledge-content .knowledge-hot .row .col-md-6 {
+    padding: 0; }
+
+.search-member form .w-50:nth-child(odd) {
+  padding-right: 15px; }
+.search-member form .w-50:nth-child(even) {
+  padding-left: 15px; }
+.search-member form .input-group .input-group-text {
+  height: 100%;
+  border-radius: 0 .25rem .25rem 0;
+  border: 1px solid #665f4f; }
+.search-member form select {
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  border: 1px solid #ced4da; }
+.search-member form .col-md-6 {
+  margin-bottom: 1rem; }
+
+.member-content .shadow-lightgold {
+  padding: 1rem; }
+.member-content .album-item .slider-nav-item {
+  padding: 0 .25rem; }
 
 /*# sourceMappingURL=style.css.map */
