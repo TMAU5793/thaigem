@@ -17,5 +17,5 @@ return [
     'downloadForm' => 'ดาวน์โหลดเอกสาร',
     'downloadFormEvent' => 'ดาวน์โหลดเอกสารอีเว้นท์',
     'invoice' => 'ใบแจ้งชำระเงิน',
-    'webBoard' => 'เว็บบอร์ด'
+    'webboard' => 'เว็บบอร์ด'
 ];

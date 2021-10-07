@@ -2,13 +2,13 @@
 <?= $this->section("content") ?>
 
     <section class="banner position-relative">
-        <img src="<?= site_url('assets/images/front/banner-event.jpg') ?>" alt="">
+        <img src="<?= site_url('assets/images/banner/event.jpg') ?>" alt="">
     </section>
 
     <section class="event-content ptb-2rem">
         <div class="container">
             <div class="text-center title">
-                <h1 class="text-uppercase ff-semibold fs-3"><?= lang('globallang.event'); ?></h1>
+                <h1 class="text-uppercase ff-semibold fs-3"><?= lang('GlobalLang.event'); ?></h1>
             </div>
 
             <div class="row">
@@ -21,8 +21,8 @@
                             <div class="event-date">05/06/2564</div>
                         </div>
                         <div class="event-action mt-2">
-                            <a href="<?= site_url('event/desc'); ?>" class="btn btn-black-border fs-7"><?= lang('globallang.readMore'); ?></a>
-                            <span class="ms-3 ff-semibold"><i class="fas fa-share-alt"></i> <?= lang('globallang.share'); ?></span>
+                            <a href="<?= site_url('event/desc'); ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.readMore'); ?></a>
+                            <span class="ms-3 ff-semibold"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
                         </div>
                     </div>
                 <?php } ?>                

@@ -2,14 +2,14 @@
 <?= $this->section("content") ?>
 
     <section class="banner position-relative">
-        <img src="<?= site_url('assets/images/front/banner-member.jpg') ?>" alt="">
+        <img src="<?= site_url('assets/images/banner/member.jpg') ?>" alt="">
     </section>
 
     <section class="member-content ptb-2rem">        
 
         <div class="container mt-3">
             <div class="text-center title">
-                <h1 class="text-uppercase ff-semibold fs-3"><?= lang('globallang.searchMember'); ?></h1>
+                <h1 class="text-uppercase ff-semibold fs-3"><?= lang('GlobalLang.searchMember'); ?></h1>
             </div>
 
             <div class="search-member mt-4">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold" id="btn_advance"><?= lang('globallang.advanceSearch'); ?></button>
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
                         </div>
 
                         <div class="col-md-6 search-show d-none">
@@ -64,7 +64,7 @@
                         </div>
                         
                         <div class="col-12">
-                            <button class="btn bg-darkgold c-white w-100 ff-semibold"><?= lang('globallang.search'); ?></button>
+                            <button class="btn bg-darkgold c-white w-100 ff-semibold"><?= lang('GlobalLang.search'); ?></button>
                         </div>
                     </div>
                 </form>
@@ -108,7 +108,7 @@
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
                             
                             <div class="event-action mt-2">
-                                <a href="<?= site_url('knowledge/desc'); ?>" class="btn btn-black-border fs-7"><?= lang('globallang.viewProfile'); ?></a>
+                                <a href="<?= site_url('knowledge/desc'); ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.viewProfile'); ?></a>
                             </div>
                         </div>
                     </div>

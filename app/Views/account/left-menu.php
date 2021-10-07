@@ -19,15 +19,16 @@
         <input type="hidden" name="hd_thumb_del" value="<?= $info['profile'] ?>">
         <div class="ac-profile-img position-relative">
             <?php
+                
                 if($userdata['type'] == 'facebook'){
                     $profile_pic = 'https://graph.facebook.com/'.$userdata['id'].'/picture?width=400&height=400';
                 }else if($userdata['type'] == 'google'){
                     $profile_pic = $userdata['profile_pic'];
                 }else{
-                    $profile_pic = $info['profile'];
+                    $profile_pic = (file_exists($profile_pic)?site_url($profile_pic):'assets/images/img-default.png');
                 }
             ?>
-            <img src="<?= (file_exists($profile_pic)?site_url($profile_pic):'assets/images/img-default.png') ?>" id="pic_profile">
+            <img src="<?= $profile_pic; ?>" id="pic_profile">
             <input type="file" name="txt_profile" id="txt_profile" class="invisible h-0">
             <label for="txt_profile" class="img_edit invisible"></label>
         </div>

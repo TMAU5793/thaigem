@@ -48,5 +48,7 @@ return [
     'bookNow' => 'Book now',
 
     'event' => 'อีเว้นท์',
-    'share' => 'แชร์'
+    'share' => 'แชร์',
+    'advanceSearch' => 'ค้นหาแบบละเอียด',
+    'search' => 'ค้นหา'
 ];

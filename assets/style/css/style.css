@@ -517,4 +517,41 @@ img {
 .member-content .album-item .slider-nav-item {
   padding: 0 .25rem; }
 
+.contact-content .map-location iframe {
+  width: 100%; }
+
+.forum-head {
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 6px 0; }
+
+.forum-body .row {
+  padding: 10px 0;
+  border-bottom: 1px solid #000000; }
+.forum-body h2 {
+  line-height: 1rem; }
+.forum-body p {
+  line-height: 1.2rem;
+  font-size: .85rem;
+  margin-top: 6px; }
+.forum-body .forum-img {
+  cursor: pointer; }
+
+.forum-box .forum-body .gradient-gold-y {
+  padding: 0 3rem; }
+.forum-box .forum-body .forum-profile {
+  margin-top: 1.5rem; }
+.forum-box .forum-body .member-info {
+  margin-top: 1rem; }
+  .forum-box .forum-body .member-info strong {
+    margin-right: 15px; }
+  .forum-box .forum-body .member-info .info-item {
+    display: inline-flex; }
+.forum-box .reply-forum {
+  padding: 0 1.5rem; }
+
+.gradient-gold-y {
+  background: white;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, #cfc7b2 100%); }
+
 /*# sourceMappingURL=style.css.map */

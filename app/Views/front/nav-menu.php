@@ -71,10 +71,10 @@
                     <a class="nav-link <?= ($segment=='event'?'active':'') ?>" href="<?= site_url('event'); ?>"><?= lang('MenuLang.navEvents'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= lang('MenuLang.navBusiness'); ?></a>
+                    <a class="nav-link <?= ($segment=='community'?'active':'') ?>" href="<?= site_url('community'); ?>"><?= lang('MenuLang.navBusiness'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= lang('MenuLang.navContactus'); ?></a>
+                    <a class="nav-link <?= ($segment=='contact'?'active':'') ?>" href="<?= site_url('contact'); ?>"><?= lang('MenuLang.navContactus'); ?></a>
                 </li>
             </ul>
         </div>
