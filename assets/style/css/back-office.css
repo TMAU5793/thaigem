@@ -441,9 +441,8 @@ body:not(.layout-fixed) .main-sidebar {
   position: fixed; }
 
 .tab-content {
-  background-color: #fff; }
-  .tab-content .tab-pane {
-    padding: 2rem; }
+  background-color: #fff;
+  padding: 2rem; }
 
 .content-nav {
   position: relative; }
@@ -502,5 +501,18 @@ body:not(.layout-fixed) .main-sidebar {
       background: #000; }
       .pagination-list li.active a {
         color: #fff; }
+
+.form-switch {
+  padding: 0; }
+  .form-switch input.form-check-input {
+    margin-left: 0; }
+  .form-switch label.form-check-label {
+    padding-left: 2.5rem; }
+
+label.form-label {
+  width: 150px; }
+
+.form-check-inline {
+  width: 100px; }
 
 /*# sourceMappingURL=back-office.css.map */

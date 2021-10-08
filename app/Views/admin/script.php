@@ -38,6 +38,7 @@
         <?php } ?>
         
         $('#txt_tags').tagsinput(); // tags input
+        $('#txt_tags_en').tagsinput(); // tags input
 
         //ประเภทสมาชิกเว็บไซต์
         var dealer = $("#rd_type2").is(":checked");
@@ -103,6 +104,7 @@
             var zipcode = $('#ddl_district option:selected').data('zipcode');
             $('#txt_zipcode').val(zipcode);
         });
+
     });
     //End ready function
 
@@ -137,7 +139,7 @@
             toolbar: [
                 'heading', '|',
                 'ckfinder', 'imageUpload', 'blockQuote', '|',                
-                'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'todoList', '|',               
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',               
                 'outdent', 'indent', '|',
                 'insertTable', 'mediaEmbed', '|',
                 'undo', 'redo', '|',
@@ -146,18 +148,23 @@
         .catch( error => {
             //console.error( error );
         } );
-    
 
-    // function amphuresByProvince(id){
-    //     fetch('<?= site_url('amphures') ?>', {
-    //         method: "POST",
-    //         body: JSON.stringify(id),
-    //         headers: {"Content-type": "application/json; charset=UTF-8"}
-    //     })
-    //     .then(response => response.json()) 
-    //     .then(json => console.log(json))
-    //     .catch(err => console.log(err));
+    ClassicEditor
+        .create( document.querySelector( '#txt_desc_en' ),{
+            ckfinder: {
+                uploadUrl: '../../assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+            },
+            toolbar: [
+                'heading', '|',
+                'ckfinder', 'imageUpload', 'blockQuote', '|',                
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',               
+                'outdent', 'indent', '|',
+                'insertTable', 'mediaEmbed', '|',
+                'undo', 'redo', '|',
+            ]
+        } )
+        .catch( error => {
+            //console.error( error );
+        } );
 
-    //     //console.log(id);        
-    // }
 </script>

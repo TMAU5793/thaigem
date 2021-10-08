@@ -47,7 +47,7 @@
                         <td><?= $item['title'] ?></td>
                         <td align="right"><?= $item['view'] ?></td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-status <?= ($item['status']=='1'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='1'?'เปิด' : 'ปิด') ?></button>
+                            <button type="button" class="btn btn-status <?= ($item['status']=='on'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='on'?'เปิด' : 'ปิด') ?></button>
                         </td>
                         <td><?= $item['created_at'] ?></td>
                         <td class="text-center">

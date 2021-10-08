@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use CodeIgniter\Model;
 
@@ -13,8 +13,8 @@ class ArticlesModel extends Model
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
-	protected $protectFields        = true;
-	protected $allowedFields        = ["title","shortdesc","desc","tags","slug","meta_title","meta_desc","status","thumbnail","view"];
+	protected $protectFields        = false;
+	protected $allowedFields        = [];
 
 	// Dates
 	protected $useTimestamps        = true;

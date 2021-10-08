@@ -45,7 +45,7 @@
                 <li class="nav-item menu-open">
                     <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles'?'active':''); ?>">
                         <i class="nav-icon far fa-newspaper"></i>
-                        <p>บทความ</p>
+                        <p>บทความ & ข่าวสาร</p>
                     </a>
                 </li>
                 <li class="nav-item menu-open">
