@@ -73,7 +73,8 @@ class Articles extends Controller
                 $allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
                 $ext = $thumb->getExtension();
                 $newName = "";
-                
+
+                $slug = url_title(strtolower($request->getVar('txt_slug')));
                 $data = [
                     'type' => $request->getVar('rd_type'),
                     'hot_article' => $request->getVar('txt_hot_article'),
@@ -85,8 +86,7 @@ class Articles extends Controller
                     'desc_en' => $request->getVar('txt_desc_en'),
                     'tags' => $request->getVar('txt_tags'),
                     'tags_en' => $request->getVar('txt_tags_en'),
-                    'slug' => $request->getVar('txt_slug'),
-                    'slug_en' => $request->getVar('txt_slug_en'),
+                    'slug' => $slug,
                     'meta_title' => $request->getVar('meta_title'),
                     'meta_title_en' => $request->getVar('meta_title_en'),
                     'meta_desc' => $request->getVar('meta_desc'),
@@ -160,6 +160,7 @@ class Articles extends Controller
                 }                
             }
 
+            $slug = url_title(strtolower($request->getVar('txt_slug')));
             $update = [
                 'type' => $request->getVar('rd_type'),
                 'hot_article' => $request->getVar('txt_hot_article'),
@@ -171,8 +172,7 @@ class Articles extends Controller
                 'desc_en' => $request->getVar('txt_desc_en'),
                 'tags' => $request->getVar('txt_tags'),
                 'tags_en' => $request->getVar('txt_tags_en'),
-                'slug' => $request->getVar('txt_slug'),
-                'slug_en' => $request->getVar('txt_slug_en'),
+                'slug' => $slug,
                 'meta_title' => $request->getVar('meta_title'),
                 'meta_title_en' => $request->getVar('meta_title_en'),
                 'meta_desc' => $request->getVar('meta_desc'),

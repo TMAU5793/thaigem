@@ -8,21 +8,21 @@
     <section class="knowledge-desc pt-2rem">
         <div class="container">
             <div class="text-center bread-crumbs mb-3">
-                <h1 class="ff-semibold fs-3">Knowledge & News</h1>
+                <h1 class="ff-semibold fs-3"><?= ($lang=='en' && $info['title_en']!=""?$info['title_en']:$info['title']) ?></h1>
                 <small>
-                    <a href="<?= site_url('event') ?>" class="text-decoration-none"><?= lang('GlobalLang.knowledgeNews'); ?></a> >> 
-                    <span class="c-darkgold">Event Title</span>
+                    <a href="<?= site_url('knowledge') ?>" class="text-decoration-none"><?= lang('GlobalLang.knowledgeNews'); ?></a> >> 
+                    <span class="c-darkgold"><?= ($lang=='en' && $info['title_en']!=""?$info['title_en']:$info['title']) ?></span>
                 </small>
             </div>
-            <img src="<?= site_url('assets/images/front/knowledge-img.jpg') ?>" alt="">
-            <div class="event-date mt-3 mb-3">05/06/2564</div>
-
-            <p>Lorem Ipsum is simply dummy text of the printingand typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printingand typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley oftype and scrambled it to make a type specimen book.</p>
-            <p>Lorem Ipsum is simply dummy text of the printingand typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printingand typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley oftype and scrambled it to make a type specimen book.</p>
+            
+            <div class="single-desc">
+                <?= ($lang=='en' && $info['desc_en']!=""?$info['desc_en']:$info['desc']) ?>
+            </div>
 
             <div class="share-post text-end mt-4 mb-4">
                 <span class="ff-semibold"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
-            </div>            
+            </div>
+            <div class="event-date mt-3 mb-3">เผยแพร่ : 05/06/2564</div>
         </div>
         
     </section>

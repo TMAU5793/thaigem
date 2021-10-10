@@ -103,11 +103,13 @@
 
                     <div class="tab-pane fade" id="nav-content-3" role="tabpanel" aria-labelledby="nav-3">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="txt_slug" class="form-label">Slug URL (TH)</label>
+                                    <label for="txt_slug" class="form-label">Slug URL</label>
                                     <input type="text" class="form-control" id="txt_slug" name="txt_slug" value="<?= (isset($info)? $info['slug'] : set_value('txt_slug')) ?>">
                                 </div>
+                            </div>
+                            <div class="col-md-6">                                
                                 <div class="mb-3">
                                     <label for="meta_title" class="form-label">SEO Title (TH)</label>
                                     <input type="text" class="form-control" id="meta_title" name="meta_title" value="<?= (isset($info)? $info['meta_title'] : set_value('meta_title')) ?>">                        
@@ -118,11 +120,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="txt_slug_en" class="form-label">Slug URL (EN)</label>
-                                    <input type="text" class="form-control" id="txt_slug_en" name="txt_slug_en" value="<?= (isset($info)? $info['slug_en'] : set_value('txt_slug_en')) ?>">
-                                </div>                                
+                            <div class="col-md-6">                                
                                 <div class="mb-3">
                                     <label for="meta_title_en" class="form-label">SEO Title (EN)</label>
                                     <input type="text" class="form-control" id="meta_title_en" name="meta_title_en" value="<?= (isset($info)? $info['meta_title_en'] : set_value('meta_title_en')) ?>">                        
