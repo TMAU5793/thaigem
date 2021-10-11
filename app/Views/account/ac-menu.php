@@ -19,7 +19,7 @@
             <a class="nav-link <?= (isset($ac_invoice)?'active':''); ?>" href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= (isset($ac_webboard)?'active':''); ?>" href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webBoard'); ?></a>
+            <a class="nav-link <?= (isset($ac_webboard)?'active':''); ?>" href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a>
         </li>
     </ul>
 </div>

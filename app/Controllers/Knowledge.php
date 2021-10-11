@@ -33,16 +33,23 @@ class Knowledge extends BaseController
         $model = new KnowledgeModel();
         $uri = service('uri');
         $segment3 = $uri->getSegment(3);
+        $segment3 = urldecode($segment3);
 
         $row = $model->where('slug',$segment3)->first();
         if(!$row){
             $row = $model->where('id',$segment3)->first();
+            $sql = "UPDATE tbl_articles SET view=view+1 WHERE id = '$segment3'";
+            $model->query($sql);
+        }else{
+            $sql = "UPDATE tbl_articles SET view=view+1 WHERE slug = '$segment3'";
+            $model->query($sql);
         }
         
         $data = [
             'meta_title' => ($this->lang=='en' && $row['meta_title_en']!=""?$row['meta_title_en']:$row['meta_title']),
             'meta_desc' => ($this->lang=='en' && $row['meta_desc_en']!=""?$row['meta_desc_en']:$row['meta_desc']),
-            'info' => $row
+            'info' => $row,
+            'lang' => $this->lang
         ];
         
         echo view('front/knowledge-desc', $data);

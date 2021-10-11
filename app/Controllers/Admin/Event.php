@@ -76,8 +76,10 @@ class Event extends Controller
 
                 $date = explode('-',$request->getPost('txt_date'));
                 $slug = url_title(strtolower($request->getVar('txt_slug')));
-                if($request->getVar('txt_slug')==""){
+                if($request->getVar('txt_slug')=="" && $request->getVar('txt_title_en')==""){
                     $slug = url_title(strtolower($request->getVar('txt_title')));
+                }else{
+                    $slug = url_title(strtolower($request->getVar('txt_title_en')));
                 }
                 $data = [
                     'name' => $request->getVar('txt_title'),
@@ -87,8 +89,8 @@ class Event extends Controller
                     'desc' => $request->getVar('txt_desc'),
                     'desc_en' => $request->getVar('txt_desc_en'),
                     'slug' => $slug,
-                    'meta_title' => $request->getVar('meta_title'),
-                    'meta_title_en' => $request->getVar('meta_title_en'),
+                    'meta_title' => ($request->getVar('meta_title')!=""?$request->getVar('meta_title'):$request->getVar('txt_title')),
+                'meta_title_en' => ($request->getVar('meta_title_en')!=""?$request->getVar('meta_title_en'):$request->getVar('txt_title_en')),
                     'meta_desc' => $request->getVar('meta_desc'),
                     'meta_desc_en' => $request->getVar('meta_desc_en'),
                     'status' => $request->getVar('txt_status'),
@@ -165,8 +167,10 @@ class Event extends Controller
 
             $date = explode('-',$request->getPost('txt_date'));
             $slug = url_title(strtolower($request->getVar('txt_slug')));
-            if($request->getVar('txt_slug')==""){
+            if($request->getVar('txt_slug')=="" && $request->getVar('txt_title_en')==""){
                 $slug = url_title(strtolower($request->getVar('txt_title')));
+            }else{
+                $slug = url_title(strtolower($request->getVar('txt_title_en')));
             }
             //echo $date[0];
             $update = [
@@ -177,8 +181,8 @@ class Event extends Controller
                 'desc' => $request->getVar('txt_desc'),
                 'desc_en' => $request->getVar('txt_desc_en'),
                 'slug' => $slug,
-                'meta_title' => $request->getVar('meta_title'),
-                'meta_title_en' => $request->getVar('meta_title_en'),
+                'meta_title' => ($request->getVar('meta_title')!=""?$request->getVar('meta_title'):$request->getVar('txt_title')),
+                'meta_title_en' => ($request->getVar('meta_title_en')!=""?$request->getVar('meta_title_en'):$request->getVar('txt_title_en')),
                 'meta_desc' => $request->getVar('meta_desc'),
                 'meta_desc_en' => $request->getVar('meta_desc_en'),
                 'status' => $request->getVar('txt_status'),

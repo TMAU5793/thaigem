@@ -20,7 +20,7 @@
             </div>
 
             <div class="share-post text-end mt-4 mb-4">
-                <span class="ff-semibold"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
+                <span class="ff-semibold share-social"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
             </div>
             <div class="event-date mt-3 mb-3">เผยแพร่ : <?= substr($info['created_at'],0,10) ?></div>
         </div>

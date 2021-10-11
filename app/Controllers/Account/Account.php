@@ -159,29 +159,43 @@ class Account extends Controller
         if(!$post){
             return redirect()->to('');
         }
-        $arrdata = [
-            'id' => $post['id'],
-            'account' => $post['id'],
-            'name' => $post['name'],
-            'email' => $post['email'],
-            'type' => 'facebook',
-            'logged_member' => TRUE
-        ];
+        
         $account = $model->where('account', $post['id'])->first();
+        
         if(!$account){
-            $result = $model->socialSignin($arrdata);
+            $formdata = [
+                'account' => $post['id'],
+                'name' => $post['name'],
+                'email' => $post['email'],
+                'type' => 'facebook'
+            ];
+            $result = $model->socialSignin($formdata);
             if($result){
+                $arrdata = [
+                    'id' => $result,
+                    'account' => $post['id'],
+                    'name' => $post['name'],
+                    'email' => $post['email'],
+                    'type' => 'facebook',
+                    'logged_member' => TRUE
+                ];
                 session()->set('userdata',$arrdata);
-                //return redirect()->to(site_url('account'));
                 echo true;
             }
         }else{
+            $arrdata = [
+                'id' => $account['id'],
+                'account' => $post['id'],
+                'name' => $post['name'],
+                'email' => $post['email'],
+                'type' => 'facebook',
+                'logged_member' => TRUE
+            ];
             $model
                 ->where('account', $post['id'])
                 ->set('last_login' , new Time('now'))
                 ->update();
             session()->set('userdata',$arrdata);
-            //return redirect()->to(site_url('account'));
             echo true;
         }
     }
@@ -212,23 +226,40 @@ class Account extends Controller
             // get profile info
             $google_oauth = new \Google_Service_Oauth2($client);
             $userdata = $google_oauth->userinfo->get();
-            $arrdata = [
-                'id' => $userdata->id,
-                'account' => $userdata->id,
-                'name' => $userdata->name,
-                'email' => $userdata->email,
-                'profile_pic' => $userdata->picture,
-                'type' => 'google',
-                'logged_member' => TRUE
-            ];
+            
             $account = $model->where('account', $userdata->id)->first();
             if(!$account){
-                $result = $model->socialSignin($arrdata);
+                $formdata = [
+                    'account' => $userdata->id,
+                    'name' => $userdata->name,
+                    'email' => $userdata->email,
+                    'profile_pic' => $userdata->picture,
+                    'type' => 'google',
+                ];
+                $result = $model->socialSignin($formdata);
                 if($result){
+                    $arrdata = [
+                        'id' => $result,
+                        'account' => $userdata->id,
+                        'name' => $userdata->name,
+                        'email' => $userdata->email,
+                        'profile_pic' => $userdata->picture,
+                        'type' => 'google',
+                        'logged_member' => TRUE
+                    ];
                     session()->set('userdata',$arrdata);
                     return redirect()->to(site_url('account'));
                 }
             }else{
+                $arrdata = [
+                    'id' => $account['id'],
+                    'account' => $userdata->id,
+                    'name' => $userdata->name,
+                    'email' => $userdata->email,
+                    'profile_pic' => $userdata->picture,
+                    'type' => 'google',
+                    'logged_member' => TRUE
+                ];
                 $model
                     ->where('account', $userdata->id)
                     ->set('last_login' , new Time('now'))

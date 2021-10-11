@@ -50,6 +50,7 @@ use Google\Service\Adsense\Site;
             $('.search-member .col-12').toggleClass('col-md-6');
         });
 
+        //Social button share URL
         $('.share-social').on('click',function(){
             $('#shareModal').modal('show');
             var url = $(this).data('url');
@@ -59,6 +60,22 @@ use Google\Service\Adsense\Site;
             $('.share-gg').attr('href','https://plus.google.com/share?url='+url);
             $('.share-in').attr('href','https://www.linkedin.com/shareArticle?mini=true&url='+url);
             $('.share-pt').attr('href','https://pinterest.com/pin/create/button/?url='+url);
+        });
+
+        //Booking Event
+        $('#booking_event').on('click',function(){
+            var event_id = $(this).data('event');
+            var member_id = '<?= session()->get('userdata')['id'] ?>';
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('event/booking') ?>",
+                data: {event_id:event_id,member_id:member_id},
+                success: function (response) {
+                    //location.href='<?= site_url('account/event') ?>';
+                    console.log(response);
+                }
+            });
+
         });
     });
 

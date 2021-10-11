@@ -70,7 +70,7 @@ class AccountModel extends Model
         ];
 
 		if($this->save($info)){
-			return true;
+			return $this->getInsertID();
 		}else{
 			return false;
 		}
