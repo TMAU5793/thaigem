@@ -397,3 +397,66 @@
     background: rgb(255, 255, 255);
     background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(207, 199, 178, 1) 100%);
 }
+
+.share-social {
+    cursor: pointer;
+}
+
+#shareModal {
+    .modal-body {
+        padding: 1rem 3rem 3rem;
+    }
+    .modal-content {
+        background-color: $c-lightgold;
+        border: none;
+    }
+}
+
+.social-item {
+    a {
+        display: block;
+        padding: 4px 15px;
+        background: #fff;
+        border-radius: 4px;
+        border: none;
+        text-decoration: none;
+        width: 45%;
+        float: left;
+        margin: 10px 10px 0;
+        i {
+            width: 30px;
+        }
+        span {
+            display: inline-block;
+            text-align: center;
+        }
+    }
+    a.share-fb {
+        background-color: #4867aa;
+        color: #fff;
+    }
+    a.share-tw {
+        background-color: #1da1f2;
+        color: #fff;
+    }
+    a.share-line {
+        background-color: #07b53b;
+        color: #fff;
+    }
+    a.share-gg {
+        background-color: #d64937;
+        color: #fff;
+    }
+    a.share-in {
+        background-color: #0e76a8;
+        color: #fff;
+    }
+    a.share-pt {
+        background-color: #c8232c;
+        color: #fff;
+    }
+    a.share-mail {
+        background-color: #6e6e6e;
+        color: #fff;
+    }
+}

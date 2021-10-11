@@ -90,3 +90,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Share -->
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <span class="ff-semibold text-center d-inline-block w-100">Share content with : </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="social-item">
+                    <!-- Facebook -->
+                    <a href="" target="_blank" class="share-fb"><i class="fab fa-facebook-f"></i> <span>facebook</span></a>
+
+                    <!-- Twitter -->
+                    <a href="" target="_blank" class="share-tw"><i class="fab fa-twitter"></i> <span>twitter</span></a>
+
+                    <!-- Line -->
+                    <a href="" target="_blank" class="share-line"><i class="fab fa-line"></i> <span>line</span></a>
+
+                    <!-- Google+ -->
+                    <a href="" target="_blank" class="share-gg"><i class="fab fa-google-plus-g"></i> <span>google+</span></a>
+
+                    <!-- LinkedIn -->
+                    <a href="" target="_blank" class="share-in"><i class="fab fa-linkedin-in"></i> <span>linkedin</span></a>
+
+                    <!-- Pinterest -->
+                    <a href="" class="share-pt"><i class="fab fa-pinterest"></i> <span>pinterest</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

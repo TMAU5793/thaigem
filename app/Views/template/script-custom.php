@@ -48,7 +48,18 @@ use Google\Service\Adsense\Site;
         $('#btn_advance').on('click',function () { 
             $('.search-show').toggleClass('d-none');
             $('.search-member .col-12').toggleClass('col-md-6');
-        })
+        });
+
+        $('.share-social').on('click',function(){
+            $('#shareModal').modal('show');
+            var url = $(this).data('url');
+            $('.share-fb').attr('href','https://www.facebook.com/sharer.php?u='+url);
+            $('.share-tw').attr('href','https://twitter.com/share?url='+url);
+            $('.share-line').attr('href','https://social-plugins.line.me/lineit/share?url='+url);
+            $('.share-gg').attr('href','https://plus.google.com/share?url='+url);
+            $('.share-in').attr('href','https://www.linkedin.com/shareArticle?mini=true&url='+url);
+            $('.share-pt').attr('href','https://pinterest.com/pin/create/button/?url='+url);
+        });
     });
 
     

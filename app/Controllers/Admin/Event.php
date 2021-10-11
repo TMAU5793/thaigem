@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Admin;
 use CodeIgniter\Controller;
-use App\Models\Admin\ArticlesModel;
+use App\Models\Admin\EventModel;
 
-class Articles extends Controller
+class Event extends Controller
 {
 	public function __construct()
     {
@@ -13,12 +13,12 @@ class Articles extends Controller
 	
 	public function index()
 	{	
-        $model = new ArticlesModel();
+        $model = new EventModel();
 		$data = [
-            'meta_title' => 'บทความ',
+            'meta_title' => 'อีเว้นท์',
             'info' => $model->orderBy('status DESC, created_at DESC')->findAll()
         ];
-		echo view('admin/article',$data);
+		echo view('admin/event',$data);
 	}
 
     public function form()
@@ -29,19 +29,19 @@ class Articles extends Controller
 
         helper(['form']);
         $data = [
-            'meta_title' => 'เพิ่มบทความ',
+            'meta_title' => 'เพิ่มอีเว้นท์',
             'action'    =>  'save',
         ];
-        echo view('admin/article-form', $data);
+        echo view('admin/event-form', $data);
     }
 
     public function save()
     {
         helper(['form']);
-        $model = new ArticlesModel();
+        $model = new EventModel();
         $request = service('request');
         $data = [
-            'meta_title' => 'เพิ่มบทความ',
+            'meta_title' => 'เพิ่มอีเว้นท์',
             'action'    =>  'save'
         ];
         $thumb = $request->getFile('txt_thumb');
@@ -74,47 +74,47 @@ class Articles extends Controller
                 $ext = $thumb->getExtension();
                 $newName = "";
 
+                $date = explode('-',$request->getPost('txt_date'));
                 $slug = url_title(strtolower($request->getVar('txt_slug')));
                 if($request->getVar('txt_slug')==""){
                     $slug = url_title(strtolower($request->getVar('txt_title')));
                 }
                 $data = [
-                    'type' => $request->getVar('rd_type'),
-                    'hot_article' => $request->getVar('txt_hot_article'),
-                    'title' => $request->getVar('txt_title'),
-                    'title_en' => $request->getVar('txt_title_en'),
+                    'name' => $request->getVar('txt_title'),
+                    'name_en' => $request->getVar('txt_title_en'),
                     'shortdesc' => $request->getVar('txt_shortdesc'),
                     'shortdesc_en' => $request->getVar('txt_shortdesc_en'),
                     'desc' => $request->getVar('txt_desc'),
                     'desc_en' => $request->getVar('txt_desc_en'),
-                    'tags' => $request->getVar('txt_tags'),
-                    'tags_en' => $request->getVar('txt_tags_en'),
                     'slug' => $slug,
                     'meta_title' => $request->getVar('meta_title'),
                     'meta_title_en' => $request->getVar('meta_title_en'),
                     'meta_desc' => $request->getVar('meta_desc'),
                     'meta_desc_en' => $request->getVar('meta_desc_en'),
-                    'status' => $request->getVar('txt_status')
+                    'status' => $request->getVar('txt_status'),
+                    'start_event' => $date[0],
+                    'end_event' => $date[1],
+                    'booth' => $request->getVar('txt_booth')
                 ];
                 $model->save($data);
                 $id = $model->getInsertID();
                 if ($thumb->isValid() && !$thumb->hasMoved() && in_array($ext, $allowed)){
                     
-                    if (!is_dir('uploads/articles')) {
-                        mkdir('uploads/articles', 0777, TRUE);
-                        $this->resizeImg($id,$thumb,650,650,'uploads/articles'); //id,file,width,height,path
+                    if (!is_dir('uploads/event')) {
+                        mkdir('uploads/event', 0777, TRUE);
+                        $this->resizeImg($id,$thumb,450,450,'uploads/event'); //id,file,width,height,path
                     }else{
-                        $this->resizeImg($id,$thumb,650,650,'uploads/articles'); //id,file,width,height,path
+                        $this->resizeImg($id,$thumb,450,450,'uploads/event'); //id,file,width,height,path
                     }
                 }
-                return redirect()->to(site_url('admin/articles'));
+                return redirect()->to(site_url('admin/event'));
             }else{
                 $data['validation'] = $this->validator;
-                echo view('admin/article-form',$data);
+                echo view('admin/event-form',$data);
             }
         }else{
-            return redirect()->to(site_url('admin/articles'));
-        }
+            return redirect()->to(site_url('admin/event'));
+        }        
     }
 
     public function edit(){
@@ -125,7 +125,7 @@ class Articles extends Controller
         //include helper form
         helper(['form']);
         $request = service('request');
-        $model = new ArticlesModel();
+        $model = new EventModel();
         $id = $request->getGet('id');
                 
         $data = [
@@ -133,7 +133,7 @@ class Articles extends Controller
             'action'    =>  'update',
             'info'  =>  $model->where('id',$id)->first()
         ];
-        echo view('admin/article-form', $data);
+        echo view('admin/event-form', $data);
     }
 
     public function update()
@@ -141,7 +141,7 @@ class Articles extends Controller
         helper(['form']);
         helper('filesystem');
         $request = service('request');
-        $model = new ArticlesModel();
+        $model = new EventModel();
         if ($request->getMethod() == 'post') {
             $id = $request->getVar('hd_id'); //เก็บค่า id
             $thumb = $request->getFile('txt_thumb'); //เก็บไฟล์รูปอัพโหลด
@@ -155,43 +155,44 @@ class Articles extends Controller
                     unlink($hd_thumb_del); //ลบรูปเก่าออก
                 }
                 
-                if (!is_dir('uploads/articles')) {
-					mkdir('uploads/articles', 0777, TRUE);
-                    $this->resizeImg($id,$thumb,650,650,'uploads/articles'); //file,width,height,path
+                if (!is_dir('uploads/event')) {
+					mkdir('uploads/event', 0777, TRUE);
+                    $this->resizeImg($id,$thumb,450,450,'uploads/event'); //file,width,height,path
 				}else{
-                    $this->resizeImg($id,$thumb,650,650,'uploads/articles'); //file,width,height,path
+                    $this->resizeImg($id,$thumb,450,450,'uploads/event'); //file,width,height,path
                 }                
             }
 
+            $date = explode('-',$request->getPost('txt_date'));
             $slug = url_title(strtolower($request->getVar('txt_slug')));
             if($request->getVar('txt_slug')==""){
                 $slug = url_title(strtolower($request->getVar('txt_title')));
             }
+            //echo $date[0];
             $update = [
-                'type' => $request->getVar('rd_type'),
-                'hot_article' => $request->getVar('txt_hot_article'),
-                'title' => $request->getVar('txt_title'),
-                'title_en' => $request->getVar('txt_title_en'),
+                'name' => $request->getVar('txt_title'),
+                'name_en' => $request->getVar('txt_title_en'),
                 'shortdesc' => $request->getVar('txt_shortdesc'),
                 'shortdesc_en' => $request->getVar('txt_shortdesc_en'),
                 'desc' => $request->getVar('txt_desc'),
                 'desc_en' => $request->getVar('txt_desc_en'),
-                'tags' => $request->getVar('txt_tags'),
-                'tags_en' => $request->getVar('txt_tags_en'),
                 'slug' => $slug,
                 'meta_title' => $request->getVar('meta_title'),
                 'meta_title_en' => $request->getVar('meta_title_en'),
                 'meta_desc' => $request->getVar('meta_desc'),
                 'meta_desc_en' => $request->getVar('meta_desc_en'),
-                'status' => $request->getVar('txt_status')
+                'status' => $request->getVar('txt_status'),
+                'start_event' => $date[0],
+                'end_event' => $date[1],
+                'booth' => $request->getVar('txt_booth')
             ];
             if($model->update($id, $update)){
-                return redirect()->to(site_url('admin/articles'));
+                return redirect()->to(site_url('admin/event'));
             }else{
                 print_r($model->error());
             }
         }else{
-            return redirect()->to(site_url('admin/articles'));
+            return redirect()->to(site_url('admin/event'));
         }
 
         //print_r($request->getPost());
@@ -199,7 +200,7 @@ class Articles extends Controller
 
     public function resizeImg($id,$file,$w,$h,$path)
     {
-        $model = new ArticlesModel();
+        $model = new EventModel();
         $newName = $id.'-'.$file->getRandomName();
 
         $image = \Config\Services::image()
@@ -208,7 +209,7 @@ class Articles extends Controller
         ->save($path.'/'.$newName);
 
         $thumb = [
-            'thumbnail' => 'uploads/articles/'.$newName
+            'thumbnail' => 'uploads/event/'.$newName
         ];
         $model->update($id, $thumb);
     }

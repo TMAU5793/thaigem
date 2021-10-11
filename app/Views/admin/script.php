@@ -105,6 +105,22 @@
             $('#txt_zipcode').val(zipcode);
         });
 
+        //date picker rang
+        <?php if(isset($info)) { ?>
+            $('input[name="txt_date"]').daterangepicker({            
+                startDate: '<?= $info['start_event'] ?>',
+                endDate : '<?= $info['end_event'] ?>',            
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+        <?php }else{ ?>
+            $('input[name="txt_date"]').daterangepicker({         
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+        <?php } ?>
     });
     //End ready function
 

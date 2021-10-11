@@ -59,6 +59,11 @@
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
+    <link rel="stylesheet" href="<?= base_url('assets/daterangepicker/daterangepicker.css'); ?>">
+    <script src="<?= base_url('assets/daterangepicker/moment.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/daterangepicker/daterangepicker.js'); ?>"></script>
+    
+
     <?= $this->include('admin/script') ?>
 </body>
 </html>

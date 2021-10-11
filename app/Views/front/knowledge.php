@@ -19,7 +19,7 @@
                 <div class="bg-lightgold position-relative">
                     <div class="w-50">
                         <div class="hot-img">
-                            <img src="<?= site_url($row['thumbnail']) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
+                            <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.png')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
                         </div>
                     </div>
                     <div class="item-body w-50 plr-4rem position-absolute translate-middle-y top-50 end-0">
@@ -29,7 +29,7 @@
                         
                         <div class="event-action mt-2">
                             <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.readMore'); ?></a>
-                            <span class="ms-3 ff-semibold"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
+                            <span class="ms-3 ff-semibold share-social" data-url="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>                            
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         foreach ($info as $row){                            
                 ?>
                     <div class="col-md-4 mt-4">
-                        <img src="<?= site_url($row['thumbnail']) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
+                        <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.png')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
                         <div class="event-text mt-3">
                             <h2 class="ff-semibold fs-5"><?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?></h2>
                             <p><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="event-action mt-2">
                             <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.readMore'); ?></a>
-                            <span class="ms-3 ff-semibold"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
+                            <span class="ms-3 ff-semibold share-social" data-url="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
                         </div>
                     </div>
                 <?php } } else{ ?>

@@ -554,4 +554,50 @@ img {
   background: white;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, #cfc7b2 100%); }
 
+.share-social {
+  cursor: pointer; }
+
+#shareModal .modal-body {
+  padding: 1rem 3rem 3rem; }
+#shareModal .modal-content {
+  background-color: #cec6b2;
+  border: none; }
+
+.social-item a {
+  display: block;
+  padding: 4px 15px;
+  background: #fff;
+  border-radius: 4px;
+  border: none;
+  text-decoration: none;
+  width: 45%;
+  float: left;
+  margin: 10px 10px 0; }
+  .social-item a i {
+    width: 30px; }
+  .social-item a span {
+    display: inline-block;
+    text-align: center; }
+.social-item a.share-fb {
+  background-color: #4867aa;
+  color: #fff; }
+.social-item a.share-tw {
+  background-color: #1da1f2;
+  color: #fff; }
+.social-item a.share-line {
+  background-color: #07b53b;
+  color: #fff; }
+.social-item a.share-gg {
+  background-color: #d64937;
+  color: #fff; }
+.social-item a.share-in {
+  background-color: #0e76a8;
+  color: #fff; }
+.social-item a.share-pt {
+  background-color: #c8232c;
+  color: #fff; }
+.social-item a.share-mail {
+  background-color: #6e6e6e;
+  color: #fff; }
+
 /*# sourceMappingURL=style.css.map */
