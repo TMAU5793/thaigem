@@ -79,6 +79,7 @@ class MemberModel extends Model
             'phone' => $data['txt_phone'],
             'product_type' => $data['ddl_product_type'],
             'business_type' => $data['ddl_business_type'],
+            'company' => $data['txt_company'],
             'province' => $data['ddl_province']
         ];
         $builder = $this->db->table('tbl_member');

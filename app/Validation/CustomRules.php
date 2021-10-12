@@ -34,7 +34,7 @@ class CustomRules
 
 	public function memberStatus(string $str, string $fields, array $data){
 		$model = new AccountModel();
-		$status = $model->where(['account'=>$data['txt_username'],'status'=>'1'])->first();
+		$status = $model->where(['account'=>$data['txt_username'],'status >'=>'0'])->first();
 	
 		if(!$status){
 		  	return false;

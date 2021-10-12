@@ -114,6 +114,7 @@
             slidesToScroll: 1,
             arrows: false,
             fade: true,
+            infinite: false,
             asNavFor: '.slider-nav'
         });
         $('.slider-nav').slick({
@@ -121,7 +122,8 @@
             slidesToScroll: 1,
             asNavFor: '.slider-for',
             dots: true,
-            focusOnSelect: true
+            focusOnSelect: true,
+            infinite: false
         });
         $('.slider-nav-hidedots').slick({
             slidesToShow: 3,

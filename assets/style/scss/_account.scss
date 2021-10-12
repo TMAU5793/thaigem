@@ -14,9 +14,25 @@
 }
 
 .account-body {
+    .ac-album {
+        overflow: hidden;
+        padding-bottom: 2rem;
+    }
     .album-item {
+        margin: 0 -7px;
         .slider-nav-item {
             padding: .5rem;
+            position: relative;
+        }
+    }
+}
+
+.album-item {
+    .slick-current.slick-active {
+        .slider-nav-item {
+            img {
+                box-shadow: 0px 6px 0px 0px #ffbc00;
+            }
         }
     }
 }

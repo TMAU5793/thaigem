@@ -58,7 +58,20 @@
                             <div class="alert alert-danger"><?= $signup_valid->listErrors(); ?></div>
                         <?php endif;?>
                         <div class="form-group mb-3">
-                            <input type="email" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.email') ?> *" value="<?= (isset($signup_valid)?set_value('txt_username'):''); ?>">
+                            <div class="form-check form-check-inline w-50 float-start">
+                                <input class="form-check-input" type="radio" name="rd_member" id="rd_member1" value="dealer" checked>
+                                <label class="form-check-label fs-7" for="rd_member1">Sign up for member</label>
+                            </div>
+
+                            <div class="form-check form-check-inline w-50 float-start">
+                                <input class="form-check-input" type="radio" name="rd_member" id="rd_member2" value="member">
+                                <label class="form-check-label fs-7" for="rd_member2">Sign up for newsletter</label>
+                            </div>
+                            <div class="clearfix"></div>
+                            <p class="mt-2 fs-7">Lorem Ipsum is simply dummy text of the printing and typesetting in dustry. Lorem Ipsum has been</p>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="email" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.userName').' ('.lang('GlobalLang.email').')' ?> *" value="<?= (isset($signup_valid)?set_value('txt_username'):''); ?>">
                         </div>
                         <div class="form-group mb-3">
                             <input type="text" class="form-control" name="txt_name" placeholder="<?= lang('GlobalLang.name') ?> *" value="<?= (isset($signup_valid)?set_value('txt_name'):''); ?>">
@@ -69,12 +82,12 @@
                         <div class="form-group mb-3">
                             <input type="password" class="form-control" name="txt_confirm_password" placeholder="<?= lang('GlobalLang.comfirmPassword') ?> *">
                         </div>
-                        <div class="form-check mb-3">
+                        <!-- <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="cb_newsletter">
                             <label class="form-check-label" for="cb_newsletter">
                                 <?= lang('GlobalLang.newsletter') ?>
                             </label>
-                        </div>
+                        </div> -->
                         <div class="form-check mb-3">
                             <input type="hidden" name="txt_term" id="txt_term">
                             <input class="form-check-input" type="checkbox" id="cb_term" name="cb_term">

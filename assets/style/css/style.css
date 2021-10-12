@@ -184,8 +184,17 @@ img {
       border-bottom: 2px solid #000000;
       padding-bottom: 0; }
 
-.account-body .album-item .slider-nav-item {
-  padding: .5rem; }
+.account-body .ac-album {
+  overflow: hidden;
+  padding-bottom: 2rem; }
+.account-body .album-item {
+  margin: 0 -7px; }
+  .account-body .album-item .slider-nav-item {
+    padding: .5rem;
+    position: relative; }
+
+.album-item .slick-current.slick-active .slider-nav-item img {
+  box-shadow: 0px 6px 0px 0px #ffbc00; }
 
 .ac-menu-left {
   background-color: #cec6b2; }
@@ -599,5 +608,17 @@ img {
 .social-item a.share-mail {
   background-color: #6e6e6e;
   color: #fff; }
+
+#registerModal .form-check-input[type=radio] {
+  border-radius: 0;
+  border-color: #000; }
+#registerModal .form-check-input:checked[type=radio] {
+  background-image: none; }
+#registerModal .form-check-input:checked {
+  background: #cec6b2;
+  box-shadow: inset 0px 0px 0px 2px #fff;
+  border-color: #000; }
+#registerModal .form-check {
+  margin-right: 0; }
 
 /*# sourceMappingURL=style.css.map */

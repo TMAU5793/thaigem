@@ -14,8 +14,8 @@ class AccountModel extends Model
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
-	protected $protectFields        = true;
-	protected $allowedFields        = ["account","password","name","lastname","email","phone","social_type","social_id","last_login"];
+	protected $protectFields        = false;
+	protected $allowedFields        = [];
 
 	// Dates
 	protected $useTimestamps        = true;
@@ -43,6 +43,7 @@ class AccountModel extends Model
 			'lastname' => $lastname,
             'email' => $data['txt_username'],
             'password' => password_hash($data['txt_password'], PASSWORD_DEFAULT),
+			'type' => $data['rd_member'],
 			'last_login' => $datetime
         ];
 
@@ -64,6 +65,7 @@ class AccountModel extends Model
             'name' => $name,
 			'lastname' => $lastname,
             'email' => $data['email'],
+			'type' => 'member',
             'social_type' => $data['type'],
 			'social_id' => $data['id'],
 			'last_login' => $datetime

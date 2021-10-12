@@ -99,6 +99,17 @@
                 <div class="ac-info-icon">
                     <i class="fas fa-map-marker-alt"></i>
                 </div>
+                <strong class="d-block">Company Name</strong>
+                <small class="small-data"><?= $info['company']; ?></small>
+                <div class="edit-field d-none">
+                    <input type="text" name="txt_company" class="form-control">
+                </div>
+            </div>
+
+            <div class="ac-info-item">
+                <div class="ac-info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
                 <strong class="d-block">Province</strong>
 
                 <?php

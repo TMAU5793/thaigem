@@ -1,11 +1,21 @@
+<?php
+    use App\Models\Account\AccountModel;
+    $userdata = session()->get('userdata');
+    $model = new AccountModel();
+    $status = $model->where('id',$userdata['id'])->first();
+?>
 <div class="account-menu ptb-1rem navbar-light">
     <ul class="navbar-nav">
         <li class="nav-item">            
             <a class="nav-link <?= (isset($ac_account)?'active':''); ?>" href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link <?= (isset($ac_event)?'active':''); ?>" href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a>
-        </li>
+
+        <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
+            <li class="nav-item">
+                <a class="nav-link <?= (isset($ac_event)?'active':''); ?>" href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a>
+            </li>
+        <?php } ?>
+
         <li class="nav-item position-relative">
             <span class="nav-link cs-pointer myfile-menu <?= (isset($ac_form)?'active':''); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></span>
             <div class="myfile-menu-list d-none">

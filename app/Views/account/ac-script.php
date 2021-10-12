@@ -17,9 +17,9 @@
 
         //buttin edit account about
         $('#edit_ac_about').on('click',function(){
-            $('#txt_ac_about').removeAttr('disabled');
-            $('#txt_ac_about').focus();
-            $('.edit_ac_about_btn').html('<button type="button" class="btn btn-black-border mt-3" id="submit_ac_about">Comfirm</button>');
+            $('.about-edit').toggleClass('d-none');
+            $('.ac-album').toggleClass('d-none');
+            $('#txt_ac_about').focus();            
         });
 
         //disabled click outside modal to close
@@ -39,6 +39,11 @@
         //form edit profile
         $('#submit_ac_info').on('click',function(){
             $('#frm_profile').submit();
+        });
+
+        //form edit profile about
+        $('#submit_ac_about').on('click',function(){
+            $('#frm_ac_about').submit();
         });
     });
 

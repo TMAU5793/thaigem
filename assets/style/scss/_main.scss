@@ -460,3 +460,21 @@
         color: #fff;
     }
 }
+
+#registerModal {
+    .form-check-input[type=radio] {
+        border-radius: 0;
+        border-color: #000;
+    }
+    .form-check-input:checked[type=radio] {
+        background-image: none;
+    }
+    .form-check-input:checked {
+        background: $c-lightgold;
+        box-shadow: inset 0px 0px 0px 2px #fff;
+        border-color: #000;
+    }
+    .form-check {
+        margin-right: 0;
+    }
+}
