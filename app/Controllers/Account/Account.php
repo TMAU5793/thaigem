@@ -4,22 +4,30 @@ namespace App\Controllers\Account;
   
 use CodeIgniter\Controller;
 use App\Models\Account\AccountModel;
-use App\Models\Account\MemberModel;
+use App\Models\Account\AlbumModel;
 use CodeIgniter\I18n\Time;
   
 class Account extends Controller
 {   
+    protected $member_id;
     public function __construct()
     {
-        
+        $sess = session()->get('userdata');
+        if($sess){
+            $this->member_id = $sess['id'];
+        }
     }
     
     public function index()
     {   
         $model = new AccountModel();
+        $albummodel = new AlbumModel();
         $data = [
-            'ac_account' => TRUE
+            'ac_account' => TRUE,
+            'info' => $model->where('id',$this->member_id)->first(),
+            'album' => $albummodel->where('member_id',$this->member_id)->findAll()
         ];
+        
         echo view('account/ac-account',$data);
     }
     

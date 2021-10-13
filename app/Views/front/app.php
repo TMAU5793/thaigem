@@ -23,6 +23,7 @@
 
     <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/style.css'); ?>">
+    
 </head>
 <body>
 
@@ -46,7 +47,7 @@
     <!-- <script src="<?= base_url('assets/bootstrap-5/js/bootstrap.bundle.min.js'); ?>"></script> -->
 
     <!-- slick slide -->
-    <script src="<?= base_url('assets/slick-1.8.1/slick/slick.js'); ?>"></script>    
+    <script src="<?= base_url('assets/slick-1.8.1/slick/slick.js'); ?>"></script>
 
     <!-- Custom script -->
     <script src="<?= base_url('assets/style/js/custom-script.js'); ?>"></script>

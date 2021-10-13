@@ -310,6 +310,37 @@ img {
   height: 226px;
   object-fit: cover; }
 
+.ac-album-form .fallback {
+  border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 15px;
+  min-height: 150px; }
+  .ac-album-form .fallback img {
+    width: 14.95%;
+    margin: .5rem; }
+
+.album-managed {
+  margin: 0 -.5rem; }
+  .album-managed .managed-item {
+    position: relative;
+    width: 12.47%;
+    margin: .5rem;
+    float: left; }
+    .album-managed .managed-item i {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      font-size: 1.25rem;
+      background: #fff;
+      color: #dc3545;
+      padding: 4px;
+      border-radius: 6px;
+      cursor: pointer; }
+      .album-managed .managed-item i:hover {
+        background: #dc3545;
+        color: #fff; }
+
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");
   background-size: cover;

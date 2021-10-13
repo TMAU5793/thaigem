@@ -162,3 +162,23 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Delete Image -->
+<div class="modal fade" id="removeImgModal" tabindex="-1" aria-labelledby="removeImgModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">                
+                <a href="<?= site_url('account') ?>" class="btn-close"></a>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <p>ระบบลบข้อมูลเรียบร้อยแล้ว</p>
+                    <p>Success, Remove your data</p>
+                </div>
+                <div class="text-center mb-3">
+                    <a href="<?= site_url('account') ?>" class="btn bg-lightgold ff-semibold text-uppercase fs-7">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

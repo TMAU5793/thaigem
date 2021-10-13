@@ -188,3 +188,42 @@
     height: 226px;
     object-fit: cover;
 }
+
+.ac-album-form {
+    .fallback {
+        border: 1px solid $c-gray;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 15px;
+        min-height: 150px;
+        img {
+            width: 14.95%;
+            margin: .5rem;
+        }
+    }
+}
+
+.album-managed {
+    margin: 0 -.5rem;
+    .managed-item {
+        position: relative;
+        width: 12.47%;
+        margin: .5rem;
+        float: left;
+        i {
+            position: absolute;
+            top: .5rem;
+            right: .5rem;
+            font-size: 1.25rem;
+            background: #fff;
+            color: #dc3545;
+            padding: 4px;
+            border-radius: 6px;
+            cursor: pointer;
+            &:hover {
+                background: #dc3545;
+                color: #fff;
+            }
+        }
+    }
+}
