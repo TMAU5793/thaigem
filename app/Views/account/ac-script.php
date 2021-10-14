@@ -78,7 +78,10 @@
         //Account Album delete image
         $('.managed-item i').on('click',function(){
             var id = $(this).data('id');
-            deleteAlbum(id);
+            var result = deleteAlbum(id);
+            if(result){
+                $(this).closest(".managed-item").remove();
+            }
         });
 
         //Modal success save data
@@ -93,11 +96,11 @@
             $.post("<?= site_url('account/member/deleteAlbum') ?>", {id:id},
                 function (resp) {
                     if(resp){
-                        //location.reload();
-                        $('#removeImgModal').modal('show');
+                        $('#removeImgModal').modal('show');                        
                     }
                 }
             );
+            return true;
         }
     }
 </script>

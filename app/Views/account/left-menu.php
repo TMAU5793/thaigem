@@ -19,13 +19,13 @@
         <input type="hidden" name="hd_thumb_del" value="<?= $info['profile'] ?>">
         <div class="ac-profile-img position-relative">
             <?php
-                
-                if($userdata['type'] == 'facebook'){
-                    $profile_pic = 'https://graph.facebook.com/'.$userdata['id'].'/picture?width=400&height=400';
-                }else if($userdata['type'] == 'google'){
-                    $profile_pic = $userdata['profile_pic'];
-                }else{
-                    $profile_pic = (file_exists($profile_pic)?site_url($profile_pic):'assets/images/img-default.png');
+                $profile_pic = (is_file($info['profile'])?site_url($info['profile']):site_url('assets/images/img-default.png'));
+                if(!is_file($info['profile'])){
+                    if($userdata['type'] == 'facebook'){
+                        $profile_pic = 'https://graph.facebook.com/'.$userdata['id'].'/picture?width=400&height=400';
+                    }else if($userdata['type'] == 'google'){
+                        $profile_pic = $userdata['profile_pic'];
+                    }
                 }
             ?>
             <img src="<?= $profile_pic; ?>" id="pic_profile">
@@ -97,7 +97,7 @@
             </div>
             <div class="ac-info-item">
                 <div class="ac-info-icon">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="far fa-building"></i>
                 </div>
                 <strong class="d-block">Company Name</strong>
                 <small class="small-data"><?= $info['company']; ?></small>
@@ -148,7 +148,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">                
-                <a href="<?= site_url('account') ?>" class="btn-close"></a>
+                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
             <div class="modal-body">
                 <div class="text-center">
@@ -156,7 +156,7 @@
                     <p>Save your information. Success</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="<?= site_url('account') ?>" class="btn bg-lightgold ff-semibold text-uppercase fs-7">Comfirm</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Comfirm</a>
                 </div>
             </div>
         </div>
@@ -167,8 +167,8 @@
 <div class="modal fade" id="removeImgModal" tabindex="-1" aria-labelledby="removeImgModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">                
-                <a href="<?= site_url('account') ?>" class="btn-close"></a>
+            <div class="modal-header">
+                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
             <div class="modal-body">
                 <div class="text-center">
@@ -176,7 +176,7 @@
                     <p>Success, Remove your data</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="<?= site_url('account') ?>" class="btn bg-lightgold ff-semibold text-uppercase fs-7">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
                 </div>
             </div>
         </div>

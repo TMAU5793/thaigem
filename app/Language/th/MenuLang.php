@@ -9,6 +9,7 @@ return [
     'navEvents' => 'อีเว้นท์',
     'navBusiness' => 'ชุมชนธุรกิจ',
     'navContactus' => 'ติดต่อเรา',
+    'navPriceUpdate' => 'ราคาล่าสุด',
 
     //Language for account
     'myAccount' => 'บัญชีของฉัน',

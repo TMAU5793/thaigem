@@ -10,10 +10,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ip the dummy text industry. Lorem Ip dummy text and typesetting industry.</p>
+                        <p class="ff-semibold fs-3">Fulfill your business opportunities with our trusted and reliable members.</p>
                         <div class="tg-title">
-                            <h3><?= lang('GlobalLang.members'); ?></h3>
-                            <h3 class="ff-bold"><?= lang('GlobalLang.category'); ?></h3>
+                            <h3><strong class="ff-bold"><?= lang('GlobalLang.members'); ?></strong> <span><?= lang('GlobalLang.category'); ?></span></h3>
                         </div>
                     </div>
                     <div class="col-md-4">

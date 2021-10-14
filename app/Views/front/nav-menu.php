@@ -2,10 +2,20 @@
     $request = service('request');
     $uri = service('uri');
     $segment = $uri->getSegment(1);
+
+    use App\Models\Account\AccountModel;
+    $userdata = session()->get('userdata');
+    $model = new AccountModel();
+    $status = $model->where('id',$userdata['id'])->first();
 ?>
 <div class="top-nav container">
     <div class="logo-top float-start">
-        <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="">
+        <div class="d-flex">
+            <div class="logo-tgjta">
+                <img src="<?= site_url('assets/images/favicon.png') ?>" alt="Logo">
+            </div>
+            <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="Logo">
+        </div>
     </div>
     <div class="top-more-menu float-end ff-medium text-end">
         <div class="lang mt-3">
@@ -32,7 +42,9 @@
                     <div class="user-menu-login d-none">
                         <ul>
                             <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
-                            <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
+                            <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
+                                <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
+                            <?php } ?>
                             <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
                             <li><a href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a></li>
                             <li><a href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a></li>
@@ -74,7 +86,7 @@
                     <a class="nav-link <?= ($segment=='community'?'active':'') ?>" href="<?= site_url('community'); ?>"><?= lang('MenuLang.navBusiness'); ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($segment=='contact'?'active':'') ?>" href="<?= site_url('contact'); ?>"><?= lang('MenuLang.navContactus'); ?></a>
+                    <a class="nav-link <?= ($segment=='price-update'?'active':'') ?>" href="<?= site_url('price-update'); ?>"><?= lang('MenuLang.navPriceUpdate'); ?></a>
                 </li>
             </ul>
         </div>

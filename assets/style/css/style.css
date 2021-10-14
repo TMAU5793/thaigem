@@ -136,6 +136,9 @@ img {
   padding: 1rem 0; }
   .top-nav .logo-top img {
     max-width: 250px; }
+  .top-nav .logo-top .logo-tgjta {
+    width: 75px;
+    margin-right: 2rem; }
   .top-nav a {
     text-decoration: none;
     color: #000000; }

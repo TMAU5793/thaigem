@@ -9,6 +9,7 @@ return [
     'navEvents' => 'Events',
     'navBusiness' => 'Business Community',
     'navContactus' => 'Contact Us',
+    'navPriceUpdate' => 'Price Update',
 
     //Language for account
     'myAccount' => 'My Account',

@@ -22,18 +22,25 @@
                         <form action="" method="POST">
                             <div class="form-group mb-3">
                                 <select name="ddl_cate" id="ddl_cate" class="form-control">
-                                    <option value="">Category Topic</option>
-                                    <?php for($i=1;$i<5;$i++){ ?>
-                                        <option value="<?= $i; ?>">Topic <?= $i; ?></option>
-                                    <?php } ?>
+                                    <option value="">-- select category --</option>
+                                    <?php
+                                        if($cates){
+                                            foreach($cates as $cate){
+                                    ?>
+                                        <option value="<?= $cate['id'] ?>"><?= $cate['name_th'] ?></option>
+                                    <?php } } ?>
                                 </select>
                             </div>
-                            <div class="acform-upload text-center mb-3">
-                                <input type="file" name="file_upload" class="">
-                                <small class="d-block">Maximun 20MB</small>
+
+                            <div class="webboard-img mb-3">
+                                <div class="acform-upload text-center mb-3">
+                                    
+                                </div>
+                                <input type="file" name="file_upload[]" class="form-control" multiple accept="image/*">
                             </div>
+
                             <div class="form-group mb-3">
-                                <textarea name="txt_topic" id="txt_topic" class="form-control" placeholder="Topic Webboard"></textarea>
+                                <textarea name="txt_topic" id="txt_topic" class="form-control" placeholder="Webboard detail"></textarea>
                             </div>
                             <button type="button" class="btn btn-black-border">Comfirm</button>
                         </form>

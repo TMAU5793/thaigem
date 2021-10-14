@@ -66,7 +66,7 @@
                                     
                                 </div>
                                 <input id="file_album" name="file_album[]" type="file" class="form-control" multiple />
-                                <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 900 x 540 px </small>
+                                <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 900 x 450 px </small>
                             </div>
 
                             <div class="ac-about input-disabled mt-5">

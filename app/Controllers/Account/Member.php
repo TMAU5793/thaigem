@@ -136,9 +136,9 @@ class Member extends Controller
 			if (!is_dir($path)) {
 				mkdir($path, 0777, TRUE);
 				//$file->move($path,$newName);
-                $image->withFile($file)->fit(900, 540, 'center')->save($path.'/'.$newName);
+                $image->withFile($file)->fit(900, 450, 'center')->save($path.'/'.$newName);
 			}else{
-				$image->withFile($file)->fit(900, 540, 'center')->save($path.'/'.$newName);
+				$image->withFile($file)->fit(900, 450, 'center')->save($path.'/'.$newName);
 			}
 			$thumb = [
                 'member_id' => $id,

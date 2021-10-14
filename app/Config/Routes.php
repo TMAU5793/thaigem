@@ -54,12 +54,14 @@ $routes->get('account/event', 'Account/Event::index',['filter' => 'memberAuth'])
 $routes->get('account/form', 'Account/Accountform::index',['filter' => 'memberAuth']);
 $routes->get('account/form/event', 'Account/Accountform::event',['filter' => 'memberAuth']);
 $routes->get('account/invoice', 'Account/Invoice::index',['filter' => 'memberAuth']);
-
 $routes->match(['get', 'post'],'account/register', 'Account/Account::register');
 $routes->post('account/login', 'Account/Account::login');
 $routes->match(['get', 'post'],'loginfacebook', 'Account/Account::loginFacebook');
 $routes->match(['get', 'post'],'logingoogle', 'Account/Account::loginGoogle');
 $routes->get('account/logout', 'Account/Account::logout');
+
+//Front path
+$routes->get('price-update', 'Priceupdate::index');
 
 //Api path
 $routes->post('amphurepi', 'Api/LocationApi::getAmphure');
