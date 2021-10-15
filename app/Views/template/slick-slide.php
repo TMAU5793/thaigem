@@ -125,10 +125,19 @@
             focusOnSelect: true,
             infinite: false
         });
+
+        $('.slider-for-hidedots').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            infinite: false,
+            asNavFor: '.slider-nav-hidedots'
+        });
         $('.slider-nav-hidedots').slick({
             slidesToShow: 3,
             slidesToScroll: 1,
-            asNavFor: '.slider-for',
+            asNavFor: '.slider-for-hidedots',
             dots: false,
             focusOnSelect: true,
             infinite:false

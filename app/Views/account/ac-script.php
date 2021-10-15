@@ -10,13 +10,13 @@
         }
     }
 
-    function multiImg(input) {
-        $('#album_fallback').html('');
+    function multiImg(input,el) {
+        $(el).html('');
         if (input.files && input.files[0]) {
-            for (var i = 0; i < input.files.length; i++) {
+            for (var i = 0; i < 5; i++) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $('#album_fallback').append('<img src=' + e.target.result + '>');
+                    $(el).append('<img src=' + e.target.result + '>');
                 }
                 reader.readAsDataURL(input.files[i]);
             }
@@ -31,7 +31,12 @@
 
         //display album image
         $("#file_album").change(function () {
-            multiImg(this);
+            multiImg(this,'#album_fallback');
+        });
+
+        //display webboard image
+        $("#file_webboard").change(function () {
+            multiImg(this,'#webboard_img');
         });
 
         //buttin edit account information
@@ -103,4 +108,39 @@
             return true;
         }
     }
+
+    function deletePost(id,path,el){
+        var result = confirm("ยืนยันการลบ?");
+        if(result){
+            $.post(path, {id:id},
+                function (resp) {
+                    if(resp){
+                        $('#removeImgModal').modal('show');
+                        $('#'+el).remove();
+                    }
+                }
+            );
+            return true;
+        }
+    }
+
+    // Ckediter 
+    var domain = 'thaigem'; //change your domain for ckupload
+    ClassicEditor
+        .create( document.querySelector( '#txt_desc' ),{
+            ckfinder: {
+                uploadUrl: '../../'+domain+'/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+            },
+            toolbar: [
+                'heading', '|',
+                'ckfinder', 'imageUpload', 'blockQuote', '|',                
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',               
+                'outdent', 'indent', '|',
+                'insertTable', 'mediaEmbed', '|',
+                'undo', 'redo', '|',
+            ]
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>

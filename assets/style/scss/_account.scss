@@ -165,8 +165,9 @@
     }
     .acform-upload {
         background-color: $c-lightgray;
-        padding: 4rem 1rem;
+        padding: 2rem 1.5rem;
         border-radius: 6px;
+        min-height: 135px;
     }
 }
 
@@ -225,5 +226,39 @@
                 color: #fff;
             }
         }
+    }
+}
+
+#webboard_img {
+    img {
+        width: 18.22%;
+        margin: 0 .5rem;
+    }
+}
+
+.input-hide {
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+}
+
+.label-file-img {
+    background-color: $c-lightgold;
+    padding: 6px 1rem 4px;
+    border-radius: 6px;
+    text-align: center;
+    width: 150px;
+    cursor: pointer;
+}
+
+.webboard-body {
+    textarea {
+        min-height: 150px;
+    }
+}
+
+.ck-editor {
+    .ck-content {
+        min-height: 250px;
     }
 }

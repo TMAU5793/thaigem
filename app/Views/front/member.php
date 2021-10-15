@@ -72,47 +72,50 @@
             </div>
 
             <div class="row">
-                <?php for($n=1;$n<7;$n++){ ?>
+                <?php
+                    if($info){
+                        foreach($info as $row){
+                ?>
                 <div class="col-md-6 position-relative mt-4">
                     <div class="shadow-lightgold">
                         <div class="ac-album w-50">
-                            <div class="main-album-img slider-for">
+                            <div class="main-album-img slider-for-hidedots">
                                 <?php
-                                    for($i=1;$i<5; $i++){
+                                    if($album){
+                                        foreach($album as $img){
+                                            if($img['member_id'] == $row['id']){
                                 ?>
                                     <div class="slider-for-item">
-                                        <img src="<?= site_url('assets/images/front/member-main.jpg') ?>" alt="">
+                                        <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $row['name'].' '.$row['lastname'] ?>">
                                     </div>
-                                <?php } ?>
+                                <?php } } } ?>
                             </div>
                             <div class="album-item slider-nav-hidedots">
-                                <div class="slider-nav-item">
-                                    <img src="<?= site_url('assets/images/account/album-2.jpg') ?>" alt="">
-                                </div>
-                                <div class="slider-nav-item">
-                                    <img src="<?= site_url('assets/images/account/album-3.jpg') ?>" alt="">
-                                </div>
-                                <div class="slider-nav-item">
-                                    <img src="<?= site_url('assets/images/account/album-4.jpg') ?>" alt="">
-                                </div>
-                                <div class="slider-nav-item">
-                                    <img src="<?= site_url('assets/images/account/album-2.jpg') ?>" alt="">
-                                </div>
-                                <div class="slider-nav-item">
-                                    <img src="<?= site_url('assets/images/account/album-3.jpg') ?>" alt="">
-                                </div>
+                                <?php
+                                    if($album){
+                                        foreach($album as $img){
+                                            if($img['member_id'] == $row['id']){
+                                ?>
+                                    <div class="slider-nav-item">
+                                        <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>" alt="thumbnail">
+                                    </div>
+                                <?php } } } ?>
                             </div>
                         </div>
                         <div class="item-body text-center w-50 plr-2rem position-absolute translate-middle-y top-50 end-0">
-                            <h5 class="ff-semibold">kanyaluk Wathananon</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                            <h5 class="ff-semibold"><?= $row['name'].' '.$row['lastname'] ?></h5>
+                            <p><?= $row['about'] ?></p>
                             
                             <div class="event-action mt-2">
-                                <a href="<?= site_url('knowledge/desc'); ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                <a href="<?= site_url('member/id/'.$row['id']); ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.viewProfile'); ?></a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php } }else{ ?>
+                    <div class="col-12 mt-4 text-center">
+                        <span>ไม่พบข้อมูล</span>
+                    </div>
                 <?php } ?>
             </div>
         </div>

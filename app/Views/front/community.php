@@ -41,13 +41,15 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-1 text-end"><strong>Reply</strong></div>
                     <div class="col-md-1 text-end"><strong>Read</strong></div>
-                    <div class="col-md-1 text-end"><strong>Post</strong></div>
                     <div class="col-md-2"><strong class="ps-3">Member name</strong></div>
-                    <div class="col-md-2 text-center"><strong>Recent Comment</strong></div>
+                    <div class="col-md-3 text-center"><strong>Recent Comment</strong></div>
                 </div>
 
                 <div class="forum-body">
-                    <?php for($i=0;$i<6;$i++){ ?>
+                    <?php 
+                        if($info){
+                            foreach($info as $row){
+                    ?>
                     <div class="row">
                         <div class="col-md-1">
                             <div class="forum-img" onclick="location.href='<?= site_url('community/desc') ?>'">
@@ -55,26 +57,30 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="ff-semibold mb-0"> <a href="<?= site_url('community/desc') ?>" class="fs-6 text-decoration-none c-black">Name toppic <?= $i; ?></a></h2>
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting in dustry. Lorem Ipsum has been</p>
+                            <h2 class="ff-semibold mb-0"> <a href="<?= site_url('community/post/'.$row['id']) ?>" class="fs-6 text-decoration-none c-black"><?= $row['topic']; ?></a></h2>
+                            <p class="mb-0"><?= word_limiter(strip_tags($row['desc']),20) ?></p>
                         </div>
                         <div class="col-md-1 text-end">
-                            <span>60</span>
+                            <span><?= $row['reply']; ?></span>
                         </div>
                         <div class="col-md-1 text-end">
-                            <span>650</span>
-                        </div>
-                        <div class="col-md-1 text-end">
-                            <span>60</span>
+                            <span><?= $row['view']; ?></span>
                         </div>
                         <div class="col-md-2">
-                            <span class="ps-3">Kanokpan Lakakum</span>
+                            <?php
+                                foreach($member as $item){
+                                    if($row['member_id']==$item['id']){
+                            ?>
+                                <span class="ps-3"><?= $item['name'].' '.$item['lastname'] ?></span>
+                            <?php } } ?>
                         </div>
-                        <div class="col-md-2 text-center">
-                            <div class="forum-date">26/12/2020</div>
-                            <small>18:00 PM</small>
+                        <div class="col-md-3 text-center">
+                            <div class="forum-date"><?= substr($row['created_at'],0,10); ?></div>
+                            <small><?= substr($row['created_at'],11); ?></small>
                         </div>
                     </div>
+                    <?php } }else{ ?>
+                        <div class="tect-center p-3">ไม่พบข้อมูล</div>
                     <?php } ?>
                 </div>
 

@@ -65,6 +65,7 @@ class AccountModel extends Model
             'name' => $name,
 			'lastname' => $lastname,
             'email' => $data['email'],
+			'profile' => $data['profile_pic'],
 			'type' => 'member',
             'social_type' => $data['type'],
 			'social_id' => $data['id'],

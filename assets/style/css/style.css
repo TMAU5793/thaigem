@@ -294,8 +294,9 @@ img {
     font-size: 6rem; }
 .acform-body .acform-upload {
   background-color: #ebebeb;
-  padding: 4rem 1rem;
-  border-radius: 6px; }
+  padding: 2rem 1.5rem;
+  border-radius: 6px;
+  min-height: 135px; }
 
 .img_edit {
   background-image: url("../../images/img-edit.jpg");
@@ -343,6 +344,29 @@ img {
       .album-managed .managed-item i:hover {
         background: #dc3545;
         color: #fff; }
+
+#webboard_img img {
+  width: 18.22%;
+  margin: 0 .5rem; }
+
+.input-hide {
+  visibility: hidden;
+  height: 0;
+  padding: 0; }
+
+.label-file-img {
+  background-color: #cec6b2;
+  padding: 6px 1rem 4px;
+  border-radius: 6px;
+  text-align: center;
+  width: 150px;
+  cursor: pointer; }
+
+.webboard-body textarea {
+  min-height: 150px; }
+
+.ck-editor .ck-content {
+  min-height: 250px; }
 
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");
