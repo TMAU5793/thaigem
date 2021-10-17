@@ -15,7 +15,7 @@ return [
     'notMember' => 'You are not a member yet?',    
     'newsletter' => 'Get Newsletter',
     'subscribe' => 'Subscribe',
-    'termCondition' => 'Term & Condition',
+    'termCondition' => 'Terms & Condition',
     'accept' => 'Accept',
     'userName' => 'Username',
     'name' => 'Name',
@@ -50,5 +50,6 @@ return [
     'event' => 'Event',
     'share' => 'Share',
     'advanceSearch' => 'Advance Search',
+    'advanceclose' => 'Close Advance Search',
     'search' => 'Search'
 ];

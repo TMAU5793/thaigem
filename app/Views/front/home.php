@@ -11,8 +11,8 @@
                 <div class="row">
                     <div class="col-md-8">
                         <p class="ff-semibold fs-3">Fulfill your business opportunities with our trusted and reliable members.</p>
-                        <div class="tg-title">
-                            <h3><strong class="ff-bold"><?= lang('GlobalLang.members'); ?></strong> <span><?= lang('GlobalLang.category'); ?></span></h3>
+                        <div class="tg-title mt-5rem">
+                            <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.members'); ?></strong> <span><?= lang('GlobalLang.category'); ?></span></h3>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="tg-title">
-                        <h3><?= lang('GlobalLang.priceUpdate'); ?></h3>
+                        <h3 class="c-darkgold"><?= lang('GlobalLang.priceUpdate'); ?></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="tg-title">
-                        <h3><strong class="ff-bold"><?= lang('GlobalLang.events'); ?></strong></h3>
+                        <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.events'); ?></strong></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -143,7 +143,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="tg-title">
-                        <h3><strong class="ff-bold"><?= lang('GlobalLang.knowledgeNews'); ?></strong></h3>
+                        <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.knowledgeNews'); ?></strong></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -242,7 +242,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tg-title">
-                        <h3><strong class="ff-bold"><?= lang('GlobalLang.member'); ?></strong></h3>
+                        <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.member'); ?></strong></h3>
                     </div>
                 </div>
             </div>

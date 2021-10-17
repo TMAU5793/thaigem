@@ -141,7 +141,7 @@
                             <input type="hidden" name="hd_thumb_del" id="hd_thumb_del" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
                             <label for="txt_thumb" class="d-block label-img btn-primary">เลือกรูป</label>
                         </div>
-                        <p class="text-danger mt-3">*ขนาดรูปที่ต้องการ 650 x 650px</p>
+                        <p class="text-danger mt-3">*ขนาดรูปที่ต้องการ 650 x 550px</p>
                     </div>
                 </div>                
             </form>

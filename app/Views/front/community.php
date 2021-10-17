@@ -3,12 +3,6 @@
 
     <section class="banner position-relative">
         <img src="<?= site_url('assets/images/banner/member.jpg') ?>" alt="">
-        <!-- <div class="container">
-            <div class="banner-title c-darkgold">
-                <h1 class="text-uppercase"><?= lang('MenuLang.navAboutus'); ?></h1>
-                <strong class="display-3 ff-bold">TGJTA</strong>
-            </div>
-        </div> -->
     </section>
 
     <section class="community-content ptb-2rem">
@@ -17,18 +11,18 @@
                 <h3 class="text-uppercase ff-semibold"><?= lang('MenuLang.webboard'); ?></h3>
             </div>
             
-            <form action="">
+            <form action="<?= site_url('community/search') ?>" method="GET">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="keyword">
+                            <input type="text" name="txt_keyword" class="form-control" placeholder="keyword" value="<?= (isset($keyword)?$keyword:'') ?>">
                             <div class="input-group-append">
                                 <span class="input-group-text bg-darkgold c-white h-100"><i class="fas fa-search"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold" id="btn_search_webboard"><?= lang('GlobalLang.search'); ?></button>
+                        <button type="submit" class="btn bg-darkgold c-white w-100 ff-semibold" id="btn_search_webboard"><?= lang('GlobalLang.search'); ?></button>
                     </div>
                 </div>
             </form>

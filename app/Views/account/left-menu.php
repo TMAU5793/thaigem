@@ -102,7 +102,7 @@
                 <strong class="d-block">Company Name</strong>
                 <small class="small-data"><?= $info['company']; ?></small>
                 <div class="edit-field d-none">
-                    <input type="text" name="txt_company" class="form-control">
+                    <input type="text" name="txt_company" class="form-control" value="<?= $info['company']; ?>">
                 </div>
             </div>
 

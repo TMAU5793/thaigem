@@ -28,6 +28,9 @@ img {
 .plr-4rem {
   padding: 0 4rem; }
 
+.mt-5rem {
+  margin-top: 5rem; }
+
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -116,6 +119,21 @@ img {
 
 .border-b-darkgold {
   border-bottom: 1px solid #665f4f; }
+
+.a-hover-darkgold {
+  color: #665f4f;
+  text-decoration: none; }
+  .a-hover-darkgold:hover {
+    color: #665f4f;
+    border-bottom: 2px solid #665f4f;
+    padding-bottom: 4px; }
+
+.a-hover-white:hover {
+  color: #ffffff; }
+
+button.bg-darkgold:hover, button.bg-darkgold:focus {
+  color: #ffffff;
+  box-shadow: 0px 0px 4px 2px #cec6b2; }
 
 .navbar {
   border-top: 2px solid #c1c1c1;
@@ -359,7 +377,7 @@ img {
   padding: 6px 1rem 4px;
   border-radius: 6px;
   text-align: center;
-  width: 150px;
+  min-width: 150px;
   cursor: pointer; }
 
 .webboard-body textarea {
@@ -613,7 +631,8 @@ img {
   .forum-box .forum-body .member-info strong {
     margin-right: 15px; }
   .forum-box .forum-body .member-info .info-item {
-    display: inline-flex; }
+    display: inline-flex;
+    width: 100%; }
 .forum-box .reply-forum {
   padding: 0 1.5rem; }
 
@@ -678,5 +697,11 @@ img {
   border-color: #000; }
 #registerModal .form-check {
   margin-right: 0; }
+
+#termsModal .modal-dialog {
+  max-width: 800px; }
+#termsModal .modal-body {
+  height: 85vh;
+  overflow-y: scroll; }
 
 /*# sourceMappingURL=style.css.map */

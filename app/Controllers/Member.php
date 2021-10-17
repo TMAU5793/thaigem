@@ -9,17 +9,32 @@ use App\Models\Admin\BusinessModel;
 
 class Member extends BaseController
 {
+    protected $lang;
+    public function __construct() {
+        $this->lang = session()->get('lang');
+        if($this->lang==""){
+            $this->lang = 'en';
+        }
+    }
+
 	public function index()
 	{   
         $model = new MemberModel();
         $albumModel = new AlbumModel();
+        $pvModel = new ProvinceModel();
+        $cateModel = new ProductCategoryModel();
+        $bnModel = new BusinessModel();
 
         $data = [
             'meta_title' => 'Member',
+            'lang' => $this->lang,
             'info' => $model->where(['type'=>'dealer','status'=>'2'])->findAll(),
-            'album' => $albumModel->findAll()
+            'album' => $albumModel->findAll(),
+            'province' => $pvModel->findAll(),
+            'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
+            'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
         ];
-        //print_r($data['info']);
+        //print_r($data['category']);
         echo view('front/member', $data);
 	}
 
@@ -42,13 +57,64 @@ class Member extends BaseController
                 'meta_title' => $member['name'].' '.$member['lastname'],
                 'meta_desc' => $member['about'],
                 'info' => $member,
-                'album' => $albumModel->findAll(),
+                'album' => $albumModel->where('member_id',$segment3)->findAll(),
                 'category' => $cateModel->where('id',$category['maincate_id'])->first(),
                 'business' => $bnModel->where('id',$business['main_type'])->first(),
                 'province' => $pvModel->where('code',$member['province'])->first()
             ];
             
             echo view('front/member-desc', $data);
+        }else{
+            return redirect()->to('member');
+        }
+    }
+
+    public function search()
+    {
+        helper('text');
+        $request = service('request');
+        $mbModel = new MemberModel();
+        $albumModel = new AlbumModel();
+        $pvModel = new ProvinceModel();
+        $cateModel = new ProductCategoryModel();
+        $bnModel = new BusinessModel();
+        $get = $request->getGet();
+
+        if($get){
+            $keyword = $get['txt_keyword'];
+            $company = $get['kw_company'];
+            $productType = $get['ddl_product_type'];
+            $business = $get['ddl_business'];
+            $province = $get['ddl_province'];
+            $duration = $get['ddl_duration'];
+
+            if($keyword=="" && $company!=""|| $productType!="" || $business!="" || $province!="" || $duration!=""){
+                $result = $mbModel->where('status','2')
+                            ->like('company',$company)
+                            ->like('product_type',$productType)
+                            ->like('business_type',$business)
+                            ->like('province',$province)                           
+                            ->findAll();
+                $avd = TRUE;
+
+            }else if($keyword!="" && $company=="" && $productType=="" && $business=="" && $province=="" && $duration==""){
+                $result = $mbModel->like('name',$keyword)->orLike('lastname',$keyword)->where('status','2')->findAll();
+            }else{
+                return redirect()->to('member');
+            }
+            
+            $data = [
+                'meta_title' => 'Member',
+                'lang' => $this->lang,
+                'info' => $result,
+                'album' => $albumModel->findAll(),
+                'province' => $pvModel->findAll(),
+                'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
+                'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
+                'avd' => $avd
+            ];
+            //print_r($result);
+            echo view('front/member', $data);
         }else{
             return redirect()->to('member');
         }

@@ -10,7 +10,8 @@
                     <strong class="ff-semibold fs-4"><?= lang('GlobalLang.signin') ?></strong>
                     <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ip the dummy text industry.</p>                    
                 </div>
-                <form action="<?= base_url('account/login'); ?>" method="POST">                    
+                <form action="<?= base_url('account/login'); ?>" method="POST">
+                    <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
                     <div class="input-nobg plr-2rem">
                         <?php if(isset($signin_valid)): ?>
                             <div class="alert alert-danger"><?= $signin_valid->listErrors(); ?></div>
@@ -82,17 +83,11 @@
                         <div class="form-group mb-3">
                             <input type="password" class="form-control" name="txt_confirm_password" placeholder="<?= lang('GlobalLang.comfirmPassword') ?> *">
                         </div>
-                        <!-- <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="cb_newsletter">
-                            <label class="form-check-label" for="cb_newsletter">
-                                <?= lang('GlobalLang.newsletter') ?>
-                            </label>
-                        </div> -->
                         <div class="form-check mb-3">
                             <input type="hidden" name="txt_term" id="txt_term">
                             <input class="form-check-input" type="checkbox" id="cb_term" name="cb_term">
                             <label class="form-check-label" for="cb_term">
-                                <?= lang('GlobalLang.accept') ?> <a href="" class="ff-semibold c-black"><?= lang('GlobalLang.termCondition') ?></a>
+                                <?= lang('GlobalLang.accept') ?> <a href="" class="ff-semibold c-black" data-bs-toggle="modal" data-bs-target="#termsModal"><?= lang('GlobalLang.termCondition') ?></a>
                             </label>
                         </div>
                         <button type="submit" class="btn bg-lightgold ff-semibold w-100 text-uppercase mb-3"><?= lang('GlobalLang.register') ?></button>
@@ -131,6 +126,92 @@
 
                     <!-- Pinterest -->
                     <a href="" class="share-pt"><i class="fab fa-pinterest"></i> <span>pinterest</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal terms -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <span class="ff-semibold text-center d-inline-block w-100">Terms & Condition </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4">
+                    <p>
+                        The standard Lorem Ipsum passage, used since the 1500s
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    </p>
+                    <p>
+                        Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+                        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                    </p>
+                        1914 translation by H. Rackham
+                        "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Event -->
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-lightgold border-0">
+            <div class="modal-header pb-0">
+                <span class="ff-semibold text-center d-inline-block w-100"> Booking Fail </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4">
+                    <p class="c-black">
+                        <strong class="ff-semibold">ล้มเหลว! :</strong> การจองบูธงานอีเว้นท์สำหรับสมาชิกที่เป็นดีลเลอร์เท่านั้น
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Delete Reply Webboard -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <p>ระบบลบข้อมูลเรียบร้อยแล้ว</p>
+                    <p>Success, Remove your data</p>
+                </div>
+                <div class="text-center mb-3">
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Hide Reply Webboard -->
+<div class="modal fade" id="hideModal" tabindex="-1" aria-labelledby="hideModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
+                <div class="text-center" id="reply_msg">
+                    <p>ระบบอัพเดตสถานะเรียบร้อยแล้ว</p>
+                    <p>Success, Update un plubilc item.</p>
+                </div>
+                <div class="text-center mb-3">
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
                 </div>
             </div>
         </div>

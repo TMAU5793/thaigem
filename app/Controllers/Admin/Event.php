@@ -90,7 +90,7 @@ class Event extends Controller
                     'desc_en' => $request->getVar('txt_desc_en'),
                     'slug' => $slug,
                     'meta_title' => ($request->getVar('meta_title')!=""?$request->getVar('meta_title'):$request->getVar('txt_title')),
-                'meta_title_en' => ($request->getVar('meta_title_en')!=""?$request->getVar('meta_title_en'):$request->getVar('txt_title_en')),
+                    'meta_title_en' => ($request->getVar('meta_title_en')!=""?$request->getVar('meta_title_en'):$request->getVar('txt_title_en')),
                     'meta_desc' => $request->getVar('meta_desc'),
                     'meta_desc_en' => $request->getVar('meta_desc_en'),
                     'status' => $request->getVar('txt_status'),
@@ -104,9 +104,9 @@ class Event extends Controller
                     
                     if (!is_dir('uploads/event')) {
                         mkdir('uploads/event', 0777, TRUE);
-                        $this->resizeImg($id,$thumb,450,450,'uploads/event'); //id,file,width,height,path
+                        $this->resizeImg($id,$thumb,450,350,'uploads/event'); //id,file,width,height,path
                     }else{
-                        $this->resizeImg($id,$thumb,450,450,'uploads/event'); //id,file,width,height,path
+                        $this->resizeImg($id,$thumb,450,350,'uploads/event'); //id,file,width,height,path
                     }
                 }
                 return redirect()->to(site_url('admin/event'));
@@ -159,9 +159,9 @@ class Event extends Controller
                 
                 if (!is_dir('uploads/event')) {
 					mkdir('uploads/event', 0777, TRUE);
-                    $this->resizeImg($id,$thumb,450,450,'uploads/event'); //file,width,height,path
+                    $this->resizeImg($id,$thumb,450,350,'uploads/event'); //file,width,height,path
 				}else{
-                    $this->resizeImg($id,$thumb,450,450,'uploads/event'); //file,width,height,path
+                    $this->resizeImg($id,$thumb,450,350,'uploads/event'); //file,width,height,path
                 }                
             }
 

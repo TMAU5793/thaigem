@@ -13,52 +13,73 @@
             </div>
 
             <div class="search-member mt-4">
-                <form action="">
+                <form action="<?= site_url('member/search') ?>" method="GET">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="kw_company">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Company name, Product type">
+                                <input type="text" name="txt_keyword" class="form-control" placeholder="Member name" value="<?= (isset($_GET['txt_keyword'])?$_GET['txt_keyword']:'') ?>">
                                 <div class="input-group-append">
                                     <span class="input-group-text bg-darkgold c-white"><i class="fas fa-search"></i></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
+                        <div class="col-md-6 btn-avd">
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold search-show btn_advance" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
+                            <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white w-100 ff-semibold search-show d-none a-hover-white btn_advance"><?= lang('GlobalLang.advanceclose'); ?></a>
                         </div>
 
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_product_type" id="ddl_product_type" class="w-100">
-                                    <option value="">Product type</option>
+                                    <option value=""> --product type-- </option>
+                                    <?php
+                                        if($category){
+                                            foreach($category as $row){
+                                    ?>
+                                        <option value="<?= $row['id'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['id']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                    <?php } } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
-                                <select name="ddl_company" id="ddl_company" class="w-100">
-                                    <option value="">Company name</option>
-                                </select>
+                                <input type="text" name="kw_company" class="form-control" placeholder="Company name" value="<?= (isset($_GET['kw_company'])?$_GET['kw_company']:'') ?>">
                             </div>
                         </div>
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_business" id="ddl_business" class="w-100">
-                                    <option value="">Business type</option>
+                                    <option value=""> --business type-- </option>
+                                    <?php
+                                        if($business){
+                                            foreach($business as $row){
+                                    ?>
+                                        <option value="<?= $row['id'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['id']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                    <?php } } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_province" id="ddl_province" class="w-100">
-                                    <option value="">Province</option>
+                                    <option value=""> --province-- </option>
+                                    <?php
+                                        if($province){
+                                            foreach($province as $row){
+                                    ?>
+                                        <option value="<?= $row['code'] ?>" <?= (isset($_GET['ddl_province'])&&$_GET['ddl_province']==$row['code']?'selected':'') ?>><?= $row['name_'.$lang] ?></option>
+                                    <?php } } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
-                                <select name="ddl_member" id="ddl_member" class="w-100">
-                                    <option value="">Membership Duration</option>
+                                <select name="ddl_duration" id="ddl_duration" class="w-100">
+                                    <option value=""> --membership duration-- </option>
+                                    <option value="1" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='1'?'selected':'') ?>> น้อยกว่า 1ปี </option>
+                                    <option value="2" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='2'?'selected':'') ?>> 1ปี - 2ปี </option>
+                                    <option value="3" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='3'?'selected':'') ?>> 2ปี - 4ปี  </option>
+                                    <option value="4" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='4'?'selected':'') ?>> มากว่า 4ปี  </option>
                                 </select>
                             </div>
                         </div>

@@ -385,6 +385,7 @@
             }
             .info-item {
                 display: inline-flex;
+                width: 100%;
             }
         }
     }
@@ -476,5 +477,15 @@
     }
     .form-check {
         margin-right: 0;
+    }
+}
+
+#termsModal {
+    .modal-dialog {
+        max-width: 800px;
+    }
+    .modal-body {
+        height: 85vh;
+        overflow-y: scroll;
     }
 }

@@ -55,7 +55,7 @@
             <?php }else{ ?>
                 <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
             <?php } ?>
-            <a href="" class="ms-3 text-uppercase"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
+            <a href="<?= site_url('help-center') ?>" class="ms-3 text-uppercase"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
         </div>
     </div>
     <div class="clearfix"></div>

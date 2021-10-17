@@ -10,10 +10,10 @@
         }
     }
 
-    function multiImg(input,el) {
+    function multiImg(input,el,limit) {
         $(el).html('');
         if (input.files && input.files[0]) {
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < limit; i++) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     $(el).append('<img src=' + e.target.result + '>');
@@ -31,7 +31,9 @@
 
         //display album image
         $("#file_album").change(function () {
-            multiImg(this,'#album_fallback');
+            var album = '<?= (isset($album)?count($album) : 0 ) ?>';
+            var limit = 9-album;
+            multiImg(this,'#album_fallback',limit); //files, display element, limit images
         });
 
         //display webboard image

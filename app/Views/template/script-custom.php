@@ -44,10 +44,23 @@ use Google\Service\Adsense\Site;
         if(signin_valid){
             $('#loginModal').modal('show');
         }
-
-        $('#btn_advance').on('click',function () { 
+        var avd = '<?= (isset($avd)) ?>';
+        if(avd){
             $('.search-show').toggleClass('d-none');
             $('.search-member .col-12').toggleClass('col-md-6');
+            $('#kw_company').toggle('slow');
+            $('.search-member .row').toggleClass('justify-content-center');
+            $('.btn-avd').toggleClass('col-md-12');
+            $('input[name="txt_keyword"]').val('');
+        }
+
+        $('.btn_advance').on('click',function () { 
+            $('.search-show').toggleClass('d-none');
+            $('.search-member .col-12').toggleClass('col-md-6');
+            $('#kw_company').toggle('slow');
+            $('.search-member .row').toggleClass('justify-content-center');
+            $('.btn-avd').toggleClass('col-md-12');
+            $('input[name="txt_keyword"]').val('');
         });
 
         //Social button share URL
@@ -80,5 +93,39 @@ use Google\Service\Adsense\Site;
 
     });
 
-    
+    function deleteReply(id){
+        var result = confirm("ยืนยันการลบ?");
+        if(result){
+            var path = '<?= site_url('community/delete') ?>';
+            $.post(path, {id:id},
+                function (resp) {
+                    if(resp){
+                        $('#deleteModal').modal('show');
+                        $('.reply-del-'+id).remove();
+                    }
+                }
+            );
+            return true;
+        }
+    }
+
+    function hideReply(id,status){
+        var msg = 'ยืนยันปิดสถานะแสดงข้อความ';
+        if(status=='1'){
+            msg = 'ยืนยันเปิดสถานะแสดงข้อความ';
+        }
+        var result = confirm(msg);
+        if(result){
+            var path = '<?= site_url('community/hideReply') ?>';
+            $.post(path, {id:id,status:status},
+                function (resp) {
+                    if(resp){
+                        $('#hideModal').modal('show');
+                        location.reload();
+                    }
+                }
+            );
+            return true;
+        }
+    }
 </script>

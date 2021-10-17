@@ -102,6 +102,7 @@ class Member extends Controller
         helper(['form', 'url']);
         $request = service('request');
         $model = new AccountModel();
+        $albummodel = new AlbumModel();
         $post = $request->getPost();
 
         if ($post) {
@@ -109,10 +110,15 @@ class Member extends Controller
                 'about' => $post['txt_ac_about']
             ];            
             $model->update($post['hd_id'],$arr);
-            
+            $album = $albummodel->where('member_id',$post['hd_id'])->findAll();
+            $no = 9-count($album);
             if ($request->getFileMultiple('file_album')) {
+                $n=0;
                 foreach($request->getFileMultiple('file_album') as $file) {
-                    $this->uploadAlbum($post['hd_id'],$file);
+                    $n++;
+                    if($n<=$no){
+                        $this->uploadAlbum($post['hd_id'],$file);
+                    }
                 }
             }
             return redirect()->to('account')->with('msg',TRUE);

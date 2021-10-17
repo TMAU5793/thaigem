@@ -15,9 +15,9 @@
                             <?php
                                 $profile_pic = (is_file($info['profile'])?site_url($info['profile']):site_url('assets/images/img-default.png'));
                                 if(!is_file($info['profile'])){
-                                    if($info['type'] == 'facebook'){
+                                    if($info['social_type'] == 'facebook'){
                                         $profile_pic = 'https://graph.facebook.com/'.$info['id'].'/picture?width=400&height=400';
-                                    }else if($info['type'] == 'google'){
+                                    }else if($info['social_type'] == 'google'){
                                         $profile_pic = site_url($info['profile']);
                                     }
                                 }

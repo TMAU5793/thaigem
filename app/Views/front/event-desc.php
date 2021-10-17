@@ -34,9 +34,11 @@
                 <div class="text-center mb-3">
                     <?php
                         $logged = session()->get('userdata');
-                        if($logged['logged_member']){
+                        if($logged['logged_member'] && $logged['user_type']=='dealer'){
                     ?>
                         <a href="javascript:void(0)" class="btn btn-black-border" id="booking_event" data-event="<?= $info['id']; ?>">Book Event</a>
+                    <?php }else if($logged['logged_member'] && $logged['user_type']!='dealer'){ ?>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#eventModal" class="btn btn-black-border">Book Event</a>
                     <?php }else{ ?>
                         <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-black-border">Book Event</a>
                     <?php } ?>

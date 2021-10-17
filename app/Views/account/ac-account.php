@@ -30,7 +30,7 @@
                                             foreach($album as $img){
                                     ?>
                                         <div class="slider-for-item position-relative">
-                                            <img src="<?= site_url($img['images']) ?>">
+                                            <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>">
                                             <div class="ff-semibold position-absolute top-0 start-50">
                                                 
                                             </div>
@@ -43,7 +43,7 @@
                                             foreach($album as $img){
                                     ?>
                                         <div class="slider-nav-item">
-                                            <img src="<?= site_url($img['images']) ?>">
+                                            <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>">
                                         </div>
                                     <?php } } ?>
                                 </div>
@@ -56,17 +56,24 @@
                                             foreach($album as $img){
                                     ?>
                                     <div class="managed-item">
-                                        <img src="<?= site_url($img['images']) ?>">
-                                        <i class="far fa-trash-alt" data-id="<?= $img['id'] ?>"></i>
+                                        <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>">
+                                        <i class="far fa-trash-alt" data-id="<?= $img['id'] ?>" title="Delete Image"></i>
                                     </div>
                                     <?php } } ?>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="fallback" id="album_fallback">
-                                    
+                                    <?php
+                                        $count = count($album);
+                                        if($count == 9){
+                                    ?>
+                                        <span class="d-block text-center text-danger mt-4">*จำนวนรูปเต็มแล้ว กรุณาลบรูปเก่าหากต้องการเพิ่มรูปใหม่</span>
+                                    <?php } ?>
                                 </div>
-                                <input id="file_album" name="file_album[]" type="file" class="form-control" multiple />
+                                <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple />
+                                <label for="file_album" class="label-file-img">Choose Images</label>
                                 <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 900 x 450 px </small>
+                                <small class="text-danger mt-2 d-block">*จำกัดจำนวนรูปทั้งหมด 9 รูป </small>
                             </div>
 
                             <div class="ac-about input-disabled mt-5">

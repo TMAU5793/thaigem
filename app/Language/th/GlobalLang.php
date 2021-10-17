@@ -50,5 +50,6 @@ return [
     'event' => 'อีเว้นท์',
     'share' => 'แชร์',
     'advanceSearch' => 'ค้นหาแบบละเอียด',
+    'advanceclose' => 'ปิดการค้นหาแบบละเอียด',
     'search' => 'ค้นหา'
 ];

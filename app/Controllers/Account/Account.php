@@ -20,86 +20,95 @@ class Account extends Controller
     
     public function index()
     {   
-        $model = new AccountModel();
-        $albummodel = new AlbumModel();
-        $data = [
-            'ac_account' => TRUE,
-            'info' => $model->where('id',$this->member_id)->first(),
-            'album' => $albummodel->where('member_id',$this->member_id)->findAll()
-        ];
-        
-        echo view('account/ac-account',$data);
+        if($this->member_id!=""){
+            $model = new AccountModel();
+            $albummodel = new AlbumModel();
+            $data = [
+                'ac_account' => TRUE,
+                'info' => $model->where('id',$this->member_id)->first(),
+                'album' => $albummodel->where('member_id',$this->member_id)->findAll()
+            ];
+            
+            echo view('account/ac-account',$data);
+        }else{
+            return redirect()->to('');
+        }
     }
     
     public function register()
     {
-        helper(['form']);
-        $model = new AccountModel();
-        $request = service('request');
-        if ($request->getMethod() !== 'post') {
-            return redirect()->to(site_url());
-        }
-        if(session()->get('userdata')['logged_member']){
-            return redirect()->to('account');
-        }
-        //print_r($request->getPost());
+        if($this->member_id!=""){
+            helper(['form']);
+            $model = new AccountModel();
+            $request = service('request');
+            if ($request->getMethod() !== 'post') {
+                return redirect()->to(site_url());
+            }
+            if(session()->get('userdata')['logged_member']){
+                return redirect()->to('account');
+            }
+            //print_r($request->getPost());
 
-        $signup_valid = [
-            'txt_username' => [
-                'rules' => 'required|valid_email|is_unique[tbl_member.account]',
-                'errors'    =>  [
-                  'required'  =>  'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
-                  'valid_email'   =>  'รูปแบบอีเมลไม่ถูกต้อง',
-                  'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
+            $signup_valid = [
+                'txt_username' => [
+                    'rules' => 'required|valid_email|is_unique[tbl_member.account]',
+                    'errors'    =>  [
+                    'required'  =>  'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
+                    'valid_email'   =>  'รูปแบบอีเมลไม่ถูกต้อง',
+                    'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
+                    ]
+                ],
+                'txt_name' => [
+                    'rules' => 'required',
+                    'errors'    =>  [
+                    'required'  =>  'กรุณากรอกชื่อ'
+                    ]
+                ],
+                'txt_password'       => [
+                    'rules' =>  'required|min_length[6]|max_length[200]',
+                    'errors'    =>  [
+                    'required'  =>  'กรุณากรอกรหัสผ่าน',
+                    'min_length'   =>  'รหัสผ่านอย่างน้อย 6 ตัวอักษร'
+                    ]
+                ],
+                'txt_confirm_password'    => [
+                    'rules' =>  'matches[txt_password]',
+                    'errors'    =>  [
+                    'matches'  =>  'รหัสผ่านไม่ตรงกัน'
+                    ]
+                ],
+                'cb_term'    => [
+                    'rules' =>  'required',
+                    'errors'    =>  [
+                    'required'  =>  'กดยอมรับเงื่อนไข สำหรับการลงทะเบียน'
+                    ]
                 ]
-            ],
-            'txt_name' => [
-                'rules' => 'required',
-                'errors'    =>  [
-                  'required'  =>  'กรุณากรอกชื่อ'
-                ]
-            ],
-            'txt_password'       => [
-                'rules' =>  'required|min_length[6]|max_length[200]',
-                'errors'    =>  [
-                  'required'  =>  'กรุณากรอกรหัสผ่าน',
-                  'min_length'   =>  'รหัสผ่านอย่างน้อย 6 ตัวอักษร'
-                ]
-            ],
-            'txt_confirm_password'    => [
-                'rules' =>  'matches[txt_password]',
-                'errors'    =>  [
-                  'matches'  =>  'รหัสผ่านไม่ตรงกัน'
-                ]
-            ],
-            'cb_term'    => [
-                'rules' =>  'required',
-                'errors'    =>  [
-                  'required'  =>  'กดยอมรับเงื่อนไข สำหรับการลงทะเบียน'
-                ]
-            ]
-        ];
+            ];
 
-		if($this->validate($signup_valid)){
-            $result = $model->register($request->getPost());
-            if($result){
-                echo $result;
-                $member = $model->where('id', $result)->first();
-                $sess = [
-                    'id' => $member['id'],
-                    'account' => $member['account'],
-                    'name' => $member['name'],
-                    'lastname' => $member['lastname'],
-                    'email' => $member['email'],
-                    'logged_member' => TRUE
-                ];
+            if($this->validate($signup_valid)){
+                $result = $model->register($request->getPost());
+                if($result){
+                    
+                    $member = $model->where('id', $result)->first();
+                    $sess = [
+                        'id' => $member['id'],
+                        'account' => $member['account'],
+                        'name' => $member['name'],
+                        'lastname' => $member['lastname'],
+                        'email' => $member['email'],
+                        'user_type' => $member['type'],
+                        'logged_member' => TRUE
+                    ];
 
-                session()->set('userdata',$sess);
-                return redirect()->to(site_url('account'));
+                    session()->set('userdata',$sess);
+                    return redirect()->to(site_url('account'));
+                }
+            }else{
+                $data['signup_valid'] = $this->validator;
+                echo view('front/home',$data);
             }
         }else{
-            $data['signup_valid'] = $this->validator;
-            echo view('front/home',$data);
+            return redirect()->to('');
         }
     }
 
@@ -144,6 +153,7 @@ class Account extends Controller
                 'name' => $member['name'],
                 'lastname' => $member['lastname'],
                 'email' => $member['email'],
+                'user_type' => $member['type'],
                 'logged_member' => TRUE
             ];
             $model
@@ -151,7 +161,7 @@ class Account extends Controller
                 ->set('last_login' , new Time('now'))
                 ->update();
             session()->set('userdata',$sess);
-            return redirect()->to(site_url('account'));
+            return redirect()->to($request->getVar('hd_burl'));
         }else{
             $data['signin_valid'] = $this->validator;
             echo view('front/home',$data);
@@ -185,6 +195,7 @@ class Account extends Controller
                     'name' => $post['name'],
                     'email' => $post['email'],
                     'type' => 'facebook',
+                    'user_type' => 'member',
                     'logged_member' => TRUE
                 ];
                 session()->set('userdata',$arrdata);
@@ -197,6 +208,7 @@ class Account extends Controller
                 'name' => $post['name'],
                 'email' => $post['email'],
                 'type' => 'facebook',
+                'user_type' => 'member',
                 'logged_member' => TRUE
             ];
             $model
@@ -253,6 +265,7 @@ class Account extends Controller
                         'email' => $userdata->email,
                         'profile_pic' => $userdata->picture,
                         'type' => 'google',
+                        'user_type' => 'member',
                         'logged_member' => TRUE
                     ];
                     session()->set('userdata',$arrdata);
@@ -266,6 +279,7 @@ class Account extends Controller
                     'email' => $userdata->email,
                     'profile_pic' => $userdata->picture,
                     'type' => 'google',
+                    'user_type' => 'member',
                     'logged_member' => TRUE
                 ];
                 $model
