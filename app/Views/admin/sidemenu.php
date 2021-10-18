@@ -74,6 +74,19 @@
                         <p>สมาชิกเว็บไซต์</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/files'); ?>" class="nav-link <?= ($uri->getSegment(2)=='files'?'active':''); ?>">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>เอกสารต่างๆ</p>
+                    </a>
+                </li>                
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/banner'); ?>" class="nav-link <?= ($uri->getSegment(2)=='banner'?'active':''); ?>">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>แบนเนอร์</p>
+                    </a>
+                </li>
+
                 <?php
                     if ($admindata['rules']=='superadmin') {
                 ?>

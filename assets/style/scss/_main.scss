@@ -340,7 +340,11 @@
     .shadow-lightgold {
         padding: 1rem;
     }
+    .ac-album {
+        overflow: hidden;
+    }
     .album-item {
+        margin: 0 -4px;
         .slider-nav-item {
             padding: 0 .25rem;
         }

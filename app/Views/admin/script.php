@@ -121,6 +121,18 @@
                 }
             });
         <?php } ?>
+
+        $('#txt_file').on('change',function(){
+            let file = this.files[0];
+            if (this.files && file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('input[name="hd_file"]').val(file.name);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    
     });
     //End ready function
 
@@ -141,6 +153,19 @@
 			reader.onload = function (e) {
 				$('.show-thumb').attr('src', e.target.result);
                 $('#hd_thumb').val(file.name);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+    }
+
+    //Function banner image
+    function bannerShow(input,display,name){
+        let file = input.files[0];
+        if (input.files && file) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('.'+display).attr('src', e.target.result);
+                $('input[name="'+name+'"]').val(file.name);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}

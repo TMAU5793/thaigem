@@ -48,8 +48,7 @@ use Google\Service\Adsense\Site;
         if(avd){
             $('.search-show').toggleClass('d-none');
             $('.search-member .col-12').toggleClass('col-md-6');
-            $('#kw_company').toggle('slow');
-            $('.search-member .row').toggleClass('justify-content-center');
+            $('.toggle-slow').toggle('slow');            
             $('.btn-avd').toggleClass('col-md-12');
             $('input[name="txt_keyword"]').val('');
         }
@@ -57,10 +56,14 @@ use Google\Service\Adsense\Site;
         $('.btn_advance').on('click',function () { 
             $('.search-show').toggleClass('d-none');
             $('.search-member .col-12').toggleClass('col-md-6');
-            $('#kw_company').toggle('slow');
-            $('.search-member .row').toggleClass('justify-content-center');
+            $('.toggle-slow').toggle('slow');            
             $('.btn-avd').toggleClass('col-md-12');
             $('input[name="txt_keyword"]').val('');
+        });
+
+        //Click to search member
+        $('.btn-search-member').on('click',function(){
+            $('#frm-search-member').submit();
         });
 
         //Social button share URL

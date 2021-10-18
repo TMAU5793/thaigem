@@ -632,8 +632,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .member-content .shadow-lightgold {
   padding: 1rem; }
-.member-content .album-item .slider-nav-item {
-  padding: 0 .25rem; }
+.member-content .ac-album {
+  overflow: hidden; }
+.member-content .album-item {
+  margin: 0 -4px; }
+  .member-content .album-item .slider-nav-item {
+    padding: 0 .25rem; }
 
 .contact-content .map-location iframe {
   width: 100%; }

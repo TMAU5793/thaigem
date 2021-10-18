@@ -13,9 +13,9 @@
             </div>
 
             <div class="search-member mt-4">
-                <form action="<?= site_url('member/search') ?>" method="GET">
+                <form id="frm-search-member" action="<?= site_url('member/search') ?>" method="GET">
                     <div class="row">
-                        <div class="col-md-6" id="kw_company">
+                        <div class="col-md-6 toggle-slow">
                             <div class="input-group">
                                 <input type="text" name="txt_keyword" class="form-control" placeholder="Member name" value="<?= (isset($_GET['txt_keyword'])?$_GET['txt_keyword']:'') ?>">
                                 <div class="input-group-append">
@@ -24,8 +24,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <button class="btn bg-darkgold c-white w-100 ff-semibold"><?= lang('GlobalLang.search'); ?></button>
+                        <div class="col-md-6 toggle-slow">
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold btn-search-member"><?= lang('GlobalLang.search'); ?></button>
                         </div>                        
 
                         <div class="col-md-6 search-show d-none">
@@ -83,7 +83,11 @@
                                 </select>
                             </div>
                         </div>
-                        
+
+                        <div class="col-md-6 search-show d-none">
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold btn-search-member"><?= lang('GlobalLang.search'); ?></button>
+                        </div>  
+
                         <div class="col-md-12 btn-avd">
                             <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold search-show btn_advance" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
                             <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white w-100 ff-semibold search-show d-none a-hover-white btn_advance"><?= lang('GlobalLang.advanceclose'); ?></a>
