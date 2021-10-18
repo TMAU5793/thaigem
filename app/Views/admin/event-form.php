@@ -38,6 +38,17 @@
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <label class="form-label d-block">การเผยแพร่</label>
+                            <input type="checkbox" name="txt_status" data-toggle="toggle" data-onstyle="success" data-offstyle="secondary" <?= (isset($info) && $info['status']=='on'? 'checked' : (!isset($info)?'checked' : '')) ?>>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label d-block w-100">แสดงบนหน้าหลัก (Home page)</label>
+                            <input type="checkbox" name="txt_home_show" data-toggle="toggle" data-onstyle="success" data-offstyle="secondary" <?= (isset($info) && $info['home_show']=='on'? 'checked' : (!isset($info)?'checked' : '')) ?>>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="txt_booth" class="form-label">จำนวนบูท <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="txt_booth" name="txt_booth" value="<?= (isset($info)? $info['booth'] : set_value('txt_booth')) ?>" placeholder="0">
@@ -46,14 +57,9 @@
                         <div class="col-md-4 mb-3">
                             <label for="txt_date" class="form-label">วันที่จัดงาน <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="txt_date" name="txt_date" value="">
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label d-block">สถานะการใช้งาน</label>
-                            <input type="checkbox" name="txt_status" data-toggle="toggle" data-onstyle="success" data-offstyle="secondary" <?= (isset($info) && $info['status']=='on'? 'checked' : (!isset($info)?'checked' : '')) ?>>
-                        </div>
-                        
+                        </div>                      
                     </div>
+
                     <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
                         <div class="row">
                             <div class="col-12 mb-3">
@@ -128,7 +134,7 @@
                             <input type="hidden" name="hd_thumb_del" id="hd_thumb_del" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
                             <label for="txt_thumb" class="d-block label-img btn-primary">เลือกรูป</label>
                         </div>
-                        <p class="text-danger mt-3">*ขนาดรูปที่ต้องการ 450 x 350px</p>
+                        <p class="text-danger mt-3">*ขนาดรูปที่ต้องการ 600 x 400px</p>
                     </div>
                 </div>
             </form>

@@ -10,6 +10,17 @@ use CodeIgniter\I18n\Time;
   
 class Member extends Controller
 {
+    protected $member_id;
+    protected $udata;
+    public function __construct()
+    {
+        $sess = session()->get('userdata');
+        if($sess){
+            $this->udata = $sess;
+            $this->member_id = $sess['id'];
+        }
+    }
+    
     public function index()
     {
         return redirect()->to('account');
@@ -142,9 +153,9 @@ class Member extends Controller
 			if (!is_dir($path)) {
 				mkdir($path, 0777, TRUE);
 				//$file->move($path,$newName);
-                $image->withFile($file)->fit(900, 450, 'center')->save($path.'/'.$newName);
+                $image->withFile($file)->fit(900, 600, 'center')->save($path.'/'.$newName);
 			}else{
-				$image->withFile($file)->fit(900, 450, 'center')->save($path.'/'.$newName);
+				$image->withFile($file)->fit(900, 600, 'center')->save($path.'/'.$newName);
 			}
 			$thumb = [
                 'member_id' => $id,

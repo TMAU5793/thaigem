@@ -19,7 +19,7 @@
                 <div class="bg-lightgold position-relative">
                     <div class="w-50">
                         <div class="hot-img">
-                            <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.png')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
+                            <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
                         </div>
                     </div>
                     <div class="item-body w-50 plr-4rem position-absolute translate-middle-y top-50 end-0">
@@ -46,7 +46,7 @@
                 ?>
                     <div class="col-md-4 mt-4">
                         <div class="shadow-lightgold h-100 rounded">
-                            <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.png')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
+                            <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
                             <div class="p-4">
                                 <div class="event-text mt-3">
                                     <h2 class="ff-semibold fs-5">

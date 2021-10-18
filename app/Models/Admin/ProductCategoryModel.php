@@ -36,11 +36,13 @@ class ProductCategoryModel extends Model
         ];
         if($data['hd_id']==""){
             $result = $this->insert($info);
+            $return = $this->getInsertID();
         }else{
             $result = $this->update($data['hd_id'],$info);
+            $return = $data['hd_id'];
         }
         if($result){
-            return true;
+            return $return;
         }else{
             return false;
         }

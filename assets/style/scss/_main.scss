@@ -142,6 +142,13 @@
                 padding: 0 3rem 6rem;
                 z-index: 999;
             }
+            a.view-all {
+                &:hover {
+                    color: $c-white;
+                    text-decoration: none;
+                    box-shadow: 0px 6px 3px -3px $c-white;
+                }
+            }
         }
     }
 }
@@ -153,32 +160,34 @@
             padding: .5rem 1rem;
         }
         .sub-img {
-            ul {
-                list-style: none;
-                padding: 0;
-                li {
-                    width: 33.33%;
-                    float: left;
-                    &:first-child {
-                        padding-right: .5rem;
-                    }
-                    &:nth-child(2) {
-                        padding: 0 .25rem;
-                    }
-                    &:last-child {
-                        padding-left: .5rem;
-                    }
-                }
+            margin: 0 -.20rem;
+            .slider-nav-item {
+                padding: 0 .25rem;
             }
         }
         .slick-dots {
             bottom: -3rem;
         }
     }
+    .ac-album {
+        overflow: hidden;
+    }
 }
 
 .singup-home {
     background-color: #d6d6d6;
+    .singup-form {
+        padding: 0 10rem;
+        input {
+            background-color: transparent;
+            border: 1px solid $c-black;
+        }
+    }
+}
+
+.signup-member {
+    background-color: $c-white;
+    box-shadow: 0px 0px 10px 1px $c-lightgold;
     .singup-form {
         padding: 0 10rem;
         input {
@@ -487,5 +496,16 @@
     .modal-body {
         height: 85vh;
         overflow-y: scroll;
+    }
+}
+
+.price-update {
+    .tradingview-widget-container {
+        height: 400px !important;
+        width: 100% !important;
+    }
+    iframe {
+        height: 400px !important;
+        width: 100% !important;
     }
 }

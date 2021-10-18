@@ -86,6 +86,21 @@ class Productcategory extends Controller
 			if($this->validate($rules)){
 				$result = $model->productCategory($post);
 				if($result){
+					$thumb = $request->getFile('txt_thumb'); //เก็บไฟล์รูปอัพโหลด
+					$hd_thumb = $request->getVar('hd_thumb'); //เก็บไฟล์รูปเดิม เพื่อนำมาเช็คว่ามีการเปลี่ยนรูปใหม่หรือไม่
+					$hd_thumb_del = $request->getVar('hd_thumb_del'); //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
+					if ($hd_thumb!=$hd_thumb_del){
+						if(is_file($hd_thumb_del)){
+							unlink($hd_thumb_del); //ลบรูปเก่าออก
+						}
+						
+						if (!is_dir('uploads/product')) {
+							mkdir('uploads/product', 0777, TRUE);
+							$this->resizeImg($result,$thumb,400,300,'uploads/product'); //file,width,height,path
+						}else{
+							$this->resizeImg($result,$thumb,400,300,'uploads/product'); //file,width,height,path
+						}
+					}
 					return redirect()->to('admin/productcategory');
 				}
 			}else{
@@ -99,4 +114,20 @@ class Productcategory extends Controller
 			return redirect()->to('admin/productcategory');
 		}
 	}
+
+	public function resizeImg($id,$file,$w,$h,$path)
+    {
+        $model = new ProductCategoryModel();
+        $newName = 'cate-'.$file->getRandomName();
+
+        $image = \Config\Services::image()
+        ->withFile($file)
+        ->fit($w, $h, 'center')
+        ->save($path.'/'.$newName);
+
+        $thumb = [
+            'thumbnail' => 'uploads/product/'.$newName
+        ];
+        $model->update($id, $thumb);
+    }
 }

@@ -9,17 +9,23 @@ use App\Models\WebboardModel;
 class Webboard extends Controller
 {   
     protected $member_id;
+    protected $udata;
     public function __construct()
     {
         helper('text');
         $sess = session()->get('userdata');
         if($sess){
+            $this->udata = $sess;
             $this->member_id = $sess['id'];
         }
     }
     
     public function index()
     {   
+        if($this->udata['user_type']!='dealer'){
+            return redirect()->to('');
+        }
+
         $model = new WebboardModel();
         $data = [
             'ac_webboard' => TRUE,
@@ -31,7 +37,7 @@ class Webboard extends Controller
 
     public function form()
     {
-        if($this->member_id!=""){
+        if($this->member_id!="" && $this->udata['user_type']!='dealer'){
             $request = service('request');
             $model = new WebboardModel();
             $cateModel = new ProductCategoryModel;
@@ -60,7 +66,7 @@ class Webboard extends Controller
 
     public function save()
     {
-        if($this->member_id!=""){
+        if($this->member_id!="" && $this->udata['user_type']!='dealer'){
             $request = service('request');
             $model = new WebboardModel();
             $post = $request->getPost();
@@ -87,7 +93,7 @@ class Webboard extends Controller
 
     public function deletePost()
     {
-        if($this->member_id!=""){
+        if($this->member_id!="" && $this->udata['user_type']!='dealer'){
             $request = service('request');
             $model = new WebboardModel();
             $id = $request->getPost('id');

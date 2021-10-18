@@ -10,6 +10,11 @@ $(function() {
         $('.user-menu-login').toggleClass('d-none');
     });
     //End Click to close user menu
+
+    //Back to top
+    $('#to-top').on('click', function() {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    });
 });
 
 
@@ -17,7 +22,9 @@ $(function() {
 $(window).scroll(function() {
     if ($(window).scrollTop() > 100) {
         $('#mainMenu').addClass('fixed-top');
+        $('#to-top').removeClass('d-none');
     } else {
         $('#mainMenu').removeClass('fixed-top');
+        $('#to-top').addClass('d-none');
     }
 });

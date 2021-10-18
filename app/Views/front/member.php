@@ -23,10 +23,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 btn-avd">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold search-show btn_advance" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
-                            <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white w-100 ff-semibold search-show d-none a-hover-white btn_advance"><?= lang('GlobalLang.advanceclose'); ?></a>
-                        </div>
+
+                        <div class="col-md-6">
+                            <button class="btn bg-darkgold c-white w-100 ff-semibold"><?= lang('GlobalLang.search'); ?></button>
+                        </div>                        
 
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
@@ -84,8 +84,9 @@
                             </div>
                         </div>
                         
-                        <div class="col-12">
-                            <button class="btn bg-darkgold c-white w-100 ff-semibold"><?= lang('GlobalLang.search'); ?></button>
+                        <div class="col-md-12 btn-avd">
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold search-show btn_advance" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
+                            <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white w-100 ff-semibold search-show d-none a-hover-white btn_advance"><?= lang('GlobalLang.advanceclose'); ?></a>
                         </div>
                     </div>
                 </form>

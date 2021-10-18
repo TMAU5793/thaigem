@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\NewsletterModel;
 
 class Thaigem extends BaseController
 {
@@ -38,6 +39,35 @@ class Thaigem extends BaseController
             return true;
         }else{
             return redirect()->to('');
+        }
+    }
+
+    public function newsLetter()
+    {
+        $request = service('request');
+        $model = new NewsletterModel();
+        $post = $request->getPost();
+        
+        if($post){
+            $rules = [
+                'news_email' => [
+                    'rules' => 'required|valid_email|is_unique[tbl_newsletter.email]',
+                    'errors'    =>  [
+                        'required'  =>  'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
+                        'valid_email'   =>  'รูปแบบอีเมลไม่ถูกต้อง',
+                        'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
+                    ]
+                ]
+            ];
+            
+            if($this->validate($rules)){
+                $data = [
+                    'email' => $post['news_email'],
+                ];
+            }else{
+                $data['errors_newsleeter'] = $this->validator;
+                echo view('front/home',$data);
+            }
         }
     }
 

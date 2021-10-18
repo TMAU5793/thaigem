@@ -90,7 +90,15 @@ use Google\Service\Adsense\Site;
             });
 
         });
+        
+        //Newsletter Function
+        $('#btn_newsletter').on('click',function(){
+            $('#frm-singup').submit();
+        });
 
+        <?php if(isset($errors_newsleeter)){ ?>
+            $('input[name="news_email"]').focus();
+        <?php } ?>
     });
 
     function deleteReply(id){

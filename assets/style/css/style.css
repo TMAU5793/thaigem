@@ -40,6 +40,9 @@ img {
 .box-shadow {
   box-shadow: 0px 0px 4px 4px #c1c1c1; }
 
+.box-shadow-lightgold:hover {
+  box-shadow: 0px 0px 10px 4px #cec6b2; }
+
 .shadow-darkgold {
   box-shadow: 0px 0px 10px 4px #665f4f; }
 
@@ -80,10 +83,16 @@ img {
 .btn-black-border {
   border: 2px solid #000000;
   font-family: "Montserrat-SemiBold"; }
+  .btn-black-border:hover {
+    background-color: #000000;
+    color: #ffffff; }
 
 .btn-white-border {
   border: 2px solid #ffffff;
   font-family: "Montserrat-SemiBold"; }
+  .btn-white-border:hover {
+    background-color: #ffffff;
+    color: #000000; }
 
 .btn-tg-group .btn {
   margin: 0 .5rem; }
@@ -129,11 +138,16 @@ img {
     padding-bottom: 4px; }
 
 .a-hover-white:hover {
-  color: #ffffff; }
+  color: #ffffff;
+  box-shadow: 0px 0px 4px 2px #cec6b2; }
 
 button.bg-darkgold:hover, button.bg-darkgold:focus {
   color: #ffffff;
   box-shadow: 0px 0px 4px 2px #cec6b2; }
+
+.btn-hover-black:hover {
+  background-color: #000000;
+  color: #ffffff; }
 
 .navbar {
   border-top: 2px solid #c1c1c1;
@@ -195,6 +209,18 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       .top-more-menu .user-menu-login ul li:not(:last-child) {
         margin-bottom: .5rem; }
 
+.to-top {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 4rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #665f4f;
+  transition: all .25s; }
+  .to-top:hover {
+    transition: all .25s;
+    font-size: 3rem; }
+
 .account-menu .navbar-nav {
   flex-direction: initial; }
   .account-menu .navbar-nav .nav-link {
@@ -228,12 +254,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     margin: .5rem -1.5rem .5rem 0;
     border-radius: 50px 0 0 50px;
     padding: 5px 0 5px 4rem;
-    position: relative;
-    height: 54px; }
+    position: relative; }
   .ac-menu-left .ac-information .ac-info-icon {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     height: 54px;
     width: 54px;
     background-color: #ffffff;
@@ -477,31 +503,38 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       width: 100%;
       padding: 0 3rem 6rem;
       z-index: 999; }
+    .news-home .news-list .news-item a.view-all:hover {
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0px 6px 3px -3px #ffffff; }
 
 .member-home .member-list {
   margin: 0 -1rem; }
   .member-home .member-list .member-item {
     padding: .5rem 1rem; }
-  .member-home .member-list .sub-img ul {
-    list-style: none;
-    padding: 0; }
-    .member-home .member-list .sub-img ul li {
-      width: 33.33%;
-      float: left; }
-      .member-home .member-list .sub-img ul li:first-child {
-        padding-right: .5rem; }
-      .member-home .member-list .sub-img ul li:nth-child(2) {
-        padding: 0 .25rem; }
-      .member-home .member-list .sub-img ul li:last-child {
-        padding-left: .5rem; }
+  .member-home .member-list .sub-img {
+    margin: 0 -.20rem; }
+    .member-home .member-list .sub-img .slider-nav-item {
+      padding: 0 .25rem; }
   .member-home .member-list .slick-dots {
     bottom: -3rem; }
+.member-home .ac-album {
+  overflow: hidden; }
 
 .singup-home {
   background-color: #d6d6d6; }
   .singup-home .singup-form {
     padding: 0 10rem; }
     .singup-home .singup-form input {
+      background-color: transparent;
+      border: 1px solid #000000; }
+
+.signup-member {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px 1px #cec6b2; }
+  .signup-member .singup-form {
+    padding: 0 10rem; }
+    .signup-member .singup-form input {
       background-color: transparent;
       border: 1px solid #000000; }
 
@@ -703,5 +736,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 #termsModal .modal-body {
   height: 85vh;
   overflow-y: scroll; }
+
+.price-update .tradingview-widget-container {
+  height: 400px !important;
+  width: 100% !important; }
+.price-update iframe {
+  height: 400px !important;
+  width: 100% !important; }
 
 /*# sourceMappingURL=style.css.map */

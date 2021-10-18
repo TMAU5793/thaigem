@@ -35,22 +35,18 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <?php
-                        if($info['maincate_id']!=0 || !isset($info)){
-                    ?>
-                        <div class="p2rem pb-0">
-                            <label for="txt_name" class="form-label">หมวดหมู่สินค้าหลัก <span class="text-primary">(*เลือกหมวดสินค้าหลัก หากข้อมูลนี้เป็นหมวดสินค้าย่อย)</span></label>
-                            <select name="ddl_cate" id="ddl_cate" class="form-control">
-                                <option value="">-- หมวดหมู่ --</option>
-                                <?php
-                                    if(isset($cates)){
-                                        foreach($cates as $cate){
-                                ?>
-                                    <option value="<?= $cate['id'] ?>" <?= (isset($info)&&$info['maincate_id']==$cate['id']?"selected='selected'":''); ?>><?= $cate['name_th'] ?></option>
-                                <?php } } ?>
-                            </select>
-                        </div>
-                    <?php } ?>
+                    <div class="pb-3">
+                        <label for="txt_name" class="form-label w-100">หมวดหมู่สินค้าหลัก <span class="text-primary">(*เลือกหมวดสินค้าหลัก หากข้อมูลนี้เป็นหมวดสินค้าย่อย)</span></label>
+                        <select name="ddl_cate" id="ddl_cate" class="form-control">
+                            <option value="">-- หมวดหมู่ --</option>
+                            <?php
+                                if(isset($cates)){
+                                    foreach($cates as $cate){
+                            ?>
+                                <option value="<?= $cate['id'] ?>" <?= (isset($info)&&$info['maincate_id']==$cate['id']?"selected='selected'":''); ?>><?= $cate['name_th'] ?></option>
+                            <?php } } ?>
+                        </select>
+                    </div>
                     <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
                         <div class="row">                            
                             <div class="col-12 mb-3">
@@ -76,13 +72,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p2rem pt-0">
+                    <div class="pt-1">
                         <label for="ddl_status" class="form-label">สถานะการใช้งาน</label>
                         <select name="ddl_status" id="ddl_status" class="form-control">
                             <option value="1" <?= (isset($info) && $info['status']=='1' ? 'selected' : '') ?>>เปิดใช้งาน</option>
                             <option value="0" <?= (isset($info) && $info['status']=='0' ? 'selected' : '') ?>>ปิดใช้งาน</option>
                         </select>
                     </div>
+
+                    <div class="img-thumbnail mt-3">
+                        <img src="<?= (isset($info) && is_file($info['thumbnail'])?site_url($info['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" class="show-thumb">
+                        <input type="file" id="txt_thumb" name="txt_thumb" class="input-img-hide" onchange="ShowThumb(this)" accept="image/*">
+                        <input type="hidden" name="hd_thumb" id="hd_thumb" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
+                        <input type="hidden" name="hd_thumb_del" id="hd_thumb_del" value="<?= (isset($info) && $info['thumbnail']!=""?$info['thumbnail'] : '') ?>">
+                        <label for="txt_thumb" class="d-block label-img btn-primary">เลือกรูป</label>
+                    </div>
+                    <p class="text-danger mt-3">*ขนาดรูปที่ต้องการ 400 x 300px</p>
                 </div>
             </form>
         </div>

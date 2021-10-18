@@ -41,13 +41,17 @@
                     <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $logged['name']; ?></span>
                     <div class="user-menu-login d-none">
                         <ul>
-                            <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
-                            <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
-                                <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
+                            <?php
+                                if($userdata['user_type']=='dealer'){
+                            ?>
+                                <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
+                                <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
+                                    <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
+                                <?php } ?>
+                                <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
+                                <li><a href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a></li>
+                                <li><a href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a></li>
                             <?php } ?>
-                            <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
-                            <li><a href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a></li>
-                            <li><a href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a></li>
                             <li><a href="<?= site_url('account/logout') ?>" id="member_logout"><?= lang('GlobalLang.logout'); ?></a></li>
                         </ul>
                     </div>
@@ -92,3 +96,7 @@
         </div>
     </div>
 </nav>
+
+<div class="to-top d-none" id="to-top">
+    <i class="fas fa-caret-square-up" title="Back To Top"></i>
+</div>

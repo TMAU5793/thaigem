@@ -94,6 +94,7 @@ class Event extends Controller
                     'meta_desc' => $request->getVar('meta_desc'),
                     'meta_desc_en' => $request->getVar('meta_desc_en'),
                     'status' => $request->getVar('txt_status'),
+                    'home_show' => $request->getVar('txt_home_show'),
                     'start_event' => $date[0],
                     'end_event' => $date[1],
                     'booth' => $request->getVar('txt_booth')
@@ -104,9 +105,9 @@ class Event extends Controller
                     
                     if (!is_dir('uploads/event')) {
                         mkdir('uploads/event', 0777, TRUE);
-                        $this->resizeImg($id,$thumb,450,350,'uploads/event'); //id,file,width,height,path
+                        $this->resizeImg($id,$thumb,600,400,'uploads/event'); //id,file,width,height,path
                     }else{
-                        $this->resizeImg($id,$thumb,450,350,'uploads/event'); //id,file,width,height,path
+                        $this->resizeImg($id,$thumb,600,400,'uploads/event'); //id,file,width,height,path
                     }
                 }
                 return redirect()->to(site_url('admin/event'));
@@ -159,9 +160,9 @@ class Event extends Controller
                 
                 if (!is_dir('uploads/event')) {
 					mkdir('uploads/event', 0777, TRUE);
-                    $this->resizeImg($id,$thumb,450,350,'uploads/event'); //file,width,height,path
+                    $this->resizeImg($id,$thumb,600,400,'uploads/event'); //file,width,height,path
 				}else{
-                    $this->resizeImg($id,$thumb,450,350,'uploads/event'); //file,width,height,path
+                    $this->resizeImg($id,$thumb,600,400,'uploads/event'); //file,width,height,path
                 }                
             }
 
@@ -186,6 +187,7 @@ class Event extends Controller
                 'meta_desc' => $request->getVar('meta_desc'),
                 'meta_desc_en' => $request->getVar('meta_desc_en'),
                 'status' => $request->getVar('txt_status'),
+                'home_show' => $request->getVar('txt_home_show'),
                 'start_event' => $date[0],
                 'end_event' => $date[1],
                 'booth' => $request->getVar('txt_booth')

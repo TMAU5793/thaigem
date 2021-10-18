@@ -51,12 +51,13 @@
             border-radius: 50px 0 0 50px;
             padding: 5px 0 5px 4rem;
             position: relative;
-            height: 54px;
+            //height: 54px;
         }
         .ac-info-icon {
             position: absolute;
             left: 0;
-            top: 0;
+            top: 50%;
+            transform: translateY(-50%);
             height: 54px;
             width: 54px;
             background-color: #ffffff;

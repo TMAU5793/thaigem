@@ -72,7 +72,7 @@
                                 </div>
                                 <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple />
                                 <label for="file_album" class="label-file-img">Choose Images</label>
-                                <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 900 x 450 px </small>
+                                <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 900 x 600 px </small>
                                 <small class="text-danger mt-2 d-block">*จำกัดจำนวนรูปทั้งหมด 9 รูป </small>
                             </div>
 

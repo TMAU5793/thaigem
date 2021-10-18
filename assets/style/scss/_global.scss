@@ -70,6 +70,12 @@ img {
     box-shadow: 0px 0px 4px 4px $c-gray;
 }
 
+.box-shadow-lightgold {
+    &:hover {
+        box-shadow: 0px 0px 10px 4px $c-lightgold;
+    }
+}
+
 .shadow-darkgold {
     box-shadow: 0px 0px 10px 4px $c-darkgold;
 }
@@ -122,11 +128,19 @@ img {
 .btn-black-border {
     border: 2px solid $c-black;
     font-family: $ff-semibold;
+    &:hover {
+        background-color: $c-black;
+        color: $c-white;
+    }
 }
 
 .btn-white-border {
     border: 2px solid $c-white;
     font-family: $ff-semibold;
+    &:hover {
+        background-color: $c-white;
+        color: $c-black;
+    }
 }
 
 .btn-tg-group {
@@ -195,6 +209,7 @@ img {
 .a-hover-white {
     &:hover {
         color: $c-white;
+        box-shadow: 0px 0px 4px 2px $c-lightgold;
     }
 }
 
@@ -203,5 +218,12 @@ button.bg-darkgold {
     &:focus {
         color: $c-white;
         box-shadow: 0px 0px 4px 2px $c-lightgold;
+    }
+}
+
+.btn-hover-black {
+    &:hover {
+        background-color: $c-black;
+        color: $c-white;
     }
 }

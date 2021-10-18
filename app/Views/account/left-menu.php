@@ -53,7 +53,7 @@
                             foreach($main_cate as $cate){
                                 if($row->maincate_id == $cate->id){
                 ?>
-                    <small class="small-data"><?= $cate->name_th; ?></small>
+                    <small class="small-data"><?= $row->name_th; ?></small>
                 <?php } } } } ?>
 
                 <div class="edit-field d-none">
@@ -80,7 +80,7 @@
                             foreach($business_main as $cate){
                                 if($row->main_type == $cate->id){
                 ?>
-                    <small class="small-data"><?= $cate->name_th; ?></small>
+                    <small class="small-data"><?= $row->name_th; ?></small>
                 <?php } } } } ?>
 
                 <div class="edit-field d-none">

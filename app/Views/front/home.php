@@ -25,19 +25,20 @@
             <div class="container">
                 <div class="slick-5-item">
                     <?php
-                        for($i=1;$i<8;$i++){
+                        if($catergory){
+                            foreach($catergory as $row){
                     ?>
                         <div class="cateory-item">
-                            <div class="box-shadow">
+                            <div class="box-shadow-lightgold">
                                 <div class="item-img">
-                                    <img src="<?= site_url('assets/images/home/cate-'.$i.'.jpg') ?>" alt="thaigem category">
+                                    <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">
                                 </div>
-                                <div class="item-text text-center position-relative">
-                                    <h3 class="ff-semibold fs-6 absolute-center">Diamonds</h3>
+                                <div class="item-text text-center position-relative">                                    
+                                    <h3 class="ff-semibold fs-6 absolute-center w-100"><a href="<?= site_url('member') ?>" class="a-hover-darkgold"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></a></h3>                                    
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
+                    <?php } } ?>
                 </div>
             </div>
         </div>
@@ -75,65 +76,34 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-end view-all">
-                        <a href="" class="c-black ff-semibold"><?= lang('GlobalLang.viewAll'); ?></a>
+                        <a href="<?= site_url('event') ?>" class="c-black ff-semibold a-hover-darkgold"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>
             <div class="slick-1-item mt-4">
-                <div class="event-item">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <img src="<?= site_url('assets/images/home/event-1.jpg') ?>" alt="thaigem event">
-                        </div>
-                        <div class="col-md-5 position-relative">
-                            <div class="event-date text-end pt-3 pe-4"><span>05/06/2564</span></div>
-                            <div class="absolute-center text-center w-75">
-                                <h2 class="ff-semibold fs-4">Events 01</h2>
-                                <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
-                                <div class="btn-tg-group">
-                                    <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
+                <?php
+                    if($events){                        
+                        foreach ($events as $event){
+                ?>
+                    <div class="event-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en'?$event['name_en']:$event['name']) ?>">
+                            </div>
+                            <div class="col-md-6 position-relative">
+                                <div class="event-date text-end pt-3 pe-4"><span><?= substr($event['created_at'],0,10) ?></span></div>
+                                <div class="absolute-center text-center w-75">
+                                    <h2 class="ff-semibold fs-4"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>
+                                    <p><?= ($lang=='en'?$event['shortdesc_en']:$event['shortdesc']) ?></p>
+                                    <div class="btn-tg-group">
+                                        <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <img src="<?= site_url('assets/images/home/event-1.jpg') ?>" alt="thaigem event">
-                        </div>
-                        <div class="col-md-5 position-relative">
-                            <div class="event-date text-end pt-3 pe-4"><span>05/07/2564</span></div>
-                            <div class="absolute-center text-center w-75">
-                                <h2 class="ff-semibold fs-4">Events 01</h2>
-                                <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
-                                <div class="btn-tg-group">
-                                    <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <img src="<?= site_url('assets/images/home/event-1.jpg') ?>" alt="thaigem event">
-                        </div>
-                        <div class="col-md-5 position-relative">
-                            <div class="event-date text-end pt-3 pe-4"><span>05/08/2564</span></div>
-                            <div class="absolute-center text-center w-75">
-                                <h2 class="ff-semibold fs-4">Events 01</h2>
-                                <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
-                                <div class="btn-tg-group">
-                                    <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php } } ?>
             </div>
         </div>
     </section>
@@ -147,8 +117,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="text-end view-all">
-                        <a href="" class="c-black ff-semibold"><?= lang('GlobalLang.viewAll'); ?></a>
+                    <div class="text-end">
+                        <a href="<?= site_url('knowledge') ?>" class="c-black ff-semibold a-hover-darkgold view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>
@@ -162,7 +132,7 @@
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
                                     <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +143,7 @@
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
                                     <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -184,7 +154,7 @@
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
                                     <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -200,7 +170,7 @@
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
                                         <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +183,7 @@
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
                                         <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +196,7 @@
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
                                         <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ff-semibold ms-4"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -248,35 +218,67 @@
             </div>
             <div class="member-list slick-2-item slick-dots-2 mb-5 mt-3">
                 <?php 
-                    for($i=1;$i<5;$i++){
+                    if($dealers){
+                        foreach($dealers as $dealer){
                 ?>
-                <div class="member-item">                    
-                    <div class="box-shadow w-100 d-inline-flex">
-                        <div class="w-50">
-                            <div class="mian-img">
-                                <img src="<?= site_url('assets/images/member/member-1.jpg') ?>" alt="">
+                <div class="member-item">
+                    <div class="shadow-lightgold h-100 rounded w-100 d-inline-flex p-3">
+                        <div class="w-50 ac-album">
+                            <div class="mian-img slider-for-hidedots">
+                                <?php
+                                    if($albums){
+                                        foreach($albums as $album){                                            
+                                            if($album['member_id'] == $dealer['id']){
+                                ?>
+                                    <div class="slider-for-item">
+                                        <img src="<?= (is_file($album['images'])?site_url($album['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $dealer['name'].' '.$dealer['lastname'] ?>">
+                                    </div>
+                                <?php } } } ?>
                             </div>
-                            <div class="sub-img">
-                                <ul>
-                                    <li><img src="<?= site_url('assets/images/member/member-1-1.jpg') ?>" alt=""></li>
-                                    <li><img src="<?= site_url('assets/images/member/member-1-2.jpg') ?>" alt=""></li>
-                                    <li><img src="<?= site_url('assets/images/member/member-1-3.jpg') ?>" alt=""></li>
-                                </ul>
-                                <div class="clearfix"></div>
+                            <div class="sub-img album-item slider-nav-hidedots">
+                                <?php
+                                    if($albums){
+                                        foreach($albums as $album){
+                                            if($album['member_id'] == $dealer['id']){
+                                ?>
+                                    <div class="slider-nav-item">
+                                        <img src="<?= (is_file($album['images'])?site_url($album['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $dealer['name'].' '.$dealer['lastname'] ?>">
+                                    </div>
+                                <?php } } } ?>
                             </div>
                         </div>
                         <div class="w-50 position-relative">
                             <div class="absolute-center text-center w-100 p-3">
-                                <h2 class="ff-semibold c-darkgold fs-5">kanyaluk Wathananon <?= $i ?></h2>
-                                <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
+                                <h2 class="ff-semibold c-darkgold fs-5"><?= $dealer['name'].' '.$dealer['lastname'] ?></h2>
+                                <p><?= $dealer['about'] ?></p>
                                 <div class="btn-tg-group mt-5">
-                                    <a href="" class="btn btn-redmore btn-black-border ff-semibold"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                    <a href="<?= site_url('member/id/'.$dealer['id']); ?>" class="btn btn-redmore btn-black-border ff-semibold"><?= lang('GlobalLang.viewProfile'); ?></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php } ?>
+                <?php } } ?>
+            </div>
+        </div>
+    </section>
+
+    <section class="signup-member ptb-2rem">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box-img">
+                        <img src="<?= site_url('assets/images/home/singup-member.jpg') ?>" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 position-relative">
+                    <div class="absolute-center w-100 singup-form text-center">
+                        <?= lang('HomeLang.newsletterText'); ?>
+                        <div class="btn-singup-group mt-3">
+                            <button class="btn btn-darkgold ff-semibold c-white w-100 a-hover-white" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.signup'); ?></button>
+                        </div>
+                    </div>
+                </div>                
             </div>
         </div>
     </section>
@@ -287,12 +289,15 @@
                 <div class="col-md-6 position-relative">
                     <div class="absolute-center w-100 singup-form text-center">
                         <?= lang('HomeLang.newsletterText'); ?>
-                        <form id="frm-singup" action="" method="">
+                        <form id="frm-singup" action="<?= site_url('thaigem/newsLetter') ?>" method="POST">
+                            <?php if(isset($errors_newsleeter)): ?>
+                                <div class="alert alert-danger"><?= $errors_newsleeter->listErrors() ?></div>
+                            <?php endif;?>
                             <div class="input-group">
-                                <input type="text" name="email" class="form-control" placeholder="<?= lang('GlobalLang.email'); ?>">
+                                <input type="email" name="news_email" class="form-control" placeholder="<?= lang('GlobalLang.email'); ?>" require>
                             </div>
                             <div class="btn-singup-group mt-3">
-                                <button class="btn btn-darkgold ff-semibold c-white w-100"><?= lang('GlobalLang.subscribe'); ?></button>
+                                <button type="button" id="btn_newsletter" class="btn btn-darkgold ff-semibold c-white w-100 a-hover-white"><?= lang('GlobalLang.subscribe'); ?></button>
                             </div>
                         </form>
                     </div>

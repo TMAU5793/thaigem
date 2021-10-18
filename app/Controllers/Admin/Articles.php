@@ -102,9 +102,9 @@ class Articles extends Controller
                     
                     if (!is_dir('uploads/articles')) {
                         mkdir('uploads/articles', 0777, TRUE);
-                        $this->resizeImg($id,$thumb,650,550,'uploads/articles'); //id,file,width,height,path
+                        $this->resizeImg($id,$thumb,600,400,'uploads/articles'); //id,file,width,height,path
                     }else{
-                        $this->resizeImg($id,$thumb,650,550,'uploads/articles'); //id,file,width,height,path
+                        $this->resizeImg($id,$thumb,600,400,'uploads/articles'); //id,file,width,height,path
                     }
                 }
                 return redirect()->to(site_url('admin/articles'));
@@ -157,10 +157,10 @@ class Articles extends Controller
                 
                 if (!is_dir('uploads/articles')) {
 					mkdir('uploads/articles', 0777, TRUE);
-                    $this->resizeImg($id,$thumb,650,550,'uploads/articles'); //file,width,height,path
+                    $this->resizeImg($id,$thumb,600,400,'uploads/articles'); //file,width,height,path
 				}else{
-                    $this->resizeImg($id,$thumb,650,550,'uploads/articles'); //file,width,height,path
-                }                
+                    $this->resizeImg($id,$thumb,600,400,'uploads/articles'); //file,width,height,path
+                }
             }
 
             $slug = url_title(strtolower($request->getVar('txt_slug')));

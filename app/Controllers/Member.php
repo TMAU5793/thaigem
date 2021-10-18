@@ -58,8 +58,8 @@ class Member extends BaseController
                 'meta_desc' => $member['about'],
                 'info' => $member,
                 'album' => $albumModel->where('member_id',$segment3)->findAll(),
-                'category' => $cateModel->where('id',$category['maincate_id'])->first(),
-                'business' => $bnModel->where('id',$business['main_type'])->first(),
+                'category' => $category,
+                'business' => $business,
                 'province' => $pvModel->where('code',$member['province'])->first()
             ];
             

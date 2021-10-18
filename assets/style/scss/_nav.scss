@@ -80,3 +80,17 @@
         }
     }
 }
+
+.to-top {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 4rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: $c-darkgold;
+    transition: all .25s;
+    &:hover {
+        transition: all .25s;
+        font-size: 3rem;
+    }
+}
