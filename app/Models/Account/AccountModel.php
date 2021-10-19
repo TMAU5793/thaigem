@@ -61,14 +61,14 @@ class AccountModel extends Model
 		$lastname = $arr[1];
 		$datetime = new Time('now');
         $info=[
-            'account' => $data['id'],
+            'account' => $data['account'],
             'name' => $name,
 			'lastname' => $lastname,
             'email' => $data['email'],
 			'profile' => $data['profile_pic'],
 			'type' => 'member',
             'social_type' => $data['type'],
-			'social_id' => $data['id'],
+			'social_id' => $data['account'],
 			'last_login' => $datetime
         ];
 

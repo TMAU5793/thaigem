@@ -13,7 +13,7 @@
     $province = $model_member->getProvince();
    // print_r($province);
 ?>
-<div class="ac-menu-left input-disabled p-4">
+<div class="ac-menu-left input-disabled p-4 h-100">
     <form id="frm_profile" action="<?= site_url('account/member/updateprofile?burl='.current_url()); ?>" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="hd_id" value="<?= $info['id'] ?>">
         <input type="hidden" name="hd_thumb_del" value="<?= $info['profile'] ?>">
@@ -40,98 +40,101 @@
             <input type="email" class="form-control mb-1" name="txt_email" value="<?= $info['email']; ?>" placeholder="<?= lang('GlobalLang.email') ?>" disabled>
             <input type="text" class="form-control mb-1" name="txt_phone" value="<?= $info['phone']; ?>" placeholder="<?= lang('GlobalLang.phoneNumber') ?>" disabled>            
         </div>
+        
         <div class="ac-information">
-            <div class="ac-info-item">
-                <div class="ac-info-icon">
-                    <i class="fas fa-hand-holding-usd"></i>
-                </div>
-                <strong class="d-block">Product Type</strong>
+            <?php if($userdata['user_type']=='dealer'){ ?>
+                <div class="ac-info-item">
+                    <div class="ac-info-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <strong class="d-block">Product Type</strong>
 
-                <?php
-                    foreach($product_type as $row){
-                        if($info['product_type'] == $row->id){
-                            foreach($main_cate as $cate){
-                                if($row->maincate_id == $cate->id){
-                ?>
-                    <small class="small-data"><?= $row->name_th; ?></small>
-                <?php } } } } ?>
+                    <?php
+                        foreach($product_type as $row){
+                            if($info['product_type'] == $row->id){
+                                foreach($main_cate as $cate){
+                                    if($row->maincate_id == $cate->id){
+                    ?>
+                        <small class="small-data"><?= $row->name_th; ?></small>
+                    <?php } } } } ?>
 
-                <div class="edit-field d-none">
-                    <select name="ddl_product_type" id="ddl_product_type" class="form-control">
-                        <?php
-                            if($product_type){
-                                foreach($product_type as $row){
-                                    if($row->maincate_id!=0){
-                        ?>
-                            <option value="<?= $row->id; ?>" <?= ($info['product_type']==$row->id?'selected="selected"':''); ?>><?php foreach($main_cate as $cate){if($row->maincate_id == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
-                        <?php } } }  ?>
-                    </select>
+                    <div class="edit-field d-none">
+                        <select name="ddl_product_type" id="ddl_product_type" class="form-control">
+                            <?php
+                                if($product_type){
+                                    foreach($product_type as $row){
+                                        if($row->maincate_id!=0){
+                            ?>
+                                <option value="<?= $row->id; ?>" <?= ($info['product_type']==$row->id?'selected="selected"':''); ?>><?php foreach($main_cate as $cate){if($row->maincate_id == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
+                            <?php } } }  ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="ac-info-item">
-                <div class="ac-info-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <strong class="d-block">Business Type</strong>
+                <div class="ac-info-item">
+                    <div class="ac-info-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <strong class="d-block">Business Type</strong>
 
-                <?php
-                    foreach($business_tpye as $row){
-                        if($info['business_type'] == $row->id){
-                            foreach($business_main as $cate){
-                                if($row->main_type == $cate->id){
-                ?>
-                    <small class="small-data"><?= $row->name_th; ?></small>
-                <?php } } } } ?>
+                    <?php
+                        foreach($business_tpye as $row){
+                            if($info['business_type'] == $row->id){
+                                foreach($business_main as $cate){
+                                    if($row->main_type == $cate->id){
+                    ?>
+                        <small class="small-data"><?= $row->name_th; ?></small>
+                    <?php } } } } ?>
 
-                <div class="edit-field d-none">
-                    <select name="ddl_business_type" id="ddl_business_type" class="form-control">
-                        <?php
-                            if($business_tpye){
-                                foreach($business_tpye as $row){
-                                    if($row->main_type!=0){
-                        ?>
-                            <option value="<?= $row->id; ?>" <?= ($info['business_type']==$row->id?'selected="selected"':''); ?>><?php foreach($business_main as $cate){if($row->main_type == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
-                        <?php } } }  ?>
-                    </select>
+                    <div class="edit-field d-none">
+                        <select name="ddl_business_type" id="ddl_business_type" class="form-control">
+                            <?php
+                                if($business_tpye){
+                                    foreach($business_tpye as $row){
+                                        if($row->main_type!=0){
+                            ?>
+                                <option value="<?= $row->id; ?>" <?= ($info['business_type']==$row->id?'selected="selected"':''); ?>><?php foreach($business_main as $cate){if($row->main_type == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
+                            <?php } } }  ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="ac-info-item">
-                <div class="ac-info-icon">
-                    <i class="far fa-building"></i>
+                <div class="ac-info-item">
+                    <div class="ac-info-icon">
+                        <i class="far fa-building"></i>
+                    </div>
+                    <strong class="d-block">Company Name</strong>
+                    <small class="small-data"><?= $info['company']; ?></small>
+                    <div class="edit-field d-none">
+                        <input type="text" name="txt_company" class="form-control" value="<?= $info['company']; ?>">
+                    </div>
                 </div>
-                <strong class="d-block">Company Name</strong>
-                <small class="small-data"><?= $info['company']; ?></small>
-                <div class="edit-field d-none">
-                    <input type="text" name="txt_company" class="form-control" value="<?= $info['company']; ?>">
-                </div>
-            </div>
 
-            <div class="ac-info-item">
-                <div class="ac-info-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <strong class="d-block">Province</strong>
+                <div class="ac-info-item">
+                    <div class="ac-info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <strong class="d-block">Province</strong>
 
-                <?php
-                    if($province){
-                        foreach($province as $row){
-                            if($info['province'] == $row->code){
-                ?>
-                    <small class="small-data"><?= $row->name_th; ?></small>
-                <?php } } } ?>
+                    <?php
+                        if($province){
+                            foreach($province as $row){
+                                if($info['province'] == $row->code){
+                    ?>
+                        <small class="small-data"><?= $row->name_th; ?></small>
+                    <?php } } } ?>
 
-                <div class="edit-field d-none">
-                    <select name="ddl_province" id="ddl_province" class="form-control">
-                        <?php
-                            if($province){
-                                foreach($province as $row){
-                        ?>
-                            <option value="<?= $row->code ?>" <?= ($info['province']==$row->code?'selected="selected"':''); ?>><?= $row->name_th ?></option>
-                        <?php } } ?>
-                    </select>
+                    <div class="edit-field d-none">
+                        <select name="ddl_province" id="ddl_province" class="form-control">
+                            <?php
+                                if($province){
+                                    foreach($province as $row){
+                            ?>
+                                <option value="<?= $row->code ?>" <?= ($info['province']==$row->code?'selected="selected"':''); ?>><?= $row->name_th ?></option>
+                            <?php } } ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            
+            <?php } ?>
+                
             <div class="text-center mt-3 text-center" id="edit_ac_info_group">
                 <button type="button" class="btn btn-black-border fs-7" id="edit_ac_info">Edit Information</button>
                 <div class="btn-profile-group mt-3 d-none">
@@ -139,7 +142,7 @@
                     <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3">Cancel</a>
                 </div>
             </div>
-        </div>
+        </div>        
     </form>
 </div>
 

@@ -540,7 +540,7 @@ label.form-label {
   left: 50%;
   transform: translate(-50%, -50%); }
 
-.content-files .fa-file-pdf {
+.content-files .files-item .form-file i {
   font-size: 5rem; }
 
 /*# sourceMappingURL=back-office.css.map */

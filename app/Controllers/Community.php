@@ -10,6 +10,17 @@ use App\Models\Admin\BusinessModel;
 
 class Community extends BaseController
 {
+    protected $member_id;
+    protected $userdata;
+    public function __construct()
+    {
+        $sess = session()->get('userdata');
+        if($sess){
+            $this->userdata = $sess;
+            $this->member_id = $sess['id'];
+        }
+    }
+
 	public function index()
 	{   
         helper('text');
@@ -18,7 +29,8 @@ class Community extends BaseController
         $data = [
             'meta_title' => 'Community',
             'info' => $model->where('status','1')->findAll(),
-            'member' => $mbModel->findAll()
+            'member' => $mbModel->findAll(),
+            'userdata' => $this->userdata
         ];
         //print_r($data['member']);
         echo view('front/community', $data);
@@ -127,7 +139,7 @@ class Community extends BaseController
         $mbModel = new MemberModel();
         $get = $request->getGet();
 
-        if($get){
+        if($get && $get['txt_keyword']!=""){
             $keyword = $get['txt_keyword'];
             $result = $wbModel->like('topic',$keyword)->where('status','1')->findAll();
             

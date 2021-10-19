@@ -1,11 +1,11 @@
 <?php 
 
 namespace App\Controllers\Account;
-  
 use CodeIgniter\Controller;
+use App\Models\FilesModel;
   
 class Accountform extends Controller
-{   
+{       
     protected $member_id;
     protected $udata;
     public function __construct()
@@ -23,9 +23,12 @@ class Accountform extends Controller
             return redirect()->to('');
         }
         
+        $model = new FilesModel();
         $data = [
             'ac_form' => TRUE,
-            'title' => 'Download Form'
+            'meta_title' => 'Download Form Dealer',
+            'formFiles' => $model->where(['filefor'=>'dealer','member_id'=>null,'status'=>'on'])->findAll(),
+            'fileFor' => 'dealer'
         ];
         echo view('account/ac-form',$data);
     }
@@ -36,10 +39,69 @@ class Accountform extends Controller
             return redirect()->to('');
         }
 
+        $model = new FilesModel();
         $data = [
             'ac_form' => TRUE,
-            'title' => 'Download Form Event'
+            'meta_title' => 'Download Form Event',
+            'formFiles' => $model->where(['filefor'=>'event','member_id'=>null,'status'=>'on'])->findAll(),
+            'fileFor' => 'event'
         ];
         echo view('account/ac-form',$data);
+    }
+
+    public function downloadFiles()
+    {
+        helper('download');
+        $request = service('request');
+        $model = new FilesModel();
+        $post = $request->getPost();
+        if($post){
+            $id = $post['hd_file_id'];
+            $file = $model->where('id',$id)->first();
+            if(is_file($file['path'])){
+                $type = array_pop(explode('.',$file['path']));
+                $name = $file['filename'];
+                $path = ROOTPATH.$file['path'];
+                return $this->response->download($path, null);
+            }else{
+                return redirect()->to('account/form');
+            }
+        }else{
+            return redirect()->to('account/form');
+        }        
+    }
+
+    public function uploadFiles()
+    {
+        helper(['form','filesystem']);
+        $request = service('request');
+        $model = new FilesModel();
+
+        $post = $request->getPost();
+        if($post){
+            $file = $request->getFile('file_upload'); //เก็บไฟล์อัพโหลด
+            $filename = $post['hd_filefor'].'-'.$post['hd_file_upload'];
+            $path = 'uploads/member/'.$this->member_id.'/files';
+            if (!is_dir($path)) {
+                mkdir($path, 0777, TRUE);                
+            }
+            $data = [
+                'filename' => $filename,
+                'filefor' => $post['hd_filefor'],
+                'member_id' => $this->member_id
+            ];
+            $model->save($data);
+            $id = $model->getInsertID();
+            if($id){
+                $file->move($path,$filename);
+                $data = [
+                    'path' => $path.'/'.$filename
+                ];
+                $model->update($id, $data);
+            }
+            return redirect()->to($post['hd_burl'])->with('msg_upload',TRUE);
+        }else{
+            return redirect()->to('account/form');
+        }        
     }
 }

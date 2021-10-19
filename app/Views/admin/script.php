@@ -125,11 +125,28 @@
         $('#txt_file').on('change',function(){
             let file = this.files[0];
             if (this.files && file) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('input[name="hd_file"]').val(file.name);
+                //console.log(file);
+                if(file.size < 5000000){
+                    var reader = new FileReader();
+                    var ext = file.name.split('.').pop().toLowerCase();
+                    reader.onload = function (e) {
+                        $('input[name="hd_file"]').val(file.name);
+                        $('#hd_file_type').val(ext);
+                        if(ext=='pdf'){
+                            $('.fa-file-pdf').removeClass('d-none');
+                            $('.fa-file-word').addClass('d-none');
+                        }else{
+                            $('.fa-file-pdf').addClass('d-none');
+                            $('.fa-file-word').removeClass('d-none');
+                        }
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }else{
+                    var r = confirm("ขนาดไฟล์ใหญ่เกินไป");
+                    if (r == true) {
+                        location.reload();
+                    }
                 }
-                reader.readAsDataURL(this.files[0]);
             }
         });
     

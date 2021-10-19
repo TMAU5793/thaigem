@@ -51,5 +51,6 @@ return [
     'share' => 'Share',
     'advanceSearch' => 'Advance Search',
     'advanceclose' => 'Close Advance Search',
-    'search' => 'Search'
+    'search' => 'Search',
+    'createWebboard' => 'Create Webboard'
 ];

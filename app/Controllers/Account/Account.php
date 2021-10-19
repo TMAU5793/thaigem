@@ -160,7 +160,7 @@ class Account extends Controller
                 ->set('last_login' , new Time('now'))
                 ->update();
             session()->set('userdata',$sess);
-            return redirect()->to($request->getVar('hd_burl'));
+            return redirect()->to('account');
         }else{
             $data['signin_valid'] = $this->validator;
             echo view('front/home',$data);

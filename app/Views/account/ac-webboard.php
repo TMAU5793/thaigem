@@ -42,7 +42,7 @@
                                     ?>
                                         <div class="row m-0" id="<?= 'wb-'.$row['id'] ?>">
                                             <div class="col-md-5">
-                                                <h2 class="ff-semibold mb-0"> <a href="<?= site_url('community/desc') ?>" class="fs-6 text-decoration-none c-black"><?= $row['topic']; ?></a></h2>
+                                                <h2 class="ff-semibold mb-0"> <a href="<?= site_url('community/post/'.$row['id']) ?>" class="fs-6 text-decoration-none c-black"><?= $row['topic']; ?></a></h2>
                                                 <p class="mb-0"><?= word_limiter(strip_tags($row['desc']),20) ?></p>
                                             </div>
                                             <div class="col-md-1 text-end">

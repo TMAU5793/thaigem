@@ -179,7 +179,9 @@ label.form-label {
 }
 
 .content-files {
-    .fa-file-pdf {
-        font-size: 5rem;
+    .files-item {
+        .form-file i {
+            font-size: 5rem;
+        }
     }
 }

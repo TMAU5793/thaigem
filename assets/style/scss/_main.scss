@@ -513,3 +513,12 @@
         width: 100% !important;
     }
 }
+
+.btn-search-webboard {
+    cursor: pointer;
+    &:hover {
+        .bg-darkgold {
+            background-color: $c-black;
+        }
+    }
+}

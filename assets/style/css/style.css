@@ -338,9 +338,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     font-size: 6rem; }
 .acform-body .acform-upload {
   background-color: #ebebeb;
-  padding: 2rem 1.5rem;
-  border-radius: 6px;
-  min-height: 135px; }
+  padding: 1rem 2rem;
+  border-radius: 6px; }
 
 .img_edit {
   background-image: url("../../images/img-edit.jpg");
@@ -747,5 +746,10 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .price-update iframe {
   height: 400px !important;
   width: 100% !important; }
+
+.btn-search-webboard {
+  cursor: pointer; }
+  .btn-search-webboard:hover .bg-darkgold {
+    background-color: #000000; }
 
 /*# sourceMappingURL=style.css.map */

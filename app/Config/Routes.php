@@ -53,6 +53,8 @@ $routes->match(['get', 'post'],'account', 'Account/Account::index',['filter' => 
 $routes->get('account/event', 'Account/Event::index',['filter' => 'memberAuth']);
 $routes->get('account/form', 'Account/Accountform::index',['filter' => 'memberAuth']);
 $routes->get('account/form/event', 'Account/Accountform::event',['filter' => 'memberAuth']);
+$routes->match(['get', 'post'],'account/form/download', 'Account/Accountform::downloadFiles',['filter' => 'memberAuth']);
+$routes->match(['get', 'post'],'account/form/upload', 'Account/Accountform::uploadFiles',['filter' => 'memberAuth']);
 $routes->get('account/invoice', 'Account/Invoice::index',['filter' => 'memberAuth']);
 $routes->get('account/webboard', 'Account/Webboard::index',['filter' => 'memberAuth']);
 

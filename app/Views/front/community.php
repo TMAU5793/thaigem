@@ -11,19 +11,21 @@
                 <h3 class="text-uppercase ff-semibold"><?= lang('MenuLang.webboard'); ?></h3>
             </div>
             
-            <form action="<?= site_url('community/search') ?>" method="GET">
-                <div class="row">
+            <form id="frm-search-webboard" action="<?= site_url('community/search') ?>" method="GET">
+                <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="input-group">
                             <input type="text" name="txt_keyword" class="form-control" placeholder="keyword" value="<?= (isset($keyword)?$keyword:'') ?>">
-                            <div class="input-group-append">
+                            <div class="input-group-append btn-search-webboard" onclick="formSubmit('frm-search-webboard')">
                                 <span class="input-group-text bg-darkgold c-white h-100"><i class="fas fa-search"></i></span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <button type="submit" class="btn bg-darkgold c-white w-100 ff-semibold" id="btn_search_webboard"><?= lang('GlobalLang.search'); ?></button>
-                    </div>
+                    <?php if($userdata['logged_member']){ ?>
+                        <div class="col-md-6">                        
+                            <a href="<?= site_url('account/webboard/form') ?>" class="btn bg-darkgold c-white w-100 ff-semibold a-hover-white" id="btn_create_webboard"><?= lang('GlobalLang.createWebboard'); ?></a>                        
+                        </div>
+                    <?php } ?>
                 </div>
             </form>
 
@@ -46,7 +48,7 @@
                     ?>
                     <div class="row">
                         <div class="col-md-1">
-                            <div class="forum-img" onclick="location.href='<?= site_url('community/desc') ?>'">
+                            <div class="forum-img" onclick="location.href='<?= site_url('community/post/'.$row['id']) ?>'">
                                 <img src="<?= site_url('assets/images/front/webboard-forum.jpg'); ?>" alt="">
                             </div>
                         </div>

@@ -92,10 +92,54 @@
         });
 
         //Modal success save data
-        <?php if (session('msg')){ ?>
+        <?php if (session('msg') || session('msg_upload')){ ?>
             $('#successModal').modal('show');
         <?php } ?>
+
+        //Click to download file
+        $('.btn_ac_download').on('click',function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            //console.log(path);
+            $('#hd_file_id').val(id);
+            $('#frm-file-download').submit();
+        });
+
+        $('#file_upload').on('change',function(){
+            let file = this.files[0];
+            if (this.files && file) {
+                //console.log(file);
+                $('.btn-ac-upload').toggleClass('d-none');
+                if(file.size < 5000000){
+                    var reader = new FileReader();
+                    var ext = file.name.split('.').pop().toLowerCase();
+                    reader.onload = function (e) {
+                        $('input[name="hd_file_upload"]').val(file.name);
+                        $('#hd_file_type').val(ext);
+                        if(ext=='pdf'){
+                            $('.acform-upload .fa-file-pdf').removeClass('d-none');
+                            $('.acform-upload .fa-file-word').addClass('d-none');
+                        }else{
+                            $('.acform-upload .fa-file-pdf').addClass('d-none');
+                            $('.acform-upload .fa-file-word').removeClass('d-none');
+                        }
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }else{
+                    var r = confirm("ขนาดไฟล์ใหญ่เกินไป");
+                    if (r == true) {
+                        location.reload();
+                    }
+                }
+            }
+        });
+
+        $('.btn-ac-upload').on('click',function(){
+            $('#frm-ac-upload').submit();
+        });
+
     });
+    //End Ready function
 
     function deleteAlbum(id){
         var result = confirm("ยืนยันการลบ?");
@@ -120,6 +164,7 @@
                         $('#removeImgModal').modal('show');
                         $('#'+el).remove();
                     }
+                    //console.log(resp);
                 }
             );
             return true;
@@ -127,11 +172,10 @@
     }
 
     // Ckediter 
-    var domain = 'thaigem'; //change your domain for ckupload
     ClassicEditor
         .create( document.querySelector( '#txt_desc' ),{
             ckfinder: {
-                uploadUrl: '../../'+domain+'/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+                uploadUrl: '../../assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
             },
             toolbar: [
                 'heading', '|',
@@ -143,6 +187,6 @@
             ]
         } )
         .catch( error => {
-            console.error( error );
+            //console.error( error );
         } );
 </script>

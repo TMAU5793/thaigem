@@ -5,6 +5,7 @@ namespace App\Controllers\Account;
 use CodeIgniter\Controller;
 use App\Models\Admin\ProductCategoryModel;
 use App\Models\WebboardModel;
+use App\Models\WebboardReplyModel;
   
 class Webboard extends Controller
 {   
@@ -22,7 +23,7 @@ class Webboard extends Controller
     
     public function index()
     {   
-        if($this->udata['user_type']!='dealer'){
+        if($this->member_id==""){
             return redirect()->to('');
         }
 
@@ -37,7 +38,7 @@ class Webboard extends Controller
 
     public function form()
     {
-        if($this->member_id!="" && $this->udata['user_type']!='dealer'){
+        if($this->member_id!=""){
             $request = service('request');
             $model = new WebboardModel();
             $cateModel = new ProductCategoryModel;
@@ -66,7 +67,7 @@ class Webboard extends Controller
 
     public function save()
     {
-        if($this->member_id!="" && $this->udata['user_type']!='dealer'){
+        if($this->member_id!=""){
             $request = service('request');
             $model = new WebboardModel();
             $post = $request->getPost();
@@ -93,14 +94,22 @@ class Webboard extends Controller
 
     public function deletePost()
     {
-        if($this->member_id!="" && $this->udata['user_type']!='dealer'){
-            $request = service('request');
-            $model = new WebboardModel();
-            $id = $request->getPost('id');
+        $request = service('request');
+        $model = new WebboardModel();
+        $replyModel = new WebboardReplyModel();
+        $post = $request->getPost();
+        if($post){            
+            $id = $post['id'];
             if($id){
                 $deleted = $model->where('id', $id)->delete($id);
                 if($deleted){
-                    echo true;
+                    $webReply = $replyModel->where('webboard_id',$id)->findAll();
+                    if($webReply){
+                        foreach($webReply as $del){
+                            $replyModel->where('webboard_id', $id)->delete($del['id']);
+                        }
+                    }
+                    echo TRUE;
                 }
             }else{
                 return redirect()->to('account/webboard');

@@ -3,18 +3,12 @@
 
     <section class="banner position-relative">
         <img src="<?= site_url('assets/images/banner/about.jpg') ?>" alt="">
-        <!-- <div class="container">
-            <div class="banner-title c-darkgold">
-                <h1 class="text-uppercase"><?= lang('MenuLang.navAboutus'); ?></h1>
-                <strong class="display-3 ff-bold">TGJTA</strong>
-            </div>
-        </div> -->
     </section>
 
     <section class="about-content ptb-2rem">
         <div class="container">
             <div class="text-center">
-                <h3 class="text-uppercase"><?= lang('AboutLang.about'); ?> <strong class="ff-bold">TGJTA</strong></h3>
+                <h3 class="text-uppercase mb-3"><?= $meta_title ?></h3>
                 <p><?= lang('AboutLang.subtitle'); ?></p>
             </div>
             <div class="about-desc mb-5">

@@ -18,5 +18,11 @@ return [
     'downloadForm' => 'Download Form',
     'downloadFormEvent' => 'Download Form Event',
     'invoice' => 'Invoice',
-    'webboard' => 'Webboard'
+    'webboard' => 'Webboard',
+
+    'story' => 'Story',
+    'condition' => 'Condition',
+    'advisor' => 'Advisor',
+    'policy' => 'Policy',
+    'benefit' => 'Benefit'
 ];

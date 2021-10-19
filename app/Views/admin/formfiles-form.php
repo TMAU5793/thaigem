@@ -19,7 +19,10 @@
     <!-- Main content -->
     <section class="content-files ps-5 pe-5">
         <div class="container-fluid position-relative">
-            <form id="frm-files" action="<?= site_url('admin/files/update') ?>" method="POST" enctype="multipart/form-data">                
+            <?php if(isset($validation)): ?>
+                <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
+            <?php endif;?>
+            <form id="frm-files" action="<?= site_url('admin/files/update') ?>" method="POST" enctype="multipart/form-data">
                 <div class="mb-3 pt-5">
                     <label for="ddl_filefor" class="d-block">เอกสารสำหรับ</label>
                     <select name="ddl_filefor" id="ddl_filefor" class="form-control">
@@ -33,13 +36,16 @@
                 </div>
                 <div class="files-item">
                     <div class="img-files">
-                        <div class="ac-form-file mb-3">
-                            <i class="fas fa-file-pdf text-danger d-none"></i>
+                        <div class="form-file mb-3">
+                            <?php $filetype = array_pop(explode('.',$info['path'])); ?>
+                            <i class="fas fa-file-pdf text-danger <?= ($filetype=='pdf'?'':'d-none') ?>"></i>
+                            <i class="fas fa-file-word text-primary <?= ($filetype=='docx' || $filetype=='doc'?'':'d-none') ?>"></i>
                         </div>
                         <input type="file" id="txt_file" name="txt_file" class="form-control" accept=".doc, .docx, .pdf">
-                        <input type="hidden" name="hd_file" value="<?= (isset($info) && $info['file']!=""?$info['file'] : '') ?>">
-                        <input type="hidden" name="hd_file_del" id="hd_file_del" value="<?= (isset($info) && $info['file']!=""?$info['file'] : '') ?>">
+                        <input type="hidden" name="hd_file" value="<?= (isset($info) && $info['path']!=""?$info['path'] : '') ?>">
+                        <input type="hidden" name="hd_file_del" id="hd_file_del" value="<?= (isset($info) && $info['path']!=""?$info['path'] : '') ?>">
                         <input type="hidden" name="hd_id" value="<?= (isset($info)?$info['id'] : '') ?>">
+                        <input type="hidden" name="hd_file_type" id="hd_file_type" value="">
                     </div>
                     
                     <p class="text-danger mt-3 mb-0">*ขนาดไฟล์ไม่เกิน 5MB</strong></p>

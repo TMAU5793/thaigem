@@ -51,5 +51,6 @@ return [
     'share' => 'แชร์',
     'advanceSearch' => 'ค้นหาแบบละเอียด',
     'advanceclose' => 'ปิดการค้นหาแบบละเอียด',
-    'search' => 'ค้นหา'
+    'search' => 'ค้นหา',
+    'createWebboard' => 'เขียนกระทู้'
 ];

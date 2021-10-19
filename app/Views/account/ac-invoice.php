@@ -39,10 +39,23 @@
                             </div>
                         </div>
 
-                        <div class="acform-upload text-center">
-                            <input type="file" name="file_upload" class="">
-                            <small class="d-block">Maximun 20MB</small>
-                        </div>
+                        <form id="frm-ac-upload" action="<?= site_url('account/form/upload'); ?>" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
+                            <input type="hidden" name="hd_filefor" value="<?= $fileFor; ?>">
+                            <div class="mt-3">
+                                <label for="" class="mb-2 ff-semibold">Upload your files</label>
+                                <small class="text-danger ms-2"> *Maximun file size 5MB</small>
+                                <input type="file" name="file_upload" id="file_upload" class="form-control" accept=".doc, .docx, .pdf"/>
+                                <input type="hidden" name="hd_file_upload" value="" />
+                                <input type="hidden" name="hd_file_type" id="hd_file_type" value="">
+                            </div>
+                            
+                            <div class="acform-upload display-4 mb-3">
+                                <i class="fas fa-file-pdf text-danger d-none"></i>
+                                <i class="fas fa-file-word text-primary d-none"></i>
+                            </div>
+                            <button type="button" class="btn btn-ac-upload btn-black-border d-none">Comfirm</button>
+                        </form>
                     </div>
                 </div>
             </div>

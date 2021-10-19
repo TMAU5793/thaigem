@@ -139,4 +139,8 @@ use Google\Service\Adsense\Site;
             return true;
         }
     }
+
+    function formSubmit(form){
+        $('#'+form).submit();
+    }
 </script>
