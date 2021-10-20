@@ -19,7 +19,7 @@
                     ?>
                     <div class="content-body">
                         <div class="content-title"><strong class="ff-semibold fs-3"><?= $title; ?></strong></div>
-                        <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipthe industry's standard dummy text</p>
+                        <p>กรุณาดาวโหลดใบสมัครและแนบไฟล์กลับมาอีกครั้งเพื่อทำการดำเนินการให้เจ้าหน้าที่ตรวจสอบเอกสารหลังจากเอกสารผ่านการอนุมัติท่านจะได้รับแจ้งทางอีเมล</p>
                         <div class="acform-section mt-4">
                             <form id="frm-file-download" action="<?= site_url('account/form/download'); ?>" method="POST">
                                 <input type="hidden" name="hd_file_id" id="hd_file_id">
@@ -41,7 +41,7 @@
                                                 </div>
                                                 <div class="w-75">
                                                     <strong class="ff-semibold d-block"><?= $file['filename']; ?></strong>
-                                                    <button type="button" class="btn btn-black-border fs-7 mt-3 btn_ac_download" data-id="<?= $file['id'] ?>">Download Form</button>
+                                                    <button type="button" class="btn btn-black-border fs-7 mt-3 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                                 <i class="fas fa-file-pdf text-danger d-none"></i>
                                 <i class="fas fa-file-word text-primary d-none"></i>
                             </div>
-                            <button type="button" class="btn btn-ac-upload btn-black-border d-none">Comfirm</button>
+                            <button type="button" class="btn btn-ac-upload btn-black-border d-none"><?= lang('accountLang.comfirm') ?></button>
                         </form>
                     </div>
                 </div>

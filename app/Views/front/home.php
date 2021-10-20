@@ -12,7 +12,7 @@
                     <div class="col-md-8">
                         <p class="ff-semibold fs-3">Fulfill your business opportunities with our trusted and reliable members.</p>
                         <div class="tg-title mt-5rem">
-                            <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.members'); ?></strong> <span><?= lang('GlobalLang.category'); ?></span></h3>
+                            <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -33,8 +33,8 @@
                                 <div class="item-img">
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">
                                 </div>
-                                <div class="item-text text-center position-relative">                                    
-                                    <h3 class="ff-semibold fs-6 absolute-center w-100"><a href="<?= site_url('member') ?>" class="a-hover-darkgold"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></a></h3>                                    
+                                <div class="item-text text-center position-relative">
+                                    <h3 class="ff-semibold fs-6 absolute-center w-100"><a href="<?= site_url('member/filter?c='.$row['id']) ?>" class="a-hover-darkgold"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></a></h3>                                    
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="table-price">
-                <?= $this->include('template/price-table') ?>
+                <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
             </div>
         </div>
     </section>
@@ -218,39 +218,36 @@
             </div>
             <div class="member-list slick-2-item slick-dots-2 mb-5 mt-3">
                 <?php 
+                    use App\Models\Account\AlbumModel;
+                    $model = new AlbumModel();
                     if($dealers){
                         foreach($dealers as $dealer){
+                            $album1 = $model->where('member_id',$dealer['id'])->first();
+                            $album3 = $model->where('member_id',$dealer['id'])->findAll(3);
                 ?>
                 <div class="member-item">
                     <div class="shadow-lightgold h-100 rounded w-100 d-inline-flex p-3">
                         <div class="w-50 ac-album">
-                            <div class="mian-img slider-for-hidedots">
-                                <?php
-                                    if($albums){
-                                        foreach($albums as $album){                                            
-                                            if($album['member_id'] == $dealer['id']){
-                                ?>
-                                    <div class="slider-for-item">
-                                        <img src="<?= (is_file($album['images'])?site_url($album['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $dealer['name'].' '.$dealer['lastname'] ?>">
-                                    </div>
-                                <?php } } } ?>
+                            <div class="mian-img">                                
+                                <div class="img-item">
+                                    <img src="<?= (is_file($album1['images'])?site_url($album1['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $dealer['name'].' '.$dealer['lastname'] ?>">
+                                </div>
                             </div>
-                            <div class="sub-img album-item slider-nav-hidedots">
+                            <div class="sub-img album-item">
                                 <?php
-                                    if($albums){
-                                        foreach($albums as $album){
-                                            if($album['member_id'] == $dealer['id']){
+                                    if($album3){
+                                        foreach($album3 as $album){
                                 ?>
-                                    <div class="slider-nav-item">
+                                    <div class="img-item">
                                         <img src="<?= (is_file($album['images'])?site_url($album['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $dealer['name'].' '.$dealer['lastname'] ?>">
                                     </div>
-                                <?php } } } ?>
+                                <?php } } ?>
                             </div>
                         </div>
                         <div class="w-50 position-relative">
                             <div class="absolute-center text-center w-100 p-3">
                                 <h2 class="ff-semibold c-darkgold fs-5"><?= $dealer['name'].' '.$dealer['lastname'] ?></h2>
-                                <p><?= $dealer['about'] ?></p>
+                                <p><?= character_limiter($dealer['about'],40) ?></p>
                                 <div class="btn-tg-group mt-5">
                                     <a href="<?= site_url('member/id/'.$dealer['id']); ?>" class="btn btn-redmore btn-black-border ff-semibold"><?= lang('GlobalLang.viewProfile'); ?></a>
                                 </div>
@@ -273,8 +270,8 @@
                 </div>
                 <div class="col-md-6 position-relative">
                     <div class="absolute-center w-100 singup-form text-center">
-                        <?= lang('HomeLang.newsletterText'); ?>
-                        <div class="btn-singup-group mt-3">
+                        <?= lang('HomeLang.signupText'); ?>
+                        <div class="btn-singup-group mt-5">
                             <button class="btn btn-darkgold ff-semibold c-white w-100 a-hover-white" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.signup'); ?></button>
                         </div>
                     </div>
@@ -289,7 +286,7 @@
                 <div class="col-md-6 position-relative">
                     <div class="absolute-center w-100 singup-form text-center">
                         <?= lang('HomeLang.newsletterText'); ?>
-                        <form id="frm-singup" action="<?= site_url('thaigem/newsLetter') ?>" method="POST">
+                        <form id="frm-singup" class="mt-5" action="<?= site_url('thaigem/newsLetter') ?>" method="POST">
                             <?php if(isset($errors_newsleeter)): ?>
                                 <div class="alert alert-danger"><?= $errors_newsleeter->listErrors() ?></div>
                             <?php endif;?>
@@ -330,9 +327,10 @@
                         </div>
                         <div class="follow-us">
                             <strong class="ff-semibold"><?= lang('GlobalLang.followUs'); ?></strong>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                            <a href=""><i class="fab fa-line"></i></a>
+                            <a href="https://www.facebook.com/tgjta" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/tgjta919" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://lin.ee/kH0e06R" target="_blank"><i class="fab fa-line"></i></a>
+                            <a href="https://www.youtube.com/c/ThaiGemandJewelryTradersAssociation" target="_blank"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>

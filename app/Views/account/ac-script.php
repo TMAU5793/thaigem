@@ -65,16 +65,24 @@
             if ($(event.target).closest(".myfile-menu").length === 0) {
                 $('.myfile-menu-list').addClass('d-none');
             }
+
+            if ($(event.target).closest(".event-menu").length === 0) {
+                $('.event-menu-list').addClass('d-none');
+            }
         });
 
+        //Account dropdown Menu
         $('.myfile-menu').on('click', function() {
             $('.myfile-menu-list').toggleClass('d-none');
+        });
+        $('.event-menu').on('click', function() {
+            $('.event-menu-list').toggleClass('d-none');
         });
 
 
         //form edit profile
         $('#submit_ac_info').on('click',function(){
-            $('#frm_profile').submit();
+            $('#frm_profile').submit();       
         });
 
         //form edit profile about
@@ -92,8 +100,13 @@
         });
 
         //Modal success save data
-        <?php if (session('msg') || session('msg_upload')){ ?>
+        <?php if (session('msg') || session('update_profile')){ ?>
             $('#successModal').modal('show');
+        <?php } ?>
+
+        //Modal upload
+        <?php if (session('msg_upload') || session('msg_invoice')){ ?>
+            $('#uploadModal').modal('show');
         <?php } ?>
 
         //Click to download file

@@ -1,0 +1,97 @@
+#topMenu {
+    .nav-link {
+        font-size: 1.4rem;
+    }
+}
+
+.top-nav {
+    a {
+        font-size: 1.15rem;
+    }
+}
+
+.user-managed {
+    line-height: 1.7rem;
+    .user-login-name {
+        font-size: .9rem !important;
+    }
+    a {
+        font-size: 1.12rem !important;
+    }
+}
+
+.top-more-menu .user-menu-login ul li:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.btn,
+input,
+select {
+    font-size: 1.4rem !important;
+    line-height: 1.2rem !important;
+    padding: 5px 15px 8px !important;
+}
+
+a,
+span {
+    font-size: 1.4rem !important;
+    line-height: 1.2rem !important;
+}
+
+.copy-right {
+    span {
+        font-size: 1rem !important;
+    }
+}
+
+.contact-home {
+    .social-contact a {
+        font-size: 1rem !important;
+    }
+}
+
+.search-member {
+    input,
+    select {
+        font-size: 1rem !important;
+    }
+}
+
+.account-body {
+    .ac-personal span {
+        font-size: 1rem !important;
+    }
+}
+
+.th-fz-1-4rem {
+    font-size: 1.4rem !important;
+}
+
+.th-fz-1rem {
+    font-size: 1rem !important;
+}
+
+.member-info {
+    span {
+        font-size: .9rem !important;
+    }
+}
+
+.ac-personal {
+    input {
+        font-size: 1rem !important;
+    }
+}
+
+.ac-information {
+    select,
+    input {
+        font-size: 1rem !important;
+    }
+}
+
+.lang {
+    a {
+        font-size: .9rem !important;
+    }
+}

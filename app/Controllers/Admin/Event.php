@@ -3,6 +3,8 @@
 namespace App\Controllers\Admin;
 use CodeIgniter\Controller;
 use App\Models\Admin\EventModel;
+use App\Models\BookingModel;
+use App\Models\MemberModel;
 
 class Event extends Controller
 {
@@ -218,5 +220,21 @@ class Event extends Controller
             'thumbnail' => 'uploads/event/'.$newName
         ];
         $model->update($id, $thumb);
+    }
+
+
+    public function booking()
+    {
+        $evModel = new EventModel();
+        $bkModel = new BookingModel();
+        $mbModel = new MemberModel();
+		$data = [
+            'meta_title' => 'การจองอีเว้นท์',
+            'info' => $bkModel->orderBy('created_at DESC')->findAll(),
+            'members' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(),
+            'events' => $evModel->findAll()
+        ];
+        
+		echo view('admin/event-booking',$data);
     }
 }

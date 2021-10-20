@@ -30,7 +30,7 @@
                                             foreach($album as $img){
                                     ?>
                                         <div class="slider-for-item position-relative">
-                                            <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>">
+                                            <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/default-900x600.jpg')) ?>">
                                             <div class="ff-semibold position-absolute top-0 start-50">
                                                 
                                             </div>
@@ -82,10 +82,10 @@
                                 <textarea name="txt_ac_about" id="txt_ac_about" class="form-control about-edit d-none"><?= $info['about'] ?></textarea>
                             </div>
                             <div class="edit_ac_about_btn">
-                                <button type="button" class="btn btn-black-border mt-3 about-edit" id="edit_ac_about">Edit Profile</button>
+                                <button type="button" class="btn btn-black-border mt-3 about-edit" id="edit_ac_about"><?= lang('accountLang.e-profile') ?></button>
                                 <div class="btn-profile-about about-edit mt-3 d-none">
-                                    <button type="button" class="btn btn-black-border" id="submit_ac_about">Comfirm</button>
-                                    <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3">Cancel</a>
+                                    <button type="button" class="btn btn-black-border" id="submit_ac_about"><?= lang('accountLang.comfirm') ?></button>
+                                    <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3"><?= lang('accountLang.cancel') ?></a>
                                 </div>
                             </div>
                         </div>

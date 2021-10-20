@@ -69,6 +69,8 @@ $routes->get('price-update', 'Priceupdate::index');
 $routes->get('help-center', 'Thaigem::heplCenter');
 $routes->get('privacy', 'Thaigem::privacy');
 $routes->get('terms', 'Thaigem::terms');
+$routes->get('about/association-board', 'About::associationboard');
+$routes->get('member/membership-process', 'Member::membershipProcess');
 
 //Api path
 $routes->post('amphurepi', 'Api/LocationApi::getAmphure');

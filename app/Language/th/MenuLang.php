@@ -5,8 +5,8 @@ return [
     'navHome' => 'หน้าแรก',
     'navAboutus' => 'เกี่ยวกับเรา',
     'navMembers' => 'สมาชิก',
-    'navKnowledge' => 'สาระน่ารู้ และข่าวสาร',
-    'navEvents' => 'อีเว้นท์',
+    'navKnowledge' => 'สาระน่ารู้และข่าวสาร',
+    'navEvents' => 'งานแสดงสินค้า',
     'navBusiness' => 'ชุมชนธุรกิจ',
     'navContactus' => 'ติดต่อเรา',
     'navPriceUpdate' => 'ราคาล่าสุด',
@@ -18,11 +18,26 @@ return [
     'downloadForm' => 'ดาวน์โหลดเอกสาร',
     'downloadFormEvent' => 'ดาวน์โหลดเอกสารอีเว้นท์',
     'invoice' => 'ใบแจ้งชำระเงิน',
-    'webboard' => 'เว็บบอร์ด',
+    'webboard' => 'ชุมชน',
 
-    'story' => 'ประวัติสมาคม',
-    'condition' => 'ข้อบังคับสมาคม',
-    'advisor' => 'ที่ปรึกษาสมาคม',
+    'history' => 'ประวัติความเป็นมา',
+    'regulation' => 'ระเบียบและวัตถุประสงค์',
+    'advisory' => 'คณะกรรมการที่ปรึกษา',
+    'directors' => 'คณะกรรมการ',
     'policy' => 'นโยบาย',
-    'benefit' => 'สิทธิประโยชน์'
+    'privileges' => 'สิทธิพิเศษของสมาชิก',
+    'membership' => 'การสมัครสมาชิก',
+    'directory' => 'ดีลเลอร์',
+    'my-event' => 'การจองของฉัน',
+    'events-list' => 'รายการอีเว้นท์',
+
+    //Webboard community
+    'forum' => 'หัวข้อ',
+    'reply' => 'การตอบกลับ',
+    'read' => 'อ่านแล้ว',
+    'owner' => 'เจ้าของกระทู้',
+    'recent' => 'ล่าสุด',
+    'memberInfo' => 'ข้อมูลสมาชิก',
+    'msg' => 'ข้อความ',
+    'managed' => 'จัดการ'
 ];

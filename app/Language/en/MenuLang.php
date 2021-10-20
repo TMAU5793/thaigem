@@ -20,9 +20,24 @@ return [
     'invoice' => 'Invoice',
     'webboard' => 'Webboard',
 
-    'story' => 'Story',
-    'condition' => 'Condition',
-    'advisor' => 'Advisor',
-    'policy' => 'Policy',
-    'benefit' => 'Benefit'
+    'history' => 'History',
+    'regulation' => 'Regulation & Objective',
+    'advisory' => 'TGJTA Advisory Board',
+    'directors' => 'TGJTA Board of Directors',
+    'policy' => 'President Policy',
+    'privileges' => 'The Privileges of TGJTA members',
+    'membership' => 'Apply for Membership',
+    'directory' => 'Member Directory',
+    'my-event' => 'My Event',
+    'events-list' => 'Events List',
+
+    //Webboard community
+    'forum' => 'Forum',
+    'reply' => 'Reply',
+    'read' => 'Read',
+    'owner' => 'Owner',
+    'recent' => 'Recent',
+    'memberInfo' => 'Member Information',
+    'msg' => 'Message',
+    'managed' => 'Managed'
 ];

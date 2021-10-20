@@ -57,7 +57,7 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <strong class="d-block">Province</strong>
-                                <small class="small-data"><?= $province['name_th'] ?></small>
+                                <small class="small-data th-fz-1-4rem"><?= $province['name_th'] ?></small>
                             </div>
                         </div>
                     </div>

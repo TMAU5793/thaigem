@@ -70,10 +70,9 @@ use Google\Service\Adsense\Site;
         $('.share-social').on('click',function(){
             $('#shareModal').modal('show');
             var url = $(this).data('url');
-            $('.share-fb').attr('href','https://www.facebook.com/sharer.php?u='+url);
+            $('.share-fb').attr('href','http://www.facebook.com/sharer.php?u='+url);
             $('.share-tw').attr('href','https://twitter.com/share?url='+url);
             $('.share-line').attr('href','https://social-plugins.line.me/lineit/share?url='+url);
-            $('.share-gg').attr('href','https://plus.google.com/share?url='+url);
             $('.share-in').attr('href','https://www.linkedin.com/shareArticle?mini=true&url='+url);
             $('.share-pt').attr('href','https://pinterest.com/pin/create/button/?url='+url);
         });
@@ -87,8 +86,8 @@ use Google\Service\Adsense\Site;
                 url: "<?= site_url('event/booking') ?>",
                 data: {event_id:event_id,member_id:member_id},
                 success: function (response) {
-                    //location.href='<?= site_url('account/event') ?>';
-                    console.log(response);
+                    $('#eventBookingModal').modal('show');
+                    $('.event-booking').remove();
                 }
             });
 
@@ -102,7 +101,9 @@ use Google\Service\Adsense\Site;
         <?php if(isset($errors_newsleeter)){ ?>
             $('input[name="news_email"]').focus();
         <?php } ?>
+
     });
+    //End Ready function
 
     function deleteReply(id){
         var result = confirm("ยืนยันการลบ?");

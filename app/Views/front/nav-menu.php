@@ -74,25 +74,37 @@
                 <li class="nav-item">
                     <a class="nav-link <?= ($segment=='' || $segment=='home'?'active':'') ?>" aria-current="page" href="<?= site_url(); ?>"><?= lang('MenuLang.navHome'); ?></a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link <?= ($segment=='about'?'active':'') ?>" href="<?= site_url('about'); ?>"><?= lang('MenuLang.navAboutus'); ?></a>
-                </li> -->
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle <?= ($segment=='about'?'active':'') ?>" href="#" id="navAbout" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?= lang('MenuLang.navAboutus'); ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navAbout">
-                        <li><a class="dropdown-item" href="<?= site_url('about'); ?>"><?= lang('MenuLang.navAboutus'); ?></a></li>
-                        <li><a class="dropdown-item" href="<?= site_url('about/story'); ?>"><?= lang('MenuLang.story'); ?></a></li>
-                        <li><a class="dropdown-item" href="<?= site_url('about/condition'); ?>"><?= lang('MenuLang.condition'); ?></a></li>
-                        <li><a class="dropdown-item" href="<?= site_url('about/advisor'); ?>"><?= lang('MenuLang.advisor'); ?></a></li>
+                        <!-- <li><a class="dropdown-item" href="<?= site_url('about'); ?>"><?= lang('MenuLang.navAboutus'); ?></a></li> -->
+                        <li><a class="dropdown-item" href="<?= site_url('about/history'); ?>"><?= lang('MenuLang.history'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('about/regulation'); ?>"><?= lang('MenuLang.regulation'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('about/advisory'); ?>"><?= lang('MenuLang.advisory'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('about/directors'); ?>"><?= lang('MenuLang.directors'); ?></a></li>
                         <li><a class="dropdown-item" href="<?= site_url('about/policy'); ?>"><?= lang('MenuLang.policy'); ?></a></li>
-                        <li><a class="dropdown-item" href="<?= site_url('about/benefit'); ?>"><?= lang('MenuLang.benefit'); ?></a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
+
+                <!-- <li class="nav-item">
                     <a class="nav-link <?= ($segment=='member'?'active':'') ?>" href="<?= site_url('member'); ?>"><?= lang('MenuLang.navMembers'); ?></a>
+                </li> -->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle <?= ($segment=='member'?'active':'') ?>" href="#" id="navMember" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?= lang('MenuLang.navMembers'); ?>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navMember">
+                        <!-- <li><a class="dropdown-item" href="<?= site_url('member'); ?>"><?= lang('MenuLang.navMembers'); ?></a></li> -->
+                        <li><a class="dropdown-item" href="<?= site_url('member/privileges'); ?>"><?= lang('MenuLang.privileges'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('member/membership'); ?>"><?= lang('MenuLang.membership'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('member'); ?>"><?= lang('MenuLang.directory'); ?></a></li>
+                    </ul>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link <?= ($segment=='knowledge'?'active':'') ?>" href="<?= site_url('knowledge'); ?>"><?= lang('MenuLang.navKnowledge'); ?></a>
                 </li>

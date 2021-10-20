@@ -119,7 +119,7 @@
                             foreach($province as $row){
                                 if($info['province'] == $row->code){
                     ?>
-                        <small class="small-data"><?= $row->name_th; ?></small>
+                        <small class="small-data th-fz-1-4rem"><?= $row->name_th; ?></small>
                     <?php } } } ?>
 
                     <div class="edit-field d-none">
@@ -136,10 +136,10 @@
             <?php } ?>
                 
             <div class="text-center mt-3 text-center" id="edit_ac_info_group">
-                <button type="button" class="btn btn-black-border fs-7" id="edit_ac_info">Edit Information</button>
+                <button type="button" class="btn btn-black-border fs-7" id="edit_ac_info"><?= lang('accountLang.e-info') ?></button>
                 <div class="btn-profile-group mt-3 d-none">
-                    <button type="button" class="btn btn-black-border" id="submit_ac_info">Comfirm</button>
-                    <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3">Cancel</a>
+                    <button type="button" class="btn btn-black-border" id="submit_ac_info"><?= lang('accountLang.comfirm') ?></button>
+                    <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3"><?= lang('accountLang.cancel') ?></a>
                 </div>
             </div>
         </div>        
@@ -155,11 +155,11 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <p>ระบบบันทึกข้อมูลเรียบร้อยแล้ว</p>
+                    <p>ระบบบันทึกข้อมูลเรียบร้อยแล้ว <br>กรุณาดาวโหลดใบสมัครที่เมนูดาวโหลด เพื่อทำการกรอกเอกสารดำเนินการขั้นต่อไป</p>
                     <p>Save your information. Success</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Comfirm</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.e-info') ?></a>
                 </div>
             </div>
         </div>
@@ -179,7 +179,35 @@
                     <p>Success, Remove your data</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal upload file -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">                
+                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <?php
+                        $msg = '';
+                        if(session('msg_upload')){
+                            $msg = 'ระบบบันทึกข้อมูลเรียบร้อยแล้ว <br>กรุณารอเจ้าหน้าที่ทำการตรวจสอบภายใน 30 วันหากเอกสารผ่านการพิจารณาท่านจะได้รับอีเมลแจ้งเตือน';
+                        }
+                        if(session('msg_invoice')){
+                            $msg = 'ระบบบันทึกข้อมูลเรียบร้อยแล้ว <br>กรุณารอเจ้าหน้าที่ดำเนินการตรวจสอบ หากบัญชีของคุณผ่านการอนุมัติท่านจะได้รับแจ้งทางอีเมล';
+                        }
+                    ?>
+                    <p><?= $msg ?></p>
+                </div>
+                <div class="text-center mb-3">
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.e-info') ?></a>
                 </div>
             </div>
         </div>

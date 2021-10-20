@@ -16,6 +16,7 @@
 
     <!-- fonts style -->
     <link rel="stylesheet" href="<?= base_url('assets/fonts/Montserrat/montserrat.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/fonts/DBAdman/font.css'); ?>">
 
     <!-- slick slide -->
     <link rel="stylesheet" href="<?= base_url('assets/slick-1.8.1/slick/slick.css'); ?>">
@@ -23,6 +24,10 @@
 
     <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/style/css/response.css'); ?>">
+    <?php if(session()->get('lang')=='th'){ ?>
+        <link rel="stylesheet" href="<?= base_url('assets/style/css/lang-th.css'); ?>">
+    <?php } ?>
     
 </head>
 <body>

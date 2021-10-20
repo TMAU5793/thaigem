@@ -18,6 +18,7 @@ class Home extends BaseController
 
 	public function index()
 	{        
+        helper('text');
         $ctModel = new ProductCategoryModel();
         $evModel = new EventModel();
         $mbModel = new MemberModel();

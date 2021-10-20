@@ -46,11 +46,12 @@ return [
     'termServices' => 'Terms of services',
     'addressInfo' => '919/119, 919/615-621 Jewelry Trade Center Bld., <br> 52nd Fl., Silom Rd., Bangkok 10500',
     'bookNow' => 'Book now',
-
+    'bookevent' => 'Book Event',
     'event' => 'Event',
     'share' => 'Share',
     'advanceSearch' => 'Advance Search',
     'advanceclose' => 'Close Advance Search',
     'search' => 'Search',
-    'createWebboard' => 'Create Webboard'
+    'createWebboard' => 'Create Webboard',
+    'notfound' => 'Not found information'
 ];

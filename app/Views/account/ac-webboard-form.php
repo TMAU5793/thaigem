@@ -39,8 +39,8 @@
                             <div class="form-group mb-3">
                                 <textarea name="txt_desc" id="txt_desc" class="form-control" placeholder="Webboard detail"><?= (isset($info)?$info['desc']:'') ?></textarea>
                             </div>
-                            <button type="submit" class="btn btn-black-border">Comfirm</button>
-                            <a href="<?= site_url('account/webboard') ?>" class="ff-semibold text-danger ms-5">Cancel</a>
+                            <button type="submit" class="btn btn-black-border"><?= lang('accountLang.comfirm') ?></button>
+                            <a href="<?= site_url('account/webboard') ?>" class="ff-semibold text-danger ms-5"><?= lang('accountLang.cancel') ?></a>
                         </form>
                     </div>
                 </div>

@@ -26,7 +26,7 @@ class Member extends BaseController
         $bnModel = new BusinessModel();
 
         $data = [
-            'meta_title' => 'Member',
+            'meta_title' => 'Member directory',
             'lang' => $this->lang,
             'info' => $model->where(['type'=>'dealer','status'=>'2'])->findAll(),
             'album' => $albumModel->findAll(),
@@ -118,5 +118,53 @@ class Member extends BaseController
         }else{
             return redirect()->to('member');
         }
+    }
+
+    public function filter()
+    {
+        helper('text');
+        $request = service('request');
+        $mbModel = new MemberModel();
+        $albumModel = new AlbumModel();
+        $pvModel = new ProvinceModel();
+        $cateModel = new ProductCategoryModel();
+        $bnModel = new BusinessModel();
+        $get = $request->getGet();
+
+        if($get){
+            $keyword = $get['c'];
+            $result = $mbModel->where('maincate_id',$keyword)->findAll();
+            $data = [
+                'meta_title' => 'Filter Member',
+                'lang' => $this->lang,
+                'info' => $result,
+                'album' => $albumModel->findAll(),
+                'province' => $pvModel->findAll(),
+                'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
+                'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll()
+            ];
+            //print_r($result);
+            echo view('front/member', $data);
+        }else{
+            return redirect()->to('member');
+        }
+    }
+
+    public function privileges()
+    {
+        $data = [
+            'meta_title' => 'สิทธิประโยชน์การเป็นสมาชิกสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
+        ];
+        
+        echo view('template/information', $data);
+    }
+
+    public function membership()
+    {
+        $data = [
+            'meta_title' => 'สิทธิประโยชน์การเป็นสมาชิกสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
+        ];
+        
+        echo view('template/information', $data);
     }
 }

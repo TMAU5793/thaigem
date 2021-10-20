@@ -543,4 +543,7 @@ label.form-label {
 .content-files .files-item .form-file i {
   font-size: 5rem; }
 
+.ck-editor .ck-content {
+  height: 70vh; }
+
 /*# sourceMappingURL=back-office.css.map */

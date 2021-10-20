@@ -4,6 +4,7 @@
     }
 }
 
+$ff-dbadman: 'DBAdman';
 $ff-reg: 'Montserrat-Regular';
 $ff-medium: 'Montserrat-Medium';
 $ff-semibold: 'Montserrat-SemiBold';
@@ -16,7 +17,7 @@ $c-black: #000000;
 $c-white: #ffffff;
 $c-yellowgold: #f6ecc9;
 body {
-    font-family: $ff-reg;
+    font-family: $ff-reg, $ff-dbadman;
 }
 
 img {
@@ -24,15 +25,15 @@ img {
 }
 
 .ff-medium {
-    font-family: $ff-medium;
+    font-family: $ff-medium, $ff-dbadman;
 }
 
 .ff-semibold {
-    font-family: $ff-semibold;
+    font-family: $ff-semibold, $ff-dbadman;
 }
 
 .ff-bold {
-    font-family: $ff-bold;
+    font-family: $ff-bold, $ff-dbadman;
 }
 
 .pt-2rem {
@@ -127,7 +128,7 @@ img {
 
 .btn-black-border {
     border: 2px solid $c-black;
-    font-family: $ff-semibold;
+    font-family: $ff-semibold, $ff-dbadman;
     &:hover {
         background-color: $c-black;
         color: $c-white;
@@ -136,7 +137,7 @@ img {
 
 .btn-white-border {
     border: 2px solid $c-white;
-    font-family: $ff-semibold;
+    font-family: $ff-semibold, $ff-dbadman;
     &:hover {
         background-color: $c-white;
         color: $c-black;

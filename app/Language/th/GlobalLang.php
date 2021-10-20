@@ -2,9 +2,9 @@
 
 // override core en language system validation or define your own en language validation message
 return [
-    'login' => 'ล็อกอิน',
+    'login' => 'เข้าสู่ระบบ',
     'signin' => 'เข้าสู่ระบบ',
-    'logout' => 'ล็อคเอ้าท์',
+    'logout' => 'ออกจากระบบ',
     'signout' => 'ออกจากระบบ',
     'signup' => 'ลงทะเบียน',
     'forgot' => 'ลืมรหัสผ่าน',
@@ -34,23 +34,24 @@ return [
     'diamonds' => 'Diamonds',
     'ruby' => 'Ruby',
     'sapphire' => 'Sapphire',
-    'events' => 'Events',
+    'events' => 'งานแสดงสินค้า',
     'viewAll' => 'ดูทั้งหมด',
     'readMore' => 'อ่านเพิ่มเติม',
-    'knowledgeNews' => 'Knowledge & News',
-    'viewProfile' => 'View profile',
-    'contactForm' => 'Contact Form',
-    'followUs' => 'Follow Us',
+    'knowledgeNews' => 'สาระน่ารู้และข่าวสาร',
+    'viewProfile' => 'ดูโปรไฟล์',
+    'contactForm' => 'ติดต่อเรา',
+    'followUs' => 'ติดตาม',
     'submit' => 'Submit',
-    'policy' => 'Privacy Policy',
-    'termServices' => 'Terms of services',
+    'policy' => 'นโยบายความเป็นส่วนตัว',
+    'termServices' => 'เงื่อนไขการให้บริการ',
     'addressInfo' => '919/119, 919/615-621 Jewelry Trade Center Bld., <br> 52nd Fl., Silom Rd., Bangkok 10500',
-    'bookNow' => 'Book now',
-
-    'event' => 'อีเว้นท์',
+    'bookNow' => 'จอง',
+    'bookevent' => 'จองบูธ',
+    'event' => 'งานแสดงสินค้า',
     'share' => 'แชร์',
     'advanceSearch' => 'ค้นหาแบบละเอียด',
     'advanceclose' => 'ปิดการค้นหาแบบละเอียด',
     'search' => 'ค้นหา',
-    'createWebboard' => 'เขียนกระทู้'
+    'createWebboard' => 'เขียนกระทู้',
+    'notfound' => 'ไม่พบข้อมูล'
 ];

@@ -1,16 +1,26 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\Admin\EventModel;
 use CodeIgniter\I18n\Time;
+use App\Models\Admin\EventModel;
+use App\Models\BookingModel;
+use App\Models\MemberModel;
 
 class Event extends BaseController
 {
     protected $lang;
+    protected $member_id;
+    protected $userdata;
     public function __construct() {        
         $this->lang = 'en';
         if(session()->get('lang')){
             $this->lang = session()->get('lang');
+        }
+
+        $usersess = session()->get('userdata');
+        if($usersess){
+            $this->userdata = $usersess;
+            $this->member_id = $usersess['id'];
         }
     }
 
@@ -31,6 +41,8 @@ class Event extends BaseController
     public function post()
     {
         $model = new EventModel();
+        $bkModel = new BookingModel();
+        $mbModel = new MemberModel();
         $uri = service('uri');
         $segment3 = $uri->getSegment(3);
         $segment3 = urldecode($segment3);
@@ -49,7 +61,9 @@ class Event extends BaseController
             'meta_title' => ($this->lang=='en' && $row['meta_title_en']!=""?$row['meta_title_en']:$row['meta_title']),
             'meta_desc' => ($this->lang=='en' && $row['meta_desc_en']!=""?$row['meta_desc_en']:$row['meta_desc']),
             'info' => $row,
-            'lang' => $this->lang
+            'lang' => $this->lang,
+            'booking' => $bkModel->where(['member_id'=>$this->member_id,'event_id'=>$row['id']])->first(),
+            'member' => $mbModel->where('id',$this->member_id)->first()
         ];
         
         echo view('front/event-desc', $data);
@@ -57,25 +71,22 @@ class Event extends BaseController
 
     public function booking()
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('tbl_booking');
+        $bkModel = new bookingModel();
+        // $db = \Config\Database::connect();
+        // $builder = $db->table('tbl_booking');
         $request = service('request');
         $post = $request->getPost();
         $booking_no = $this->bookingNo();
+        
+        $savedata = [
+            'booking_no' => $booking_no,
+            'event_id' => $post['event_id'],
+            'member_id' => $post['member_id'],
+        ];
 
-        $builder->where(['event_id' => $post['event_id']]);
-        $ckdevent = $builder->get();
-        print_r($ckdevent);
-        // $savedata = [
-        //     'booking_no' => $booking_no,
-        //     'event_id' => $post['event_id'],
-        //     'member_id' => $post['member_id'],
-        // ];
-        // //print_r($savedata);
-
-        // if($builder->insert($savedata)){
-        //     echo true;
-        // }
+        if($bkModel->insert($savedata)){
+            echo true;
+        }
     }
 
     public function bookingNo()
@@ -83,10 +94,6 @@ class Event extends BaseController
         $db = \Config\Database::connect();
         $date = new Time('now');
 		$yymmdd = date_format($date, 'ymd')."-";
-        //echo $yymmdd;
-
-		$date_start = date_format($date, 'Y-m-d')." 00:00:00";
-		$date_end = date_format($date, 'Y-m-d')." 23:23:59";
 	    $str="B";
 	    $code=$str.$yymmdd."000000001";
         //echo $code;

@@ -12,14 +12,21 @@
             </li>
 
             <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
-                <li class="nav-item">
-                    <a class="nav-link <?= (isset($ac_event)?'active':''); ?>" href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a>
+                <li class="nav-item position-relative">
+                    <!-- <a class="nav-link <?= (isset($ac_event)?'active':''); ?>" href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.navEvents'); ?></a> -->
+                    <span class="nav-link cs-pointer event-menu <?= (isset($ac_event)?'active':''); ?>"><?= lang('MenuLang.navEvents'); ?></span>
+                    <div class="event-menu-list ac-ul-menu d-none">
+                        <ul>
+                            <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.my-event'); ?></a></li>
+                            <li><a href="<?= site_url('account/event/list'); ?>"><?= lang('MenuLang.events-list'); ?></a></li>
+                        </ul>
+                    </div>
                 </li>
             <?php } ?>
 
             <li class="nav-item position-relative">
                 <span class="nav-link cs-pointer myfile-menu <?= (isset($ac_form)?'active':''); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></span>
-                <div class="myfile-menu-list d-none">
+                <div class="myfile-menu-list ac-ul-menu d-none">
                     <ul>
                         <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadForm'); ?></a></li>
                         <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>

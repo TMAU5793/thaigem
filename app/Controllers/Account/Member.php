@@ -67,6 +67,7 @@ class Member extends Controller
                 if($this->validate($rules)){
                     $result = $model->updateProfile($post);
                     if($result){
+                        $this->upload($post['hd_id'],$thumb,$img_del);
                         return redirect()->to($request->getGet('burl'));
                     }else{
                         print_r($db->error()); 
@@ -83,6 +84,7 @@ class Member extends Controller
 	{
 		helper(['form','fileystem']);
 		$db = \Config\Database::connect();
+        $image = \Config\Services::image();
         $builder = $db->table('tbl_member');
 		
 		$allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
@@ -93,11 +95,14 @@ class Member extends Controller
 				unlink($img_del); //ลบรูปเก่าออก
 			}
 			$newName = $profile->getRandomName();
+            $path = 'uploads/member/'.$id;
 			if (!is_dir('uploads/member/'.$id)) {
 				mkdir('uploads/member/'.$id, 0777, TRUE);
-				$profile->move('uploads/member/'.$id,$newName);
+				//$profile->move('uploads/member/'.$id,$newName);
+                $image->withFile($profile)->fit(250, 250, 'center')->save($path.'/'.$newName);
 			}else{
-				$profile->move('uploads/member/'.$id,$newName);
+				//$profile->move('uploads/member/'.$id,$newName);
+                $image->withFile($profile)->fit(250, 250, 'center')->save($path.'/'.$newName);
 			}
 			$thumb = [
 				'profile' => 'uploads/member/'.$id.'/'.$newName

@@ -6,9 +6,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="text-center">
+                <div class="text-center mb-3">
                     <strong class="ff-semibold fs-4"><?= lang('GlobalLang.signin') ?></strong>
-                    <p>Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ip the dummy text industry.</p>                    
+                    
                 </div>
                 <form action="<?= base_url('account/login'); ?>" method="POST">
                     <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
@@ -69,7 +69,7 @@
                                 <label class="form-check-label fs-7" for="rd_member2">Sign up for newsletter</label>
                             </div>
                             <div class="clearfix"></div>
-                            <p class="mt-2 fs-7">Lorem Ipsum is simply dummy text of the printing and typesetting in dustry. Lorem Ipsum has been</p>
+                            
                         </div>
                         <div class="form-group mb-3">
                             <input type="email" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.userName').' ('.lang('GlobalLang.email').')' ?> *" value="<?= (isset($signup_valid)?set_value('txt_username'):''); ?>">
@@ -118,14 +118,11 @@
                     <!-- Line -->
                     <a href="" target="_blank" class="share-line"><i class="fab fa-line"></i> <span>line</span></a>
 
-                    <!-- Google+ -->
-                    <a href="" target="_blank" class="share-gg"><i class="fab fa-google-plus-g"></i> <span>google+</span></a>
-
                     <!-- LinkedIn -->
                     <a href="" target="_blank" class="share-in"><i class="fab fa-linkedin-in"></i> <span>linkedin</span></a>
 
                     <!-- Pinterest -->
-                    <a href="" class="share-pt"><i class="fab fa-pinterest"></i> <span>pinterest</span></a>
+                    <a href="" target="_blank" class="share-pt"><i class="fab fa-pinterest"></i> <span>pinterest</span></a>
                 </div>
             </div>
         </div>
@@ -171,6 +168,25 @@
                 <div class="p-4">
                     <p class="c-black">
                         <strong class="ff-semibold">ล้มเหลว! :</strong> การจองบูธงานอีเว้นท์สำหรับสมาชิกที่เป็นดีลเลอร์เท่านั้น
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Event Booking -->
+<div class="modal fade" id="eventBookingModal" tabindex="-1" aria-labelledby="eventBookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-lightgold border-0">
+            <div class="modal-header pb-0">
+                <span class="ff-semibold text-center d-inline-block w-100"> Booking Success </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4">
+                    <p class="c-black">
+                        การจองบูธงานอีเว้นท์เรียบร้อยแล้ว ทางเราจะติดต่อกลับไปหาท่านโดยเร็วที่สุด
                     </p>
                 </div>
             </div>

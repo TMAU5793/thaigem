@@ -13,31 +13,31 @@ class About extends BaseController
         echo view('front/about', $data);
 	}
 
-    public function story()
+    public function history()
     {
         $data = [
             'meta_title' => 'ประวัติสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
         ];
         
-        echo view('front/about', $data);
+        echo view('template/information', $data);
     }
 
-    public function condition()
+    public function regulation()
     {
         $data = [
             'meta_title' => 'ข้อบังคับสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
         ];
         
-        echo view('front/about', $data);
+        echo view('template/information', $data);
     }
 
-    public function advisor()
+    public function advisory()
     {
         $data = [
             'meta_title' => 'รายนามที่ปรึกษาสมาคมฯ'
         ];
         
-        echo view('front/about', $data);
+        echo view('template/information', $data);
     }
 
     public function policy()
@@ -46,15 +46,15 @@ class About extends BaseController
             'meta_title' => 'นโยบายนายกสมาคม 62-64'
         ];
         
-        echo view('front/about', $data);
-    }
+        echo view('template/information', $data);
+    }    
 
-    public function benefit()
+    public function directors()
     {
         $data = [
-            'meta_title' => 'สิทธิประโยชน์การเป็นสมาชิกสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
+            'meta_title' => 'รายนามคณะกรรมการสมาคมฯ วาระ 2562-2564'
         ];
         
-        echo view('front/about', $data);
+        echo view('template/information', $data);
     }
 }

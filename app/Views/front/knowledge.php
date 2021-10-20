@@ -50,7 +50,7 @@
                             <div class="p-4">
                                 <div class="event-text mt-3">
                                     <h2 class="ff-semibold fs-5">
-                                        <a href="<?= site_url('event/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="a-hover-darkgold">
+                                        <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="a-hover-darkgold">
                                             <?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>
                                         </a>
                                     </h2>

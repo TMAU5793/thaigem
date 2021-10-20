@@ -1,17 +1,17 @@
 body {
-  font-family: "Montserrat-Regular"; }
+  font-family: "Montserrat-Regular", "DBAdman"; }
 
 img {
   width: 100%; }
 
 .ff-medium {
-  font-family: "Montserrat-Medium"; }
+  font-family: "Montserrat-Medium", "DBAdman"; }
 
 .ff-semibold {
-  font-family: "Montserrat-SemiBold"; }
+  font-family: "Montserrat-SemiBold", "DBAdman"; }
 
 .ff-bold {
-  font-family: "Montserrat-Bold"; }
+  font-family: "Montserrat-Bold", "DBAdman"; }
 
 .pt-2rem {
   padding-top: 2rem; }
@@ -82,14 +82,14 @@ img {
 
 .btn-black-border {
   border: 2px solid #000000;
-  font-family: "Montserrat-SemiBold"; }
+  font-family: "Montserrat-SemiBold", "DBAdman"; }
   .btn-black-border:hover {
     background-color: #000000;
     color: #ffffff; }
 
 .btn-white-border {
   border: 2px solid #ffffff;
-  font-family: "Montserrat-SemiBold"; }
+  font-family: "Montserrat-SemiBold", "DBAdman"; }
   .btn-white-border:hover {
     background-color: #ffffff;
     color: #000000; }
@@ -158,7 +158,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   background-color: #ffffff; }
 
 #topMenu {
-  font-family: "Montserrat-Bold";
+  font-family: "Montserrat-Bold", "DBAdman";
   justify-content: center; }
   #topMenu .nav-link {
     padding: .5rem 1.25rem;
@@ -178,9 +178,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .top-more-menu {
   font-size: 0.8rem; }
   .top-more-menu a:hover {
-    font-family: "Montserrat-Bold"; }
+    font-family: "Montserrat-Bold", "DBAdman"; }
   .top-more-menu .user-login span:hover {
-    font-family: "Montserrat-Bold"; }
+    font-family: "Montserrat-Bold", "DBAdman"; }
   .top-more-menu .user-menu-login {
     position: absolute;
     top: 2rem;
@@ -224,7 +224,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .account-menu .navbar-nav {
   flex-direction: initial; }
   .account-menu .navbar-nav .nav-link {
-    font-family: "Montserrat-SemiBold";
+    font-family: "Montserrat-SemiBold", "DBAdman";
     text-transform: uppercase;
     margin-right: 1rem; }
     .account-menu .navbar-nav .nav-link.active {
@@ -289,20 +289,20 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   border: none;
   padding: 0 !important; }
 
-.myfile-menu-list {
+.ac-ul-menu {
   position: absolute;
   top: 3rem;
   right: 1rem;
   z-index: 99;
-  width: 94%;
+  min-width: 150px;
   background-color: #ffffff;
   box-shadow: 0px 0px 10px 0px #c1c1c1; }
-  .myfile-menu-list a {
+  .ac-ul-menu a {
     text-decoration: none;
     color: #000000; }
-    .myfile-menu-list a:hover {
-      font-family: "Montserrat-SemiBold"; }
-  .myfile-menu-list::after {
+    .ac-ul-menu a:hover {
+      font-family: "Montserrat-SemiBold", "DBAdman"; }
+  .ac-ul-menu::after {
     content: '';
     position: absolute;
     top: 0;
@@ -314,21 +314,25 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     border-top: 0;
     margin-left: -13px;
     margin-top: -13px; }
-  .myfile-menu-list ul {
+  .ac-ul-menu ul {
     padding: 1rem;
     margin: 0;
     list-style: none;
     text-align: left; }
-    .myfile-menu-list ul li {
+    .ac-ul-menu ul li {
       border-bottom: 1px solid #c1c1c1;
       padding-bottom: .5rem; }
-      .myfile-menu-list ul li:not(:last-child) {
+      .ac-ul-menu ul li:not(:last-child) {
         margin-bottom: .5rem; }
 
-.event-body .slick-3-item-hide-dot .slick-slide {
+.event-body .slider-nav .slick-slide {
   padding: 1rem; }
 .event-body .event-info {
   padding: 1rem; }
+.event-body .event-item-box .item-desc {
+  height: 144px; }
+.event-body .event-section {
+  border-bottom: 1px solid #665f4f; }
 
 .acform-body .acform-item {
   background-color: #ebebeb;
@@ -454,7 +458,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .event-home .slick-1-item {
   background-color: #cec6b2; }
   .event-home .slick-1-item .slick-dots {
-    width: 41.66%;
+    width: 50%;
     bottom: 5rem;
     right: 0; }
     .event-home .slick-1-item .slick-dots li {
@@ -512,9 +516,11 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   .member-home .member-list .member-item {
     padding: .5rem 1rem; }
   .member-home .member-list .sub-img {
-    margin: 0 -.20rem; }
-    .member-home .member-list .sub-img .slider-nav-item {
-      padding: 0 .25rem; }
+    margin: .5rem -.20rem 0; }
+    .member-home .member-list .sub-img .img-item {
+      padding: 0 .25rem;
+      width: 33.33%;
+      float: left; }
   .member-home .member-list .slick-dots {
     bottom: -3rem; }
 .member-home .ac-album {

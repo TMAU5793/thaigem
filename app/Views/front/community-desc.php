@@ -19,8 +19,8 @@
 
             <div class="forum-box">
                 <div class="row forum-head">
-                    <div class="col-md-3"><strong>Member Information</strong></div>
-                    <div class="col-md-9"><strong class="ps-5">Message</strong></div>
+                    <div class="col-md-3"><strong><?= lang('MenuLang.memberInfo'); ?></strong></div>
+                    <div class="col-md-9"><strong class="ps-5"><?= lang('MenuLang.msg'); ?></strong></div>
                 </div>
                 <div class="row forum-body">
                     <div class="col-md-3 gradient-gold-y">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="info-item">
                                 <strong class="d-inline-block">Province</strong>
-                                <span class="d-inline-block"><?= ($member['company']!=''?$member['company']:'-') ?></span>
+                                <span class="d-inline-block th-fz-1-4rem"><?= ($member['company']!=''?$member['company']:'-') ?></span>
                             </div>
                             <div class="info-item">
                                 <strong class="d-inline-block">Member Since</strong>

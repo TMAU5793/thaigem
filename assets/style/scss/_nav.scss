@@ -9,7 +9,7 @@
 }
 
 #topMenu {
-    font-family: $ff-bold;
+    font-family: $ff-bold, $ff-dbadman;
     justify-content: center;
     .nav-link {
         padding: .5rem 1.25rem;
@@ -38,13 +38,13 @@
     font-size: 0.8rem;
     a {
         &:hover {
-            font-family: $ff-bold;
+            font-family: $ff-bold, $ff-dbadman;
         }
     }
     .user-login {
         span {
             &:hover {
-                font-family: $ff-bold;
+                font-family: $ff-bold, $ff-dbadman;
             }
         }
     }

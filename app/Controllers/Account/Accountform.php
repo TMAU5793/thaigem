@@ -73,18 +73,19 @@ class Accountform extends Controller
 
     public function uploadFiles()
     {
-        helper(['form','filesystem']);
+        helper(['form','filesystem','text']);
         $request = service('request');
         $model = new FilesModel();
 
         $post = $request->getPost();
         if($post){
             $file = $request->getFile('file_upload'); //เก็บไฟล์อัพโหลด
-            $filename = $post['hd_filefor'].'-'.$post['hd_file_upload'];
+            $filename = strtolower($post['hd_filefor'].'-'.random_string().'-'.$post['hd_file_upload']);
             $path = 'uploads/member/'.$this->member_id.'/files';
             if (!is_dir($path)) {
                 mkdir($path, 0777, TRUE);                
             }
+            
             $data = [
                 'filename' => $filename,
                 'filefor' => $post['hd_filefor'],

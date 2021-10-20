@@ -32,13 +32,13 @@
             <div class="list-forum mt-4">
                 <div class="row forum-head">
                     <div class="col-md-1">
-                        <strong>Forum</strong>
+                        <strong><?= lang('MenuLang.forum'); ?></strong>
                     </div>
                     <div class="col-md-4"></div>
-                    <div class="col-md-1 text-end"><strong>Reply</strong></div>
-                    <div class="col-md-1 text-end"><strong>Read</strong></div>
-                    <div class="col-md-2"><strong class="ps-3">Member name</strong></div>
-                    <div class="col-md-3 text-center"><strong>Recent Comment</strong></div>
+                    <div class="col-md-2 text-end"><strong><?= lang('MenuLang.reply'); ?></strong></div>
+                    <div class="col-md-1 text-end"><strong><?= lang('MenuLang.read'); ?></strong></div>
+                    <div class="col-md-2"><strong class="ps-3"><?= lang('MenuLang.owner'); ?></strong></div>
+                    <div class="col-md-2 text-center"><strong><?= lang('MenuLang.recent'); ?></strong></div>
                 </div>
 
                 <div class="forum-body">
@@ -49,30 +49,35 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="forum-img" onclick="location.href='<?= site_url('community/post/'.$row['id']) ?>'">
-                                <img src="<?= site_url('assets/images/front/webboard-forum.jpg'); ?>" alt="">
+                                <?php
+                                    foreach($member as $item){
+                                        if($row['member_id']==$item['id']){
+                                ?>
+                                    <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : site_url('assets/images/img-default.png')) ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
+                                <?php } } ?>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <h2 class="ff-semibold mb-0"> <a href="<?= site_url('community/post/'.$row['id']) ?>" class="fs-6 text-decoration-none c-black"><?= $row['topic']; ?></a></h2>
                             <p class="mb-0"><?= word_limiter(strip_tags($row['desc']),20) ?></p>
                         </div>
-                        <div class="col-md-1 text-end">
-                            <span><?= $row['reply']; ?></span>
+                        <div class="col-md-2 text-end">
+                            <span class="th-fz-1rem"><?= $row['reply']; ?></span>
                         </div>
                         <div class="col-md-1 text-end">
-                            <span><?= $row['view']; ?></span>
+                            <span class="th-fz-1rem"><?= $row['view']; ?></span>
                         </div>
                         <div class="col-md-2">
                             <?php
                                 foreach($member as $item){
                                     if($row['member_id']==$item['id']){
                             ?>
-                                <span class="ps-3"><?= $item['name'].' '.$item['lastname'] ?></span>
+                                <span class="ps-3 th-fz-1rem"><?= $item['name'].' '.$item['lastname'] ?></span>
                             <?php } } ?>
                         </div>
-                        <div class="col-md-3 text-center">
+                        <div class="col-md-2 text-center">
                             <div class="forum-date"><?= substr($row['created_at'],0,10); ?></div>
-                            <small><?= substr($row['created_at'],11); ?></small>
+                            <small class="th-fz-1rem"><?= substr($row['created_at'],11); ?></small>
                         </div>
                     </div>
                     <?php } }else{ ?>

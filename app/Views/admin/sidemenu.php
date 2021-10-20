@@ -55,13 +55,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/event'); ?>" class="nav-link <?= ($uri->getSegment(2)=='event'?'active':''); ?>">
+                            <a href="<?= base_url('admin/event'); ?>" class="nav-link <?= ($uri->getSegment(3)==''?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>รายการงานอีเว้นท์</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
+                            <a href="<?= base_url('admin/event/booking'); ?>" class="nav-link <?= ($uri->getSegment(3)=='booking'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>การจองงานอีเว้นท์</p>
                             </a>
