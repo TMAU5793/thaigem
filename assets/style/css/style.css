@@ -211,15 +211,33 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .to-top {
   position: fixed;
+  z-index: 9999;
   bottom: 2.5rem;
   right: 4rem;
   font-size: 2.5rem;
   cursor: pointer;
   color: #665f4f;
+  background-color: #cec6b2;
+  border: 1px solid #665f4f;
+  height: 50px;
+  width: 50px;
+  border-radius: 6px;
   transition: all .25s; }
   .to-top:hover {
     transition: all .25s;
-    font-size: 3rem; }
+    box-shadow: 0px 0px 10px 1px #665f4f; }
+  .to-top i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .to-top div.position-relative {
+    width: 100%;
+    height: 100%; }
+
+.logo-top.navbar-brand,
+.mobile-menu-right {
+  display: none; }
 
 .account-menu .navbar-nav {
   flex-direction: initial; }
@@ -254,7 +272,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     margin: .5rem -1.5rem .5rem 0;
     border-radius: 50px 0 0 50px;
     padding: 5px 0 5px 4rem;
-    position: relative; }
+    position: relative;
+    min-height: 56px; }
   .ac-menu-left .ac-information .ac-info-icon {
     position: absolute;
     left: 0;
@@ -282,6 +301,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     .ac-menu-left .ac-profile-img img {
       border-radius: 50%;
       box-shadow: 0px 0px 0px 6px #cec6b2; }
+    .ac-menu-left .ac-profile-img input {
+      width: 100%; }
 
 .input-disabled input:disabled,
 .input-disabled textarea:disabled {
@@ -436,6 +457,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       content: ''; }
     .category-home .category-list .slick-5-item .slick-dots li.slick-active {
       background-color: #665f4f; }
+.category-home .col-md-4 iframe,
+.category-home .col-md-4 .tradingview-widget-container {
+  width: 100% !important; }
 
 .price-update .price-subject strong {
   display: inline;
@@ -511,18 +535,18 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       text-decoration: none;
       box-shadow: 0px 6px 3px -3px #ffffff; }
 
-.member-home .member-list {
+.member-home .member-list .slick-list.draggable {
   margin: 0 -1rem; }
-  .member-home .member-list .member-item {
-    padding: .5rem 1rem; }
-  .member-home .member-list .sub-img {
-    margin: .5rem -.20rem 0; }
-    .member-home .member-list .sub-img .img-item {
-      padding: 0 .25rem;
-      width: 33.33%;
-      float: left; }
-  .member-home .member-list .slick-dots {
-    bottom: -3rem; }
+.member-home .member-list .member-item {
+  padding: .5rem 1rem; }
+.member-home .member-list .sub-img {
+  margin: .5rem -.20rem 0; }
+  .member-home .member-list .sub-img .img-item {
+    padding: 0 .25rem;
+    width: 33.33%;
+    float: left; }
+.member-home .member-list .slick-dots {
+  bottom: -3rem; }
 .member-home .ac-album {
   overflow: hidden; }
 

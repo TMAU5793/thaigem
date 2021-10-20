@@ -116,7 +116,7 @@ class Account extends Controller
         helper(['form']);
         $model = new AccountModel();
         $request = service('request');
-        if ($request->getMethod() !== 'post') {
+        if (!$request->getPost()) {
             return redirect()->to(site_url());
         }
 

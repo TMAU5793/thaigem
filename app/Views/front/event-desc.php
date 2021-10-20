@@ -21,7 +21,7 @@
             </div>
 
             <div class="share-post text-end mt-4 mb-4">
-                <span class="ff-semibold share-social"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
+                <span class="ff-semibold share-social" data-url="<?= site_url('knowledge/post/'.($info['slug']!=""?$info['slug']:$info['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
             </div>
             
             <div class="event-date mt-3 <?= ($booking?'mb-5':'mb-3') ?>">เผยแพร่ : <?= substr($info['created_at'],0,10) ?></div>
@@ -37,7 +37,7 @@
                         <?php
                             if($member['type']=='dealer' && $member['status']=='2'){
                         ?>
-                            <a href="javascript:void(0)" class="btn btn-black-border" id="booking_event" data-event="<?= $info['id']; ?>"><?= lang('GlobalLang.bookevent') ?></a>
+                            <a href="javascript:void(0)" class="btn btn-black-border booking_event" id="booking_event" data-event="<?= $info['id']; ?>"><?= lang('GlobalLang.bookevent') ?></a>
                         <?php }else if($member['type']=='dealer' && $member['status']=='1'){ ?>
                             <a href="" data-bs-toggle="modal" data-bs-target="#eventModal" class="btn btn-black-border"><?= lang('GlobalLang.bookevent') ?></a>
                         <?php }else{ ?>

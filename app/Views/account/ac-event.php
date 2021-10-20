@@ -50,7 +50,9 @@
                                 ?>
                                     <div class="slide-item">                                        
                                         <div class="event-desc mt-3">
-                                            <div class="content-title mb-3"><strong class="ff-semibold fs-3"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong></div>
+                                            <div class="content-title mb-3">
+                                                <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="ff-semibold fs-3 a-hover-darkgold"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></a>
+                                            </div>
                                             <?= ($lang=='en' && $event['desc_en']!=""?$event['desc_en']:$event['desc']) ?>
                                         </div>
                                     </div>

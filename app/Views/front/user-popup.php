@@ -25,7 +25,7 @@
                         <button type="submit" class="btn bg-lightgold ff-semibold w-100 text-uppercase"><?= lang('GlobalLang.signin') ?></button>
                     </div>
                 </form>
-                <a href="<?= site_url('forgotpassword') ?>" class="text-uppercase mt-3 d-block text-center c-black text-decoration-none"><?= lang('GlobalLang.forgot') ?></a>
+                <!-- <a href="<?= site_url('forgotpassword') ?>" class="text-uppercase mt-3 d-block text-center c-black text-decoration-none"><?= lang('GlobalLang.forgot') ?></a> -->
                 <div class="login-with-social plr-2rem mt-3">
                     <!-- <a href="<?= site_url('loginfacebook'); ?>" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a> -->
                     <a href="javascript:void(0)" onclick="loginFacebook();" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a>
@@ -214,6 +214,26 @@
     </div>
 </div>
 
+<!-- Modal Success -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <p>ระบบบันทึกข้อมูลเรียบร้อยแล้ว</p>
+                    <p>Complete to your data</p>
+                </div>
+                <div class="text-center mb-3">
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Hide Reply Webboard -->
 <div class="modal fade" id="hideModal" tabindex="-1" aria-labelledby="hideModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -224,7 +244,7 @@
             <div class="modal-body">
                 <div class="text-center" id="reply_msg">
                     <p>ระบบอัพเดตสถานะเรียบร้อยแล้ว</p>
-                    <p>Success, Update un plubilc item.</p>
+                    <p>Success, Update plubilc item.</p>
                 </div>
                 <div class="text-center mb-3">
                     <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>

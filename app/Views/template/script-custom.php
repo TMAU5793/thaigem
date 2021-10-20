@@ -78,7 +78,7 @@ use Google\Service\Adsense\Site;
         });
 
         //Booking Event
-        $('#booking_event').on('click',function(){
+        $('.booking_event').on('click',function(){
             var event_id = $(this).data('event');
             var member_id = '<?= session()->get('userdata')['id'] ?>';
             $.ajax({
@@ -100,6 +100,10 @@ use Google\Service\Adsense\Site;
 
         <?php if(isset($errors_newsleeter)){ ?>
             $('input[name="news_email"]').focus();
+        <?php } ?>
+
+        <?php if (session('msg_newsletter')){ ?>
+            $('#successModal').modal('show');
         <?php } ?>
 
     });

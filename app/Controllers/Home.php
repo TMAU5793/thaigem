@@ -5,14 +5,23 @@ use App\Models\Admin\ProductCategoryModel;
 use App\Models\Admin\EventModel;
 use App\Models\MemberModel;
 use App\Models\Account\AlbumModel;
+use App\Models\BookingModel;
 
 class Home extends BaseController
 {
     protected $lang;
-    public function __construct() {
-        $this->lang = session()->get('lang');
-        if($this->lang==""){
-            $this->lang = 'en';
+    protected $member_id;
+    protected $userdata;
+    public function __construct() {        
+        $this->lang = 'en';
+        if(session()->get('lang')){
+            $this->lang = session()->get('lang');
+        }
+
+        $usersess = session()->get('userdata');
+        if($usersess){
+            $this->userdata = $usersess;
+            $this->member_id = $usersess['id'];
         }
     }
 
@@ -23,14 +32,18 @@ class Home extends BaseController
         $evModel = new EventModel();
         $mbModel = new MemberModel();
         $abModel = new AlbumModel();
+        $bkModel = new BookingModel();
+
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association',
             'lang' => $this->lang,
             'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->findAll(),
             'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
             'dealers' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(),
-            'albums' => $abModel->findAll()
+            'albums' => $abModel->findAll(),
+            'member' => $mbModel->where('id',$this->member_id)->first()
         ];
+        
         
         echo view('front/home', $data);
 	}

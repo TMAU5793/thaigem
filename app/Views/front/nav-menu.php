@@ -66,9 +66,49 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-light" id="mainMenu">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topMenu" aria-controls="topMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>        
+        <div class="logo-top navbar-brand">
+            <div class="d-flex">
+                <div class="logo-tgjta">
+                    <img src="<?= site_url('assets/images/favicon.png') ?>" alt="Logo">
+                </div>
+                <div class="mobile-logo">
+                    <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="Logo">
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-right">
+            <div class="user-managed">
+                <?php 
+                    $logged =  session()->get('userdata');
+                    if($logged){
+                ?>
+                    <div class="user-login me-3 position-relative">
+                        <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $logged['name']; ?></span>
+                        <div class="user-menu-login d-none">
+                            <ul>
+                                <?php
+                                    if($userdata['user_type']=='dealer'){
+                                ?>
+                                    <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
+                                    <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
+                                        <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
+                                    <?php } ?>
+                                    <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
+                                    <li><a href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a></li>                                
+                                <?php } ?>
+                                <li><a href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a></li>
+                                <li><a href="<?= site_url('account/logout') ?>" id="member_logout"><?= lang('GlobalLang.logout'); ?></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                <?php }else{ ?>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
+                <?php } ?>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topMenu" aria-controls="topMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
         <div class="collapse navbar-collapse" id="topMenu">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -88,10 +128,6 @@
                         <li><a class="dropdown-item" href="<?= site_url('about/policy'); ?>"><?= lang('MenuLang.policy'); ?></a></li>
                     </ul>
                 </li>
-
-                <!-- <li class="nav-item">
-                    <a class="nav-link <?= ($segment=='member'?'active':'') ?>" href="<?= site_url('member'); ?>"><?= lang('MenuLang.navMembers'); ?></a>
-                </li> -->
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle <?= ($segment=='member'?'active':'') ?>" href="#" id="navMember" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -123,5 +159,7 @@
 </nav>
 
 <div class="to-top d-none" id="to-top">
-    <i class="fas fa-caret-square-up" title="Back To Top"></i>
+    <div class="position-relative">
+        <i class="fas fa-caret-up" title="Back To Top"></i>
+    </div>
 </div>

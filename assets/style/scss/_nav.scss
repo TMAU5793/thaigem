@@ -83,14 +83,35 @@
 
 .to-top {
     position: fixed;
+    z-index: 9999;
     bottom: 2.5rem;
     right: 4rem;
     font-size: 2.5rem;
     cursor: pointer;
     color: $c-darkgold;
+    background-color: $c-lightgold;
+    border: 1px solid $c-darkgold;
+    height: 50px;
+    width: 50px;
+    border-radius: 6px;
     transition: all .25s;
     &:hover {
         transition: all .25s;
-        font-size: 3rem;
+        box-shadow: 0px 0px 10px 1px $c-darkgold;
     }
+    i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    div.position-relative {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.logo-top.navbar-brand,
+.mobile-menu-right {
+    display: none;
 }

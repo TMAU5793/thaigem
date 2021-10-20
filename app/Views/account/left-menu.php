@@ -38,7 +38,7 @@
         <div class="ac-personal mb-3">
             <input type="text" class="form-control mb-1" name="txt_name" value="<?= $info['name'].' '.$info['lastname']; ?>" placeholder="<?= lang('GlobalLang.name') ?>" disabled>
             <input type="email" class="form-control mb-1" name="txt_email" value="<?= $info['email']; ?>" placeholder="<?= lang('GlobalLang.email') ?>" disabled>
-            <input type="text" class="form-control mb-1" name="txt_phone" value="<?= $info['phone']; ?>" placeholder="<?= lang('GlobalLang.phoneNumber') ?>" disabled>            
+            <input type="text" class="form-control mb-1" name="txt_phone" value="<?= $info['phone']; ?>" placeholder="<?= lang('GlobalLang.phoneNumber') ?>" disabled>
         </div>
         
         <div class="ac-information">
@@ -207,7 +207,7 @@
                     <p><?= $msg ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.e-info') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
                 </div>
             </div>
         </div>

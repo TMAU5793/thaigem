@@ -1,0 +1,78 @@
+@include media-max(575px) {
+    .banner {
+        height: 200px;
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .account-body {
+        .col-md-3 {
+            padding: 0;
+        }
+    }
+    .ac-menu-left {
+        padding: 0 !important;
+        .ac-information .ac-info-item {
+            margin: .5rem 0;
+        }
+        .ac-profile-img {
+            padding: 1.5rem;
+            margin-top: -4rem;
+            width: 35%;
+            float: left;
+            img {
+                width: 100px !important;
+                height: 100px !important;
+            }
+        }
+        .ac-personal {
+            width: 65%;
+            float: left;
+            padding: 1rem 1.5rem 0;
+        }
+        .ac-information {
+            background-color: #f6ecc9;
+            width: 100%;
+            float: left;
+            padding: 0 1.5rem 1.5rem;
+            &::after {
+                display: block;
+                content: "";
+                clear: both;
+                float: none;
+            }
+        }
+        .img_edit {
+            background-size: cover;
+            width: 34px;
+            height: 34px;
+            right: 0rem;
+        }
+    }
+    .navbar-nav {
+        display: block;
+    }
+    .account-body {
+        .account-menu {
+            box-shadow: 0px 2px 0px 0px #ccc;
+            margin-bottom: 1.5rem;
+            .navbar-nav {
+                display: block;
+                font-size: .8rem;
+                .nav-link {
+                    display: inline-block;
+                    padding: .25rem 0 0;
+                    margin-bottom: .25rem;
+                    &.active {
+                        border: none;
+                        box-shadow: 0px 2px 0px 0px #cec6b2;
+                    }
+                }
+            }
+        }
+        .ac-about.mt-5 {
+            margin-top: 1.5rem !important;
+        }
+    }
+}

@@ -15,6 +15,19 @@ $(function() {
     $('#to-top').on('click', function() {
         $('html, body').animate({ scrollTop: 0 }, 'slow');
     });
+
+    // var position = $(window).scrollTop();
+    // $(window).scroll(function() {
+    //     var scroll = $(window).scrollTop();
+    //     if (scroll > position) {
+    //         $('.fixed-top').addClass('scroll-down');
+    //         $('.fixed-top').removeClass('scroll-up');
+    //     } else {
+    //         $('.fixed-top').addClass('scroll-down');
+    //         $('.fixed-top').removeClass('scroll-up');
+    //     }
+    //     position = scroll;
+    // });
 });
 
 

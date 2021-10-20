@@ -49,6 +49,7 @@ $routes->match(['get', 'post'], 'admin/login', 'Admin/User::login', ['filter' =>
 $routes->get('admin/logout', 'Admin/User::logout');
 
 //Account path
+$routes->get('account/login', 'Account/Account::index',['filter' => 'memberAuth']);
 $routes->match(['get', 'post'],'account', 'Account/Account::index',['filter' => 'memberAuth']);
 $routes->get('account/event', 'Account/Event::index',['filter' => 'memberAuth']);
 $routes->get('account/form', 'Account/Accountform::index',['filter' => 'memberAuth']);
@@ -57,6 +58,7 @@ $routes->match(['get', 'post'],'account/form/download', 'Account/Accountform::do
 $routes->match(['get', 'post'],'account/form/upload', 'Account/Accountform::uploadFiles',['filter' => 'memberAuth']);
 $routes->get('account/invoice', 'Account/Invoice::index',['filter' => 'memberAuth']);
 $routes->get('account/webboard', 'Account/Webboard::index',['filter' => 'memberAuth']);
+
 
 $routes->match(['get', 'post'],'account/register', 'Account/Account::register');
 $routes->post('account/login', 'Account/Account::login');

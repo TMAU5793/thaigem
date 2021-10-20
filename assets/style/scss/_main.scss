@@ -32,6 +32,12 @@
             }
         }
     }
+    .col-md-4 {
+        iframe,
+        .tradingview-widget-container {
+            width: 100% !important;
+        }
+    }
 }
 
 .price-update {
@@ -155,7 +161,9 @@
 
 .member-home {
     .member-list {
-        margin: 0 -1rem;
+        .slick-list.draggable {
+            margin: 0 -1rem;
+        }
         .member-item {
             padding: .5rem 1rem;
         }

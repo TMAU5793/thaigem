@@ -78,14 +78,19 @@ class Event extends BaseController
         $post = $request->getPost();
         $booking_no = $this->bookingNo();
         
-        $savedata = [
-            'booking_no' => $booking_no,
-            'event_id' => $post['event_id'],
-            'member_id' => $post['member_id'],
-        ];
-
-        if($bkModel->insert($savedata)){
+        $ckdBooking = $bkModel->where(['event_id'=>$post['event_id'],'member_id'=>$post['member_id']])->first();
+        if($ckdBooking){
             echo true;
+        }else{
+            $savedata = [
+                'booking_no' => $booking_no,
+                'event_id' => $post['event_id'],
+                'member_id' => $post['member_id'],
+            ];
+
+            if($bkModel->insert($savedata)){
+                echo true;
+            }
         }
     }
 

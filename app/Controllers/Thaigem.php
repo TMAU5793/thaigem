@@ -61,13 +61,20 @@ class Thaigem extends BaseController
             ];
             
             if($this->validate($rules)){
-                $data = [
-                    'email' => $post['news_email'],
-                ];
+                $ckd = $model->where('email',$post['news_email'])->first();
+                if(!$ckd){
+                    $data = [
+                        'email' => $post['news_email'],
+                    ];
+                    $model->save($data);
+                }
+                return redirect()->to('')->with('msg_newsletter',TRUE);
             }else{
                 $data['errors_newsleeter'] = $this->validator;
                 echo view('front/home',$data);
             }
+        }else{
+            return redirect()->to('');
         }
     }
 

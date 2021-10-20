@@ -9,13 +9,13 @@
         <div class="bg-title ptb-2rem">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-sm-12 col-order-2">
                         <p class="ff-semibold fs-3">Fulfill your business opportunities with our trusted and reliable members.</p>
                         <div class="tg-title mt-5rem">
                             <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-12 col-order-1">
                         <?= $this->include('template/gold-price') ?>
                     </div>
                 </div>
@@ -47,12 +47,12 @@
     <section class="price-update ptb-2rem">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4 col-sm-4">
                     <div class="tg-title">
                         <h3 class="c-darkgold"><?= lang('GlobalLang.priceUpdate'); ?></h3>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8 col-sm-8">
                     <div class="text-end price-subject">
                         <strong class="ff-bold"><i class="fas fa-square c-darkgold"></i> <?= lang('GlobalLang.diamonds'); ?></strong>
                         <strong class="ff-bold"><i class="fas fa-square c-gray"></i> <?= lang('GlobalLang.ruby'); ?></strong>
@@ -69,12 +69,12 @@
     <section class="event-home ptb-2rem">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="tg-title">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.events'); ?></strong></h3>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="text-end view-all">
                         <a href="<?= site_url('event') ?>" class="c-black ff-semibold a-hover-darkgold"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
@@ -82,7 +82,7 @@
             </div>
             <div class="slick-1-item mt-4">
                 <?php
-                    if($events){                        
+                    if($events){
                         foreach ($events as $event){
                 ?>
                     <div class="event-item">
@@ -94,10 +94,18 @@
                                 <div class="event-date text-end pt-3 pe-4"><span><?= substr($event['created_at'],0,10) ?></span></div>
                                 <div class="absolute-center text-center w-75">
                                     <h2 class="ff-semibold fs-4"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>
-                                    <p><?= ($lang=='en'?$event['shortdesc_en']:$event['shortdesc']) ?></p>
-                                    <div class="btn-tg-group">
-                                        <a href="" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="btn btn-booking btn-black-border"><?= lang('GlobalLang.bookNow'); ?></a>
+                                    <p><?= ($lang=='en'?character_limiter($event['shortdesc_en'],50):character_limiter($event['shortdesc'],50)) ?></p>
+                                    <div class="btn-tg-group d-flex">
+                                        <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <?php
+                                            if($member['type']=='dealer' && $member['status']=='2'){
+                                        ?>
+                                            <a href="javascript:void(0)" class="btn btn-booking btn-black-border booking_event" data-event="<?= $event['id']; ?>"><?= lang('GlobalLang.bookNow'); ?></a>
+                                        <?php }elseif($member['type']=='dealer' && $member['status']=='1'){ ?>
+                                            <a href="" class="btn btn-booking btn-black-border" data-bs-toggle="modal" data-bs-target="#eventModal"><?= lang('GlobalLang.bookNow'); ?></a>
+                                        <?php }else{ ?>
+                                            <a href="" class="btn btn-booking btn-black-border" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.bookNow'); ?></a>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -111,12 +119,12 @@
     <section class="news-home ptb-2rem">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="tg-title">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.knowledgeNews'); ?></strong></h3>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="text-end">
                         <a href="<?= site_url('knowledge') ?>" class="c-black ff-semibold a-hover-darkgold view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
@@ -162,7 +170,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-6">
                             <div class="news-item">
                                 <img src="<?= site_url('assets/images/news/news-1.jpg') ?>" alt="">
                                 <div class="news-desc c-white position-absolute">
@@ -175,7 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-6">
                             <div class="news-item">
                                 <img src="<?= site_url('assets/images/news/news-2.jpg') ?>" alt="">
                                 <div class="news-desc c-white position-absolute">
@@ -224,6 +232,7 @@
                         foreach($dealers as $dealer){
                             $album1 = $model->where('member_id',$dealer['id'])->first();
                             $album3 = $model->where('member_id',$dealer['id'])->findAll(3);
+                            if($album1){
                 ?>
                 <div class="member-item">
                     <div class="shadow-lightgold h-100 rounded w-100 d-inline-flex p-3">
@@ -255,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-                <?php } } ?>
+                <?php } } } ?>
             </div>
         </div>
     </section>
@@ -283,7 +292,7 @@
     <section class="singup-home ptb-2rem">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 position-relative">
+                <div class="col-md-6 position-relative col-order-2">
                     <div class="absolute-center w-100 singup-form text-center">
                         <?= lang('HomeLang.newsletterText'); ?>
                         <form id="frm-singup" class="mt-5" action="<?= site_url('thaigem/newsLetter') ?>" method="POST">
@@ -299,7 +308,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-order-1">
                     <div class="box-img">
                         <img src="<?= site_url('assets/images/home/singup-img.jpg') ?>" alt="">
                     </div>

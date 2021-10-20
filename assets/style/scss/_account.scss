@@ -51,7 +51,7 @@
             border-radius: 50px 0 0 50px;
             padding: 5px 0 5px 4rem;
             position: relative;
-            //height: 54px;
+            min-height: 56px;
         }
         .ac-info-icon {
             position: absolute;
@@ -84,6 +84,9 @@
         img {
             border-radius: 50%;
             box-shadow: 0px 0px 0px 6px $c-lightgold;
+        }
+        input {
+            width: 100%;
         }
     }
 }

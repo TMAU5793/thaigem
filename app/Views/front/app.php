@@ -30,7 +30,7 @@
     <?php } ?>
     
 </head>
-<body>
+<body class="">
 
     <!-- add top menu -->
     <?= $this->include('front/nav-menu') ?>    
