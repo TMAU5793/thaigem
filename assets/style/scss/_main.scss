@@ -91,6 +91,11 @@
                 }
             }
         }
+        .event-item {
+            img {
+                padding: 9px 0 0 9px;
+            }
+        }
     }
 }
 
@@ -496,6 +501,14 @@
     }
     .form-check {
         margin-right: 0;
+        padding-left: 33px;
+        label {
+            line-height: 33px;
+            font-size: 19px;
+            a {
+                font-size: 19px;
+            }
+        }
     }
 }
 
@@ -527,4 +540,9 @@
             background-color: $c-black;
         }
     }
+}
+
+.btn-news-group {
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }

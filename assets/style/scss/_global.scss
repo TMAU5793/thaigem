@@ -29,12 +29,18 @@ p {
     line-height: 1.5rem;
 }
 
+button {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 p,
 input,
 select,
 textarea,
 button,
 a,
+ul,
 .btn {
     font-size: 1.35rem;
 }

@@ -40,6 +40,9 @@
 
 //end medi 1366
 @include media-max(1199px) {
+    .member-list.slick-2-item {
+        margin-top: 0 !important;
+    }
     .account-body {
         .col-md-3 {
             width: 33%;
@@ -57,22 +60,20 @@
             }
         }
     }
-    .fs-1 {
-        font-size: 1.45rem !important;
-    }
-    .fs-3 {
-        font-size: 1.25rem !important;
-    }
-    .fs-5 {
-        font-size: 1rem !important;
-    }
     #topMenu .nav-link {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
+        padding: .5rem .75rem;
     }
-    .event-home .slick-1-item .slick-dots {
-        bottom: 2rem;
+    .event-home {
+        .slick-1-item {
+            margin-top: .5rem !important;
+            .slick-dots {
+                bottom: 2rem;
+            }
+        }
     }
     .news-home .news-list {
+        margin-top: .5rem !important;
         .col-md-7 .col-md-6 {
             height: 164px;
             .news-desc p {
@@ -80,12 +81,12 @@
             }
         }
         .col-md-5 {
-            .news-desc h2 {
-                font-size: 1.25rem !important;
-            }
             .news-slide {
                 margin-bottom: 0;
             }
+        }
+        .news-item .news-desc {
+            padding: 0 1rem 1rem;
         }
     }
     .signup-member .singup-form,
@@ -159,14 +160,6 @@
                 }
             }
         }
-        .user-managed {
-            padding-top: 10px;
-            a {
-                text-decoration: none;
-                color: #665f4f;
-                font-size: .9rem;
-            }
-        }
     }
     .event-home {
         .slick-1-item {
@@ -183,6 +176,21 @@
 
 //end medi 1199
 @include media-max(991px) {
+    .view-all,
+    .view-all a {
+        font-size: 1.15rem;
+    }
+    .mobile-menu-right .user-managed {
+        padding-top: 5px;
+        margin-right: 1rem;
+        a {
+            text-decoration: none;
+            color: #665f4f;
+        }
+        i {
+            font-size: 1rem;
+        }
+    }
     .fixed-scroll {
         top: 1rem;
     }
@@ -197,7 +205,7 @@
         padding: .5rem 0rem;
     }
     .btn-black-border {
-        font-size: .8rem;
+        font-size: 1.15rem;
     }
     .navbar-collapse {
         margin: 2rem 0 1rem;
@@ -278,13 +286,13 @@
             .absolute-center {
                 padding-right: 0 !important;
                 p {
-                    font-size: .9rem;
+                    font-size: 1.15rem;
                     line-height: 1.25rem;
                 }
                 .btn-tg-group {
                     margin-top: 0 !important;
                     a {
-                        font-size: .75rem;
+                        font-size: 1rem;
                     }
                 }
             }
@@ -292,6 +300,9 @@
         .member-list .slick-dots {
             bottom: -2rem;
         }
+    }
+    .btn-black-border {
+        border: 1px solid #000;
     }
     .signup-member .singup-form,
     .singup-home .singup-form {

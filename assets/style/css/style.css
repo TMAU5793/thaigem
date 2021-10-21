@@ -7,12 +7,17 @@ img {
 p {
   line-height: 1.5rem; }
 
+button {
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+
 p,
 input,
 select,
 textarea,
 button,
 a,
+ul,
 .btn {
   font-size: 1.35rem; }
 
@@ -546,6 +551,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
         content: ''; }
       .event-home .slick-1-item .slick-dots li.slick-active {
         background-color: #665f4f; }
+  .event-home .slick-1-item .event-item img {
+    padding: 9px 0 0 9px; }
 
 .news-home .news-list {
   overflow: hidden;
@@ -813,7 +820,13 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   box-shadow: inset 0px 0px 0px 2px #fff;
   border-color: #000; }
 #registerModal .form-check {
-  margin-right: 0; }
+  margin-right: 0;
+  padding-left: 33px; }
+  #registerModal .form-check label {
+    line-height: 33px;
+    font-size: 19px; }
+    #registerModal .form-check label a {
+      font-size: 19px; }
 
 #termsModal .modal-dialog {
   max-width: 800px; }
@@ -832,5 +845,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   cursor: pointer; }
   .btn-search-webboard:hover .bg-darkgold {
     background-color: #000000; }
+
+.btn-news-group {
+  text-transform: uppercase;
+  letter-spacing: 1px; }
 
 /*# sourceMappingURL=style.css.map */

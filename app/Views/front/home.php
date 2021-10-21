@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="text-end view-all">
-                        <a href="<?= site_url('event') ?>" class="c-black ff-semibold a-hover-darkgold"><?= lang('GlobalLang.viewAll'); ?></a>
+                        <a href="<?= site_url('event') ?>" class="c-black a-hover-darkgold text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="text-end">
-                        <a href="<?= site_url('knowledge') ?>" class="c-black a-hover-darkgold view-all text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewAll'); ?></a>
+                        <a href="<?= site_url('knowledge') ?>" class="c-black a-hover-darkgold view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>
@@ -139,8 +139,8 @@
                                 <h2 class="ff-dbadmanBold">Knowledge & New 1</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1 fs-5"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1 fs-5"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -150,8 +150,8 @@
                                 <h2 class="ff-dbadmanBold">Knowledge & New 2</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -161,8 +161,8 @@
                                 <h2 class="ff-dbadmanBold">Knowledge & New 3</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tg-title">
-                        <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.member'); ?></strong></h3>
+                        <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.members'); ?></strong></h3>
                     </div>
                 </div>
             </div>
@@ -335,7 +335,7 @@
                             <a href="mailto:info@thaigemjewelry.org"><i class="far fa-envelope"></i> info@thaigemjewelry.org</a>
                         </div>
                         <div class="follow-us">
-                            <strong class="ff-dbadmanBold"><?= lang('GlobalLang.followUs'); ?></strong>
+                            <strong class="ff-dbadmanBold fs-3 text-uppercase letter-spacing-1"><?= lang('GlobalLang.followUs'); ?></strong>
                             <a href="https://www.facebook.com/tgjta" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/tgjta919" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="https://lin.ee/kH0e06R" target="_blank"><i class="fab fa-line"></i></a>

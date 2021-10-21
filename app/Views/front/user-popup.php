@@ -2,14 +2,13 @@
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">                
+            <div class="modal-header">
+                <div class="text-center w-100 ms-4">
+                    <strong class="ff-semibold fs-4"><?= lang('GlobalLang.signin') ?></strong>                    
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="text-center mb-3">
-                    <strong class="ff-semibold fs-4"><?= lang('GlobalLang.signin') ?></strong>
-                    
-                </div>
+            <div class="modal-body">                
                 <form action="<?= base_url('account/login'); ?>" method="POST">
                     <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
                     <div class="input-nobg plr-2rem">
@@ -22,19 +21,17 @@
                         <div class="form-group mb-3">
                             <input type="password" class="form-control" name="txt_password" placeholder="<?= lang('GlobalLang.password') ?> *" autocomplete="new-password">
                         </div>
-                        <button type="submit" class="btn bg-lightgold ff-semibold w-100 text-uppercase"><?= lang('GlobalLang.signin') ?></button>
+                        <button type="submit" class="btn bg-lightgold ff-dbadmanBold w-100 text-uppercase"><?= lang('GlobalLang.signin') ?></button>
                     </div>
                 </form>
-                <!-- <a href="<?= site_url('forgotpassword') ?>" class="text-uppercase mt-3 d-block text-center c-black text-decoration-none"><?= lang('GlobalLang.forgot') ?></a> -->
                 <div class="login-with-social plr-2rem mt-3">
-                    <!-- <a href="<?= site_url('loginfacebook'); ?>" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a> -->
-                    <a href="javascript:void(0)" onclick="loginFacebook();" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a>
-                    <a href="<?= site_url('logingoogle'); ?>" class="btn bg-lightgold ff-semibold text-uppercase d-block w-100"> <?= lang('GlobalLang.signGmail') ?></a>
+                    <a href="javascript:void(0)" onclick="loginFacebook();" class="btn bg-lightgold ff-dbadmanBold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a>
+                    <a href="<?= site_url('logingoogle'); ?>" class="btn bg-lightgold ff-dbadmanBold text-uppercase d-block w-100"> <?= lang('GlobalLang.signGmail') ?></a>
                 </div>
                 <div class="signup-account text-center p-3">
-                    <strong class="ff-semibold fs-4 d-block"><?= lang('GlobalLang.createAccount') ?></strong>
-                    <span><?= lang('GlobalLang.notMember') ?></span>
-                    <a href="" class="ff-semibold c-black text-decoration-none text-uppercase" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.register') ?></a>
+                    <strong class="ff-dbadmanBold fs-4 d-block"><?= lang('GlobalLang.createAccount') ?></strong>
+                    <span class="fs-5"><?= lang('GlobalLang.notMember') ?></span>
+                    <a href="" class="ff-dbadmanBold c-black text-decoration-none text-uppercase" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.register') ?></a>
                 </div>
             </div>
         </div>
@@ -46,13 +43,13 @@
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">                
+            <div class="modal-header">
+                <div class="text-center w-100">
+                    <strong class="ff-semibold fs-4 ms-4"><?= lang('GlobalLang.createAccount') ?></strong>              
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="text-center mb-3">
-                    <strong class="ff-semibold fs-4"><?= lang('GlobalLang.createAccount') ?></strong>              
-                </div>
+            <div class="modal-body">                
                 <form id="frm_register" action="<?= site_url('account/register'); ?>" method="POST">                    
                     <div class="input-nobg plr-2rem">
                         <?php if(isset($signup_valid)): ?>
@@ -61,12 +58,12 @@
                         <div class="form-group mb-3">
                             <div class="form-check form-check-inline w-50 float-start">
                                 <input class="form-check-input" type="radio" name="rd_member" id="rd_member1" value="dealer" checked>
-                                <label class="form-check-label fs-7" for="rd_member1">Sign up for member</label>
+                                <label class="form-check-label" for="rd_member1">Sign up for member</label>
                             </div>
 
                             <div class="form-check form-check-inline w-50 float-start">
                                 <input class="form-check-input" type="radio" name="rd_member" id="rd_member2" value="member">
-                                <label class="form-check-label fs-7" for="rd_member2">Sign up for newsletter</label>
+                                <label class="form-check-label" for="rd_member2">Sign up for newsletter</label>
                             </div>
                             <div class="clearfix"></div>
                             
@@ -87,11 +84,11 @@
                             <input type="hidden" name="txt_term" id="txt_term">
                             <input class="form-check-input" type="checkbox" id="cb_term" name="cb_term">
                             <label class="form-check-label" for="cb_term">
-                                <?= lang('GlobalLang.accept') ?> <a href="" class="ff-semibold c-black" data-bs-toggle="modal" data-bs-target="#termsModal"><?= lang('GlobalLang.termCondition') ?></a>
+                                <span><?= lang('GlobalLang.accept') ?></span> <a href="" class="ff-dbadmanBold c-black" data-bs-toggle="modal" data-bs-target="#termsModal"><?= lang('GlobalLang.termCondition') ?></a>
                             </label>
                         </div>
-                        <button type="submit" class="btn bg-lightgold ff-semibold w-100 text-uppercase mb-3"><?= lang('GlobalLang.register') ?></button>
-                        <a href="" class="c-black ff-semibold text-center d-block" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.login') ?></a>
+                        <button type="submit" class="btn bg-lightgold ff-dbadmanBold w-100 text-uppercase mb-3"><?= lang('GlobalLang.register') ?></button>
+                        <a href="" class="c-black ff-dbadmanBold text-center d-block" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.login') ?></a>
                     </div>
                 </form>
             </div>

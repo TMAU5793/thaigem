@@ -31,6 +31,14 @@
             dots: true,
             responsive: [
                 {
+                    breakpoint: 1200,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                },
+                {
                     breakpoint: 992,
                     settings: {
                         arrows: false,

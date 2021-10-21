@@ -10,7 +10,7 @@ class Language extends BaseController
     {
         $session = session();
         $locale = $this->request->getLocale();
-        $session->remove('lang');
+        //$session->remove('lang');
         $session->set('lang', $locale);
         //$url = base_url();
         $url = $_GET['burl'];
