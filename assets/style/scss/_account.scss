@@ -2,7 +2,7 @@
     .navbar-nav {
         flex-direction: initial;
         .nav-link {
-            font-family: $ff-semibold, $ff-dbadman;
+            font-family: $ff-semibold, $ff-dbadmanBold;
             text-transform: uppercase;
             margin-right: 1rem;
             &.active {
@@ -114,7 +114,7 @@
         text-decoration: none;
         color: $c-black;
         &:hover {
-            font-family: $ff-semibold, $ff-dbadman;
+            font-family: $ff-semibold, $ff-dbadmanBold;
         }
     }
     &::after {
@@ -272,5 +272,22 @@
 .ck-editor {
     .ck-content {
         min-height: 250px;
+    }
+}
+
+.account-logged {
+    .mobile-menu-right {
+        .user-managed {
+            padding-top: 1px;
+            margin-right: 15px;
+        }
+        .user-login {
+            padding-top: 0;
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50px;
+            }
+        }
     }
 }

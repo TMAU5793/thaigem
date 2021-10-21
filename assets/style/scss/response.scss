@@ -6,6 +6,10 @@
 
 @import 'response-account';
 @include media-max(1366px) {
+    .ac-menu-left .ac-profile-img img {
+        width: 184px !important;
+        height: 184px !important;
+    }
     .fs-1 {
         font-size: 2rem !important;
     }
@@ -34,7 +38,25 @@
     }
 }
 
+//end medi 1366
 @include media-max(1199px) {
+    .account-body {
+        .col-md-3 {
+            width: 33%;
+        }
+        .col-md-9 {
+            width: 67%;
+        }
+    }
+    .ac-menu-left {
+        .ac-profile-img {
+            margin-top: -5rem;
+            img {
+                width: 135px !important;
+                height: 135px !important;
+            }
+        }
+    }
     .fs-1 {
         font-size: 1.45rem !important;
     }
@@ -95,7 +117,7 @@
     }
     .navbar-light .navbar-toggler {
         border-color: transparent;
-        padding-right: 0;
+        padding: 0;
     }
     .mobile-menu-right {
         .user-login {
@@ -159,6 +181,7 @@
     }
 }
 
+//end medi 1199
 @include media-max(991px) {
     .fixed-scroll {
         top: 1rem;
@@ -169,6 +192,9 @@
     .logo-top.navbar-brand,
     .mobile-menu-right {
         display: flex;
+    }
+    #topMenu .nav-link {
+        padding: .5rem 0rem;
     }
     .btn-black-border {
         font-size: .8rem;
@@ -300,8 +326,12 @@
     .member-home .member-list .slick-list.draggable {
         margin: 0;
     }
+    .member-content {
+        margin-bottom: 2rem;
+    }
 }
 
+//end medi 991
 @include media-max(767px) {
     .scroll-down {
         top: .75rem;
@@ -386,15 +416,39 @@
     }
 }
 
+//end medi 767
 @include media-max(576px) {
+    .member-content {
+        padding-top: 1rem;
+        .item-body {
+            padding: 0 1.5rem 0 1rem;
+            h5 {
+                font-size: 1rem;
+            }
+            p {
+                line-height: 1.25rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                /* number of lines to show */
+                -webkit-box-orient: vertical;
+            }
+        }
+    }
     .to-top {
         height: 40px;
         width: 40px;
+        bottom: 4rem;
+        right: 0.75rem;
     }
 }
 
+//end medi 576
 @include media-max(360px) {
     .navbar-brand .mobile-logo {
         max-width: 75px;
     }
 }
+
+//end medi 360

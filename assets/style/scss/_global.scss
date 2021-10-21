@@ -4,7 +4,8 @@
     }
 }
 
-$ff-dbadman: 'DBAdman';
+$ff-dbadmanBold: 'DBAdmanXBold';
+$ff-dbadman: 'DBAdmanX';
 $ff-reg: 'Montserrat-Regular';
 $ff-medium: 'Montserrat-Medium';
 $ff-semibold: 'Montserrat-SemiBold';
@@ -17,23 +18,49 @@ $c-black: #000000;
 $c-white: #ffffff;
 $c-yellowgold: #f6ecc9;
 body {
-    font-family: $ff-reg, $ff-dbadman;
+    font-family: $ff-dbadman;
 }
 
 img {
     width: 100%;
 }
 
+p {
+    line-height: 1.5rem;
+}
+
+p,
+input,
+select,
+textarea,
+button,
+a,
+.btn {
+    font-size: 1.35rem;
+}
+
+.ff-dbadman {
+    font-family: $ff-dbadman;
+}
+
+.ff-dbadmanBold {
+    font-family: $ff-dbadmanBold;
+}
+
+.ff-reg {
+    font-family: $ff-reg, $ff-dbadman;
+}
+
 .ff-medium {
-    font-family: $ff-medium, $ff-dbadman;
+    font-family: $ff-medium;
 }
 
 .ff-semibold {
-    font-family: $ff-semibold, $ff-dbadman;
+    font-family: $ff-semibold, $ff-dbadmanBold;
 }
 
 .ff-bold {
-    font-family: $ff-bold, $ff-dbadman;
+    font-family: $ff-bold, $ff-dbadmanBold;
 }
 
 .pt-2rem {
@@ -128,7 +155,7 @@ img {
 
 .btn-black-border {
     border: 2px solid $c-black;
-    font-family: $ff-semibold, $ff-dbadman;
+    padding: 0 10px;
     &:hover {
         background-color: $c-black;
         color: $c-white;
@@ -137,7 +164,7 @@ img {
 
 .btn-white-border {
     border: 2px solid $c-white;
-    font-family: $ff-semibold, $ff-dbadman;
+    padding: 0 10px;
     &:hover {
         background-color: $c-white;
         color: $c-black;
@@ -193,6 +220,18 @@ img {
     font-size: 0.8rem;
 }
 
+.fs-1rem {
+    font-size: 1rem;
+}
+
+.fs-1-35rem {
+    font-size: 1.35rem;
+}
+
+.fs-19px {
+    font-size: 19px;
+}
+
 .border-b-darkgold {
     border-bottom: 1px solid $c-darkgold;
 }
@@ -227,4 +266,12 @@ button.bg-darkgold {
         background-color: $c-black;
         color: $c-white;
     }
+}
+
+.form-control {
+    font-size: 1.35rem;
+}
+
+.letter-spacing-1 {
+    letter-spacing: 1px;
 }

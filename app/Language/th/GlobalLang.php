@@ -30,7 +30,7 @@ return [
     'member' => 'สมาชิก',
     'searchMember' => 'ค้นหาสมาชิก',
     'category' => 'หมวดหมู่',
-    'priceUpdate' => '<strong class="ff-bold">ราคา</strong> ล่าสุด',
+    'priceUpdate' => '<strong class="ff-bold">ราคา</strong> <span class="ff-reg">ล่าสุด</span>',
     'diamonds' => 'Diamonds',
     'ruby' => 'Ruby',
     'sapphire' => 'Sapphire',

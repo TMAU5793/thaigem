@@ -9,7 +9,7 @@
 
         <div class="container mt-3">
             <div class="text-center title">
-                <h1 class="text-uppercase ff-semibold fs-3"><?= lang('GlobalLang.searchMember'); ?></h1>
+                <h1 class="text-uppercase ff-dbamanBold fs-2 letter-spacing-1"><?= lang('GlobalLang.searchMember'); ?></h1>
             </div>
 
             <div class="search-member mt-4">
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="col-md-6 toggle-slow">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold btn-search-member"><?= lang('GlobalLang.search'); ?></button>
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-dbamanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>
                         </div>                        
 
                         <div class="col-md-6 search-show d-none">
@@ -85,12 +85,12 @@
                         </div>
 
                         <div class="col-md-6 search-show d-none">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold btn-search-member"><?= lang('GlobalLang.search'); ?></button>
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-dbamanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>
                         </div>  
 
-                        <div class="col-md-12 btn-avd">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-semibold search-show btn_advance" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
-                            <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white w-100 ff-semibold search-show d-none a-hover-white btn_advance"><?= lang('GlobalLang.advanceclose'); ?></a>
+                        <div class="col-md-12 btn-avd text-center">
+                            <button type="button" class="btn bg-darkgold c-white search-show btn_advance letter-spacing-1" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
+                            <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white search-show d-none a-hover-white btn_advance letter-spacing-1"><?= lang('GlobalLang.advanceclose'); ?></a>
                         </div>
                     </div>
                 </form>
@@ -102,7 +102,7 @@
                     if($info){
                         foreach($info as $row){
                 ?>
-                <div class="col-md-6 position-relative mt-4">
+                <div class="col-md-12 col-lg-6 position-relative mt-4">
                     <div class="shadow-lightgold">
                         <div class="ac-album w-50">
                             <div class="main-album-img slider-for-hidedots">
@@ -129,11 +129,11 @@
                             </div>
                         </div>
                         <div class="item-body text-center w-50 plr-2rem position-absolute translate-middle-y top-50 end-0">
-                            <h5 class="ff-semibold"><?= $row['name'].' '.$row['lastname'] ?></h5>
-                            <p><?= $row['about'] ?></p>
+                            <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1"><?= $row['name'].' '.$row['lastname'] ?></h5>
+                            <p><?= character_limiter($row['about'],50) ?></p>
                             
                             <div class="event-action mt-2">
-                                <a href="<?= site_url('member/id/'.$row['id']); ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                <a href="<?= site_url('member/id/'.$row['id']); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
                             </div>
                         </div>
                     </div>

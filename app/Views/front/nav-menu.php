@@ -6,7 +6,7 @@
     use App\Models\Account\AccountModel;
     $userdata = session()->get('userdata');
     $model = new AccountModel();
-    $status = $model->where('id',$userdata['id'])->first();
+    $member = $model->where('id',$userdata['id'])->first();
 ?>
 <div class="top-nav container">
     <div class="logo-top float-start">
@@ -17,35 +17,34 @@
             <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="Logo">
         </div>
     </div>
-    <div class="top-more-menu float-end ff-medium text-end">
+    <div class="top-more-menu float-end ff-dbadman text-end">
         <div class="lang mt-3">
             <?php 
                 if(session()->get('lang')=='th'){
             ?>
-                <a href="javascript:void(0)" class="ff-bold">TH</a>
-                <span>|</span>
+                <a href="javascript:void(0)" class="ff-dbadmanBold">TH</a>
+                <span class="fs-1rem">|</span>
                 <a href="<?= site_url('lang/en?burl='.current_url()); ?>">EN</a>
             <?php }else{ ?>
                 <a href="<?= site_url('lang/th?burl='.current_url()); ?>">TH</a>
-                <span>|</span>
-                <a href="javascript:void(0)" class="ff-bold">EN</a>
+                <span class="fs-1rem">|</span>
+                <a href="javascript:void(0)" class="ff-dbadmanBold">EN</a>
             <?php } ?>
             
         </div>
         <div class="user-managed mt-3 d-inline-flex">
             <?php 
-                $logged =  session()->get('userdata');
-                if($logged){
+                if($member){
             ?>
                 <div class="user-login me-3 position-relative">
-                    <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $logged['name']; ?></span>
+                    <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $member['name']; ?></span>
                     <div class="user-menu-login d-none">
                         <ul>
                             <?php
-                                if($userdata['user_type']=='dealer'){
+                                if($member['user_type']=='dealer'){
                             ?>
                                 <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
-                                <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
+                                <?php if($member['status']=='2' && $member['type']=='dealer'){ ?>
                                     <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
                                 <?php } ?>
                                 <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>
@@ -79,18 +78,17 @@
         <div class="mobile-menu-right">
             <div class="user-managed">
                 <?php 
-                    $logged =  session()->get('userdata');
-                    if($logged){
+                    if($member){
                 ?>
-                    <div class="user-login me-3 position-relative">
-                        <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $logged['name']; ?></span>
+                    <div class="user-login position-relative">
+                        <img src="<?= (is_file($member['profile'])?site_url($member['profile']):site_url('assets/images/img-default.png')) ?>" class="user-login-name">
                         <div class="user-menu-login d-none">
                             <ul>
                                 <?php
-                                    if($userdata['user_type']=='dealer'){
+                                    if($member['user_type']=='dealer'){
                                 ?>
                                     <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
-                                    <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
+                                    <?php if($member['status']=='2' && $member['type']=='dealer'){ ?>
                                         <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
                                     <?php } ?>
                                     <li><a href="<?= site_url('account/form'); ?>"><?= lang('MenuLang.downloadUploadForm'); ?></a></li>

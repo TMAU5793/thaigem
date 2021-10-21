@@ -77,6 +77,7 @@ class MemberModel extends Model
             'lastname' => $lastname,
             'email' => $data['txt_email'],
             'phone' => $data['txt_phone'],
+            'maincate_id' => $data['hd_maincate'],
             'product_type' => $data['ddl_product_type'],
             'business_type' => $data['ddl_business_type'],
             'company' => $data['txt_company'],

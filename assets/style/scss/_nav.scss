@@ -9,11 +9,19 @@
 }
 
 #topMenu {
-    font-family: $ff-bold, $ff-dbadman;
+    font-family: $ff-bold, $ff-dbadmanBold;
     justify-content: center;
     .nav-link {
         padding: .5rem 1.25rem;
         text-transform: uppercase;
+        font-size: 1rem;
+    }
+    .dropdown-item {
+        font-family: $ff-dbadman;
+        padding: 0 1.25rem;
+        text-transform: uppercase;
+        font-size: 19px;
+        letter-spacing: 1px;
     }
 }
 
@@ -31,20 +39,23 @@
     a {
         text-decoration: none;
         color: $c-black;
+        font-size: 19px;
+    }
+    span {
+        font-size: 19px;
     }
 }
 
 .top-more-menu {
-    font-size: 0.8rem;
     a {
         &:hover {
-            font-family: $ff-bold, $ff-dbadman;
+            font-family: $ff-dbadmanBold;
         }
     }
     .user-login {
         span {
             &:hover {
-                font-family: $ff-bold, $ff-dbadman;
+                font-family: $ff-dbadmanBold;
             }
         }
     }

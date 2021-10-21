@@ -16,7 +16,7 @@
 
     <!-- fonts style -->
     <link rel="stylesheet" href="<?= base_url('assets/fonts/Montserrat/montserrat.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/fonts/DBAdman/font.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/fonts/DBAdmanX/stylesheet.css'); ?>">
 
     <!-- slick slide -->
     <link rel="stylesheet" href="<?= base_url('assets/slick-1.8.1/slick/slick.css'); ?>">
@@ -30,7 +30,7 @@
     <?php } ?>
     
 </head>
-<body class="">
+<body class="<?= (session()->get('userdata')['logged_member']?'account-logged':'') ?>">
 
     <!-- add top menu -->
     <?= $this->include('front/nav-menu') ?>    
@@ -55,7 +55,7 @@
     <script src="<?= base_url('assets/slick-1.8.1/slick/slick.js'); ?>"></script>
 
     <!-- Custom script -->
-    <script src="<?= base_url('assets/style/js/custom-script.js'); ?>"></script>
+    <!-- <script src="<?= base_url('assets/style/js/custom-script.js'); ?>"></script> -->
 
     <!-- เรียกใช้ ckeditor -->
     <script src="<?= site_url('assets/ckeditor5/ckeditor.js'); ?>"></script>

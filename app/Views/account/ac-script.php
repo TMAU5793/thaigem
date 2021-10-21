@@ -79,6 +79,10 @@
             $('.event-menu-list').toggleClass('d-none');
         });
 
+        $('#ddl_product_type').on('change',function(){
+            var maincate = $('#ddl_product_type option:selected').data('maincate');
+            $('#hd_maincate').val(maincate);
+        });
 
         //form edit profile
         $('#submit_ac_info').on('click',function(){

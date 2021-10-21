@@ -30,7 +30,7 @@ return [
     'member' => 'Member',
     'searchMember' => 'Search Member',
     'category' => 'Category',
-    'priceUpdate' => '<strong class="ff-bold">Price</strong> Update',
+    'priceUpdate' => '<strong class="ff-bold">Price</strong> <span class="ff-reg">Update</span>',
     'diamonds' => 'Diamonds',
     'ruby' => 'Ruby',
     'sapphire' => 'Sapphire',

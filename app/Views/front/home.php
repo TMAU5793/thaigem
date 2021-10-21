@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-12 col-order-2">
-                        <p class="ff-semibold fs-3">Fulfill your business opportunities with our trusted and reliable members.</p>
+                        <div class="ff-semibold fs-3">Fulfill your business opportunities with our trusted and reliable members.</div>
                         <div class="tg-title mt-5rem">
                             <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
@@ -34,7 +34,7 @@
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">
                                 </div>
                                 <div class="item-text text-center position-relative">
-                                    <h3 class="ff-semibold fs-6 absolute-center w-100"><a href="<?= site_url('member/filter?c='.$row['id']) ?>" class="a-hover-darkgold"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></a></h3>                                    
+                                    <h3 class="ff-dbadmanBold fs-6 absolute-center w-100"><a href="<?= site_url('member/filter?c='.$row['id']) ?>" class="a-hover-darkgold"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></a></h3>                                    
                                 </div>
                             </div>
                         </div>
@@ -94,17 +94,17 @@
                                 <div class="event-date text-end pt-3 pe-4"><span><?= substr($event['created_at'],0,10) ?></span></div>
                                 <div class="absolute-center text-center w-75">
                                     <h2 class="ff-semibold fs-4"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>
-                                    <p><?= ($lang=='en'?character_limiter($event['shortdesc_en'],50):character_limiter($event['shortdesc'],50)) ?></p>
-                                    <div class="btn-tg-group d-flex">
-                                        <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore btn-black-border"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <p><?= ($lang=='en'?character_limiter($event['shortdesc_en'],100):character_limiter($event['shortdesc'],100)) ?></p>
+                                    <div class="btn-tg-group text-center">
+                                        <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
                                         <?php
                                             if($member['type']=='dealer' && $member['status']=='2'){
                                         ?>
-                                            <a href="javascript:void(0)" class="btn btn-booking btn-black-border booking_event" data-event="<?= $event['id']; ?>"><?= lang('GlobalLang.bookNow'); ?></a>
+                                            <a href="javascript:void(0)" class="btn btn-booking btn-black-border booking_event text-uppercase letter-spacing-1" data-event="<?= $event['id']; ?>"><?= lang('GlobalLang.bookNow'); ?></a>
                                         <?php }elseif($member['type']=='dealer' && $member['status']=='1'){ ?>
-                                            <a href="" class="btn btn-booking btn-black-border" data-bs-toggle="modal" data-bs-target="#eventModal"><?= lang('GlobalLang.bookNow'); ?></a>
+                                            <a href="" class="btn btn-booking btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#eventModal"><?= lang('GlobalLang.bookNow'); ?></a>
                                         <?php }else{ ?>
-                                            <a href="" class="btn btn-booking btn-black-border" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.bookNow'); ?></a>
+                                            <a href="" class="btn btn-booking btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.bookNow'); ?></a>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="text-end">
-                        <a href="<?= site_url('knowledge') ?>" class="c-black ff-semibold a-hover-darkgold view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                        <a href="<?= site_url('knowledge') ?>" class="c-black a-hover-darkgold view-all text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>
@@ -136,33 +136,33 @@
                         <div class="news-item">
                             <img src="<?= site_url('assets/images/news/news-slide.jpg') ?>" alt="">
                             <div class="news-desc c-white position-absolute">
-                                <h2 class="ff-semibold">Knowledge & New 1</h2>
+                                <h2 class="ff-dbadmanBold">Knowledge & New 1</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1 fs-5"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1 fs-5"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
                         <div class="news-item">
                             <img src="<?= site_url('assets/images/news/news-slide.jpg') ?>" alt="">
                             <div class="news-desc c-white position-absolute">
-                                <h2 class="ff-semibold">Knowledge & New 2</h2>
+                                <h2 class="ff-dbadmanBold">Knowledge & New 2</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
                         <div class="news-item">
                             <img src="<?= site_url('assets/images/news/news-slide.jpg') ?>" alt="">
                             <div class="news-desc c-white position-absolute">
-                                <h2 class="ff-semibold">Knowledge & New 3</h2>
+                                <h2 class="ff-dbadmanBold">Knowledge & New 3</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewAll'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +174,11 @@
                             <div class="news-item">
                                 <img src="<?= site_url('assets/images/news/news-1.jpg') ?>" alt="">
                                 <div class="news-desc c-white position-absolute">
-                                    <h2 class="ff-semibold fs-5">Knowledge & New</h2>
+                                    <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="" class="c-white ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -187,11 +187,11 @@
                             <div class="news-item">
                                 <img src="<?= site_url('assets/images/news/news-2.jpg') ?>" alt="">
                                 <div class="news-desc c-white position-absolute">
-                                    <h2 class="ff-semibold fs-5">Knowledge & New</h2>
+                                    <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="" class="c-white ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -200,11 +200,11 @@
                             <div class="news-item">
                                 <img src="<?= site_url('assets/images/news/news-3.jpg') ?>" alt="">
                                 <div class="news-desc c-white position-absolute">
-                                    <h2 class="ff-semibold fs-5">Knowledge & New</h2>
+                                    <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white ff-semibold"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ff-semibold ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="" class="c-white ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -255,10 +255,10 @@
                         </div>
                         <div class="w-50 position-relative">
                             <div class="absolute-center text-center w-100 p-3">
-                                <h2 class="ff-semibold c-darkgold fs-5"><?= $dealer['name'].' '.$dealer['lastname'] ?></h2>
+                                <h2 class="ff-dbadmanBold c-darkgold fs-4 text-uppercase"><?= $dealer['name'].' '.$dealer['lastname'] ?></h2>
                                 <p><?= character_limiter($dealer['about'],40) ?></p>
                                 <div class="btn-tg-group mt-5">
-                                    <a href="<?= site_url('member/id/'.$dealer['id']); ?>" class="btn btn-redmore btn-black-border ff-semibold"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                    <a href="<?= site_url('member/id/'.$dealer['id']); ?>" class="btn btn-redmore btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +281,7 @@
                     <div class="absolute-center w-100 singup-form text-center">
                         <?= lang('HomeLang.signupText'); ?>
                         <div class="btn-singup-group mt-5">
-                            <button class="btn btn-darkgold ff-semibold c-white w-100 a-hover-white" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.signup'); ?></button>
+                            <button class="btn btn-darkgold ff-dbadman c-white w-100 a-hover-white" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.signup'); ?></button>
                         </div>
                     </div>
                 </div>                
@@ -303,7 +303,7 @@
                                 <input type="email" name="news_email" class="form-control" placeholder="<?= lang('GlobalLang.email'); ?>" require>
                             </div>
                             <div class="btn-singup-group mt-3">
-                                <button type="button" id="btn_newsletter" class="btn btn-darkgold ff-semibold c-white w-100 a-hover-white"><?= lang('GlobalLang.subscribe'); ?></button>
+                                <button type="button" id="btn_newsletter" class="btn btn-darkgold ff-dbadman c-white w-100 a-hover-white"><?= lang('GlobalLang.subscribe'); ?></button>
                             </div>
                         </form>
                     </div>
@@ -335,7 +335,7 @@
                             <a href="mailto:info@thaigemjewelry.org"><i class="far fa-envelope"></i> info@thaigemjewelry.org</a>
                         </div>
                         <div class="follow-us">
-                            <strong class="ff-semibold"><?= lang('GlobalLang.followUs'); ?></strong>
+                            <strong class="ff-dbadmanBold"><?= lang('GlobalLang.followUs'); ?></strong>
                             <a href="https://www.facebook.com/tgjta" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/tgjta919" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="https://lin.ee/kH0e06R" target="_blank"><i class="fab fa-line"></i></a>
@@ -345,7 +345,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="contact-form">
-                        <strong class="ff-semibold d-block fs-4 mb-3"><?= lang('GlobalLang.contactForm'); ?></strong>
+                        <strong class="ff-dbadmanBold d-block fs-2 mb-3"><?= lang('GlobalLang.contactForm'); ?></strong>
                         <form action="">                            
                             <div class="form-group">
                                 <input type="text" class="form-control" name="txt_name" placeholder="<?= lang('GlobalLang.name'); ?>">
@@ -356,7 +356,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" name="txt_phone" placeholder="<?= lang('GlobalLang.phoneNumber'); ?>">
                             </div>
-                            <button type="submit" class="btn bg-darkgold c-white ff-semibold w-100"><?= lang('GlobalLang.submit'); ?></button>
+                            <button type="submit" class="btn bg-darkgold c-white ff-dbadmanBold w-100"><?= lang('GlobalLang.submit'); ?></button>
                         </form>
                     </div>
                 </div>

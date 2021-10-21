@@ -1,17 +1,38 @@
 body {
-  font-family: "Montserrat-Regular", "DBAdman"; }
+  font-family: "DBAdmanX"; }
 
 img {
   width: 100%; }
 
+p {
+  line-height: 1.5rem; }
+
+p,
+input,
+select,
+textarea,
+button,
+a,
+.btn {
+  font-size: 1.35rem; }
+
+.ff-dbadman {
+  font-family: "DBAdmanX"; }
+
+.ff-dbadmanBold {
+  font-family: "DBAdmanXBold"; }
+
+.ff-reg {
+  font-family: "Montserrat-Regular", "DBAdmanX"; }
+
 .ff-medium {
-  font-family: "Montserrat-Medium", "DBAdman"; }
+  font-family: "Montserrat-Medium"; }
 
 .ff-semibold {
-  font-family: "Montserrat-SemiBold", "DBAdman"; }
+  font-family: "Montserrat-SemiBold", "DBAdmanXBold"; }
 
 .ff-bold {
-  font-family: "Montserrat-Bold", "DBAdman"; }
+  font-family: "Montserrat-Bold", "DBAdmanXBold"; }
 
 .pt-2rem {
   padding-top: 2rem; }
@@ -82,14 +103,14 @@ img {
 
 .btn-black-border {
   border: 2px solid #000000;
-  font-family: "Montserrat-SemiBold", "DBAdman"; }
+  padding: 0 10px; }
   .btn-black-border:hover {
     background-color: #000000;
     color: #ffffff; }
 
 .btn-white-border {
   border: 2px solid #ffffff;
-  font-family: "Montserrat-SemiBold", "DBAdman"; }
+  padding: 0 10px; }
   .btn-white-border:hover {
     background-color: #ffffff;
     color: #000000; }
@@ -126,6 +147,15 @@ img {
 .fs-7 {
   font-size: 0.8rem; }
 
+.fs-1rem {
+  font-size: 1rem; }
+
+.fs-1-35rem {
+  font-size: 1.35rem; }
+
+.fs-19px {
+  font-size: 19px; }
+
 .border-b-darkgold {
   border-bottom: 1px solid #665f4f; }
 
@@ -149,6 +179,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   background-color: #000000;
   color: #ffffff; }
 
+.form-control {
+  font-size: 1.35rem; }
+
+.letter-spacing-1 {
+  letter-spacing: 1px; }
+
 .navbar {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
@@ -158,11 +194,18 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   background-color: #ffffff; }
 
 #topMenu {
-  font-family: "Montserrat-Bold", "DBAdman";
+  font-family: "Montserrat-Bold", "DBAdmanXBold";
   justify-content: center; }
   #topMenu .nav-link {
     padding: .5rem 1.25rem;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 1rem; }
+  #topMenu .dropdown-item {
+    font-family: "DBAdmanX";
+    padding: 0 1.25rem;
+    text-transform: uppercase;
+    font-size: 19px;
+    letter-spacing: 1px; }
 
 .top-nav {
   padding: 1rem 0; }
@@ -173,41 +216,42 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     margin-right: 2rem; }
   .top-nav a {
     text-decoration: none;
-    color: #000000; }
+    color: #000000;
+    font-size: 19px; }
+  .top-nav span {
+    font-size: 19px; }
 
-.top-more-menu {
-  font-size: 0.8rem; }
-  .top-more-menu a:hover {
-    font-family: "Montserrat-Bold", "DBAdman"; }
-  .top-more-menu .user-login span:hover {
-    font-family: "Montserrat-Bold", "DBAdman"; }
-  .top-more-menu .user-menu-login {
+.top-more-menu a:hover {
+  font-family: "DBAdmanXBold"; }
+.top-more-menu .user-login span:hover {
+  font-family: "DBAdmanXBold"; }
+.top-more-menu .user-menu-login {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  z-index: 99;
+  width: 220px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px 0px #c1c1c1; }
+  .top-more-menu .user-menu-login::after {
+    content: '';
     position: absolute;
-    top: 2rem;
-    right: 0;
-    z-index: 99;
-    width: 220px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px 0px #c1c1c1; }
-    .top-more-menu .user-menu-login::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 1rem;
-      width: 0;
-      height: 0;
-      border: 13px solid transparent;
-      border-bottom-color: #ffffff;
-      border-top: 0;
-      margin-left: -13px;
-      margin-top: -13px; }
-    .top-more-menu .user-menu-login ul {
-      padding: 1rem;
-      margin: 0;
-      list-style: none;
-      text-align: left; }
-      .top-more-menu .user-menu-login ul li:not(:last-child) {
-        margin-bottom: .5rem; }
+    top: 0;
+    right: 1rem;
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-bottom-color: #ffffff;
+    border-top: 0;
+    margin-left: -13px;
+    margin-top: -13px; }
+  .top-more-menu .user-menu-login ul {
+    padding: 1rem;
+    margin: 0;
+    list-style: none;
+    text-align: left; }
+    .top-more-menu .user-menu-login ul li:not(:last-child) {
+      margin-bottom: .5rem; }
 
 .to-top {
   position: fixed;
@@ -242,7 +286,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .account-menu .navbar-nav {
   flex-direction: initial; }
   .account-menu .navbar-nav .nav-link {
-    font-family: "Montserrat-SemiBold", "DBAdman";
+    font-family: "Montserrat-SemiBold", "DBAdmanXBold";
     text-transform: uppercase;
     margin-right: 1rem; }
     .account-menu .navbar-nav .nav-link.active {
@@ -322,7 +366,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     text-decoration: none;
     color: #000000; }
     .ac-ul-menu a:hover {
-      font-family: "Montserrat-SemiBold", "DBAdman"; }
+      font-family: "Montserrat-SemiBold", "DBAdmanXBold"; }
   .ac-ul-menu::after {
     content: '';
     position: absolute;
@@ -436,6 +480,16 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .ck-editor .ck-content {
   min-height: 250px; }
 
+.account-logged .mobile-menu-right .user-managed {
+  padding-top: 1px;
+  margin-right: 15px; }
+.account-logged .mobile-menu-right .user-login {
+  padding-top: 0; }
+  .account-logged .mobile-menu-right .user-login img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px; }
+
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");
   background-size: cover;
@@ -512,9 +566,6 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     margin-bottom: .75rem; }
   .news-home .news-list .col-md-7 .col-md-12 {
     margin-top: .75rem; }
-  .news-home .news-list .col-md-7 .btn,
-  .news-home .news-list .col-md-7 a {
-    font-size: .75rem; }
   .news-home .news-list .news-item {
     position: relative;
     cursor: pointer; }

@@ -59,13 +59,14 @@
                     <?php } } } } ?>
 
                     <div class="edit-field d-none">
+                        <input type="hidden" name="hd_maincate" id="hd_maincate">
                         <select name="ddl_product_type" id="ddl_product_type" class="form-control">
                             <?php
                                 if($product_type){
                                     foreach($product_type as $row){
                                         if($row->maincate_id!=0){
                             ?>
-                                <option value="<?= $row->id; ?>" <?= ($info['product_type']==$row->id?'selected="selected"':''); ?>><?php foreach($main_cate as $cate){if($row->maincate_id == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
+                                <option value="<?= $row->id; ?>" <?= ($info['product_type']==$row->id?'selected="selected"':''); ?> data-maincate="<?= $row->maincate_id; ?>"><?php foreach($main_cate as $cate){if($row->maincate_id == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
                             <?php } } }  ?>
                         </select>
                     </div>

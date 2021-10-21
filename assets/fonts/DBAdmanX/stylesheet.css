@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'DBAdmanXLight';
+    src: url('DBAdmanX-Light.woff2') format('woff2'), url('DBAdmanX-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DBAdmanX';
+    src: url('DBAdmanX.woff2') format('woff2'), url('DBAdmanX.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DBAdmanXBold';
+    src: url('DBAdmanX-Bold.woff2') format('woff2'), url('DBAdmanX-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}

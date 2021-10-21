@@ -9,5 +9,5 @@ return [
     <span class="c-darkgold fs-3 d-block">เพื่อเป็นสมาชิกสมาคม</span>',
     
     'text1' => 'Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ip the dummy text industry. Lorem Ip dummy text and typesetting industry.',
-    'category' => '<strong class="ff-bold">หมวดหมู่ </strong> <span>สมาชิก</span>'
+    'category' => '<strong class="ff-bold">หมวดหมู่ </strong> <span class="ff-reg">สมาชิก</span>'
 ];

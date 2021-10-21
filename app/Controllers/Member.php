@@ -11,6 +11,7 @@ class Member extends BaseController
 {
     protected $lang;
     public function __construct() {
+        helper('text');
         $this->lang = session()->get('lang');
         if($this->lang==""){
             $this->lang = 'en';
