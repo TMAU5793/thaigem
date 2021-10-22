@@ -17,6 +17,26 @@ $ff-dbadman: 'DBAdmanX';
             }
         }
     }
+    .account-menu .navbar-nav .nav-link {
+        font-size: .8rem;
+    }
+}
+
+@include media-max(991px) {
+    .account-logged {
+        .account-menu {
+            .navbar-nav {
+                display: inline-block;
+                .nav-link {
+                    margin-right: 0;
+                }
+                li {
+                    float: left;
+                    padding: 0 .5rem;
+                }
+            }
+        }
+    }
 }
 
 @include media-max(767px) {

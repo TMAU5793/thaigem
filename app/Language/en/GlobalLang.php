@@ -53,5 +53,16 @@ return [
     'advanceclose' => 'Close Advance Search',
     'search' => 'Search',
     'createWebboard' => 'Create Webboard',
-    'notfound' => 'Not found information'
+    'notfound' => 'Not found information',
+    'product-type' => 'Product Type',
+    'business-type' => 'Business Type',
+    'province' => 'Province',
+    'member-since' => 'Member Since',
+    'reply-from' => 'From',
+    'reply' => 'Reply',
+    'del' => 'Delete',
+    'unhide' => 'unhide',
+    'hide' => 'Hide',
+    'send' => 'Send',
+    'date' => 'Date',
 ];

@@ -5,7 +5,7 @@
     $status = $model->where('id',$userdata['id'])->first();
 ?>
 <div class="account-menu ptb-1rem navbar-light">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav fs-5">
         <?php if($status['type']=='dealer'){ ?>
             <li class="nav-item">            
                 <a class="nav-link <?= (isset($ac_account)?'active':''); ?>" href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a>
@@ -43,4 +43,5 @@
             <a class="nav-link <?= (isset($ac_webboard)?'active':''); ?>" href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a>
         </li>
     </ul>
+    <div class="clearfix"></div>
 </div>

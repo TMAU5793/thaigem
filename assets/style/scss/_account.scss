@@ -2,9 +2,10 @@
     .navbar-nav {
         flex-direction: initial;
         .nav-link {
-            font-family: $ff-semibold, $ff-dbadmanBold;
+            font-family: $ff-bold, $ff-dbadmanBold;
             text-transform: uppercase;
             margin-right: 1rem;
+            font-size: .9rem;
             &.active {
                 border-bottom: 2px solid $c-black;
                 padding-bottom: 0;

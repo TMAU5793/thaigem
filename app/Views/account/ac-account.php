@@ -9,10 +9,10 @@
     <section class="account-body mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xl-3 col-lg-4 col-md-4">
                     <?= $this->include('account/left-menu') ?>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xl-9 col-md-8 col-md-8">
                     <form id="frm_ac_about" action="<?= site_url('account/member/album') ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="hd_id" value="<?= $info['id']; ?>">
                         <?php
@@ -22,7 +22,7 @@
                         ?>
                         <div class="content-body">
                             
-                            <div class="content-title"><strong class="ff-semibold fs-3">My Account</strong></div>
+                            <div class="content-title"><strong class="ff-dbadmanBold fs-3">My Account</strong></div>
                             <div class="ac-album mt-4">
                                 <div class="main-album-img slider-for">
                                     <?php
@@ -31,7 +31,7 @@
                                     ?>
                                         <div class="slider-for-item position-relative">
                                             <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/default-900x600.jpg')) ?>">
-                                            <div class="ff-semibold position-absolute top-0 start-50">
+                                            <div class="ff-dbadmanBold position-absolute top-0 start-50">
                                                 
                                             </div>
                                         </div>

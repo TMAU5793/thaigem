@@ -123,7 +123,22 @@
             asNavFor: '.slider-for',
             dots: true,
             focusOnSelect: true,
-            infinite: false
+            infinite: false,
+            responsive: [{
+                    breakpoint: 1200,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1
+                    }
+                }
+            ]
         });
 
         $('.slider-for-hidedots').slick({

@@ -53,5 +53,16 @@ return [
     'advanceclose' => 'ปิดการค้นหาแบบละเอียด',
     'search' => 'ค้นหา',
     'createWebboard' => 'เขียนกระทู้',
-    'notfound' => 'ไม่พบข้อมูล'
+    'notfound' => 'ไม่พบข้อมูล',
+    'product-type' => 'ประเภทสินค้า',
+    'business-type' => 'ประเภทธุรกิจ',
+    'province' => 'จังหวัด',
+    'member-since' => 'เป็นสมาชิกตั้งแต่',
+    'reply-from' => 'ตอบกลับ',
+    'reply' => 'ตอบกระทู้',
+    'del' => 'ลบ',
+    'unhide' => 'ยกเลิกการซ่อน',
+    'hide' => 'ซ่อน',
+    'send' => 'ส่ง',
+    'date' => 'วันที่',
 ];

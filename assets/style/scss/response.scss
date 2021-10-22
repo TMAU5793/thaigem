@@ -6,6 +6,11 @@
 
 @import 'response-account';
 @include media-max(1399px) {
+    .forum-box .forum-body {
+        .gradient-gold-y {
+            padding: 0 1rem;
+        }
+    }
     .forum-body .forum-img img {
         width: 70px;
         height: 70px;
@@ -50,6 +55,17 @@
 
 //end medi 1366
 @include media-max(1199px) {
+    .community-desc {
+        #pic_profile {
+            width: 170px;
+            height: 170px;
+        }
+        .col-lg-9.col-md-8 {
+            .ps-5.pt-3 {
+                padding-left: 1rem !important;
+            }
+        }
+    }
     .forum-body .forum-img img {
         width: 55px;
         height: 55px;
@@ -165,8 +181,6 @@
                     margin: 0;
                     a {
                         text-decoration: none;
-                        color: #665f4f;
-                        font-size: .9rem;
                     }
                 }
             }
@@ -198,6 +212,12 @@
                 padding: 0 !important;
             }
         }
+    }
+    .community-desc {
+        padding-bottom: 2rem !important;
+    }
+    .forum-box .reply-forum {
+        padding: 0 .75rem;
     }
     .forum-body {
         .forum-img img {
@@ -422,6 +442,16 @@
 
 //end medi 991
 @include media-max(767px) {
+    .community-desc #pic_profile {
+        width: 145px;
+        height: 145px;
+    }
+    .forum-box .forum-body .member-info {
+        span,
+        strong {
+            font-size: 1.15rem;
+        }
+    }
     .community-content {
         .container {
             position: relative;
@@ -436,6 +466,11 @@
                     right: .75rem;
                     font-size: 1rem;
                     padding: 2px 10px 0;
+                }
+            }
+            .forum-body {
+                .col-lg-4.col-md-5 {
+                    padding-left: 2rem;
                 }
             }
         }
@@ -533,12 +568,30 @@
 
 //end medi 767
 @include media-max(575px) {
+    .community-desc .col-lg-9.col-md-8 .ps-5.pt-3 {
+        padding-left: 0 !important;
+    }
+    .forum-box {
+        .forum-head {
+            display: none;
+        }
+        .forum-body {
+            .col-lg-3.col-md-4 {
+                display: none;
+            }
+        }
+    }
     .list-forum {
         .desc-head {
             img {
-                width: 40px;
-                height: 40px;
+                width: 30px;
+                height: 30px;
                 object-fit: cover;
+            }
+            .wbd-info {
+                .wbd-action {
+                    line-height: 20px;
+                }
             }
         }
     }

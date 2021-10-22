@@ -282,6 +282,13 @@ button.bg-darkgold {
     letter-spacing: 1px;
 }
 
+.text-line-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .text-line-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;

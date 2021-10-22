@@ -57,8 +57,10 @@ class Community extends BaseController
                 'webboard' => $webboard,
                 'member' => $member,
                 'users' => $member = $mbModel->findAll(),
-                'category' => $cateModel->where('id',$category['maincate_id'])->first(),
-                'business' => $bnModel->where('id',$business['main_type'])->first(),
+                //'category' => $cateModel->where('id',$category['maincate_id'])->first(),
+                'category' => $category,
+                //'business' => $bnModel->where('id',$business['main_type'])->first(),
+                'business' => $business,
                 'province' => $pvModel->where('code',$member['province'])->first(),
                 'reply' => $rpmodel->where(['webboard_id'=>$segment3,'status'=>'1'])->findAll(),
                 'replyhide' => $rpmodel->where(['webboard_id'=>$segment3,'status'=>'0'])->findAll()

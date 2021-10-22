@@ -100,15 +100,34 @@
                                 <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : site_url('assets/images/img-default.png')) ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
                             <?php } } ?>
                         </div>
-                        <div class="col-10">
-                            
-                            <?php
-                                foreach($member as $item){
-                                    if($row['member_id']==$item['id']){
-                            ?>
-                                <span class="ps-3 th-fz-1rem"><?= $item['name'].' '.$item['lastname'] ?></span>
-                            <?php } } ?>
-
+                        <div class="col-10">                            
+                            <div class="wbd-info">
+                                <div class="wbd-title text-line-1">
+                                    <h4 class="ff-dbadmanBold mb-0"> <a href="<?= site_url('community/post/'.$row['id']) ?>" class="text-decoration-none c-black"><?= $row['topic']; ?></a></h4>
+                                </div>
+                                <div class="wbd-desc">
+                                    <p class="mb-0 text-line-3"><?= word_limiter(strip_tags($row['desc']),20) ?></p>
+                                </div>
+                                <div class="wbd-author mt-2">
+                                    <strong class="text-uppercase ff-dbadmanBold fs-6"><?= lang('MenuLang.owner'); ?> : </strong>
+                                    <?php
+                                        foreach($member as $item){
+                                            if($row['member_id']==$item['id']){
+                                    ?>
+                                        <small class="th-fz-1rem"><?= $item['name'].' '.$item['lastname'] ?></small>
+                                    <?php } } ?>
+                                </div>
+                                <div class="row wbd-action">
+                                    <div class="col-6 p-0">
+                                        <strong class="text-uppercase ff-dbadmanBold fs-6"><?= lang('MenuLang.reply'); ?> : </strong>
+                                        <span><?= $row['reply']; ?></span>
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <strong class="text-uppercase ff-dbadmanBold fs-6"><?= lang('MenuLang.read'); ?> : </strong>
+                                        <span><?= $row['view']; ?></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
