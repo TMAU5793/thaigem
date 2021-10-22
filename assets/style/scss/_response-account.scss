@@ -1,4 +1,25 @@
-@include media-max(575px) {
+$ff-dbadmanBold: 'DBAdmanXBold';
+$ff-dbadman: 'DBAdmanX';
+@include media-max(1399px) {
+    .ac-menu-left .ac-profile-img img {
+        width: 184px !important;
+        height: 184px !important;
+    }
+}
+
+@include media-max(1199px) {
+    .ac-menu-left {
+        .ac-profile-img {
+            margin-top: -5rem;
+            img {
+                width: 135px !important;
+                height: 135px !important;
+            }
+        }
+    }
+}
+
+@include media-max(767px) {
     .banner {
         height: 200px;
         img {
@@ -7,15 +28,16 @@
         }
     }
     .account-body {
-        .col-md-3 {
+        .col-xl-3.col-lg-4 {
             padding: 0;
+            width: 100%;
+        }
+        .col-xl-9.col-lg-8 {
+            width: 100%;
         }
     }
     .ac-menu-left {
         padding: 0 !important;
-        .ac-information .ac-info-item {
-            margin: .5rem 0;
-        }
         .ac-profile-img {
             padding: 1.5rem;
             margin-top: -4rem;
@@ -30,17 +52,29 @@
             width: 65%;
             float: left;
             padding: 1rem 1.5rem 0;
+            span:first-child {
+                font-family: $ff-dbadmanBold;
+                font-size: 1.5rem;
+            }
         }
         .ac-information {
             background-color: #f6ecc9;
             width: 100%;
             float: left;
-            padding: 0 1.5rem 1.5rem;
+            padding: 1.5rem;
             &::after {
                 display: block;
                 content: "";
                 clear: both;
                 float: none;
+            }
+            .ac-info-item {
+                margin: .5rem 0;
+            }
+            .ac-info-icon {
+                top: 4px;
+                height: 45px;
+                width: 45px;
             }
         }
         .img_edit {
@@ -73,6 +107,16 @@
         }
         .ac-about.mt-5 {
             margin-top: 1.5rem !important;
+        }
+    }
+}
+
+@include media-max(575px) {
+    .ac-menu-left .ac-profile-img {
+        margin-top: -4rem;
+        img {
+            width: 100px !important;
+            height: 100px !important;
         }
     }
 }

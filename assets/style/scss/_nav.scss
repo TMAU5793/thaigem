@@ -63,7 +63,7 @@
         position: absolute;
         top: 2rem;
         right: 0;
-        z-index: 99;
+        z-index: 99999;
         width: 220px;
         background-color: $c-white;
         box-shadow: 0px 0px 10px 0px #c1c1c1;
@@ -85,9 +85,6 @@
             margin: 0;
             list-style: none;
             text-align: left;
-            li:not(:last-child) {
-                margin-bottom: .5rem;
-            }
         }
     }
 }

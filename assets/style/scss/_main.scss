@@ -32,10 +32,18 @@
             }
         }
     }
-    .col-md-4 {
-        iframe,
-        .tradingview-widget-container {
-            width: 100% !important;
+    .row {
+        position: relative;
+        .col-md-8 {
+            div.fs-1 {
+                line-height: 40px;
+            }
+        }
+        .col-md-4 {
+            iframe,
+            .tradingview-widget-container {
+                width: 100% !important;
+            }
         }
     }
 }
@@ -102,11 +110,13 @@
 .news-home {
     .news-list {
         overflow: hidden;
-        height: 600px;
         .col-md-5 {
             .slick-1-item {
+                margin-bottom: 0;
                 .slick-dots {
                     bottom: 2rem;
+                    right: 1.5rem;
+                    text-align: right;
                     li {
                         background-color: $c-white;
                         border-radius: 50px;
@@ -118,18 +128,32 @@
                         }
                     }
                 }
+                .news-item {
+                    img {
+                        height: 715px;
+                        object-fit: cover;
+                        object-position: top center;
+                    }
+                    h2 {
+                        line-height: 33px;
+                    }
+                }
             }
         }
         .col-md-7 {
             .col-md-6 {
                 overflow: hidden;
-                height: 300px;
             }
             .col-md-6 {
                 margin-bottom: .75rem;
             }
             .col-md-12 {
                 margin-top: .75rem;
+            }
+            .news-item {
+                h2 {
+                    line-height: 30px;
+                }
             }
         }
         .news-item {
@@ -146,7 +170,7 @@
             .news-desc {
                 bottom: 0;
                 width: 100%;
-                padding: 0 3rem 6rem;
+                padding: 0 2rem 2rem;
                 z-index: 999;
             }
             a.view-all {
@@ -156,14 +180,24 @@
                     box-shadow: 0px 6px 3px -3px $c-white;
                 }
             }
+            h2 {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
         }
     }
 }
 
 .member-home {
     .member-list {
-        .slick-list.draggable {
-            margin: 0 -1rem;
+        .slick-slide.slick-current.slick-active .member-item {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+        .slick-slide.slick-active .member-item {
+            padding-right: 0;
         }
         .member-item {
             padding: .5rem 1rem;
@@ -321,6 +355,18 @@
     }
 }
 
+.event-text {
+    h2 {
+        line-height: 33px;
+        &:hover {
+            box-shadow: 0px 1px 0px 0px $c-darkgold;
+        }
+        a {
+            font-size: calc(1.325rem + .4vw);
+        }
+    }
+}
+
 .search-member {
     form {
         .w-50:nth-child(odd) {
@@ -385,12 +431,22 @@
         line-height: 1rem;
     }
     p {
-        line-height: 1.2rem;
-        font-size: .85rem;
         margin-top: 6px;
     }
     .forum-img {
         cursor: pointer;
+        img {
+            transition: all .15s;
+            width: 85px;
+            height: 85px;
+            object-fit: cover;
+        }
+        &:hover {
+            img {
+                transition: all .15s;
+                box-shadow: 0px 0px 6px 2px $c-darkgold;
+            }
+        }
     }
 }
 
@@ -545,4 +601,37 @@
 .btn-news-group {
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.share-post,
+.event-action {
+    i {
+        font-size: 1rem;
+    }
+}
+
+.community-content {
+    .forum-head {
+        strong {
+            font-family: $ff-dbadmanBold;
+            text-transform: uppercase;
+        }
+    }
+    form {
+        input {
+            padding: 0 1rem;
+        }
+        a {
+            padding: 0;
+        }
+    }
+}
+
+.hide-991,
+.hide-575 {
+    display: block;
+}
+
+.show-575 {
+    display: none;
 }

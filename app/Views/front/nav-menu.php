@@ -41,7 +41,7 @@
                     <div class="user-menu-login d-none">
                         <ul>
                             <?php
-                                if($member['user_type']=='dealer'){
+                                if($member['type']=='dealer'){
                             ?>
                                 <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
                                 <?php if($member['status']=='2' && $member['type']=='dealer'){ ?>
@@ -85,7 +85,7 @@
                         <div class="user-menu-login d-none">
                             <ul>
                                 <?php
-                                    if($member['user_type']=='dealer'){
+                                    if($member['type']=='dealer'){
                                 ?>
                                     <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
                                     <?php if($member['status']=='2' && $member['type']=='dealer'){ ?>

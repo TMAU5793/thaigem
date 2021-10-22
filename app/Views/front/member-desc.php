@@ -9,7 +9,7 @@
     <section class="account-body mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xl-3 col-lg-4 col-sm-5">
                     <div class="ac-menu-left p-4">
                         <div class="ac-profile-img position-relative">
                             <?php
@@ -63,10 +63,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-9">
+                <div class="col-xl-9 col-lg-8 col-sm-7">
                     <div class="content-body mt-4">
                         
-                        <div class="content-title"><strong class="ff-semibold fs-3"><?= $info['name'].' '.$info['lastname'] ?></strong></div>
+                        <!-- <div class="content-title"><strong class="ff-semibold fs-3"><?= $info['name'].' '.$info['lastname'] ?></strong></div> -->
                         <div class="ac-album mt-4">
                             <div class="main-album-img slider-for">
                                 <?php

@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-12 col-order-2">
-                        <div class="ff-semibold fs-3">Fulfill your business opportunities with our trusted and reliable members.</div>
+                        <div class="ff-dbadmanBold fs-1">Fulfill your business opportunities with our trusted and reliable members.</div>
                         <div class="tg-title mt-5rem">
                             <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
@@ -69,12 +69,12 @@
     <section class="event-home ptb-2rem">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-6 col-sm-6 col-8">
                     <div class="tg-title">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.events'); ?></strong></h3>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-6 col-sm-6 col-4">
                     <div class="text-end view-all">
                         <a href="<?= site_url('event') ?>" class="c-black a-hover-darkgold text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
@@ -119,12 +119,12 @@
     <section class="news-home ptb-2rem">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-6 col-sm-6 col-8">
                     <div class="tg-title">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.knowledgeNews'); ?></strong></h3>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-6 col-sm-6 col-4">
                     <div class="text-end">
                         <a href="<?= site_url('knowledge') ?>" class="c-black a-hover-darkgold view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
@@ -139,8 +139,7 @@
                                 <h2 class="ff-dbadmanBold">Knowledge & New 1</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>                                    
                                 </div>
                             </div>
                         </div>
@@ -150,8 +149,7 @@
                                 <h2 class="ff-dbadmanBold">Knowledge & New 2</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>                                    
                                 </div>
                             </div>
                         </div>
@@ -161,8 +159,7 @@
                                 <h2 class="ff-dbadmanBold">Knowledge & New 3</h2>
                                 <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                 <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <a href="" class="c-white ms-4 view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
+                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>                                    
                                 </div>
                             </div>
                         </div>
@@ -177,8 +174,7 @@
                                     <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>                                        
                                     </div>
                                 </div>
                             </div>
@@ -190,8 +186,7 @@
                                     <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>                                        
                                     </div>
                                 </div>
                             </div>
@@ -203,8 +198,7 @@
                                     <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
                                     <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
                                     <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>
-                                        <a href="" class="c-white ms-4 view-all"><?= lang('GlobalLang.viewAll'); ?></a>
+                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>                                        
                                     </div>
                                 </div>
                             </div>
@@ -268,7 +262,9 @@
             </div>
         </div>
     </section>
-
+    <?php
+        if(!$member){
+    ?>
     <section class="signup-member ptb-2rem">
         <div class="container">
             <div class="row">
@@ -281,13 +277,14 @@
                     <div class="absolute-center w-100 singup-form text-center">
                         <?= lang('HomeLang.signupText'); ?>
                         <div class="btn-singup-group mt-5">
-                            <button class="btn btn-darkgold ff-dbadman c-white w-100 a-hover-white" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.signup'); ?></button>
+                            <button class="btn btn-darkgold ff-dbadman c-white w-100 a-hover-white" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.signup'); ?></button>                            
                         </div>
                     </div>
                 </div>                
             </div>
         </div>
     </section>
+    <?php } ?>
 
     <section class="singup-home ptb-2rem">
         <div class="container">

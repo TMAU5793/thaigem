@@ -24,12 +24,12 @@
                     </div>
                     <div class="item-body w-50 plr-4rem position-absolute translate-middle-y top-50 end-0">
                         <div class="event-date mt-3 mb-3"><?= substr($row['created_at'],0,10) ?></div>
-                        <h1 class="ff-semibold"><?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?></h1>
-                        <p><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
+                        <h1 class="ff-dbadmanBold text-line-2"><?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?></h1>
+                        <p class="text-line-3"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
                         
                         <div class="event-action mt-2">
-                            <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.readMore'); ?></a>
-                            <span class="ms-3 ff-semibold share-social" data-url="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>                            
+                            <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
+                            <span class="ms-3 ff-dbadmanBold share-social" data-url="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>                            
                         </div>
                     </div>
                 </div>
@@ -44,22 +44,22 @@
                     if($info){                        
                         foreach ($info as $row){                            
                 ?>
-                    <div class="col-md-4 mt-4">
+                    <div class="col-lg-4 col-md-6 col-sm-6  mt-4">
                         <div class="shadow-lightgold h-100 rounded">
                             <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
                             <div class="p-4">
                                 <div class="event-text mt-3">
-                                    <h2 class="ff-semibold fs-5">
+                                    <h2 class="ff-dbadmanBold text-line-2">
                                         <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="a-hover-darkgold">
                                             <?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>
                                         </a>
                                     </h2>
-                                    <p><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
+                                    <p class="text-line-3"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
                                     <div class="event-date"><?= substr($row['created_at'],0,10) ?></div>
                                 </div>
                                 <div class="event-action mt-2">
-                                    <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border fs-7"><?= lang('GlobalLang.readMore'); ?></a>
-                                    <span class="ms-3 ff-semibold share-social" data-url="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
+                                    <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <span class="ms-3 ff-dbadmanBold share-social" data-url="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
                                 </div>
                             </div>
                         </div>

@@ -137,7 +137,7 @@
             <?php } ?>
                 
             <div class="text-center mt-3 text-center" id="edit_ac_info_group">
-                <button type="button" class="btn btn-black-border fs-7" id="edit_ac_info"><?= lang('accountLang.e-info') ?></button>
+                <button type="button" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></button>
                 <div class="btn-profile-group mt-3 d-none">
                     <button type="button" class="btn btn-black-border" id="submit_ac_info"><?= lang('accountLang.comfirm') ?></button>
                     <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3"><?= lang('accountLang.cancel') ?></a>
@@ -160,7 +160,7 @@
                     <p>Save your information. Success</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.e-info') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
                 </div>
             </div>
         </div>

@@ -75,12 +75,12 @@
             slidesToShow: 2,
             slidesToScroll: 1,
             dots: true,
+            arrows: false,
             infinite:false,
             responsive: [
                 {
                     breakpoint: 768,
                     settings: {
-                        arrows: false,
                         slidesToShow: 1
                     }
                 }
