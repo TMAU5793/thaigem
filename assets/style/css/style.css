@@ -165,6 +165,12 @@ ul,
 .border-b-darkgold {
   border-bottom: 1px solid #665f4f; }
 
+.border-darkgold {
+  border: 1px solid #665f4f; }
+
+.border-lightgray {
+  border: 1px solid #ebebeb; }
+
 .a-hover-darkgold {
   color: #665f4f;
   text-decoration: none; }
@@ -243,16 +249,21 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   .top-nav .logo-top .logo-tgjta {
     width: 75px;
     margin-right: 2rem; }
-  .top-nav a {
-    text-decoration: none;
-    color: #000000; }
+  .top-nav a,
   .top-nav span {
-    font-size: 19px; }
+    text-decoration: none;
+    color: #000000;
+    font-size: 17px;
+    padding: 0 6px; }
+    .top-nav a:hover,
+    .top-nav span:hover {
+      box-shadow: 2px 2px 2px 0px #665f4f; }
+    .top-nav a i,
+    .top-nav span i {
+      font-size: 14px; }
+  .top-nav span {
+    font-size: 17px; }
 
-.top-more-menu a:hover {
-  font-family: "DBAdmanXBold"; }
-.top-more-menu .user-login span:hover {
-  font-family: "DBAdmanXBold"; }
 .top-more-menu .user-menu-login {
   position: absolute;
   top: 2rem;
@@ -308,6 +319,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .logo-top.navbar-brand,
 .mobile-menu-right {
   display: none; }
+
+.user-managed .help-center {
+  line-height: 34px; }
 
 .account-menu .navbar-nav {
   flex-direction: initial; }

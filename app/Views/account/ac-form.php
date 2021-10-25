@@ -8,10 +8,10 @@
     <section class="acform-body mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xl-3 col-lg-4 col-md-4">
                     <?= $this->include('account/left-menu') ?>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xl-9 col-lg-8 col-md-8">
                     <?php
                         if (session()->get('userdata')) {
                             echo $this->include('account/ac-menu');

@@ -243,6 +243,14 @@ ul,
     border-bottom: 1px solid $c-darkgold;
 }
 
+.border-darkgold {
+    border: 1px solid $c-darkgold;
+}
+
+.border-lightgray {
+    border: 1px solid $c-lightgray;
+}
+
 .a-hover-darkgold {
     color: $c-darkgold;
     text-decoration: none;

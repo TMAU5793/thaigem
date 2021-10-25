@@ -18,6 +18,7 @@ return [
     'termCondition' => 'ข้อตลง และเงื่อนไข',
     'accept' => 'ยอมรับ',
     'userName' => 'ชื่อบัญชี',
+    'u-name-mail' => 'ชื่อบัญชี (อีเมล)',
     'name' => 'ชื่อ',
     'lastname' => 'นามสกุล',
     'password' => 'รหัสผ่าน',

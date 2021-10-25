@@ -18,6 +18,7 @@ return [
     'termCondition' => 'Terms & Condition',
     'accept' => 'Accept',
     'userName' => 'Username',
+    'u-name-mail' => 'Username (E-Mail)',
     'name' => 'Name',
     'lastname' => 'Last name',
     'password' => 'Password',

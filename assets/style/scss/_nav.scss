@@ -36,29 +36,25 @@
             margin-right: 2rem;
         }
     }
-    a {
+    a,
+    span {
         text-decoration: none;
         color: $c-black;
-        //font-size: 19px;
+        font-size: 17px;
+        padding: 0 6px;
+        &:hover {
+            box-shadow: 2px 2px 2px 0px $c-darkgold;
+        }
+        i {
+            font-size: 14px;
+        }
     }
     span {
-        font-size: 19px;
+        font-size: 17px;
     }
 }
 
 .top-more-menu {
-    a {
-        &:hover {
-            font-family: $ff-dbadmanBold;
-        }
-    }
-    .user-login {
-        span {
-            &:hover {
-                font-family: $ff-dbadmanBold;
-            }
-        }
-    }
     .user-menu-login {
         position: absolute;
         top: 2rem;
@@ -122,4 +118,10 @@
 .logo-top.navbar-brand,
 .mobile-menu-right {
     display: none;
+}
+
+.user-managed {
+    .help-center {
+        line-height: 34px;
+    }
 }

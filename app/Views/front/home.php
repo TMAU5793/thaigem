@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slick-1-item mt-4">
+            <div class="slick-1-item">
                 <?php
                     if($events){
                         foreach ($events as $event){

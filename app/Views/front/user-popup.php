@@ -16,7 +16,7 @@
                             <div class="alert alert-danger"><?= $signin_valid->listErrors(); ?></div>
                         <?php endif;?>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.userName') ?> *" value="<?= (isset($signin_valid)?set_value('txt_username'):''); ?>">
+                            <input type="text" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.u-name-mail') ?> *" value="<?= (isset($signin_valid)?set_value('txt_username'):''); ?>">
                         </div>
                         <div class="form-group mb-3">
                             <input type="password" class="form-control" name="txt_password" placeholder="<?= lang('GlobalLang.password') ?> *" autocomplete="new-password">

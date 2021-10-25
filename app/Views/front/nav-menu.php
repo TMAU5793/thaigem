@@ -37,7 +37,7 @@
                 if($member){
             ?>
                 <div class="user-login me-3 position-relative">
-                    <span class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $member['name']; ?></span>
+                    <a href="javascript:void(0)" class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $member['name']; ?></a>
                     <div class="user-menu-login d-none">
                         <ul>
                             <?php
@@ -58,7 +58,7 @@
             <?php }else{ ?>
                 <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
             <?php } ?>
-            <a href="<?= site_url('help-center') ?>" class="ms-3 text-uppercase"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
+            <a href="<?= site_url('help-center') ?>" class="ms-3 text-uppercase help-center"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -79,9 +79,17 @@
             <div class="user-managed">
                 <?php 
                     if($member){
+                        $profile_pic = (is_file($member['profile'])?site_url($member['profile']):site_url('assets/images/img-default.png'));
+                        if(!is_file($member['profile'])){
+                            if($member['social_type'] == 'facebook'){
+                                $profile_pic = 'https://graph.facebook.com/'.$member['id'].'/picture?width=400&height=400';
+                            }else if($member['social_type'] == 'google'){
+                                $profile_pic = site_url($member['profile']);
+                            }
+                        }
                 ?>
                     <div class="user-login position-relative">
-                        <img src="<?= (is_file($member['profile'])?site_url($member['profile']):site_url('assets/images/img-default.png')) ?>" class="user-login-name">
+                        <img src="<?= $profile_pic ?>" class="user-login-name">
                         <div class="user-menu-login d-none">
                             <ul>
                                 <?php

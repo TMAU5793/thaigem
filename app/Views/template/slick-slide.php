@@ -123,22 +123,7 @@
             asNavFor: '.slider-for',
             dots: true,
             focusOnSelect: true,
-            infinite: false,
-            responsive: [{
-                    breakpoint: 1200,
-                    settings: {
-                        arrows: false,
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: false,
-                        slidesToShow: 1
-                    }
-                }
-            ]
+            infinite: false
         });
 
         $('.slider-for-hidedots').slick({
@@ -156,6 +141,38 @@
             dots: false,
             focusOnSelect: true,
             infinite:false
+        });
+
+        $('.slider-event').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            infinite: false,
+            asNavFor: '.event-nav'
+        });
+        $('.event-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-event',
+            dots: true,
+            focusOnSelect: true,
+            infinite: false,
+            responsive: [{
+                    breakpoint: 1200,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1
+                    }
+                }
+            ]
         });
     });    
 </script>

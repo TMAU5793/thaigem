@@ -8,10 +8,10 @@
     <section class="event-body mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-xl-3 col-lg-4 col-md-4">
                     <?= $this->include('account/left-menu') ?>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xl-9 col-md-8 col-md-8">
                     <?php
                         if (session()->get('userdata')) {
                             echo $this->include('account/ac-menu');
@@ -19,15 +19,15 @@
                     ?>
                     <div class="content-body">
                         <div class="content-title"><strong class="ff-semibold fs-3"><?= $meta_title ?></strong></div>
-                        <div class="event-section mt-4">
-                            <div class="slider-nav slick-dotted">
+                        <div class="event-section mt-4 pb-4">
+                            <div class="event-nav slick-dotted">
                                 <?php
                                     if($bookings){
                                         foreach ($events as $event){
                                             foreach ($bookings as $booking){
                                                 if($event['id'] == $booking['event_id']){
                                 ?>
-                                    <div class="event-item-box box-shadow">
+                                    <div class="event-item-box border-lightgray">
                                         <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?>">
                                         <div class="item-desc p-3">
                                             <strong class="ff-semibold border-b-darkgold"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
@@ -41,7 +41,7 @@
 
                     <div class="event-info">
                         <div class="event-album">
-                            <div class="slider-for">
+                            <div class="slider-event">
                                 <?php
                                     if($bookings){
                                         foreach ($events as $event){
