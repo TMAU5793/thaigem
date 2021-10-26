@@ -42,12 +42,40 @@
                         <p>ประเภทธุรกิจ</p>
                     </a>
                 </li>
-                <li class="nav-item">
+
+                <!-- <li class="nav-item">
                     <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles'?'active':''); ?>">
                         <i class="nav-icon far fa-newspaper"></i>
                         <p>บทความ & ข่าวสาร</p>
                     </a>
+                </li> -->
+                <li class="nav-item <?= ($uri->getSegment(2)=='articles'?'menu-open':''); ?>">
+                    <a href="#" class="nav-link <?= ($uri->getSegment(2)=='articles'?'active':''); ?>">
+                        <i class="nav-icon far fa-newspaper"></i>
+                        <p> เนื้อหาเว็บไซต์ <i class="right fas fa-angle-left"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles' && $uri->getSegment(3)==''?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>บทความ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles' && $uri->getSegment(3)==''?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>บทความ (Home page)</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/articles/news'); ?>" class="nav-link <?= ($uri->getSegment(3)=='news'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ข่าวสาร</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
                 <li class="nav-item <?= ($uri->getSegment(2)=='event'?'menu-open':''); ?>">
                     <a href="#" class="nav-link <?= ($uri->getSegment(2)=='event'?'active':''); ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
@@ -55,7 +83,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/event'); ?>" class="nav-link <?= ($uri->getSegment(3)==''?'active':''); ?>">
+                            <a href="<?= base_url('admin/event'); ?>" class="nav-link <?= ($uri->getSegment(2)=='event' && $uri->getSegment(3)=='' || $uri->getSegment(3)=='edit' || $uri->getSegment(3)=='form' ?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>รายการงานอีเว้นท์</p>
                             </a>
@@ -68,12 +96,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('admin/member'); ?>" class="nav-link <?= ($uri->getSegment(2)=='member'?'active':''); ?>">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>สมาชิกเว็บไซต์</p>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
                     <a href="<?= base_url('admin/files'); ?>" class="nav-link <?= ($uri->getSegment(2)=='files'?'active':''); ?>">
                         <i class="nav-icon fas fa-file"></i>
@@ -86,7 +109,12 @@
                         <p>แบนเนอร์</p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/member'); ?>" class="nav-link <?= ($uri->getSegment(2)=='member'?'active':''); ?>">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>สมาชิกเว็บไซต์</p>
+                    </a>
+                </li>
                 <?php
                     if ($admindata['rules']=='superadmin') {
                 ?>

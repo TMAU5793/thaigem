@@ -257,7 +257,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     padding: 0 6px; }
     .top-nav a:hover,
     .top-nav span:hover {
-      box-shadow: 2px 2px 2px 0px #665f4f; }
+      box-shadow: 1px 1px 1px 0px #665f4f; }
     .top-nav a i,
     .top-nav span i {
       font-size: 14px; }
@@ -319,9 +319,6 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .logo-top.navbar-brand,
 .mobile-menu-right {
   display: none; }
-
-.user-managed .help-center {
-  line-height: 34px; }
 
 .account-menu .navbar-nav {
   flex-direction: initial; }

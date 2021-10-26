@@ -36,8 +36,8 @@
             <?php 
                 if($member){
             ?>
+                <a href="javascript:void(0)" class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $member['name']; ?></a>
                 <div class="user-login me-3 position-relative">
-                    <a href="javascript:void(0)" class="cs-pointer user-login-name text-uppercase"><i class="far fa-user-circle"></i> <?= $member['name']; ?></a>
                     <div class="user-menu-login d-none">
                         <ul>
                             <?php
