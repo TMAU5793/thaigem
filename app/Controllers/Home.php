@@ -6,6 +6,7 @@ use App\Models\Admin\EventModel;
 use App\Models\MemberModel;
 use App\Models\Account\AlbumModel;
 use App\Models\BookingModel;
+use App\Models\KnowledgeModel;
 
 class Home extends BaseController
 {
@@ -33,6 +34,7 @@ class Home extends BaseController
         $mbModel = new MemberModel();
         $abModel = new AlbumModel();
         $bkModel = new BookingModel();
+        $acModel= new KnowledgeModel();
 
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association',
@@ -41,7 +43,8 @@ class Home extends BaseController
             'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
             'dealers' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(),
             'albums' => $abModel->findAll(),
-            'member' => $mbModel->where('id',$this->member_id)->first()
+            'member' => $mbModel->where('id',$this->member_id)->first(),
+            'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3)
         ];
         
         

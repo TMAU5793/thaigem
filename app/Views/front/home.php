@@ -130,81 +130,33 @@
                     </div>
                 </div>
             </div>
-            <div class="row news-list mt-4">
-                <div class="col-md-5">
-                    <div class="news-slide slick-1-item">
-                        <div class="news-item">
-                            <img src="<?= site_url('assets/images/news/news-slide.jpg') ?>" alt="">
-                            <div class="news-desc c-white position-absolute">
-                                <h2 class="ff-dbadmanBold">Knowledge & New 1</h2>
-                                <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
-                                <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>                                    
+            <div class="row">
+                <?php
+                    if($articles){
+                        foreach($articles as $row){
+
+                ?>
+                    <div class="col-lg-4 col-md-6 col-sm-6  mt-4">
+                        <div class="shadow-lightgold h-100 rounded">
+                            <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
+                            <div class="p-4">
+                                <div class="event-text mt-3">
+                                    <h2 class="ff-dbadmanBold text-line-2">
+                                        <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="a-hover-darkgold">
+                                            <?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>
+                                        </a>
+                                    </h2>
+                                    <p class="text-line-3"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
+                                    <div class="event-date"><?= substr($row['created_at'],0,10) ?></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="news-item">
-                            <img src="<?= site_url('assets/images/news/news-slide.jpg') ?>" alt="">
-                            <div class="news-desc c-white position-absolute">
-                                <h2 class="ff-dbadmanBold">Knowledge & New 2</h2>
-                                <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
-                                <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="news-item">
-                            <img src="<?= site_url('assets/images/news/news-slide.jpg') ?>" alt="">
-                            <div class="news-desc c-white position-absolute">
-                                <h2 class="ff-dbadmanBold">Knowledge & New 3</h2>
-                                <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
-                                <div class="btn-news-group">
-                                    <a href="" class="btn btn-redmore btn-white-border c-white text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>                                    
+                                <div class="event-action mt-2">
+                                    <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
+                                    <span class="ms-3 ff-dbadmanBold share-social" data-url="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="news-item">
-                                <img src="<?= site_url('assets/images/news/news-1.jpg') ?>" alt="">
-                                <div class="news-desc c-white position-absolute">
-                                    <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
-                                    <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
-                                    <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="news-item">
-                                <img src="<?= site_url('assets/images/news/news-2.jpg') ?>" alt="">
-                                <div class="news-desc c-white position-absolute">
-                                    <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
-                                    <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
-                                    <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="news-item">
-                                <img src="<?= site_url('assets/images/news/news-3.jpg') ?>" alt="">
-                                <div class="news-desc c-white position-absolute">
-                                    <h2 class="ff-dbadmanBold fs-3">Knowledge & New</h2>
-                                    <p>Lorem Ipsum is simply dummy text and typesetting industry</p>
-                                    <div class="btn-news-group">
-                                        <a href="" class="btn btn-redmore btn-white-border c-white"><?= lang('GlobalLang.readMore'); ?></a>                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php } } ?>
             </div>
         </div>
     </section>

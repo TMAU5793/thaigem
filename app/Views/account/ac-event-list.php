@@ -25,10 +25,10 @@
                                     if($events){
                                         foreach ($events as $event){
                                 ?>
-                                    <div class="event-item-box box-shadow">
+                                    <div class="event-item-box">
                                         <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?>">
                                         <div class="item-desc p-3">
-                                            <strong class="ff-semibold border-b-darkgold"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
+                                            <strong class="ff-semibold"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
                                             <p><?= ($lang=='en' && $event['shortdesc_en']!=""?word_limiter($event['shortdesc_en'],10):word_limiter($event['shortdesc'],10)) ?></p>
                                         </div>
                                     </div>
@@ -48,6 +48,15 @@
                                         <div class="event-desc mt-3">
                                             <div class="content-title mb-3"><strong class="ff-semibold fs-3"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong></div>
                                             <?= ($lang=='en' && $event['desc_en']!=""?$event['desc_en']:$event['desc']) ?>
+                                        </div>
+                                        <div class="event-booking pt-4 pb-2 bg-lightgray">
+                                            <div class="container">
+                                                <p>Lorem Ipsum is simply dummy text of the printingand typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printingand typesetting industry.</p>
+
+                                                <div class="text-center mb-3">
+                                                    <a href="javascript:void(0)" class="btn btn-black-border booking_event" id="booking_event" data-event="<?= $event['id']; ?>"><?= lang('GlobalLang.bookevent') ?></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 <?php } } ?>

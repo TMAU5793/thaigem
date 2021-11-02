@@ -28,7 +28,7 @@ class Community extends BaseController
         $mbModel = new MemberModel();
         $data = [
             'meta_title' => 'Community',
-            'info' => $model->where('status','1')->findAll(),
+            'info' => $model->where('status','1')->orderby('created_at','DESC')->findAll(),
             'member' => $mbModel->findAll(),
             'userdata' => $this->userdata
         ];

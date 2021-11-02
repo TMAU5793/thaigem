@@ -1,0 +1,9 @@
+@keyframes left-to-right {
+    0% {
+        width: 0px;
+    }
+    100% {
+        border-bottom: 1px solid $c-darkgold;
+        width: 100%;
+    }
+}

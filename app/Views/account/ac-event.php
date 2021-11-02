@@ -19,8 +19,8 @@
                     ?>
                     <div class="content-body">
                         <div class="content-title"><strong class="ff-semibold fs-3"><?= $meta_title ?></strong></div>
-                        <div class="event-section mt-4 pb-4">
-                            <div class="event-nav slick-dotted">
+                        <div class="event-section mt-4">
+                            <div class="event-nav slider-nav slick-dotted">
                                 <?php
                                     if($bookings){
                                         foreach ($events as $event){
@@ -30,7 +30,7 @@
                                     <div class="event-item-box border-lightgray">
                                         <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?>">
                                         <div class="item-desc p-3">
-                                            <strong class="ff-semibold border-b-darkgold"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
+                                            <strong class="ff-semibold"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
                                             <p><?= ($lang=='en' && $event['shortdesc_en']!=""?word_limiter($event['shortdesc_en'],10):word_limiter($event['shortdesc'],10)) ?></p>
                                         </div>
                                     </div>

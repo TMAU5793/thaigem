@@ -106,16 +106,17 @@ use Google\Service\Adsense\Site;
         $('.booking_event').on('click',function(){
             var event_id = $(this).data('event');
             var member_id = '<?= session()->get('userdata')['id'] ?>';
-            $.ajax({
-                type: "POST",
-                url: "<?= site_url('event/booking') ?>",
-                data: {event_id:event_id,member_id:member_id},
-                success: function (response) {
-                    $('#eventBookingModal').modal('show');
-                    $('.event-booking').remove();
-                }
-            });
-
+            if(event_id!=""){
+                $.ajax({
+                    type: "POST",
+                    url: "<?= site_url('event/booking') ?>",
+                    data: {event_id:event_id,member_id:member_id},
+                    success: function (response) {
+                        $('#eventBookingModal').modal('show');
+                        //$('.event-booking').remove();
+                    }
+                });
+            }
         });
         
         //Newsletter Function
