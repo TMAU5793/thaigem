@@ -581,9 +581,17 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   .category-home .row .col-md-4 .tradingview-widget-container {
     width: 100% !important; }
 
-.price-update .price-subject strong {
-  display: inline;
-  margin-left: 2rem; }
+.price-update .nav-pills .nav-item .nav-link.active {
+  background: transparent; }
+  .price-update .nav-pills .nav-item .nav-link.active i {
+    color: #665f4f; }
+.price-update .nav-pills .nav-item .nav-link {
+  color: #000000;
+  cursor: pointer; }
+  .price-update .nav-pills .nav-item .nav-link i {
+    color: #c1c1c1; }
+  .price-update .nav-pills .nav-item .nav-link:hover i {
+    color: #665f4f; }
 
 .table-price table {
   border: 1px solid #000000; }
@@ -970,6 +978,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .community-desc .reply-item p {
   padding: .5rem 1rem; }
 
+.hide-1199,
 .hide-991,
 .hide-575 {
   display: block; }

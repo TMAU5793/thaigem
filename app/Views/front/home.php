@@ -48,20 +48,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-4">
-                    <div class="tg-title">
+                    <div class="tg-title pt-1">
                         <h3 class="c-darkgold"><?= lang('GlobalLang.priceUpdate'); ?></h3>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-8">
-                    <div class="text-end price-subject">
-                        <strong class="ff-bold"><i class="fas fa-square c-darkgold"></i> <?= lang('GlobalLang.diamonds'); ?></strong>
-                        <strong class="ff-bold"><i class="fas fa-square c-gray"></i> <?= lang('GlobalLang.ruby'); ?></strong>
-                        <strong class="ff-bold"><i class="fas fa-square c-lightgray"></i> <?= lang('GlobalLang.sapphire'); ?></strong>
-                    </div>
+                    <ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <strong class="ff-bold nav-link active" data-bs-toggle="pill" data-bs-target="#pills-1"><i class="fas fa-square"></i> <?= lang('GlobalLang.diamonds'); ?></strong>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <strong class="ff-bold nav-link" data-bs-toggle="pill" data-bs-target="#pills-2"><i class="fas fa-square"></i> <?= lang('GlobalLang.ruby'); ?></strong>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <strong class="ff-bold nav-link" data-bs-toggle="pill" data-bs-target="#pills-3"><i class="fas fa-square"></i> <?= lang('GlobalLang.sapphire'); ?></strong>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="table-price">
-                <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+            
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+                    <div class="table-price">
+                        <img src="<?= site_url('assets/images/home/tbl-price-1.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+                    <div class="table-price">
+                        <img src="<?= site_url('assets/images/home/tbl-price-2.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
+                    <div class="table-price">
+                        <img src="<?= site_url('assets/images/home/tbl-price-3.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                    </div>
+                </div>
             </div>
         </div>
     </section>

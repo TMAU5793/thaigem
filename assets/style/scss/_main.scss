@@ -49,10 +49,26 @@
 }
 
 .price-update {
-    .price-subject {
-        strong {
-            display: inline;
-            margin-left: 2rem;
+    .nav-pills {
+        .nav-item {
+            .nav-link.active {
+                background: transparent;
+                i {
+                    color: $c-darkgold;
+                }
+            }
+            .nav-link {
+                color: $c-black;
+                cursor: pointer;
+                i {
+                    color: $c-gray;
+                }
+                &:hover {
+                    i {
+                        color: $c-darkgold;
+                    }
+                }
+            }
         }
     }
 }
@@ -659,6 +675,7 @@
     }
 }
 
+.hide-1199,
 .hide-991,
 .hide-575 {
     display: block;

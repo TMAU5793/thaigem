@@ -71,7 +71,9 @@
                     <img src="<?= site_url('assets/images/favicon.png') ?>" alt="Logo">
                 </div>
                 <div class="mobile-logo">
-                    <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="Logo">
+                    <a href="<?= site_url() ?>">
+                        <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="Logo">
+                    </a>
                 </div>
             </div>
         </div>
