@@ -1,10 +1,6 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
-    <section class="banner position-relative">
-        <img src="<?= site_url('assets/images/banner/knowledge.jpg') ?>" alt="">
-    </section>
-
     <section class="knowledge-content ptb-2rem">
         <div class="text-center title mb-4">
             <h1 class="text-uppercase ff-semibold fs-3"><?= lang('GlobalLang.knowledgeNews'); ?></h1>

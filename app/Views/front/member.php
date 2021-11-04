@@ -1,10 +1,6 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
-    <section class="banner position-relative">
-        <img src="<?= site_url('assets/images/banner/member.jpg') ?>" alt="">
-    </section>
-
     <section class="member-content ptb-2rem">        
 
         <div class="container mt-3">
@@ -130,7 +126,7 @@
                         </div>
                         <div class="item-body text-center w-50 plr-2rem position-absolute translate-middle-y top-50 end-0">
                             <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1"><?= $row['name'].' '.$row['lastname'] ?></h5>
-                            <p><?= character_limiter($row['about'],50) ?></p>
+                            <p class="text-line-3"><?= character_limiter($row['about'],50) ?></p>
                             
                             <div class="event-action mt-2">
                                 <a href="<?= site_url('member/id/'.$row['id']); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>

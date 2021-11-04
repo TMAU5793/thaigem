@@ -1,10 +1,6 @@
 <?= $this->extend("front/app") ?>
 
 <?= $this->section("content") ?>
-
-    <section class="banner">
-        <img src="<?= site_url('assets/images/banner/account.jpg') ?>" alt="">
-    </section>
     
     <section class="account-body mb-5">
         <div class="container">

@@ -10,12 +10,7 @@
 ?>
 <div class="top-nav container">
     <div class="logo-top float-start">
-        <div class="d-flex">
-            <div class="logo-tgjta">
-                <img src="<?= site_url('assets/images/favicon.png') ?>" alt="Logo">
-            </div>
-            <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="Logo">
-        </div>
+        <img src="<?= site_url('assets/images/logo.png') ?>" alt="Logo">
     </div>
     <div class="top-more-menu float-end ff-dbadman text-end">
         <div class="lang mt-3">

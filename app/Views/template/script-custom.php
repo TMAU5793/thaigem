@@ -113,11 +113,15 @@ use Google\Service\Adsense\Site;
                     data: {event_id:event_id,member_id:member_id},
                     success: function (response) {
                         $('#eventBookingModal').modal('show');
-                        //$('.event-booking').remove();
+                        localStorage.setItem("book-event", 'TRUE');
+                        setTimeout(function(){
+                            location.href='<?= site_url('account/form/event') ?>'
+                        },1200);
                     }
                 });
             }
         });
+        
         
         //Newsletter Function
         $('#btn_newsletter').on('click',function(){

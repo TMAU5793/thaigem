@@ -1,10 +1,6 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
-    <section class="banner position-relative">
-        <img src="<?= site_url('assets/images/banner/member.jpg') ?>" alt="">
-    </section>
-
     <section class="community-content ptb-2rem">
         <div class="container">
             <div class="text-center mb-3">
@@ -21,11 +17,15 @@
                             </div>
                         </div>
                     </div>
-                    <?php if($userdata['logged_member']){ ?>
-                        <div class="col-md-6">                        
-                            <a href="<?= site_url('account/webboard/form') ?>" class="btn bg-darkgold c-white w-100 ff-dbadmanBold a-hover-white" id="btn_create_webboard"><?= lang('GlobalLang.createWebboard'); ?></a>                        
-                        </div>
-                    <?php } ?>
+                    
+                    <div class="col-md-6">
+                        <?php if($userdata['logged_member']){ ?>
+                            <a href="<?= site_url('account/webboard/form') ?>" class="btn bg-darkgold c-white w-100 ff-dbadmanBold a-hover-white" id="btn_create_webboard"><?= lang('GlobalLang.createWebboard'); ?></a>
+                        <?php }else{ ?>
+                            <a href="javascript:void(0)" class="btn bg-darkgold c-white w-100 ff-dbadmanBold a-hover-white" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.createWebboard'); ?></a>
+                        <?php } ?>
+                    </div>
+                    
                 </div>
             </form>
 

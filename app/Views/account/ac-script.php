@@ -126,19 +126,20 @@
             let file = this.files[0];
             if (this.files && file) {
                 //console.log(file);
-                $('.btn-ac-upload').toggleClass('d-none');
+                $('.btn-ac-upload').removeClass('d-none');
                 if(file.size < 5000000){
                     var reader = new FileReader();
                     var ext = file.name.split('.').pop().toLowerCase();
                     reader.onload = function (e) {
                         $('input[name="hd_file_upload"]').val(file.name);
                         $('#hd_file_type').val(ext);
+                        $('.file-name-choose').text(file.name);
                         if(ext=='pdf'){
-                            $('.acform-upload .fa-file-pdf').removeClass('d-none');
-                            $('.acform-upload .fa-file-word').addClass('d-none');
+                            $('.acform-upload .fa-file-pdf').show();
+                            $('.acform-upload .fa-file-word').hide();
                         }else{
-                            $('.acform-upload .fa-file-pdf').addClass('d-none');
-                            $('.acform-upload .fa-file-word').removeClass('d-none');
+                            $('.acform-upload .fa-file-pdf').hide();
+                            $('.acform-upload .fa-file-word').show();
                         }
                     }
                     reader.readAsDataURL(this.files[0]);
@@ -154,6 +155,13 @@
         $('.btn-ac-upload').on('click',function(){
             $('#frm-ac-upload').submit();
         });
+
+        //session booking event for popup
+        var bookevent = localStorage.getItem("book-event");
+        if(bookevent){
+            $('#bookingModal').modal('show');
+            localStorage.removeItem('book-event');
+        }
 
     });
     //End Ready function

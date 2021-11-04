@@ -220,6 +220,15 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   -webkit-box-orient: vertical;
   overflow: hidden; }
 
+.btn-padding {
+  padding: 0 1.5rem; }
+
+.line-h-34px {
+  line-height: 34px; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
 .navbar {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
@@ -245,7 +254,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .top-nav {
   padding: 1rem 0; }
   .top-nav .logo-top img {
-    max-width: 250px; }
+    max-width: 400px; }
   .top-nav .logo-top .logo-tgjta {
     width: 75px;
     margin-right: 2rem; }
@@ -470,6 +479,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   background-color: #ebebeb;
   padding: 1rem 2rem;
   border-radius: 6px; }
+  .acform-body .acform-upload i {
+    display: none; }
 
 .img_edit {
   background-image: url("../../images/img-edit.jpg");
@@ -537,6 +548,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .webboard-body textarea {
   min-height: 150px; }
+.webboard-body .head-sect .btn-create a {
+  padding: 1px 1rem 0; }
 
 .ck-editor .ck-content {
   min-height: 250px; }
@@ -551,6 +564,16 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     height: 30px;
     border-radius: 50px;
     object-fit: cover; }
+
+.btn-file {
+  background-color: #665f4f;
+  color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #665f4f;
+  cursor: pointer; }
+  .btn-file:hover {
+    background-color: #cec6b2;
+    color: #000000; }
 
 .category-home .bg-title {
   background-image: url("../../images/home/bg-title.jpg");

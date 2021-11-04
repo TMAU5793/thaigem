@@ -15,7 +15,7 @@ return [
     'myAccount' => 'บัญชีของฉัน',
     'bookEvent' => 'งานอีเว้นท์',
     'downloadUploadForm' => 'ดาวน์โหลด และอัปโหลดเอกสาร',
-    'downloadForm' => 'ดาวน์โหลดเอกสาร',
+    'downloadForm' => 'ดาวน์โหลดใบสมัครสมาชิก',
     'downloadFormEvent' => 'ดาวน์โหลดเอกสารอีเว้นท์',
     'invoice' => 'ใบแจ้งชำระเงิน',
     'webboard' => 'ชุมชน',

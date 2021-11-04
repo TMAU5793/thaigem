@@ -2,7 +2,7 @@
 <?= $this->section("content") ?>
 
     <section class="banner">
-        <img src="<?= site_url('assets/images/home/banner.jpg') ?>" alt="">
+        <img src="<?= site_url('assets/images/banner/home.jpg') ?>" alt="">
     </section>
     
     <section class="category-home">
@@ -29,7 +29,7 @@
                             foreach($catergory as $row){
                     ?>
                         <div class="cateory-item">
-                            <div class="box-shadow-lightgold">
+                            <div class="box-shadow-lightgold cursor-pointer" onclick="location.href='<?= site_url('member/filter?c='.$row['id']) ?>'">
                                 <div class="item-img">
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">
                                 </div>

@@ -64,18 +64,22 @@
                             <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
                             <input type="hidden" name="hd_filefor" value="<?= $fileFor; ?>">
                             <div class="mt-3">
-                                <label for="" class="mb-2 ff-semibold">Upload your files</label>
-                                <small class="text-danger ms-2"> *Maximun file size 5MB</small>
-                                <input type="file" name="file_upload" id="file_upload" class="form-control" accept=".doc, .docx, .pdf"/>
+                                <input type="file" name="file_upload" id="file_upload" class="form-control input-hide" accept=".doc, .docx, .pdf"/>
                                 <input type="hidden" name="hd_file_upload" value="" />
                                 <input type="hidden" name="hd_file_type" id="hd_file_type" value="">
                             </div>
                             
-                            <div class="acform-upload display-4 mb-3">
-                                <i class="fas fa-file-pdf text-danger d-none"></i>
-                                <i class="fas fa-file-word text-primary d-none"></i>
+                            <div class="acform-upload text-center mb-3">
+                                <label for="" class="mb-3 ff-dbadmanBold d-block text-uppercase letter-spacing-1 fs-2">Upload your files</label>                                
+                                <label for="file_upload" class="ff-dbadmanBold btn-file btn-padding pointer">Choose files</label>
+                                <small class="text-danger ms-2 d-block"> *Maximun file size 5MB</small>
+                                <div class="file-type">
+                                    <i class="fas fa-file-pdf display-4 text-danger"></i>
+                                    <i class="fas fa-file-word display-4 text-primary"></i>
+                                    <div class="file-name-choose"></div>
+                                </div>
+                                <button type="button" class="btn btn-ac-upload btn-black-border btn-padding mt-3 d-none"><?= lang('accountLang.comfirm') ?></button>
                             </div>
-                            <button type="button" class="btn btn-ac-upload btn-black-border d-none"><?= lang('accountLang.comfirm') ?></button>
                         </form>
                     </div>
                 </div>

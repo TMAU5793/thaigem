@@ -18,11 +18,13 @@
                         }
                     ?>
                     <div class="content-body acform-body">
-                        <div class="content-title mb-3 float-start"><strong class="ff-semibold fs-3"><?= $title; ?></strong></div>
-                        <div class="float-end">
-                            <a href="<?= site_url('account/webboard/form') ?>" class="btn btn-primary"><?= lang('accountLang.create') ?></a>
+                        <div class="head-sect">
+                            <div class="content-title mb-3 float-start"><strong class="ff-semibold fs-3"><?= $title; ?></strong></div>
+                            <div class="float-end btn-create">
+                                <a href="<?= site_url('account/webboard/form') ?>" class="btn bg-darkgold c-white w-100 ff-dbadmanBold a-hover-white"><?= lang('GlobalLang.createWebboard'); ?></a> 
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
                         <div class="mywebboard-desc">
                             <div class="webboard-item">
                                 <div class="row forum-head m-0">

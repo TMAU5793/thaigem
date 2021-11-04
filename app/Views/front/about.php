@@ -1,10 +1,6 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
-    <section class="banner position-relative">
-        <img src="<?= site_url('assets/images/banner/about.jpg') ?>" alt="">
-    </section>
-
     <section class="about-content ptb-2rem">
         <div class="container">
             <div class="text-center">

@@ -208,7 +208,9 @@
         background-color: $c-lightgray;
         padding: 1rem 2rem;
         border-radius: 6px;
-        //min-height: 135px;
+        i {
+            display: none;
+        }
     }
 }
 
@@ -296,6 +298,13 @@
     textarea {
         min-height: 150px;
     }
+    .head-sect {
+        .btn-create {
+            a {
+                padding: 1px 1rem 0;
+            }
+        }
+    }
 }
 
 .ck-editor {
@@ -319,5 +328,17 @@
                 object-fit: cover;
             }
         }
+    }
+}
+
+.btn-file {
+    background-color: $c-darkgold;
+    color: $c-white;
+    border-radius: 6px;
+    border: 1px solid $c-darkgold;
+    cursor: pointer;
+    &:hover {
+        background-color: $c-lightgold;
+        color: $c-black;
     }
 }
