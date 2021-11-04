@@ -9,7 +9,7 @@
     $member = $model->where('id',$userdata['id'])->first();
 ?>
 <div class="top-nav container">
-    <div class="logo-top float-start">
+    <div class="logo-top float-start" onclick="location.href='<?= site_url() ?>'">
         <img src="<?= site_url('assets/images/logo.png') ?>" alt="Logo">
     </div>
     <div class="top-more-menu float-end ff-dbadman text-end">
@@ -60,17 +60,8 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-light" id="mainMenu">
     <div class="container">
-        <div class="logo-top navbar-brand">
-            <div class="d-flex">
-                <div class="logo-tgjta">
-                    <img src="<?= site_url('assets/images/favicon.png') ?>" alt="Logo">
-                </div>
-                <div class="mobile-logo">
-                    <a href="<?= site_url() ?>">
-                        <img src="<?= site_url('assets/images/logo-black.png') ?>" alt="Logo">
-                    </a>
-                </div>
-            </div>
+        <div class="logo-top navbar-brand" onclick="location.href='<?= site_url() ?>'">
+            <img src="<?= site_url('assets/images/logo-150.png') ?>" alt="Logo">
         </div>
         <div class="mobile-menu-right">
             <div class="user-managed">
