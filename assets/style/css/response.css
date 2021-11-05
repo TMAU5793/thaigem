@@ -96,6 +96,11 @@
       width: 100px !important;
       height: 100px !important; } }
 @media (max-width: 1399px) {
+  .singup-home .head-sect span,
+  .singup-home .head-sect strong {
+    font-size: 3rem;
+    line-height: 3rem; }
+
   .forum-box .forum-body .gradient-gold-y {
     padding: 0 1rem; }
 
@@ -127,6 +132,11 @@
   .member-home .member-list .slick-slide.slick-active .member-item {
     padding-right: 0; } }
 @media (max-width: 1199px) {
+  .singup-home .head-sect span,
+  .singup-home .head-sect strong {
+    font-size: 2.6rem;
+    line-height: 2.6rem; }
+
   .hide-1199 {
     display: none; }
 
@@ -389,8 +399,8 @@
   .btn-black-border {
     border: 1px solid #000; }
 
-  .signup-member .singup-form,
-  .singup-home .singup-form {
+  .singup-home .singup-form,
+  .singup-home .sign-member {
     padding: 0 2rem; }
 
   .event-home .slick-1-item.mt-4 {
@@ -402,8 +412,6 @@
   .member-home .member-list.mt-3 {
     margin-top: .5rem !important; }
 
-  .signup-member,
-  .singup-home,
   .contact-home {
     padding-bottom: 2rem !important; }
 
@@ -419,6 +427,16 @@
   .member-content {
     margin-bottom: 2rem; } }
 @media (max-width: 767px) {
+  .singup-home .singup-form {
+    border-right: none;
+    border-bottom: 2px solid #665f4f;
+    padding: 0 0 3rem;
+    margin-bottom: 3rem; }
+  .singup-home .sign-member {
+    padding: 0; }
+  .singup-home .col-md-6 {
+    padding: 0 1rem !important; }
+
   .price-update .nav-pills {
     font-size: .9rem; }
 

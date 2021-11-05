@@ -6,6 +6,13 @@
 
 @import 'response-account';
 @include media-max(1399px) {
+    .singup-home .head-sect {
+        span,
+        strong {
+            font-size: 3rem;
+            line-height: 3rem;
+        }
+    }
     .forum-box .forum-body {
         .gradient-gold-y {
             padding: 0 1rem;
@@ -51,8 +58,15 @@
             padding-right: 0;
         }
     }
-} //end medi 1366
+} //end medi 1399
 @include media-max(1199px) {
+    .singup-home .head-sect {
+        span,
+        strong {
+            font-size: 2.6rem;
+            line-height: 2.6rem;
+        }
+    }
     .hide-1199 {
         display: none;
     }
@@ -401,9 +415,11 @@
     .btn-black-border {
         border: 1px solid #000;
     }
-    .signup-member .singup-form,
-    .singup-home .singup-form {
-        padding: 0 2rem;
+    .singup-home {
+        .singup-form,
+        .sign-member {
+            padding: 0 2rem;
+        }
     }
     .event-home {
         .slick-1-item.mt-4 {
@@ -420,8 +436,6 @@
             margin-top: .5rem !important;
         }
     }
-    .signup-member,
-    .singup-home,
     .contact-home {
         padding-bottom: 2rem !important;
     }
@@ -439,6 +453,20 @@
     }
 } //end medi 991
 @include media-max(767px) {
+    .singup-home {
+        .singup-form {
+            border-right: none;
+            border-bottom: 2px solid #665f4f;
+            padding: 0 0 3rem;
+            margin-bottom: 3rem;
+        }
+        .sign-member {
+            padding: 0;
+        }
+        .col-md-6 {
+            padding: 0 1rem !important;
+        }
+    }
     .price-update {
         .nav-pills {
             font-size: .9rem;

@@ -237,36 +237,15 @@
             </div>
         </div>
     </section>
-    <?php
-        if(!$member){
-    ?>
-    <section class="signup-member ptb-2rem">
+
+    <section class="singup-home">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="box-img">
-                        <img src="<?= site_url('assets/images/home/singup-member.jpg') ?>" alt="">
-                    </div>
-                </div>
-                <div class="col-md-6 position-relative">
-                    <div class="absolute-center w-100 singup-form text-center">
-                        <?= lang('HomeLang.signupText'); ?>
-                        <div class="btn-singup-group mt-5">
-                            <button class="btn btn-darkgold ff-dbadman c-white w-100 a-hover-white" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.signup'); ?></button>                            
+                    <div class="singup-form text-center">
+                        <div class="head-sect">
+                            <?= lang('HomeLang.newsletterText'); ?>
                         </div>
-                    </div>
-                </div>                
-            </div>
-        </div>
-    </section>
-    <?php } ?>
-
-    <section class="singup-home ptb-2rem">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 position-relative col-order-2">
-                    <div class="absolute-center w-100 singup-form text-center">
-                        <?= lang('HomeLang.newsletterText'); ?>
                         <form id="frm-singup" class="mt-5" action="<?= site_url('thaigem/newsLetter') ?>" method="POST">
                             <?php if(isset($errors_newsleeter)): ?>
                                 <div class="alert alert-danger"><?= $errors_newsleeter->listErrors() ?></div>
@@ -275,14 +254,25 @@
                                 <input type="email" name="news_email" class="form-control" placeholder="<?= lang('GlobalLang.email'); ?>" require>
                             </div>
                             <div class="btn-singup-group mt-3">
-                                <button type="button" id="btn_newsletter" class="btn btn-darkgold ff-dbadman c-white w-100 a-hover-white"><?= lang('GlobalLang.subscribe'); ?></button>
+                                <button type="button" id="btn_newsletter" class="btn btn-darkgold c-white w-100 a-hover-white"><?= lang('GlobalLang.subscribe'); ?></button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6 col-order-1">
-                    <div class="box-img">
-                        <img src="<?= site_url('assets/images/home/singup-img.jpg') ?>" alt="">
+                <div class="col-md-6">
+                    <div class="sign-member text-center">
+                        <div class="head-sect">
+                            <?= lang('HomeLang.signupText'); ?>
+                        </div>
+                        <div class="body-sect mt-5">
+                            <?php 
+                                if($member){
+                            ?>
+                                <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" onclick="location.href='<?= site_url('account') ?>'"><?= lang('GlobalLang.viewProfile'); ?></button>
+                            <?php }else{ ?>                                
+                                <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.register'); ?></button>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -236,12 +236,34 @@
 }
 
 .singup-home {
-    background-color: #d6d6d6;
+    background-image: url('../../images/home/newsletter-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding: 5rem 0;
+    .col-md-6:first-child {
+        padding-right: 0;
+    }
+    .col-md-6:last-child {
+        padding-left: 0;
+    }
     .singup-form {
-        padding: 0 10rem;
+        padding: 0 6.5rem;
+        border-right: 2px solid $c-darkgold;
         input {
             background-color: transparent;
             border: 1px solid $c-black;
+        }
+    }
+    .sign-member {
+        padding: 0 6.5rem;
+    }
+    .head-sect {
+        span,
+        strong {
+            font-size: 4rem;
+            line-height: 4rem;
+            letter-spacing: 1px;
         }
     }
 }

@@ -719,12 +719,28 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   overflow: hidden; }
 
 .singup-home {
-  background-color: #d6d6d6; }
+  background-image: url("../../images/home/newsletter-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  padding: 5rem 0; }
+  .singup-home .col-md-6:first-child {
+    padding-right: 0; }
+  .singup-home .col-md-6:last-child {
+    padding-left: 0; }
   .singup-home .singup-form {
-    padding: 0 10rem; }
+    padding: 0 6.5rem;
+    border-right: 2px solid #665f4f; }
     .singup-home .singup-form input {
       background-color: transparent;
       border: 1px solid #000000; }
+  .singup-home .sign-member {
+    padding: 0 6.5rem; }
+  .singup-home .head-sect span,
+  .singup-home .head-sect strong {
+    font-size: 4rem;
+    line-height: 4rem;
+    letter-spacing: 1px; }
 
 .signup-member {
   background-color: #ffffff;
