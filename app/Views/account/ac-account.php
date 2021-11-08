@@ -3,23 +3,25 @@
 <?= $this->section("content") ?>
 
     <section class="banner">
-        <img src="<?= site_url('assets/images/banner/account.jpg') ?>" alt="">
+        <img src="<?= site_url('assets/images/account/banner.jpg') ?>" alt="">
     </section>
     
     <section class="account-body mb-5">
         <div class="container">
+            <div class="ac-nav">
+                <?php
+                    if (session()->get('userdata')) {
+                        echo $this->include('account/ac-menu');
+                    }
+                ?>
+            </div>
             <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-4">
+                <div class="col-lg-7 col-md-4">
                     <?= $this->include('account/left-menu') ?>
                 </div>
-                <div class="col-xl-9 col-md-8 col-md-8">
+                <div class="col-lg-5 col-md-8">
                     <form id="frm_ac_about" action="<?= site_url('account/member/album') ?>" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="hd_id" value="<?= $info['id']; ?>">
-                        <?php
-                            if (session()->get('userdata')) {
-                                echo $this->include('account/ac-menu');
-                            }
-                        ?>
+                        <input type="hidden" name="hd_id" value="<?= $info['id']; ?>">                        
                         <div class="content-body">
                             
                             <div class="content-title"><strong class="ff-dbadmanBold fs-3">My Account</strong></div>

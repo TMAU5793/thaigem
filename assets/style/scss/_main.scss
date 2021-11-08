@@ -9,27 +9,13 @@
         background-color: $c-lightgray;
         .cateory-item {
             padding: 0 .5rem;
+            .box-shadow-lightgold {
+                border: 1px solid $c-lightgold;
+            }
         }
         .item-text {
             height: 100px;
             background-color: $c-white;
-        }
-        .slick-5-item {
-            .slick-list {
-                padding: .5rem 0;
-            }
-            .slick-dots {
-                li {
-                    background-color: $c-lightgold;
-                    border-radius: 50px;
-                    button:before {
-                        content: '';
-                    }
-                    &.slick-active {
-                        background-color: $c-darkgold;
-                    }
-                }
-            }
         }
     }
     .row {

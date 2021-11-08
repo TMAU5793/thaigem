@@ -23,18 +23,18 @@
         </div>
         <div class="category-list ptb-2rem">
             <div class="container">
-                <div class="slick-5-item">
+                <div class="row">
                     <?php
                         if($catergory){
                             foreach($catergory as $row){
                     ?>
-                        <div class="cateory-item">
-                            <div class="box-shadow-lightgold cursor-pointer" onclick="location.href='<?= site_url('member/filter?c='.$row['id']) ?>'">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-6 cateory-item mb-3">
+                            <div class="box-shadow-lightgold cursor-pointer zoom-in" onclick="location.href='<?= site_url('member/filter?c='.$row['id']) ?>'">
                                 <div class="item-img">
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">
                                 </div>
                                 <div class="item-text text-center position-relative">
-                                    <h3 class="ff-dbadmanBold fs-6 absolute-center w-100"><a href="<?= site_url('member/filter?c='.$row['id']) ?>" class="a-hover-darkgold"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></a></h3>                                    
+                                    <h2 class="ff-dbadmanBold absolute-center w-100"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></h2>                                    
                                 </div>
                             </div>
                         </div>
@@ -70,19 +70,19 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
                     <div class="table-price">
-                        <img src="<?= site_url('assets/images/home/tbl-price-1.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                        <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
                     <div class="table-price">
-                        <img src="<?= site_url('assets/images/home/tbl-price-2.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                        <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
                     <div class="table-price">
-                        <img src="<?= site_url('assets/images/home/tbl-price-3.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                        <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
                     </div>
                 </div>
             </div>

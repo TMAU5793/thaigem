@@ -13,138 +13,101 @@
     $province = $model_member->getProvince();
    // print_r($province);
 ?>
-<div class="ac-menu-left input-disabled p-4 h-100">
-    <form id="frm_profile" action="<?= site_url('account/member/updateprofile?burl='.current_url()); ?>" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="hd_id" value="<?= $info['id'] ?>">
-        <input type="hidden" name="hd_thumb_del" value="<?= $info['profile'] ?>">
-        <div class="ac-profile-img position-relative">
-            <?php
-                $profile_pic = (is_file($info['profile'])?site_url($info['profile']):site_url('assets/images/img-default.png'));
-                if(!is_file($info['profile'])){
-                    if($userdata['type'] == 'facebook'){
-                        $profile_pic = 'https://graph.facebook.com/'.$userdata['id'].'/picture?width=400&height=400';
-                    }else if($userdata['type'] == 'google'){
-                        $profile_pic = $userdata['profile_pic'];
-                    }
-                }
-            ?>
-            <img src="<?= $profile_pic; ?>" id="pic_profile">
-            <input type="file" name="txt_profile" id="txt_profile" class="invisible h-0">
-            <label for="txt_profile" class="img_edit invisible"></label>
-        </div>
-        <?php if(isset($validation)): ?>
-            <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
-        <?php endif;?>
-        <div class="ac-personal mb-3">
-            <input type="text" class="form-control mb-1" name="txt_name" value="<?= $info['name'].' '.$info['lastname']; ?>" placeholder="<?= lang('GlobalLang.name') ?>" disabled>
-            <input type="email" class="form-control mb-1" name="txt_email" value="<?= $info['email']; ?>" placeholder="<?= lang('GlobalLang.email') ?>" disabled>
-            <input type="text" class="form-control mb-1" name="txt_phone" value="<?= $info['phone']; ?>" placeholder="<?= lang('GlobalLang.phoneNumber') ?>" disabled>
-        </div>
-        
-        <div class="ac-information">
-            <?php if($userdata['user_type']=='dealer'){ ?>
-                <div class="ac-info-item">
-                    <div class="ac-info-icon">
-                        <i class="fas fa-hand-holding-usd"></i>
-                    </div>
-                    <strong class="d-block">Product Type</strong>
-
+<div class="ac-menu-left p-4">
+    <div class="border-b">
+        <div class="row personal-info">
+            <div class="col-md-3">
+                <div class="personal-img">
                     <?php
-                        foreach($product_type as $row){
-                            if($info['product_type'] == $row->id){
-                                foreach($main_cate as $cate){
-                                    if($row->maincate_id == $cate->id){
+                        $profile_pic = (is_file($info['profile'])?site_url($info['profile']):site_url('assets/images/img-default.png'));
+                        if(!is_file($info['profile'])){
+                            if($userdata['type'] == 'facebook'){
+                                $profile_pic = 'https://graph.facebook.com/'.$userdata['id'].'/picture?width=400&height=400';
+                            }else if($userdata['type'] == 'google'){
+                                $profile_pic = $userdata['profile_pic'];
+                            }
+                        }
                     ?>
-                        <small class="small-data"><?= $row->name_th; ?></small>
-                    <?php } } } } ?>
-
-                    <div class="edit-field d-none">
-                        <input type="hidden" name="hd_maincate" id="hd_maincate">
-                        <select name="ddl_product_type" id="ddl_product_type" class="form-control">
-                            <?php
-                                if($product_type){
-                                    foreach($product_type as $row){
-                                        if($row->maincate_id!=0){
-                            ?>
-                                <option value="<?= $row->id; ?>" <?= ($info['product_type']==$row->id?'selected="selected"':''); ?> data-maincate="<?= $row->maincate_id; ?>"><?php foreach($main_cate as $cate){if($row->maincate_id == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
-                            <?php } } }  ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="ac-info-item">
-                    <div class="ac-info-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <strong class="d-block">Business Type</strong>
-
-                    <?php
-                        foreach($business_tpye as $row){
-                            if($info['business_type'] == $row->id){
-                                foreach($business_main as $cate){
-                                    if($row->main_type == $cate->id){
-                    ?>
-                        <small class="small-data"><?= $row->name_th; ?></small>
-                    <?php } } } } ?>
-
-                    <div class="edit-field d-none">
-                        <select name="ddl_business_type" id="ddl_business_type" class="form-control">
-                            <?php
-                                if($business_tpye){
-                                    foreach($business_tpye as $row){
-                                        if($row->main_type!=0){
-                            ?>
-                                <option value="<?= $row->id; ?>" <?= ($info['business_type']==$row->id?'selected="selected"':''); ?>><?php foreach($business_main as $cate){if($row->main_type == $cate->id){echo $cate->name_th.' -> '.$row->name_th; }} ?></option>
-                            <?php } } }  ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="ac-info-item">
-                    <div class="ac-info-icon">
-                        <i class="far fa-building"></i>
-                    </div>
-                    <strong class="d-block">Company Name</strong>
-                    <small class="small-data"><?= $info['company']; ?></small>
-                    <div class="edit-field d-none">
-                        <input type="text" name="txt_company" class="form-control" value="<?= $info['company']; ?>">
-                    </div>
-                </div>
-
-                <div class="ac-info-item">
-                    <div class="ac-info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <strong class="d-block">Province</strong>
-
-                    <?php
-                        if($province){
-                            foreach($province as $row){
-                                if($info['province'] == $row->code){
-                    ?>
-                        <small class="small-data th-fz-1-4rem"><?= $row->name_th; ?></small>
-                    <?php } } } ?>
-
-                    <div class="edit-field d-none">
-                        <select name="ddl_province" id="ddl_province" class="form-control">
-                            <?php
-                                if($province){
-                                    foreach($province as $row){
-                            ?>
-                                <option value="<?= $row->code ?>" <?= ($info['province']==$row->code?'selected="selected"':''); ?>><?= $row->name_th ?></option>
-                            <?php } } ?>
-                        </select>
-                    </div>
-                </div>
-            <?php } ?>
-                
-            <div class="text-center mt-3 text-center" id="edit_ac_info_group">
-                <button type="button" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></button>
-                <div class="btn-profile-group mt-3 d-none">
-                    <button type="button" class="btn btn-black-border" id="submit_ac_info"><?= lang('accountLang.comfirm') ?></button>
-                    <a href="<?= current_url(); ?>" class="text-danger ff-bold ms-3"><?= lang('accountLang.cancel') ?></a>
+                    <img src="<?= $profile_pic; ?>" id="pic_profile" class="rounded-circle">
                 </div>
             </div>
-        </div>        
-    </form>
+
+            <div class="col-md-9">
+                <div class="personal-desc">
+                    <h2 class="ff-dbadmanBold mb-0"><?= $info['company']; ?></h2>
+                    <div class="person-email">
+                        <i class="far fa-envelope pe-3"></i>
+                        <?= $info['email']; ?>
+                    </div>
+                    <div class="phone-contact">
+                        <i class="fas fa-phone-volume pe-3 rotate-25ngt"></i>
+                        <span><?= ($info['phone']==''?'-':$info['phone']); ?></span>
+                    </div>
+                    <div class="person-phone">
+                        <strong class="ff-dbadmanBold pe-3">Contact Person : </strong>
+                        <span><?= ($info['phone']==''?'-':$info['phone']); ?></span>
+                    </div>
+                </div>           
+            </div>
+        </div>
+    </div>
+
+    <div class="person-item border-b">
+        <i class="fas fa-hand-holding-usd"></i>
+        <div class="item-desc">
+            <h4 class="ff-dbadmanBold mb-0">Product Type</h4>
+            <?php
+                foreach($product_type as $row){
+                    if($info['product_type'] == $row->id){
+                        foreach($main_cate as $cate){
+                            if($row->maincate_id == $cate->id){
+            ?>
+                <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
+            <?php } } } } ?>
+        </div>
+    </div>
+
+    <div class="person-item border-b">
+        <i class="fas fa-briefcase"></i>
+        <div class="item-desc">
+            <h4 class="ff-dbadmanBold mb-0">Business Type</h4>
+            <?php
+                foreach($business_tpye as $row){
+                    if($info['business_type'] == $row->id){
+                        foreach($business_main as $cate){
+                            if($row->main_type == $cate->id){
+            ?>
+                <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
+            <?php } } } } ?>
+        </div>
+    </div>
+
+    <div class="person-item border-b">
+        <i class="far fa-building"></i>
+        <div class="item-desc">
+            <h4 class="ff-dbadmanBold mb-0">Address</h4>
+            <span class="fs-5">Thai Gem and Jewelry Traders Association 919/616 Jewelry Trade Center, 52md Floor, Silom Rd., Bangkok 10500</span>
+        </div>
+    </div>
+
+    <div class="person-item border-b">
+        <i class="fas fa-globe"></i>
+        <div class="item-desc">
+            <h4 class="ff-dbadmanBold mb-0">Website</h4>
+            <a href="www.en.thaigemjewelry.or.th" target="_blank">www.en.thaigemjewelry.or.th</a>
+        </div>
+    </div>
+
+    <div class="social-contact border-b">
+        <strong class="ff-dbadmanBold pe-2">Social Media</strong>
+        <a href=""><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-line"></i></a>
+    </div>
+    
+    <div class="text-center mt-4 text-center">
+        <button type="button" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></button>
+    </div>
 </div>
 
 <!-- Modal Edit data Success -->

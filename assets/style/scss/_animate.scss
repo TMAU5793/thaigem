@@ -7,3 +7,16 @@
         width: 100%;
     }
 }
+
+.zoom-in {
+    overflow: hidden;
+    img {
+        transition: all 1s;
+    }
+    &:hover {
+        img {
+            transform: scale(1.1);
+            transition: all 1s;
+        }
+    }
+}
