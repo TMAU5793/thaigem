@@ -13,6 +13,7 @@ class Account extends Controller
     protected $udata;
     public function __construct()
     {
+        helper(['form','text']);
         $sess = session()->get('userdata');
         if($sess){
             $this->udata = $sess;
@@ -94,6 +95,7 @@ class Account extends Controller
                 $member = $model->where('id', $result)->first();
                 $sess = [
                     'id' => $member['id'],
+                    'code' => $member['code'],
                     'account' => $member['account'],
                     'name' => $member['name'],
                     'lastname' => $member['lastname'],
@@ -113,7 +115,7 @@ class Account extends Controller
 
     public function login()
     {
-        helper(['form']);
+        //helper(['form','text']);
         $model = new AccountModel();
         $request = service('request');
         if (!$request->getPost()) {
@@ -146,8 +148,16 @@ class Account extends Controller
 
         if($this->validate($rules)){
             $member = $model->where('account', $request->getVar('txt_username'))->first();
+            if($member['code']==''){
+                $str_rand = random_string('alnum', 11);
+                $model
+                    ->where('account', $member['account'])
+                    ->set('code' , $str_rand)
+                    ->update();
+            }
             $sess = [
                 'id' => $member['id'],
+                'code' => ($member['code']==''?$str_rand:$member['code']),
                 'account' => $member['account'],
                 'name' => $member['name'],
                 'lastname' => $member['lastname'],
@@ -178,10 +188,12 @@ class Account extends Controller
         }
         
         $account = $model->where('account', $post['id'])->first();
-        
+        $str_rand = random_string('alnum', 11);
+
         if(!$account){
             $formdata = [
-                'account' => $post['id'],
+                'code' => $str_rand,
+                'account' => $post['id'],                
                 'name' => $post['name'],
                 'email' => $post['email'],
                 'type' => 'facebook'
@@ -190,6 +202,7 @@ class Account extends Controller
             if($result){
                 $arrdata = [
                     'id' => $result,
+                    'code' => $str_rand,
                     'account' => $post['id'],
                     'name' => $post['name'],
                     'email' => $post['email'],
@@ -201,8 +214,15 @@ class Account extends Controller
                 echo true;
             }
         }else{
+            if($account['code']==''){
+                $model
+                    ->where('account', $post['id'])
+                    ->set('code' , $str_rand)
+                    ->update();
+            }
             $arrdata = [
                 'id' => $account['id'],
+                'code' => ($account['code']==''? $str_rand: $account['code']),
                 'account' => $post['id'],
                 'name' => $post['name'],
                 'email' => $post['email'],
@@ -210,6 +230,7 @@ class Account extends Controller
                 'user_type' => 'member',
                 'logged_member' => TRUE
             ];
+            
             $model
                 ->where('account', $post['id'])
                 ->set('last_login' , new Time('now'))
@@ -247,8 +268,11 @@ class Account extends Controller
             $userdata = $google_oauth->userinfo->get();
             
             $account = $model->where('account', $userdata->id)->first();
+            $str_rand = random_string('alnum', 11);
+
             if(!$account){
                 $formdata = [
+                    'code' => $str_rand,
                     'account' => $userdata->id,
                     'name' => $userdata->name,
                     'email' => $userdata->email,
@@ -259,6 +283,7 @@ class Account extends Controller
                 if($result){
                     $arrdata = [
                         'id' => $result,
+                        'code' => $str_rand,
                         'account' => $userdata->id,
                         'name' => $userdata->name,
                         'email' => $userdata->email,
@@ -271,8 +296,15 @@ class Account extends Controller
                     return redirect()->to(site_url('account'));
                 }
             }else{
+                if($account['code']==''){
+                    $model
+                        ->where('account', $post['id'])
+                        ->set('code' , $str_rand)
+                        ->update();
+                }
                 $arrdata = [
                     'id' => $account['id'],
+                    'code' => ($account['code']==''? $str_rand: $account['code']),
                     'account' => $userdata->id,
                     'name' => $userdata->name,
                     'email' => $userdata->email,

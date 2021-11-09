@@ -36,9 +36,10 @@ class AccountModel extends Model
 		$name = $arr[0];
 		$lastname = $arr[1];
 		$datetime = new Time('now');
-
+		$str_rand = random_string('alnum', 11);
         $info=[
             'account' => $data['txt_username'],
+			'code' => $str_rand,
             'name' => $name,
 			'lastname' => $lastname,
             'email' => $data['txt_username'],
@@ -61,6 +62,7 @@ class AccountModel extends Model
 		$lastname = $arr[1];
 		$datetime = new Time('now');
         $info=[
+			'code' => $data['code'],
             'account' => $data['account'],
             'name' => $name,
 			'lastname' => $lastname,

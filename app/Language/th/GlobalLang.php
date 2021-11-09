@@ -25,6 +25,8 @@ return [
     'comfirmPassword' => 'ยืนยันรหัสผ่าน',
     'email' => 'อีเมล',
     'phoneNumber' => 'เบอร์โทร',
+    'company' => 'ชื่อบริษัท',
+    'companyPhone' => 'เบอร์โทรบริษัท',
     'helpCenter' => 'ศูนย์ช่วยเหลือ',
 
     'members' => 'สมาชิก',
@@ -58,6 +60,9 @@ return [
     'product-type' => 'ประเภทสินค้า',
     'business-type' => 'ประเภทธุรกิจ',
     'province' => 'จังหวัด',
+    'amphur' => 'อำเภอ/เขต',
+    'district' => 'ตำบล/แขวง',
+    'postcode' => 'รหัสไปรษณีย์',
     'member-since' => 'เป็นสมาชิกตั้งแต่',
     'reply-from' => 'ตอบกลับ',
     'reply' => 'ตอบกระทู้',
@@ -66,4 +71,12 @@ return [
     'hide' => 'ซ่อน',
     'send' => 'ส่ง',
     'date' => 'วันที่',
+    'website' => 'เว็บไซต์',
+    'fb' => 'Facebook',
+    'line' => 'Line ID',
+    'ig' => 'Instargrame',
+    'companyAddress' => 'ที่อยู่บริษัท',
+    'aboutus' => 'เกี่ยวกับเรา',
+    'address' => 'ที่อยู่',
+    'select' => 'เลือก'
 ];

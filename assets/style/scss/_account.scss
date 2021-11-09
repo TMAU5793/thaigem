@@ -21,10 +21,17 @@
         padding-bottom: 2rem;
     }
     .album-item {
-        margin: 0 -7px;
-        .slider-nav-item {
-            padding: .5rem;
-            position: relative;
+        .zoom-in {
+            overflow: hidden;
+            border-radius: 6px;
+        }
+    }
+    .tab-content {
+        .tab-pane {
+            padding-top: 1.5rem;
+            .form-group {
+                margin-bottom: 1rem;
+            }
         }
     }
 }

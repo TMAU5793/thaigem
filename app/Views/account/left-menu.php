@@ -106,7 +106,7 @@
     </div>
     
     <div class="text-center mt-4 text-center">
-        <button type="button" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></button>
+        <a href="<?= site_url('account/member/edit?u=TGJTA-'.$info['code']) ?>" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></a>
     </div>
 </div>
 

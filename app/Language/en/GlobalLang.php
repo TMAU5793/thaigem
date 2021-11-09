@@ -25,6 +25,8 @@ return [
     'comfirmPassword' => 'Comfirm password',
     'email' => 'Email',
     'phoneNumber' => 'Phone number',
+    'company' => 'Company name',
+    'companyPhone' => 'Company Phone',
     'helpCenter' => 'Help center',
 
     'members' => 'Members',
@@ -58,6 +60,9 @@ return [
     'product-type' => 'Product Type',
     'business-type' => 'Business Type',
     'province' => 'Province',
+    'amphur' => 'Amphur',
+    'district' => 'District',
+    'postcode' => 'Post code',
     'member-since' => 'Member Since',
     'reply-from' => 'From',
     'reply' => 'Reply',
@@ -66,4 +71,12 @@ return [
     'hide' => 'Hide',
     'send' => 'Send',
     'date' => 'Date',
+    'website' => 'Website',
+    'fb' => 'Facebook',
+    'line' => 'Line ID',
+    'ig' => 'Instargrame',
+    'companyAddress' => 'Company Address',
+    'aboutus' => 'About Us',
+    'address' => 'Address',
+    'select' => 'Select'
 ];

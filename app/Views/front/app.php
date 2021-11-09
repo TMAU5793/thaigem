@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/slick-1.8.1/slick/slick.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/slick-1.8.1/slick/slick-theme.css'); ?>">
 
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="<?= base_url('assets/fancybox/jquery.fancybox.css'); ?>">
+
     <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/style.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/style/css/response.css'); ?>">
@@ -62,6 +65,9 @@
 
     <!-- เรียกใช้ ckfinder -->
     <script src="<?= site_url('assets/ckfinder/ckfinder.js'); ?>"></script>
+
+    <!-- Fancybox -->
+    <script src="<?= site_url('assets/fancybox/jquery.fancybox.js'); ?>"></script>
 
     <!-- Load the JS SDK asynchronously -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=367105081821305&autoLogAppEvents=1" nonce="yH6j5ziR"></script>

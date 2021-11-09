@@ -60,7 +60,7 @@
             $('#txt_zipcode').val('');
             $.ajax({
                 type: "POST",
-                url: "<?= site_url('amphurepi') ?>",
+                url: "<?= site_url('amphureapi') ?>",
                 data: {id:$(this).val()},
                 success: function (response) {
                     //console.log(response);

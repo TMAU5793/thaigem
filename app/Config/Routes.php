@@ -75,7 +75,7 @@ $routes->get('about/association-board', 'About::associationboard');
 $routes->get('member/membership-process', 'Member::membershipProcess');
 
 //Api path
-$routes->post('amphurepi', 'Api/LocationApi::getAmphure');
+$routes->post('amphureapi', 'Api/LocationApi::getAmphure');
 $routes->post('districtapi', 'Api/LocationApi::getDistrict');
 
 /*

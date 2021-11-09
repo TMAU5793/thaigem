@@ -163,6 +163,72 @@
             localStorage.removeItem('book-event');
         }
 
+        //ดึงข้อมูลอำเภอตามไอดีจังหวัด
+        $('#ddl_province').on('change',function(){
+            $('#ddl_district').html('');
+            $('#txt_zipcode').val('');
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('amphureapi') ?>",
+                data: {id:$(this).val()},
+                success: function (response) {
+                    //console.log(response);
+                    var html = '<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>';
+                    <?php
+                        if($lang=='th'){
+                    ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'"> '+value.name_th+' </option>';
+                        });
+                    <?php }else{ ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'"> '+value.name_en+' </option>';
+                        });
+                    <?php } ?>
+                    if(html){
+                        $('#ddl_amphure').html(html);
+                    }else{
+                        $('#ddl_amphure').html('<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>');
+                    }
+                }
+            });
+        });
+
+        //ดึงข้อมูลตำบลตามไอดีอำเภอ
+        $('#ddl_amphure').on('change',function(){
+            $('#txt_zipcode').val('');
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('districtapi') ?>",
+                data: {id:$(this).val(),tbl:'tbl_districts'},
+                success: function (response) {
+                    //console.log(response);
+                    var html = '<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>';
+                    <?php
+                        if($lang=='th'){
+                    ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'" data-zipcode="'+value.zip_code+'"> '+value.name_th+' </option>';
+                        });
+                    <?php }else{ ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'" data-zipcode="'+value.zip_code+'"> '+value.name_en+' </option>';
+                        });
+                    <?php } ?>
+                    if(html){
+                        $('#ddl_district').html(html);
+                    }else{
+                        $('#ddl_district').html('<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>');
+                    }
+                }
+            });
+        });
+
+        //ข้อมูลหมายเลขรหัสไฟรษณีย๋
+        $('#ddl_district').on('change',function(){            
+            var zipcode = $('#ddl_district option:selected').data('zipcode');
+            $('#txt_zipcode').val(zipcode);
+        });
     });
     //End Ready function
 

@@ -6,18 +6,26 @@ use CodeIgniter\Controller;
 use App\Models\Account\MemberModel;
 use App\Models\Account\AlbumModel;
 use App\Models\Account\AccountModel;
+use App\Models\FunctionModel;
 use CodeIgniter\I18n\Time;
   
 class Member extends Controller
 {
     protected $member_id;
     protected $udata;
+    protected $lang;
     public function __construct()
     {
+        helper('text');
         $sess = session()->get('userdata');
         if($sess){
             $this->udata = $sess;
             $this->member_id = $sess['id'];
+        }
+
+        $this->lang = 'en';
+        if(session()->get('lang')){
+            $this->lang = session()->get('lang');
         }
     }
     
@@ -25,6 +33,35 @@ class Member extends Controller
     {
         return redirect()->to('account');
     }
+
+    public function edit()
+    {        
+        
+        $request = service('request');
+        $model = new AccountModel();
+        $albummodel = new AlbumModel();
+        $fModel = new FunctionModel();
+
+        $getuser = $request->getGet('u');        
+        $code = explode('-',$getuser);
+        $edituser = $code[1];
+        $info = $model->where(['id'=>$this->member_id,'code'=>$edituser])->first();
+        
+        if(!$info){
+            return redirect()->to('account');
+        }
+        
+        $data = [
+            'ac_account' => TRUE,
+            'lang' => $this->lang,
+            'info' => $info,
+            'album' => $albummodel->where('member_id',$this->member_id)->findAll(),
+            'provinces' => $fModel->getProvinceAll()
+        ];
+        //print_r($data['provinces']);
+        echo view('account/ac-profile',$data);
+    }
+
     public function updateProfile()
     {
         $db      = \Config\Database::connect();

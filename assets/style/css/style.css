@@ -360,11 +360,13 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .account-body .ac-album {
   overflow: hidden;
   padding-bottom: 2rem; }
-.account-body .album-item {
-  margin: 0 -7px; }
-  .account-body .album-item .slider-nav-item {
-    padding: .5rem;
-    position: relative; }
+.account-body .album-item .zoom-in {
+  overflow: hidden;
+  border-radius: 6px; }
+.account-body .tab-content .tab-pane {
+  padding-top: 1.5rem; }
+  .account-body .tab-content .tab-pane .form-group {
+    margin-bottom: 1rem; }
 
 .album-item .slick-current.slick-active .slider-nav-item img {
   box-shadow: 0px 6px 0px 0px #ffbc00; }
