@@ -53,48 +53,72 @@
     </div>
 
     <div class="person-item border-b">
-        <i class="fas fa-hand-holding-usd"></i>
-        <div class="item-desc">
-            <h4 class="ff-dbadmanBold mb-0">Product Type</h4>
-            <?php
-                foreach($product_type as $row){
-                    if($info['product_type'] == $row->id){
-                        foreach($main_cate as $cate){
-                            if($row->maincate_id == $cate->id){
-            ?>
-                <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
-            <?php } } } } ?>
+        <div class="row">
+            <div class="col-md-1">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <div class="col-md-11">
+                <div class="item-desc">
+                    <h4 class="ff-dbadmanBold mb-0">Product Type</h4>
+                    <?php
+                        foreach($product_type as $row){
+                            if($info['product_type'] == $row->id){
+                                foreach($main_cate as $cate){
+                                    if($row->maincate_id == $cate->id){
+                    ?>
+                        <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
+                    <?php } } } } ?>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="person-item border-b">
-        <i class="fas fa-briefcase"></i>
-        <div class="item-desc">
-            <h4 class="ff-dbadmanBold mb-0">Business Type</h4>
-            <?php
-                foreach($business_tpye as $row){
-                    if($info['business_type'] == $row->id){
-                        foreach($business_main as $cate){
-                            if($row->main_type == $cate->id){
-            ?>
-                <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
-            <?php } } } } ?>
+        <div class="row">
+            <div class="col-md-1">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="col-md-11">
+                <div class="item-desc">
+                    <h4 class="ff-dbadmanBold mb-0">Business Type</h4>
+                    <?php
+                        foreach($business_tpye as $row){
+                            if($info['business_type'] == $row->id){
+                                foreach($business_main as $cate){
+                                    if($row->main_type == $cate->id){
+                    ?>
+                        <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
+                    <?php } } } } ?>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="person-item border-b">
-        <i class="far fa-building"></i>
-        <div class="item-desc">
-            <h4 class="ff-dbadmanBold mb-0">Address</h4>
-            <span class="fs-5">Thai Gem and Jewelry Traders Association 919/616 Jewelry Trade Center, 52md Floor, Silom Rd., Bangkok 10500</span>
+        <div class="row">
+            <div class="col-md-1">
+                <i class="far fa-building"></i>
+            </div>
+            <div class="col-md-11">
+                <div class="item-desc">
+                    <h4 class="ff-dbadmanBold mb-0">Address</h4>
+                    <span class="fs-5">Thai Gem and Jewelry Traders Association 919/616 Jewelry Trade Center, 52md Floor, Silom Rd., Bangkok 10500</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="person-item border-b">
-        <i class="fas fa-globe"></i>
-        <div class="item-desc">
-            <h4 class="ff-dbadmanBold mb-0">Website</h4>
-            <a href="www.en.thaigemjewelry.or.th" target="_blank">www.en.thaigemjewelry.or.th</a>
+        <div class="row">
+            <div class="col-md-1">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="col-md-11">
+                <div class="item-desc">
+                    <h4 class="ff-dbadmanBold mb-0">Website</h4>
+                    <a href="www.en.thaigemjewelry.or.th" target="_blank">www.en.thaigemjewelry.or.th</a>
+                </div>
+            </div>
         </div>
     </div>
 

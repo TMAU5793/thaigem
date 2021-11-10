@@ -229,6 +229,32 @@
             var zipcode = $('#ddl_district option:selected').data('zipcode');
             $('#txt_zipcode').val(zipcode);
         });
+
+        //เพิ่มฟิลด์ Product Type
+        <?php if(isset($subcates)){ ?>
+        $('#btn-add-cate').click(function(){
+            var html = '';
+            html +=  '<select name="ddl_cate[]" class="form-control mt-3">';
+            html +=  '<option value="">-- <?= lang('GlobalLang.select') ?> --</option>';
+            <?php foreach($subcates as $subcate){ foreach($maincates as $maincate){ if($subcate->maincate_id == $maincate->id){ ?>
+            html +=  '<option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
+            <?php } } } ?>
+            html +=  '</select>';
+            $('#cate-more').append(html);
+        });
+
+        //เพิ่มฟิลด์ business Type
+        $('#btn-add-business').click(function(){
+            var html = '';
+            html +=  '<select name="ddl_business[]" class="form-control mt-3">';
+            html +=  '<option value="">-- <?= lang('GlobalLang.select') ?> --</option>';
+            <?php foreach($subbusniess as $subcate){ foreach($mainbusniess as $maincate){ if($subcate->main_type == $maincate->id){ ?>
+            html +=  '<option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
+            <?php } } } ?>
+            html +=  '</select>';
+            $('#business-more').append(html);
+        });
+        <?php } ?>
     });
     //End Ready function
 

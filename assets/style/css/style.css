@@ -363,10 +363,13 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .account-body .album-item .zoom-in {
   overflow: hidden;
   border-radius: 6px; }
-.account-body .tab-content .tab-pane {
-  padding-top: 1.5rem; }
-  .account-body .tab-content .tab-pane .form-group {
-    margin-bottom: 1rem; }
+.account-body .tab-content {
+  border: 1px solid #dee2e6;
+  margin-top: -1px; }
+  .account-body .tab-content .tab-pane {
+    padding: 1.5rem; }
+    .account-body .tab-content .tab-pane .form-group {
+      margin-bottom: 1rem; }
 
 .album-item .slick-current.slick-active .slider-nav-item img {
   box-shadow: 0px 6px 0px 0px #ffbc00; }
@@ -379,18 +382,17 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   .ac-menu-left .personal-info .personal-desc i {
     width: 40px;
     text-align: right; }
-  .ac-menu-left .person-item {
-    display: flex; }
-    .ac-menu-left .person-item i {
-      width: 50px;
-      height: 50px;
-      background-color: #ffffff;
-      color: #665f4f;
-      font-size: 2rem;
-      text-align: center;
-      padding-top: 8px;
-      border-radius: 50px;
-      margin-right: 1.5rem; }
+  .ac-menu-left .person-item i {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    color: #665f4f;
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 8px;
+    border-radius: 50px; }
+  .ac-menu-left .person-item .item-desc {
+    padding-left: 1rem; }
     .ac-menu-left .person-item .item-desc span,
     .ac-menu-left .person-item .item-desc a {
       line-height: 1.25rem;
@@ -577,6 +579,17 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .ac-nav {
   margin-top: -3rem; }
+
+.add-item button {
+  background-color: #665f4f;
+  color: #ffffff;
+  border: 1px solid #665f4f;
+  padding: 3px .5rem 0;
+  font-size: .85rem; }
+  .add-item button:hover {
+    color: #ffffff;
+    box-shadow: inset 0px 0px 1px 2px #cec6b2;
+    border: 1px solid #cec6b2; }
 
 @keyframes left-to-right {
   0% {

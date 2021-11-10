@@ -23,6 +23,17 @@ class MemberModel extends Model
         }
     }
 
+    public function getSubCategory()
+    {        
+        $sql = "SELECT * FROM tbl_productcategory WHERE maincate_id >= ? AND status = ? ORDER BY maincate_id ASC";
+        $query = $this->db->query($sql, [1,'1']);
+        if($query){
+            return $query->getResult();
+        }else{
+            return false;
+        }
+    }
+
     public function getProductType()
     {        
         $sql = "SELECT * FROM tbl_productcategory WHERE status = ? ORDER BY maincate_id ASC";
@@ -49,6 +60,17 @@ class MemberModel extends Model
     {        
         $sql = "SELECT * FROM tbl_business WHERE status = ? ORDER BY main_type ASC";
         $query = $this->db->query($sql, ['1']);
+        if($query){
+            return $query->getResult();
+        }else{
+            return false;
+        }
+    }
+
+    public function getSubBusiness()
+    {        
+        $sql = "SELECT * FROM tbl_business WHERE main_type >= ? AND status = ? ORDER BY main_type ASC";
+        $query = $this->db->query($sql, [1,'1']);
         if($query){
             return $query->getResult();
         }else{

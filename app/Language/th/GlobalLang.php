@@ -78,5 +78,8 @@ return [
     'companyAddress' => 'ที่อยู่บริษัท',
     'aboutus' => 'เกี่ยวกับเรา',
     'address' => 'ที่อยู่',
-    'select' => 'เลือก'
+    'select' => 'เลือก',
+    'add' => 'เพิ่ม',
+    'save' => 'บันทึก',
+    'cancel' => 'ยกเลิก'
 ];

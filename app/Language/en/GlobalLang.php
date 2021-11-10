@@ -78,5 +78,8 @@ return [
     'companyAddress' => 'Company Address',
     'aboutus' => 'About Us',
     'address' => 'Address',
-    'select' => 'Select'
+    'select' => 'Select',
+    'add' => 'Add',
+    'save' => 'Save',
+    'cancel' => 'Cancel'
 ];

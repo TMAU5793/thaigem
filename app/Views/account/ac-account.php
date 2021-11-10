@@ -40,36 +40,8 @@
                                         </a>
                                     </div>
                                 <?php } } ?>
-                            </div>
-                            
-                        </div>
-
-                        <div class="about-edit ac-album-form mt-3 d-none">
-                            <div class="album-managed">
-                                <?php
-                                    if($album){
-                                        foreach($album as $img){
-                                ?>
-                                <div class="managed-item">
-                                    <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>">
-                                    <i class="far fa-trash-alt" data-id="<?= $img['id'] ?>" title="Delete Image"></i>
-                                </div>
-                                <?php } } ?>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="fallback" id="album_fallback">
-                                <?php
-                                    $count = count($album);
-                                    if($count == 9){
-                                ?>
-                                    <span class="d-block text-center text-danger mt-4">*จำนวนรูปเต็มแล้ว กรุณาลบรูปเก่าหากต้องการเพิ่มรูปใหม่</span>
-                                <?php } ?>
-                            </div>
-                            <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple />
-                            <label for="file_album" class="label-file-img">Choose Images</label>
-                            <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 900 x 600 px </small>
-                            <small class="text-danger mt-2 d-block">*จำกัดจำนวนรูปทั้งหมด 9 รูป </small>
-                        </div>
+                            </div>                            
+                        </div>                        
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@
             <div class="tg-title mt-5">
                 <h3>Edit Information</h3>
             </div>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="<?= site_url('account/member/updateprofile') ?>" method="POST" enctype="multipart/form-data">
                 <nav class="mt-3">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true">User Info</button>
@@ -79,13 +79,39 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.product-type') ?></label>
-                                    <input type="text" class="form-control" name="txt_category">
+                                    <select name="ddl_cate[]" id="ddl_cate" class="form-control">
+                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
+                                        <?php
+                                            foreach($subcates as $subcate){
+                                                foreach($maincates as $maincate){
+                                                    if($subcate->maincate_id == $maincate->id){
+                                        ?>
+                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                        <?php } } } ?>
+                                    </select>
+                                    <div id="cate-more"></div>
+                                    <div class="add-item">
+                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').lang('GlobalLang.product-type') ?></button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.business-type') ?></label>
-                                    <input type="text" class="form-control" name="txt_category">
+                                    <select name="ddl_business[]" id="ddl_business" class="form-control">
+                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
+                                        <?php
+                                            foreach($subbusniess as $subcate){
+                                                foreach($mainbusniess as $maincate){
+                                                    if($subcate->main_type == $maincate->id){
+                                        ?>
+                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                        <?php } } } ?>
+                                    </select>
+                                    <div id="business-more"></div>
+                                    <div class="add-item">
+                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').lang('GlobalLang.business-type') ?></button>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -172,6 +198,10 @@
                             <small class="text-danger mt-2 d-block">*จำกัดจำนวนรูปทั้งหมด 9 รูป </small>
                         </div>
                     </div>
+                </div>
+                <div class="btn-submit text-center mt-4">
+                    <button type="submit" class="btn btn-black-border"><?= lang('GlobalLang.save') ?></button>
+                    <a href="" class="btn btn-black-border"><?= lang('GlobalLang.cancel') ?></a>
                 </div>
             </form>
         </div>

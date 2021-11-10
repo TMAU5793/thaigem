@@ -27,8 +27,10 @@
         }
     }
     .tab-content {
+        border: 1px solid #dee2e6;
+        margin-top: -1px;
         .tab-pane {
-            padding-top: 1.5rem;
+            padding: 1.5rem;
             .form-group {
                 margin-bottom: 1rem;
             }
@@ -62,7 +64,6 @@
         }
     }
     .person-item {
-        display: flex;
         i {
             width: 50px;
             height: 50px;
@@ -72,9 +73,9 @@
             text-align: center;
             padding-top: 8px;
             border-radius: 50px;
-            margin-right: 1.5rem;
         }
         .item-desc {
+            padding-left: 1rem;
             span,
             a {
                 line-height: 1.25rem;
@@ -345,4 +346,19 @@
 
 .ac-nav {
     margin-top: -3rem;
+}
+
+.add-item {
+    button {
+        background-color: $c-darkgold;
+        color: $c-white;
+        border: 1px solid $c-darkgold;
+        padding: 3px .5rem 0;
+        font-size: .85rem;
+        &:hover {
+            color: $c-white;
+            box-shadow: inset 0px 0px 1px 2px $c-lightgold;
+            border: 1px solid $c-lightgold;
+        }
+    }
 }
