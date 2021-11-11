@@ -254,6 +254,22 @@
             html +=  '</select>';
             $('#business-more').append(html);
         });
+
+         //เพิ่มฟิลด์ Person contact
+        $('#btn-add-person').click(function(){
+            var html = '';
+            html +=  '<div class="row">';
+            html +=  '<div class="col-md-6">';
+            html +=  '<div class="form-group">';
+            html +=  '<label for=""><?= lang('GlobalLang.name') ?></label>';
+            html +=  '<input type="text" class="form-control" name="txt_person[]"></div></div>';
+            html +=  '<div class="col-md-6">';
+            html +=  '<div class="form-group">';
+            html +=  '<label for=""><?= lang('GlobalLang.phoneNumber') ?></label>';
+            html +=  '<input type="text" class="form-control" name="txt_personphone[]"></div></div></div>';
+
+            $('#person-more').append(html);
+        });
         <?php } ?>
     });
     //End Ready function

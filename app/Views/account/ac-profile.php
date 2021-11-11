@@ -21,8 +21,9 @@
             <form action="<?= site_url('account/member/updateprofile') ?>" method="POST" enctype="multipart/form-data">
                 <nav class="mt-3">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true">User Info</button>
-                        <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content2" type="button" role="tab" aria-controls="nav-content2" aria-selected="false">Gallery</button>
+                        <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true"><?= lang('GlobalLang.companyinfo') ?></button>
+                        <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content2" type="button" role="tab" aria-controls="nav-content2" aria-selected="true"><?= lang('GlobalLang.personcontact') ?></button>
+                        <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content3" type="button" role="tab" aria-controls="nav-content3" aria-selected="false"><?= lang('GlobalLang.profile').' & '.lang('GlobalLang.gallery') ?></button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -38,18 +39,6 @@
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.companyPhone') ?></label>
                                     <input type="text" class="form-control" name="txt_companyphone">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.name') ?></label>
-                                    <input type="text" class="form-control" name="txt_name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.lastname') ?></label>
-                                    <input type="text" class="form-control" name="txt_lastname">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -91,7 +80,7 @@
                                     </select>
                                     <div id="cate-more"></div>
                                     <div class="add-item">
-                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').lang('GlobalLang.product-type') ?></button>
+                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.product-type') ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +99,7 @@
                                     </select>
                                     <div id="business-more"></div>
                                     <div class="add-item">
-                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').lang('GlobalLang.business-type') ?></button>
+                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.business-type') ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -167,11 +156,53 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
 
                     <div class="tab-pane fade" id="nav-content2" role="tabpanel" aria-labelledby="nav-tab2">
+                        <div class="person-contact">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for=""><?= lang('GlobalLang.name') ?></label>
+                                        <input type="text" class="form-control" name="txt_person[]" value="<?= $info['name'].' '.$info['lastname'] ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for=""><?= lang('GlobalLang.phoneNumber') ?></label>
+                                        <input type="text" class="form-control" name="txt_personphone[]" value="<?= $info['phone'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="person-more"></div>
+                            <div class="add-item">
+                                <button type="button" id="btn-add-person" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.personcontact') ?></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-content3" role="tabpanel" aria-labelledby="nav-tab3">
+                        <div class="tg-title"><h3><?= lang('GlobalLang.profile') ?></h3></div>
+                        <div class="user-profile">
+                            <?php
+                                $profile_pic = (is_file($info['profile'])?site_url($info['profile']):site_url('assets/images/img-default.png'));
+                                if(!is_file($info['profile'])){
+                                    if($userdata['type'] == 'facebook'){
+                                        $profile_pic = 'https://graph.facebook.com/'.$userdata['id'].'/picture?width=400&height=400';
+                                    }else if($userdata['type'] == 'google'){
+                                        $profile_pic = $userdata['profile_pic'];
+                                    }
+                                }
+                            ?>
+                            <img src="<?= $profile_pic; ?>" id="pic_profile" class="rounded-circle">
+                            <input id="txt_profile" name="txt_profile" type="file" class="form-control input-hide" accept="image/*">
+                            <label for="txt_profile" class="label-file-img mt-3">Choose Images</label>
+                            <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
+                        </div>
+
                         <div class="about-edit ac-album-form mt-3">
+                            <div class="tg-title"><h3><?= lang('GlobalLang.gallery') ?></h3></div>
                             <div class="album-managed">
                                 <?php
                                     if($album){
@@ -192,10 +223,10 @@
                                     <span class="d-block text-center text-danger mt-4">*จำนวนรูปเต็มแล้ว กรุณาลบรูปเก่าหากต้องการเพิ่มรูปใหม่</span>
                                 <?php } ?>
                             </div>
-                            <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple />
+                            <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple accept="image/*">
                             <label for="file_album" class="label-file-img">Choose Images</label>
-                            <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 900 x 600 px </small>
-                            <small class="text-danger mt-2 d-block">*จำกัดจำนวนรูปทั้งหมด 9 รูป </small>
+                            <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
+                            <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 9 รูป </small>
                         </div>
                     </div>
                 </div>

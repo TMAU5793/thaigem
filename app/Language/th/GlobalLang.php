@@ -81,5 +81,9 @@ return [
     'select' => 'เลือก',
     'add' => 'เพิ่ม',
     'save' => 'บันทึก',
-    'cancel' => 'ยกเลิก'
+    'cancel' => 'ยกเลิก',
+    'companyinfo' => 'ข้อมูลบริษัท',
+    'personcontact' => 'ติดต่อ',
+    'gallery' => 'แกลลอรี่',
+    'profile' => 'โปรไฟล์'
 ];

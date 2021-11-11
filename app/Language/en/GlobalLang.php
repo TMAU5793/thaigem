@@ -81,5 +81,9 @@ return [
     'select' => 'Select',
     'add' => 'Add',
     'save' => 'Save',
-    'cancel' => 'Cancel'
+    'cancel' => 'Cancel',
+    'companyinfo' => 'Company Info',
+    'personcontact' => 'Person Contact',
+    'gallery' => 'Gallery',
+    'profile' => 'Profile'
 ];
