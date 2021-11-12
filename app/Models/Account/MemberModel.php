@@ -91,7 +91,7 @@ class MemberModel extends Model
 
     public function updateProfile($data)
     {
-        $arr = explode(" ",$data['txt_name']);
+        $arr = explode(" ",$data['txt_personname']);
 		$name = $arr[0];
 		$lastname = $arr[1];
         $info = [
@@ -99,11 +99,9 @@ class MemberModel extends Model
             'lastname' => $lastname,
             'email' => $data['txt_email'],
             'phone' => $data['txt_phone'],
-            'maincate_id' => $data['hd_maincate'],
-            'product_type' => $data['ddl_product_type'],
-            'business_type' => $data['ddl_business_type'],
+            'company_phone' => $data['txt_companyphone'],
             'company' => $data['txt_company'],
-            'province' => $data['ddl_province']
+            'about' => $data['txt_ac_about']
         ];
         $builder = $this->db->table('tbl_member');
         $builder->where('id', $data['hd_id']);

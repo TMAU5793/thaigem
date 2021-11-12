@@ -19,6 +19,7 @@
                 <h3>Edit Information</h3>
             </div>
             <form action="<?= site_url('account/member/updateprofile') ?>" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="hd_id" value="<?= $info['id'] ?>">
                 <nav class="mt-3">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true"><?= lang('GlobalLang.companyinfo') ?></button>
@@ -31,14 +32,59 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.company') ?></label>
+                                    <label for=""><?= lang('GlobalLang.product-type') ?> <span class="text-danger">*</span></label>
+                                    <select name="ddl_cate[]" id="ddl_cate" class="form-control">
+                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
+                                        <?php
+                                            foreach($subcates as $subcate){
+                                                foreach($maincates as $maincate){
+                                                    if($subcate->maincate_id == $maincate->id){
+                                        ?>
+                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                        <?php } } } ?>
+                                    </select>
+                                    <div id="cate-more"></div>
+                                    <div class="add-item">
+                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.product-type') ?></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.business-type') ?> <span class="text-danger">*</span></label>
+                                    <select name="ddl_business[]" id="ddl_business" class="form-control">
+                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
+                                        <?php
+                                            foreach($subbusniess as $subcate){
+                                                foreach($mainbusniess as $maincate){
+                                                    if($subcate->main_type == $maincate->id){
+                                        ?>
+                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                        <?php } } } ?>
+                                    </select>
+                                    <div id="business-more"></div>
+                                    <div class="add-item">
+                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.business-type') ?></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.company') ?> <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="txt_company">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.companyPhone') ?></label>
+                                    <label for=""><?= lang('GlobalLang.companyPhone') ?> <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="txt_companyphone">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.companyEmail') ?> <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="txt_email">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -64,45 +110,7 @@
                                     <label for=""><?= lang('GlobalLang.line') ?></label>
                                     <input type="text" class="form-control" name="txt_line">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.product-type') ?></label>
-                                    <select name="ddl_cate[]" id="ddl_cate" class="form-control">
-                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
-                                        <?php
-                                            foreach($subcates as $subcate){
-                                                foreach($maincates as $maincate){
-                                                    if($subcate->maincate_id == $maincate->id){
-                                        ?>
-                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
-                                        <?php } } } ?>
-                                    </select>
-                                    <div id="cate-more"></div>
-                                    <div class="add-item">
-                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.product-type') ?></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.business-type') ?></label>
-                                    <select name="ddl_business[]" id="ddl_business" class="form-control">
-                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
-                                        <?php
-                                            foreach($subbusniess as $subcate){
-                                                foreach($mainbusniess as $maincate){
-                                                    if($subcate->main_type == $maincate->id){
-                                        ?>
-                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
-                                        <?php } } } ?>
-                                    </select>
-                                    <div id="business-more"></div>
-                                    <div class="add-item">
-                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.business-type') ?></button>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>                            
                             
                             <div class="col-12">
                                 <div class="ac-about form-group mb-3">
@@ -116,7 +124,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.province') ?></label>
+                                        <label for=""><?= lang('GlobalLang.province') ?> <span class="text-danger">*</span></label>
                                         <select name="ddl_province" id="ddl_province" class="form-control">
                                             <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
                                             <?php
@@ -129,7 +137,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.amphur') ?></label>
+                                        <label for=""><?= lang('GlobalLang.amphur') ?> <span class="text-danger">*</span></label>
                                         <select name="ddl_amphur" id="ddl_amphure" class="form-control">
                                             <option value="">--</option>
                                         </select>
@@ -137,7 +145,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.district') ?></label>
+                                        <label for=""><?= lang('GlobalLang.district') ?> <span class="text-danger">*</span></label>
                                         <select name="ddl_district" id="ddl_district" class="form-control">
                                             <option value="">--</option>
                                         </select>
@@ -145,18 +153,18 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.postcode') ?></label>
+                                        <label for=""><?= lang('GlobalLang.postcode') ?> <span class="text-danger">*</span></label>
                                         <input type="text" name="txt_zipcode" id="txt_zipcode" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.address') ?></label>
+                                        <label for=""><?= lang('GlobalLang.address') ?> <span class="text-danger">*</span></label>
                                         <textarea name="txt_address" id="txt_address" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
 
                     <div class="tab-pane fade" id="nav-content2" role="tabpanel" aria-labelledby="nav-tab2">
@@ -165,7 +173,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.name') ?></label>
-                                        <input type="text" class="form-control" name="txt_person[]" value="<?= $info['name'].' '.$info['lastname'] ?>">
+                                        <input type="text" class="form-control" name="txt_personname[]" value="<?= $info['name'].' '.$info['lastname'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

@@ -24,6 +24,7 @@ return [
     'password' => 'รหัสผ่าน',
     'comfirmPassword' => 'ยืนยันรหัสผ่าน',
     'email' => 'อีเมล',
+    'companyEmail' => 'อีเมลบริษัท',
     'phoneNumber' => 'เบอร์โทร',
     'company' => 'ชื่อบริษัท',
     'companyPhone' => 'เบอร์โทรบริษัท',
