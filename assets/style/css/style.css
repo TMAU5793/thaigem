@@ -373,6 +373,16 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   .account-body .tab-content .user-profile {
     border-bottom: 1px solid #665f4f;
     padding-bottom: 1.5rem; }
+  .account-body .tab-content label {
+    font-family: "DBAdmanXBold"; }
+  .account-body .tab-content input,
+  .account-body .tab-content select,
+  .account-body .tab-content textarea {
+    color: #665f4f; }
+.account-body .btn-delete-person {
+  position: absolute;
+  bottom: 1rem;
+  right: 3rem; }
 
 .album-item .slick-current.slick-active .slider-nav-item img {
   box-shadow: 0px 6px 0px 0px #ffbc00; }

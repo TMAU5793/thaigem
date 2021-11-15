@@ -5,12 +5,14 @@ namespace App\Controllers\Account;
 use CodeIgniter\Controller;
 use App\Models\Account\AccountModel;
 use App\Models\Account\AlbumModel;
+use App\Models\Account\MemberModel;
 use CodeIgniter\I18n\Time;
   
 class Account extends Controller
 {   
     protected $member_id;
     protected $udata;
+    protected $lang;
     public function __construct()
     {
         helper(['form','text']);
@@ -19,6 +21,11 @@ class Account extends Controller
             $this->udata = $sess;
             $this->member_id = $sess['id'];
         }
+
+        $this->lang = 'en';
+        if(session()->get('lang')){
+            $this->lang = session()->get('lang');
+        }
     }
     
     public function index()
@@ -26,10 +33,17 @@ class Account extends Controller
         if($this->member_id!="" && $this->udata['user_type']=='dealer'){
             $model = new AccountModel();
             $albummodel = new AlbumModel();
+            $mbModel = new MemberModel();
             $data = [
                 'ac_account' => TRUE,
+                'lang' => $this->lang,
                 'info' => $model->where('id',$this->member_id)->first(),
-                'album' => $albummodel->where('member_id',$this->member_id)->findAll()
+                'album' => $albummodel->where('member_id',$this->member_id)->findAll(),
+                'address' => $mbModel->getAddress(),
+                'province' => $mbModel->getProvince(),
+                'amphure' => $mbModel->getAmphure(),
+                'district' => $mbModel->getDistrict(),
+                'social' => $mbModel->getSocial()
             ];
             
             echo view('account/ac-account',$data);

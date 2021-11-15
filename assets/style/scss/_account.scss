@@ -39,6 +39,19 @@
             border-bottom: 1px solid $c-darkgold;
             padding-bottom: 1.5rem;
         }
+        label {
+            font-family: $ff-dbadmanBold;
+        }
+        input,
+        select,
+        textarea {
+            color: $c-darkgold;
+        }
+    }
+    .btn-delete-person {
+        position: absolute;
+        bottom: 1rem;
+        right: 3rem;
     }
 }
 

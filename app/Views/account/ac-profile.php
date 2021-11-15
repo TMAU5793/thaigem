@@ -16,7 +16,7 @@
                 ?>
             </div>
             <div class="tg-title mt-5">
-                <h3>Edit Information</h3>
+                <h3><?= lang('GlobalLang.editinfo').' : '.$info['account'] ?></h3>
             </div>
             <form action="<?= site_url('account/member/updateprofile') ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="hd_id" value="<?= $info['id'] ?>">
@@ -72,50 +72,53 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.company') ?> <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="txt_company">
+                                    <input type="text" class="form-control" name="txt_company" value="<?= (isset($info)?$info['company'] : '') ?>">
+                                    <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_company')?'* '.$validation->getError('txt_company'):'') ?></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.companyPhone') ?> <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="txt_companyphone">
+                                    <input type="text" class="form-control" name="txt_companyphone" value="<?= (isset($info)?$info['company_phone'] : '') ?>">
+                                    <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_companyphone')?'* '.$validation->getError('txt_companyphone'):'') ?></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.companyEmail') ?> <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="txt_email">
+                                    <input type="email" class="form-control" name="txt_email" value="<?= (isset($info)?$info['email'] : '') ?>">
+                                    <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_email')?'* '.$validation->getError('txt_email'):'') ?></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.website') ?></label>
-                                    <input type="text" class="form-control" name="txt_website">
+                                    <label for=""><?= lang('GlobalLang.website') ?> <span class="fs-6">(Example : http://example.com)</span></label>
+                                    <input type="text" class="form-control" name="txt_website" value="<?= (isset($info)?urldecode($info['website']) : '') ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.fb') ?></label>
-                                    <input type="text" class="form-control" name="txt_facebook">
+                                    <input type="text" class="form-control" name="txt_facebook" value="<?= (isset($social)?$social->facebook : '') ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.ig') ?></label>
-                                    <input type="text" class="form-control" name="txt_instargrame">
+                                    <input type="text" class="form-control" name="txt_instagram" value="<?= (isset($social)?$social->instagram : '') ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.line') ?></label>
-                                    <input type="text" class="form-control" name="txt_line">
+                                    <label for=""><?= lang('GlobalLang.line') ?> <span class="fs-6">(<?= lang('GlobalLang.lineOA') ?>)</span></label>
+                                    <input type="text" class="form-control" name="txt_line" value="<?= (isset($social)?$social->line : '') ?>">
                                 </div>
                             </div>                            
                             
                             <div class="col-12">
                                 <div class="ac-about form-group mb-3">
                                     <label for=""><?= lang('GlobalLang.aboutus') ?></label>
-                                    <textarea name="txt_ac_about" id="txt_ac_about" class="form-control about-edit"><?= $info['about'] ?></textarea>
+                                    <textarea name="txt_ac_about" id="txt_ac_about" class="form-control about-edit"><?= (isset($info)?$info['about'] : '') ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -130,17 +133,19 @@
                                             <?php
                                                 foreach($provinces as $province){
                                             ?>
-                                                <option value="<?= $province->id ?>"><?= ($lang=='en'?$province->name_en:$province->name_th) ?></option>
+                                                <option value="<?= $province->id ?>" <?= (isset($address) && $address->province_id==$province->id ? 'selected' : '') ?>><?= ($lang=='en'?$province->name_en:$province->name_th) ?></option>
                                             <?php }  ?>
                                         </select>
-                                    </div>
+                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_province')?'* '.$validation->getError('ddl_province'):'') ?></small>
+                                    </div>                                    
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.amphur') ?> <span class="text-danger">*</span></label>
-                                        <select name="ddl_amphur" id="ddl_amphure" class="form-control">
+                                        <select name="ddl_amphure" id="ddl_amphure" class="form-control">
                                             <option value="">--</option>
                                         </select>
+                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_amphure')?'* '.$validation->getError('ddl_amphure'):'') ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -149,18 +154,21 @@
                                         <select name="ddl_district" id="ddl_district" class="form-control">
                                             <option value="">--</option>
                                         </select>
+                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_district')?'* '.$validation->getError('ddl_district'):'') ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.postcode') ?> <span class="text-danger">*</span></label>
-                                        <input type="text" name="txt_zipcode" id="txt_zipcode" class="form-control">
+                                        <input type="text" name="txt_zipcode" id="txt_zipcode" class="form-control" value="<?= (isset($address) ? $address->zipcode : '') ?>">
+                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_zipcode')?'* '.$validation->getError('txt_zipcode'):'') ?></small>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.address') ?> <span class="text-danger">*</span></label>
-                                        <textarea name="txt_address" id="txt_address" class="form-control"></textarea>
+                                        <textarea name="txt_address" id="txt_address" class="form-control"><?= (isset($address) ? $address->address : '') ?></textarea>
+                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_address')?'* '.$validation->getError('txt_address'):'') ?></small>
                                     </div>
                                 </div>
                             </div>
@@ -173,16 +181,37 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.name') ?></label>
-                                        <input type="text" class="form-control" name="txt_personname[]" value="<?= $info['name'].' '.$info['lastname'] ?>">
+                                        <input type="text" class="form-control" name="txt_mainperson" value="<?= $info['name'].' '.$info['lastname'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.phoneNumber') ?></label>
-                                        <input type="text" class="form-control" name="txt_personphone[]" value="<?= $info['phone'] ?>">
+                                        <input type="text" class="form-control" name="txt_mainphone" value="<?= $info['phone'] ?>">
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                foreach ($membercontact as $contact) {
+                            ?>
+                                <div class="row position-relative">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for=""><?= lang('GlobalLang.name') ?></label>
+                                            <input type="text" class="form-control" name="txt_subperson[]" value="<?= $contact->name.' '.$contact->lastname ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for=""><?= lang('GlobalLang.phoneNumber') ?></label>
+                                            <input type="text" class="form-control" name="txt_subphone[]" value="<?= $contact->phone ?>">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-delete-person w-auto" onclick="">
+                                        <i class="fas fa-trash-alt text-danger"></i>
+                                    </button>
+                                </div>
+                            <?php } ?>
                             <div id="person-more"></div>
                             <div class="add-item">
                                 <button type="button" id="btn-add-person" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.personcontact') ?></button>
@@ -240,7 +269,7 @@
                 </div>
                 <div class="btn-submit text-center mt-4">
                     <button type="submit" class="btn btn-black-border"><?= lang('GlobalLang.save') ?></button>
-                    <a href="" class="btn btn-black-border"><?= lang('GlobalLang.cancel') ?></a>
+                    <a href="<?= site_url('account') ?>" class="btn btn-black-border"><?= lang('GlobalLang.cancel') ?></a>
                 </div>
             </form>
         </div>

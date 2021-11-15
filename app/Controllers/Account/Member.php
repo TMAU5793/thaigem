@@ -40,7 +40,6 @@ class Member extends Controller
         $request = service('request');
         $model = new AccountModel();
         $albummodel = new AlbumModel();
-        $fModel = new FunctionModel();
         $mbModel = new MemberModel();
 
         $getuser = $request->getGet('u');        
@@ -57,71 +56,179 @@ class Member extends Controller
             'lang' => $this->lang,
             'info' => $info,
             'album' => $albummodel->where('member_id',$this->member_id)->findAll(),
-            'provinces' => $fModel->getProvinceAll(),
+            'provinces' => $mbModel->getProvince(),
             'maincates' => $mbModel->getProductMainType(),
             'subcates' => $mbModel->getSubCategory(),
             'mainbusniess' => $mbModel->getBusinessMainType(),
             'subbusniess' => $mbModel->getSubBusiness(),
+            'address' => $mbModel->getAddress(),
+            'social' => $mbModel->getSocial(),
+            'membercontact' => $mbModel->getMemberContact()
         ];
-        //print_r($data['provinces']);
+        //print_r($data['social']);
         echo view('account/ac-profile',$data);
     }
 
     public function updateProfile()
     {
-        // $db      = \Config\Database::connect();
-        // $builder = $db->table('tbl_member');
-        // $model = new MemberModel();
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_member');
+        $model = new MemberModel();
         $request = service('request');
-        // helper('filesystem');
+        helper('filesystem');
 
         $post = $request->getPost();
-        // if($post){
-        //     $email = '';
-        //     $builder->where('id', $post['hd_id']);
-        //     $query = $builder->get();
-        //     $thumb = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
-        //     $img_del = $request->getVar('hd_thumb_del'); //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
+        if($post){
+            $email = '';
+            $builder->where('id', $post['hd_id']);
+            $query = $builder->get();
+            // $thumb = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
+            // $img_del = $request->getVar('hd_thumb_del'); //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
 
-        //     foreach ($query->getResult() as $row) {
-        //         $email = $row->email;
-        //     }
-        //     if($post['txt_email'] == $email){
-        //         $result = $model->updateProfile($post);
-        //         if($result){
-        //             $this->upload($post['hd_id'],$thumb,$img_del);
-        //             return redirect()->to($request->getGet('burl'));
-        //         }else{
-        //             print_r($db->error()); 
-        //         }
-        //     }else{
-        //         $rules = [
-        //             'txt_email' => [
-        //                 'rules' => 'required|valid_email|is_unique[tbl_member.email]',
-        //                 'errors' =>  [
-        //                     'required' => 'กรุณากรอกอีเมล',
-        //                     'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง',
-        //                     'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
-        //                 ]
-        //             ]
-        //         ];
-        
-        //         if($this->validate($rules)){
-        //             $result = $model->updateProfile($post);
-        //             if($result){
-        //                 $this->upload($post['hd_id'],$thumb,$img_del);
-        //                 return redirect()->to($request->getGet('burl'));
-        //             }else{
-        //                 print_r($db->error()); 
-        //             }
-        //         }else{
-        //             $data['validation'] = $this->validator;
-        //             echo view('account/ac-account',$data);
-        //         }
-        //     }
-        // }
+            foreach ($query->getResult() as $row) {
+                $email = $row->email;
+            }
+            if($post['txt_email'] == $email){
+                $rules = [
+                    'txt_email' => [
+                        'rules' => 'required|valid_email',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกอีเมล',
+                            'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง'
+                        ]
+                    ],
+                    'txt_company' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกชื่อบริษัท'
+                        ]
+                    ],
+                    'txt_companyphone' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกเบอร์โทรบริษัท'
+                        ]
+                    ],
+                    'ddl_province' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกจังหวัด'
+                        ]
+                    ],
+                    'ddl_amphure' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกอำเภอ/เขต'
+                        ]
+                    ],
+                    'ddl_district' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกตำบล/แขวง'
+                        ]
+                    ],
+                    'txt_zipcode' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกรหัสไปรษณีย์'
+                        ]
+                    ],
+                    'txt_address' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกที่อยู่'
+                        ]
+                    ]
+                ];
+            }else{
+                $rules = [
+                    'txt_email' => [
+                        'rules' => 'required|valid_email|is_unique[tbl_member.email]',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกอีเมล',
+                            'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง',
+                            'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
+                        ]
+                    ],
+                    'txt_company' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกชื่อบริษัท'
+                        ]
+                    ],
+                    'txt_companyphone' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกเบอร์โทรบริษัท'
+                        ]
+                    ],
+                    'ddl_province' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกจังหวัด'
+                        ]
+                    ],
+                    'ddl_amphure' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกอำเภอ/เขต'
+                        ]
+                    ],
+                    'ddl_district' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกตำบล/แขวง'
+                        ]
+                    ],
+                    'txt_zipcode' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกรหัสไปรษณีย์'
+                        ]
+                    ],
+                    'txt_address' => [
+                        'rules' => 'required',
+                        'errors' =>  [
+                            'required' => 'กรุณากรอกที่อยู่'
+                        ]
+                    ]
+                ];
+            }
+            if($this->validate($rules)){
+                $model->updateProfile($post);
+                //$model->updateContact($post);
+                // if($result){
+                //     //$this->upload($post['hd_id'],$thumb,$img_del);
+                //     return redirect()->to($request->getGet('burl'));
+                // }else{
+                //     print_r($db->error()); 
+                // }
+                return redirect()->to('account');
+            }else{
+                $model = new AccountModel();
+                $albummodel = new AlbumModel();
+                $fModel = new FunctionModel();
+                $mbModel = new MemberModel();
 
-        print_r($post);
+                $info = $model->where('id',$this->member_id)->first();
+                $data = [
+                    'ac_account' => TRUE,
+                    'lang' => $this->lang,
+                    'info' => $info,
+                    'album' => $albummodel->where('member_id',$this->member_id)->findAll(),
+                    'provinces' => $fModel->getProvinceAll(),
+                    'maincates' => $mbModel->getProductMainType(),
+                    'subcates' => $mbModel->getSubCategory(),
+                    'mainbusniess' => $mbModel->getBusinessMainType(),
+                    'subbusniess' => $mbModel->getSubBusiness(),
+                    'address' => $mbModel->getAddress(),
+                    'social' => $mbModel->getSocial(),
+                    'validation' => $this->validator
+                ];
+
+                echo view('account/ac-profile',$data);
+            }
+        }
     }
 
     public function upload($id,$profile,$img_del)

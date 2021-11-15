@@ -61,7 +61,7 @@ return [
     'product-type' => 'Product Type',
     'business-type' => 'Business Type',
     'province' => 'Province',
-    'amphur' => 'Amphur',
+    'amphur' => 'Amphure',
     'district' => 'District',
     'postcode' => 'Post code',
     'member-since' => 'Member Since',
@@ -86,5 +86,8 @@ return [
     'companyinfo' => 'Company Info',
     'personcontact' => 'Person Contact',
     'gallery' => 'Gallery',
-    'profile' => 'Profile'
+    'profile' => 'Profile',
+    'editinfo' => 'Edit Information',
+    'socialmedia' => 'Social Media',
+    'lineOA' => 'Line OA specify @ before Line ID'
 ];

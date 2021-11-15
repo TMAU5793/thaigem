@@ -193,6 +193,36 @@
                 }
             });
         });
+        <?php if(isset($address)){ ?>
+            var province_id = '<?= $address->province_id ?>';
+            var amphure_id = '<?= $address->amphure_id ?>';
+            
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('amphureapi') ?>",
+                data: {id:province_id},
+                success: function (response) {
+                    //console.log(response);
+                    var html = '<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>';
+                    <?php
+                        if($lang=='th'){
+                    ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'"'+ (value.id==amphure_id? 'selected':'')+'> '+value.name_th+' </option>';
+                        });
+                    <?php }else{ ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'"'+ (value.id==amphure_id? 'selected':'')+'> '+value.name_en+' </option>';
+                        });
+                    <?php } ?>
+                    if(html){
+                        $('#ddl_amphure').html(html);
+                    }else{
+                        $('#ddl_amphure').html('<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>');
+                    }
+                }
+            });
+        <?php } ?>
 
         //ดึงข้อมูลตำบลตามไอดีอำเภอ
         $('#ddl_amphure').on('change',function(){
@@ -223,6 +253,35 @@
                 }
             });
         });
+        <?php if(isset($address)){ ?>
+            var amphure_id = '<?= $address->amphure_id ?>';
+            var district_id = '<?= $address->district_id ?>';
+            
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('districtapi') ?>",
+                data: {id:amphure_id},
+                success: function (response) {
+                    var html = '<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>';
+                    <?php
+                        if($lang=='th'){
+                    ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'" data-zipcode="'+value.zip_code+'"'+ (value.id==district_id? 'selected':'')+'> '+value.name_th+' </option>';
+                        });
+                    <?php }else{ ?>
+                        $.each(response, function (key, value) {
+                            html += '<option value="'+value.id+'" data-zipcode="'+value.zip_code+'"'+ (value.id==district_id? 'selected':'')+'> '+value.name_en+' </option>';
+                        });
+                    <?php } ?>
+                    if(html){
+                        $('#ddl_district').html(html);
+                    }else{
+                        $('#ddl_district').html('<option value=""> -- <?= lang('GlobalLang.select') ?> -- </option>');
+                    }
+                }
+            });
+        <?php } ?>
 
         //ข้อมูลหมายเลขรหัสไฟรษณีย๋
         $('#ddl_district').on('change',function(){            

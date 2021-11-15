@@ -41,11 +41,11 @@
                     </div>
                     <div class="phone-contact">
                         <i class="fas fa-phone-volume pe-3 rotate-25ngt"></i>
-                        <span><?= ($info['phone']==''?'-':$info['phone']); ?></span>
+                        <span><?= ($info['company_phone']==''?'-':$info['company_phone']); ?></span>
                     </div>
                     <div class="person-phone">
-                        <strong class="ff-dbadmanBold pe-3">Contact Person : </strong>
-                        <span><?= ($info['phone']==''?'-':$info['phone']); ?></span>
+                        <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.personcontact') ?> : </strong>
+                        <span><?= ($info['phone']==''?'-':$info['name'].' '.$info['phone']); ?></span>
                     </div>
                 </div>           
             </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="col-md-11">
                 <div class="item-desc">
-                    <h4 class="ff-dbadmanBold mb-0">Product Type</h4>
+                    <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.product-type') ?></h4>
                     <?php
                         foreach($product_type as $row){
                             if($info['product_type'] == $row->id){
@@ -80,7 +80,7 @@
             </div>
             <div class="col-md-11">
                 <div class="item-desc">
-                    <h4 class="ff-dbadmanBold mb-0">Business Type</h4>
+                    <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.business-type') ?></h4>
                     <?php
                         foreach($business_tpye as $row){
                             if($info['business_type'] == $row->id){
@@ -101,8 +101,30 @@
             </div>
             <div class="col-md-11">
                 <div class="item-desc">
-                    <h4 class="ff-dbadmanBold mb-0">Address</h4>
-                    <span class="fs-5">Thai Gem and Jewelry Traders Association 919/616 Jewelry Trade Center, 52md Floor, Silom Rd., Bangkok 10500</span>
+                    <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.address') ?></h4>
+                    <p>
+                        <?php
+                            $provinceText = '';
+                            $amphureText = '';
+                            $districtText = '';
+                            foreach ($province as $pv){
+                                if($pv->id == $address->province_id){
+                                    $provinceText = ($lang=='en'?$pv->name_en : $pv->name_th);
+                                }
+                            }
+                            foreach ($amphure as $ap){
+                                if($ap->id == $address->amphure_id){
+                                    $amphureText = ($lang=='en'?$ap->name_en : $ap->name_th);
+                                }
+                            }
+                            foreach ($district as $dt){
+                                if($dt->id == $address->district_id){
+                                    $districtText = ($lang=='en'?$dt->name_en : $dt->name_th);
+                                }
+                            }
+                            echo $address->address.' '.$districtText.' '.$amphureText.' '.$provinceText.' '.$address->zipcode;
+                        ?>
+                    </p>
                 </div>
             </div>
         </div>
@@ -115,18 +137,24 @@
             </div>
             <div class="col-md-11">
                 <div class="item-desc">
-                    <h4 class="ff-dbadmanBold mb-0">Website</h4>
-                    <a href="www.en.thaigemjewelry.or.th" target="_blank">www.en.thaigemjewelry.or.th</a>
+                    <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.website') ?></h4>
+                    <a href="<?= urldecode($info['website']); ?>" target="_blank"><?= urldecode($info['website']); ?></a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="social-contact border-b">
-        <strong class="ff-dbadmanBold pe-2">Social Media</strong>
-        <a href=""><i class="fab fa-facebook-f"></i></a>
-        <a href=""><i class="fab fa-instagram"></i></a>
-        <a href=""><i class="fab fa-line"></i></a>
+        <strong class="ff-dbadmanBold pe-2"><?= lang('GlobalLang.socialmedia') ?></strong>
+        <?php if($social->facebook!=""){ ?>
+            <a href="https://www.facebook.com/<?= $social->facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <?php } ?>
+        <?php if($social->instagram!=""){ ?>
+            <a href="https://www.instagram.com/<?= $social->instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+        <?php } ?>
+        <?php if($social->line!=""){ ?>            
+            <a href="http://line.me/ti/p/<?= $social->line ?>" target="_blank"><i class="fab fa-line"></i></a>
+        <?php } ?>
     </div>
     
     <div class="text-center mt-4 text-center">

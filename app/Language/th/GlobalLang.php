@@ -86,5 +86,8 @@ return [
     'companyinfo' => 'ข้อมูลบริษัท',
     'personcontact' => 'ติดต่อ',
     'gallery' => 'แกลลอรี่',
-    'profile' => 'โปรไฟล์'
+    'profile' => 'โปรไฟล์',
+    'editinfo' => 'อัพเดตข้อมูล',
+    'socialmedia' => 'โซเชียลมีเดีย',
+    'lineOA' => 'ไลน์ Official ให้ระบุ @ หน้าไอดีไลน์'
 ];
