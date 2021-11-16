@@ -5,6 +5,7 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#pic_profile').attr('src', e.target.result);
+                $('#hd_profile').val(input.files[0].name);
             }
             reader.readAsDataURL(input.files[0]);
         }
@@ -293,7 +294,7 @@
         <?php if(isset($subcates)){ ?>
         $('#btn-add-cate').click(function(){
             var html = '';
-            html +=  '<select name="ddl_cate[]" class="form-control mt-3">';
+            html +=  '<select name="ddl_productcate[]" class="form-control mt-3">';
             html +=  '<option value="">-- <?= lang('GlobalLang.select') ?> --</option>';
             <?php foreach($subcates as $subcate){ foreach($maincates as $maincate){ if($subcate->maincate_id == $maincate->id){ ?>
             html +=  '<option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
@@ -361,6 +362,22 @@
             );
             return true;
         }
+    }
+
+    function deleteRow(id,tbl,el){ //id, tbl = table, el = element for romove
+        var result = confirm("ยืนยันการลบ?");
+        if(result){
+            $.post("<?= site_url('account/member/deleteRow') ?>", {id:id,tbl:tbl},
+                function (resp) {
+                    if(resp){
+                        $('#removeImgModal').modal('show');
+                        $('#'+el).remove();
+                    }
+                }
+            );
+            return true;
+        }
+        //console.log(id);
     }
 
     // Ckediter 

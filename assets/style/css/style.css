@@ -383,6 +383,10 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   position: absolute;
   bottom: 1rem;
   right: 3rem; }
+.account-body .btn-delete-cate {
+  position: absolute;
+  bottom: -0.25rem;
+  right: -2.5rem; }
 
 .album-item .slick-current.slick-active .slider-nav-item img {
   box-shadow: 0px 6px 0px 0px #ffbc00; }
@@ -414,6 +418,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       color: #000000; }
     .ac-menu-left .person-item .item-desc a:hover {
       color: #665f4f; }
+    .ac-menu-left .person-item .item-desc .box-info {
+      line-height: 1rem; }
   .ac-menu-left .social-contact a {
     text-decoration: none;
     color: #000000;

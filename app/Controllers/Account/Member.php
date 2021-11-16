@@ -63,7 +63,8 @@ class Member extends Controller
             'subbusniess' => $mbModel->getSubBusiness(),
             'address' => $mbModel->getAddress(),
             'social' => $mbModel->getSocial(),
-            'membercontact' => $mbModel->getMemberContact()
+            'membercontact' => $mbModel->getMemberContact(),
+            'memberbusiness' => $mbModel->getMemberBusiness()
         ];
         //print_r($data['social']);
         echo view('account/ac-profile',$data);
@@ -75,15 +76,13 @@ class Member extends Controller
         $builder = $db->table('tbl_member');
         $model = new MemberModel();
         $request = service('request');
-        helper('filesystem');
+        helper(['form','fileystem']);
 
         $post = $request->getPost();
         if($post){
             $email = '';
             $builder->where('id', $post['hd_id']);
-            $query = $builder->get();
-            // $thumb = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
-            // $img_del = $request->getVar('hd_thumb_del'); //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
+            $query = $builder->get();            
 
             foreach ($query->getResult() as $row) {
                 $email = $row->email;
@@ -97,6 +96,7 @@ class Member extends Controller
                             'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง'
                         ]
                     ],
+                    
                     'txt_company' => [
                         'rules' => 'required',
                         'errors' =>  [
@@ -150,6 +150,7 @@ class Member extends Controller
                             'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
                         ]
                     ],
+                    
                     'txt_company' => [
                         'rules' => 'required',
                         'errors' =>  [
@@ -195,15 +196,31 @@ class Member extends Controller
                 ];
             }
             if($this->validate($rules)){
-                $model->updateProfile($post);
-                //$model->updateContact($post);
-                // if($result){
-                //     //$this->upload($post['hd_id'],$thumb,$img_del);
-                //     return redirect()->to($request->getGet('burl'));
-                // }else{
-                //     print_r($db->error()); 
+                //$result = $model->updateProfile($post);
+                //$model->updateBusiness($post);
+                // if(!$result){
+                //     print_r($db->error());
                 // }
+
+                $file_upload = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
+                $file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป                
+                $this->upload($post['hd_id'],$file_upload,$file_del);
+                
+                $albummodel = new AlbumModel();
+                $album = $albummodel->where('member_id',$post['hd_id'])->findAll();
+                $no = 9-count($album);
+                if ($request->getFileMultiple('file_album')) {
+                    $n=0;
+                    foreach($request->getFileMultiple('file_album') as $file) {
+                        $n++;
+                        if($n<=$no){
+                            $this->uploadAlbum($post['hd_id'],$file);
+                        }
+                    }
+                }
                 return redirect()->to('account');
+
+                //print_r($post);
             }else{
                 $model = new AccountModel();
                 $albummodel = new AlbumModel();
@@ -223,6 +240,8 @@ class Member extends Controller
                     'subbusniess' => $mbModel->getSubBusiness(),
                     'address' => $mbModel->getAddress(),
                     'social' => $mbModel->getSocial(),
+                    'membercontact' => $mbModel->getMemberContact(),
+                    'memberbusiness' => $mbModel->getMemberBusiness(),
                     'validation' => $this->validator
                 ];
 
@@ -231,7 +250,7 @@ class Member extends Controller
         }
     }
 
-    public function upload($id,$profile,$img_del)
+    public function upload($id,$file_upload,$file_del)
 	{
 		helper(['form','fileystem']);
 		$db = \Config\Database::connect();
@@ -239,21 +258,21 @@ class Member extends Controller
         $builder = $db->table('tbl_member');
 		
 		$allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
-		$ext = $profile->getExtension();
+		$ext = $file_upload->getExtension();
 
-		if ($profile->isValid() && !$profile->hasMoved() && in_array($ext, $allowed)){
-			if(is_file($img_del)){
-				unlink($img_del); //ลบรูปเก่าออก
+		if ($file_upload->isValid() && !$file_upload->hasMoved() && in_array($ext, $allowed)){
+			if(is_file($file_del)){
+				unlink($file_del); //ลบรูปเก่าออก
 			}
-			$newName = $profile->getRandomName();
+			$newName = 'profile-'.$file_upload->getRandomName();
             $path = 'uploads/member/'.$id;
 			if (!is_dir('uploads/member/'.$id)) {
 				mkdir('uploads/member/'.$id, 0777, TRUE);
-				//$profile->move('uploads/member/'.$id,$newName);
-                $image->withFile($profile)->fit(250, 250, 'center')->save($path.'/'.$newName);
+				//$file_upload->move('uploads/member/'.$id,$newName);
+                $image->withFile($file_upload)->fit(1000, 750, 'center')->save($path.'/'.$newName);
 			}else{
-				//$profile->move('uploads/member/'.$id,$newName);
-                $image->withFile($profile)->fit(250, 250, 'center')->save($path.'/'.$newName);
+				//$file_upload->move('uploads/member/'.$id,$newName);
+                $image->withFile($file_upload)->fit(1000, 750, 'center')->save($path.'/'.$newName);
 			}
 			$thumb = [
 				'profile' => 'uploads/member/'.$id.'/'.$newName
@@ -262,37 +281,9 @@ class Member extends Controller
             $builder->where('id', $id);
             $builder->update($thumb);
 		}
+
+        //print_r($file_upload);
 	}
-
-    public function album()
-    {
-        helper(['form', 'url']);
-        $request = service('request');
-        $model = new AccountModel();
-        $albummodel = new AlbumModel();
-        $post = $request->getPost();
-
-        if ($post) {
-            $arr = [
-                'about' => $post['txt_ac_about']
-            ];            
-            $model->update($post['hd_id'],$arr);
-            $album = $albummodel->where('member_id',$post['hd_id'])->findAll();
-            $no = 9-count($album);
-            if ($request->getFileMultiple('file_album')) {
-                $n=0;
-                foreach($request->getFileMultiple('file_album') as $file) {
-                    $n++;
-                    if($n<=$no){
-                        $this->uploadAlbum($post['hd_id'],$file);
-                    }
-                }
-            }
-            return redirect()->to('account')->with('msg',TRUE);
-        }else{
-            return redirect()->to('account');
-        }
-    }
 
     public function uploadAlbum($id,$file)
 	{
@@ -304,14 +295,14 @@ class Member extends Controller
 		$ext = $file->getExtension();        
 
 		if ($file->isValid() && !$file->hasMoved() && in_array($ext, $allowed)){
-			$newName = $file->getRandomName();
+			$newName = $id.'-'.$file->getRandomName();
             $path = 'uploads/member/'.$id.'/album';
 			if (!is_dir($path)) {
 				mkdir($path, 0777, TRUE);
 				//$file->move($path,$newName);
-                $image->withFile($file)->fit(900, 600, 'center')->save($path.'/'.$newName);
+                $image->withFile($file)->fit(1000, 750, 'center')->save($path.'/'.$newName);
 			}else{
-				$image->withFile($file)->fit(900, 600, 'center')->save($path.'/'.$newName);
+				$image->withFile($file)->fit(1000, 750, 'center')->save($path.'/'.$newName);
 			}
 			$thumb = [
                 'member_id' => $id,
@@ -334,6 +325,25 @@ class Member extends Controller
                 unlink($path['images']);
             }
             echo true;
+        }else{
+            return redirect()->to('account');
+        }
+    }
+
+    public function deleteRow()
+    {
+        $request = service('request');
+        $db = \Config\Database::connect();
+        $id = $request->getPost('id');
+        $tbl = $request->getPost('tbl');
+        $builder = $db->table($tbl);
+        
+        if($id){
+            $builder->where('id', $id);
+            $query = $builder->delete();
+            if($query){
+                echo true;
+            }
         }else{
             return redirect()->to('account');
         }

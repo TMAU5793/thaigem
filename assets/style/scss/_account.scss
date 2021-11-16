@@ -53,6 +53,11 @@
         bottom: 1rem;
         right: 3rem;
     }
+    .btn-delete-cate {
+        position: absolute;
+        bottom: -0.25rem;
+        right: -2.5rem;
+    }
 }
 
 .album-item {
@@ -102,6 +107,9 @@
             }
             a:hover {
                 color: $c-darkgold;
+            }
+            .box-info {
+                line-height: 1rem;
             }
         }
     }

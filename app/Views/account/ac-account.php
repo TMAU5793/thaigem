@@ -20,7 +20,7 @@
                     <?= $this->include('account/left-menu') ?>
                 </div>
                 <div class="col-lg-5 col-md-8">
-                    <div class="ac-about input-disabled mt-5">
+                    <div class="ac-about input-disabled">
                         <div class="content-title"><strong class="ff-dbadmanBoldnn fs-3">About Us</strong></div>
                         <p class="about-edit"><?= $info['about'] ?></p>
                         <textarea name="txt_ac_about" id="txt_ac_about" class="form-control about-edit d-none"><?= $info['about'] ?></textarea>

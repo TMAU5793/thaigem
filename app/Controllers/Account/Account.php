@@ -43,7 +43,9 @@ class Account extends Controller
                 'province' => $mbModel->getProvince(),
                 'amphure' => $mbModel->getAmphure(),
                 'district' => $mbModel->getDistrict(),
-                'social' => $mbModel->getSocial()
+                'social' => $mbModel->getSocial(),
+                'membercontact' => $mbModel->getMemberContact(),
+                'memberbusiness' => $mbModel->getMemberBusiness()
             ];
             
             echo view('account/ac-account',$data);

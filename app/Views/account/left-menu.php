@@ -6,12 +6,12 @@
     $model = new AccountModel();
     $model_member = new MemberModel();
     $info = $model->where('account', session()->get('userdata')['account'])->first();
-    $main_cate = $model_member->getProductMainType();
-    $product_type = $model_member->getProductType();
-    $business_main = $model_member->getBusinessMainType();
-    $business_tpye = $model_member->getBusinessType();
+    $pMaincate = $model_member->getProductMainType();
+    $pSubcate = $model_member->getProductType();
+    $bMaincate = $model_member->getBusinessMainType();
+    $bSubcate = $model_member->getBusinessType();
     $province = $model_member->getProvince();
-   // print_r($province);
+   
 ?>
 <div class="ac-menu-left p-4">
     <div class="border-b">
@@ -45,7 +45,13 @@
                     </div>
                     <div class="person-phone">
                         <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.personcontact') ?> : </strong>
-                        <span><?= ($info['phone']==''?'-':$info['name'].' '.$info['phone']); ?></span>
+                        <span><?= ($info['phone']==''?'-':'<span class="ff-dbadmanBold">'.$info['name'].'</span> '.$info['phone']); ?></span>
+                        <?php
+                            if(isset($membercontact)){
+                                foreach ($membercontact as $contact) {
+                        ?>
+                            <span><?= '<span class="ff-dbadmanBold"> , '.$contact->name.'</span> '.$contact->phone; ?></span>
+                        <?php } } ?>
                     </div>
                 </div>           
             </div>
@@ -60,14 +66,30 @@
             <div class="col-md-11">
                 <div class="item-desc">
                     <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.product-type') ?></h4>
-                    <?php
-                        foreach($product_type as $row){
-                            if($info['product_type'] == $row->id){
-                                foreach($main_cate as $cate){
-                                    if($row->maincate_id == $cate->id){
-                    ?>
-                        <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
-                    <?php } } } } ?>
+                    <div class="box-info">
+                        <?php
+                            $n=0;
+                            foreach($memberbusiness as $row){
+                                if($row->type == 'product'){
+                        ?>
+                            <span class="fs-5 d-inline">
+                                <?php
+                                    $n++;
+                                    if($n > 1){
+                                        echo ' , ';
+                                    }
+                                    foreach($pSubcate as $subcate){
+                                        foreach($pMaincate as $maincate){                                            
+                                            if($subcate->maincate_id == $maincate->id && $row->cate_id == $subcate->id){
+                                                echo ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?'<span class="ff-dbadmanBold d-inline">'.$maincate->name_en.'</span> > '.$subcate->name_en : '<span class="ff-dbadmanBold d-inline">'.$maincate->name_th.'</span> > '.$subcate->name_th);
+                                            }
+
+                                        }
+                                    }
+                                ?>
+                            </span>
+                        <?php } } ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,14 +103,30 @@
             <div class="col-md-11">
                 <div class="item-desc">
                     <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.business-type') ?></h4>
-                    <?php
-                        foreach($business_tpye as $row){
-                            if($info['business_type'] == $row->id){
-                                foreach($business_main as $cate){
-                                    if($row->main_type == $cate->id){
-                    ?>
-                        <span class="fs-5"><?= $cate->name_th; ?> : <?= $row->name_th; ?></span>
-                    <?php } } } } ?>
+                    <div class="box-info">
+                        <?php
+                            $n=0;
+                            foreach($memberbusiness as $row){
+                                if($row->type == 'business'){
+                        ?>
+                            <span class="fs-5 d-inline">
+                                <?php
+                                    $n++;
+                                    if($n > 1){
+                                        echo ' , ';
+                                    }
+                                    foreach($bSubcate as $subcate){
+                                        foreach($bMaincate as $maincate){
+                                            if($subcate->main_type == $maincate->id && $row->cate_id == $subcate->id){
+                                                echo ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''? '<span class="ff-dbadmanBold d-inline">'.$maincate->name_en.'</span> > '.$subcate->name_en : '<span class="ff-dbadmanBold d-inline">'.$maincate->name_th.'</span> > '.$subcate->name_th);
+                                            }
+
+                                        }
+                                    }
+                                ?>
+                            </span>
+                        <?php } } ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +140,7 @@
             <div class="col-md-11">
                 <div class="item-desc">
                     <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.address') ?></h4>
-                    <p>
+                    <p class="fs-5 mb-0">
                         <?php
                             $provinceText = '';
                             $amphureText = '';

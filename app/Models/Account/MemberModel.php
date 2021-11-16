@@ -150,6 +150,17 @@ class MemberModel extends Model
         }
     }
 
+    public function getMemberBusiness()
+    {        
+        $sql = "SELECT * FROM tbl_member_business WHERE member_id = ?";
+        $query = $this->db->query($sql, [$this->member_id]);
+        if($query){
+            return $query->getResult();
+        }else{
+            return false;
+        }
+    }
+
     public function updateProfile($data)
     {
         $arr = explode(" ",$data['txt_mainperson']);
@@ -213,10 +224,50 @@ class MemberModel extends Model
         }
         
         if($query){
-            $this->updateSocial($data);
+            $this->updateBusiness($data);
         }else{
             return false;
         }
+    }
+
+    public function updateBusiness($data)
+    {
+        $builder = $this->db->table('tbl_member_business');
+        $datetime = new Time('now');
+
+        if(isset($data['ddl_productcate'])){
+            $product = count($data['ddl_productcate']);
+            for ($i=0; $i < $product; $i++) {
+                if($data['ddl_productcate'][$i]!=""){
+                    $info = [
+                        'member_id' => $data['hd_id'],
+                        'type' => 'product',
+                        'cate_id' => $data['ddl_productcate'][$i],
+                        'created_at' => $datetime,
+                        'updated_at' => $datetime
+                    ];
+                    $builder->insert($info);
+                }
+            }
+        }
+
+        if(isset($data['ddl_business'])){
+            $busines = count($data['ddl_business']);
+            for ($i=0; $i < $busines; $i++) {
+                if($data['ddl_business'][$i]!=""){
+                    $info = [
+                        'member_id' => $data['hd_id'],
+                        'type' => 'business',
+                        'cate_id' => $data['ddl_business'][$i],
+                        'created_at' => $datetime,
+                        'updated_at' => $datetime
+                    ];
+                    $builder->insert($info);
+                }
+            }
+        }
+
+        $this->updateSocial($data);
     }
 
     public function updateSocial($data)
@@ -261,35 +312,25 @@ class MemberModel extends Model
         $name = '';
         $lastname = '';
         $phone = '';
-        foreach ($data['txt_person'] as $value) {
-            $arr = explode(" ",$value);
-            $name = $arr[0];
-            $lastname = $arr[1];
-        }
-        foreach ($data['txt_personphone'] as $phone) {
-            $phone = $phone;
-        }
         
-        for ($i=0; $i < count($data['txt_person']); $i++) {
-            $arr = explode(" ",$data['txt_person'][$i]);
-            $name = $arr[0];
-            $lastname = $arr[1];
-            $phone = $data['txt_personphone'][$i];
-            $info = [
-                'member_id' => $data['hd_id'],
-                'name' => $name,
-                'lastname' => $lastname,
-                'phone' => $phone,
-                'created_at' => $datetime,
-                'updated_at' => $datetime
-            ];
-            $query = $builder->insert($info);
+        if(isset($data['txt_person'])){
+            $count = count($data['txt_person']);
+            for ($i=0; $i < $count; $i++) {
+                $arr = explode(" ",$data['txt_person'][$i]);
+                $name = $arr[0];
+                $lastname = $arr[1];
+                $phone = $data['txt_personphone'][$i];
+                $info = [
+                    'member_id' => $data['hd_id'],
+                    'name' => $name,
+                    'lastname' => $lastname,
+                    'phone' => $phone,
+                    'created_at' => $datetime,
+                    'updated_at' => $datetime
+                ];
+                $builder->insert($info);
+            }
         }
-        
-        if($query){
-            return true;
-        }else{
-            return false;
-        }
+        return true;
     }
 }

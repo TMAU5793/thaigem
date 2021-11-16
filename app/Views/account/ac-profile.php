@@ -33,38 +33,69 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.product-type') ?> <span class="text-danger">*</span></label>
-                                    <select name="ddl_cate[]" id="ddl_cate" class="form-control">
-                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
-                                        <?php
-                                            foreach($subcates as $subcate){
-                                                foreach($maincates as $maincate){
-                                                    if($subcate->maincate_id == $maincate->id){
-                                        ?>
-                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
-                                        <?php } } } ?>
-                                    </select>
+                                    <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_productcate')?$validation->getError('ddl_productcate'):'') ?></small>
+                                    <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='product'){ ?>
+                                        <div class="select-item position-relative" id="mb-pcate-<?= $row->id ?>">
+                                            
+                                            <?php
+                                                foreach($subcates as $subcate){
+                                                    foreach($maincates as $maincate){
+                                                        if($subcate->maincate_id == $maincate->id && $row->cate_id == $subcate->id){
+                                            ?>
+                                                <i class="fas fa-trash-alt text-danger pe-3 cursor-pointer" onclick="deleteRow('<?= $row->id ?>','tbl_member_business','mb-pcate-<?= $row->id ?>')" title='delete'></i>
+                                                <span><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></span>                                                
+                                            <?php } } }  ?>
+                                        </div>
+                                    <?php } } } else{ ?>
+                                        <select name="ddl_productcate[]" class="form-control mb-3">
+                                            <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
+                                            <?php                                            
+                                                foreach($subcates as $subcate){
+                                                    foreach($maincates as $maincate){
+                                                        if($subcate->maincate_id == $maincate->id){
+                                            ?>
+                                                <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                            <?php } } }  ?>
+                                        </select>
+                                    <?php } ?>
                                     <div id="cate-more"></div>
                                     <div class="add-item">
-                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.product-type') ?></button>
+                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.product-type') ?></button>                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group pe-5">
                                     <label for=""><?= lang('GlobalLang.business-type') ?> <span class="text-danger">*</span></label>
-                                    <select name="ddl_business[]" id="ddl_business" class="form-control">
-                                        <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
-                                        <?php
-                                            foreach($subbusniess as $subcate){
-                                                foreach($mainbusniess as $maincate){
-                                                    if($subcate->main_type == $maincate->id){
-                                        ?>
-                                            <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
-                                        <?php } } } ?>
-                                    </select>
+                                    <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_business')?$validation->getError('ddl_business'):'') ?></small>
+                                    <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='business'){ ?>
+                                        <div class="select-item position-relative" id="mb-bcate-<?= $row->id ?>">
+                                            
+                                            <?php
+                                                foreach($subbusniess as $subcate){
+                                                    foreach($mainbusniess as $maincate){
+                                                        if($subcate->main_type == $maincate->id && $row->cate_id == $subcate->id){
+                                            ?>
+                                                <i class="fas fa-trash-alt text-danger pe-3 cursor-pointer" onclick="deleteRow('<?= $row->id ?>','tbl_member_business','mb-bcate-<?= $row->id ?>')" title='delete'></i>
+                                                <span><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></span>                                                
+                                            <?php } } } ?>
+                                                
+                                        </div>
+                                    <?php } } }else{ ?>
+                                        <select name="ddl_business[]" id="ddl_business" class="form-control mb-3">
+                                            <option value="">-- <?= lang('GlobalLang.select') ?> --</option>
+                                            <?php
+                                                foreach($subbusniess as $subcate){
+                                                    foreach($mainbusniess as $maincate){
+                                                        if($subcate->main_type == $maincate->id){
+                                            ?>
+                                                <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                            <?php } } } ?>
+                                        </select>
+                                    <?php } ?>
                                     <div id="business-more"></div>
                                     <div class="add-item">
-                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.business-type') ?></button>
+                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.business-type') ?></button>                                        
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +208,8 @@
 
                     <div class="tab-pane fade" id="nav-content2" role="tabpanel" aria-labelledby="nav-tab2">
                         <div class="person-contact">
-                            <div class="row">
+                            <div class="border-bottom mb-3">Primary contact</div>
+                            <div class="row">                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.name') ?></label>
@@ -191,25 +223,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="border-bottom mb-3 mt-3">The contacts below cannot be edited. But you can delete and add new ones.</div>
                             <?php
                                 foreach ($membercontact as $contact) {
+                                    $el = 'person-contact-'.$contact->id;
                             ?>
-                                <div class="row position-relative">
+                                <div class="row" id="<?= $el ?>">
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for=""><?= lang('GlobalLang.name') ?></label>
-                                            <input type="text" class="form-control" name="txt_subperson[]" value="<?= $contact->name.' '.$contact->lastname ?>">
+                                        <div class="box-info">
+                                            <span><?= $contact->name.' '.$contact->lastname ?></span>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                        <div class="form-group">
-                                            <label for=""><?= lang('GlobalLang.phoneNumber') ?></label>
-                                            <input type="text" class="form-control" name="txt_subphone[]" value="<?= $contact->phone ?>">
+                                        <div class="box-info">
+                                            <span><?= $contact->phone ?></span>
+                                            <i class="fas fa-trash-alt text-danger ps-3 cursor-pointer" onclick="deleteRow('<?= $contact->id ?>','tbl_member_contact','<?= $el ?>')" title="delete"></i>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-delete-person w-auto" onclick="">
-                                        <i class="fas fa-trash-alt text-danger"></i>
-                                    </button>
                                 </div>
                             <?php } ?>
                             <div id="person-more"></div>
@@ -234,6 +264,8 @@
                             ?>
                             <img src="<?= $profile_pic; ?>" id="pic_profile" class="rounded-circle">
                             <input id="txt_profile" name="txt_profile" type="file" class="form-control input-hide" accept="image/*">
+                            <input type="hidden" name="hd_profile" id="hd_profile" value="<?= $info['profile'] ?>">
+                            <input type="hidden" name="hd_profile_del" value="<?= $info['profile'] ?>">
                             <label for="txt_profile" class="label-file-img mt-3">Choose Images</label>
                             <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
                         </div>
