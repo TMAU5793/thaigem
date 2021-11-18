@@ -1,8 +1,18 @@
 <?php
     use App\Models\Account\AccountModel;
+    $db = \Config\Database::connect();
+    $builder = $db->table('tbl_notification');
+
     $userdata = session()->get('userdata');
     $model = new AccountModel();
     $status = $model->where('id',$userdata['id'])->first();
+    $noti = $builder->where(['member_id'=>$userdata['id'],'status'=>'0'])->get()->getResultArray();
+
+    $lang = 'en';
+    if(session()->get('lang')){
+        $lang = session()->get('lang');
+    }
+    
 ?>
 <div class="account-menu ptb-1rem navbar-light">
     <ul class="navbar-nav fs-5 justify-content-center">
@@ -40,6 +50,39 @@
         <?php } ?>
         <li class="nav-item">
             <a class="nav-link <?= (isset($ac_webboard)?'active':''); ?>" href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a>
+        </li>
+        <li class="nav-item">
+            <div class="ac-noti position-relative">
+                <i class="far fa-bell pt-2 cursor-pointer" title="notification"></i>
+                <?php
+                    if($noti){
+                        $n=count($noti);
+                ?>
+                    <div class="box-noti cursor-pointer" title="notification">
+                        <span><?= $n ?></span>
+                    </div>
+                    <div class="noti-list">
+                        <?php
+                            $n=0;
+                            foreach ($noti as $list){
+                                $n++;
+                                $cBorder ='';
+                                if($n>1){
+                                    $cBorder = 'noti-border';
+                        ?>
+                            <div class="noti-item <?= $cBorder ?>">
+                                <strong><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
+                            </div>
+                        <?php }else{ ?>
+                            <div class="noti-item">
+                                <strong><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
+                            </div>
+                        <?php } } ?>
+                    </div>
+                <?php } ?>
+            </div>
         </li>
     </ul>
     <div class="clearfix"></div>

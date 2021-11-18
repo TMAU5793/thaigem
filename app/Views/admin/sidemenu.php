@@ -56,21 +56,16 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles' && $uri->getSegment(3)==''?'active':''); ?>">
+                            <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles' && $uri->getSegment(3)=='' || $uri->getSegment(3)=='form' || $uri->getSegment(3)=='edit'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>บทความ</p>
                             </a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/articles'); ?>" class="nav-link <?= ($uri->getSegment(2)=='articles' && $uri->getSegment(3)==''?'active':''); ?>">
+                            <a href="<?= base_url('admin/articles/information'); ?>" class="nav-link <?= ($uri->getSegment(3)=='informationForm' || $uri->getSegment(3)=='information'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>บทความ (Home page)</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/articles/news'); ?>" class="nav-link <?= ($uri->getSegment(3)=='news'?'active':''); ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>ข่าวสาร</p>
+                                <p>ข้อมูลเว็บไซต์</p>
                             </a>
                         </li>
                     </ul>

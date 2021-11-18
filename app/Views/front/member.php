@@ -11,10 +11,10 @@
             <div class="search-member mt-4">
                 <form id="frm-search-member" action="<?= site_url('member/search') ?>" method="GET">
                     <div class="row">
-                        <div class="col-md-6 toggle-slow">
+                        <div class="col-md-6">
                             <div class="input-group">
-                                <input type="text" name="txt_keyword" class="form-control" placeholder="Member name" value="<?= (isset($_GET['txt_keyword'])?$_GET['txt_keyword']:'') ?>">
-                                <div class="input-group-append">
+                                <input type="text" name="txt_keyword" class="form-control" placeholder="company name" value="<?= (isset($_GET['txt_keyword'])?$_GET['txt_keyword']:'') ?>">
+                                <div class="input-group-append btn-search-member cursor-pointer">
                                     <span class="input-group-text bg-darkgold c-white"><i class="fas fa-search"></i></span>
                                 </div>
                             </div>
@@ -37,11 +37,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6 search-show d-none">
-                            <div class="input-group">
-                                <input type="text" name="kw_company" class="form-control" placeholder="Company name" value="<?= (isset($_GET['kw_company'])?$_GET['kw_company']:'') ?>">
-                            </div>
-                        </div>
+                        
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_business" id="ddl_business" class="w-100">
@@ -63,7 +59,7 @@
                                         if($province){
                                             foreach($province as $row){
                                     ?>
-                                        <option value="<?= $row['code'] ?>" <?= (isset($_GET['ddl_province'])&&$_GET['ddl_province']==$row['code']?'selected':'') ?>><?= $row['name_'.$lang] ?></option>
+                                        <option value="<?= $row['id'] ?>" <?= (isset($_GET['ddl_province'])&&$_GET['ddl_province']==$row['id']?'selected':'') ?>><?= $row['name_'.$lang] ?></option>
                                     <?php } } ?>
                                 </select>
                             </div>
@@ -103,9 +99,13 @@
                         <div class="ac-album w-50">
                             <div class="main-album-img slider-for-hidedots">
                                 <?php
-                                    if($album){
+                                    if($album){                                        
                                         foreach($album as $img){
-                                            if($img['member_id'] == $row['id']){
+                                            $member_id = $row['id'];
+                                            if($row['member_id']){
+                                                $member_id = $row['member_id'];
+                                            }
+                                            if($img['member_id'] == $member_id){
                                 ?>
                                     <div class="slider-for-item">
                                         <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $row['name'].' '.$row['lastname'] ?>">
@@ -116,7 +116,11 @@
                                 <?php
                                     if($album){
                                         foreach($album as $img){
-                                            if($img['member_id'] == $row['id']){
+                                            $member_id = $row['id'];
+                                            if($row['member_id']){
+                                                $member_id = $row['member_id'];
+                                            }
+                                            if($img['member_id'] == $member_id){
                                 ?>
                                     <div class="slider-nav-item">
                                         <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>" alt="thumbnail">
@@ -125,11 +129,17 @@
                             </div>
                         </div>
                         <div class="item-body text-center w-50 plr-2rem position-absolute translate-middle-y top-50 end-0">
-                            <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1"><?= $row['name'].' '.$row['lastname'] ?></h5>
+                            <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1"><?= $row['company'] ?></h5>
                             <p class="text-line-3"><?= character_limiter($row['about'],50) ?></p>
                             
                             <div class="event-action mt-2">
-                                <a href="<?= site_url('member/id/'.$row['id']); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                <?php
+                                    $member_id = $row['id'];
+                                    if($row['code']){
+                                        $member_id = $row['code'];
+                                    }
+                                ?>
+                                <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
                             </div>
                         </div>
                     </div>

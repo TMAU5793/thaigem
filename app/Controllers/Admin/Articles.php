@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 use CodeIgniter\Controller;
 use App\Models\Admin\ArticlesModel;
+use CodeIgniter\I18n\Time;
 
 class Articles extends Controller
 {
@@ -211,5 +212,126 @@ class Articles extends Controller
             'thumbnail' => 'uploads/articles/'.$newName
         ];
         $model->update($id, $thumb);
+    }
+
+    public function information()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_information');
+        $query = $builder->get()->getresultArray();
+		$data = [
+            'meta_title' => 'ข้อมูลเว็บไซต์',
+            'info' => $query
+        ];
+		echo view('admin/web-info',$data);
+
+        //print_r($query);
+    }
+
+    public function informationform()
+    {
+        helper(['form']);
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_information');
+        $request = service('request');
+
+        $getdata = $request->getGet('id');
+        if($getdata){
+            $builder->where('id',$getdata);
+            $builder->limit(1);
+            $data = [
+                'meta_title' => 'อัพเดตข้อมูลเว็บไซต์',
+                'action' => 'saveInformation',
+                'info_single' => $builder->get()->getRow()
+            ];
+        }else{
+            
+            $data = [
+                'meta_title' => 'เพิ่มข้อมูลเว็บไซต์',
+                'action' => 'saveInformation'                
+            ];
+        }
+
+		echo view('admin/web-info-form',$data);
+    }
+
+    public function saveInformation()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_information');
+        $request = service('request');
+        helper(['form']);
+
+        $datetime = new Time('now');
+
+        $rules = [
+            'txt_title_th'          => [
+                'rules' => 'required',
+                'errors'    =>  [
+                    'required'  =>  'กรุณากรอกข้อมูล'
+                ]
+            ],
+            'ddl_cate' => [
+                'rules' => 'required',
+                'errors'    =>  [
+                    'required'  =>  'กรุณากรอกข้อมูล'
+                ]
+            ]
+        ];
+        
+        if(!$this->validate($rules)){
+            $data['validation'] = $this->validator;
+            echo view('admin/web-info-form',$data);
+        }else{
+
+            $postdata = $request->getPost();
+            $status = '1';
+            if($postdata['txt_status']=='off'){
+                $status = '0';
+            }
+            $slug = url_title(strtolower($postdata['txt_title_en']));
+            if($slug==''){
+                $slug = url_title(strtolower($postdata['txt_title_th']));
+            }
+            if($postdata['hd_id']!=""){
+                $arrdata = [
+                    'page' => $postdata['ddl_page'],
+                    'cate' => $postdata['ddl_cate'],
+                    'title_th' => $postdata['txt_title_th'],
+                    'title_en' => $postdata['txt_title_en'],
+                    'desc_th' => $postdata['txt_desc'],
+                    'desc_en' => $postdata['txt_desc_en'],
+                    'slug' => $slug,
+                    'seo_title_th' => $postdata['seo_title_th'],
+                    'seo_desc_th' => $postdata['seo_desc_th'],
+                    'seo_title_en' => $postdata['seo_title_en'],
+                    'seo_desc_en' => $postdata['seo_desc_en'],
+                    'status' => $status,
+                    'updated_at' => $datetime
+                ];
+                $builder->where('id',$postdata['hd_id']);
+                $query = $builder->update($arrdata);
+            }else{
+                $arrdata = [
+                    'page' => $postdata['ddl_page'],
+                    'cate' => $postdata['ddl_cate'],
+                    'title_th' => $postdata['txt_title_th'],
+                    'title_en' => $postdata['txt_title_en'],
+                    'desc_th' => $postdata['txt_desc'],
+                    'desc_en' => $postdata['txt_desc_en'],
+                    'slug' => $slug,
+                    'seo_title_th' => $postdata['seo_title_th'],
+                    'seo_desc_th' => $postdata['seo_desc_th'],
+                    'seo_title_en' => $postdata['seo_title_en'],
+                    'seo_desc_en' => $postdata['seo_desc_en'],
+                    'status' => $status,
+                    'created_at' => $datetime,
+                    'updated_at' => $datetime
+                ];
+                $query = $builder->insert($arrdata);
+            }
+            
+            return redirect()->to('admin/articles/information');
+        }
     }
 }

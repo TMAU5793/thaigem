@@ -89,5 +89,6 @@ return [
     'profile' => 'Profile',
     'editinfo' => 'Edit Information',
     'socialmedia' => 'Social Media',
-    'lineOA' => 'Line OA specify @ before Line ID'
+    'lineOA' => 'Line OA specify @ before Line ID',
+    'notfound' => 'Not found Information'
 ];

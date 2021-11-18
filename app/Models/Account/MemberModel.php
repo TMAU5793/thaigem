@@ -239,10 +239,14 @@ class MemberModel extends Model
             $product = count($data['ddl_productcate']);
             for ($i=0; $i < $product; $i++) {
                 if($data['ddl_productcate'][$i]!=""){
+                    $arr = explode(",",$data['ddl_productcate'][$i]);
+                    $maincate = $arr[0];
+                    $subcate = $arr[1];
                     $info = [
                         'member_id' => $data['hd_id'],
                         'type' => 'product',
-                        'cate_id' => $data['ddl_productcate'][$i],
+                        'maincate_id' => $maincate,
+                        'cate_id' => $subcate,
                         'created_at' => $datetime,
                         'updated_at' => $datetime
                     ];
@@ -255,9 +259,14 @@ class MemberModel extends Model
             $busines = count($data['ddl_business']);
             for ($i=0; $i < $busines; $i++) {
                 if($data['ddl_business'][$i]!=""){
+                    $arr = explode(",",$data['ddl_business'][$i]);
+                    $maincate = $arr[0];
+                    $subcate = $arr[1];
                     $info = [
                         'member_id' => $data['hd_id'],
                         'type' => 'business',
+                        'maincate_id' => $maincate,
+                        'cate_id' => $subcate,
                         'cate_id' => $data['ddl_business'][$i],
                         'created_at' => $datetime,
                         'updated_at' => $datetime

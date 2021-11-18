@@ -54,7 +54,7 @@
                                                     foreach($maincates as $maincate){
                                                         if($subcate->maincate_id == $maincate->id){
                                             ?>
-                                                <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                                <option value="<?= $subcate->maincate_id.','.$subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
                                             <?php } } }  ?>
                                         </select>
                                     <?php } ?>
@@ -89,7 +89,7 @@
                                                     foreach($mainbusniess as $maincate){
                                                         if($subcate->main_type == $maincate->id){
                                             ?>
-                                                <option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                                <option value="<?= $subcate->main_type.','.$subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
                                             <?php } } } ?>
                                         </select>
                                     <?php } ?>

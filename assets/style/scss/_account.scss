@@ -13,6 +13,32 @@
             }
         }
     }
+    .noti-list {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            width: 0;
+            height: 0;
+            border: 13px solid transparent;
+            border-bottom-color: #ccc;
+            border-top: 0;
+            margin-left: -13px;
+            margin-top: -13px;
+        }
+        padding: .5rem 1rem;
+        width: 250px;
+        background: #ccc;
+        position: absolute;
+        position: absolute;
+        top: 3rem;
+        right: -1.25rem;
+        border-radius: 6px;
+        p {
+            line-height: 1rem;
+        }
+    }
 }
 
 .account-body {
@@ -386,4 +412,27 @@
             border: 1px solid $c-lightgold;
         }
     }
+}
+
+.box-noti {
+    position: absolute;
+    right: -10px;
+    bottom: 5px;
+    width: 16px;
+    height: 16px;
+    background: #ff0000;
+    border-radius: 50px;
+    color: $c-white;
+    font-family: $ff-dbadmanBold;
+    span {
+        display: block;
+        text-align: center;
+        line-height: 18px;
+        font-size: 15px;
+    }
+}
+
+.noti-border {
+    margin-top: 6px;
+    border-top: 2px solid $c-white;
 }

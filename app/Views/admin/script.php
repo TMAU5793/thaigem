@@ -105,17 +105,35 @@
             $('#txt_zipcode').val(zipcode);
         });
 
+        $('#ddl_page').on('change',function(){
+            var val = $(this).val();
+            if(val=='member'){
+                var option = '<option value=""> -- เลือก -- </option>';
+                    option += '<option value="1">The Privileges of TGJTA members</option>';
+                    option += '<option value="2">Apply for Membership</option>';
+                $('#ddl_cate').html(option);
+            }else{
+                var option = '<option value=""> -- เลือก -- </option>';
+                    option += '<option value="1">History';
+                    option += '<option value="2">Regulation & Objective</option>';
+                    option += '<option value="3">TGJTA Advisory Board</option>';
+                    option += '<option value="4">TGJTA Board of Directors</option>';
+                    option += '<option value="5">President Policy</option>';
+                $('#ddl_cate').html(option);
+            }
+        });
+
         //date picker rang
         <?php if(isset($info)) { ?>
-            $('input[name="txt_date"]').daterangepicker({            
+            $('input[name="txt_date"]').daterangepicker({
                 startDate: '<?= $info['start_event'] ?>',
-                endDate : '<?= $info['end_event'] ?>',            
+                endDate : '<?= $info['end_event'] ?>',
                 locale: {
                     format: 'YYYY/MM/DD'
                 }
             });
         <?php }else{ ?>
-            $('input[name="txt_date"]').daterangepicker({         
+            $('input[name="txt_date"]').daterangepicker({
                 locale: {
                     format: 'YYYY/MM/DD'
                 }
@@ -197,7 +215,7 @@
             toolbar: [
                 'heading', '|',
                 'ckfinder', 'imageUpload', 'blockQuote', '|',                
-                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',               
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
                 'outdent', 'indent', '|',
                 'insertTable', 'mediaEmbed', '|',
                 'undo', 'redo', '|',

@@ -8,10 +8,7 @@
     <section class="event-body mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-4">
-                    <?= $this->include('account/left-menu') ?>
-                </div>
-                <div class="col-xl-9 col-md-8 col-md-8">
+                <div class="col-12">
                     <?php
                         if (session()->get('userdata')) {
                             echo $this->include('account/ac-menu');
@@ -30,7 +27,7 @@
                                     <div class="event-item-box border-lightgray">
                                         <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?>">
                                         <div class="item-desc p-3">
-                                            <strong class="ff-semibold"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
+                                            <strong class="ff-semibold text-line-2"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
                                             <p class="text-line-3"><?= ($lang=='en' && $event['shortdesc_en']!=""?word_limiter($event['shortdesc_en'],10):word_limiter($event['shortdesc'],10)) ?></p>
                                         </div>
                                     </div>

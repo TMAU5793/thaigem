@@ -28,13 +28,13 @@
                         if($catergory){
                             foreach($catergory as $row){
                     ?>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-6 cateory-item mb-3">
+                        <div class="col-lg-2 col-md-4 col-6 cateory-item mb-3">
                             <div class="box-shadow-lightgold cursor-pointer zoom-in" onclick="location.href='<?= site_url('member/filter?c='.$row['id']) ?>'">
                                 <div class="item-img">
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">
                                 </div>
                                 <div class="item-text text-center position-relative">
-                                    <h2 class="ff-dbadmanBold absolute-center w-100"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></h2>                                    
+                                    <h2 class="ff-dbadmanBold absolute-center w-100 fs-5"><?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?></h2>                                    
                                 </div>
                             </div>
                         </div>
@@ -187,9 +187,14 @@
     <section class="member-home ptb-2rem">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-6 col-sm-6 col-8">
                     <div class="tg-title">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.members'); ?></strong></h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-4">
+                    <div class="text-end">
+                        <a href="<?= site_url('member') ?>" class="c-black a-hover-darkgold view-all text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewAll'); ?></a>
                     </div>
                 </div>
             </div>

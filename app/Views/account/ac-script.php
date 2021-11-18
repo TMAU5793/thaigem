@@ -297,7 +297,7 @@
             html +=  '<select name="ddl_productcate[]" class="form-control mt-3">';
             html +=  '<option value="">-- <?= lang('GlobalLang.select') ?> --</option>';
             <?php foreach($subcates as $subcate){ foreach($maincates as $maincate){ if($subcate->maincate_id == $maincate->id){ ?>
-            html +=  '<option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
+            html +=  '<option value="<?= $subcate->maincate_id.','.$subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
             <?php } } } ?>
             html +=  '</select>';
             $('#cate-more').append(html);
@@ -309,7 +309,7 @@
             html +=  '<select name="ddl_business[]" class="form-control mt-3">';
             html +=  '<option value="">-- <?= lang('GlobalLang.select') ?> --</option>';
             <?php foreach($subbusniess as $subcate){ foreach($mainbusniess as $maincate){ if($subcate->main_type == $maincate->id){ ?>
-            html +=  '<option value="<?= $subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
+            html +=  '<option value="<?= $subcate->main_type.','.$subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
             <?php } } } ?>
             html +=  '</select>';
             $('#business-more').append(html);

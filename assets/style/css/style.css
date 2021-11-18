@@ -356,6 +356,29 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     .account-menu .navbar-nav .nav-link.active {
       border-bottom: 2px solid #000000;
       padding-bottom: 0; }
+.account-menu .noti-list {
+  padding: .5rem 1rem;
+  width: 250px;
+  background: #ccc;
+  position: absolute;
+  position: absolute;
+  top: 3rem;
+  right: -1.25rem;
+  border-radius: 6px; }
+  .account-menu .noti-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-bottom-color: #ccc;
+    border-top: 0;
+    margin-left: -13px;
+    margin-top: -13px; }
+  .account-menu .noti-list p {
+    line-height: 1rem; }
 
 .account-body .ac-album {
   overflow: hidden;
@@ -610,6 +633,26 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     box-shadow: inset 0px 0px 1px 2px #cec6b2;
     border: 1px solid #cec6b2; }
 
+.box-noti {
+  position: absolute;
+  right: -10px;
+  bottom: 5px;
+  width: 16px;
+  height: 16px;
+  background: #ff0000;
+  border-radius: 50px;
+  color: #ffffff;
+  font-family: "DBAdmanXBold"; }
+  .box-noti span {
+    display: block;
+    text-align: center;
+    line-height: 18px;
+    font-size: 15px; }
+
+.noti-border {
+  margin-top: 6px;
+  border-top: 2px solid #ffffff; }
+
 @keyframes left-to-right {
   0% {
     width: 0px; }
@@ -636,7 +679,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     .category-home .category-list .cateory-item .box-shadow-lightgold {
       border: 1px solid #cec6b2; }
   .category-home .category-list .item-text {
-    height: 100px;
+    height: 60px;
     background-color: #ffffff; }
 .category-home .row {
   position: relative; }

@@ -4,6 +4,18 @@ namespace App\Controllers;
 
 class About extends BaseController
 {
+    protected $db;
+    protected $builder;
+    protected $lang;
+    public function __construct() {
+        $this->db      = \Config\Database::connect();
+        $this->builder = $this->db->table('tbl_information');
+
+        $this->lang = 'en';
+        if(session()->get('lang')){
+            $this->lang = session()->get('lang');
+        }
+    }
 	public function index()
 	{        
         $data = [
@@ -15,8 +27,12 @@ class About extends BaseController
 
     public function history()
     {
+        $query = $this->getInformation('about','1'); //page, data category
+        
         $data = [
-            'meta_title' => 'ประวัติสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
+            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'lang' => $this->lang,
+            'info_single' => $query
         ];
         
         echo view('template/information', $data);
@@ -24,8 +40,12 @@ class About extends BaseController
 
     public function regulation()
     {
+        $query = $this->getInformation('about','2'); //page, data category
+        
         $data = [
-            'meta_title' => 'ข้อบังคับสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
+            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'lang' => $this->lang,
+            'info_single' => $query
         ];
         
         echo view('template/information', $data);
@@ -33,17 +53,12 @@ class About extends BaseController
 
     public function advisory()
     {
-        $data = [
-            'meta_title' => 'รายนามที่ปรึกษาสมาคมฯ'
-        ];
+        $query = $this->getInformation('about','3'); //page, data category
         
-        echo view('template/information', $data);
-    }
-
-    public function policy()
-    {
         $data = [
-            'meta_title' => 'นโยบายนายกสมาคม 62-64'
+            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'lang' => $this->lang,
+            'info_single' => $query
         ];
         
         echo view('template/information', $data);
@@ -51,10 +66,34 @@ class About extends BaseController
 
     public function directors()
     {
+        $query = $this->getInformation('about','4'); //page, data category
+        
         $data = [
-            'meta_title' => 'รายนามคณะกรรมการสมาคมฯ วาระ 2562-2564'
+            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'lang' => $this->lang,
+            'info_single' => $query
         ];
         
         echo view('template/information', $data);
+    }
+
+    public function policy()
+    {
+        $query = $this->getInformation('about','5'); //page, data category
+        $data = [
+            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'lang' => $this->lang,
+            'info_single' => $query
+        ];
+        
+        echo view('template/information', $data);
+    }
+
+    public function getInformation($page,$cate)
+    {
+        $this->builder->where(['page'=>$page,'cate'=>$cate]);
+        $this->builder->limit(1);
+        $query = $this->builder->get()->getRow();
+        return $query;
     }
 }

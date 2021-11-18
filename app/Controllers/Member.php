@@ -2,16 +2,20 @@
 
 namespace App\Controllers;
 use App\Models\MemberModel;
+use App\Models\Account\MemberModel as AcMemberModel;
 use App\Models\ProvinceModel;
 use App\Models\Account\AlbumModel;
 use App\Models\Admin\ProductCategoryModel;
 use App\Models\Admin\BusinessModel;
+use App\Models\MemberBusinessModel;
 
 class Member extends BaseController
 {
     protected $lang;
+    protected $db;
     public function __construct() {
         helper('text');
+        $this->db = \Config\Database::connect();
         $this->lang = session()->get('lang');
         if($this->lang==""){
             $this->lang = 'en';
@@ -45,23 +49,38 @@ class Member extends BaseController
         $segment3 = $uri->getSegment(3);
         $model = new MemberModel();
         $albumModel = new AlbumModel();
-        $cateModel = new ProductCategoryModel();
-        $bnModel = new BusinessModel();
-        $pvModel = new ProvinceModel();
-
+        $mbModel = new AcMemberModel();
+        
         if($segment3){
-            $member = $model->where('id',$segment3)->first();
-            $category = $cateModel->where('id',$member['product_type'])->first();
-            $business = $bnModel->where('id',$member['business_type'])->first();
+            $member = $model->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
+                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
+                            ->where(['tbl_member.status'=>'2','tbl_member.code'=>$segment3])
+                            ->groupBy('tbl_member_business.member_id')
+                            ->first();
+            if(!$member){
+                $member = $model->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
+                                ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
+                                ->where(['tbl_member.status'=>'2','tbl_member.id'=>$segment3])
+                                ->groupBy('tbl_member_business.member_id')
+                                ->first();
+            }
             
             $data = [
                 'meta_title' => $member['name'].' '.$member['lastname'],
                 'meta_desc' => $member['about'],
                 'info' => $member,
-                'album' => $albumModel->where('member_id',$segment3)->findAll(),
-                'category' => $category,
-                'business' => $business,
-                'province' => $pvModel->where('code',$member['province'])->first()
+                'album' => $albumModel->where('member_id',$member['member_id'])->findAll(),
+                'address' => $mbModel->getAddress(),
+                'province' => $mbModel->getProvince(),
+                'amphure' => $mbModel->getAmphure(),
+                'district' => $mbModel->getDistrict(),
+                'social' => $mbModel->getSocial(),
+                'membercontact' => $mbModel->getMemberContact(),
+                'memberbusiness' => $mbModel->getMemberBusiness(),
+                'pMaincate' => $mbModel->getProductMainType(),
+                'pSubcate' => $mbModel->getProductType(),
+                'bMaincate' => $mbModel->getBusinessMainType(),
+                'bSubcate' => $mbModel->getBusinessType()
             ];
             
             echo view('front/member-desc', $data);
@@ -89,17 +108,23 @@ class Member extends BaseController
             $province = $get['ddl_province'];
             $duration = $get['ddl_duration'];
 
+            // $builder = $db->table('tbl_member_business');            
+            // $builder->join('tbl_member', 'tbl_member.id = tbl_member_business.member_id');
+            // $builder->where('tbl_member_business.maincate_id',$id);
             if($keyword=="" && $company!=""|| $productType!="" || $business!="" || $province!="" || $duration!=""){
-                $result = $mbModel->where('status','2')
-                            ->like('company',$company)
-                            ->like('product_type',$productType)
-                            ->like('business_type',$business)
-                            ->like('province',$province)                           
+                $result = $mbModel->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
+                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
+                            ->where('tbl_member.status','2')
+                            ->like('tbl_member.company',$keyword)
+                            ->like('tbl_member_business.cate_id',$productType)
+                            ->like('tbl_member_business.cate_id',$business)
+                            ->like('tbl_address.province_id',$province)
+                            ->groupBy('tbl_member_business.member_id')
                             ->findAll();
                 $avd = TRUE;
 
-            }else if($keyword!="" && $company=="" && $productType=="" && $business=="" && $province=="" && $duration==""){
-                $result = $mbModel->like('name',$keyword)->orLike('lastname',$keyword)->where('status','2')->findAll();
+            }else if($keyword!="" && $productType=="" && $business=="" && $province=="" && $duration==""){
+                $result = $mbModel->where('status','2')->like('company',$keyword)->findAll();
             }else{
                 return redirect()->to('member');
             }
@@ -114,7 +139,9 @@ class Member extends BaseController
                 'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
                 'avd' => $avd
             ];
-            //print_r($result);
+            // print_r('<pre>');
+            // print_r($result);
+            // print_r('</pre>');
             echo view('front/member', $data);
         }else{
             return redirect()->to('member');
@@ -130,21 +157,28 @@ class Member extends BaseController
         $pvModel = new ProvinceModel();
         $cateModel = new ProductCategoryModel();
         $bnModel = new BusinessModel();
-        $get = $request->getGet();
+        $mbnModel = new MemberBusinessModel();
+        $id = $request->getGet('c');
+        // echo $id;
 
-        if($get){
-            $keyword = $get['c'];
-            $result = $mbModel->where('maincate_id',$keyword)->findAll();
+        if($id){
+            //$result = $mbnModel->where('maincate_id',$id)->groupby('maincate_id')->findAll();
+            $db      = \Config\Database::connect();
+            $builder = $db->table('tbl_member_business');            
+            $builder->join('tbl_member', 'tbl_member.id = tbl_member_business.member_id');
+            $builder->where('tbl_member_business.maincate_id',$id);
+            $builder->groupBy('tbl_member_business.maincate_id');
+            $query = $builder->get()->getresultArray();
             $data = [
                 'meta_title' => 'Filter Member',
                 'lang' => $this->lang,
-                'info' => $result,
+                'info' => $query,
                 'album' => $albumModel->findAll(),
                 'province' => $pvModel->findAll(),
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
                 'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll()
             ];
-            //print_r($result);
+            
             echo view('front/member', $data);
         }else{
             return redirect()->to('member');
@@ -153,8 +187,11 @@ class Member extends BaseController
 
     public function privileges()
     {
+        $query = $this->getInformation('member','1'); //page, data category
         $data = [
-            'meta_title' => 'สิทธิประโยชน์การเป็นสมาชิกสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
+            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'lang' => $this->lang,
+            'info_single' => $query
         ];
         
         echo view('template/information', $data);
@@ -162,10 +199,22 @@ class Member extends BaseController
 
     public function membership()
     {
+        $query = $this->getInformation('member','2'); //page, data category
         $data = [
-            'meta_title' => 'สิทธิประโยชน์การเป็นสมาชิกสมาคมผู้ค้าอัญมณีไทยและเครื่องประดับ'
+            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'lang' => $this->lang,
+            'info_single' => $query
         ];
         
         echo view('template/information', $data);
+    }
+
+    public function getInformation($page,$cate)
+    {
+        $builder = $this->db->table('tbl_information');
+        $builder->where(['page'=>$page,'cate'=>$cate]);
+        $builder->limit(1);
+        $query = $builder->get()->getRow();
+        return $query;
     }
 }
