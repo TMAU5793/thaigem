@@ -23,6 +23,7 @@ return [
     'lastname' => 'Last name',
     'password' => 'Password',
     'comfirmPassword' => 'Comfirm password',
+    'newpassword' => 'New password',
     'email' => 'Email',
     'companyEmail' => 'Company Email',
     'phoneNumber' => 'Phone number',
@@ -90,5 +91,10 @@ return [
     'editinfo' => 'Edit Information',
     'socialmedia' => 'Social Media',
     'lineOA' => 'Line OA specify @ before Line ID',
-    'notfound' => 'Not found Information'
+    'notfound' => 'Not found Information',
+    'forgot' => 'Forgot Password',
+    'forgotText' => 'To reset the password In case of forgetting the access password Have the user enter their account information (email), and then submit a password reset request. An edit link will be sent to the email address entered by the user.',
+    'comfirm' => 'Comfirm',
+    'resetpass' => 'Reset Password',
+    'resetText' => 'Able to re-sign the password By filling in the new password in the form as follows'
 ];

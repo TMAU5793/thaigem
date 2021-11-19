@@ -24,6 +24,7 @@
                         <button type="submit" class="btn bg-lightgold ff-dbadmanBold w-100 text-uppercase"><?= lang('GlobalLang.signin') ?></button>
                     </div>
                 </form>
+                <a href="<?= site_url('member/forgotpassword') ?>" class="text-decoration-none c-black text-uppercase mt-3 d-block text-center"><?= lang('GlobalLang.forgot') ?></a>
                 <div class="login-with-social plr-2rem mt-3">
                     <a href="javascript:void(0)" onclick="loginFacebook();" class="btn bg-lightgold ff-dbadmanBold text-uppercase d-block w-100 mb-3"> <?= lang('GlobalLang.signFacebook') ?></a>
                     <a href="<?= site_url('logingoogle'); ?>" class="btn bg-lightgold ff-dbadmanBold text-uppercase d-block w-100"> <?= lang('GlobalLang.signGmail') ?></a>
@@ -219,9 +220,10 @@
                 <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
             <div class="modal-body">
-                <div class="text-center">
-                    <p>ระบบบันทึกข้อมูลเรียบร้อยแล้ว</p>
-                    <p>Complete to your data</p>
+                <i class="fas fa-check-circle text-success fs-1 d-block text-center mb-3"></i>
+                <div class="text-center" id="modalSuccessMSG">                    
+                    <p>ระบบดำเนินการเรียบร้อยแล้ว</p>
+                    <p>The operation is complete.</p>
                 </div>
                 <div class="text-center mb-3">
                     <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>

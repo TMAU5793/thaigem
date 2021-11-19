@@ -107,10 +107,7 @@ class Member extends BaseController
             $business = $get['ddl_business'];
             $province = $get['ddl_province'];
             $duration = $get['ddl_duration'];
-
-            // $builder = $db->table('tbl_member_business');            
-            // $builder->join('tbl_member', 'tbl_member.id = tbl_member_business.member_id');
-            // $builder->where('tbl_member_business.maincate_id',$id);
+            
             if($keyword=="" && $company!=""|| $productType!="" || $business!="" || $province!="" || $duration!=""){
                 $result = $mbModel->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
                             ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
@@ -216,5 +213,69 @@ class Member extends BaseController
         $builder->limit(1);
         $query = $builder->get()->getRow();
         return $query;
+    }
+
+    public function forgotpassword()
+    {
+        $data = [
+            'meta_title' => lang('GlobalLang.forgot'),
+            'lang' => $this->lang,
+        ];
+        
+        echo view('front/forgot-password', $data);
+    }
+
+    public function reset_password()
+    {
+        $data = [];
+        $data['meta_title'] = lang('GlobalLang.forgot');
+        $data['lang'] = $this->lang;
+        $data['resetpass'] = true;
+        if(!empty($token)){
+
+        }else{
+            $data['error'] = 'Sorry! Unauthourized access';
+        }        
+        
+        echo view('front/forgot-password', $data);
+    }
+
+    public function update_password()
+    {
+        $request = service('request');
+    }
+
+    public function emailforgot()
+    {
+        $request = service('request');
+        $email = \Config\Services::email();
+
+        $postdata = $request->getPost('txt_email');
+        if($postdata && $postdata!=''){
+            $config['protocol'] = 'smtp';
+            $config['SMTPCrypto'] = 'tls';
+            $config['SMTPHost'] = 'smtp.gmail.com';
+            $config['SMTPUser'] = 'grasp.sendmail@gmail.com';
+            $config['SMTPPass'] = 'egmolkzlnqbyjoon';
+            $config['SMTPPort'] = '587';
+            $config['mailPath'] = '/usr/sbin/sendmail';
+            $config['charset']  = 'iso-8859-1';
+            $config['wordWrap'] = true;
+            $email->initialize($config);
+            
+            $email->setFrom('thaigem@gmail.com', 'Thai gem and jewelry');
+            $email->setTo($postdata);
+            
+            $email->setSubject(($this->lang=='en'?'TGJTA : Reset pasword':'TGJTA การรีเซ็ตรหัสผ่าน'));
+            $email->setMessage('Testing the email class.');
+
+            if($email->send()){
+                return redirect()->to('member/forgotpassword')->with('msg_mail','true');
+            }else{
+                $email->printDebugger();
+            }
+        }else{
+            return redirect()->to('');
+        }
     }
 }

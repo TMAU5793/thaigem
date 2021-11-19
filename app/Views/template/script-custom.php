@@ -136,6 +136,10 @@ use Google\Service\Adsense\Site;
             $('#successModal').modal('show');
         <?php } ?>
 
+        <?php if (session('msg_mail')){ ?>
+            $('#successModal').modal('show');
+        <?php } ?>
+
     });
     //End Ready function
 
