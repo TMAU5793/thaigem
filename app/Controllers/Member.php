@@ -8,6 +8,9 @@ use App\Models\Account\AlbumModel;
 use App\Models\Admin\ProductCategoryModel;
 use App\Models\Admin\BusinessModel;
 use App\Models\MemberBusinessModel;
+use DateTime;
+
+//use CodeIgniter\I18n\Time;
 
 class Member extends BaseController
 {
@@ -70,13 +73,13 @@ class Member extends BaseController
                 'meta_desc' => $member['about'],
                 'info' => $member,
                 'album' => $albumModel->where('member_id',$member['member_id'])->findAll(),
-                'address' => $mbModel->getAddress(),
+                'address' => $mbModel->getAddressById($member['member_id']),
                 'province' => $mbModel->getProvince(),
                 'amphure' => $mbModel->getAmphure(),
                 'district' => $mbModel->getDistrict(),
-                'social' => $mbModel->getSocial(),
-                'membercontact' => $mbModel->getMemberContact(),
-                'memberbusiness' => $mbModel->getMemberBusiness(),
+                'social' => $mbModel->getSocialById($member['member_id']),
+                'membercontact' => $mbModel->getMemberContactById($member['member_id']),
+                'memberbusiness' => $mbModel->getMemberBusinessById($member['member_id']),
                 'pMaincate' => $mbModel->getProductMainType(),
                 'pSubcate' => $mbModel->getProductType(),
                 'bMaincate' => $mbModel->getBusinessMainType(),
@@ -227,52 +230,158 @@ class Member extends BaseController
 
     public function reset_password()
     {
+        helper('date');
+        $db = \Config\Database::connect();
+        $builder = $db->table('tbl_token');
+        $request = service('request');
+
+        $date_now = date("Y-m-d H:i:s");
+        $get_data = $request->getGet('tk');
+        $builder->where('token',$get_data);
+        $token = $builder->get()->getRow();        
+
         $data = [];
         $data['meta_title'] = lang('GlobalLang.forgot');
         $data['lang'] = $this->lang;
         $data['resetpass'] = true;
-        if(!empty($token)){
+        $data['member_id'] = $token->member_id;
 
+        if($request->getGet()){
+            if($date_now > $token->token_expire){                
+                $data['expire'] = true;
+            }else{
+                $data['expire'] = false;
+            }
         }else{
-            $data['error'] = 'Sorry! Unauthourized access';
-        }        
+            return redirect()->to('member/forgotpassword');
+        }
         
         echo view('front/forgot-password', $data);
     }
 
     public function update_password()
     {
+        helper('date');
         $request = service('request');
+        helper(['date','form']);
+        $db = \Config\Database::connect();
+        $builder = $db->table('tbl_token');
+        $request = service('request');
+
+        $date_now = date("Y-m-d H:i:s");
+        $hd_token = $request->getPost('hd_token');
+        $builder->where('token',$hd_token);
+        $token = $builder->get()->getRow();                
+
+        $rules = [
+            'txt_newpassword'       => [
+                'rules' =>  'required|min_length[6]|max_length[200]',
+                'errors'    =>  [
+                'required'  =>  'กรุณากรอกรหัสผ่าน',
+                    'min_length'   =>  'รหัสผ่านอย่างน้อย 6 ตัวอักษร'
+                ]
+            ],
+            'txt_cfpassword'    => [
+                'rules' =>  'matches[txt_newpassword]',
+                'errors'    =>  [
+                    'matches'  =>  'รหัสผ่านไม่ตรงกัน'
+                ]
+            ],
+        ];
+        
+        if($this->validate($rules)){
+            $token_arr = [
+                'status' => '1'
+            ];
+            $builder->where(['member_id'=>$request->getPost('hd_member'),'token'=>$hd_token]);
+            $token = $builder->update($token_arr);
+            if($token){
+                $password = $db->table('tbl_member');
+                $pwd_arr = [
+                    'password' => password_hash($request->getPost('txt_newpassword'), PASSWORD_DEFAULT),
+                ];
+                $password->where('id',$request->getPost('hd_member'));
+                $update = $password->update($pwd_arr);
+                if($update){
+                    return redirect()->to('member/forgotpassword')->with('msg_done','true');
+                }else{
+                    return redirect()->to('member/forgotpassword');
+                }
+            }
+        }else{
+            $data = [];
+            $data['meta_title'] = lang('GlobalLang.forgot');
+            $data['lang'] = $this->lang;
+            $data['resetpass'] = true;
+            $data['token'] = $request->getPost('hd_token');
+            $data['member_id'] = $request->getPost('hd_member');
+
+            if($request->getPost()){
+                if($date_now > $token->token_expire){                
+                    $data['expire'] = true;
+                }else{
+                    $data['expire'] = false;
+                }
+            }else{
+                return redirect()->to('member/forgotpassword');
+            }
+            $data['validation'] = $this->validator;
+            echo view('front/forgot-password',$data);
+            //print_r($this->validator);
+        }        
     }
 
     public function emailforgot()
     {
+        helper('date');
+        $mbModel = new MemberModel();
         $request = service('request');
         $email = \Config\Services::email();
 
-        $postdata = $request->getPost('txt_email');
-        if($postdata && $postdata!=''){
-            $config['protocol'] = 'smtp';
-            $config['SMTPCrypto'] = 'tls';
-            $config['SMTPHost'] = 'smtp.gmail.com';
-            $config['SMTPUser'] = 'grasp.sendmail@gmail.com';
-            $config['SMTPPass'] = 'egmolkzlnqbyjoon';
-            $config['SMTPPort'] = '587';
-            $config['mailPath'] = '/usr/sbin/sendmail';
-            $config['charset']  = 'iso-8859-1';
-            $config['wordWrap'] = true;
-            $email->initialize($config);
-            
-            $email->setFrom('thaigem@gmail.com', 'Thai gem and jewelry');
-            $email->setTo($postdata);
-            
-            $email->setSubject(($this->lang=='en'?'TGJTA : Reset pasword':'TGJTA การรีเซ็ตรหัสผ่าน'));
-            $email->setMessage('Testing the email class.');
+        $postdata = $request->getPost();
+        $date_at = date("Y-m-d H:i:s");
+        $date_expire = date("Y-m-d H:i:s", strtotime('+15 minutes'));
 
-            if($email->send()){
-                return redirect()->to('member/forgotpassword')->with('msg_mail','true');
+        if($postdata && $postdata['txt_email']!=''){
+            $member = $mbModel->where('account',$postdata['txt_email'])->first();
+            $data = [
+                'member_id' => $member['id'],
+                'token' => $postdata['hd_token'],
+                'token_expire' => $date_expire,
+                'type' => 'resetpassword',
+                'created_at' => $date_at
+            ];
+            $db = \Config\Database::connect();
+            $builder = $db->table('tbl_token');
+            $query = $builder->insert($data);
+            if($query){
+                $config['protocol'] = 'smtp';
+                $config['SMTPCrypto'] = 'tls';
+                $config['SMTPHost'] = 'smtp.gmail.com';
+                $config['SMTPUser'] = 'grasp.sendmail@gmail.com';
+                $config['SMTPPass'] = 'egmolkzlnqbyjoon';
+                $config['SMTPPort'] = '587';
+                $config['mailPath'] = '/usr/sbin/sendmail';
+                $config['charset']  = 'utf-8';
+                $config['mailType']  = 'html';
+                $config['wordWrap'] = true;
+                $email->initialize($config);
+                
+                $email->setFrom('info@thaigemjewelry.org', 'Thai gem and jewelry');
+                $email->setTo($postdata['txt_email']);                
+                $email->setSubject(($this->lang=='en'?'TGJTA : Reset pasword':'TGJTA การรีเซ็ตรหัสผ่าน'));
+                $msg = "<p>".lang('GlobalLang.resetpass1')." : <strong>".$postdata['txt_email']."</strong> ".lang('GlobalLang.resetpass2')."</p>";
+                $msg .= "<a href=\"".site_url('member/reset_password/?tk='.$postdata['hd_token'])."\">".lang('GlobalLang.resetpass')."</a>";
+                $msg .= "<p>".lang('GlobalLang.resetpass3')."</p>";
+                $email->setMessage($msg);
+                //echo $msg;
+                if($email->send()){
+                    return redirect()->to('member/forgotpassword')->with('msg_mail','true');
+                }else{
+                    $email->printDebugger();
+                }
             }else{
-                $email->printDebugger();
+                print_r($db->error());
             }
         }else{
             return redirect()->to('');

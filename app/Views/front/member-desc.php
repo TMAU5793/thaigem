@@ -65,7 +65,7 @@
                                             <?php
                                                 $n=0;
                                                 foreach($memberbusiness as $row){
-                                                    if($row->type == 'product'){
+                                                    if($row->type == 'product' && $row->member_id == $info['member_id']){
                                             ?>
                                                 <span class="fs-5 d-inline">
                                                     <?php
@@ -101,8 +101,8 @@
                                         <div class="box-info">
                                             <?php
                                                 $n=0;
-                                                foreach($memberbusiness as $row){
-                                                    if($row->type == 'business'){
+                                                foreach($memberbusiness as $row){                                                    
+                                                    if($row->type == 'business' && $row->member_id == $info['member_id']){
                                             ?>
                                                 <span class="fs-5 d-inline">
                                                     <?php

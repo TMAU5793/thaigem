@@ -96,5 +96,9 @@ return [
     'forgotText' => 'To reset the password In case of forgetting the access password Have the user enter their account information (email), and then submit a password reset request. An edit link will be sent to the email address entered by the user.',
     'comfirm' => 'Comfirm',
     'resetpass' => 'Reset Password',
-    'resetText' => 'Able to re-sign the password By filling in the new password in the form as follows'
+    'resetText' => 'Able to re-sign the password By filling in the new password in the form as follows',
+    'linkExpire' => 'This link has expired. Please submit a new password reset request.',
+    'resetpass1' => 'Password reset request for Account',
+    'resetpass2' => 'You can click this link to reset your password.',
+    'resetpass3' => 'If you do not make the transaction You can ignore this email.',
 ];

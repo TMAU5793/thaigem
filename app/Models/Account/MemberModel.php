@@ -128,10 +128,32 @@ class MemberModel extends Model
         }
     }
 
+    public function getAddressById($id)
+    {        
+        $sql = "SELECT * FROM tbl_address WHERE member_id = ?";
+        $query = $this->db->query($sql, [$id]);
+        if($query){
+            return $query->getRow();
+        }else{
+            return false;
+        }
+    }
+
     public function getSocial()
     {        
         $sql = "SELECT * FROM tbl_social WHERE member_id = ?";
         $query = $this->db->query($sql, [$this->member_id]);
+        if($query){
+            return $query->getRow();
+        }else{
+            return false;
+        }
+    }
+
+    public function getSocialById($id)
+    {        
+        $sql = "SELECT * FROM tbl_social WHERE member_id = ?";
+        $query = $this->db->query($sql, [$id]);
         if($query){
             return $query->getRow();
         }else{
@@ -150,10 +172,32 @@ class MemberModel extends Model
         }
     }
 
+    public function getMemberContactById($id)
+    {        
+        $sql = "SELECT * FROM tbl_member_contact WHERE member_id = ?";
+        $query = $this->db->query($sql, [$id]);
+        if($query){
+            return $query->getResult();
+        }else{
+            return false;
+        }
+    }
+
     public function getMemberBusiness()
     {        
         $sql = "SELECT * FROM tbl_member_business WHERE member_id = ?";
         $query = $this->db->query($sql, [$this->member_id]);
+        if($query){
+            return $query->getResult();
+        }else{
+            return false;
+        }
+    }
+
+    public function getMemberBusinessById($id)
+    {        
+        $sql = "SELECT * FROM tbl_member_business WHERE member_id = ?";
+        $query = $this->db->query($sql, [$id]);
         if($query){
             return $query->getResult();
         }else{
