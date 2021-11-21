@@ -36,8 +36,8 @@
                         </div>
                         <div class="member-info">
                             <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.name') ?></strong>
-                                <span class="d-block"><?= $member['name'].' '.$member['lastname'] ?></span>
+                                <strong class="d-block"><?= lang('GlobalLang.company') ?></strong>
+                                <span class="d-block"><?= $member['company'] ?></span>
                             </div>
                             <div class="info-item-block">
                                 <strong class="d-block"><?= lang('GlobalLang.email') ?></strong>
@@ -45,23 +45,26 @@
                             </div>
                             <div class="info-item-block">
                                 <strong class="d-block"><?= lang('GlobalLang.phoneNumber') ?></strong>
-                                <span class="d-block"><?= ($member['phone']!=''?$member['phone']:'-') ?></span>
+                                <span class="d-block"><?= ($member['company_phone']!=''?$member['company_phone']:'-') ?></span>
                             </div>
-                            <div class="info-item-block">
+                            <!-- <div class="info-item-block">
                                 <strong class="d-block"><?= lang('GlobalLang.product-type') ?></strong>
                                 <span class="d-block"><?= $category['name_th'] ?></span>
                             </div>
                             <div class="info-item-block">
                                 <strong class="d-block"><?= lang('GlobalLang.business-type') ?></strong>
                                 <span class="d-block"><?= $business['name_th'] ?></span>
-                            </div>
+                            </div> -->
                             <div class="info-item-block">
                                 <strong class="d-block"><?= lang('GlobalLang.province') ?></strong>
-                                <span class="d-block th-fz-1-4rem"><?= ($member['company']!=''?$member['company']:'-') ?></span>
+                                <span class="d-block th-fz-1-4rem"><?= ($lang=='en' ? $province->name_en:$province->name_th) ?></span>
                             </div>
                             <div class="info-item-block">
                                 <strong class="d-block"><?= lang('GlobalLang.member-since') ?></strong>
                                 <span class="d-block"><?= substr($member['created_at'],0,4) ?></span>
+                            </div>
+                            <div class="">
+                                <a href="<?= site_url('member/id/'.$member['id']); ?>" class="btn btn-black-border text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewProfile'); ?></a>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@
                     <div class="content-body">
                         <div class="content-title"><strong class="ff-semibold fs-3"><?= $meta_title ?></strong></div>
                         <div class="event-section mt-4">
-                            <div class="event-nav slider-nav slick-dotted">
+                            <div class="event-nav slick-dotted">
                                 <?php
                                     if($bookings){
                                         foreach ($events as $event){

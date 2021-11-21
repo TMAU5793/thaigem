@@ -105,12 +105,12 @@
         });
 
         //Modal success save data
-        <?php if (session('msg') || session('update_profile')){ ?>
+        <?php if (session('msg') || session('update_profile') || session('msg_done')){ ?>
             $('#successModal').modal('show');
         <?php } ?>
 
         //Modal upload
-        <?php if (session('msg_upload') || session('msg_invoice')){ ?>
+        <?php if (!empty(session('msg_upload')) || !empty(session('msg_invoice'))){ ?>
             $('#uploadModal').modal('show');
         <?php } ?>
 
@@ -334,6 +334,13 @@
 
         $('.noti-open').on('click',function(){
             $('.noti-list').toggleClass('d-none')
+        });
+        
+        //Account event click to detail
+        $('.event-item-box').on('click', function() {
+            $('html, body').animate({
+                scrollTop: $(".event-info").offset().top
+            }, 500)
         });
     });
     //End Ready function

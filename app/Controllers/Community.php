@@ -7,17 +7,24 @@ use App\Models\MemberModel;
 use App\Models\ProvinceModel;
 use App\Models\Admin\ProductCategoryModel;
 use App\Models\Admin\BusinessModel;
+use App\Models\Account\MemberModel as MemberFunctionModel;
 
 class Community extends BaseController
 {
     protected $member_id;
     protected $userdata;
+    protected $lang;
     public function __construct()
     {
         $sess = session()->get('userdata');
         if($sess){
             $this->userdata = $sess;
             $this->member_id = $sess['id'];
+        }
+
+        $this->lang = 'en';
+        if(session()->get('lang')){
+            $this->lang = session()->get('lang');
         }
     }
 
@@ -46,28 +53,30 @@ class Community extends BaseController
         $cateModel = new ProductCategoryModel();
         $bnModel = new BusinessModel();
         $pvModel = new ProvinceModel();
+        $mbFunction = new MemberFunctionModel();
 
         $webboard = $wbModel->where('id',$segment3)->first();
         if($webboard){
             $member = $mbModel->where('id',$webboard['member_id'])->first();
             $category = $cateModel->where('id',$member['product_type'])->first();
             $business = $bnModel->where('id',$member['business_type'])->first();
+            $address = $mbFunction->getAddressById($webboard['member_id']);
             $data = [
+                'lang' => $this->lang,
                 'meta_title' => $webboard['topic'],
                 'webboard' => $webboard,
                 'member' => $member,
                 'users' => $member = $mbModel->findAll(),
-                //'category' => $cateModel->where('id',$category['maincate_id'])->first(),
                 'category' => $category,
-                //'business' => $bnModel->where('id',$business['main_type'])->first(),
                 'business' => $business,
                 'province' => $pvModel->where('code',$member['province'])->first(),
                 'reply' => $rpmodel->where(['webboard_id'=>$segment3,'status'=>'1'])->findAll(),
-                'replyhide' => $rpmodel->where(['webboard_id'=>$segment3,'status'=>'0'])->findAll()
+                'replyhide' => $rpmodel->where(['webboard_id'=>$segment3,'status'=>'0'])->findAll(),
+                'province' => $mbFunction->getProvinceById($address->province_id)
             ];
             $sql = "UPDATE tbl_webboard SET view=view+1 WHERE id = '$segment3'";
             $wbModel->query($sql);
-
+            
             echo view('front/community-desc', $data);
         }else{
             return redirect()->to('community');

@@ -219,7 +219,7 @@ class Member extends Controller
                     }
                 }
                 //print_r($db->error());
-                return redirect()->to('account');
+                return redirect()->to('account')->with('msg_done',true);
 
                 //print_r($post);
             }else{

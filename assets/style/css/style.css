@@ -494,7 +494,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       .ac-ul-menu ul li:not(:last-child) {
         margin-bottom: .5rem; }
 
-.event-body .slider-nav .slick-slide {
+.event-body .slider-nav .slick-slide,
+.event-body .event-nav .slick-slide {
   padding: 1rem; }
 .event-body .event-info {
   padding: 1rem; }
