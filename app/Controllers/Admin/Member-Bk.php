@@ -5,7 +5,7 @@ use CodeIgniter\Controller;
 use App\Models\MemberModel;
 use App\Models\Account\MemberModel as acMemberModel;
 
-class Member extends Controller
+class MemberBk extends Controller
 {
 	public function __construct()
     {
@@ -58,7 +58,7 @@ class Member extends Controller
         $data = [
             'meta_title' => 'แก้ไขข้อมูล',
             'action'    =>  'update',
-            'info_member'  =>  $model->where('id',$id)->first(),
+            'info'  =>  $model->where('id',$id)->first(),
 			'province' => $acmbModel->getProvinceById($address->province_id),
 			'amphure' => $acmbModel->getAmphureById($address->amphure_id),
 			'district' => $acmbModel->getDistrictById($address->district_id),
@@ -156,36 +156,124 @@ class Member extends Controller
 	public function update()
 	{
 		helper(['form','filesystem']);
+		//helper('filesystem');
 		$model = new MemberModel();
 		$request = service('request');
-
-		
         if ($request->getMethod() == 'post') {
 			$id = $request->getVar('hd_id');
-			$member = $model->where('id',$id)->first();
-
+			$acc = $request->getVar('hd_account');
+			$pwd = $request->getVar('txt_password');
+			$img_del = $request->getVar('hd_thumb_del'); //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
 			$update = [];
-			if($member['member_start']==null){
-				$update = [
-					'type' => $request->getVar('rd_type'),
-					'member_start' => $request->getVar('member_start'),
-					'member_expired' => $request->getVar('member_expired'),
-					'status' => $request->getVar('ddl_status')
+
+			if($pwd!=''){
+				$rules = [
+					'txt_password' => [
+						'rules' => 'required|min_length[6]|max_length[200]',
+						'errors' => [
+							'required' => 'กรุณากรอกรหัสผ่าน',
+							'min_length' => 'รหัสผ่านอย่างน้อย 6 ตัวอักษร'
+						]
+					],
+					'txt_password_cf' => [
+						'rules' => 'matches[txt_password]',
+						'errors' => [
+							'matches' => 'รหัสผ่านไม่ตรงกัน'
+						]
+					],
+					'txt_name' => [
+						'rules' => 'required',
+						'errors' => [
+							'required' => 'กรุณากรอกชื่อ',
+						]
+					],
+					'txt_lastname' => [
+						'rules' => 'required',
+						'errors' => [
+							'required' => 'กรุณากรอกนามสกุล',
+						]
+					],
+					'txt_phone' => [
+						'rules' => 'required',
+						'errors' => [
+							'required' => 'กรุณากรอกเบอร์โทร',
+						]
+					]
 				];
-				$result = $model->update($id, $update);				
-			}else{				
-				$update = [
-					'type' => $request->getVar('rd_type'),
-					'renew' => $request->getVar('member_start'),
-					'member_expired' => $request->getVar('member_expired'),
-					'status' => $request->getVar('ddl_status')
-				];
-				$result = $model->update($id, $update);
-			}
-			if($result){
-				return redirect()->to(site_url('admin/member'));
+			
+				if($this->validate($rules)){
+					$update = [
+						'password' => password_hash($request->getVar('txt_password'), PASSWORD_DEFAULT),
+						'company' => $request->getVar('txt_name'),
+						'company_phone' => $request->getVar('txt_phone'),
+						'type' => $request->getVar('rd_type'),
+						'renew' => $request->getVar('member_expired'),
+						'expired' => $request->getVar('member_expired'),
+						'status' => $request->getVar('ddl_status')
+					];
+					$result = $model->update($id, $update);
+					if($result){
+						$profile = $request->getFile('txt_thumb'); //เก็บไฟล์รูปอัพโหลด
+						$this->upload($id,$profile,$img_del);
+						return redirect()->to(site_url('admin/member'));
+					}
+				}else{
+					$data = [
+						'meta_title' => 'แก้ไขข้อมูล',
+						'action'    =>  'update',
+						'validation'    =>  $this->validator,
+						'validfail' =>  TRUE,
+						'info'  =>  $model->where('account',$acc)->first()
+					];
+					echo view('admin/member-form',$data);
+				}
 			}else{
-				print_r($model->errors());
+				$rules = [
+					'txt_name' => [
+						'rules' => 'required',
+						'errors' => [
+							'required' => 'กรุณากรอกชื่อ',
+						]
+					],
+					'txt_lastname' => [
+						'rules' => 'required',
+						'errors' => [
+							'required' => 'กรุณากรอกนามสกุล',
+						]
+					],
+					'txt_phone' => [
+						'rules' => 'required',
+						'errors' => [
+							'required' => 'กรุณากรอกเบอร์โทร',
+						]
+					]
+				];
+			
+				if($this->validate($rules)){
+					$update = [
+						'name' => $request->getVar('txt_name'),
+						'lastname' => $request->getVar('txt_lastname'),
+						'phone' => $request->getVar('txt_phone'),
+						'type' => $request->getVar('rd_type'),
+						'renew' => $request->getVar('member_expired'),
+						'expired' => $request->getVar('member_expired'),
+						'status' => $request->getVar('ddl_status')
+					];
+					$result = $model->update($id, $update);
+					if($result){
+						$profile = $request->getFile('txt_thumb'); //เก็บไฟล์รูปอัพโหลด
+						$this->upload($id,$profile,$img_del);
+						return redirect()->to(site_url('admin/member'));
+					}
+				}else{
+					$data = [
+				        'meta_title' => 'แก้ไขข้อมูล',
+				        'action' => 'update',
+				        'validation' => $this->validator,
+				        'info' => $model->where('account',$acc)->first()
+				    ];
+					echo view('admin/member-form',$data);
+				}
 			}
 		}else{
 			return redirect()->to(site_url('admin/member'));

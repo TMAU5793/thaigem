@@ -11,11 +11,11 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">สมาชิกเว็บไซต์</h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-6">
                     <div class="text-end">
-                        <a href="<?= base_url('admin/member/form') ?>" class="btn btn-success">เพิ่มบัญชี</a>
+                        <a href="" class="btn btn-success">เพิ่มบัญชี</a>
                     </div>
-                </div><!-- /.col -->
+                </div> -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -31,9 +31,8 @@
                         <th scope="col">ชื่อ - นามสกุล</th>
                         <th scope="col">อีเมล</th>
                         <th scope="col">เบอร์โทร</th>
-                        <th scope="col" width="150" class="text-center">การสมัครสมาชิก</th>
+                        <th scope="col" width="150" class="text-center">การอนุมัติ</th>
                         <th scope="col" width="150" class="text-center">ประเภทสมาชิก</th>
-                        <th scope="col" width="120" class="text-center">การเผยแพร่</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
                 </thead>
@@ -49,14 +48,20 @@
                         <td><?= $item['name'].' '.$item['lastname'] ?></td>
                         <td><?= $item['email'] ?></td>
                         <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
-                        <td align="center"><?= ($item['social_type']!=""?$item['social_type']:'ระบบของเว็บไซต์') ?></td>
+                        <td align="center">
+                            <?php
+                                if($item['type']=='dealer' && $item['status']=='2' || $item['type']=='member' && $item['status']=='1'){
+                            ?>
+                                <button type="button" class="btn w-100 btn-success">อนุมัติ</button>
+                            <?php }elseif($item['type']=='dealer' && $item['status']=='1'){ ?>
+                                <button type="button" class="btn w-100 btn-warning">รอดำเนินการ</button>
+                            <?php }else{ ?>
+                                <button type="button" class="btn w-100 btn-danger">ไม่อนุมัติ</button>
+                            <?php } ?>
+                        </td>
                         <td align="center"><?= $item['type'] ?></td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-status <?= ($item['status']!='0'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='1'?'เปิด' : 'ปิด') ?></button>
-                        </td>
-                        <td class="text-center">
-                            <a href="<?= base_url('admin/member/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
+                            <a href="<?= base_url('admin/member/edit?id='.$item['id']); ?>">อัตเดต</a>       
                         </td>
                     </tr>
                     <?php } }else{ ?>

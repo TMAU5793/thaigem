@@ -78,4 +78,39 @@ class Thaigem extends BaseController
         }
     }
 
+    public function mailContact()
+    {
+        $email = \Config\Services::email();
+        $request = service('request');
+        $postdata = $request->getPost();
+        //print_r($postdata);
+        if($postdata && $postdata['txt_email']!=""){
+            $mailTo = 'thank@grasp.asia';
+            $email->setFrom($postdata['txt_email'], $postdata['txt_name']);
+            $email->setTo($mailTo);
+            if($this->lang=='en'){
+                $email->setSubject('Contact form '.$postdata['txt_email']);
+                $msg = "<strong>Contact form ".$postdata['txt_email']."</strong>";
+                $msg .= "<p>Name : ".$postdata['txt_name']."</p>";
+                $msg .= "<p>Phone : ".$postdata['txt_phone']."</p>";
+                $msg .= "<p>".$postdata['txt_message']."</p>";
+            }else{
+                $email->setSubject('ติดต่อจาก '.$postdata['txt_email']);
+                $msg = "<strong>ติดต่อจาก ".$postdata['txt_email']."</strong>";
+                $msg .= "<p>ชื่อ : ".$postdata['txt_name']."</p>";
+                $msg .= "<p>เบอร์โทร : ".$postdata['txt_phone']."</p>";
+                $msg .= "<p>".$postdata['txt_message']."</p>";
+            }
+            $email->setMessage($msg);
+            //echo $msg;
+            if($email->send()){
+                return redirect()->to('')->with('msg_done','true');
+            }else{
+                $email->printDebugger();
+            }
+        }else{
+            return redirect()->to('');
+        }
+    }
+
 }

@@ -310,7 +310,8 @@
     .contact-form {
         .form-group {
             margin-bottom: 1rem;
-            input {
+            input,
+            textarea {
                 background: transparent;
                 border: 1px solid $c-black;
             }

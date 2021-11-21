@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\Account\AccountModel;
 use App\Models\Account\AlbumModel;
 use App\Models\Account\MemberModel;
+use App\Models\FunctionModel;
 use CodeIgniter\I18n\Time;
   
 class Account extends Controller
@@ -59,6 +60,7 @@ class Account extends Controller
         
         helper(['form']);
         $model = new AccountModel();
+        $mbModel = new MemberModel();
         $request = service('request');
         if ($request->getMethod() !== 'post') {
             return redirect()->to(site_url());
@@ -106,9 +108,10 @@ class Account extends Controller
 
         if($this->validate($signup_valid)){
             $result = $model->register($request->getPost());
-            if($result){
-                
+            if($result){                
                 $member = $model->where('id', $result)->first();
+                $mbModel->notiDealer($member);
+                $this->emailRegister($member['account']);
                 $sess = [
                     'id' => $member['id'],
                     'code' => $member['code'],
@@ -126,6 +129,24 @@ class Account extends Controller
         }else{
             $data['signup_valid'] = $this->validator;
             echo view('front/home',$data);
+        }
+    }
+
+    public function emailRegister($account=null)
+    {
+        $email = \Config\Services::email();
+                
+        $email->setFrom('info@thaigemjewelry.org', 'Thai gem and jewelry');
+        $email->setTo($account);                
+        $email->setSubject(($this->lang=='en'?'Register account complete':'การสมัครสมาชิกเรียบร้อย'));
+        $msg = "<p>ท่านได้ทำการสร้างบัญชีสำหรับใช้งานเว็บไซต์สมาคมอัญมณีเรียบร้อยแล้ว ชื่อบัญชี : ".$account."</p>";
+        $msg .= "สามารถเข้าใช้งานได้ที่ <a href=\"".site_url()."\">".lang('GlobalLang.website')."</a>";
+        $email->setMessage($msg);
+        //echo $msg;
+        if($email->send()){
+            return true;
+        }else{
+            $email->printDebugger();
         }
     }
 

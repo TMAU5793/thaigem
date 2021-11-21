@@ -95,6 +95,17 @@ class MemberModel extends Model
         }
     }
 
+    public function getProvinceById($id)
+    {        
+        $sql = "SELECT * FROM tbl_provinces  WHERE id >= ?";
+        $query = $this->db->query($sql,[$id]);
+        if($query){
+            return $query->getRow();
+        }else{
+            return false;
+        }
+    }
+
     public function getAmphure()
     {        
         $sql = "SELECT * FROM tbl_amphures";
@@ -106,12 +117,34 @@ class MemberModel extends Model
         }
     }
 
+    public function getAmphureById($id)
+    {        
+        $sql = "SELECT * FROM tbl_amphures  WHERE id >= ?";
+        $query = $this->db->query($sql,[$id]);
+        if($query){
+            return $query->getRow();
+        }else{
+            return false;
+        }
+    }
+
     public function getDistrict()
     {        
         $sql = "SELECT * FROM tbl_districts";
         $query = $this->db->query($sql);
         if($query){
             return $query->getResult();
+        }else{
+            return false;
+        }
+    }
+
+    public function getDistrictById($id)
+    {        
+        $sql = "SELECT * FROM tbl_districts  WHERE id >= ?";
+        $query = $this->db->query($sql,[$id]);
+        if($query){
+            return $query->getRow();
         }else{
             return false;
         }
@@ -311,7 +344,6 @@ class MemberModel extends Model
                         'type' => 'business',
                         'maincate_id' => $maincate,
                         'cate_id' => $subcate,
-                        'cate_id' => $data['ddl_business'][$i],
                         'created_at' => $datetime,
                         'updated_at' => $datetime
                     ];
@@ -385,5 +417,22 @@ class MemberModel extends Model
             }
         }
         return true;
+    }
+
+    public function notiDealer($data)
+    {
+        $builder = $this->db->table('tbl_notification');
+        $date = date('Y-m-d H:i:s');
+        $data_arr = [
+            'member_id' => $data['id'],
+            'type' => 'register',
+            'title_th' => 'ฟอร์มสมาชิกร้านค้า',
+            'desc_th' => 'กรุณาดาวน์โหลดฟอร์มสมาชิกร้านค้า ที่เมนูดาวน์โหลด และอัพโหลดไฟล์กลับมาเมื่อกรอกข้อมูลเรียบร้อย',
+            'title_en' => 'Store membership form',
+            'desc_en' => 'Please download the store membership form. at the download menu and upload the file back once the information is complete',
+            'created_at' => $date,
+            'updated_at' => $date
+        ];
+        $builder->insert($data_arr);
     }
 }

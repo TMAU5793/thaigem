@@ -868,7 +868,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       color: #665f4f; }
   .contact-home .contact-form .form-group {
     margin-bottom: 1rem; }
-    .contact-home .contact-form .form-group input {
+    .contact-home .contact-form .form-group input,
+    .contact-home .contact-form .form-group textarea {
       background: transparent;
       border: 1px solid #000000; }
 

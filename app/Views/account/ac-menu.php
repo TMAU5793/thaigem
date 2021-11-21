@@ -53,15 +53,15 @@
         </li>
         <li class="nav-item">
             <div class="ac-noti position-relative">
-                <i class="far fa-bell pt-2 cursor-pointer" title="notification"></i>
+                <i class="far fa-bell pt-2 cursor-pointer noti-open" title="notification"></i>
                 <?php
                     if($noti){
                         $n=count($noti);
                 ?>
-                    <div class="box-noti cursor-pointer" title="notification">
+                    <div class="box-noti cursor-pointer noti-open" title="notification">
                         <span><?= $n ?></span>
                     </div>
-                    <div class="noti-list">
+                    <div class="noti-list d-none">
                         <?php
                             $n=0;
                             foreach ($noti as $list){

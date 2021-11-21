@@ -331,6 +331,10 @@
             $('#person-more').append(html);
         });
         <?php } ?>
+
+        $('.noti-open').on('click',function(){
+            $('.noti-list').toggleClass('d-none')
+        });
     });
     //End Ready function
 

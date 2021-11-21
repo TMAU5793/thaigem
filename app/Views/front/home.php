@@ -313,15 +313,18 @@
                 <div class="col-md-6">
                     <div class="contact-form">
                         <strong class="ff-dbadmanBold d-block fs-2 mb-3"><?= lang('GlobalLang.contactForm'); ?></strong>
-                        <form action="">                            
+                        <form action="<?= site_url('thaigem/mailcontact') ?>" method="POST">                            
                             <div class="form-group">
-                                <input type="text" class="form-control" name="txt_name" placeholder="<?= lang('GlobalLang.name'); ?>">
+                                <input type="text" class="form-control" name="txt_name" placeholder="<?= lang('GlobalLang.name'); ?>" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="txt_email" aria-describedby="emailHelp" placeholder="<?= lang('GlobalLang.email'); ?>">
+                                <input type="email" class="form-control" name="txt_email" aria-describedby="emailHelp" placeholder="<?= lang('GlobalLang.email'); ?>" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="txt_phone" placeholder="<?= lang('GlobalLang.phoneNumber'); ?>">
+                                <input type="text" class="form-control" name="txt_phone" placeholder="<?= lang('GlobalLang.phoneNumber'); ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="txt_message" id="txt_message" class="form-control" placeholder="<?= lang('GlobalLang.message'); ?>" required></textarea>
                             </div>
                             <button type="submit" class="btn bg-darkgold c-white ff-dbadmanBold w-100"><?= lang('GlobalLang.submit'); ?></button>
                         </form>

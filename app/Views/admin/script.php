@@ -140,6 +140,45 @@
             });
         <?php } ?>
 
+        //Member Start and Expired date
+        <?php if(isset($info_member) && $info_member['member_expired']!='') { ?>
+            
+            $('#member_start').daterangepicker({
+                startDate: '<?= ($info_member['renew']=='' ? $info_member['member_start'] : $info_member['renew']) ?>',
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: parseInt(moment().format('YYYY')),
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+            $('#member_expired').daterangepicker({
+                startDate : '<?= $info_member['member_expired'] ?>',
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: parseInt(moment().format('YYYY')),
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+        <?php }else{ ?>
+            $('#member_start').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: parseInt(moment().format('YYYY')),
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+            $('#member_expired').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: parseInt(moment().format('YYYY')),
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+        <?php } ?>
         $('#txt_file').on('change',function(){
             let file = this.files[0];
             if (this.files && file) {
