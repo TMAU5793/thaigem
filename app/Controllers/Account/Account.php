@@ -363,6 +363,17 @@ class Account extends Controller
         }
     }
 
+    public function updateNoti()
+    {
+        $memberFucntion = new MemberModel();
+        $request = service('request');
+        $member = $request->getPost('id');
+        if($member){
+            $memberFucntion->updateNoti($member);
+            echo true;
+        }
+    }
+
     public function logout()
     {
         session()->remove('userdata');

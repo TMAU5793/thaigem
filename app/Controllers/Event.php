@@ -5,6 +5,7 @@ use CodeIgniter\I18n\Time;
 use App\Models\Admin\EventModel;
 use App\Models\BookingModel;
 use App\Models\MemberModel;
+use App\Models\Account\MemberModel as MemberFucntion;
 
 class Event extends BaseController
 {
@@ -72,15 +73,14 @@ class Event extends BaseController
     public function booking()
     {
         $bkModel = new bookingModel();
-        // $db = \Config\Database::connect();
-        // $builder = $db->table('tbl_booking');
+        $mbFunction = new MemberFucntion();
         $request = service('request');
         $post = $request->getPost();
         $booking_no = $this->bookingNo();
         
         $ckdBooking = $bkModel->where(['event_id'=>$post['event_id'],'member_id'=>$post['member_id']])->first();
         if($ckdBooking){
-            echo true;
+            echo 'booked';
         }else{
             $savedata = [
                 'booking_no' => $booking_no,
@@ -89,8 +89,77 @@ class Event extends BaseController
             ];
 
             if($bkModel->insert($savedata)){
+                
+                $noti_arr = [
+                    'member_id' => $post['member_id'],
+                    'type' => 'event',
+                    'title_th' => 'แบบฟอร์มการจองอีเว้นท์',
+                    'desc_th' => 'กรุณาดาวน์โหลดแบบฟอร์มการจองอีเว้นท์ที่เมนู ดาวน์โหลด และอัปโหลดเอกสาร > ดาวน์โหลดเอกสารอีเว้นท์ และอัพโหลดไฟล์กลับมาเมื่อกรอกข้อมูลเรียบร้อย',
+                    'title_en' => 'Event booking form',
+                    'desc_en' => 'Please download the event booking form from the menu DOWNLOAD & UPLOAD FORM > Download Form Event and upload the file back once the information is complete',
+
+                ];
+                $mbFunction->notification($noti_arr);
+                $this->mailBooking($savedata);
                 echo true;
             }
+        }
+    }
+    public function testBooking()
+    {
+        $savedata = [
+            'booking_no' => 'B211122-000000005',
+            'event_id' => 1,
+            'member_id' => 11,
+        ];
+        // print_r($savedata);
+        $this->mailBooking($savedata);
+    }
+    public function mailBooking($data=null)
+    {
+        $email = \Config\Services::email();
+        
+        if($data){
+            $mbModel = new MemberModel();
+            $evModel = new EventModel();
+            $bkModel = new bookingModel();
+
+            $member = $mbModel->where('id',$data['member_id'])->first();
+            $booking = $bkModel->where('booking_no',$data['booking_no'])->first();
+            $event = $evModel->where('id',$booking['event_id'])->first();
+            //print_r($event);
+            $mailTo = 'thank@grasp.asia';
+            $mailCC = 'jan@grasp.asia';
+            $mailBCC = 'thip@grasp.asia';
+
+            $email->setFrom($member['email'], $member['company']);
+            $email->setTo($mailTo);
+            $email->setCC($mailCC);
+            $email->setBCC($mailBCC);
+            if($this->lang=='en'){
+                $email->setSubject('TGJTA : Event Booking');
+                $msg = "<strong>reservation information</strong>";
+                $msg .= "<p>event : ".$event['name_en']."</p>";
+                $msg .= "<p>booker : ".$member['company']."</p>";
+                $msg .= "<p>phone : ".$member['company_phone']."</p>";
+                $msg .= "<p>email : ".$member['email']."</p>";
+            }else{
+                $email->setSubject('TGJTA : การจองงานอีเว้นท์');
+                $msg = "<strong>ข้อมูลการจอง</strong>";
+                $msg .= "<p>งานอีเว้นท์ : ".$event['name']."</p>";
+                $msg .= "<p>ผู้จอง : ".$member['company']."</p>";
+                $msg .= "<p>เบอร์โทร : ".$member['company_phone']."</p>";
+                $msg .= "<p>อีเมล : ".$member['email']."</p>";
+            }
+            $email->setMessage($msg);
+            //echo $msg;
+            if($email->send()){
+                return redirect()->to('')->with('msg_done','true');
+            }else{
+                $email->printDebugger();
+            }
+        }else{
+            return redirect()->to('');
         }
     }
 

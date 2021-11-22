@@ -333,7 +333,16 @@
         <?php } ?>
 
         $('.noti-open').on('click',function(){
-            $('.noti-list').toggleClass('d-none')
+            $('.noti-list').toggleClass('d-none');
+            var id = $(this).data('id');
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('account/account/updatenoti') ?>",
+                data: {id:id},
+                success: function (response) {
+                    
+                }
+            });
         });
         
         //Account event click to detail

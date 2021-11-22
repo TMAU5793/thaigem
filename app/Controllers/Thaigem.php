@@ -86,8 +86,13 @@ class Thaigem extends BaseController
         //print_r($postdata);
         if($postdata && $postdata['txt_email']!=""){
             $mailTo = 'thank@grasp.asia';
+            $mailCC = 'jan@grasp.asia';
+            $mailBCC = 'thip@grasp.asia';
+
             $email->setFrom($postdata['txt_email'], $postdata['txt_name']);
             $email->setTo($mailTo);
+            $email->setCC($mailCC);
+            $email->setBCC($mailBCC);
             if($this->lang=='en'){
                 $email->setSubject('Contact form '.$postdata['txt_email']);
                 $msg = "<strong>Contact form ".$postdata['txt_email']."</strong>";

@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="text-center w-100 ms-4">
-                    <strong class="ff-semibold fs-4"><?= lang('GlobalLang.signin') ?></strong>                    
+                    <strong class="ff-dbadmanBold fs-4"><?= lang('GlobalLang.signin') ?></strong>                    
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -46,7 +46,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="text-center w-100">
-                    <strong class="ff-semibold fs-4 ms-4"><?= lang('GlobalLang.createAccount') ?></strong>              
+                    <strong class="ff-dbadmanBold fs-4 ms-4"><?= lang('GlobalLang.createAccount') ?></strong>              
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -102,7 +102,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header pb-0">
-                <span class="ff-semibold text-center d-inline-block w-100">Share content with : </span>
+                <span class="ff-dbadmanBold text-center d-inline-block w-100">Share content with : </span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -132,7 +132,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header pb-0">
-                <span class="ff-semibold text-center d-inline-block w-100">Terms & Condition </span>
+                <span class="ff-dbadmanBold text-center d-inline-block w-100">Terms & Condition </span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -154,18 +154,54 @@
     </div>
 </div>
 
+<!-- Modal Confirm -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-lightgold border-0">
+            <div class="modal-header pb-0">
+                <span class="ff-dbadmanBold text-center d-inline-block w-100"> <strong class="ff-dbadmanBold">ยืนยัน :</strong> การทำรายการ </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4 text-center">
+                    <button class="btn btn-black-border" id="confirmEvent">ยืนยัน</button>
+                    <button type="button" class="btn btn-black-border" data-bs-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal booked -->
+<div class="modal fade" id="bookedModal" tabindex="-1" aria-labelledby="bookedModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-lightgold border-0">
+            <div class="modal-header pb-0">
+                <span class="ff-dbadmanBold text-center d-inline-block w-100"> ท่านได้จองอีเว้นท์นี้ไปแล้ว </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4 text-center">
+                    <a href="<?= site_url('account/event') ?>" class="btn btn-black-border w-25" id="confirmEvent">รายการจอง</a>
+                    <button type="button" class="btn btn-black-border w-25" data-bs-dismiss="modal" aria-label="Close">ปิด</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Event -->
 <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-lightgold border-0">
             <div class="modal-header pb-0">
-                <span class="ff-semibold text-center d-inline-block w-100"> Booking Fail </span>
+                <span class="ff-dbadmanBold text-center d-inline-block w-100"> Booking Fail </span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="p-4">
                     <p class="c-black">
-                        <strong class="ff-semibold">ล้มเหลว! :</strong> การจองบูธงานอีเว้นท์สำหรับสมาชิกที่เป็นดีลเลอร์เท่านั้น
+                        <strong class="ff-dbadmanBold">ล้มเหลว! :</strong> การจองบูธงานอีเว้นท์สำหรับสมาชิกที่เป็นดีลเลอร์เท่านั้น
                     </p>
                 </div>
             </div>
@@ -178,7 +214,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-lightgold border-0">
             <div class="modal-header pb-0">
-                <span class="ff-semibold text-center d-inline-block w-100"> Booking Success </span>
+                <span class="ff-dbadmanBold text-center d-inline-block w-100"> Booking Success </span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -205,7 +241,7 @@
                     <p>Success, Remove your data</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
                 </div>
             </div>
         </div>
@@ -226,7 +262,7 @@
                     <p>The operation is complete.</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
                 </div>
             </div>
         </div>
@@ -246,7 +282,7 @@
                     <p>Success, Update plubilc item.</p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
                 </div>
             </div>
         </div>

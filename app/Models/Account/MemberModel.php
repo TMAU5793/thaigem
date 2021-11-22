@@ -285,6 +285,7 @@ class MemberModel extends Model
                 'address' => $data['txt_address'],
                 'updated_at' => $datetime
             ];
+            $builder->where('member_id', $data['hd_id']);
             $query = $builder->update($info);
         }else{
             $info = [
@@ -369,6 +370,7 @@ class MemberModel extends Model
                 'instagram' => $data['txt_instagram'],
                 'updated_at' => $datetime
             ];
+            $builder->where('member_id', $data['hd_id']);
             $query = $builder->update($info);
         }else{
             $info = [
@@ -434,5 +436,34 @@ class MemberModel extends Model
             'updated_at' => $date
         ];
         $builder->insert($data_arr);
+    }
+
+    public function notification($data)
+    {
+        $builder = $this->db->table('tbl_notification');
+        $date = date('Y-m-d H:i:s');
+        $data_arr = [
+            'member_id' => $data['member_id'],
+            'type' => $data['type'],
+            'title_th' => $data['title_th'],
+            'desc_th' => $data['desc_th'],
+            'title_en' => $data['title_en'],
+            'desc_en' => $data['desc_en'],
+            'created_at' => $date,
+            'updated_at' => $date
+        ];
+        $builder->insert($data_arr);
+    }
+
+    public function updateNoti($id)
+    {
+        $builder = $this->db->table('tbl_notification');
+        $date = date('Y-m-d H:i:s');
+        $data_arr = [
+            'status' => '1',
+            'updated_at' => $date
+        ];
+        $builder->where('member_id',$id);
+        $builder->update($data_arr);
     }
 }

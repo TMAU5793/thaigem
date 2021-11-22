@@ -6,7 +6,7 @@
     $userdata = session()->get('userdata');
     $model = new AccountModel();
     $status = $model->where('id',$userdata['id'])->first();
-    $noti = $builder->where(['member_id'=>$userdata['id'],'status'=>'0'])->get()->getResultArray();
+    $noti = $builder->where(['member_id'=>$userdata['id'],'status'=>'0'])->orderBy('created_at DESC')->get()->getResultArray();
 
     $lang = 'en';
     if(session()->get('lang')){
@@ -53,12 +53,12 @@
         </li>
         <li class="nav-item">
             <div class="ac-noti position-relative">
-                <i class="far fa-bell pt-2 cursor-pointer noti-open" title="notification"></i>
+                <i class="far fa-bell pt-2 cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification"></i>
                 <?php
                     if($noti){
                         $n=count($noti);
                 ?>
-                    <div class="box-noti cursor-pointer noti-open" title="notification">
+                    <div class="box-noti cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification">
                         <span><?= $n ?></span>
                     </div>
                     <div class="noti-list d-none">
@@ -71,12 +71,12 @@
                                     $cBorder = 'noti-border';
                         ?>
                             <div class="noti-item <?= $cBorder ?>">
-                                <strong><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
                                 <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
                             </div>
                         <?php }else{ ?>
                             <div class="noti-item">
-                                <strong><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
                                 <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
                             </div>
                         <?php } } ?>

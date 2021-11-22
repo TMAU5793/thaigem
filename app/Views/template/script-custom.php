@@ -101,26 +101,36 @@ use Google\Service\Adsense\Site;
             $('.share-in').attr('href','https://www.linkedin.com/shareArticle?mini=true&url='+url);
             $('.share-pt').attr('href','https://pinterest.com/pin/create/button/?url='+url);
         });
-
+        
         //Booking Event
+        var event_id = '';
+        var member_id = '';
         $('.booking_event').on('click',function(){
-            var event_id = $(this).data('event');
-            var member_id = '<?= session()->get('userdata')['id'] ?>';
+            event_id = $(this).data('event');
+            member_id = '<?= session()->get('userdata')['id'] ?>';
+            $('#confirmModal').modal('show');
+        });
+        $('#confirmEvent').on('click',function(){
+            $('#confirmModal').modal('hide');
             if(event_id!=""){
                 $.ajax({
                     type: "POST",
                     url: "<?= site_url('event/booking') ?>",
                     data: {event_id:event_id,member_id:member_id},
                     success: function (response) {
-                        $('#eventBookingModal').modal('show');
-                        localStorage.setItem("book-event", 'TRUE');
-                        setTimeout(function(){
-                            location.href='<?= site_url('account/form/event') ?>'
-                        },1200);
+                        if(response=='booked'){
+                            $('#bookedModal').modal('show');
+                        }else{
+                            $('#eventBookingModal').modal('show');
+                            localStorage.setItem("book-event", 'TRUE');
+                            setTimeout(function(){
+                                location.href='<?= site_url('account/form/event') ?>'
+                            },1200);
+                        }
                     }
                 });
             }
-        });
+        });        
         
         
         //Newsletter Function

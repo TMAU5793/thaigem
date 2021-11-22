@@ -422,13 +422,24 @@
     .shadow-lightgold {
         padding: 1rem;
     }
-    .ac-album {
-        overflow: hidden;
-    }
-    .album-item {
-        margin: 0 -4px;
-        .slider-nav-item {
-            padding: 0 .25rem;
+    .box-member {
+        ul {
+            list-style: none;
+            padding: 0;
+            li {
+                width: 33.3333%;
+                float: left;
+                margin-top: .4rem;
+            }
+            li:nth-child(1) {
+                padding-right: .3rem;
+            }
+            li:nth-child(2) {
+                padding: 0 .15rem;
+            }
+            li:nth-child(3) {
+                padding-left: .3rem;
+            }
         }
     }
 }

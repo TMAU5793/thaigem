@@ -359,12 +359,13 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .account-menu .noti-list {
   padding: .5rem 1rem;
   width: 250px;
-  background: #ccc;
+  background: #f3f3f3;
   position: absolute;
   position: absolute;
   top: 3rem;
   right: -1.25rem;
-  border-radius: 6px; }
+  border-radius: 6px;
+  box-shadow: 1px 1px 6px 0px #665f4f; }
   .account-menu .noti-list::before {
     content: '';
     position: absolute;
@@ -373,7 +374,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     width: 0;
     height: 0;
     border: 13px solid transparent;
-    border-bottom-color: #ccc;
+    border-bottom-color: #f3f3f3;
     border-top: 0;
     margin-left: -13px;
     margin-top: -13px; }
@@ -652,7 +653,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .noti-border {
   margin-top: 6px;
-  border-top: 2px solid #ffffff; }
+  border-top: 2px solid #c1c1c1; }
 
 @keyframes left-to-right {
   0% {
@@ -939,12 +940,19 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .member-content .shadow-lightgold {
   padding: 1rem; }
-.member-content .ac-album {
-  overflow: hidden; }
-.member-content .album-item {
-  margin: 0 -4px; }
-  .member-content .album-item .slider-nav-item {
-    padding: 0 .25rem; }
+.member-content .box-member ul {
+  list-style: none;
+  padding: 0; }
+  .member-content .box-member ul li {
+    width: 33.3333%;
+    float: left;
+    margin-top: .4rem; }
+  .member-content .box-member ul li:nth-child(1) {
+    padding-right: .3rem; }
+  .member-content .box-member ul li:nth-child(2) {
+    padding: 0 .15rem; }
+  .member-content .box-member ul li:nth-child(3) {
+    padding-left: .3rem; }
 
 .contact-content .map-location iframe {
   width: 100%; }

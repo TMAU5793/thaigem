@@ -93,54 +93,50 @@
                 <?php
                     if($info){
                         foreach($info as $row){
+                            $member_id = $row['id'];
                 ?>
                 <div class="col-md-12 col-lg-6 position-relative mt-4">
-                    <div class="shadow-lightgold">
-                        <div class="ac-album w-50">
-                            <div class="main-album-img slider-for-hidedots">
-                                <?php
-                                    if($album){                                        
+                    <div class="shadow-lightgold box-member">
+                        <div class="w-50">
+                            <?php
+                                if($row['profile']){
+                            ?>
+                                <div class="slider-for-item">
+                                    <img src="<?= (is_file($row['profile'])?site_url($row['profile']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $row['company'] ?>">
+                                </div>
+                            <?php } ?>
+                            <ul>
+                                <?php if($album){
+                                        $n=0;
                                         foreach($album as $img){
-                                            $member_id = $row['id'];
                                             if($row['member_id']){
                                                 $member_id = $row['member_id'];
                                             }
-                                            if($img['member_id'] == $member_id){
+                                            if($img['member_id'] == $member_id && $n<3){
+                                                $n++;
                                 ?>
-                                    <div class="slider-for-item">
-                                        <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $row['name'].' '.$row['lastname'] ?>">
-                                    </div>
-                                <?php } } } ?>
-                            </div>
-                            <div class="album-item slider-nav-hidedots">
-                                <?php
-                                    if($album){
-                                        foreach($album as $img){
-                                            $member_id = $row['id'];
-                                            if($row['member_id']){
-                                                $member_id = $row['member_id'];
-                                            }
-                                            if($img['member_id'] == $member_id){
-                                ?>
-                                    <div class="slider-nav-item">
-                                        <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>" alt="thumbnail">
-                                    </div>
-                                <?php } } } ?>
-                            </div>
+                                    <li class="album-item">
+                                        <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $row['company'] ?>">
+                                    </li>
+                                <?php } } }else{ ?>
+                                    <li class="album-item">
+                                        <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
+                                    </li>
+                                <?php } ?>
+                                <li class="album-item">
+                                    <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
+                                </li>
+                                <li class="album-item">
+                                    <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
+                                </li>
+                                <li class="album-item">
+                                    <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="item-body text-center w-50 plr-2rem position-absolute translate-middle-y top-50 end-0">
-                            <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1"><?= $row['company'] ?></h5>
-                            <p class="text-line-3"><?= character_limiter($row['about'],50) ?></p>
+                        <div class="w-50">
                             
-                            <div class="event-action mt-2">
-                                <?php
-                                    $member_id = $row['id'];
-                                    if($row['code']){
-                                        $member_id = $row['code'];
-                                    }
-                                ?>
-                                <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
-                            </div>
                         </div>
                     </div>
                 </div>
