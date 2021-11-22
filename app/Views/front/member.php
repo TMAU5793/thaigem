@@ -123,15 +123,6 @@
                                         <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
                                     </li>
                                 <?php } ?>
-                                <li class="album-item">
-                                    <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
-                                </li>
-                                <li class="album-item">
-                                    <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
-                                </li>
-                                <li class="album-item">
-                                    <img src="<?= site_url('assets/images/img-default.jpg') ?>" alt="<?= $row['company'] ?>">
-                                </li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
