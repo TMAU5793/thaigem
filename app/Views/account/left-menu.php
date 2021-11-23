@@ -14,9 +14,23 @@
    
 ?>
 <div class="ac-menu-left p-4">
+    <div class="row dealer-head">
+        <div class="col-6">            
+            <div class="status-dealer">
+                <?php
+                    if($info['status']=='2'){
+                ?>
+                    <span>ดำเนินการสำเร็จแล้ว <i class="fas fa-circle"></i></span>
+                <?php }else if($info['status']=='1'){ ?>
+                    <span>รอดำเนินการ <i class="fas fa-circle text-warning"></i></span>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="col-6 text-uppercase text-end dealer-id">ID TGJTA<?= ($info['code']!="" ? $info['code'] : $info['id']) ?></div>
+    </div>
     <div class="border-b">
         <div class="row personal-info">
-            <div class="col-md-3">
+            <div class="col-md-3 col-3">
                 <div class="personal-img">
                     <?php
                         $profile_pic = (is_file($info['profile'])?site_url($info['profile']):site_url('assets/images/img-default.png'));
@@ -32,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-9 col-9">
                 <div class="personal-desc">
                     <h2 class="ff-dbadmanBold mb-0"><?= $info['company']; ?></h2>
                     <div class="person-email">
@@ -58,12 +72,12 @@
         </div>
     </div>
 
-    <div class="person-item border-b">
+    <div class="person-item border-b more-info hide-767">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-lg-1 col-md-2 col-2">
                 <i class="fas fa-hand-holding-usd"></i>
             </div>
-            <div class="col-md-11">
+            <div class="ccol-lg-11 col-md-10 col-10">
                 <div class="item-desc">
                     <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.product-type') ?></h4>
                     <div class="box-info">
@@ -95,12 +109,12 @@
         </div>
     </div>
 
-    <div class="person-item border-b">
+    <div class="person-item border-b more-info hide-767">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-lg-1 col-md-2 col-2">
                 <i class="fas fa-briefcase"></i>
             </div>
-            <div class="col-md-11">
+            <div class="col-lg-11 col-md-10 col-10">
                 <div class="item-desc">
                     <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.business-type') ?></h4>
                     <div class="box-info">
@@ -132,12 +146,12 @@
         </div>
     </div>
 
-    <div class="person-item border-b">
+    <div class="person-item border-b more-info hide-767">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-lg-1 col-md-2 col-2">
                 <i class="far fa-building"></i>
             </div>
-            <div class="col-md-11">
+            <div class="col-lg-11 col-md-10 col-10">
                 <div class="item-desc">
                     <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.address') ?></h4>
                     <p class="fs-5 mb-0">
@@ -168,12 +182,12 @@
         </div>
     </div>
 
-    <div class="person-item border-b">
+    <div class="person-item border-b more-info hide-767">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-lg-1 col-md-2 col-2">
                 <i class="fas fa-globe"></i>
             </div>
-            <div class="col-md-11">
+            <div class="col-lg-1 col-md-10 col-10">
                 <div class="item-desc">
                     <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.website') ?></h4>
                     <a href="<?= urldecode($info['website']); ?>" target="_blank"><?= urldecode($info['website']); ?></a>
@@ -182,7 +196,7 @@
         </div>
     </div>
 
-    <div class="social-contact border-b">
+    <div class="social-contact border-b more-info hide-767">
         <strong class="ff-dbadmanBold pe-2"><?= lang('GlobalLang.socialmedia') ?></strong>
         <?php if($social->facebook!=""){ ?>
             <a href="https://www.facebook.com/<?= $social->facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -195,8 +209,16 @@
         <?php } ?>
     </div>
     
-    <div class="text-center mt-4 text-center">
+    <div class="text-center mt-4 text-center ac-btn-action">
         <a href="<?= site_url('account/member/edit?u=TGJTA-'.$info['code']) ?>" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></a>
+        <button type="botton" id="btn-member-more" class="btn btn-black-border show-767">
+            <span class="more-info">
+                เพิ่มเติม <i class="fas fa-caret-down"></i>
+            </span>
+            <span class="more-info hide-767">
+                ซ่อน <i class="fas fa-caret-up"></i>
+            </span>
+        </button>
     </div>
 </div>
 

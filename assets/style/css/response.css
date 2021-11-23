@@ -8,6 +8,9 @@
     .ac-menu-left .ac-profile-img img {
       width: 135px !important;
       height: 135px !important; }
+  .ac-menu-left .personal-info #pic_profile {
+    width: 100px;
+    height: 100px; }
 
   .account-menu .navbar-nav .nav-link {
     font-size: .8rem; } }
@@ -18,8 +21,21 @@
       margin-right: 0; }
     .account-logged .account-menu .navbar-nav li {
       float: left;
-      padding: 0 .5rem; } }
+      padding: 0 .5rem; }
+
+  .ac-menu-left .personal-info #pic_profile {
+    width: 75px;
+    height: 75px; } }
 @media (max-width: 767px) {
+  .hide-767 {
+    display: none; }
+
+  .show-767 {
+    display: block; }
+
+  .ac-btn-action .show-767 {
+    display: initial; }
+
   .banner {
     height: 200px; }
     .banner img {
@@ -33,7 +49,7 @@
     width: 100%; }
 
   .ac-menu-left {
-    padding: 0 !important; }
+    padding-bottom: .5rem !important; }
     .ac-menu-left .ac-profile-img {
       padding: 1.5rem;
       margin-top: -4rem;
@@ -94,7 +110,11 @@
     margin-top: -4rem; }
     .ac-menu-left .ac-profile-img img {
       width: 100px !important;
-      height: 100px !important; } }
+      height: 100px !important; }
+
+  .dealer-head .dealer-id {
+    font-size: 1rem;
+    padding-top: 6px; } }
 @media (max-width: 1399px) {
   .singup-home .head-sect span,
   .singup-home .head-sect strong {
@@ -593,6 +613,11 @@
         -webkit-line-clamp: 3;
         /* number of lines to show */
         -webkit-box-orient: vertical; }
+    .member-content .box-member a,
+    .member-content .box-member p {
+      font-size: 1rem;
+      margin-bottom: 0;
+      line-height: 1rem; }
 
   .category-home .bg-title .row .col-md-8 div.fs-1 {
     line-height: 28px; }

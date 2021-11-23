@@ -690,6 +690,14 @@
                 -webkit-box-orient: vertical;
             }
         }
+        .box-member {
+            a,
+            p {
+                font-size: 1rem;
+                margin-bottom: 0;
+                line-height: 1rem;
+            }
+        }
     }
     .category-home {
         .bg-title {

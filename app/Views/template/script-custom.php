@@ -60,6 +60,10 @@ use Google\Service\Adsense\Site;
             $('html, body').animate({ scrollTop: 0 }, 'slow');
         });
 
+        $('#btn-member-more').on('click',function(){
+            $('.more-info').toggleClass('hide-767');
+        });
+
         var signup_valid = '<?= (isset($signup_valid)?TRUE:FALSE) ?>';
         if(signup_valid){
             $('#registerModal').modal('show');

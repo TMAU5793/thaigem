@@ -16,6 +16,10 @@ $ff-dbadman: 'DBAdmanX';
                 height: 135px !important;
             }
         }
+        .personal-info #pic_profile {
+            width: 100px;
+            height: 100px;
+        }
     }
     .account-menu .navbar-nav .nav-link {
         font-size: .8rem;
@@ -37,9 +41,26 @@ $ff-dbadman: 'DBAdmanX';
             }
         }
     }
+    .ac-menu-left {
+        .personal-info #pic_profile {
+            width: 75px;
+            height: 75px;
+        }
+    }
 }
 
 @include media-max(767px) {
+    .hide-767 {
+        display: none;
+    }
+    .show-767 {
+        display: block;
+    }
+    .ac-btn-action {
+        .show-767 {
+            display: initial;
+        }
+    }
     .banner {
         height: 200px;
         img {
@@ -57,7 +78,7 @@ $ff-dbadman: 'DBAdmanX';
         }
     }
     .ac-menu-left {
-        padding: 0 !important;
+        padding-bottom: .5rem !important;
         .ac-profile-img {
             padding: 1.5rem;
             margin-top: -4rem;
@@ -137,6 +158,12 @@ $ff-dbadman: 'DBAdmanX';
         img {
             width: 100px !important;
             height: 100px !important;
+        }
+    }
+    .dealer-head {
+        .dealer-id {
+            font-size: 1rem;
+            padding-top: 6px;
         }
     }
 }

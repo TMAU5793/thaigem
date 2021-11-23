@@ -397,10 +397,6 @@
     }
 }
 
-.ac-nav {
-    margin-top: -3rem;
-}
-
 .add-item {
     button {
         background-color: $c-darkgold;
@@ -437,4 +433,33 @@
 .noti-border {
     margin-top: 6px;
     border-top: 2px solid $c-gray;
+}
+
+.show-767 {
+    display: none;
+}
+
+#btn-member-more,
+#edit_ac_info {
+    font-size: 1.15rem;
+    padding: 4px 10px 0;
+    width: 120px;
+    height: 36px;
+}
+
+.status-dealer {
+    span {
+        position: relative;
+        background-color: #fff;
+        border-radius: 50px;
+        font-size: 1rem;
+        padding: 5px 30px 3px 10px;
+        i {
+            color: #04fc05;
+            position: absolute;
+            top: 50%;
+            right: -1px;
+            transform: translate(-50%, -50%);
+        }
+    }
 }

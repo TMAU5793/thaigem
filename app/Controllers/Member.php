@@ -33,7 +33,15 @@ class Member extends BaseController
         $pvModel = new ProvinceModel();
         $cateModel = new ProductCategoryModel();
         $bnModel = new BusinessModel();
+        $mbModel = new AcMemberModel();
+        $mbBusiness = new MemberBusinessModel();
+        $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','product')
+                                ->findAll();
 
+        $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','business')
+                                ->findAll();
         $data = [
             'meta_title' => 'Member directory',
             'lang' => $this->lang,
@@ -42,8 +50,12 @@ class Member extends BaseController
             'province' => $pvModel->findAll(),
             'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
             'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
+            'cate_prod' => $cate_prod,
+            'cate_bus' => $cate_bus
         ];
-        //print_r($data['category']);
+        // print_r('<pre>');
+        // print_r($cate_prod);
+        // print_r('</pre>');
         echo view('front/member', $data);
 	}
 

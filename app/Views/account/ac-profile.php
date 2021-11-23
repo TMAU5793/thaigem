@@ -2,8 +2,8 @@
 
 <?= $this->section("content") ?>
 
-    <section class="banner">
-        <img src="<?= site_url('assets/images/account/banner.jpg') ?>" alt="">
+    <section ection class="banner position-relative">
+        <?= $this->include('account/ac-banner') ?>
     </section>
     
     <section class="account-body mb-5">
