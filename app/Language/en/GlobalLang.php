@@ -104,5 +104,7 @@ return [
     'resetpass1' => 'Password reset request for Account',
     'resetpass2' => 'You can click this link to reset your password.',
     'resetpass3' => 'If you do not make the transaction You can ignore this email.',
-    'message' => 'Message'
+    'message' => 'Message',
+    'memberTgjta' => 'Apply for TGJTA Membership',
+    'memberPerson' => 'Apply for Personal Member'
 ];

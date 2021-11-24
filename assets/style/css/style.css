@@ -849,6 +849,23 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     line-height: 4rem;
     letter-spacing: 1px; }
 
+.singup-popup {
+  background-image: url("../../images/home/newsletter-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  padding: 1.5rem 0; }
+  .singup-popup .col-md-6 {
+    padding: 0 1.5rem; }
+    .singup-popup .col-md-6:first-child {
+      border-right: 2px solid #665f4f; }
+  .singup-popup .btn-register {
+    border: 1px solid #665f4f;
+    padding: 3px 1rem 0; }
+    .singup-popup .btn-register:hover {
+      background-color: #665f4f;
+      color: #ffffff; }
+
 .signup-member {
   background-color: #ffffff;
   box-shadow: 0px 0px 10px 1px #cec6b2; }
@@ -935,6 +952,11 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   margin: 0; }
   .knowledge-content .knowledge-hot .row .col-md-6 {
     padding: 0; }
+
+.relate-list .title {
+  border-top: 1px solid #665f4f;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem; }
 
 .event-text h2 {
   line-height: 33px; }
@@ -1049,6 +1071,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     font-size: 19px; }
     #registerModal .form-check label a {
       font-size: 19px; }
+#registerModal .modal-dialog {
+  max-width: 70%;
+  margin: auto; }
 
 #termsModal .modal-dialog {
   max-width: 800px; }

@@ -50,21 +50,49 @@
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">                
-                <form id="frm_register" action="<?= site_url('account/register'); ?>" method="POST">                    
-                    <div class="input-nobg plr-2rem">
+            <div class="modal-body pt-0">
+                <form id="frm_register" action="<?= site_url('account/register'); ?>" method="POST">
+                    <section class="singup-popup">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="singup-form text-center">
+                                        <div class="head-sect">
+                                            <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberTgjta') ?></h4>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-register member-tgjta fs-6">Create a Membership Account</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="sign-member text-center">
+                                        <div class="head-sect">
+                                            <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberPerson') ?></h4>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-register member-personal fs-6">Join Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="input-nobg mt-3 d-none">
                         <?php if(isset($signup_valid)): ?>
                             <div class="alert alert-danger"><?= $signup_valid->listErrors(); ?></div>
                         <?php endif;?>
                         <div class="form-group mb-3">
                             <div class="form-check form-check-inline w-50 float-start">
                                 <input class="form-check-input" type="radio" name="rd_member" id="rd_member1" value="dealer" checked>
-                                <label class="form-check-label" for="rd_member1">Sign up for member</label>
+                                <label class="form-check-label" for="rd_member1"><?= lang('GlobalLang.memberTgjta') ?></label>
                             </div>
 
                             <div class="form-check form-check-inline w-50 float-start">
                                 <input class="form-check-input" type="radio" name="rd_member" id="rd_member2" value="member">
-                                <label class="form-check-label" for="rd_member2">Sign up for newsletter</label>
+                                <label class="form-check-label" for="rd_member2"><?= lang('GlobalLang.memberPerson') ?></label>
                             </div>
                             <div class="clearfix"></div>
                             

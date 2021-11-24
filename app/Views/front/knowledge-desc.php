@@ -22,4 +22,34 @@
         </div>
         
     </section>
+
+    <section class="relate-list mb-5">
+        <div class="container">
+            <div class="title"><h3>Related Post</h3></div>
+            <div class="row">
+                <?php
+                    if($related){
+                        foreach ($related as $row){
+                ?>
+                <div class="col-4">
+                    <div class="shadow-lightgold h-100 rounded">
+                        <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
+                        <div class="p-4">
+                            <div class="event-text mt-3">
+                                <h2 class="ff-dbadmanBold text-line-1">
+                                    <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="a-hover-darkgold">
+                                        <?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>
+                                    </a>
+                                </h2>
+                                <p class="text-line-2"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php } }else{ ?>
+                    <div class="notfound"><?= lang('GlobalLang.notfound') ?></div>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
 <?= $this->endSection() ?>

@@ -104,5 +104,7 @@ return [
     'resetpass1' => 'คำขอรีเซ็ตรหัสผ่านสำหรับ Account',
     'resetpass2' => 'สามารถกดลิงก์นี้เพื่อรีเซ็ตรหัสผ่าน',
     'resetpass3' => 'หากท่านไม่ได้ทำรายการ ท่านสามารถเพิกเฉยต่ออีเมลนี้ได้',
-    'message' => 'ข้อความ'
+    'message' => 'ข้อความ',
+    'memberTgjta' => 'Apply for TGJTA Membership',
+    'memberPerson' => 'Apply for Personal Member'
 ];

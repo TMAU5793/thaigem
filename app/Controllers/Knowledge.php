@@ -36,6 +36,14 @@ class Knowledge extends BaseController
         $segment3 = urldecode($segment3);
 
         $row = $model->where('slug',$segment3)->first();
+        $tags = explode(',',$row['tags']);
+        $related = [];
+        $n=0;
+        foreach ($tags as $tag){
+            if($n<3){
+                $related = $model->like('tags',$tag)->where('id !=',$row['id'])->orderBy('created_at DESC')->findAll(3);
+            }
+        }
         if(!$row){
             $row = $model->where('id',$segment3)->first();
             $sql = "UPDATE tbl_articles SET view=view+1 WHERE id = '$segment3'";
@@ -49,9 +57,11 @@ class Knowledge extends BaseController
             'meta_title' => ($this->lang=='en' && $row['meta_title_en']!=""?$row['meta_title_en']:$row['meta_title']),
             'meta_desc' => ($this->lang=='en' && $row['meta_desc_en']!=""?$row['meta_desc_en']:$row['meta_desc']),
             'info' => $row,
-            'lang' => $this->lang
+            'lang' => $this->lang,
+            'related' => $related
         ];
         
+        //print_r($related);
         echo view('front/knowledge-desc', $data);
     }
 }

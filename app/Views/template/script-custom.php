@@ -64,6 +64,16 @@ use Google\Service\Adsense\Site;
             $('.more-info').toggleClass('hide-767');
         });
 
+        $('#registerModal').modal('show');
+        $('.member-tgjta').on('click',function(){
+            $('#rd_member1').prop("checked", true);
+        });
+        $('.member-personal').on('click',function(){
+            $('#rd_member2').prop("checked", true);
+        });
+        $('.btn-register').on('click',function(){
+            $('#registerModal .input-nobg').removeClass('d-none');
+        });
         var signup_valid = '<?= (isset($signup_valid)?TRUE:FALSE) ?>';
         if(signup_valid){
             $('#registerModal').modal('show');
