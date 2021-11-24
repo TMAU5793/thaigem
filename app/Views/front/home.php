@@ -10,7 +10,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-12 col-order-2">
-                        <div class="ff-dbadmanBold fs-1">Fulfill your business opportunities with our trusted and reliable members.</div>
+                        <div class="ff-dbadmanBold">
+                            <h3 class="mb-0 fs-1">Fulfill your business opportunities</h3>
+                            <h4 class="mb-0">with our trusted and reliable members.</h4>
+                        </div>
                         <div class="tg-title mt-5rem">
                             <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
@@ -28,7 +31,7 @@
                         if($catergory){
                             foreach($catergory as $row){
                     ?>
-                        <div class="col-lg-2 col-md-4 col-6 cateory-item mb-3">
+                        <div class="col-lg-2 col-md-4 col-4 cateory-item mb-3">
                             <div class="box-shadow-lightgold cursor-pointer zoom-in" onclick="location.href='<?= site_url('member/filter?c='.$row['id']) ?>'">
                                 <div class="item-img">
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">

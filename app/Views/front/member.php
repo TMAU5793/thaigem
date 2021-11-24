@@ -161,7 +161,11 @@
                                             $member_id = $row['code'];
                                         }
                                     ?>
-                                    <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                    <?php if($userdata['logged_member']){ ?>
+                                        <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                    <?php }else{ ?>
+                                        <a href="javascript:void(0)" class="btn btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

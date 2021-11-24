@@ -22,11 +22,28 @@
     .account-logged .account-menu .navbar-nav li {
       float: left;
       padding: 0 .5rem; }
+      .account-logged .account-menu .navbar-nav li:first-child {
+        padding-left: 0; }
 
   .ac-menu-left .personal-info #pic_profile {
     width: 75px;
     height: 75px; } }
 @media (max-width: 767px) {
+  .account-logged .account-menu {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */ }
+    .account-logged .account-menu::-webkit-scrollbar {
+      display: none;
+      /* for Chrome, Safari, and Opera */ }
+    .account-logged .account-menu .navbar-nav {
+      display: inline-flex;
+      white-space: nowrap; }
+      .account-logged .account-menu .navbar-nav li {
+        float: none; }
+
   .hide-767 {
     display: none; }
 
@@ -36,11 +53,9 @@
   .ac-btn-action .show-767 {
     display: initial; }
 
-  .banner {
-    height: 200px; }
-    .banner img {
-      height: 100%;
-      object-fit: cover; }
+  .banner img {
+    height: 100%;
+    object-fit: cover; }
 
   .account-body .col-xl-3.col-lg-4 {
     padding: 0;
@@ -90,19 +105,15 @@
   .navbar-nav {
     display: block; }
 
-  .account-body .account-menu {
-    box-shadow: 0px 2px 0px 0px #ccc;
-    margin-bottom: 1.5rem; }
-    .account-body .account-menu .navbar-nav {
-      display: block;
-      font-size: .8rem; }
-      .account-body .account-menu .navbar-nav .nav-link {
-        display: inline-block;
-        padding: .25rem 0 0;
-        margin-bottom: .25rem; }
-        .account-body .account-menu .navbar-nav .nav-link.active {
-          border: none;
-          box-shadow: 0px 2px 0px 0px #cec6b2; }
+  .account-body .account-menu .navbar-nav {
+    font-size: .8rem; }
+    .account-body .account-menu .navbar-nav .nav-link {
+      display: inline-block;
+      padding: .25rem 0 0;
+      margin-bottom: .25rem; }
+      .account-body .account-menu .navbar-nav .nav-link.active {
+        border: none;
+        box-shadow: 0px 2px 0px 0px #cec6b2; }
   .account-body .ac-about.mt-5 {
     margin-top: 1.5rem !important; } }
 @media (max-width: 575px) {
@@ -499,16 +510,16 @@
 
   .category-home .bg-title .row {
     position: relative; }
-    .category-home .bg-title .row .col-md-8 div.fs-1 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 0 1rem; }
-    .category-home .bg-title .row .col-md-8 .tg-title.mt-5rem {
-      margin-top: 4rem;
-      margin-bottom: 1rem; }
-    .category-home .bg-title .row .col-md-4 {
-      padding-top: 6rem; }
+    .category-home .bg-title .row .col-md-8 {
+      margin-top: 3rem; }
+      .category-home .bg-title .row .col-md-8 div.fs-1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 1rem; }
+      .category-home .bg-title .row .col-md-8 .tg-title.mt-5rem {
+        margin-top: 1rem;
+        margin-bottom: 1rem; }
 
   .category-list {
     padding-top: 1rem !important; }
@@ -621,10 +632,10 @@
 
   .category-home .bg-title .row .col-md-8 div.fs-1 {
     line-height: 28px; }
-  .category-home .bg-title .row .col-md-4 {
-    padding-top: 7rem; }
   .category-home .category-list .item-text {
-    height: 70px; }
+    height: 50px; }
+    .category-home .category-list .item-text h2 {
+      font-size: 1rem !important; }
 
   .to-top {
     height: 40px;

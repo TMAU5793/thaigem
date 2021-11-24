@@ -525,6 +525,7 @@
             .row {
                 position: relative;
                 .col-md-8 {
+                    margin-top: 3rem;
                     div.fs-1 {
                         position: absolute;
                         top: 0;
@@ -532,12 +533,9 @@
                         padding: 0 1rem;
                     }
                     .tg-title.mt-5rem {
-                        margin-top: 4rem;
+                        margin-top: 1rem;
                         margin-bottom: 1rem;
                     }
-                }
-                .col-md-4 {
-                    padding-top: 6rem;
                 }
             }
         }
@@ -705,13 +703,13 @@
                 .col-md-8 div.fs-1 {
                     line-height: 28px;
                 }
-                .col-md-4 {
-                    padding-top: 7rem;
-                }
             }
         }
         .category-list .item-text {
-            height: 70px;
+            height: 50px;
+            h2 {
+                font-size: 1rem !important;
+            }
         }
     }
     .to-top {

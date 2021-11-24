@@ -23,7 +23,7 @@
                                         </a>
                                     </h2>
                                     <p class="text-line-3 text-line-3"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
-                                    <div class="event-date"><?= substr($row['created_at'],0,10) ?></div>
+                                    <div class="event-date fs-5"><?= lang('GlobalLang.eventDate').' : '.substr($row['start_event'],0,10) ?></div>
                                 </div>
                                 <div class="event-action mt-2">
                                     <a href="<?= site_url('event/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>

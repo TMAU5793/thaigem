@@ -1,7 +1,14 @@
 <?= $this->extend("front/app") ?>
 
 <?= $this->section("content") ?>
-    
+    <section class="banner position-relative">
+        <div class="banner-item">
+            <img src="<?= site_url('assets/images/account/banner.jpg') ?>" alt="">
+            <div class="absolute-center">
+                <h2 class="display-3 ff-dbadmanBold"><?= $info['company'] ?></h2>
+            </div>
+        </div>
+    </section>
     <section class="account-body mb-5">
         <div class="container">
             <div class="row">
@@ -187,6 +194,12 @@
                             <?php } ?>
                             <?php if($social->line!=""){ ?>            
                                 <a href="http://line.me/ti/p/<?= $social->line ?>" target="_blank"><i class="fab fa-line"></i></a>
+                            <?php } ?>
+                            <?php if($social->linkein!=""){ ?>
+                                <a href="https://www.linkedin.com/in/<?= $social->linkein ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <?php } ?>
+                            <?php if($social->youtube!=""){ ?>
+                                <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>
                             <?php } ?>
                         </div>    
                         

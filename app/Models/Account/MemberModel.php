@@ -368,6 +368,8 @@ class MemberModel extends Model
                 'line' => $data['txt_line'],
                 'facebook' => $data['txt_facebook'],
                 'instagram' => $data['txt_instagram'],
+                'linkein' => $data['txt_linkein'],
+                'youtube' => $data['txt_youtube'],
                 'updated_at' => $datetime
             ];
             $builder->where('member_id', $data['hd_id']);
@@ -378,6 +380,8 @@ class MemberModel extends Model
                 'line' => $data['txt_line'],
                 'facebook' => $data['txt_facebook'],
                 'instagram' => $data['txt_instagram'],
+                'linkein' => $data['txt_linkein'],
+                'youtube' => $data['txt_youtube'],
                 'created_at' => $datetime,
                 'updated_at' => $datetime
             ];

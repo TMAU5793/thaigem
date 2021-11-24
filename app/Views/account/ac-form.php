@@ -38,7 +38,13 @@
                                                 </div>
                                                 <div class="w-75">
                                                     <strong class="ff-dbadmanBold d-block"><?= $file['filename']; ?></strong>
-                                                    <button type="button" class="btn btn-black-border mt-3 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
+                                                    <?php
+                                                        if($member['status']=='2' && $file['filefor']=='dealer'){
+                                                    ?>
+                                                        <button type="button" class="btn btn-black-border mt-3" disabled><?= lang('accountLang.d-form') ?></button>
+                                                    <?php }else{ ?>
+                                                        <button type="button" class="btn btn-black-border mt-3 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>

@@ -33,7 +33,7 @@
         //display album image
         $("#file_album").change(function () {
             var album = '<?= (isset($album)?count($album) : 0 ) ?>';
-            var limit = 9-album;
+            var limit = 20-album;
             multiImg(this,'#album_fallback',limit); //files, display element, limit images
         });
 
@@ -57,6 +57,11 @@
             $('.about-edit').toggleClass('d-none');
             $('.ac-album').toggleClass('d-none');
             $('#txt_ac_about').focus();            
+        });
+
+        //My Event click to detial
+        $('.event-item-box').on('click',function(){
+            $('.event-info').removeClass('d-none');
         });
 
         //disabled click outside modal to close
@@ -110,7 +115,7 @@
         <?php } ?>
 
         //Modal upload
-        <?php if (!empty(session('msg_upload')) || !empty(session('msg_invoice'))){ ?>
+        <?php if (session('msg_upload') || session('msg_invoice')){ ?>
             $('#uploadModal').modal('show');
         <?php } ?>
 

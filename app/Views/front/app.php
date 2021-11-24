@@ -44,6 +44,11 @@
     <!-- Login popup -->
     <?= $this->include('front/user-popup') ?>
 
+    <?php if(session()->get('userdata')['logged_member']){ ?>
+        <!-- Account popup -->
+        <?= $this->include('account/ac-popup') ?>
+    <?php } ?>
+
     <!-- add copy right footer -->
     <?= $this->include('front/copy-right') ?>
 
@@ -74,7 +79,6 @@
 
     <!-- Add script with php -->
     <?= $this->include('template/script-custom'); ?>
-
     <?= $this->renderSection("scripts") ?>
 </body>
 </html>

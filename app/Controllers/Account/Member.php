@@ -208,7 +208,7 @@ class Member extends Controller
                 
                 $albummodel = new AlbumModel();
                 $album = $albummodel->where('member_id',$post['hd_id'])->findAll();
-                $no = 9-count($album);
+                $no = 20-count($album);
                 if ($request->getFileMultiple('file_album')) {
                     $n=0;
                     foreach($request->getFileMultiple('file_album') as $file) {

@@ -17,12 +17,18 @@ class Member extends BaseController
 {
     protected $lang;
     protected $db;
+    protected $userdata;
     public function __construct() {
         helper('text');
         $this->db = \Config\Database::connect();
         $this->lang = session()->get('lang');
         if($this->lang==""){
             $this->lang = 'en';
+        }
+
+        $sess = session()->get('userdata');
+        if($sess){
+            $this->userdata = $sess;
         }
     }
 
@@ -51,7 +57,8 @@ class Member extends BaseController
             'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
             'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
             'cate_prod' => $cate_prod,
-            'cate_bus' => $cate_bus
+            'cate_bus' => $cate_bus,
+            'userdata' => $this->userdata
         ];
         // print_r('<pre>');
         // print_r($cate_prod);

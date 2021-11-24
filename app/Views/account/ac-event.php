@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <div class="event-info">
+                    <div class="event-info d-none">
                         <div class="event-album">
                             <div class="slider-event">
                                 <?php

@@ -144,7 +144,19 @@
                                     <label for=""><?= lang('GlobalLang.line') ?> <span class="fs-6">(<?= lang('GlobalLang.lineOA') ?>)</span></label>
                                     <input type="text" class="form-control" name="txt_line" value="<?= (isset($social)?$social->line : '') ?>">
                                 </div>
-                            </div>                            
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.linkein') ?></label>
+                                    <input type="text" class="form-control" name="txt_linkein" value="<?= (isset($social)?$social->linkein : '') ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.youtube') ?> <span class="fs-6">(Example : https://www.youtube.com/example)</span></label>
+                                    <input type="text" class="form-control" name="txt_youtube" value="<?= (isset($social)?$social->youtube : '') ?>">
+                                </div>
+                            </div>
                             
                             <div class="col-12">
                                 <div class="ac-about form-group mb-3">
@@ -295,7 +307,7 @@
                             <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple accept="image/*">
                             <label for="file_album" class="label-file-img">Choose Images</label>
                             <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
-                            <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 9 รูป </small>
+                            <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 20 รูป </small>
                         </div>
                     </div>
                 </div>

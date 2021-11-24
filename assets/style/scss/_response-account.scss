@@ -37,6 +37,9 @@ $ff-dbadman: 'DBAdmanX';
                 li {
                     float: left;
                     padding: 0 .5rem;
+                    &:first-child {
+                        padding-left: 0;
+                    }
                 }
             }
         }
@@ -50,6 +53,24 @@ $ff-dbadman: 'DBAdmanX';
 }
 
 @include media-max(767px) {
+    .account-logged .account-menu {
+        overflow: scroll;
+        -ms-overflow-style: none;
+        /* for Internet Explorer, Edge */
+        scrollbar-width: none;
+        /* for Firefox */
+        &::-webkit-scrollbar {
+            display: none;
+            /* for Chrome, Safari, and Opera */
+        }
+        .navbar-nav {
+            display: inline-flex;
+            white-space: nowrap;
+            li {
+                float: none;
+            }
+        }
+    }
     .hide-767 {
         display: none;
     }
@@ -62,7 +83,6 @@ $ff-dbadman: 'DBAdmanX';
         }
     }
     .banner {
-        height: 200px;
         img {
             height: 100%;
             object-fit: cover;
@@ -130,10 +150,7 @@ $ff-dbadman: 'DBAdmanX';
     }
     .account-body {
         .account-menu {
-            box-shadow: 0px 2px 0px 0px #ccc;
-            margin-bottom: 1.5rem;
             .navbar-nav {
-                display: block;
                 font-size: .8rem;
                 .nav-link {
                     display: inline-block;

@@ -3,6 +3,7 @@
 namespace App\Controllers\Account;
 use CodeIgniter\Controller;
 use App\Models\FilesModel;
+use App\Models\Account\AccountModel;
   
 class Accountform extends Controller
 {       
@@ -24,11 +25,14 @@ class Accountform extends Controller
         }
         
         $model = new FilesModel();
+        $acModel = new AccountModel();
+        $member = $acModel->where('id',$this->member_id)->first();
         $data = [
             'ac_form' => TRUE,
             'meta_title' => 'Download Form Dealer',
             'formFiles' => $model->where(['filefor'=>'dealer','member_id'=>null,'status'=>'on'])->findAll(),
-            'fileFor' => 'dealer'
+            'fileFor' => 'dealer',
+            'member' => $member
         ];
         echo view('account/ac-form',$data);
     }

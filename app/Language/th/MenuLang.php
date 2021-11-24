@@ -7,18 +7,18 @@ return [
     'navMembers' => 'สมาชิก',
     'navKnowledge' => 'สาระน่ารู้และข่าวสาร',
     'navEvents' => 'งานแสดงสินค้า',
-    'navBusiness' => 'ชุมชนธุรกิจ',
+    'navBusiness' => 'เจรจาการค้า',
     'navContactus' => 'ติดต่อเรา',
     'navPriceUpdate' => 'ราคาล่าสุด',
 
     //Language for account
     'myAccount' => 'บัญชีของฉัน',
     'bookEvent' => 'งานอีเว้นท์',
-    'downloadUploadForm' => 'ดาวน์โหลด และอัปโหลดเอกสาร',
-    'downloadForm' => 'ดาวน์โหลดใบสมัครสมาชิก',
-    'downloadFormEvent' => 'ดาวน์โหลดเอกสารอีเว้นท์',
+    'downloadUploadForm' => 'ดาวน์โหลด & อัปโหลดเอกสาร',
+    'downloadForm' => 'เอกสารสำหรับสมาชิก',
+    'downloadFormEvent' => 'ใบสมัครเข้าร่วมงานแสดงสินค้า',
     'invoice' => 'ใบแจ้งชำระเงิน',
-    'webboard' => 'ชุมชน',
+    'webboard' => 'เจรจาธุรกิจ',
 
     'history' => 'ประวัติสมาคม',
     'regulation' => 'ข้อบังคับและวัตถุประสงค์',
@@ -28,8 +28,8 @@ return [
     'privileges' => 'สิทธิประโยชน์',
     'membership' => 'สมัครสมาชิกสมาคมฯ',
     'directory' => 'สมาชิกทั้งหมด',
-    'my-event' => 'การจองของฉัน',
-    'events-list' => 'รายการอีเว้นท์',
+    'my-event' => 'My Event',
+    'events-list' => 'Event List',
 
     //Webboard community
     'forum' => 'หัวข้อ',

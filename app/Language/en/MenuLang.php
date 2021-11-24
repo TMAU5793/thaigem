@@ -14,9 +14,9 @@ return [
     //Language for account
     'myAccount' => 'My Account',
     'bookEvent' => 'Book Event',
-    'downloadUploadForm' => 'Download & Upload Form',
-    'downloadForm' => 'Download Form',
-    'downloadFormEvent' => 'Download Form Event',
+    'downloadUploadForm' => 'Download & Upload Document',
+    'downloadForm' => 'Member Document',
+    'downloadFormEvent' => 'Exhibition Application',
     'invoice' => 'Invoice',
     'webboard' => 'Webboard',
 
