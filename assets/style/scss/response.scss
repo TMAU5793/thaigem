@@ -214,6 +214,10 @@
     }
 } //end medi 1199
 @include media-max(991px) {
+    .category-home .tg-title {
+        margin-top: 11rem;
+        margin-bottom: 2rem;
+    }
     .hide-991 {
         display: none;
     }
@@ -538,6 +542,13 @@
                     }
                 }
             }
+        }
+        .tg-title {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        .col-md-6.col-order-2 {
+            margin-top: 1.5rem;
         }
     }
     .category-list {

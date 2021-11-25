@@ -279,6 +279,10 @@
     .event-home .slick-1-item .slick-dots li {
       background: #cec6b2; } }
 @media (max-width: 991px) {
+  .category-home .tg-title {
+    margin-top: 11rem;
+    margin-bottom: 2rem; }
+
   .hide-991 {
     display: none; }
 
@@ -520,6 +524,11 @@
       .category-home .bg-title .row .col-md-8 .tg-title.mt-5rem {
         margin-top: 1rem;
         margin-bottom: 1rem; }
+  .category-home .tg-title {
+    margin-top: 3rem;
+    margin-bottom: 1rem; }
+  .category-home .col-md-6.col-order-2 {
+    margin-top: 1.5rem; }
 
   .category-list {
     padding-top: 1rem !important; }

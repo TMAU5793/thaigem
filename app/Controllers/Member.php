@@ -121,6 +121,7 @@ class Member extends BaseController
         $pvModel = new ProvinceModel();
         $cateModel = new ProductCategoryModel();
         $bnModel = new BusinessModel();
+        $mbBusiness = new MemberBusinessModel();
         $get = $request->getGet();
 
         if($get){
@@ -149,6 +150,14 @@ class Member extends BaseController
                 return redirect()->to('member');
             }
             
+            $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','product')
+                                ->findAll();
+
+            $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','business')
+                                ->findAll();
+
             $data = [
                 'meta_title' => 'Member',
                 'lang' => $this->lang,
@@ -157,7 +166,10 @@ class Member extends BaseController
                 'province' => $pvModel->findAll(),
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
                 'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
-                'avd' => $avd
+                'avd' => $avd,
+                'cate_prod' => $cate_prod,
+                'cate_bus' => $cate_bus,
+                'userdata' => $this->userdata
             ];
             // print_r('<pre>');
             // print_r($result);
@@ -178,9 +190,18 @@ class Member extends BaseController
         $cateModel = new ProductCategoryModel();
         $bnModel = new BusinessModel();
         $mbnModel = new MemberBusinessModel();
+        $mbBusiness = new MemberBusinessModel();
+
         $id = $request->getGet('c');
         // echo $id;
+        
+        $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','product')
+                                ->findAll();
 
+        $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','business')
+                                ->findAll();
         if($id){
             //$result = $mbnModel->where('maincate_id',$id)->groupby('maincate_id')->findAll();
             $db      = \Config\Database::connect();
@@ -196,7 +217,10 @@ class Member extends BaseController
                 'album' => $albumModel->findAll(),
                 'province' => $pvModel->findAll(),
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
-                'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll()
+                'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
+                'cate_prod' => $cate_prod,
+                'cate_bus' => $cate_bus,
+                'userdata' => $this->userdata
             ];
             
             echo view('front/member', $data);

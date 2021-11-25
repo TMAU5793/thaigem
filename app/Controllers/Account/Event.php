@@ -40,8 +40,7 @@ class Event extends Controller
             'lang' => $this->lang,
             'meta_title' => 'My Event',
             'bookings' => $bkModel->where('member_id',$this->member_id)->findAll(),
-            'events' => $evModel->findAll()
-            
+            'events' => $evModel->findAll(),            
         ];
         echo view('account/ac-event',$data);
     }
@@ -59,7 +58,8 @@ class Event extends Controller
             'ac_event' => TRUE,
             'lang' => $this->lang,
             'meta_title' => 'Events List',
-            'events' => $evModel->findAll()            
+            'events' => $evModel->findAll(),
+            'eventlist' => 1
         ];
 
         //print_r($data['events']);

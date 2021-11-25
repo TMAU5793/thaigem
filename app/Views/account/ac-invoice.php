@@ -15,11 +15,18 @@
                         }
                     ?>
                     <div class="content-body acform-body">
-                        <div class="content-title"><strong class="ff-semibold fs-3"><?= $meta_title; ?></strong></div>
+                        <div class="content-title"><strong class="ff-dbadmanBold fs-3"><?= $meta_title; ?></strong></div>
                         <?php 
-                            if($formFiles) {
+                            if($invoices) {
                         ?>
-                            <p>กรุณาดาวโหลดใบแจ้งหนี้ เพื่อดูรายละเอียดหากชำระแล้วกรุณาแนบหลักฐาน</p>
+                            <ul class="list-decimal">
+                                <li>กรุณาดาวโหลดใบแจ้งชำระเงินและดำเนินการชำระเงินตามรายละเอียด</li>
+                                <li>กรุณาแนบหลักฐานการชำระเงินหรือเอกสารกลับมาที่เมนู UPLOAD YOUR FILE ทางด้านล่าง</li>
+                                <li>รอเจ้าหน้าที่พิจารณาหากเอกสารผ่านการพิจารณาท่านจะได้รับแจ้งเตือนทางอีเมล</li>
+                                <li>หลังจากผ่านการพิจารณา กรุณาทำการดาวโหลดใบแจ้งหนี้เพื่อทำการชำระเงินค่าสมาชิกได้ที่เมนู ใบแจ้งชำระเงิน</li>
+                                <li>รอเจ้าหน้าที่ทำการตรวจสอบ หากผ่านการอนุมัติ ท่านจะได้รับแจ้งเตือนทางอีเมล </li>
+                                <li>เมื่อผ่านการอนุมัติท่านสามารถเข้าสู่ระบบเพื่อตรวจสอบสถานะของท่านได้จากเมนูบัญชีของฉัน</li>
+                            </ul>
                         <?php } ?>
                         <div class="invoice-section mt-4">
                             <form id="frm-file-download" action="<?= site_url('account/invoice/download'); ?>" method="POST">
@@ -27,8 +34,8 @@
                                 <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
                                 <div class="row">
                                     <?php 
-                                        if($formFiles) {
-                                            foreach($formFiles as $file){
+                                        if($invoices) {
+                                            foreach($invoices as $file){
                                                 $filetype = array_pop(explode('.',$file['path']));
                                     ?>
                                         <div class="col-md-6 mb-4">
@@ -41,8 +48,8 @@
                                                     <?php } ?>
                                                 </div>
                                                 <div class="w-75">
-                                                    <strong class="ff-semibold d-block"><?= $file['filename']; ?></strong>
-                                                    <button type="button" class="btn btn-black-border fs-7 mt-3 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
+                                                    <strong class="ff-dbadmanBold d-block"><?= $file['filename']; ?></strong>
+                                                    <button type="button" class="btn btn-black-border fs-6 mt-3 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
                                                 </div>
                                             </div>
                                         </div>

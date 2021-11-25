@@ -11,3 +11,5 @@
         </div>
     </div>
 </div>
+<!-- Loading event -->
+<div class="loading d-none"></div>

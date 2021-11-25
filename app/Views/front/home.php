@@ -9,16 +9,16 @@
         <div class="bg-title ptb-2rem">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-sm-12 col-order-2">
+                    <div class="col-md-6 col-sm-12 col-order-2">
                         <div class="ff-dbadmanBold">
                             <h3 class="mb-0 fs-1">Fulfill your business opportunities</h3>
                             <h4 class="mb-0">with our trusted and reliable members.</h4>
                         </div>
-                        <div class="tg-title mt-5rem">
+                        <div class="tg-title">
                             <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-12 col-order-1">
+                    <div class="col-md-6 col-sm-12 col-order-1">
                         <?= $this->include('template/gold-price') ?>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
         </div>
     </section>
 
-    <section class="member-home ptb-2rem">
+    <section class="member-home member-content ptb-2rem">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-8">
@@ -201,47 +201,93 @@
                     </div>
                 </div>
             </div>
-            <div class="member-list slick-2-item slick-dots-2 mb-5 mt-3">
-                <?php 
-                    use App\Models\Account\AlbumModel;
-                    $model = new AlbumModel();
-                    if($dealers){
-                        foreach($dealers as $dealer){
-                            $album1 = $model->where('member_id',$dealer['id'])->first();
-                            $album3 = $model->where('member_id',$dealer['id'])->findAll(3);
-                            if($album1){
-                ?>
-                <div class="member-item">
-                    <div class="shadow-lightgold h-100 rounded w-100 d-inline-flex p-3">
-                        <div class="w-50 ac-album">
-                            <div class="mian-img">                                
-                                <div class="img-item">
-                                    <img src="<?= (is_file($album1['images'])?site_url($album1['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $dealer['name'].' '.$dealer['lastname'] ?>">
-                                </div>
-                            </div>
-                            <div class="sub-img album-item">
+            <div class="member-list mb-5 mt-3">
+                <div class="row">
+                    <?php
+                        if($dealers){
+                            foreach($dealers as $row){
+                    ?>
+                    <div class="col-lg-6 col-md-12 position-relative mt-4">
+                        <div class="shadow-lightgold box-member d-flex">
+                            <div class="w-50">
                                 <?php
-                                    if($album3){
-                                        foreach($album3 as $album){
+                                    if($row['profile']){
                                 ?>
-                                    <div class="img-item">
-                                        <img src="<?= (is_file($album['images'])?site_url($album['images']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= $dealer['name'].' '.$dealer['lastname'] ?>">
+                                    <div class="slider-for-item">
+                                        <img src="<?= (is_file($row['profile'])?site_url($row['profile']):site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                     </div>
-                                <?php } } ?>
+                                <?php } ?>
+                                
+                                <ul>
+                                    <?php if($albums){
+                                            $n=0;
+                                            foreach($albums as $img){
+                                                if($img['member_id'] == $row['id'] && $n<3){
+                                                    $n++;
+                                    ?>
+                                        <li class="album-item">
+                                            <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
+                                        </li>
+                                    <?php } } } if($n==0){ ?>
+                                        <li class="album-item">
+                                            <img src="<?= (site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                                <div class="clearfix"></div>
                             </div>
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div class="absolute-center text-center w-100 p-3">
-                                <h2 class="ff-dbadmanBold c-darkgold fs-4 text-uppercase"><?= $dealer['name'].' '.$dealer['lastname'] ?></h2>
-                                <p><?= character_limiter($dealer['about'],40) ?></p>
-                                <div class="btn-tg-group mt-5">
-                                    <a href="<?= site_url('member/id/'.$dealer['id']); ?>" class="btn btn-redmore btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
+                            <div class="w-50 position-relative">
+                                <div class="position-absolute translate-middle top-50 start-50 w-100 ps-3 text-center">
+                                    <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1 mb-0"><?= $row['company'] ?></h5>
+                                    <!-- <p class="text-line-3"><?= character_limiter($row['about'],50) ?></p> -->
+                                    <div class="cate-type">
+                                        <strong class="ff-dbadmanBold"><?= lang('GlobalLang.product-type') ?></strong>
+                                        <?php
+                                            if($cate_prod){
+                                                $n=0;                                                
+                                                foreach ($cate_prod as $cate){
+                                                    if($n<1 && $row['id']==$cate['member_id']){
+                                                        $n++;
+                                                        
+                                        ?>
+                                            <p class="text-line-1 mb-0"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                        <?php } } } ?>
+                                    </div>
+                                    <div class="cate-type">
+                                        <strong class="ff-dbadmanBold"><?= lang('GlobalLang.business-type') ?></strong>
+                                        <?php
+                                            if($cate_bus){
+                                                $n=0;
+                                                foreach ($cate_bus as $cate){
+                                                    if($n<1 && $row['id']==$cate['member_id']){
+                                                        $n++;
+                                        ?>
+                                            <p class="text-line-1"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                        <?php } } } ?>
+                                    </div>
+                                    <div class="event-action">
+                                        <?php
+                                            $member_id = $row['id'];
+                                            if($row['code']){
+                                                $member_id = $row['code'];
+                                            }
+                                        ?>
+                                        <?php if($userdata['logged_member']){ ?>
+                                            <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                        <?php }else{ ?>
+                                            <a href="javascript:void(0)" class="btn btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                        <?php } ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php } }else{ ?>
+                        <div class="col-12 mt-4 text-center">
+                            <span>ไม่พบข้อมูล</span>
+                        </div>
+                    <?php } ?>
                 </div>
-                <?php } } } ?>
             </div>
         </div>
     </section>

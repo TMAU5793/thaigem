@@ -32,6 +32,12 @@
             }
         }
     }
+    #tradingview_5625e {
+        height: 330px;
+    }
+    .tg-title {
+        margin-top: 13rem;
+    }
 }
 
 .price-update {
@@ -583,6 +589,9 @@
     .modal-dialog {
         max-width: 70%;
         margin: auto;
+        .modal-content {
+            padding: 1rem 3rem;
+        }
     }
 }
 
@@ -737,4 +746,10 @@
 
 .show-575 {
     display: none;
+}
+
+.information-center {
+    table {
+        width: 100%;
+    }
 }

@@ -7,6 +7,7 @@ use App\Models\MemberModel;
 use App\Models\Account\AlbumModel;
 use App\Models\BookingModel;
 use App\Models\KnowledgeModel;
+use App\Models\MemberBusinessModel;
 
 class Home extends BaseController
 {
@@ -35,19 +36,32 @@ class Home extends BaseController
         $abModel = new AlbumModel();
         $bkModel = new BookingModel();
         $acModel= new KnowledgeModel();
+        $mbBusiness = new MemberBusinessModel();
+        $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','product')
+                                ->findAll();
+
+        $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
+                                ->where('tbl_member_business.type','business')
+                                ->findAll();
 
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association',
             'lang' => $this->lang,
             'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->findAll(6),
             'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
-            'dealers' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(),
+            'dealers' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(2),
             'albums' => $abModel->findAll(),
             'member' => $mbModel->where('id',$this->member_id)->first(),
-            'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3)
+            'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3),
+            'cate_prod' => $cate_prod,
+            'cate_bus' => $cate_bus,
+            'userdata' => $this->userdata
         ];
         
-        
+        // print_r('<pre>');
+        // print_r($data['albums']);
+        // print_r('</pre>');
         echo view('front/home', $data);
 	}
 }

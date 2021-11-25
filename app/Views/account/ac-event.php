@@ -24,9 +24,18 @@
                                             foreach ($bookings as $booking){
                                                 if($event['id'] == $booking['event_id']){
                                 ?>
-                                    <div class="event-item-box border-lightgray">
+                                    <div class="event-item-box myevent-box border-lightgray">
                                         <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?>">
                                         <div class="item-desc p-3">
+                                            <div class="event-success">
+                                                <?php
+                                                    if($booking['status']=='2'){
+                                                ?>
+                                                    <span>ดำเนินการสำเร็จแล้ว <i class="fas fa-circle text-success"></i></span>
+                                                <?php }else if($booking['status']=='1'){ ?>
+                                                    <span>รอดำเนินการ <i class="fas fa-circle text-warning"></i></span>
+                                                <?php } ?>
+                                            </div>
                                             <strong class="ff-semibold text-line-2"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>
                                             <p class="text-line-3"><?= ($lang=='en' && $event['shortdesc_en']!=""?word_limiter($event['shortdesc_en'],10):word_limiter($event['shortdesc'],10)) ?></p>
                                         </div>
@@ -36,7 +45,7 @@
                         </div>
                     </div>
 
-                    <div class="event-info d-none">
+                    <div class="event-info myevent-desc" id="myevent-desc">
                         <div class="event-album">
                             <div class="slider-event">
                                 <?php

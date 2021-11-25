@@ -51,7 +51,7 @@
 
     <!-- add copy right footer -->
     <?= $this->include('front/copy-right') ?>
-
+    
     <!-- jQuery -->
     <script src="<?= base_url('assets/adminlte/jquery/jquery.min.js'); ?>"></script>
 

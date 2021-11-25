@@ -246,40 +246,73 @@
     }
 
     // Ckediter 
-    ClassicEditor
-        .create( document.querySelector( '#txt_desc' ),{
-            ckfinder: {
-                uploadUrl: '../../assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
-            },
-            toolbar: [
-                'heading', '|',
-                'ckfinder', 'imageUpload', 'blockQuote', '|',                
-                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
-                'outdent', 'indent', '|',
-                'insertTable', 'mediaEmbed', '|',
-                'undo', 'redo', '|',
-            ]
-        } )
-        .catch( error => {
-            //console.error( error );
-        } );
+    CKEDITOR.replace( 'txt_desc', {
+        language: 'es',
+        height: '500px'
+    });
 
-    ClassicEditor
-        .create( document.querySelector( '#txt_desc_en' ),{
-            ckfinder: {
-                uploadUrl: '../../assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
-            },
-            toolbar: [
-                'heading', '|',
-                'ckfinder', 'imageUpload', 'blockQuote', '|',                
-                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',               
-                'outdent', 'indent', '|',
-                'insertTable', 'mediaEmbed', '|',
-                'undo', 'redo', '|',
-            ]
-        } )
-        .catch( error => {
-            //console.error( error );
-        } );
+    // CKEDITOR.editorConfig = function( config ) {
+    //     config.toolbar = [
+    //         { name: 'document', items: [ 'Source', '-', 'Save', 'NewPage', 'ExportPdf', 'Preview', 'Print', '-', 'Templates' ] },
+    //         { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+    //         { name: 'editing', items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+    //         { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+    //         '/',
+    //         { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat' ] },
+    //         { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+    //         { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+    //         { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+    //         '/',
+    //         { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+    //         { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+    //         { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+    //         { name: 'about', items: [ 'About' ] }
+    //     ];
+    // };
+    // CKEDITOR.editorConfig = function( config ) {
+    //     config.language = 'es';
+    //     config.uiColor = '#F7B42C';
+    //     config.height = 300;
+    //     config.toolbarCanCollapse = true;
+    // };
+
+    // ClassicEditor
+    //     .create( document.querySelector( '#txt_desc' ),{
+    //         ckfinder: {
+    //             uploadUrl: '../../assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+    //         },
+    //         alignment: {
+    //             options: [ 'left', 'right' ]
+    //         },
+    //         toolbar: [
+    //             'heading', '|',
+    //             'ckfinder', 'imageUpload', 'blockQuote', '|',                
+    //             'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
+    //             'alignment', '|',
+    //             'insertTable', 'mediaEmbed', '|',
+    //             'undo', 'redo', '|',
+    //         ]
+    //     } )
+    //     .catch( error => {
+    //         //console.error( error );
+    //     } );
+
+    // ClassicEditor
+    //     .create( document.querySelector( '#txt_desc_en' ),{
+    //         ckfinder: {
+    //             uploadUrl: '../../assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+    //         },
+    //         toolbar: [
+    //             'heading', '|',
+    //             'ckfinder', 'imageUpload', 'blockQuote', '|',                
+    //             'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',               
+    //             'outdent', 'indent', '|',
+    //             'insertTable', 'mediaEmbed', '|',
+    //             'undo', 'redo', '|',
+    //         ]
+    //     } )
+    //     .catch( error => {
+    //         //console.error( error );
+    //     } );
 
 </script>

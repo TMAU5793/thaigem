@@ -32,7 +32,8 @@ class Accountform extends Controller
             'meta_title' => 'Download Form Dealer',
             'formFiles' => $model->where(['filefor'=>'dealer','member_id'=>null,'status'=>'on'])->findAll(),
             'fileFor' => 'dealer',
-            'member' => $member
+            'member' => $member,
+            'formmember' => TRUE
         ];
         echo view('account/ac-form',$data);
     }
@@ -48,7 +49,8 @@ class Accountform extends Controller
             'ac_form' => TRUE,
             'meta_title' => 'Download Form Event',
             'formFiles' => $model->where(['filefor'=>'event','member_id'=>null,'status'=>'on'])->findAll(),
-            'fileFor' => 'event'
+            'fileFor' => 'event',
+            'formevent' => TRUE
         ];
         echo view('account/ac-form',$data);
     }

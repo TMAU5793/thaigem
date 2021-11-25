@@ -57,12 +57,7 @@
             $('.about-edit').toggleClass('d-none');
             $('.ac-album').toggleClass('d-none');
             $('#txt_ac_about').focus();            
-        });
-
-        //My Event click to detial
-        $('.event-item-box').on('click',function(){
-            $('.event-info').removeClass('d-none');
-        });
+        });        
 
         //disabled click outside modal to close
         $('#successModal').modal({backdrop: 'static', keyboard: false});
@@ -165,6 +160,7 @@
         //session booking event for popup
         var bookevent = localStorage.getItem("book-event");
         if(bookevent){
+            $('#successModal').modal('hide');
             $('#bookingModal').modal('show');
             localStorage.removeItem('book-event');
         }
@@ -355,6 +351,11 @@
             $('html, body').animate({
                 scrollTop: $(".event-info").offset().top
             }, 500)
+        });
+
+        //My Event click to detial
+        $('.myevent-box').on('click',function(){
+            $('#myevent-desc').removeClass('myevent-desc');
         });
     });
     //End Ready function

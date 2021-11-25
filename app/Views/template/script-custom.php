@@ -64,7 +64,7 @@ use Google\Service\Adsense\Site;
             $('.more-info').toggleClass('hide-767');
         });
 
-        $('#registerModal').modal('show');
+        //modal register
         $('.member-tgjta').on('click',function(){
             $('#rd_member1').prop("checked", true);
         });
@@ -126,12 +126,14 @@ use Google\Service\Adsense\Site;
         });
         $('#confirmEvent').on('click',function(){
             $('#confirmModal').modal('hide');
+            $('.loading').removeClass('d-none');
             if(event_id!=""){
                 $.ajax({
                     type: "POST",
                     url: "<?= site_url('event/booking') ?>",
                     data: {event_id:event_id,member_id:member_id},
                     success: function (response) {
+                        $('.loading').addClass('d-none');
                         if(response=='booked'){
                             $('#bookedModal').modal('show');
                         }else{

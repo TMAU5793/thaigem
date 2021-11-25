@@ -26,8 +26,9 @@
                 <div class="mb-3 pt-5">
                     <label for="ddl_filefor" class="d-block">เอกสารสำหรับ</label>
                     <select name="ddl_filefor" id="ddl_filefor" class="form-control">
-                        <option value="dealer" <?= (isset($info) && $info['filefor']=="dealer"?'selected':'') ?>> การสมัครดีลเลอร์ </option>
-                        <option value="event" <?= (isset($info) && $info['filefor']=="event"?'selected':'') ?>> การจองงานอีเว้นท์ </option>
+                        <option value="dealer" <?= (isset($info) && $info['filefor']=="dealer"?'selected':'') ?>> ใบสมัครดีลเลอร์ </option>
+                        <option value="event" <?= (isset($info) && $info['filefor']=="event"?'selected':'') ?>> ใบจองงานอีเว้นท์ </option>
+                        <option value="invoice" <?= (isset($info) && $info['filefor']=="invoice"?'selected':'') ?>> ใบแจ้งชำระ </option>
                     </select>
                 </div>
                 <div class="mb-3">

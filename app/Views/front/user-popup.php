@@ -59,7 +59,7 @@
                                     <div class="singup-form text-center">
                                         <div class="head-sect">
                                             <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberTgjta') ?></h4>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                            <p>สมัครสมาชิกเพื่อสร้างหน้าร้านออนไลน์และรับสิทธิ์ประโยชน์จากทางสมาคมอีกมากมาย</p>
                                         </div>
                                         <div class="text-center">
                                             <button type="button" class="btn btn-register member-tgjta fs-6">Create a Membership Account</button>
@@ -70,7 +70,7 @@
                                     <div class="sign-member text-center">
                                         <div class="head-sect">
                                             <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberPerson') ?></h4>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                            <p>ลงทะเบียนเพื่อรับข่าวสาร ดูข้อมูลสมาชิกและแลกเปลี่ยนข้อมูล</p>
                                         </div>
                                         <div class="text-center">
                                             <button type="button" class="btn btn-register member-personal fs-6">Join Now</button>

@@ -100,7 +100,7 @@ class Event extends BaseController
 
                 ];
                 $mbFunction->notification($noti_arr);
-                $this->mailBooking($savedata);
+                //$this->mailBooking($savedata);
                 echo true;
             }
         }
