@@ -1,23 +1,21 @@
 <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
-    <div id="tradingview_5625e"></div>    
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script type="text/javascript">
-    new TradingView.widget(
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
         {
-            "autosize": true,
             "symbol": "TVC:GOLD",
-            "interval": "D",
-            "timezone": "Etc/UTC",
-            "theme": "light",
-            "style": "1",
-            "locale": "<?= ($lang=='en' ? 'en_EN' : 'th_TH') ?>",
-            "toolbar_bg": "#f1f3f6",
-            "enable_publishing": false,
-            "allow_symbol_change": true,
-            "container_id": "tradingview_5625e"
+            "width": "100%",
+            "height": "100%",
+            "locale": "<?= ($lang=='en' ? 'en' : 'th_TH') ?>",
+            "dateRange": "1D",
+            "colorTheme": "light",
+            "trendLineColor": "rgba(41, 98, 255, 1)",
+            "underLineColor": "rgba(41, 98, 255, 0.3)",
+            "underLineBottomColor": "rgba(41, 98, 255, 0)",
+            "isTransparent": false,
+            "autosize": true,
+            "largeChartUrl": ""
         }
-    );
-    </script>
+  </script>
 </div>
 <!-- TradingView Widget END -->

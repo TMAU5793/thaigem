@@ -45,41 +45,40 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
+                <span class="register-back cursor-pointer input-nobg d-none">กลับ</span>
                 <div class="text-center w-100">
-                    <strong class="ff-dbadmanBold fs-4 ms-4"><?= lang('GlobalLang.createAccount') ?></strong>              
+                    <strong class="ff-dbadmanBold fs-2 ms-4 d-block"><?= lang('GlobalLang.createAccount') ?></strong>                    
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body pt-0">
                 <form id="frm_register" action="<?= site_url('account/register'); ?>" method="POST">
-                    <section class="singup-popup">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="singup-form text-center">
-                                        <div class="head-sect">
-                                            <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberTgjta') ?></h4>
-                                            <p>สมัครสมาชิกเพื่อสร้างหน้าร้านออนไลน์และรับสิทธิ์ประโยชน์จากทางสมาคมอีกมากมาย</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="button" class="btn btn-register member-tgjta fs-6">Create a Membership Account</button>
-                                        </div>
+                    <div class="container register-desc">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="singup-form text-center">
+                                    <div class="head-sect">
+                                        <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberTgjta') ?></h4>
+                                        <p>สมัครสมาชิกเพื่อสร้างหน้าร้านออนไลน์และรับสิทธิ์ประโยชน์จากทางสมาคมอีกมากมาย</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-register member-tgjta fs-6">Create a Membership Account</button>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="sign-member text-center">
-                                        <div class="head-sect">
-                                            <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberPerson') ?></h4>
-                                            <p>ลงทะเบียนเพื่อรับข่าวสาร ดูข้อมูลสมาชิกและแลกเปลี่ยนข้อมูล</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="button" class="btn btn-register member-personal fs-6">Join Now</button>
-                                        </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="sign-member text-center">
+                                    <div class="head-sect">
+                                        <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberPerson') ?></h4>
+                                        <p>ลงทะเบียนเพื่อรับข่าวสาร ดูข้อมูลสมาชิกและแลกเปลี่ยนข้อมูล</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-register member-personal fs-6">Join Now</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                     <div class="input-nobg mt-3 d-none">
                         <?php if(isset($signup_valid)): ?>
                             <div class="alert alert-danger"><?= $signup_valid->listErrors(); ?></div>

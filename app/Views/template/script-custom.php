@@ -71,9 +71,22 @@ use Google\Service\Adsense\Site;
         $('.member-personal').on('click',function(){
             $('#rd_member2').prop("checked", true);
         });
+        <?php if(isset($signup_valid)){ ?>
+            $('.register-desc').addClass('d-none');
+            $('#registerModal .input-nobg').removeClass('d-none');
+        <?php } ?>
         $('.btn-register').on('click',function(){
+            $('.register-desc').addClass('d-none');
             $('#registerModal .input-nobg').removeClass('d-none');
         });
+        $('.register-back').on('click',function(){
+            $('.register-desc').removeClass('d-none');
+            $('#registerModal .input-nobg').addClass('d-none');
+        });
+        $('#registerModal .btn-close').on('click',function(){
+            location.href='<?= site_url() ?>';
+        });
+
         var signup_valid = '<?= (isset($signup_valid)?TRUE:FALSE) ?>';
         if(signup_valid){
             $('#registerModal').modal('show');

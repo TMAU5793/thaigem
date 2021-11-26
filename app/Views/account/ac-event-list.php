@@ -17,7 +17,7 @@
                     <div class="content-body">
                         <div class="content-title"><strong class="ff-semibold fs-3"><?= $meta_title ?></strong></div>
                         <div class="event-section mt-4">
-                            <div class="slider-nav slick-dotted">
+                            <div class="event-nav-list slick-dotted">
                                 <?php
                                     if($events){
                                         foreach ($events as $event){
@@ -36,7 +36,7 @@
 
                     <div class="event-info">
                         <div class="event-album">
-                            <div class="slider-for">
+                            <div class="slider-event-list">
                                 <?php
                                     if($events){
                                         foreach ($events as $event){

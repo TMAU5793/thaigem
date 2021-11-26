@@ -31,17 +31,17 @@
                     if($related){
                         foreach ($related as $row){
                 ?>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="shadow-lightgold h-100 rounded">
                         <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
                         <div class="p-4">
-                            <div class="event-text mt-3">
+                            <div class="event-text">
                                 <h2 class="ff-dbadmanBold text-line-1">
                                     <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="a-hover-darkgold">
                                         <?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>
                                     </a>
                                 </h2>
-                                <p class="text-line-2"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
+                                <p class="text-line-2 mb-0"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
                             </div>
                         </div>
                     </div>

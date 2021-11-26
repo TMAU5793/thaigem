@@ -9,7 +9,7 @@
         <div class="bg-title ptb-2rem">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12 col-order-2">
+                    <div class="col-md-7 col-sm-12 col-order-2">
                         <div class="ff-dbadmanBold">
                             <h3 class="mb-0 fs-1">Fulfill your business opportunities</h3>
                             <h4 class="mb-0">with our trusted and reliable members.</h4>
@@ -18,7 +18,7 @@
                             <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12 col-order-1">
+                    <div class="col-md-5 col-sm-12 col-order-1">
                         <?= $this->include('template/gold-price') ?>
                     </div>
                 </div>
@@ -296,27 +296,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="singup-form text-center">
+                    <div class="singup-form text-center h-100">
                         <div class="head-sect">
-                            <?= lang('HomeLang.newsletterText'); ?>
+                            <h3 class="ff-dbadmanBold text-uppercase"><?= lang('GlobalLang.memberTgjta') ?></h3>
+                            <p class="fs-4">สมัครสมาชิกเพื่อสร้างหน้าร้านออนไลน์และรับสิทธิ์ประโยชน์จากทางสมาคมอีกมากมาย</p>
                         </div>
-                        <form id="frm-singup" class="mt-5" action="<?= site_url('thaigem/newsLetter') ?>" method="POST">
-                            <?php if(isset($errors_newsleeter)): ?>
-                                <div class="alert alert-danger"><?= $errors_newsleeter->listErrors() ?></div>
-                            <?php endif;?>
-                            <div class="input-group">
-                                <input type="email" name="news_email" class="form-control" placeholder="<?= lang('GlobalLang.email'); ?>" require>
-                            </div>
-                            <div class="btn-singup-group mt-3">
-                                <button type="button" id="btn_newsletter" class="btn btn-darkgold c-white w-100 a-hover-white"><?= lang('GlobalLang.subscribe'); ?></button>
-                            </div>
-                        </form>
+                        <?php 
+                            if($member){
+                        ?>
+                            <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" onclick="location.href='<?= site_url('account') ?>'"><?= lang('GlobalLang.viewProfile'); ?></button>
+                        <?php }else{ ?>                                
+                            <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-tgjta" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Create a Membership Account</button>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="sign-member text-center">
                         <div class="head-sect">
-                            <?= lang('HomeLang.signupText'); ?>
+                            <h3 class="ff-dbadmanBold text-uppercase"><?= lang('GlobalLang.memberPerson') ?></h3>
+                            <p class="fs-4">ลงทะเบียนเพื่อรับข่าวสาร ดูข้อมูลสมาชิกและแลกเปลี่ยนข้อมูล</p>
                         </div>
                         <div class="body-sect mt-5">
                             <?php 
@@ -324,7 +322,7 @@
                             ?>
                                 <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" onclick="location.href='<?= site_url('account') ?>'"><?= lang('GlobalLang.viewProfile'); ?></button>
                             <?php }else{ ?>                                
-                                <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.register'); ?></button>
+                                <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-personal" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Join Now</button>
                             <?php } ?>
                         </div>
                     </div>

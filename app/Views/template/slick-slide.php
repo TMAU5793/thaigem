@@ -174,5 +174,37 @@
                 }
             ]
         });
+
+        $('.slider-event-list').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            infinite: false,
+            asNavFor: '.event-nav-list'
+        });
+        $('.event-nav-list').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-event-list',
+            dots: true,
+            focusOnSelect: true,
+            infinite: false,
+            responsive: [{
+                    breakpoint: 1200,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
     });    
 </script>

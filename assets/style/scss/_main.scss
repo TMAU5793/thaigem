@@ -587,10 +587,34 @@
         }
     }
     .modal-dialog {
-        max-width: 70%;
+        max-width: 800px;
         margin: auto;
+        padding: 3rem;
+        .modal-header {
+            padding-top: 0;
+        }
         .modal-content {
-            padding: 1rem 3rem;
+            background-image: url('../../images/home/newsletter-bg.jpg');
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: cover;
+            padding: 1.5rem 0;
+            padding: 1rem;
+            .register-desc {
+                .col-md-6 {
+                    &:first-child {
+                        border-right: 2px solid $c-darkgold;
+                    }
+                }
+                .btn-register {
+                    border: 1px solid $c-darkgold;
+                    padding: 2px 1rem 0;
+                    &:hover {
+                        background-color: $c-darkgold;
+                        color: $c-white;
+                    }
+                }
+            }
         }
     }
 }
@@ -744,12 +768,19 @@
     display: block;
 }
 
-.show-575 {
+.show-575,
+.show-991 {
     display: none;
 }
 
 .information-center {
     table {
         width: 100%;
+    }
+}
+
+.register-back {
+    &:hover {
+        text-decoration: underline;
     }
 }

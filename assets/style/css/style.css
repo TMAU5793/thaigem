@@ -83,6 +83,9 @@ ul,
 .c-darkgold {
   color: #665f4f; }
 
+.c-lightgold {
+  color: #cec6b2; }
+
 .bg-darkgold {
   background-color: #665f4f; }
 
@@ -239,6 +242,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
   padding: 5px 0 2px; }
+  .navbar .lang a {
+    text-decoration: none; }
 
 .navbar-light.fixed-top {
   background-color: #ffffff; }
@@ -532,7 +537,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
         margin-bottom: .5rem; }
 
 .event-body .slider-nav .slick-slide,
-.event-body .event-nav .slick-slide {
+.event-body .event-nav .slick-slide,
+.event-body .event-nav-list .slick-slide {
   padding: 1rem; }
 .event-body .event-info {
   padding: 1rem; }
@@ -1166,10 +1172,26 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     #registerModal .form-check label a {
       font-size: 19px; }
 #registerModal .modal-dialog {
-  max-width: 70%;
-  margin: auto; }
+  max-width: 800px;
+  margin: auto;
+  padding: 3rem; }
+  #registerModal .modal-dialog .modal-header {
+    padding-top: 0; }
   #registerModal .modal-dialog .modal-content {
-    padding: 1rem 3rem; }
+    background-image: url("../../images/home/newsletter-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding: 1.5rem 0;
+    padding: 1rem; }
+    #registerModal .modal-dialog .modal-content .register-desc .col-md-6:first-child {
+      border-right: 2px solid #665f4f; }
+    #registerModal .modal-dialog .modal-content .register-desc .btn-register {
+      border: 1px solid #665f4f;
+      padding: 2px 1rem 0; }
+      #registerModal .modal-dialog .modal-content .register-desc .btn-register:hover {
+        background-color: #665f4f;
+        color: #ffffff; }
 
 #termsModal .modal-dialog {
   max-width: 800px; }
@@ -1258,10 +1280,14 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .hide-575 {
   display: block; }
 
-.show-575 {
+.show-575,
+.show-991 {
   display: none; }
 
 .information-center table {
   width: 100%; }
+
+.register-back:hover {
+  text-decoration: underline; }
 
 /*# sourceMappingURL=style.css.map */

@@ -24,8 +24,7 @@
                 <a href="<?= site_url('lang/th?burl='.current_url()); ?>">TH</a>
                 <span class="fs-1rem">|</span>
                 <a href="javascript:void(0)" class="ff-dbadmanBold">EN</a>
-            <?php } ?>
-            
+            <?php } ?>            
         </div>
         <div class="user-managed mt-3 d-inline-flex">
             <?php 
@@ -151,6 +150,19 @@
                     <a class="nav-link <?= ($segment=='price-update'?'active':'') ?>" href="<?= site_url('price-update'); ?>"><?= lang('MenuLang.navPriceUpdate'); ?></a>
                 </li>
             </ul>
+            <div class="lang show-991">
+                <?php 
+                    if(session()->get('lang')=='th'){
+                ?>
+                    <a href="javascript:void(0)" class="ff-dbadmanBold c-darkgold">TH</a>
+                    <span class="c-darkgold ff-dbadmanBold">|</span>
+                    <a href="<?= site_url('lang/en?burl='.current_url()); ?>" class="ff-dbadmanBold c-gray">EN</a>
+                <?php }else{ ?>
+                    <a href="<?= site_url('lang/th?burl='.current_url()); ?>" class="ff-dbadmanBold c-gray">TH</a>
+                    <span class="c-darkgold ff-dbadmanBold">|</span>
+                    <a href="javascript:void(0)" class="ff-dbadmanBold c-darkgold">EN</a>
+                <?php } ?>            
+            </div>
         </div>
     </div>
 </nav>

@@ -214,12 +214,18 @@
     }
 } //end medi 1199
 @include media-max(991px) {
+    #registerModal .modal-dialog .modal-content {
+        padding: 1rem;
+    }
     .category-home .tg-title {
-        margin-top: 11rem;
+        margin-top: 6rem;
         margin-bottom: 2rem;
     }
     .hide-991 {
         display: none;
+    }
+    .show-991 {
+        display: block;
     }
     .community-content {
         padding-bottom: 2rem !important;
@@ -323,7 +329,10 @@
     .navbar-collapse {
         margin: 2rem 0 1rem;
         text-align: right;
-        border-top: 1px solid;
+        .navbar-nav {
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+        }
         .dropdown-toggle::after {
             margin-right: -.85rem;
         }
@@ -457,6 +466,29 @@
     }
 } //end medi 991
 @include media-max(767px) {
+    .relate-list {
+        .row {
+            .col-md-4 {
+                &:not(:last-child) {
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+    }
+    #registerModal {
+        .modal-dialog {
+            .modal-content {
+                .register-desc {
+                    .col-md-6:first-child {
+                        border-right: none;
+                        border-bottom: 2px solid #665f4f;
+                        margin-bottom: 1.5rem;
+                        padding-bottom: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
     .singup-home {
         .singup-form {
             border-right: none;
@@ -547,7 +579,8 @@
             margin-top: 3rem;
             margin-bottom: 1rem;
         }
-        .col-md-6.col-order-2 {
+        .col-md-6.col-order-2,
+        .col-md-7.col-order-2 {
             margin-top: 1.5rem;
         }
     }
@@ -607,6 +640,14 @@
     }
 } //end medi 767
 @include media-max(575px) {
+    #registerModal {
+        .modal-dialog {
+            padding: 2rem;
+            .modal-body {
+                padding: 0;
+            }
+        }
+    }
     .price-update {
         .nav-pills {
             justify-content: center !important;

@@ -2,6 +2,11 @@
     border-top: 2px solid $c-gray;
     border-bottom: 2px solid $c-gray;
     padding: 5px 0 2px;
+    .lang {
+        a {
+            text-decoration: none;
+        }
+    }
 }
 
 .navbar-light.fixed-top {
