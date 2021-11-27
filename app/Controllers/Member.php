@@ -51,7 +51,8 @@ class Member extends BaseController
         $data = [
             'meta_title' => 'Member directory',
             'lang' => $this->lang,
-            'info' => $model->where(['type'=>'dealer','status'=>'2'])->findAll(),
+            'info' => $model->where(['type'=>'dealer','status'=>'2'])->paginate(10),
+            'pager' => $model->pager,
             'album' => $albumModel->findAll(),
             'province' => $pvModel->findAll(),
             'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
@@ -141,11 +142,13 @@ class Member extends BaseController
                             ->like('tbl_member_business.cate_id',$business)
                             ->like('tbl_address.province_id',$province)
                             ->groupBy('tbl_member_business.member_id')
-                            ->findAll();
-                $avd = TRUE;
+                            ->paginate(1);
+                $pager = $mbModel->pager;
+                $avd = TRUE;                
 
             }else if($keyword!="" && $productType=="" && $business=="" && $province=="" && $duration==""){
-                $result = $mbModel->where('status','2')->like('company',$keyword)->findAll();
+                $result = $mbModel->where('status','2')->like('company',$keyword)->orderBy('created_at DESC')->paginate(10);
+                $pager = $mbModel->pager;
             }else{
                 return redirect()->to('member');
             }
@@ -162,6 +165,7 @@ class Member extends BaseController
                 'meta_title' => 'Member',
                 'lang' => $this->lang,
                 'info' => $result,
+                'pager' => $pager,
                 'album' => $albumModel->findAll(),
                 'province' => $pvModel->findAll(),
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
@@ -204,16 +208,24 @@ class Member extends BaseController
                                 ->findAll();
         if($id){
             //$result = $mbnModel->where('maincate_id',$id)->groupby('maincate_id')->findAll();
-            $db      = \Config\Database::connect();
-            $builder = $db->table('tbl_member_business');            
-            $builder->join('tbl_member', 'tbl_member.id = tbl_member_business.member_id');
-            $builder->where('tbl_member_business.maincate_id',$id);
-            $builder->groupBy('tbl_member_business.maincate_id');
-            $query = $builder->get()->getresultArray();
+            // $db      = \Config\Database::connect();
+            // $builder = $db->table('tbl_member_business');            
+            // $builder->join('tbl_member', 'tbl_member.id = tbl_member_business.member_id');
+            // $builder->where('tbl_member_business.maincate_id',$id);
+            // $builder->groupBy('tbl_member_business.member_id');
+            // $query = $builder->get()->getresultArray();
+
+            $query = $mbModel->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
+                            ->where('tbl_member_business.maincate_id',$id)
+                            ->groupBy('tbl_member_business.member_id')
+                            ->orderBy('tbl_member.created_at DESC')
+                            ->paginate(1);
+                            
             $data = [
                 'meta_title' => 'Filter Member',
                 'lang' => $this->lang,
                 'info' => $query,
+                'pager' => $mbModel->pager,
                 'album' => $albumModel->findAll(),
                 'province' => $pvModel->findAll(),
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),

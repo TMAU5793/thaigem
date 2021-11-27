@@ -31,7 +31,7 @@ class Event extends BaseController
 
         $data = [
             'meta_title' => 'Event',
-            'info' => $model->orderby('created_at','DESC')->paginate(9),
+            'info' => $model->where('status','on')->orderby('created_at','DESC')->paginate(9),
 			'pager' => $model->pager,
             'lang' => $this->lang
         ];

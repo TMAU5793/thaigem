@@ -124,3 +124,44 @@
 .mobile-menu-right {
     display: none;
 }
+
+.navigation-center {
+    border-top: 1px solid $c-darkgold;
+    padding-top: 1rem;
+    .pagination {
+        justify-content: center;
+        li {
+            line-height: 30px;
+            a {
+                display: inline-block;
+                height: 30px;
+                text-align: center;
+                border: 1px solid $c-darkgold;
+                border-radius: 5px;
+                margin: 0 3px;
+                padding: 0 1rem;
+                text-decoration: none;
+                color: $c-darkgold;
+            }
+            &.active {
+                a {
+                    background-color: $c-darkgold;
+                    color: $c-white;
+                }
+            }
+            &:hover {
+                a {
+                    background-color: $c-darkgold;
+                    color: $c-white;
+                }
+            }
+        }
+    }
+}
+
+.community-content {
+    .navigation-center {
+        border-top: none;
+        padding-top: 0;
+    }
+}

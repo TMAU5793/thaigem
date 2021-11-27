@@ -35,7 +35,8 @@ class Community extends BaseController
         $mbModel = new MemberModel();
         $data = [
             'meta_title' => 'Community',
-            'info' => $model->where('status','1')->orderby('created_at','DESC')->findAll(),
+            'info' => $model->where('status','1')->orderby('created_at','DESC')->paginate(9),
+            'pager' => $model->pager,
             'member' => $mbModel->findAll(),
             'userdata' => $this->userdata
         ];

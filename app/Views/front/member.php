@@ -177,6 +177,12 @@
                     </div>
                 <?php } ?>
             </div>
+
+            <?php if(isset($pager)) { ?>
+                <nav class="navigation-center mt-5 border-none">
+                    <?= $pager->links(); ?>
+                </nav>
+            <?php } ?>
         </div>
         
     </section>

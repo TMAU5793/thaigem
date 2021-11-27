@@ -134,7 +134,11 @@
                 <?php } }else{ ?>
                     <div class="tect-center p-3">ไม่พบข้อมูล</div>
                 <?php } ?>
-            </div>            
+            </div>
+            
+            <nav class="navigation-center mt-5">
+                <?= $pager->links(); ?>
+            </nav>
         </div>
     </section>
 

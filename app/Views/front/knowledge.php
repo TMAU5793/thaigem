@@ -64,6 +64,10 @@
                     <div class="col-12 text-center">ไม่พบข้อมูล</div>
                 <?php } ?>
             </div>
+            
+            <nav class="navigation-center mt-5">
+                <?= $pager->links(); ?>
+            </nav>
         </div>
         
     </section>

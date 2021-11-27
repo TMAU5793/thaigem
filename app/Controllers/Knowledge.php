@@ -14,14 +14,14 @@ class Knowledge extends BaseController
     }
 
 	public function index()
-	{           
+	{
         $model = new KnowledgeModel();
         
         $data = [
             'meta_title' => 'Knowledge',
-            'info' => $model->orderby('created_at','DESC')->paginate(9),
+            'info' => $model->where('status','on')->orderby('created_at','DESC')->paginate(9),
 			'pager' => $model->pager,
-            'hot_article' => $model->where('hot_article','on')->orderby('created_at','DESC')->limit(3)->findAll(),
+            'hot_article' => $model->where('hot_article','on')->orderby('created_at','DESC')->findAll(3),
             'lang' => $this->lang
         ];
 
