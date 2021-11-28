@@ -27,9 +27,9 @@
             <table class="table table-striped" id="tbl-article">
                 <thead>
                     <tr>
+                        <th scope="col">ชื่อสมาชิก</th>
                         <th scope="col">ชื่อเอกสาร</th>
-                        <th scope="col" width="150" class="text-end">เอกสารสำหรับ</th>                        
-                        <th scope="col" width="150" class="text-center">สถานะ</th>
+                        <th scope="col" width="150" class="text-end">เอกสารสำหรับ</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
                 </thead>
@@ -39,14 +39,34 @@
                             foreach ($info as $item) {
                     ?>
                     <tr>
+                        <td>
+                            <?php
+                                if(isset($member)){
+                                    foreach ($member as $row){
+                                        if($row['id'] == $item['member_id']){
+                                            echo $row['company'];
+                                        }
+                                    }
+                                }else{
+                                    echo 'สมาคมฯ';
+                                }
+                            ?>
+                        </td>
                         <td><?= $item['filename'] ?></td>
                         <td align="right"><?= $item['filefor'] ?></td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-status <?= ($item['status']=='on'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='on'?'เปิด' : 'ปิด') ?></button>
-                        </td>
-                        <td class="text-center">
-                            <a href="<?= base_url('admin/files/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
+                            <?php
+                                if(isset($member)){
+                            ?>
+                                <form action="<?= base_url('admin/files/downloadFiles') ?>" method="POST" enctype="multipart/form-data">
+                                    <!-- <a href="javascript:void(0)" data-id="<?= $item['id'] ?>" onclick="downloadFile('<?= $item['id'] ?>')">ดาวน์โหลด</a> -->
+                                    <input type="hidden" name="hd_id" value="<?= $item['id'] ?>">
+                                    <button type="submit" class="btn btn-primary">ดาวน์โหลด</button>
+                                </form>
+                            <?php }else{ ?>
+                                <a href="<?= base_url('admin/files/edit?id='.$item['id']); ?>">แก้ไข</a> |
+                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php } }else{ ?>
@@ -54,6 +74,11 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <?php if(isset($pager)){ ?>
+                <div class="pagination-list text-center mt-3 d-flex">
+                    <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 </div>

@@ -66,6 +66,11 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <?php if(isset($pager)){ ?>
+                <div class="pagination-list text-center mt-3 d-flex">
+                    <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 </div>

@@ -220,6 +220,15 @@
 		}
 	}
 
+    function downloadFile(id){
+        var r = confirm("ยืนยันการดาวน์โหลด");
+		if (r == true) {
+			$.post("<?= base_url('admin/files/downloadFiles') ?>",{id:id},function(resp){
+				//window.location.reload();
+			});
+		}
+    }
+
     function ShowThumb(input){
         let file = input.files[0];
         if (input.files && file) {

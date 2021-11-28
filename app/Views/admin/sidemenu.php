@@ -84,7 +84,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/event/booking'); ?>" class="nav-link <?= ($uri->getSegment(3)=='booking'?'active':''); ?>">
+                            <a href="<?= base_url('admin/event/booking'); ?>" class="nav-link <?= ($uri->getSegment(3)=='booking' || $uri->getSegment(3)=='bookinginfo'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>การจองงานอีเว้นท์</p>
                             </a>
@@ -92,11 +92,25 @@
                     </ul>
                 </li>
                 
-                <li class="nav-item">
-                    <a href="<?= base_url('admin/files'); ?>" class="nav-link <?= ($uri->getSegment(2)=='files'?'active':''); ?>">
+                <li class="nav-item <?= ($uri->getSegment(2)=='files'?'menu-open':''); ?>">
+                    <a href="#" class="nav-link <?= ($uri->getSegment(2)=='files'?'active':''); ?>">
                         <i class="nav-icon fas fa-file"></i>
-                        <p>เอกสารต่างๆ</p>
+                        <p>เอกสารต่างๆ <i class="right fas fa-angle-left"></i></p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/files'); ?>" class="nav-link <?= ($uri->getSegment(2)=='files' && $uri->getSegment(3)=='' || $uri->getSegment(3)=='edit' || $uri->getSegment(3)=='form' ?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>เอกสารของทางสมาคม</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/files/memberfiles'); ?>" class="nav-link <?= ($uri->getSegment(3)=='memberfiles'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>เอกที่ลูกค้าอัปโหลด</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>                
                 <li class="nav-item">
                     <a href="<?= base_url('admin/banner'); ?>" class="nav-link <?= ($uri->getSegment(2)=='banner'?'active':''); ?>">

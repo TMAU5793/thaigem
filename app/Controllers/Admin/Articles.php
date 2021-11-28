@@ -17,7 +17,8 @@ class Articles extends Controller
         $model = new ArticlesModel();
 		$data = [
             'meta_title' => 'บทความ',
-            'info' => $model->orderBy('status DESC, created_at DESC')->findAll()
+            'info' => $model->orderBy('status DESC, created_at DESC')->paginate(25),
+            'pager' => $model->pager,
         ];
 		echo view('admin/article',$data);
 	}

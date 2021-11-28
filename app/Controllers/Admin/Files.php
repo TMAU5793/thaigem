@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 use CodeIgniter\Controller;
 use App\Models\FilesModel;
+use App\Models\MemberModel;
 
 class Files extends Controller
 {
@@ -18,9 +19,24 @@ class Files extends Controller
     public function index()
     {
         $model = new FilesModel();
+        $mbModel = new MemberModel();
 		$data = [
             'meta_title' => 'รายการเอกสาร',
-			'info' => $model->findAll()
+			'info' => $model->where('member_id',null)->paginate(25),
+            'pager' => $model->pager
+        ];
+		echo view('admin/formfiles',$data);
+    }
+
+    public function memberfiles()
+    {
+        $model = new FilesModel();
+        $mbModel = new MemberModel();
+		$data = [
+            'meta_title' => 'เอกสารลูกค้า',
+			'info' => $model->where('member_id !=',null)->paginate(25),
+            'pager' => $model->pager,
+            'member' => $mbModel->where('type','dealer')->findAll()
         ];
 		echo view('admin/formfiles',$data);
     }
@@ -137,5 +153,27 @@ class Files extends Controller
             'path' => $path.'/'.$newName
         ];
         $model->update($id, $data);
+    }
+
+    public function downloadFiles()
+    {
+        helper('download');
+        $request = service('request');
+        $model = new FilesModel();
+        $post = $request->getPost();
+        if($post){
+            $id = $post['hd_id'];
+            $file = $model->where('id',$id)->first();
+            if(is_file($file['path'])){
+                $type = array_pop(explode('.',$file['path']));
+                $name = $file['filename'];
+                $path = ROOTPATH.$file['path'];
+                return $this->response->download($path, null);
+            }else{
+                return redirect()->to('admin/files/memberfiles');
+            }
+        }else{
+            return redirect()->to('admin/files/memberfiles');
+        }        
     }
 }

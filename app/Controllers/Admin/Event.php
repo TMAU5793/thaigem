@@ -18,7 +18,8 @@ class Event extends Controller
         $model = new EventModel();
 		$data = [
             'meta_title' => 'อีเว้นท์',
-            'info' => $model->orderBy('status DESC, created_at DESC')->findAll()
+            'info' => $model->orderBy('status DESC, created_at DESC')->paginate(25),
+            'pager' => $model->pager,
         ];
 		echo view('admin/event',$data);
 	}
@@ -230,11 +231,34 @@ class Event extends Controller
         $mbModel = new MemberModel();
 		$data = [
             'meta_title' => 'การจองอีเว้นท์',
-            'info' => $bkModel->orderBy('created_at DESC')->findAll(),
+            'info' => $bkModel->orderBy('created_at DESC')->paginate(25),
+            'pager' => $bkModel->pager,
             'members' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(),
             'events' => $evModel->findAll()
         ];
         
 		echo view('admin/event-booking',$data);
+    }
+
+    public function bookinginfo()
+    {
+        $request = service('request');
+        $evModel = new EventModel();
+        $bkModel = new BookingModel();
+        $mbModel = new MemberModel();
+        $id = $request->getGet('id');
+        if($id){
+            $booking = $bkModel->where('id',$id)->first();
+            $data = [
+                'meta_title' => 'รายละเอียดการจอง',
+                'info' => $booking,
+                'member' => $mbModel->where('id',$booking['member_id'])->first(),
+                'event' => $evModel->where('id',$booking['event_id'])->first()
+            ];
+            
+            echo view('admin/event-info',$data);
+        }else{
+            return redirect()->to('admin/event/booking');
+        }
     }
 }

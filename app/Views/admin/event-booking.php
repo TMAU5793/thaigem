@@ -23,7 +23,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">ชื่อจอง</th>
+                        <th scope="col">ผู้จอง</th>
                         <th scope="col">ชื่ออีเว้นท์</th>
                         <th scope="col" class="text-center">หมายเลขการจอง</th>
                         <th scope="col" width="150" class="text-center">สถานะ</th>
@@ -42,7 +42,7 @@
                             <?php
                                 foreach($members as $member){                                    
                                     if($member['id'] == $item['member_id']){                                        
-                                        echo $member['name'].' '.$member['lastname'];
+                                        echo $member['company'];
                                     }
                                 }
                             ?>
@@ -89,7 +89,7 @@
                             <?php } ?>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/event/edit?id='.$item['id']); ?>">อัพเดต</a>
+                            <a href="<?= base_url('admin/event/bookinginfo?id='.$item['id']); ?>">อัพเดต</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>
@@ -97,6 +97,11 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <?php if(isset($pager)){ ?>
+                <div class="pagination-list text-center mt-3 d-flex">
+                    <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 </div>

@@ -27,7 +27,6 @@
             <table class="table table-striped" id="tbl-article">
                 <thead>
                     <tr>
-                        <th scope="col" width="50" class="text-end">ลำดับ</th>
                         <th scope="col">หัวข้อ</th>
                         <th scope="col" width="150" class="text-end">จำนวนการดู</th>                        
                         <th scope="col" width="150" class="text-center">สถานะ</th>
@@ -38,12 +37,9 @@
                 <tbody>
                     <?php
                         if($info){
-                            $n=0;
                             foreach ($info as $item) {
-                                $n++;
                     ?>
                     <tr>
-                        <th scope="row" class="text-end"><?= $n ?></th>
                         <td><?= $item['title'] ?></td>
                         <td align="right"><?= $item['view'] ?></td>
                         <td class="text-center">
@@ -60,6 +56,11 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <?php if(isset($pager)){ ?>
+                <div class="pagination-list text-center mt-3 d-flex">
+                    <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 </div>

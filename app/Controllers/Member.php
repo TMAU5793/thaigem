@@ -142,7 +142,7 @@ class Member extends BaseController
                             ->like('tbl_member_business.cate_id',$business)
                             ->like('tbl_address.province_id',$province)
                             ->groupBy('tbl_member_business.member_id')
-                            ->paginate(1);
+                            ->paginate(10);
                 $pager = $mbModel->pager;
                 $avd = TRUE;                
 
@@ -219,7 +219,7 @@ class Member extends BaseController
                             ->where('tbl_member_business.maincate_id',$id)
                             ->groupBy('tbl_member_business.member_id')
                             ->orderBy('tbl_member.created_at DESC')
-                            ->paginate(1);
+                            ->paginate(10);
                             
             $data = [
                 'meta_title' => 'Filter Member',

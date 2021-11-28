@@ -543,4 +543,33 @@ body:not(.layout-fixed) .main-sidebar {
 .ck-editor .ck-content {
   height: 70vh; }
 
+.navigation-center {
+  border-top: 1px solid #665f4f;
+  padding-top: 1rem; }
+  .navigation-center .pagination {
+    justify-content: center; }
+    .navigation-center .pagination li {
+      line-height: 30px; }
+      .navigation-center .pagination li a {
+        display: inline-block;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #665f4f;
+        border-radius: 5px;
+        margin: 0 3px;
+        padding: 0 1rem;
+        text-decoration: none;
+        color: #665f4f; }
+      .navigation-center .pagination li.active a {
+        background-color: #665f4f;
+        color: #fff; }
+      .navigation-center .pagination li:hover a {
+        background-color: #665f4f;
+        color: #fff; }
+
+.rounded-circle {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; }
+
 /*# sourceMappingURL=back-office.css.map */

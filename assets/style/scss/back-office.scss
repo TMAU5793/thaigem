@@ -187,3 +187,43 @@ body:not(.layout-fixed) .main-sidebar {
         height: 70vh;
     }
 }
+
+.navigation-center {
+    border-top: 1px solid #665f4f;
+    padding-top: 1rem;
+    .pagination {
+        justify-content: center;
+        li {
+            line-height: 30px;
+            a {
+                display: inline-block;
+                height: 30px;
+                text-align: center;
+                border: 1px solid #665f4f;
+                border-radius: 5px;
+                margin: 0 3px;
+                padding: 0 1rem;
+                text-decoration: none;
+                color: #665f4f;
+            }
+            &.active {
+                a {
+                    background-color: #665f4f;
+                    color: #fff;
+                }
+            }
+            &:hover {
+                a {
+                    background-color: #665f4f;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.rounded-circle {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
