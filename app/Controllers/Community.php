@@ -35,7 +35,7 @@ class Community extends BaseController
         $mbModel = new MemberModel();
         $data = [
             'meta_title' => 'Community',
-            'info' => $model->where('status','1')->orderby('created_at','DESC')->paginate(9),
+            'info' => $model->where('status','1')->orderby('created_at','DESC')->paginate(10),
             'pager' => $model->pager,
             'member' => $mbModel->findAll(),
             'userdata' => $this->userdata
@@ -150,14 +150,15 @@ class Community extends BaseController
         $wbModel = new WebboardModel();
         $mbModel = new MemberModel();
         $get = $request->getGet();
-
+        
         if($get && $get['txt_keyword']!=""){
             $keyword = $get['txt_keyword'];
-            $result = $wbModel->like('topic',$keyword)->where('status','1')->findAll();
+            $result = $wbModel->like('topic',$keyword)->where('status','1')->paginate(10);
             
             $data = [
                 'meta_title' => 'Community',
-                'info' => $result,
+                'info' => $result,                
+                'pager' => $wbModel->pager,
                 'member' => $mbModel->findAll(),
                 'keyword' => $keyword
             ];

@@ -135,10 +135,11 @@
                     <div class="tect-center p-3">ไม่พบข้อมูล</div>
                 <?php } ?>
             </div>
-            
-            <nav class="navigation-center mt-5">
-                <?= $pager->links(); ?>
-            </nav>
+            <?php if(isset($pager)) { ?>
+                <nav class="navigation-center mt-5">
+                    <?= $pager->links(); ?>
+                </nav>
+            <?php } ?>
         </div>
     </section>
 
