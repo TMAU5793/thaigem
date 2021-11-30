@@ -67,6 +67,10 @@
                             <span><?= '<span class="ff-dbadmanBold"> , '.$contact->name.'</span> '.$contact->phone; ?></span>
                         <?php } } ?>
                     </div>
+                    <div class="member-since">
+                        <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.membersince') ?> : </strong>
+                        <span><?= ($info['member_start']==''?'-':$info['member_start']); ?></span>
+                    </div>
                 </div>           
             </div>
         </div>

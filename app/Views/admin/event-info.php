@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <h1 class="m-0"><?= $meta_title; ?></h1>
                 </div><!-- /.col -->
-            </div><!-- /.row -->
+            </div><!-- /.row -->            
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -19,12 +19,15 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
-            <form id="form_admin_register" action="<?= base_url('admin/event/'.$action); ?>" method="POST" enctype="multipart/form-data">
+            <form id="form_admin_register" action="<?= base_url('admin/event/bookingstatus'); ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="hd_id" value="<?= (isset($info)? $info['id'] : '') ?>">
-                <div class="form-group">
-                    <label for="">หมายเลขการจอง : </label>
-                    <span><?= $info['booking_no'] ?></span>
-                </div>
+                
+                <nav class="content-nav">
+                    <div class="btn-action-fixed top-neg2rem">
+                        <button type="submit" class="btn btn-primary me-2">อัพเดต</button>
+                        <a href="<?= base_url('admin/member'); ?>" class="btn btn-warning">ยกเลิก</a>
+                    </div>
+                </nav>
                 <div class="form-group">
                     <label for="ddl_status">สถานะการจอง</label>
                     <select name="ddl_status" id="ddl_status" class="form-control">
@@ -34,18 +37,18 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="ddl_status">สถานะเอกสาร</label>
-                    <select name="ddl_status" id="ddl_status" class="form-control">
-                        <option value="2" <?= ($info['form_status']=='1' ? 'selected' : '') ?>>เอกสารครบแล้ว</option>
-                        <option value="1" <?= ($info['form_status']=='0' ? 'selected' : '') ?>>เอกสารยังไม่ครบ</option>
+                    <label for="form_status">สถานะเอกสาร</label>
+                    <select name="form_status" id="form_status" class="form-control">
+                        <option value="1" <?= ($info['form_status']=='1' ? 'selected' : '') ?>>เอกสารครบแล้ว</option>
+                        <option value="0" <?= ($info['form_status']=='0' ? 'selected' : '') ?>>เอกสารยังไม่ครบ</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="ddl_status">การชำระเงิน</label>
-                    <select name="ddl_status" id="ddl_status" class="form-control">
+                    <label for="pay_status">การชำระเงิน</label>
+                    <select name="pay_status" id="pay_status" class="form-control">
                         <option value="2" <?= ($info['payment']=='2' ? 'selected' : '') ?>>ชำระเงินแล้ว</option>
                         <option value="1" <?= ($info['payment']=='1' ? 'selected' : '') ?>>รอชำระเงิน</option>
-                        <option value="2" <?= ($info['payment']=='0' ? 'selected' : '') ?>>ไม่ได้ชำระเงิน</option>
+                        <option value="0" <?= ($info['payment']=='0' ? 'selected' : '') ?>>ไม่ได้ชำระเงิน</option>
                     </select>
                 </div>
                 <div class="row border-bottom">
@@ -61,6 +64,12 @@
                             }
                         ?>
                         <img src="<?= $profile_pic; ?>" id="pic_profile" class="rounded-circle">
+                        <?php
+                            $member_id = $member['id'];
+                            if($member['code']){
+                                $member_id = $member['code'];
+                            }
+                        ?>                        
                     </div>
                     <div class="col-md-10">
                         <div class="form-group mt-3">
@@ -69,6 +78,7 @@
                             <p class="mb-0">เบอร์โทร : <?= $member['company_phone'] ?></p>
                             <p class="mb-0">อีเมล : <?= $member['email'] ?></p>
                         </div>
+                        <a href="<?= site_url('member/id/'.$member_id) ?>" class="btn btn-primary" target="_blank">ดูโปรไฟล์</a>
                     </div>
                 </div>
                 <div class="row border-bottom">
@@ -82,6 +92,7 @@
                             <p class="mb-0">ชื่องานอีเว้นท์ : <?= $event['name'] ?></p>
                             <p class="mb-0">วันที่จัดงาน : <?= $event['start_event'] ?></p>
                         </div>
+                        <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-primary" target="_blank">เพิ่มเติม</a>
                     </div>
                 </div>
             </form>

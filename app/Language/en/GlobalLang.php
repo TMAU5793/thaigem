@@ -106,5 +106,6 @@ return [
     'resetpass3' => 'If you do not make the transaction You can ignore this email.',
     'message' => 'Message',
     'memberTgjta' => 'Apply for TGJTA Membership',
-    'memberPerson' => 'Apply for Personal Member'
+    'memberPerson' => 'Apply for Personal Member',
+    'membersince' => 'Member Since'
 ];

@@ -70,7 +70,7 @@
                         </td>
                         <td class="text-center">
                             <?php
-                                if($item['file_status']=='1'){
+                                if($item['form_status']=='1'){
                             ?>
                                 <button type="button" class="border-0 rounded btn-file btn-success">เอกสารครบแล้ว</button>
                             <?php }else{ ?>

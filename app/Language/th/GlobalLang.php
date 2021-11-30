@@ -106,5 +106,6 @@ return [
     'resetpass3' => 'หากท่านไม่ได้ทำรายการ ท่านสามารถเพิกเฉยต่ออีเมลนี้ได้',
     'message' => 'ข้อความ',
     'memberTgjta' => 'Apply for TGJTA Membership',
-    'memberPerson' => 'Apply for Personal Member'
+    'memberPerson' => 'Apply for Personal Member',
+    'membersince' => 'เป็นสมาชิกตั้งแต่'
 ];

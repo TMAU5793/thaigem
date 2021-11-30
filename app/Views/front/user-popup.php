@@ -226,10 +226,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="p-4">
+                <div class="p-4 text-center">
                     <p class="c-black">
-                        <strong class="ff-dbadmanBold">ล้มเหลว! :</strong> การจองบูธงานอีเว้นท์สำหรับสมาชิกที่เป็นดีลเลอร์เท่านั้น
+                        สงวนสิทธิ์เฉพาะสมาชิกของสมาคมฯ ที่ได้รับการรับรองสถานะเรียบร้อยแล้วเท่านั้น
                     </p>
+                    <?php if(session()->get('userdata')) { ?>
+                        <a href="<?= site_url('account') ?>" class="btn btn-black-border">ตรวจสอบสถานะสมาชิก</a>
+                    <?php } else { ?>
+                        <a href="javascript:void(0)" class="btn btn-black-border text-uppercase" data-bs-toggle="modal" data-bs-target="#loginModal">ตรวจสอบสถานะสมาชิก</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>

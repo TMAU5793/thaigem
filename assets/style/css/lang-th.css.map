@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AACI,kBAAU;EACN,SAAS,EAAE,MAAM;;AAIzB,mCAAoC;EAChC,SAAS,EAAE,OAAO",
+"mappings": "AACI,kBAAU;EACN,SAAS,EAAE,MAAM;;AAIzB,mCAAoC;EAChC,SAAS,EAAE,OAAO;EAClB,WAAW,EAAE,CAAC",
 "sources": ["../scss/lang-th.scss"],
 "names": [],
 "file": "lang-th.css"

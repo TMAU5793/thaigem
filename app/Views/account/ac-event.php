@@ -27,13 +27,15 @@
                                     <div class="event-item-box myevent-box border-lightgray">
                                         <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?>">
                                         <div class="item-desc p-3">
-                                            <div class="event-success">
+                                            <div class="<?= ($booking['status']=='2'?'event-success' : ($booking['status']=='1' ? 'event-pending': 'event-fail')) ?>">
                                                 <?php
                                                     if($booking['status']=='2'){
                                                 ?>
-                                                    <span>ดำเนินการสำเร็จแล้ว <i class="fas fa-circle text-success"></i></span>
+                                                    <span>ดำเนินการสำเร็จแล้ว</span>
                                                 <?php }else if($booking['status']=='1'){ ?>
-                                                    <span>รอดำเนินการ <i class="fas fa-circle text-warning"></i></span>
+                                                    <span>รอดำเนินการ</span>
+                                                <?php }else{ ?>
+                                                    <span>ไม่อนุมัติ</span>
                                                 <?php } ?>
                                             </div>
                                             <strong class="ff-semibold text-line-2"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>

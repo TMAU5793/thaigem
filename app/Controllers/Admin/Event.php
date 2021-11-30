@@ -261,4 +261,25 @@ class Event extends Controller
             return redirect()->to('admin/event/booking');
         }
     }
+
+    public function bookingstatus()
+    {
+        $bkModel = new BookingModel();
+        $request = service('request');
+        $post = $request->getPost();
+        //print_r($post);
+
+        if($post){
+            $date = date('Y-m-d H:i:s');
+            $id = $post['hd_id'];
+            $data = [
+                'status' => $post['ddl_status'],
+                'form_status' => $post['form_status'],
+                'payment' => $post['pay_status'],
+                'updated_at' => $date
+            ];
+            $bkModel->update($id, $data);
+        }
+        return redirect()->to('admin/event/booking');
+    }
 }

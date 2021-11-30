@@ -592,13 +592,45 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       left: 0;
       width: 50%;
       text-align: center;
-      background-color: #fff;
-      color: #000;
+      background-color: #198754;
+      color: #fff;
       border-radius: 0 50px 50px 0;
-      box-shadow: 1px 1px 0px 1px; }
+      box-shadow: 1px 1px 0px 1px #146d43; }
       .event-body .event-section .item-desc .event-success span {
         position: relative; }
         .event-body .event-section .item-desc .event-success span i {
+          position: absolute;
+          top: 2px;
+          right: -30px; }
+    .event-body .event-section .item-desc .event-pending {
+      position: absolute;
+      top: -2.5rem;
+      left: 0;
+      width: 50%;
+      text-align: center;
+      background-color: #fd7e14;
+      color: #fff;
+      border-radius: 0 50px 50px 0;
+      box-shadow: 1px 1px 0px 1px #d46e1b; }
+      .event-body .event-section .item-desc .event-pending span {
+        position: relative; }
+        .event-body .event-section .item-desc .event-pending span i {
+          position: absolute;
+          top: 2px;
+          right: -30px; }
+    .event-body .event-section .item-desc .event-fail {
+      position: absolute;
+      top: -2.5rem;
+      left: 0;
+      width: 50%;
+      text-align: center;
+      background-color: #dc3545;
+      color: #fff;
+      border-radius: 0 50px 50px 0;
+      box-shadow: 1px 1px 0px 1px #aa2936; }
+      .event-body .event-section .item-desc .event-fail span {
+        position: relative; }
+        .event-body .event-section .item-desc .event-fail span i {
           position: absolute;
           top: 2px;
           right: -30px; }

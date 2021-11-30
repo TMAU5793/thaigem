@@ -37,7 +37,7 @@
                                         <h2 class="ff-dbadmanBold mb-0"><?= $info['company']; ?></h2>
                                         <div class="person-email">
                                             <i class="far fa-envelope pe-3"></i>
-                                            <?= $info['email']; ?>
+                                            <a href="mailto:<?= $info['email']; ?>" class="text-decoration-none c-black"><?= $info['email']; ?></a>
                                         </div>
                                         <div class="phone-contact">
                                             <i class="fas fa-phone-volume pe-3 rotate-25ngt"></i>
@@ -54,6 +54,10 @@
                                                 <span class="ff-dbadmanBold"><?= ' , '.$contact->name ?></span>
                                                 <a href="tel:<?= $contact->phone ?>" class="text-decoration-none c-black"><?= $contact->phone ?></a>
                                             <?php } } ?>
+                                        </div>
+                                        <div class="member-since">
+                                            <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.membersince') ?> : </strong>
+                                            <span><?= ($info['member_start']==''?'-':$info['member_start']); ?></span>
                                         </div>
                                     </div>           
                                 </div>
@@ -220,7 +224,7 @@
                     <div class="content-body mt-4">
                         <div class="ac-about">
                             <div class="content-title"><strong class="ff-dbadmanBoldnn fs-3">About Us</strong></div>
-                            <p class="about-edit"><?= $info['about'] ?></p>
+                            <p class="about-edit"><?= ($info['about']=='' ?  '-' : $info['about']) ?></p>
                         </div>
 
                         <div class="content-body">                        

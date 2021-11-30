@@ -22,7 +22,7 @@
                 <div class="col-lg-5 col-md-5">
                     <div class="ac-about mt-4">
                         <div class="content-title"><strong class="ff-dbadmanBoldnn fs-3">About Us</strong></div>
-                        <p class="about-edit"><?= $info['about'] ?></p>
+                        <p class="about-edit"><?= ($info['about']==''? '-' : $info['about']) ?></p>
                     </div>
                                          
                     <div class="content-body">                        

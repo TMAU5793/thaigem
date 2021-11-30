@@ -572,4 +572,7 @@ body:not(.layout-fixed) .main-sidebar {
   height: 150px;
   object-fit: cover; }
 
+.top-neg2rem {
+  top: -2rem; }
+
 /*# sourceMappingURL=back-office.css.map */

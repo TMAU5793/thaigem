@@ -253,10 +253,48 @@
                 left: 0;
                 width: 50%;
                 text-align: center;
-                background-color: #fff;
-                color: #000;
+                background-color: #198754;
+                color: #fff;
                 border-radius: 0 50px 50px 0;
-                box-shadow: 1px 1px 0px 1px;
+                box-shadow: 1px 1px 0px 1px #146d43;
+                span {
+                    position: relative;
+                    i {
+                        position: absolute;
+                        top: 2px;
+                        right: -30px;
+                    }
+                }
+            }
+            .event-pending {
+                position: absolute;
+                top: -2.5rem;
+                left: 0;
+                width: 50%;
+                text-align: center;
+                background-color: #fd7e14;
+                color: #fff;
+                border-radius: 0 50px 50px 0;
+                box-shadow: 1px 1px 0px 1px #d46e1b;
+                span {
+                    position: relative;
+                    i {
+                        position: absolute;
+                        top: 2px;
+                        right: -30px;
+                    }
+                }
+            }
+            .event-fail {
+                position: absolute;
+                top: -2.5rem;
+                left: 0;
+                width: 50%;
+                text-align: center;
+                background-color: #dc3545;
+                color: #fff;
+                border-radius: 0 50px 50px 0;
+                box-shadow: 1px 1px 0px 1px #aa2936;
                 span {
                     position: relative;
                     i {

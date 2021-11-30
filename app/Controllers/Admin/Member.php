@@ -133,6 +133,7 @@ class Member extends Controller
 				'email' => $request->getVar('txt_account'),
                 'phone' => $request->getVar('txt_phone'),
 				'type' => $request->getVar('rd_type'),
+				'dealer_code' => $request->getVar('dealer_code'),
 				'renew' => $request->getVar('member_expired'),
 				'expired' => $request->getVar('member_expired'),
                 'status' => $request->getVar('ddl_status')
@@ -168,6 +169,7 @@ class Member extends Controller
 			if($member['member_start']==null){
 				$update = [
 					'type' => $request->getVar('rd_type'),
+					'dealer_code' => $request->getVar('dealer_code'),
 					'member_start' => $request->getVar('member_start'),
 					'member_expired' => $request->getVar('member_expired'),
 					'status' => $request->getVar('ddl_status')
@@ -176,6 +178,7 @@ class Member extends Controller
 			}else{				
 				$update = [
 					'type' => $request->getVar('rd_type'),
+					'dealer_code' => $request->getVar('dealer_code'),
 					'renew' => $request->getVar('member_start'),
 					'member_expired' => $request->getVar('member_expired'),
 					'status' => $request->getVar('ddl_status')

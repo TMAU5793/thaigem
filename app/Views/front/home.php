@@ -6,7 +6,7 @@
     </section>
     
     <section class="category-home">
-        <div class="bg-title ptb-2rem">
+        <div class="bg-title pb-4 pt-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-sm-12 col-order-2">
@@ -15,7 +15,7 @@
                             <h4 class="mb-0">with our trusted and reliable members.</h4>
                         </div>
                         <div class="tg-title">
-                            <h3 class="c-darkgold"><?= lang('HomeLang.category'); ?></span></h3>
+                            <h3 class="c-darkgold mb-0"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-12 col-order-1">
@@ -96,7 +96,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-8">
-                    <div class="tg-title">
+                    <div class="tg-title mb-4">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.events'); ?></strong></h3>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-8">
-                    <div class="tg-title">
+                    <div class="tg-title mb-4">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.knowledgeNews'); ?></strong></h3>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                         foreach($articles as $row){
 
                 ?>
-                    <div class="col-lg-4 col-md-6 col-sm-6  mt-4">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="shadow-lightgold h-100 rounded">
                             <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']) : site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>">
                             <div class="p-4">
@@ -191,7 +191,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-8">
-                    <div class="tg-title">
+                    <div class="tg-title mb-4">
                         <h3 class="c-darkgold"><strong class="ff-bold"><?= lang('GlobalLang.members'); ?></strong></h3>
                     </div>
                 </div>
@@ -201,13 +201,13 @@
                     </div>
                 </div>
             </div>
-            <div class="member-list mb-5 mt-3">
+            <div class="member-list mb-5">
                 <div class="row">
                     <?php
                         if($dealers){
                             foreach($dealers as $row){
                     ?>
-                    <div class="col-lg-6 col-md-12 position-relative mt-4">
+                    <div class="col-lg-6 col-md-12 position-relative">
                         <div class="shadow-lightgold box-member d-flex">
                             <div class="w-50">
                                 <?php

@@ -41,9 +41,13 @@
                         </select>
                     </div>
                     <div class="col-12 mb-3">
+                        <label for="">หมายเลขสมาชิก <small>(*รหัสสมาชิกที่ได้รับการอนุมัติจากสมาคมฯ)</small></label>
+                        <input type="text" name="dealer_code" class="form-control" value="<?= (isset($info_member) ? $info_member['dealer_code'] : '' ) ?>">
+                    </div>
+                    <div class="col-12 mb-3">
                         <label for="ac_email" class="form-label d-block">ประเภทสมาชิก</label>
                         <div class="form-check d-inline-flex ms-3 me-5">
-                            <input class="form-check-input" type="radio" name="rd_type" id="rd_type1" value="user" <?= ($info_member['type']=='user'?'checked':'') ?>>
+                            <input class="form-check-input" type="radio" name="rd_type" id="rd_type1" value="member" <?= ($info_member['type']=='member'?'checked':'') ?>>
                             <label class="form-check-label" for="rd_type1">
                                 ทั่วไป
                             </label>
