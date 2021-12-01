@@ -86,7 +86,7 @@ phpunit
 vendor/
 assets/node_modules/
 assets/ckeditor5
-assets/ckeditor
+assets/ckeditor4
 assets/ckfinder
 assets/style/.sass-cache
 uploads/

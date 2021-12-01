@@ -131,3 +131,26 @@
     </section>
 </div>
 <?= $this->endSection() ?>
+
+<?= $this->section("scripts") ?>
+
+    <script>
+        // Ckediter 
+        CKEDITOR.replace( 'txt_desc', {
+            language: 'th',
+            height: '500px',
+            filebrowserBrowseUrl: '<?= site_url('assets/ckfinder/ckfinder.html') ?>',
+            filebrowserUploadUrl: '<?= site_url('assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') ?>',
+            removeDialogTabs: 'image:advanced;link:advanced'
+        });
+
+        CKEDITOR.replace( 'txt_desc_en', {
+            language: 'th',
+            height: '500px',
+            filebrowserBrowseUrl: '<?= site_url('assets/ckfinder/ckfinder.html') ?>',
+            filebrowserUploadUrl: '<?= site_url('assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') ?>',
+            removeDialogTabs: 'image:advanced;link:advanced'
+        });
+    </script>
+
+<?= $this->endSection() ?>

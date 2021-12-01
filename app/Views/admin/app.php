@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/adminlte/css/adminlte.min.css'); ?>">
 
     <!-- tags input style -->
-    <link rel="stylesheet" href="<?= base_url('assets/tagsinput/bootstrap-tagsinput.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/tagsinput/bootstrap-tagsinput.css'); ?>">    
 
     <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/back-office.css'); ?>">
@@ -44,7 +44,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
 
     <!-- เรียกใช้ ckeditor -->
-    <script src="<?= site_url('assets/ckeditor/ckeditor.js'); ?>"></script>
+    <script src="<?= site_url('assets/ckeditor4/ckeditor.js'); ?>"></script>
 
     <!-- เรียกใช้ ckfinder -->
     <script src="<?= site_url('assets/ckfinder/ckfinder.js'); ?>"></script>
@@ -62,8 +62,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/daterangepicker/daterangepicker.css'); ?>">
     <script src="<?= base_url('assets/daterangepicker/moment.min.js'); ?>"></script>
     <script src="<?= base_url('assets/daterangepicker/daterangepicker.js'); ?>"></script>
-    
 
     <?= $this->include('admin/script') ?>
+    
+    <?= $this->renderSection("scripts") ?>
 </body>
 </html>

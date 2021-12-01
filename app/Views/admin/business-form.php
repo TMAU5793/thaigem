@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p2rem pt-0">
+                    <div class="pt-3">
                         <label for="ddl_status" class="form-label">สถานะการใช้งาน</label>
                         <select name="ddl_status" id="ddl_status" class="form-control">
                             <option value="1" <?= (isset($info) && $info['status']=='1' ? 'selected' : '') ?>>เปิดใช้งาน</option>

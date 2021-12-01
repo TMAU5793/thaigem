@@ -71,7 +71,7 @@
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="txt_desc" class="form-label">รายละเอียด (TH) <span class="text-danger">*</span></label>
-                                <textarea name="txt_desc" id="txt_desc" class="form-control"><?= (isset($info)? $info['desc'] : set_value('txt_desc')) ?></textarea>
+                                <textarea name="txt_desc" id="txt_desc" class="form-control" data-sample-short><?= (isset($info)? $info['desc'] : set_value('txt_desc')) ?></textarea>
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="txt_tags" class="form-label">แท็ก [Tags] - (TH)</label>
@@ -148,4 +148,27 @@
         </div>
     </section>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section("scripts") ?>
+
+    <script>
+        // Ckediter 
+        CKEDITOR.replace( 'txt_desc', {
+            language: 'th',
+            height: '500px',
+            filebrowserBrowseUrl: '<?= site_url('assets/ckfinder/ckfinder.html') ?>',
+            filebrowserUploadUrl: '<?= site_url('assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') ?>',
+            removeDialogTabs: 'image:advanced;link:advanced'
+        });
+
+        CKEDITOR.replace( 'txt_desc_en', {
+            language: 'th',
+            height: '500px',
+            filebrowserBrowseUrl: '<?= site_url('assets/ckfinder/ckfinder.html') ?>',
+            filebrowserUploadUrl: '<?= site_url('assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') ?>',
+            removeDialogTabs: 'image:advanced;link:advanced'
+        });
+    </script>
+
 <?= $this->endSection() ?>
