@@ -98,14 +98,15 @@ use Google\Service\Adsense\Site;
         }
         var avd = '<?= (isset($avd)) ?>';
         if(avd){
+            $('.input-group-append.btn-search-member').toggleClass('d-none');
             $('.search-show').toggleClass('d-none');
             $('.search-member .col-12').toggleClass('col-md-6');
             $('.toggle-slow').toggle('slow');            
             $('.btn-avd').toggleClass('col-md-12');
-            $('input[name="txt_keyword"]').val('');
         }
 
-        $('.btn_advance').on('click',function () { 
+        $('.btn_advance').on('click',function () {
+            $('.input-group-append.btn-search-member').toggleClass('d-none');
             $('.search-show').toggleClass('d-none');
             $('.search-member .col-12').toggleClass('col-md-6');
             $('.toggle-slow').toggle('slow');            

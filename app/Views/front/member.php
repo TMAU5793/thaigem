@@ -10,7 +10,7 @@
 
             <div class="search-member mt-4">
                 <form id="frm-search-member" action="<?= site_url('member/search') ?>" method="GET">
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-md-6">
                             <div class="input-group">
                                 <input type="text" name="txt_keyword" class="form-control" placeholder="company name" value="<?= (isset($_GET['txt_keyword'])?$_GET['txt_keyword']:'') ?>">
@@ -32,7 +32,7 @@
                                         if($category){
                                             foreach($category as $row){
                                     ?>
-                                        <option value="<?= $row['id'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['id']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                        <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                     <?php } } ?>
                                 </select>
                             </div>
@@ -46,7 +46,7 @@
                                         if($business){
                                             foreach($business as $row){
                                     ?>
-                                        <option value="<?= $row['id'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['id']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                        <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                     <?php } } ?>
                                 </select>
                             </div>
@@ -64,7 +64,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6 search-show d-none">
+                        <!-- <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_duration" id="ddl_duration" class="w-100">
                                     <option value=""> --membership duration-- </option>
@@ -74,7 +74,7 @@
                                     <option value="4" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='4'?'selected':'') ?>> มากว่า 4ปี  </option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-6 search-show d-none">
                             <button type="button" class="btn bg-darkgold c-white w-100 ff-dbamanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>

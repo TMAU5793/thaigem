@@ -134,27 +134,26 @@ class Member extends BaseController
 
         if($get){
             $keyword = $get['txt_keyword'];
-            $company = $get['kw_company'];
-            $productType = $get['ddl_product_type'];
+            $product = $get['ddl_product_type'];
             $business = $get['ddl_business'];
             $province = $get['ddl_province'];
             $duration = $get['ddl_duration'];
             
-            if($keyword=="" && $company!=""|| $productType!="" || $business!="" || $province!="" || $duration!=""){
-                $result = $mbModel->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
+            $pager = '';
+            if($keyword=="" && $product!="" || $business!="" || $province!=""){
+                $result = $mbModel->join('tbl_member_business', 'tbl_member_business.member_id = tbl_member.id')
                             ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
-                            ->where('tbl_member.status','2')
+                            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])
                             ->like('tbl_member.company',$keyword)
-                            ->like('tbl_member_business.cate_id',$productType)
-                            ->like('tbl_member_business.cate_id',$business)
                             ->like('tbl_address.province_id',$province)
-                            ->groupBy('tbl_member_business.member_id')
-                            ->paginate(10);
+                            ->like('tbl_member_business.product',$product)
+                            ->paginate(20);
                 $pager = $mbModel->pager;
-                $avd = TRUE;                
+                $avd = TRUE;
 
-            }else if($keyword!="" && $productType=="" && $business=="" && $province=="" && $duration==""){
-                $result = $mbModel->where('status','2')->like('company',$keyword)->orderBy('created_at DESC')->paginate(10);
+            }else if($keyword!="" && $product=="" && $business=="" && $province==""){
+                $result = $mbModel->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
+                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->like('tbl_member.company',$keyword)->orderBy('tbl_member.created_at DESC')->paginate(20);
                 $pager = $mbModel->pager;
             }else{
                 return redirect()->to('member');
