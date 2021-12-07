@@ -200,15 +200,15 @@
 
 .member-home {
     .member-list {
-        .slick-slide.slick-current.slick-active .member-item {
+        .slick-slide.slick-current.slick-active .item {
             padding-left: 0;
-            padding-right: 1rem;
+            padding-right: .75rem;
         }
-        .slick-slide.slick-active .member-item {
+        .slick-slide.slick-active .item {
             padding-right: 0;
         }
-        .member-item {
-            padding: .5rem 1rem;
+        .item {
+            padding: .75rem;
         }
         .sub-img {
             margin: .5rem -.20rem 0;

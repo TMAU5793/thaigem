@@ -85,7 +85,7 @@
                                                             echo ' , ';
                                                         }
                                                         foreach($pSubcate as $subcate){
-                                                            foreach($pMaincate as $maincate){                                            
+                                                            foreach($pMaincate as $maincate){
                                                                 if($subcate->maincate_id == $maincate->id && $row->cate_id == $subcate->id){
                                                                     echo ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?'<span class="ff-dbadmanBold d-inline">'.$maincate->name_en.'</span> > '.$subcate->name_en : '<span class="ff-dbadmanBold d-inline">'.$maincate->name_th.'</span> > '.$subcate->name_th);
                                                                 }
@@ -95,6 +95,7 @@
                                                     ?>
                                                 </span>
                                             <?php } } ?>
+                                            <p class="text-line-1 mb-0"><?= $info['product'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +113,8 @@
                                         <div class="box-info">
                                             <?php
                                                 $n=0;
-                                                foreach($memberbusiness as $row){                                                    
+                                                if($memberbusiness){
+                                                foreach($memberbusiness as $row){
                                                     if($row->type == 'business' && $row->member_id == $info['member_id']){
                                             ?>
                                                 <span class="fs-5 d-inline">
@@ -131,7 +133,8 @@
                                                         }
                                                     ?>
                                                 </span>
-                                            <?php } } ?>
+                                            <?php } } } ?>                                            
+                                            <p class="text-line-1 mb-0"><?= $info['business'] ?></p>
                                         </div>
                                     </div>
                                 </div>

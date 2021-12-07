@@ -48,10 +48,13 @@ class Member extends BaseController
         $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
                                 ->where('tbl_member_business.type','business')
                                 ->findAll();
+
+        $info = $model->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
+                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->paginate(20);
         $data = [
             'meta_title' => 'Member directory',
             'lang' => $this->lang,
-            'info' => $model->where(['type'=>'dealer','status'=>'2'])->paginate(10),
+            'info' => $info,
             'pager' => $model->pager,
             'album' => $albumModel->findAll(),
             'province' => $pvModel->findAll(),
@@ -62,7 +65,7 @@ class Member extends BaseController
             'userdata' => $this->userdata
         ];
         // print_r('<pre>');
-        // print_r($cate_prod);
+        // print_r($info);
         // print_r('</pre>');
         echo view('front/member', $data);
 	}
@@ -92,6 +95,7 @@ class Member extends BaseController
             $data = [
                 'meta_title' => $member['name'].' '.$member['lastname'],
                 'meta_desc' => $member['about'],
+                'lang' => $this->lang,
                 'info' => $member,
                 'album' => $albumModel->where('member_id',$member['member_id'])->findAll(),
                 'address' => $mbModel->getAddressById($member['member_id']),
@@ -107,6 +111,9 @@ class Member extends BaseController
                 'bSubcate' => $mbModel->getBusinessType()
             ];
             
+            // print_r('<pre>');
+            // print_r($member);
+            // print_r('</pre>');
             echo view('front/member-desc', $data);
         }else{
             return redirect()->to('member');

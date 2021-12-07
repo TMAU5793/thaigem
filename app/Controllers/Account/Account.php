@@ -165,7 +165,7 @@ class Account extends Controller
 
         $rules = [
             'txt_username' => [
-                'rules' => 'required|valid_email|memberAccount[txt_username]|memberStatus[txt_username]',
+                'rules' => 'required|memberAccount[txt_username]|memberStatus[txt_username]',
                 'errors' =>  [
                     'required' => 'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
                     'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง',

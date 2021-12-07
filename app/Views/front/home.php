@@ -202,12 +202,12 @@
                 </div>
             </div>
             <div class="member-list mb-5">
-                <div class="row">
+                <div class="slick-2-home slick-dots-2">
                     <?php
                         if($dealers){
                             foreach($dealers as $row){
                     ?>
-                    <div class="col-lg-6 col-md-12 position-relative">
+                    <div class="item position-relative">
                         <div class="shadow-lightgold box-member d-flex">
                             <div class="w-50">
                                 <?php
@@ -215,6 +215,10 @@
                                 ?>
                                     <div class="slider-for-item">
                                         <img src="<?= (is_file($row['profile'])?site_url($row['profile']):site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
+                                    </div>
+                                <?php }else{ ?>
+                                    <div class="slider-for-item">
+                                        <img src="<?= site_url('assets/images/default-1000x750.jpg') ?>" alt="<?= $row['company'] ?>">
                                     </div>
                                 <?php } ?>
                                 
@@ -239,7 +243,6 @@
                             <div class="w-50 position-relative">
                                 <div class="position-absolute translate-middle top-50 start-50 w-100 ps-3 text-center">
                                     <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1 mb-0"><?= $row['company'] ?></h5>
-                                    <!-- <p class="text-line-3"><?= character_limiter($row['about'],50) ?></p> -->
                                     <div class="cate-type">
                                         <strong class="ff-dbadmanBold"><?= lang('GlobalLang.product-type') ?></strong>
                                         <?php

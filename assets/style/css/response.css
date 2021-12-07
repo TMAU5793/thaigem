@@ -380,37 +380,40 @@
     width: 15px;
     height: 15px; }
 
-  .news-home .news-list {
+  .news-home {
     margin: 0 -0.35rem; }
-
-  .news-home .news-list .col-md-7 .col-md-6 {
-    margin-bottom: .35rem;
-    padding: 0 .35rem; }
-  .news-home .news-list .col-md-7 .col-md-12 {
-    margin-top: .35rem;
-    padding: 0 .35rem; }
-  .news-home .news-list .col-md-7 .btn,
-  .news-home .news-list .col-md-7 a {
-    font-size: .8rem;
-    padding: 4px 6px 2px; }
-  .news-home .news-list .col-md-7 .news-item h2 {
-    line-height: 25px; }
-  .news-home .news-list .col-md-5 {
-    padding: 0 .35rem; }
-    .news-home .news-list .col-md-5 .slick-1-item .slick-dots {
-      bottom: 1rem;
-      right: 1rem; }
-    .news-home .news-list .col-md-5 .slick-1-item .news-item .news-desc {
-      padding: 0 1rem 3rem; }
-    .news-home .news-list .col-md-5 .slick-1-item .news-item img {
-      height: 384px; }
-    .news-home .news-list .col-md-5 .btn-news-group a {
-      font-size: .9rem;
+    .news-home .news-list.mt-4 {
+      margin-top: .5rem !important; }
+    .news-home .col-lg-4 {
+      margin-bottom: 1.5rem; }
+    .news-home .col-md-7 .col-md-6 {
+      margin-bottom: .35rem;
+      padding: 0 .35rem; }
+    .news-home .col-md-7 .col-md-12 {
+      margin-top: .35rem;
+      padding: 0 .35rem; }
+    .news-home .col-md-7 .btn,
+    .news-home .col-md-7 a {
+      font-size: .8rem;
       padding: 4px 6px 2px; }
-  .news-home .news-list .news-item .news-desc {
-    padding: 0 1rem 1rem; }
-  .news-home .news-list .btn-news-group {
-    display: flex; }
+    .news-home .col-md-7 .news-item h2 {
+      line-height: 25px; }
+    .news-home .col-md-5 {
+      padding: 0 .35rem; }
+      .news-home .col-md-5 .slick-1-item .slick-dots {
+        bottom: 1rem;
+        right: 1rem; }
+      .news-home .col-md-5 .slick-1-item .news-item .news-desc {
+        padding: 0 1rem 3rem; }
+      .news-home .col-md-5 .slick-1-item .news-item img {
+        height: 384px; }
+      .news-home .col-md-5 .btn-news-group a {
+        font-size: .9rem;
+        padding: 4px 6px 2px; }
+    .news-home .news-item .news-desc {
+      padding: 0 1rem 1rem; }
+    .news-home .btn-news-group {
+      display: flex; }
 
   .tg-title h3 {
     font-size: 1.35rem !important; }
@@ -437,9 +440,6 @@
     padding: 0 2rem; }
 
   .event-home .slick-1-item.mt-4 {
-    margin-top: .5rem !important; }
-
-  .news-home .news-list.mt-4 {
     margin-top: .5rem !important; }
 
   .member-home .member-list.mt-3 {

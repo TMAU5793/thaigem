@@ -45,12 +45,15 @@ class Home extends BaseController
                                 ->where('tbl_member_business.type','business')
                                 ->findAll();
 
+        $info = $mbModel->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
+                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->findAll(5);
+
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association',
             'lang' => $this->lang,
             'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->findAll(6),
             'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
-            'dealers' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(2),
+            'dealers' => $info,
             'albums' => $abModel->findAll(),
             'member' => $mbModel->where('id',$this->member_id)->first(),
             'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3),
@@ -60,7 +63,7 @@ class Home extends BaseController
         ];
         
         // print_r('<pre>');
-        // print_r($data['albums']);
+        // print_r($data['dealers']);
         // print_r('</pre>');
         echo view('front/home', $data);
 	}

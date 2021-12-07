@@ -189,27 +189,31 @@ ul,
 }
 
 .slick-dots-1 {
-    li {
-        background-color: $c-white;
-        border-radius: 50px;
-        button:before {
-            content: '';
-        }
-        &.slick-active {
-            background-color: $c-darkgold;
+    .slick-dots {
+        li {
+            background-color: $c-white;
+            border-radius: 50px;
+            button:before {
+                content: '';
+            }
+            &.slick-active {
+                background-color: $c-darkgold;
+            }
         }
     }
 }
 
 .slick-dots-2 {
-    li {
-        background-color: $c-lightgold;
-        border-radius: 50px;
-        button:before {
-            content: '';
-        }
-        &.slick-active {
-            background-color: $c-darkgold;
+    .slick-dots {
+        li {
+            background-color: $c-lightgold;
+            border-radius: 50px;
+            button:before {
+                content: '';
+            }
+            &.slick-active {
+                background-color: $c-darkgold;
+            }
         }
     }
 }

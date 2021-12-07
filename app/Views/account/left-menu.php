@@ -5,7 +5,9 @@
     $userdata = session()->get('userdata');
     $model = new AccountModel();
     $model_member = new MemberModel();
-    $info = $model->where('account', session()->get('userdata')['account'])->first();
+    //$info = $model->where('account', session()->get('userdata')['account'])->first();
+    $info = $model->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
+                ->where(['tbl_member.account'=>session()->get('userdata')['account']])->first();
     $pMaincate = $model_member->getProductMainType();
     $pSubcate = $model_member->getProductType();
     $bMaincate = $model_member->getBusinessMainType();
@@ -107,6 +109,7 @@
                                 ?>
                             </span>
                         <?php } } ?>
+                        <p class="text-line-1 mb-0"><?= $info['product'] ?></p>
                     </div>
                 </div>
             </div>
@@ -144,6 +147,7 @@
                                 ?>
                             </span>
                         <?php } } ?>
+                        <p class="text-line-1 mb-0"><?= $info['business'] ?></p>
                     </div>
                 </div>
             </div>

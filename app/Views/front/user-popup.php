@@ -9,17 +9,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">                
-                <form action="<?= base_url('account/login'); ?>" method="POST">
+                <form action="<?= base_url('account/login'); ?>" method="POST" autocomplete="off">
                     <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
                     <div class="input-nobg plr-2rem">
                         <?php if(isset($signin_valid)): ?>
                             <div class="alert alert-danger"><?= $signin_valid->listErrors(); ?></div>
                         <?php endif;?>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.u-name-mail') ?> *" value="<?= (isset($signin_valid)?set_value('txt_username'):''); ?>">
+                            <input type="text" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.userName') ?> *" value="<?= (isset($signin_valid)?set_value('txt_username'):''); ?>" autocomplete="off">
                         </div>
                         <div class="form-group mb-3">
-                            <input type="password" class="form-control" name="txt_password" placeholder="<?= lang('GlobalLang.password') ?> *" autocomplete="new-password">
+                            <input type="password" class="form-control" name="txt_password" placeholder="<?= lang('GlobalLang.password') ?> *" autocomplete="off">
                         </div>
                         <button type="submit" class="btn bg-lightgold ff-dbadmanBold w-100 text-uppercase"><?= lang('GlobalLang.signin') ?></button>
                     </div>

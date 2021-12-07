@@ -127,20 +127,20 @@ ul,
 .btn-tg-group .btn {
   margin: 0 .5rem; }
 
-.slick-dots-1 li {
+.slick-dots-1 .slick-dots li {
   background-color: #ffffff;
   border-radius: 50px; }
-  .slick-dots-1 li button:before {
+  .slick-dots-1 .slick-dots li button:before {
     content: ''; }
-  .slick-dots-1 li.slick-active {
+  .slick-dots-1 .slick-dots li.slick-active {
     background-color: #665f4f; }
 
-.slick-dots-2 li {
+.slick-dots-2 .slick-dots li {
   background-color: #cec6b2;
   border-radius: 50px; }
-  .slick-dots-2 li button:before {
+  .slick-dots-2 .slick-dots li button:before {
     content: ''; }
-  .slick-dots-2 li.slick-active {
+  .slick-dots-2 .slick-dots li.slick-active {
     background-color: #665f4f; }
 
 .btn-darkgold {
@@ -967,13 +967,13 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       -webkit-box-orient: vertical;
       overflow: hidden; }
 
-.member-home .member-list .slick-slide.slick-current.slick-active .member-item {
+.member-home .member-list .slick-slide.slick-current.slick-active .item {
   padding-left: 0;
-  padding-right: 1rem; }
-.member-home .member-list .slick-slide.slick-active .member-item {
+  padding-right: .75rem; }
+.member-home .member-list .slick-slide.slick-active .item {
   padding-right: 0; }
-.member-home .member-list .member-item {
-  padding: .5rem 1rem; }
+.member-home .member-list .item {
+  padding: .75rem; }
 .member-home .member-list .sub-img {
   margin: .5rem -.20rem 0; }
   .member-home .member-list .sub-img .img-item {

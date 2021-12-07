@@ -104,6 +104,8 @@
                                 <div class="slider-for-item">
                                     <img src="<?= (is_file($row['profile'])?site_url($row['profile']):site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                 </div>
+                            <?php }else{ ?>
+                                <img src="<?= site_url('assets/images/default-1000x750.jpg') ?>" alt="<?= $row['company'] ?>">
                             <?php } ?>
                             <ul>
                                 <?php if($album){
@@ -129,7 +131,6 @@
                         <div class="w-50 position-relative">
                             <div class="position-absolute translate-middle top-50 start-50 w-100 ps-3 text-center">
                                 <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1 mb-0"><?= $row['company'] ?></h5>
-                                <!-- <p class="text-line-3"><?= character_limiter($row['about'],50) ?></p> -->
                                 <div class="cate-type">
                                     <strong class="ff-dbadmanBold"><?= lang('GlobalLang.product-type') ?></strong>
                                     <?php
@@ -140,7 +141,9 @@
                                                     $n++;
                                     ?>
                                         <p class="text-line-1 mb-0"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
-                                    <?php } } } ?>
+                                    <?php } } }else{ ?>
+                                        <p class="text-line-1 mb-0"><?= $row['product'] ?></p>
+                                    <?php } ?>
                                 </div>
                                 <div class="cate-type">
                                     <strong class="ff-dbadmanBold"><?= lang('GlobalLang.business-type') ?></strong>
@@ -152,9 +155,11 @@
                                                     $n++;
                                     ?>
                                         <p class="text-line-1"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
-                                    <?php } } } ?>
+                                    <?php } } }else{ ?>
+                                        <p class="text-line-1 mb-0"><?= $row['business'] ?></p>
+                                    <?php } ?>
                                 </div>
-                                <div class="event-action">
+                                <div class="event-action mt-3">
                                     <?php
                                         $member_id = $row['id'];
                                         if($row['code']){
