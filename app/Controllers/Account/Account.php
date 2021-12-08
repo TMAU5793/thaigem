@@ -35,10 +35,12 @@ class Account extends Controller
             $model = new AccountModel();
             $albummodel = new AlbumModel();
             $mbModel = new MemberModel();
+            $info = $model->join('tbl_member_business as B','B.member_id = tbl_member.id')
+                        ->where('tbl_member.id',$this->member_id)->first();
             $data = [
                 'ac_account' => TRUE,
                 'lang' => $this->lang,
-                'info' => $model->where('id',$this->member_id)->first(),
+                'info' => $info,
                 'album' => $albummodel->where('member_id',$this->member_id)->findAll(),
                 'address' => $mbModel->getAddress(),
                 'province' => $mbModel->getProvince(),

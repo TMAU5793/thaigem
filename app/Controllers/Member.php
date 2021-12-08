@@ -203,7 +203,6 @@ class Member extends BaseController
         $mbBusiness = new MemberBusinessModel();
 
         $id = $request->getGet('c');
-        // echo $id;
         
         $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
                                 ->where('tbl_member_business.type','product')
@@ -213,20 +212,21 @@ class Member extends BaseController
                                 ->where('tbl_member_business.type','business')
                                 ->findAll();
         if($id){
-            //$result = $mbnModel->where('maincate_id',$id)->groupby('maincate_id')->findAll();
-            // $db      = \Config\Database::connect();
-            // $builder = $db->table('tbl_member_business');            
-            // $builder->join('tbl_member', 'tbl_member.id = tbl_member_business.member_id');
-            // $builder->where('tbl_member_business.maincate_id',$id);
-            // $builder->groupBy('tbl_member_business.member_id');
-            // $query = $builder->get()->getresultArray();
+            $db      = \Config\Database::connect();
+            $builder = $db->table('member_filter');
 
-            $query = $mbModel->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
-                            ->where('tbl_member_business.maincate_id',$id)
-                            ->groupBy('tbl_member_business.member_id')
-                            ->orderBy('tbl_member.created_at DESC')
-                            ->paginate(10);
-                            
+            $cate = $cateModel->select('name_th')->where('maincate_id',$id)->findAll();
+            $query = [];
+            foreach($cate as $row){
+                $arr = $mbModel->join('tbl_member_business as B', 'tbl_member.id = B.member_id')
+                            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])                            
+                            ->like('B.product',$row['name_th'])
+                            ->findAll();
+                foreach ($arr as $item){
+                    $query[] = $item;
+                }
+            }
+
             $data = [
                 'meta_title' => 'Filter Member',
                 'lang' => $this->lang,
@@ -240,7 +240,10 @@ class Member extends BaseController
                 'cate_bus' => $cate_bus,
                 'userdata' => $this->userdata
             ];
-            
+
+            // print_r('<pre>');
+            // print_r($query);
+            // print_r('</pre>');
             echo view('front/member', $data);
         }else{
             return redirect()->to('member');

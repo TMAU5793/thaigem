@@ -115,24 +115,6 @@ class Member extends Controller
                             'required' => 'กรุณากรอกจังหวัด'
                         ]
                     ],
-                    'ddl_amphure' => [
-                        'rules' => 'required',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกอำเภอ/เขต'
-                        ]
-                    ],
-                    'ddl_district' => [
-                        'rules' => 'required',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกตำบล/แขวง'
-                        ]
-                    ],
-                    'txt_zipcode' => [
-                        'rules' => 'required',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกรหัสไปรษณีย์'
-                        ]
-                    ],
                     'txt_address' => [
                         'rules' => 'required',
                         'errors' =>  [
@@ -167,24 +149,6 @@ class Member extends Controller
                         'rules' => 'required',
                         'errors' =>  [
                             'required' => 'กรุณากรอกจังหวัด'
-                        ]
-                    ],
-                    'ddl_amphure' => [
-                        'rules' => 'required',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกอำเภอ/เขต'
-                        ]
-                    ],
-                    'ddl_district' => [
-                        'rules' => 'required',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกตำบล/แขวง'
-                        ]
-                    ],
-                    'txt_zipcode' => [
-                        'rules' => 'required',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกรหัสไปรษณีย์'
                         ]
                     ],
                     'txt_address' => [

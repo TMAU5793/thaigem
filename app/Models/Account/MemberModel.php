@@ -310,46 +310,66 @@ class MemberModel extends Model
 
     public function updateBusiness($data)
     {
-        $builder = $this->db->table('tbl_member_business');
         $datetime = new Time('now');
-
+        $builder = $this->db->table('tbl_member_business');
+        $builder->where('member_id', $data['hd_id']);
+        $member = $builder->get()->getRow();        
+        
         if(isset($data['ddl_productcate'])){
             $product = count($data['ddl_productcate']);
+            $pdata = '';
             for ($i=0; $i < $product; $i++) {
-                if($data['ddl_productcate'][$i]!=""){
-                    $arr = explode(",",$data['ddl_productcate'][$i]);
-                    $maincate = $arr[0];
-                    $subcate = $arr[1];
-                    $info = [
-                        'member_id' => $data['hd_id'],
-                        'type' => 'product',
-                        'maincate_id' => $maincate,
-                        'cate_id' => $subcate,
-                        'created_at' => $datetime,
-                        'updated_at' => $datetime
-                    ];
-                    $builder->insert($info);
+                $sb = '';
+                if($i>0){
+                    $sb = ', ';
                 }
+                $pdata .= $sb.$data['ddl_productcate'][$i];
+            }
+            //echo $pdata;
+            if($member->member_id){
+                $info = [
+                    'product' => $pdata,
+                    'updated_at' => $datetime
+                ];
+                $builder->where('member_id', $data['hd_id']);
+                $builder->update($info);
+            }else{
+                $info = [
+                    'member_id' => $data['hd_id'],
+                    'product' => $pdata,
+                    'created_at' => $datetime,
+                    'updated_at' => $datetime
+                ];
+                $builder->insert($info);
             }
         }
 
         if(isset($data['ddl_business'])){
-            $busines = count($data['ddl_business']);
-            for ($i=0; $i < $busines; $i++) {
-                if($data['ddl_business'][$i]!=""){
-                    $arr = explode(",",$data['ddl_business'][$i]);
-                    $maincate = $arr[0];
-                    $subcate = $arr[1];
-                    $info = [
-                        'member_id' => $data['hd_id'],
-                        'type' => 'business',
-                        'maincate_id' => $maincate,
-                        'cate_id' => $subcate,
-                        'created_at' => $datetime,
-                        'updated_at' => $datetime
-                    ];
-                    $builder->insert($info);
+            $business = count($data['ddl_business']);
+            $bdata = '';
+            for ($i=0; $i < $business; $i++) {
+                $sb = '';
+                if($i>0){
+                    $sb = ', ';
                 }
+                $bdata .= $sb.$data['ddl_business'][$i];
+            }
+
+            if($member->member_id){
+                $info = [
+                    'business' => $bdata,
+                    'updated_at' => $datetime
+                ];
+                $builder->where('member_id', $data['hd_id']);
+                $builder->update($info);
+            }else{
+                $info = [
+                    'member_id' => $data['hd_id'],
+                    'business' => $bdata,
+                    'created_at' => $datetime,
+                    'updated_at' => $datetime
+                ];
+                $builder->insert($info);
             }
         }
 

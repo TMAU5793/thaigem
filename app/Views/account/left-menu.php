@@ -5,15 +5,11 @@
     $userdata = session()->get('userdata');
     $model = new AccountModel();
     $model_member = new MemberModel();
-    //$info = $model->where('account', session()->get('userdata')['account'])->first();
-    $info = $model->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
-                ->where(['tbl_member.account'=>session()->get('userdata')['account']])->first();
     $pMaincate = $model_member->getProductMainType();
     $pSubcate = $model_member->getProductType();
     $bMaincate = $model_member->getBusinessMainType();
     $bSubcate = $model_member->getBusinessType();
     $province = $model_member->getProvince();
-   
 ?>
 <div class="ac-menu-left p-4">
     <div class="row dealer-head">
@@ -224,7 +220,13 @@
     </div>
     
     <div class="text-center mt-4 text-center ac-btn-action">
-        <a href="<?= site_url('account/member/edit?u=TGJTA-'.$info['code']) ?>" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></a>
+        <?php
+            $edit_id = $info['id'];
+            if($info['code']!=''){
+                $edit_id = 'TGJTA-'.$info['code'];
+            }
+        ?>
+        <a href="<?= site_url('account/member/edit?u='.$edit_id) ?>" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></a>
         <button type="botton" id="btn-member-more" class="btn btn-black-border show-767">
             <span class="more-info">
                 เพิ่มเติม <i class="fas fa-caret-down"></i>

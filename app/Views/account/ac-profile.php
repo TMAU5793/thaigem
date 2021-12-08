@@ -54,7 +54,7 @@
                                                     foreach($maincates as $maincate){
                                                         if($subcate->maincate_id == $maincate->id){
                                             ?>
-                                                <option value="<?= $subcate->maincate_id.','.$subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                                <option value="<?= $subcate->name_th ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
                                             <?php } } }  ?>
                                         </select>
                                     <?php } ?>
@@ -89,7 +89,7 @@
                                                     foreach($mainbusniess as $maincate){
                                                         if($subcate->main_type == $maincate->id){
                                             ?>
-                                                <option value="<?= $subcate->main_type.','.$subcate->id ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
+                                                <option value="<?= $subcate->name_th ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>
                                             <?php } } } ?>
                                         </select>
                                     <?php } ?>
@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.amphur') ?> <span class="text-danger">*</span></label>
+                                        <label for=""><?= lang('GlobalLang.amphur') ?></label>
                                         <select name="ddl_amphure" id="ddl_amphure" class="form-control">
                                             <option value="">--</option>
                                         </select>
@@ -193,7 +193,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.district') ?> <span class="text-danger">*</span></label>
+                                        <label for=""><?= lang('GlobalLang.district') ?></label>
                                         <select name="ddl_district" id="ddl_district" class="form-control">
                                             <option value="">--</option>
                                         </select>
@@ -202,7 +202,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.postcode') ?> <span class="text-danger">*</span></label>
+                                        <label for=""><?= lang('GlobalLang.postcode') ?></label>
                                         <input type="text" name="txt_zipcode" id="txt_zipcode" class="form-control" value="<?= (isset($address) ? $address->zipcode : '') ?>">
                                         <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_zipcode')?'* '.$validation->getError('txt_zipcode'):'') ?></small>
                                     </div>

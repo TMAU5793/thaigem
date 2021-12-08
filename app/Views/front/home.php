@@ -254,7 +254,9 @@
                                                         
                                         ?>
                                             <p class="text-line-1 mb-0"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
-                                        <?php } } } ?>
+                                        <?php } } }else{ ?>
+                                            <p class="text-line-1 mb-0"><?= $row['product'] ?></p>
+                                        <?php } ?>
                                     </div>
                                     <div class="cate-type">
                                         <strong class="ff-dbadmanBold"><?= lang('GlobalLang.business-type') ?></strong>
@@ -266,9 +268,11 @@
                                                         $n++;
                                         ?>
                                             <p class="text-line-1"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
-                                        <?php } } } ?>
+                                        <?php } } }else{ ?>
+                                            <p class="text-line-1 mb-0"><?= $row['business'] ?></p>
+                                        <?php } ?>
                                     </div>
-                                    <div class="event-action">
+                                    <div class="event-action mt-3">
                                         <?php
                                             $member_id = $row['id'];
                                             if($row['code']){
