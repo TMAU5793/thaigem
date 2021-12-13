@@ -1,8 +1,9 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
-    <section class="banner">
-        <img src="<?= site_url('assets/images/banner/home.jpg') ?>" alt="">
+    <section class="banner-home">
+        <img src="<?= (is_file($banner['banner'])?site_url($banner['banner']):site_url('assets/images/img-default.jpg')) ?>" class="hide-575" alt="thai gem">
+        <img src="<?= (is_file($banner['banner_mobile'])?site_url($banner['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" class="show-575" alt="thai gem">
     </section>
     
     <section class="category-home">
@@ -202,7 +203,7 @@
                 </div>
             </div>
             <div class="member-list mb-5">
-                <div class="slick-2-home slick-dots-2">
+                <div class="slick-3-home slick-dots-2">
                     <?php
                         if($dealers){
                             foreach($dealers as $row){
@@ -232,19 +233,19 @@
                                         <li class="album-item">
                                             <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                         </li>
-                                    <?php } } } if($n==0){ ?>
+                                    <?php } } } if($n==0){ for($i=1;$i<4;$i++){ ?>
                                         <li class="album-item">
                                             <img src="<?= (site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                         </li>
-                                    <?php } ?>
+                                    <?php } } ?>
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="w-50 position-relative">
-                                <div class="position-absolute translate-middle top-50 start-50 w-100 ps-3 text-center">
-                                    <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1 mb-0"><?= $row['company'] ?></h5>
+                                <div class="ps-3 text-center">
+                                    <h2 class="ff-dbamanBold fs-5 text-uppercase letter-spacing-1 mb-0 text-line-1 text-nowrap"><?= $row['company'] ?></h2>
                                     <div class="cate-type">
-                                        <strong class="ff-dbadmanBold"><?= lang('GlobalLang.product-type') ?></strong>
+                                        <strong class="ff-dbadmanBold c-darkgold"><?= lang('GlobalLang.product-type') ?></strong>
                                         <?php
                                             if($cate_prod){
                                                 $n=0;                                                
@@ -259,7 +260,7 @@
                                         <?php } ?>
                                     </div>
                                     <div class="cate-type">
-                                        <strong class="ff-dbadmanBold"><?= lang('GlobalLang.business-type') ?></strong>
+                                        <strong class="ff-dbadmanBold c-darkgold"><?= lang('GlobalLang.business-type') ?></strong>
                                         <?php
                                             if($cate_bus){
                                                 $n=0;
@@ -280,9 +281,9 @@
                                             }
                                         ?>
                                         <?php if($userdata['logged_member']){ ?>
-                                            <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                            <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1 fs-6"><?= lang('GlobalLang.viewProfile'); ?></a>
                                         <?php }else{ ?>
-                                            <a href="javascript:void(0)" class="btn btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                            <a href="javascript:void(0)" class="btn btn-black-border text-uppercase letter-spacing-1 fs-6" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.viewProfile'); ?></a>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -313,7 +314,7 @@
                         ?>
                             <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" onclick="location.href='<?= site_url('account') ?>'"><?= lang('GlobalLang.viewProfile'); ?></button>
                         <?php }else{ ?>                                
-                            <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-tgjta" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Create a Membership Account</button>
+                            <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-tgjta" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.btnmember') ?></button>
                         <?php } ?>
                     </div>
                 </div>
@@ -329,7 +330,7 @@
                             ?>
                                 <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" onclick="location.href='<?= site_url('account') ?>'"><?= lang('GlobalLang.viewProfile'); ?></button>
                             <?php }else{ ?>                                
-                                <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-personal" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Join Now</button>
+                                <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-personal" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.btnjoin') ?></button>
                             <?php } ?>
                         </div>
                     </div>

@@ -460,7 +460,8 @@ body:not(.layout-fixed) .main-sidebar {
 
 .input-img-hide {
   visibility: hidden;
-  height: 0px; }
+  height: 0px;
+  padding: 0; }
 
 .label-img {
   width: 100%;
@@ -516,16 +517,11 @@ body:not(.layout-fixed) .main-sidebar {
 .content-banner .col-md-6 {
   margin-bottom: 1.5rem; }
 .content-banner .img-banner {
-  background-color: #ccc;
   border-radius: 6px;
-  height: 300px;
   overflow: hidden;
   position: relative; }
   .content-banner .img-banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center; }
+    width: 100%; }
 .content-banner .label-img {
   border-radius: 6px; }
 .content-banner .btn-action-fixed {
@@ -574,5 +570,14 @@ body:not(.layout-fixed) .main-sidebar {
 
 .top-neg2rem {
   top: -2rem; }
+
+.fs-7 {
+  font-size: .9rem; }
+
+table .btn-warning,
+table .btn-success,
+table .btn-danger {
+  padding: 0 .5rem;
+  font-size: .9rem; }
 
 /*# sourceMappingURL=back-office.css.map */

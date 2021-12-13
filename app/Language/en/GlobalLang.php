@@ -105,7 +105,10 @@ return [
     'resetpass2' => 'You can click this link to reset your password.',
     'resetpass3' => 'If you do not make the transaction You can ignore this email.',
     'message' => 'Message',
-    'memberTgjta' => 'Apply for TGJTA Membership',
-    'memberPerson' => 'Apply for Personal Member',
-    'membersince' => 'Member Since'
+    'memberTgjta' => 'Apply for <br> TGJTA Membership',
+    'memberPerson' => 'Apply for <br> Personal Member',
+    'membersince' => 'Member Since',
+    'btnmember' => 'Create a Membership Account',
+    'btnjoin' => 'Join Now'
+
 ];

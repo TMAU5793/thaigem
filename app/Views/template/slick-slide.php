@@ -102,6 +102,21 @@
             ]
         });
 
+        $('.slick-3-home').slick({
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            dots: true,
+            arrows: false,
+            infinite:false,
+            responsive: [{
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+
         $('.slick-3-item-hide-dot').slick({
             slidesToShow: 3,
             slidesToScroll: 3,

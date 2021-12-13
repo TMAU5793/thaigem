@@ -111,19 +111,35 @@
                             </a>
                         </li>
                     </ul>
-                </li>                
+                </li>
                 <li class="nav-item">
                     <a href="<?= base_url('admin/banner'); ?>" class="nav-link <?= ($uri->getSegment(2)=='banner'?'active':''); ?>">
                         <i class="nav-icon fas fa-image"></i>
                         <p>แบนเนอร์</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('admin/member'); ?>" class="nav-link <?= ($uri->getSegment(2)=='member'?'active':''); ?>">
+
+                <li class="nav-item <?= ($uri->getSegment(2)=='member'?'menu-open':''); ?>">
+                    <a href="#" class="nav-link <?= ($uri->getSegment(2)=='files'?'active':''); ?>">
                         <i class="nav-icon fas fa-users"></i>
-                        <p>สมาชิกเว็บไซต์</p>
+                        <p>สมาชิกเว็บไซต์ <i class="right fas fa-angle-left"></i></p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/member/dealer'); ?>" class="nav-link <?= ($uri->getSegment(3)=='dealer' || $uri->getSegment(3)=='edit' || $uri->getSegment(3)=='form' ?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>สมาชิกสมาคมฯ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/member/subscribe'); ?>" class="nav-link <?= ($uri->getSegment(3)=='subscribe'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>สมาชิกเว็บไซต์</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
                 <?php
                     if ($admindata['rules']=='superadmin') {
                 ?>

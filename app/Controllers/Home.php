@@ -8,9 +8,10 @@ use App\Models\Account\AlbumModel;
 use App\Models\BookingModel;
 use App\Models\KnowledgeModel;
 use App\Models\MemberBusinessModel;
+use App\Models\BannerModel;
 
 class Home extends BaseController
-{
+{    
     protected $lang;
     protected $member_id;
     protected $userdata;
@@ -28,7 +29,7 @@ class Home extends BaseController
     }
 
 	public function index()
-	{        
+	{                
         helper('text');
         $ctModel = new ProductCategoryModel();
         $evModel = new EventModel();
@@ -37,6 +38,7 @@ class Home extends BaseController
         $bkModel = new BookingModel();
         $acModel= new KnowledgeModel();
         $mbBusiness = new MemberBusinessModel();
+        $banner = new BannerModel();
         $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
                                 ->where('tbl_member_business.type','product')
                                 ->findAll();
@@ -46,7 +48,7 @@ class Home extends BaseController
                                 ->findAll();
 
         $info = $mbModel->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
-                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->findAll(5);
+                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->findAll(9);
 
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association',
@@ -59,7 +61,8 @@ class Home extends BaseController
             'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3),
             'cate_prod' => $cate_prod,
             'cate_bus' => $cate_bus,
-            'userdata' => $this->userdata
+            'userdata' => $this->userdata,
+            'banner' => $banner->where('page','home')->first()
         ];
         
         // print_r('<pre>');

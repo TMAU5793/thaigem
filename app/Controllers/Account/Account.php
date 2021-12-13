@@ -37,6 +37,9 @@ class Account extends Controller
             $mbModel = new MemberModel();
             $info = $model->join('tbl_member_business as B','B.member_id = tbl_member.id')
                         ->where('tbl_member.id',$this->member_id)->first();
+            if(!$info){
+                $info = $model->where('id',$this->member_id)->first();
+            }
             $data = [
                 'ac_account' => TRUE,
                 'lang' => $this->lang,
@@ -50,7 +53,8 @@ class Account extends Controller
                 'membercontact' => $mbModel->getMemberContact(),
                 'memberbusiness' => $mbModel->getMemberBusiness()
             ];
-            
+            // print_r($model->error());
+            // print_r($info);
             echo view('account/ac-account',$data);
         }else{
             return redirect()->to('');

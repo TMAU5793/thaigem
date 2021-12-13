@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= ($meta_title)?$meta_title : 'Thai Gem and Jewelry Traders Association'; ?></title>
+    <meta name="description" content="The Thai Gem and Jewelry Traders Association has continuously worked to achieve its objective, which is to promote and develop the Thai gem and jewelry industry to become an important center or hub for trade and manufacturing of gems and jewelry in the world. Today, the Thai Gem and Jewelry Traders Association is recognized and embraced by both the government and private sectors of Thailand and several countries as the primary gems and jewelry trade association in the Kingdom that operates at an international standard. In 2006 and 2018, the Thai Gem and Jewelry Traders Association was selected by the Department of Trade Development">
+    <meta property="og:image" content="<?= site_url('assets/images/share-img.jpg') ?>" />
     <!-- shortcut icon -->
     <link rel='shortcut icon' type='image/x-icon' href="<?= base_url('assets/images/favicon.png'); ?>">
 

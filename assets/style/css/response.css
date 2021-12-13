@@ -576,6 +576,12 @@
   .copy-right {
     font-size: .85rem; } }
 @media (max-width: 575px) {
+  .hide-575 {
+    display: none; }
+
+  .show-575 {
+    display: show; }
+
   #registerModal .modal-dialog {
     padding: 2rem; }
     #registerModal .modal-dialog .modal-body {

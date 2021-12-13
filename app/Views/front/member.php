@@ -64,7 +64,7 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6 search-show d-none">
+                        <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_duration" id="ddl_duration" class="w-100">
                                     <option value=""> --membership duration-- </option>
@@ -74,7 +74,7 @@
                                     <option value="4" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='4'?'selected':'') ?>> มากว่า 4ปี  </option>
                                 </select>
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="col-md-6 search-show d-none">
                             <button type="button" class="btn bg-darkgold c-white w-100 ff-dbamanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>
@@ -120,11 +120,12 @@
                                     <li class="album-item">
                                         <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                     </li>
-                                <?php } } } if($n==0){ ?>
+                                <?php } } } if($n==0){ for($i=1;$i<4;$i++){ ?>
+                                    
                                     <li class="album-item">
                                         <img src="<?= (site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                     </li>
-                                <?php } ?>
+                                <?php } } ?>
                             </ul>
                             <div class="clearfix"></div>
                         </div>

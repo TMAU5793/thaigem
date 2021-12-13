@@ -105,7 +105,9 @@ return [
     'resetpass2' => 'สามารถกดลิงก์นี้เพื่อรีเซ็ตรหัสผ่าน',
     'resetpass3' => 'หากท่านไม่ได้ทำรายการ ท่านสามารถเพิกเฉยต่ออีเมลนี้ได้',
     'message' => 'ข้อความ',
-    'memberTgjta' => 'Apply for TGJTA Membership',
-    'memberPerson' => 'Apply for Personal Member',
-    'membersince' => 'เป็นสมาชิกตั้งแต่'
+    'memberTgjta' => 'ลงทะเบียนเพื่อเป็นสมาชิก',
+    'memberPerson' => 'ลงทะเบียนเพื่อรับข่าวสาร',
+    'membersince' => 'เป็นสมาชิกตั้งแต่',
+    'btnmember' => 'สร้างบัญชีสมาชิก',
+    'btnjoin' => 'ลงทะเบียน'
 ];

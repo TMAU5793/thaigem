@@ -230,10 +230,8 @@
                     <p class="c-black">
                         สงวนสิทธิ์เฉพาะสมาชิกของสมาคมฯ ที่ได้รับการรับรองสถานะเรียบร้อยแล้วเท่านั้น
                     </p>
-                    <?php if(session()->get('userdata')) { ?>
+                    <?php if(session()->get('userdata')['user_type']=='dealer') { ?>
                         <a href="<?= site_url('account') ?>" class="btn btn-black-border">ตรวจสอบสถานะสมาชิก</a>
-                    <?php } else { ?>
-                        <a href="javascript:void(0)" class="btn btn-black-border text-uppercase" data-bs-toggle="modal" data-bs-target="#loginModal">ตรวจสอบสถานะสมาชิก</a>
                     <?php } ?>
                 </div>
             </div>

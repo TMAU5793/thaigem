@@ -238,6 +238,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .list-decimal {
   list-style-type: decimal; }
 
+.hide-575 {
+  display: block; }
+
+.show-575 {
+  display: none; }
+
 .navbar {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
@@ -869,7 +875,11 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .category-home #tradingview_5625e {
   height: 330px; }
 .category-home .tg-title {
-  margin-top: 13rem; }
+  margin-top: 2rem; }
+.category-home div.ff-dbadmanBold {
+  margin-top: 5rem; }
+  .category-home div.ff-dbadmanBold h4 {
+    font-size: 2rem !important; }
 
 .price-update .nav-pills .nav-item .nav-link.active {
   background: transparent; }
@@ -982,6 +992,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     float: left; }
 .member-home .member-list .slick-dots {
   bottom: -3rem; }
+.member-home .member-list h2.ff-dbamanBold {
+  font-weight: 600; }
 .member-home .ac-album {
   overflow: hidden; }
 
@@ -1349,5 +1361,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .register-back:hover {
   text-decoration: underline; }
+
+.text-nowrap {
+  text-overflow: ellipsis; }
 
 /*# sourceMappingURL=style.css.map */

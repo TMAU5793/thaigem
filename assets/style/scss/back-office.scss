@@ -75,6 +75,7 @@ body:not(.layout-fixed) .main-sidebar {
 .input-img-hide {
     visibility: hidden;
     height: 0px;
+    padding: 0;
 }
 
 .label-img {
@@ -147,16 +148,11 @@ body:not(.layout-fixed) .main-sidebar {
         margin-bottom: 1.5rem;
     }
     .img-banner {
-        background-color: #ccc;
         border-radius: 6px;
-        height: 300px;
         overflow: hidden;
         position: relative;
         img {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
         }
     }
     .label-img {
@@ -230,4 +226,17 @@ body:not(.layout-fixed) .main-sidebar {
 
 .top-neg2rem {
     top: -2rem;
+}
+
+.fs-7 {
+    font-size: .9rem;
+}
+
+table {
+    .btn-warning,
+    .btn-success,
+    .btn-danger {
+        padding: 0 .5rem;
+        font-size: .9rem;
+    }
 }

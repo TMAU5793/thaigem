@@ -36,7 +36,13 @@
         height: 330px;
     }
     .tg-title {
-        margin-top: 13rem;
+        margin-top: 2rem;
+    }
+    div.ff-dbadmanBold {
+        margin-top: 5rem;
+        h4 {
+            font-size: 2rem !important;
+        }
     }
 }
 
@@ -220,6 +226,9 @@
         }
         .slick-dots {
             bottom: -3rem;
+        }
+        h2.ff-dbamanBold {
+            font-weight: 600;
         }
     }
     .ac-album {
@@ -783,4 +792,8 @@
     &:hover {
         text-decoration: underline;
     }
+}
+
+.text-nowrap {
+    text-overflow: ellipsis;
 }

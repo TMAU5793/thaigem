@@ -34,9 +34,21 @@
 
     <section class="dimon-price mt-5 mb-5">
         <div class="container">
-            <h3 class="ff-semibold mb-3">Dimon price</h3>
+            <h3 class="ff-semibold mb-3">Diamon price</h3>
+            <h4>Rounds Shapes</h4>
+            <div class="row mb-4">
+                <?php for($i=3;$i<6;$i++){ ?>
+                    <div class="col-md-4 col-6 mb-3">
+                        <a class="fancybox" data-fancybox="plans" data-width="1400" data-caption="" href="<?= site_url('assets/images/dimon-price/dimon-'.$i.'.jpg') ?>" title="">
+                            <div class="zoom-in"><img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/dimon-price/thimb-'.$i.'.jpg')) ?>" alt="dimon price"></div>
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
+
+            <h4>Fancy Shapes</h4>
             <div class="row">
-                <?php for($i=1;$i<6;$i++){ ?>
+                <?php for($i=1;$i<3;$i++){ ?>
                     <div class="col-md-4 col-6 mb-3">
                         <a class="fancybox" data-fancybox="plans" data-width="1400" data-caption="" href="<?= site_url('assets/images/dimon-price/dimon-'.$i.'.jpg') ?>" title="">
                             <div class="zoom-in"><img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/dimon-price/thimb-'.$i.'.jpg')) ?>" alt="dimon price"></div>

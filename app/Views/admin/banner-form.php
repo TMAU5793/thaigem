@@ -19,7 +19,8 @@
     <!-- Main content -->
     <section class="content-banner ps-5 pe-5">
         <div class="container-fluid position-relative">
-            <form id="frm-banner" action="<?= site_url('admin/banner/update') ?>" method="POST" enctype="multipart/form-data">                
+            <form id="frm-banner" action="<?= site_url('admin/banner/update') ?>" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="hd_id" value="<?= (isset($info)?$info['id'] : '') ?>">
                 <div class="mb-3 pt-5">
                     <label for="ddl_page" class="d-block">เลือกหน้าเว็บเพจสำหรับแบนเนอร์</label>
                     <select name="ddl_page" id="ddl_page" class="form-control">
@@ -31,18 +32,30 @@
                         <option value="webboard"> หน้า Business Community </option>
                     </select>
                 </div>
-                <div class="banner-item">
-                    <div class="img-banner">
-                        <img src="<?= (isset($info) && is_file($info['banner'])?site_url($info['banner']) : site_url('assets/images/img-default.jpg')) ?>" class="banner-show">
-                        <input type="file" id="txt_banner" name="txt_banner" class="input-img-hide" onchange="bannerShow(this,'banner-show','hd_banner')" accept="image/*">
+                <div class="row banner-item">
+                    <div class="col-md-3">
+                        <h6 class="mb-3 ff-bold">รูปแบนเนอร์ (Desktop)</h6>
+                        <img src="<?= (isset($info) && is_file($info['banner'])?site_url($info['banner']) : site_url('assets/images/img-default.jpg')) ?>" class="banner-show w-100">
+                        <input type="file" id="txt_banner" name="txt_banner" class="input-img-hide form-control" onchange="bannerShow(this,'banner-show','hd_banner')" accept="image/*">
                         <input type="hidden" name="hd_banner" value="<?= (isset($info) && $info['banner']!=""?$info['banner'] : '') ?>">
                         <input type="hidden" name="hd_banner_del" id="hd_banner_del" value="<?= (isset($info) && $info['banner']!=""?$info['banner'] : '') ?>">
-                        <input type="hidden" name="hd_id" value="<?= (isset($info)?$info['id'] : '') ?>">
-                        <!-- <span class="position-absolute" title="update banner"><i class="fas fa-edit"></i></span> -->
+                        <label for="txt_banner" class="label-img btn-primary">เลือกรูป</label>
+                        <p class="text-danger mt-3 mb-0">*ขนาดรูปที่ต้องการหน้า Home <strong>1920 x 700px</strong></p>
+                        <p class="text-danger">*หน้าอื่นๆขนาด <strong>1920 x 300px</strong></p>
                     </div>
-                    <label for="txt_banner" class="label-img btn-primary">เลือกรูป</label>
-                    <p class="text-danger mt-3 mb-0">*ขนาดรูปที่ต้องการหน้า Home <strong>1920 x 700px</strong></p>
-                    <p class="text-danger">*หน้าอื่นๆขนาด <strong>1920 x 300px</strong></p>
+                    <div class="col-md-3">
+                        <h6 class="mb-3 ff-bold">รูปแบนเนอร์ (Mobile)</h6>
+                        <?php
+                            $profile_pic = (is_file($info['banner_mobile'])?site_url($info['banner_mobile']):site_url('assets/images/img-default.jpg'));
+                        ?>
+                        <img src="<?= $profile_pic; ?>" id="thumb-img-mobile" class="thumb-img w-100">
+                        <input id="banner_mobile" name="banner_mobile" type="file" class="form-control input-img-hide" onchange="bannerShow(this,'thumb-img','hd_banner_mobile')" accept="image/*">
+                        <input type="hidden" name="hd_banner_mobile" id="hd_banner_mobile" value="<?= $info['banner_mobile'] ?>">
+                        <input type="hidden" name="hd_banner_mobile_del" value="<?= $info['banner_mobile'] ?>">
+                        <label for="banner_mobile" class="label-img btn-primary">เลือกรูป</label>
+                        <p class="text-danger mt-3 mb-0">*ขนาดรูปที่ต้องการ <strong>600 x 400px</strong></p>
+                    </div>
+
                 </div>
                 <div class="text-center">                        
                     <button type="submit" class="btn btn-success me-2">บันทึก</button>

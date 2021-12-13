@@ -639,6 +639,12 @@
     }
 } //end medi 767
 @include media-max(575px) {
+    .hide-575 {
+        display: none;
+    }
+    .show-575 {
+        display: show;
+    }
     #registerModal {
         .modal-dialog {
             padding: 2rem;
