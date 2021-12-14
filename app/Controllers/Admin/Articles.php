@@ -15,9 +15,16 @@ class Articles extends Controller
 	public function index()
 	{	
         $model = new ArticlesModel();
+        $request = service('request');
+		$keyword = $request->getGet('keyword');
+		$info = $model->orderBy('status DESC, created_at DESC')->paginate(25);
+		if($keyword){
+            $info = $model->like('title',$keyword)->orLike('title_en',$keyword)->orderBy('status DESC, created_at DESC')->paginate(25);
+        }
+
 		$data = [
             'meta_title' => 'บทความ',
-            'info' => $model->orderBy('status DESC, created_at DESC')->paginate(25),
+            'info' => $info,
             'pager' => $model->pager,
         ];
 		echo view('admin/article',$data);

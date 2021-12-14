@@ -11,9 +11,16 @@ class Account extends Controller
     public function index()
     {   
         $model = new UserModel();
+        $request = service('request');
+		$keyword = $request->getGet('keyword');
+        $info = $model->orderBy('status DESC, created_at DESC')->paginate(25);
+        if($keyword){
+            $info = $model->like('name',$keyword)->orLike('lastname',$keyword)->orderBy('status DESC, created_at DESC')->paginate(25);
+        }
         $data = [
             'meta_title' => 'บัญชีผู้ดูแล',
-            'info' => $model->orderBy('status DESC, created_at DESC')->findAll()
+            'info' => $info,
+            'pager' => $model->pager
         ];
         echo view('admin/account', $data);
     }

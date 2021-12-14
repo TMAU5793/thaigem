@@ -24,6 +24,18 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
+            <div class="mb-3">
+                <form action="" method="GET">
+                    <div class="form-row align-items-center justify-content-end">
+                        <div class="col-3">
+                            <input type="text" class="form-control mb-2" id="keyword" name="keyword" placeholder="คีย์เวิร์ด..." value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-2">ค้นหา</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <table class="table table-striped" id="tbl-account">
                 <thead>
                     <tr>
@@ -60,6 +72,12 @@
                     <?php } ?>
                 </tbody>
             </table>
+
+            <?php if(isset($pager)){ ?>
+                <div class="pagination-list text-center mt-3 d-flex">
+                    <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 </div>

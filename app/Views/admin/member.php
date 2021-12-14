@@ -27,12 +27,19 @@
             <div class="mb-3">
                 <form action="" method="GET">
                     <div class="form-row align-items-center justify-content-end">
+                        <div class="col-auto">
+                            <select name="status" class="form-control">
+                                <option value="">-- การอนุมัติ --</option>
+                                <option value="2" <?= (isset($_GET['status']) && $_GET['status']=='2'?'selected':'') ?>>อนุมัติ</option>
+                                <option value="1" <?= (isset($_GET['status']) && $_GET['status']=='1'?'selected':'') ?>>รอดำเนินการ</option>
+                                <option value="0" <?= (isset($_GET['status']) && $_GET['status']=='0'?'selected':'') ?>>ไม่อนุมัติ</option>
+                            </select>
+                        </div>
                         <div class="col-3">
-                            <label class="sr-only" for="keyword">Name</label>
-                            <input type="text" class="form-control mb-2" id="keyword" name="keyword" placeholder="คีย์เวิร์ด..." value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
+                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="คีย์เวิร์ด..." value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
                         </div>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-2">ค้นหา</button>
+                            <button type="submit" class="btn btn-primary">ค้นหา</button>
                         </div>
                     </div>
                 </form>

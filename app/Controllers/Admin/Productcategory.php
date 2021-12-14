@@ -11,10 +11,16 @@ class Productcategory extends Controller
 	{	
 		helper('form');
 		$model = new ProductCategoryModel();
+        $request = service('request');
+		$keyword = $request->getGet('keyword');
+		$info = $model->orderby('maincate_id','ASC')->paginate(25);
+		if($keyword){
+            $info = $model->like('name_th',$keyword)->orLike('name_en',$keyword)->orderby('maincate_id','ASC')->paginate(25);
+        }
 		$data = [
             'meta_title' => 'หมวดหมู่สินค้า',
 			'main_cate' => $model->where('maincate_id',0)->findAll(),
-			'info' => $model->orderby('maincate_id','ASC')->paginate(25),
+			'info' => $info,
 			'pager' => $model->pager
         ];
 		echo view('admin/product-category',$data);

@@ -16,9 +16,16 @@ class Event extends Controller
 	public function index()
 	{	
         $model = new EventModel();
+        $request = service('request');
+		$keyword = $request->getGet('keyword');
+		$info = $model->orderBy('status DESC, created_at DESC')->paginate(25);
+		if($keyword){
+            $info = $model->like('name',$keyword)->orLike('name_en',$keyword)->orderBy('status DESC, created_at DESC')->paginate(25);
+        }
+
 		$data = [
             'meta_title' => 'อีเว้นท์',
-            'info' => $model->orderBy('status DESC, created_at DESC')->paginate(25),
+            'info' => $info,
             'pager' => $model->pager,
         ];
 		echo view('admin/event',$data);
@@ -226,17 +233,31 @@ class Event extends Controller
 
     public function booking()
     {
+        $pager = \Config\Services::pager();
         $evModel = new EventModel();
         $bkModel = new BookingModel();
         $mbModel = new MemberModel();
+        $request = service('request');
+		$keyword = $request->getGet('keyword');
+        $status = $request->getGet('status');
+        $file = $request->getGet('file');
+        $pay = $request->getGet('pay');
+        
+		$info = $bkModel->getBooking($status,$file,$pay,$keyword);
+        $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
+        $perPage =  5;
+        $total = count($info);
+        $pager->makeLinks($page+1, $perPage, $total);
+        $offset = $page * $perPage;
+        $result = $bkModel->getBooking($status,$file,$pay,$keyword,$perPage,$offset);
+                
 		$data = [
             'meta_title' => 'การจองอีเว้นท์',
-            'info' => $bkModel->orderBy('created_at DESC')->paginate(25),
-            'pager' => $bkModel->pager,
+            'info' => $result,
             'members' => $mbModel->where(['type'=>'dealer','status'=>'2'])->findAll(),
             'events' => $evModel->findAll()
         ];
-        
+        //print_r($info->getResult());
 		echo view('admin/event-booking',$data);
     }
 

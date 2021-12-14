@@ -11,10 +11,17 @@ class Business extends Controller
 	{	
 		helper('form');
 		$model = new BusinessModel();
+		$request = service('request');
+		$keyword = $request->getGet('keyword');
+		$info = $model->orderby('main_type','ASC')->paginate(25);
+		if($keyword){
+            $info = $model->like('name_th',$keyword)->orLike('name_en',$keyword)->orderby('main_type','ASC')->paginate(25);
+        }
+
 		$data = [
             'meta_title' => 'ประเภทธุรกิจ',
 			'main_type' => $model->where('main_type',0)->findAll(),
-			'info' => $model->orderby('main_type','ASC')->paginate(25),
+			'info' => $info,
 			'pager' => $model->pager
         ];
 		echo view('admin/business',$data);

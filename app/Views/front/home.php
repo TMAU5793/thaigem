@@ -307,7 +307,7 @@
                     <div class="singup-form text-center h-100">
                         <div class="head-sect">
                             <h3 class="ff-dbadmanBold text-uppercase"><?= lang('GlobalLang.memberTgjta') ?></h3>
-                            <p class="fs-4">สมัครสมาชิกเพื่อสร้างหน้าร้านออนไลน์และรับสิทธิ์ประโยชน์จากทางสมาคมอีกมากมาย</p>
+                            <p class="fs-4"><?= lang('HomeLang.memberTgjtaText') ?></p>
                         </div>
                         <?php 
                             if($member){
@@ -322,9 +322,9 @@
                     <div class="sign-member text-center">
                         <div class="head-sect">
                             <h3 class="ff-dbadmanBold text-uppercase"><?= lang('GlobalLang.memberPerson') ?></h3>
-                            <p class="fs-4">ลงทะเบียนเพื่อรับข่าวสาร ดูข้อมูลสมาชิกและแลกเปลี่ยนข้อมูล</p>
+                            <p class="fs-4"><?= lang('HomeLang.memberPersonText') ?></p>
                         </div>
-                        <div class="body-sect mt-5">
+                        <div class="body-sect">
                             <?php 
                                 if($member){
                             ?>

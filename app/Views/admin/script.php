@@ -8,8 +8,6 @@
                 $('.btn-action-fixed').removeClass('nav-fixed');
             }
         });
-        //ใช้รูปแบบตารางแบบ data table
-        $('#tbl-account').DataTable();
 
         //หน้าแก้ไขข้อมูล account : เช็คการกดปุ่มแก้ไขรหัสผ่าน
         $('#btn_changepwd').on('click',function(){

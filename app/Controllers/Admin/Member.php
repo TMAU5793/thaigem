@@ -22,10 +22,11 @@ class Member extends Controller
 		$model = new MemberModel();
 		$request = service('request');
 		$keyword = $request->getGet('keyword');
+		$status = $request->getGet('status');
 		$info = [];
-		if($keyword!=''){
+		if($keyword!='' || $status!=''){
 			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-			->where('tbl_member.type','dealer')->like('tbl_member.company',$keyword)->paginate(25);
+			->where(['tbl_member.type'=>'dealer','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
 		}else{
 			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
                 ->where('tbl_member.type','dealer')->paginate(25);
@@ -46,10 +47,18 @@ class Member extends Controller
 		$request = service('request');
 		
 		$keyword = $request->getGet('keyword');
+		$status = $request->getGet('status');
 		$info = [];
-		if($keyword!=''){
+		if($keyword!='' || $status!=''){
+			if($status=='2'){
+				$status = '1';
+			}elseif($status=='1'){
+				$status = '';
+			}else{
+				$status = '0';
+			}
 			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-			->where('tbl_member.type','member')->like('tbl_member.company',$keyword)->paginate(25);
+			->where(['tbl_member.type'=>'member','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
 		}else{
 			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
                 ->where('tbl_member.type','member')->paginate(25);
