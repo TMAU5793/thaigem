@@ -245,7 +245,7 @@ class Event extends Controller
         
 		$info = $bkModel->getBooking($status,$file,$pay,$keyword);
         $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
-        $perPage =  5;
+        $perPage =  25;
         $total = count($info);
         $pager->makeLinks($page+1, $perPage, $total);
         $offset = $page * $perPage;

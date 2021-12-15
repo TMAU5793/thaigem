@@ -17,8 +17,10 @@
                 $('#btn_changepwd').html('แก้ไขรหัสผ่าน');
                 $('#ac_password').val('');
                 $('#ac_password_cf').val('');
+                $('.pwd-input .form-control').attr('disabled="disabled"');
             }else{
                 $('#btn_changepwd').html('ยกเลิก');
+                $('.pwd-input .form-control').removeAttr('disabled');
             }
         });
 

@@ -120,7 +120,7 @@
                 </li>
 
                 <li class="nav-item <?= ($uri->getSegment(2)=='member'?'menu-open':''); ?>">
-                    <a href="#" class="nav-link <?= ($uri->getSegment(2)=='files'?'active':''); ?>">
+                    <a href="#" class="nav-link <?= ($uri->getSegment(2)=='member'?'active':''); ?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>สมาชิกเว็บไซต์ <i class="right fas fa-angle-left"></i></p>
                     </a>

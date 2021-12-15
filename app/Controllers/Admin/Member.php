@@ -103,8 +103,12 @@ class Member extends Controller
         $request = service('request');
         $model = new MemberModel();
 		$acmbModel = new acMemberModel();
+		$db = db_connect();
+		$social = $db->table('tbl_social');
+
         $id = $request->getGet('id');
         $address = $acmbModel->getAddressById($id);
+		$get_social = $social->where('member_id',$id)->get()->getRowArray();
         $data = [
             'meta_title' => 'แก้ไขข้อมูล',
             'action'    =>  'update',
@@ -112,7 +116,8 @@ class Member extends Controller
 			'province' => $acmbModel->getProvinceById($address->province_id),
 			'amphure' => $acmbModel->getAmphureById($address->amphure_id),
 			'district' => $acmbModel->getDistrictById($address->district_id),
-			'address' =>  $address
+			'address' =>  $address,
+			'social' => $get_social
         ];
         echo view('admin/member-form', $data);
     }
@@ -130,49 +135,6 @@ class Member extends Controller
             'meta_title' => 'เพิ่มบัญชีสมาชิกเว็บไซต์',
             'action' => 'save'
         ];
-        // $rules = [
-        //     'txt_account' => [
-        //         'rules' => 'required|valid_email|is_unique[tbl_member.account]',
-        //         'errors' =>  [
-        //             'required' => 'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
-        //             'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง',
-        //             'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
-        //         ]
-        //     ],
-        //     'txt_password' => [
-        //         'rules' => 'required|min_length[6]|max_length[200]',
-        //         'errors' => [
-        //             'required' => 'กรุณากรอกรหัสผ่าน',
-        //             'min_length' => 'รหัสผ่านอย่างน้อย 6 ตัวอักษร'
-        //         ]
-        //     ],
-        //     'txt_password_cf' => [
-        //         'rules' => 'matches[txt_password]',
-        //         'errors' => [
-        //             'matches' => 'รหัสผ่านไม่ตรงกัน'
-        //         ]
-		// 	],
-		// 	'txt_name' => [
-		// 		'rules' => 'required',
-		// 		'errors' => [
-		// 			'required' => 'กรุณากรอกชื่อ',
-		// 		]
-		// 	],
-		// 	'txt_lastname' => [
-		// 		'rules' => 'required',
-		// 		'errors' => [
-		// 			'required' => 'กรุณากรอกนามสกุล',
-		// 		]
-		// 	],
-		// 	'txt_phone' => [
-		// 		'rules' => 'required',
-		// 		'errors' => [
-		// 			'required' => 'กรุณากรอกเบอร์โทร',
-		// 		]
-		// 	]
-        // ];
-        
-        // if($this->validate($rules)){
             $model = new MemberModel();			
 
             $data = [
@@ -198,10 +160,6 @@ class Member extends Controller
 				$this->upload($id,$profile,$img_del);
 			}
             return redirect()->to(site_url('admin/member'));
-        // }else{
-        //     $data['validation'] = $this->validator;
-        //     echo view('admin/member-form',$data);
-        // }
 	}
 
 	public function update()
@@ -210,39 +168,114 @@ class Member extends Controller
 		$model = new MemberModel();
 		$request = service('request');
 
+		$post = $request->getPost();
 		
-        if ($request->getMethod() == 'post') {
-			$id = $request->getVar('hd_id');
-			$member = $model->where('id',$id)->first();
+        if ($post) {
 
-			$update = [];
-			if($member['member_start']==null){
-				$update = [
-					'type' => $request->getVar('rd_type'),
-					'dealer_code' => $request->getVar('dealer_code'),
-					'member_start' => $request->getVar('member_start'),
-					'member_expired' => $request->getVar('member_expired'),
-					'status' => $request->getVar('ddl_status')
+			$id = $post['hd_id'];
+			if($post['txt_password']!=''){
+				$rules = [
+					'txt_password' => [
+						'rules' => 'required|min_length[6]|max_length[200]',
+						'errors' => [
+							'required' => 'กรุณากรอกรหัสผ่าน',
+							'min_length' => 'รหัสผ่านอย่างน้อย 6 ตัวอักษร'
+						]
+					],
+					'txt_password_cf' => [
+						'rules' => 'matches[txt_password]',
+						'errors' => [
+							'matches' => 'รหัสผ่านไม่ตรงกัน'
+						]
+					]
 				];
-				$result = $model->update($id, $update);				
-			}else{				
-				$update = [
-					'type' => $request->getVar('rd_type'),
-					'dealer_code' => $request->getVar('dealer_code'),
-					'renew' => $request->getVar('member_start'),
-					'member_expired' => $request->getVar('member_expired'),
-					'status' => $request->getVar('ddl_status')
-				];
-				$result = $model->update($id, $update);
-			}
-			if($result){
-				return redirect()->to(site_url('admin/member'));
+        
+				if($this->validate($rules)){
+					$data = [
+						'password' => password_hash($post['txt_password'], PASSWORD_DEFAULT),
+						'company' => $post['txt_company'],
+						'email' => $post['txt_email'],
+						'phone' => $post['txt_phone'],
+						'website' => $post['txt_website'],
+						'type' => $post['rd_type'],
+						'dealer_code' => $post['dealer_code'],
+						'renew' => $post['member_start'],
+						'member_expired' => $post['member_expired'],
+						'status' => $post['ddl_status']
+					];
+					$model->update($id, $data);
+
+				}else{
+					helper(['form']);
+					$model = new MemberModel();
+					$acmbModel = new acMemberModel();
+					$db = db_connect();
+					$social = $db->table('tbl_social');
+
+					$id = $post['hd_id'];
+					$address = $acmbModel->getAddressById($id);
+					$get_social = $social->where('member_id',$id)->get()->getRowArray();
+					$data = [
+						'meta_title' => 'แก้ไขข้อมูล',
+						'action'    =>  'update',
+						'info_member'  =>  $model->where('id',$id)->first(),
+						'province' => $acmbModel->getProvinceById($address->province_id),
+						'amphure' => $acmbModel->getAmphureById($address->amphure_id),
+						'district' => $acmbModel->getDistrictById($address->district_id),
+						'address' =>  $address,
+						'social' => $get_social,
+						'validation' => $this->validator
+					];
+					
+					echo view('admin/member-form',$data);
+				}
 			}else{
+				//print_r($post);
+				$arr = [
+					'company' => $post['txt_company'],
+					'email' => $post['txt_email'],
+					'phone' => $post['txt_phone'],
+					'website' => $post['txt_website'],
+					'type' => $post['rd_type'],
+					'dealer_code' => $post['dealer_code'],
+					'renew' => $post['member_start'],
+					'member_expired' => $post['member_expired'],
+					'status' => $post['ddl_status']
+				];
+				$model->update($id, $arr);
 				print_r($model->errors());
 			}
-		}else{
-			return redirect()->to(site_url('admin/member'));
-        }
+
+			$db = db_connect();
+			$builder = $db->table('tbl_social');
+			$ckd = $builder->where('member_id',$id)->get()->getRow();
+			$date = date('Y-m-d H:i:s');
+			if($ckd){
+				$social = [
+					'line' => $post['txt_line'],
+					'facebook' => $post['txt_facebook'],
+					'instagram' => $post['txt_instagram'],
+					'linkein' => $post['txt_linkein'],
+					'youtube' => $post['txt_youtube'],
+					'updated_at' => $date
+				];
+				$builder->where('id',$id)->update($social);
+			}else{
+				$social = [
+					'member_id' => $id,
+					'line' => $post['txt_line'],
+					'facebook' => $post['txt_facebook'],
+					'instagram' => $post['txt_instagram'],
+					'linkein' => $post['txt_linkein'],
+					'youtube' => $post['txt_youtube'],
+					'created_at' => $date,
+					'updated_at' => $date
+				];
+				$builder->where('id',$id)->update($social);
+			}
+		}
+		
+		return redirect()->to('admin/member');
 	}
 	
 	public function upload($id,$profile,$img_del)
