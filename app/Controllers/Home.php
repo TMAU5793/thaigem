@@ -53,7 +53,7 @@ class Home extends BaseController
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association',
             'lang' => $this->lang,
-            'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->findAll(6),
+            'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->orderBy('created_at DESC')->findAll(6),
             'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
             'dealers' => $info,
             'albums' => $abModel->findAll(),

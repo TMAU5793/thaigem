@@ -417,6 +417,21 @@
     }
 }
 
+.event-content,
+.knowledge-content {
+    .shadow-lightgold.h-100 {
+        position: relative;
+        .event-action {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.5rem;
+        }
+        div.p-4 {
+            padding-bottom: 5rem !important;
+        }
+    }
+}
+
 .relate-list {
     .title {
         border-top: 1px solid $c-darkgold;

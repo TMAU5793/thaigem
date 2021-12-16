@@ -1125,6 +1125,18 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   .knowledge-content .knowledge-hot .row .col-md-6 {
     padding: 0; }
 
+.event-content .shadow-lightgold.h-100,
+.knowledge-content .shadow-lightgold.h-100 {
+  position: relative; }
+  .event-content .shadow-lightgold.h-100 .event-action,
+  .knowledge-content .shadow-lightgold.h-100 .event-action {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.5rem; }
+  .event-content .shadow-lightgold.h-100 div.p-4,
+  .knowledge-content .shadow-lightgold.h-100 div.p-4 {
+    padding-bottom: 5rem !important; }
+
 .relate-list .title {
   border-top: 1px solid #665f4f;
   margin-top: 1.5rem;

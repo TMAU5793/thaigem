@@ -68,7 +68,7 @@
                         <td align="center"><?= $item['created_at'] ?></td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/event/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
+                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/event/delete');">ลบ</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>

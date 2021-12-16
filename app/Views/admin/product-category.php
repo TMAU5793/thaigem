@@ -68,7 +68,7 @@
                             <td><?= $item['created_at'] ?></td>
                             <td class="text-center">
                                 <a href="<?= base_url('admin/productcategory/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
+                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/productcategory/delete');">ลบ</a>
                             </td>
                         </tr>
                     <?php } } else{ ?>

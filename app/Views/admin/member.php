@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="col-3">
-                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="คีย์เวิร์ด..." value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
+                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="ชื่อบริษัท..." value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
                         </div>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary">ค้นหา</button>
@@ -53,7 +53,9 @@
                         <th scope="col">อีเมล</th>
                         <th scope="col" width="150">เบอร์โทร</th>
                         <th scope="col" width="120" class="text-center">การอนุมัติ</th>
-                        <th scope="col" width="150" class="text-center">ประเภทสมาชิก</th>
+                        <?php if($active=='dealer'){ ?>
+                            <th scope="col" width="150" class="text-center">แสดงหน้า Home</th>
+                        <?php } ?>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
                 </thead>
@@ -75,16 +77,22 @@
                             <?php
                                 if($item['type']=='dealer' && $item['approve']=='2' || $item['type']=='member' && $item['approve']=='1'){
                             ?>
-                                <button type="button" class="btn btn-success">อนุมัติ</button>
+                                <i class="fas fa-check-circle text-success fs-4"></i>
                             <?php }elseif($item['type']=='dealer' && $item['approve']=='1'){ ?>
-                                <button type="button" class="btn btn-warning">รอดำเนินการ</button>
+                                <i class="fas fa-times-circle fs-4"></i>
                             <?php }else{ ?>
-                                <button type="button" class="btn btn-danger">ไม่อนุมัติ</button>
+                                <i class="fas fa-times-circle text-danger fs-4"></i>
                             <?php } ?>
                         </td>
-                        <td align="center"><?= $item['type'] ?></td>
+
+                        <?php if($active=='dealer'){ ?>
+                            <td align="center">
+                                <button type="button" class="btn btn-primary pt-0 pb-0 ps-2 pe-2">เลือก</button>
+                            </td>
+                        <?php } ?>
+
                         <td class="text-center">
-                            <a href="<?= base_url('admin/member/edit?id='.$item['id']); ?>">อัตเดต</a>       
+                            <a href="<?= base_url('admin/member/edit?id='.$item['id']); ?>">อัตเดต</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>
@@ -93,7 +101,10 @@
                 </tbody>
             </table>
 
-            <?php if(isset($pager)){ ?>
+            <?php
+                $pager = \Config\Services::pager();
+                if($pager){
+            ?>
                 <div class="pagination-list text-center mt-3 d-flex">
                     <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
                 </div>

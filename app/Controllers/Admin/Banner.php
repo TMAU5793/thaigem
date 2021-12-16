@@ -148,4 +148,25 @@ class Banner extends Controller
         }
         $model->update($id, $data);
     }
+
+    public function delete()
+    {
+        $request = service('request');
+        $model = new BannerModel();
+        if($request->getPost('id')){
+			$id = $request->getPost('id');
+            $delImg = $model->where('id',$id)->first();
+			if(is_file($delImg['banner'])){
+				unlink($delImg['banner']); //ลบรูปเก่าออก
+			}
+            if(is_file($delImg['banner_mobile'])){
+				unlink($delImg['banner_mobile']); //ลบรูปเก่าออก
+			} 
+            $deleted = $model->where('id', $id)->delete($id);
+			echo TRUE;
+            
+        }else{
+            return redirect()->to(site_url('admin/articles'));
+        }
+    }
 }

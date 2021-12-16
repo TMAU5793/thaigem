@@ -65,7 +65,7 @@
                                 </form>
                             <?php }else{ ?>
                                 <a href="<?= base_url('admin/files/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="Delete('<?= $item['id'] ?>');">ลบ</a>
+                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/files/delete');">ลบ</a>
                             <?php } ?>
                         </td>
                     </tr>

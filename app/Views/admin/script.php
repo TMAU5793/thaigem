@@ -220,6 +220,18 @@
 		}
 	}
 
+    function DeleteRow(id,path){
+		var r = confirm("ยืนยันการลบข้อมูล");
+		if (r == true) {
+			$.post("<?= base_url() ?>"+path,{id:id},function(resp){
+                if(resp){
+				    window.location.reload();
+                }
+                //console.log(resp);
+			});
+		}
+	}
+
     function downloadFile(id){
         var r = confirm("ยืนยันการดาวน์โหลด");
 		if (r == true) {

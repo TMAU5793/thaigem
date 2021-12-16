@@ -21,20 +21,29 @@ class Member extends Controller
 	{
 		$model = new MemberModel();
 		$request = service('request');
+		$pager = \Config\Services::pager();
+
 		$keyword = $request->getGet('keyword');
 		$status = $request->getGet('status');
-		$info = [];
-		if($keyword!='' || $status!=''){
-			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-			->where(['tbl_member.type'=>'dealer','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
-		}else{
-			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-                ->where('tbl_member.type','dealer')->paginate(25);
-		}
+
+		$info = $model->getDealer($status,$keyword);
+        $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
+        $perPage =  25;
+        $total = count($info);
+        $pager->makeLinks($page+1, $perPage, $total);
+        $offset = $page * $perPage;
+        $result = $model->getDealer($status,$keyword,$perPage,$offset);
+		// $info = [];
+		// if($keyword!='' || $status!=''){
+		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
+		// 	->where(['tbl_member.type'=>'dealer','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
+		// }else{
+		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
+        //         ->where('tbl_member.type','dealer')->paginate(25);
+		// }
 		$data = [
             'meta_title' => 'สมาชิกเว็บไซต์',
-			'info' => $info,
-            'pager' => $model->pager,
+			'info' =>  $result,
 			'active' => 'dealer'
         ];
 		//print_r($info);
@@ -45,27 +54,39 @@ class Member extends Controller
 	{
 		$model = new MemberModel();
 		$request = service('request');
+		$pager = \Config\Services::pager();
 		
 		$keyword = $request->getGet('keyword');
 		$status = $request->getGet('status');
-		$info = [];
-		if($keyword!='' || $status!=''){
-			if($status=='2'){
-				$status = '1';
-			}elseif($status=='1'){
-				$status = '';
-			}else{
-				$status = '0';
-			}
-			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-			->where(['tbl_member.type'=>'member','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
-		}else{
-			$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-                ->where('tbl_member.type','member')->paginate(25);
-		}
+
+		$keyword = $request->getGet('keyword');
+        $status = $request->getGet('status');
+		$info = $model->getMember($status,$keyword);
+        $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
+        $perPage =  25;
+        $total = count($info);
+        $pager->makeLinks($page+1, $perPage, $total);
+        $offset = $page * $perPage;
+        $result = $model->getMember($status,$keyword,$perPage,$offset);
+
+		// $info = [];
+		// if($keyword!='' || $status!=''){
+		// 	if($status=='2'){
+		// 		$status = '1';
+		// 	}elseif($status=='1'){
+		// 		$status = '';
+		// 	}else{
+		// 		$status = '0';
+		// 	}
+		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
+		// 	->where(['tbl_member.type'=>'member','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
+		// }else{
+		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
+        //         ->where('tbl_member.type','member')->paginate(25);
+		// }
 		$data = [
             'meta_title' => 'สมาชิกเว็บไซต์',
-			'info' => $info,
+			'info' => $result,
             'pager' => $model->pager,
 			'active' => 'member'
         ];
@@ -304,20 +325,11 @@ class Member extends Controller
 		}
 	}
 
-	public function search()
+	public function show()
 	{
-		// $model = new MemberModel();
-		// $request = service('request');
-		// $keyword = $request->getGet('keyword');
-		// $info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-        //         ->where('tbl_member.type','dealer')->paginate(25);
-		// $data = [
-        //     'meta_title' => 'สมาชิกเว็บไซต์',
-		// 	'info' => $info,
-        //     'pager' => $model->pager,
-		// 	'active' => 'dealer'
-        // ];
-		// //print_r($info);
-		// echo view('admin/member',$data);
+		$model = new MemberModel();
+		$request = service('request');
+
+		return view('admin/member-show-home');
 	}
 }

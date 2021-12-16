@@ -621,7 +621,8 @@
 
   .knowledge-content .knowledge-hot {
     border: 1px solid #cec6b2;
-    border-radius: 6px; }
+    border-radius: 6px;
+    background: #cec6b2; }
     .knowledge-content .knowledge-hot .bg-lightgold.position-relative {
       height: auto; }
       .knowledge-content .knowledge-hot .bg-lightgold.position-relative .w-50 {

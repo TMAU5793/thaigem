@@ -293,10 +293,12 @@ class Articles extends Controller
         }else{
 
             $postdata = $request->getPost();
-            $status = '1';
-            if($postdata['txt_status']=='off'){
-                $status = '0';
+            $status = '0';
+            if($postdata['txt_status']=='on'){
+                $status = '1';
             }
+            print_r($postdata);
+            echo $status;
             $slug = url_title(strtolower($postdata['txt_title_en']));
             if($slug==''){
                 $slug = url_title(strtolower($postdata['txt_title_th']));
@@ -340,6 +342,44 @@ class Articles extends Controller
             }
             
             return redirect()->to('admin/articles/information');
+        }
+    }
+
+    public function delete()
+    {
+        $request = service('request');
+        $model = new ArticlesModel();
+        if($request->getPost('id')){
+			$id = $request->getPost('id');
+            $delImg = $model->where('id',$id)->first();
+			if(is_file($delImg['thumbnail'])){
+				unlink($delImg['thumbnail']); //ลบรูปเก่าออก
+			}            
+            $deleted = $model->where('id', $id)->delete($id);				
+			echo TRUE;
+            
+        }else{
+            return redirect()->to(site_url('admin/articles'));
+        }
+    }
+
+    public function delinfo()
+    {
+        $request = service('request');
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_information');
+
+		if($request->getPost('id')){
+			$id = $request->getPost('id');
+            $delImg = $builder->where('id',$id)->get()->getRowArray();
+			if(is_file($delImg['banner'])){
+				unlink($delImg['banner']); //ลบรูปเก่าออก
+			}            
+            $deleted = $builder->where('id', $id)->delete();
+			echo TRUE;
+            
+        }else{
+            return redirect()->to(site_url('admin/articles/information'));
         }
     }
 }

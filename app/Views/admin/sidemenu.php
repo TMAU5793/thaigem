@@ -107,7 +107,7 @@
                         <li class="nav-item">
                             <a href="<?= base_url('admin/files/memberfiles'); ?>" class="nav-link <?= ($uri->getSegment(3)=='memberfiles'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>เอกที่ลูกค้าอัปโหลด</p>
+                                <p>เอกสารที่ลูกค้าอัปโหลด</p>
                             </a>
                         </li>
                     </ul>
@@ -135,6 +135,12 @@
                             <a href="<?= base_url('admin/member/subscribe'); ?>" class="nav-link <?= ($uri->getSegment(3)=='subscribe'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>สมาชิกเว็บไซต์</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/member/show'); ?>" class="nav-link <?= ($uri->getSegment(3)=='show'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>สมาชิกหน้า Home</p>
                             </a>
                         </li>
                     </ul>

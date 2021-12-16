@@ -136,4 +136,23 @@ class Productcategory extends Controller
         ];
         $model->update($id, $thumb);
     }
+
+	public function delete()
+    {
+        $request = service('request');
+        $model = new ProductCategoryModel();
+        if($request->getPost('id')){
+			$id = $request->getPost('id');
+
+			$delImg = $model->where('id',$id)->first();
+			if(is_file($delImg['thumbnail'])){
+				unlink($delImg['thumbnail']); //ลบรูปเก่าออก
+			}            
+            $deleted = $model->where('id', $id)->delete($id);				
+			echo TRUE;
+            
+        }else{
+            return redirect()->to(site_url('admin/productcategory'));
+        }
+    }
 }

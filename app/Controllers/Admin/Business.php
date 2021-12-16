@@ -112,4 +112,18 @@ class Business extends Controller
 
         echo view('admin/business-form',$data);
 	}
+
+	public function delete()
+    {
+        $request = service('request');
+        $model = new BusinessModel();
+        if($request->getPost('id')){
+			$id = $request->getPost('id');          
+            $model->where('id', $id)->delete($id);				
+			echo TRUE;
+            
+        }else{
+            return redirect()->to(site_url('admin/business'));
+        }
+    }
 }

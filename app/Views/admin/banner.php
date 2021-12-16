@@ -47,7 +47,7 @@
                         </td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/banner/edit?id='.$row['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $row['id'] ?>" onClick="Delete('<?= $row['id'] ?>');">ลบ</a>
+                            <a href="javascript:void(0)" class="del-item" data-id="<?= $row['id'] ?>" onClick="DeleteRow('<?= $row['id'] ?>','/admin/banner/delete');">ลบ</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>
