@@ -528,3 +528,23 @@
         }
     }
 }
+
+.profile-form {
+    .form-group {
+        position: relative;
+        .http-url {
+            background-color: #28a745;
+            color: #fff;
+            position: absolute;
+            left: .5rem;
+            bottom: .5rem;
+            padding: 0 .5rem;
+            border-radius: 3px;
+        }
+    }
+    .social-url {
+        input {
+            padding-left: 6rem;
+        }
+    }
+}

@@ -19,7 +19,7 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <form action="" method="GET">
                     <div class="form-row align-items-center">
                         
@@ -31,8 +31,40 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> -->
             
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ชื่อบริษัท</th>
+                        <th scope="col">ที่อยู่</th>
+                        <th scope="col">อีเมล</th>
+                        <th scope="col" width="150">เบอร์โทร</th>
+                        <th scope="col" width="150" class="text-center">การจัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        if($info){
+                            $page  = $_GET['page'];
+                            foreach ($info as $item) {
+                    ?>
+                    <tr>            
+                        <td><?= ($item['company']!=''?$item['company']:'-') ?></td>
+                        <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
+                        <td><?= $item['email'] ?></td>
+                        <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
+                        <td class="text-center">
+                            <button type="button" class="btn pt-0 pb-0 ps-2 pe-2 btn-danger" onClick="MemberHome('<?= $item['id'] ?>','<?= $item['member_home'] ?>')">
+                                ยกเลิก
+                            </button>
+                        </td>
+                    </tr>
+                    <?php } }else{ ?>
+                        <tr><td align="center" colspan="9">ไม่พบข้อมูล</td></tr>
+                    <?php } ?>
+                </tbody>
+            </table>
 
             <?php if(isset($pager)){ ?>
                 <div class="pagination-list text-center mt-3 d-flex">

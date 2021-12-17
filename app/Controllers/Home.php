@@ -48,12 +48,12 @@ class Home extends BaseController
                                 ->findAll();
 
         $info = $mbModel->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
-                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->findAll(9);
+                ->where(['tbl_member.member_home'=>'1','tbl_member.status'=>'2'])->findAll(9);
 
         $data = [
             'meta_title' => 'Thai Gem and Jewelry Traders Association',
             'lang' => $this->lang,
-            'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->orderBy('created_at DESC')->findAll(6),
+            'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->orderBy('sortby ASC')->findAll(6),
             'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
             'dealers' => $info,
             'albums' => $abModel->findAll(),

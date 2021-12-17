@@ -77,8 +77,8 @@ return [
     'website' => 'เว็บไซต์',
     'fb' => 'Facebook',
     'line' => 'Line ID',
-    'ig' => 'Instargrame',
-    'linkein' => 'Linkein',
+    'ig' => 'Instagram',
+    'linkein' => 'Linkedin',
     'youtube' => 'Youtube',
     'companyAddress' => 'ที่อยู่บริษัท',
     'aboutus' => 'เกี่ยวกับเรา',
@@ -109,5 +109,6 @@ return [
     'memberPerson' => 'ลงทะเบียนเพื่อรับข่าวสาร',
     'membersince' => 'เป็นสมาชิกตั้งแต่',
     'btnmember' => 'สร้างบัญชีสมาชิก',
-    'btnjoin' => 'ลงทะเบียน'
+    'btnjoin' => 'ลงทะเบียน',
+    'example' => 'ตัวอย่าง'
 ];

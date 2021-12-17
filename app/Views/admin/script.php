@@ -264,6 +264,19 @@
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
-    }    
+    }
+    
+    function MemberHome(id,show){
+        var msg = "ยืนยันการเลือก";
+        if(show == '1'){
+            msg = "ยืนยันการยกเลิก";
+        }
+        var r = confirm(msg);
+		if (r == true) {
+			$.post("<?= base_url('admin/member/show') ?>",{id:id,show:show},function(resp){
+				window.location.reload();
+			});
+		}
+    }
 
 </script>

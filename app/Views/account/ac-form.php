@@ -19,7 +19,10 @@
                         <?php
                             if(isset($formmember)){
                         ?>
-                            <ul class="list-decimal">
+                            <div class="col-img text-center mb-3">
+                                <img src="<?= site_url('assets/images/account/download-method.jpg') ?>" alt="" style="max-width: 900px;">
+                            </div>
+                            <ul class="list-decimal m-auto" style="max-width:900px;">
                                 <li>กรุณาดาวโหลดใบสมัคร ( แบบฟอร์มการสมัครสมาชิก ) และดำเนินการกรอกข้อมูลให้ครบถ้วน</li>
                                 <li>กรุณาแนบไฟล์เอกสาร ( แบบฟอร์มการสมัครสมาชิก ) กลับมาที่เมนู UPLOAD YOUR FILE ทางด้านล่าง</li>
                                 <li>รอเจ้าหน้าที่พิจารณาเอกสารภายใน 30. วัน หากเอกสารผ่านการพิจารณาท่านจะได้รับแจ้งเตือนทางอีเมล</li>
@@ -32,7 +35,10 @@
                         <?php
                             if(isset($formevent)){
                         ?>
-                            <ul class="list-decimal">
+                            <div class="col-img text-center mb-3">
+                                <img src="<?= site_url('assets/images/account/download-event.jpg') ?>" alt="" style="max-width: 900px;">
+                            </div>
+                            <ul class="list-decimal m-auto" style="max-width:900px;">
                                 <li>กรุณาดาวโหลดใบสมัคร Form App และดำเนินการกรอกรายละเอียดการสมัครเข้าร่วมงาน</li>
                                 <li>กรุณาแนบไฟล์เอกสาร (ใบสมัคร Form App ) กลับมาที่เมนู UPLOAD YOUR FILE ทางด้านล่าง</li>
                                 <li>รอเจ้าหน้าที่พิจารณาเอกสารหากเอกสารผ่านการพิจารณาท่านจะได้รับแจ้งเตือนทางอีเมล</li>

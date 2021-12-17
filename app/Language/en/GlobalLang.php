@@ -77,8 +77,8 @@ return [
     'website' => 'Website',
     'fb' => 'Facebook',
     'line' => 'Line ID',
-    'ig' => 'Instargrame',
-    'linkein' => 'Linkein',
+    'ig' => 'Instagram',
+    'linkein' => 'Linkedin',
     'youtube' => 'Youtube',
     'companyAddress' => 'Company Address',
     'aboutus' => 'About Us',
@@ -109,6 +109,7 @@ return [
     'memberPerson' => 'Apply for <br> Personal Member',
     'membersince' => 'Member Since',
     'btnmember' => 'Create a Membership Account',
-    'btnjoin' => 'Join Now'
+    'btnjoin' => 'Join Now',
+    'example' => 'Example'
 
 ];

@@ -13,7 +13,7 @@ class Account extends Controller
         $model = new UserModel();
         $request = service('request');
 		$keyword = $request->getGet('keyword');
-        $info = $model->orderBy('status DESC, created_at DESC')->paginate(25);
+        $info = $model->where('permission','admin')->orderBy('status DESC, created_at DESC')->paginate(25);
         if($keyword){
             $info = $model->like('name',$keyword)->orLike('lastname',$keyword)->orderBy('status DESC, created_at DESC')->paginate(25);
         }

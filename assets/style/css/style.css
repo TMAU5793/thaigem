@@ -804,6 +804,19 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     right: -1px;
     transform: translate(-50%, -50%); }
 
+.profile-form .form-group {
+  position: relative; }
+  .profile-form .form-group .http-url {
+    background-color: #28a745;
+    color: #fff;
+    position: absolute;
+    left: .5rem;
+    bottom: .5rem;
+    padding: 0 .5rem;
+    border-radius: 3px; }
+.profile-form .social-url input {
+  padding-left: 6rem; }
+
 @keyframes left-to-right {
   0% {
     width: 0px; }

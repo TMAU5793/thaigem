@@ -178,7 +178,7 @@
                                     $districtText = ($lang=='en'?$dt->name_en : $dt->name_th);
                                 }
                             }
-                            echo $address->address.' '.$districtText.' '.$amphureText.' '.$provinceText.' '.$address->zipcode;
+                            echo $address->address;
                         ?>
                     </p>
                 </div>
@@ -203,16 +203,16 @@
     <div class="social-contact border-b more-info hide-767">
         <strong class="ff-dbadmanBold pe-2"><?= lang('GlobalLang.socialmedia') ?></strong>
         <?php if($social->facebook!=""){ ?>
-            <a href="https://www.facebook.com/<?= $social->facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="<?= $social->facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <?php } ?>
         <?php if($social->instagram!=""){ ?>
-            <a href="https://www.instagram.com/<?= $social->instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="<?= $social->instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a>
         <?php } ?>
         <?php if($social->line!=""){ ?>
             <a href="http://line.me/ti/p/<?= $social->line ?>" target="_blank"><i class="fab fa-line"></i></a>
         <?php } ?>
         <?php if($social->linkein!=""){ ?>
-            <a href="https://www.linkedin.com/in/<?= $social->linkein ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="<?= $social->linkein ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
         <?php } ?>
         <?php if($social->youtube!=""){ ?>
             <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>

@@ -6,7 +6,7 @@
         <?= $this->include('account/ac-banner') ?>
     </section>
     
-    <section class="account-body mb-5">
+    <section class="account-body profile-form mb-5">
         <div class="container">
             <div class="ac-nav">
                 <?php
@@ -24,7 +24,7 @@
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true"><?= lang('GlobalLang.companyinfo') ?></button>
                         <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content2" type="button" role="tab" aria-controls="nav-content2" aria-selected="true"><?= lang('GlobalLang.personcontact') ?></button>
-                        <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content3" type="button" role="tab" aria-controls="nav-content3" aria-selected="false"><?= lang('GlobalLang.profile').' & '.lang('GlobalLang.gallery') ?></button>
+                        <button class="nav-link" id="nav-tab3" data-bs-toggle="tab" data-bs-target="#nav-content3" type="button" role="tab" aria-controls="nav-content3" aria-selected="false"><?= lang('GlobalLang.profile').' & '.lang('GlobalLang.gallery') ?></button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -103,72 +103,77 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.company') ?> <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="txt_company" value="<?= (isset($info)?$info['company'] : '') ?>">
+                                    <input type="text" class="form-control" name="txt_company" value="<?= (isset($info)?$info['company'] : set_value('txt_company')) ?>">
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_company')?'* '.$validation->getError('txt_company'):'') ?></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.companyPhone') ?> <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="txt_companyphone" value="<?= (isset($info)?$info['company_phone'] : '') ?>">
+                                    <input type="text" class="form-control" name="txt_companyphone" value="<?= (isset($info)?$info['company_phone'] : set_value('txt_companyphone')) ?>">
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_companyphone')?'* '.$validation->getError('txt_companyphone'):'') ?></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.companyEmail') ?> <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" name="txt_email" value="<?= (isset($info)?$info['email'] : '') ?>">
+                                    <input type="email" class="form-control" name="txt_email" value="<?= (isset($info)?$info['email'] : set_value('txt_email')) ?>">
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_email')?'* '.$validation->getError('txt_email'):'') ?></small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 social-url">
                                 <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.website') ?> <span class="fs-6">(Example : http://example.com)</span></label>
-                                    <input type="text" class="form-control" name="txt_website" value="<?= (isset($info)?urldecode($info['website']) : '') ?>">
+                                    <label for=""><?= lang('GlobalLang.website') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : http://example.com)</span></label>
+                                    <input type="text" class="form-control" name="txt_website" value="<?= (isset($info)?urldecode($info['website']) : set_value('txt_website')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : http://example.com" onChange="inputURL($(this),'url-website','txt_website')">
+                                    <span class="http-url url-website">http://</span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 social-url">
                                 <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.fb') ?></label>
-                                    <input type="text" class="form-control" name="txt_facebook" value="<?= (isset($social)?$social->facebook : '') ?>">
+                                    <label for=""><?= lang('GlobalLang.fb') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.facebook.com/<u>name</u>)</span></label>
+                                    <input type="text" class="form-control" name="txt_facebook" value="<?= (isset($social)?$social->facebook : set_value('txt_facebook')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.facebook.com/name" onChange="inputURL($(this),'url-fb','txt_facebook')">
+                                    <span class="http-url url-fb">http://</span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 social-url">
                                 <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.ig') ?></label>
-                                    <input type="text" class="form-control" name="txt_instagram" value="<?= (isset($social)?$social->instagram : '') ?>">
+                                    <label for=""><?= lang('GlobalLang.ig') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.instagram.com/<u>name</u>/)</span></label>
+                                    <input type="text" class="form-control" name="txt_instagram" value="<?= (isset($social)?$social->instagram : set_value('txt_instagram')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.instagram.com/name/" onChange="inputURL($(this),'url-ig','txt_instagram')">
+                                    <span class="http-url url-ig">http://</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.line') ?> <span class="fs-6">(<?= lang('GlobalLang.lineOA') ?>)</span></label>
-                                    <input type="text" class="form-control" name="txt_line" value="<?= (isset($social)?$social->line : '') ?>">
+                                    <input type="text" class="form-control" name="txt_line" value="<?= (isset($social)?$social->line : set_value('txt_line')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : @line">
+                                </div>
+                            </div>
+                            <div class="col-md-6 social-url">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.linkein') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/<u>name</u>)</span></label>
+                                    <input type="text" class="form-control" name="txt_linkein" value="<?= (isset($social)?$social->linkein : set_value('txt_linkein')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/name" onChange="inputURL($(this),'url-linkein','txt_linkein')">
+                                    <span class="http-url url-linkein">http://</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.linkein') ?></label>
-                                    <input type="text" class="form-control" name="txt_linkein" value="<?= (isset($social)?$social->linkein : '') ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.youtube') ?> <span class="fs-6">(Example : https://www.youtube.com/example)</span></label>
-                                    <input type="text" class="form-control" name="txt_youtube" value="<?= (isset($social)?$social->youtube : '') ?>">
+                                <div class="form-group social-url">
+                                    <label for=""><?= lang('GlobalLang.youtube') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.youtube.com/watch?v=<u>name</u>)</span></label>
+                                    <input type="text" class="form-control" name="txt_youtube" value="<?= (isset($social)?$social->youtube : set_value('txt_youtube')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.youtube.com/watch?v=name" onChange="inputURL($(this),'url-yt','txt_youtube')">
+                                    <span class="http-url url-yt">http://</span>
                                 </div>
                             </div>
                             
                             <div class="col-12">
                                 <div class="ac-about form-group mb-3">
                                     <label for=""><?= lang('GlobalLang.aboutus') ?></label>
-                                    <textarea name="txt_ac_about" id="txt_ac_about" class="form-control about-edit"><?= (isset($info)?$info['about'] : '') ?></textarea>
+                                    <textarea name="txt_ac_about" id="txt_ac_about" class="form-control about-edit"><?= (isset($info)?$info['about'] : set_value('txt_ac_about')) ?></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="ac-address">
                             <div class="tg-title"><h3><?= lang('GlobalLang.companyAddress') ?></h3></div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.province') ?> <span class="text-danger">*</span></label>
                                         <select name="ddl_province" id="ddl_province" class="form-control">
@@ -182,7 +187,7 @@
                                         <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_province')?'* '.$validation->getError('ddl_province'):'') ?></small>
                                     </div>                                    
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.amphur') ?></label>
                                         <select name="ddl_amphure" id="ddl_amphure" class="form-control">
@@ -206,11 +211,11 @@
                                         <input type="text" name="txt_zipcode" id="txt_zipcode" class="form-control" value="<?= (isset($address) ? $address->zipcode : '') ?>">
                                         <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_zipcode')?'* '.$validation->getError('txt_zipcode'):'') ?></small>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.address') ?> <span class="text-danger">*</span></label>
-                                        <textarea name="txt_address" id="txt_address" class="form-control"><?= (isset($address) ? $address->address : '') ?></textarea>
+                                        <textarea name="txt_address" id="txt_address" class="form-control"><?= (isset($address) ? $address->address : set_value('txt_address')) ?></textarea>
                                         <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_address')?'* '.$validation->getError('txt_address'):'') ?></small>
                                     </div>
                                 </div>

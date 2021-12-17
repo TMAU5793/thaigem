@@ -58,9 +58,7 @@ class Member extends Controller
 		
 		$keyword = $request->getGet('keyword');
 		$status = $request->getGet('status');
-
-		$keyword = $request->getGet('keyword');
-        $status = $request->getGet('status');
+        
 		$info = $model->getMember($status,$keyword);
         $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
         $perPage =  25;
@@ -325,11 +323,38 @@ class Member extends Controller
 		}
 	}
 
+	public function display()
+	{
+		$model = new MemberModel();
+		$request = service('request');
+
+		$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
+                ->where('tbl_member.member_home','1')->paginate(25);
+		$data = [
+            'meta_title' => 'รายการสมาชิกแสดงที่หน้า Home',
+			'info' =>  $info,
+			'pager' => $model->pager,
+			'active' => 'display'
+        ];
+		//print_r($info);
+		echo view('admin/member-show-home',$data);
+	}
+
 	public function show()
 	{
 		$model = new MemberModel();
 		$request = service('request');
 
-		return view('admin/member-show-home');
+		$id = $request->getPost('id');
+		$show = $request->getPost('show');
+		if($id){
+			if($show=='1'){
+				$show = '0';
+			}else{
+				$show = '1';
+			}
+			$model->update($id,['member_home'=>$show]);
+			echo TRUE;
+		}
 	}
 }

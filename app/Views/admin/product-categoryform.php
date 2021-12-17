@@ -53,10 +53,10 @@
                                 <label for="txt_name" class="form-label">ชื่อหมวดสินค้า <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="txt_name" name="txt_name" value="<?= (isset($info)? $info['name_th'] : set_value('txt_name')) ?>">                        
                             </div>
-                            <div class="col-12">
+                            <!-- <div class="col-12">
                                 <label for="txt_tags" class="form-label">แท็ก (Tags)</label>
                                 <input type="text" class="form-control" id="txt_tags" name="txt_tags" value="<?= (isset($info)? $info['tags_th'] : set_value('txt_tags')) ?>">
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -66,11 +66,15 @@
                                 <label for="txt_name_en" class="form-label">ชื่อหมวดสินค้า</label>
                                 <input type="text" class="form-control" id="txt_name_en" name="txt_name_en" value="<?= (isset($info)? $info['name_en'] : set_value('txt_name_en')) ?>">                        
                             </div>
-                            <div class="col-12">
+                            <!-- <div class="col-12">
                                 <label for="txt_tags_en" class="form-label">แท็ก (Tags)</label>
                                 <input type="text" class="form-control" id="txt_tags_en" name="txt_tags_en" value="<?= (isset($info)? $info['tags_en'] : set_value('txt_tags_en')) ?>">
-                            </div>
+                            </div> -->
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sortby" class="form-label">ลำดับการแสดง (*ระบบจะแสดงเรียงจากค่าน้อยไปมาก)</label>
+                        <input type="text" class="form-control" id="sortby" name="sortby" value="<?= (isset($info)? $info['sortby'] : set_value('sortby')) ?>" placeholder="กรอกตัวเลข เช่น 1">                        
                     </div>
                     <div class="pt-1">
                         <label for="ddl_status" class="form-label">สถานะการใช้งาน</label>

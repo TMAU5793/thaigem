@@ -244,11 +244,14 @@ class MemberModel extends Model
 		$name = $arr[0];
 		$lastname = $arr[1];
         $ws = explode('//',$data['txt_website']);
+        echo count($ws);
         if(count($ws) > 1){
             $ws = $data['txt_website'];
         }else{
             $ws = 'http://'.$data['txt_website'];
         }
+        //echo $ws;
+        
         $info = [
             'name' => $name,
             'lastname' => $lastname,
@@ -383,6 +386,34 @@ class MemberModel extends Model
         $member = $builder->get()->getRow();
         $datetime = new Time('now');
         
+        $facebook = explode('//',$data['txt_facebook']);
+        if(count($facebook) > 1){
+            $facebook = $data['txt_facebook'];
+        }else{
+            $facebook = 'https://www.facebook.com/'.$data['txt_facebook'];
+        }
+
+        $instagram = explode('//',$data['txt_instagram']);
+        if(count($instagram) > 1){
+            $instagram = $data['txt_instagram'];
+        }else{
+            $instagram = 'https://www.instagram.com/'.$data['txt_instagram'];
+        }
+
+        $linkedin = explode('//',$data['txt_linkein']);
+        if(count($linkedin) > 1){
+            $linkedin = $data['txt_linkein'];
+        }else{
+            $linkedin = 'https://www.linkedin.com/in/'.$data['txt_linkein'];
+        }
+
+        $linkedin = explode('//',$data['txt_youtube']);
+        if(count($linkedin) > 1){
+            $linkedin = $data['txt_youtube'];
+        }else{
+            $linkedin = 'https://www.youtube.com/'.$data['txt_youtube'];
+        }
+
         if($member->member_id){
             $info = [
                 'line' => $data['txt_line'],

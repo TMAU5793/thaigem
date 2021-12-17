@@ -357,8 +357,24 @@
         $('.myevent-box').on('click',function(){
             $('#myevent-desc').removeClass('myevent-desc');
         });
+        
     });
     //End Ready function
+
+    function inputURL(url,el,input){
+        var url = url.val();
+        var http = url.search('http://');
+        var https = url.search('https://');        
+        //console.log(http);
+        if(http=='0'){
+            $('.'+el).html('http://');
+            $('input[name="'+input+'"]').val(url.replace('http://',''));
+        }
+        if(https=='0'){
+            $('.'+el).html('https://');
+            $('input[name="'+input+'"]').val(url.replace('https://',''));
+        }
+    }
 
     function deleteAlbum(id){
         var result = confirm("ยืนยันการลบ?");

@@ -138,7 +138,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/member/show'); ?>" class="nav-link <?= ($uri->getSegment(3)=='show'?'active':''); ?>">
+                            <a href="<?= base_url('admin/member/display'); ?>" class="nav-link <?= ($uri->getSegment(3)=='display'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>สมาชิกหน้า Home</p>
                             </a>
@@ -147,7 +147,7 @@
                 </li>
 
                 <?php
-                    if ($admindata['rules']=='superadmin') {
+                    if ($admindata['permission']=='superadmin') {
                 ?>
                 <li class="nav-item">
                     <a href="<?= base_url('admin/account'); ?>" class="nav-link <?= ($uri->getSegment(2)=='account'?'active':''); ?>">

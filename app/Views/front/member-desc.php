@@ -169,7 +169,7 @@
                                                         $districtText = ($lang=='en'?$dt->name_en : $dt->name_th);
                                                     }
                                                 }
-                                                echo $address->address.' '.$districtText.' '.$amphureText.' '.$provinceText.' '.$address->zipcode;
+                                                echo $address->address;
                                             ?>
                                         </p>
                                     </div>

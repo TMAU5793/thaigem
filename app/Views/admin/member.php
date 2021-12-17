@@ -27,14 +27,16 @@
             <div class="mb-3">
                 <form action="" method="GET">
                     <div class="form-row align-items-center justify-content-end">
-                        <div class="col-auto">
-                            <select name="status" class="form-control">
-                                <option value="">-- การอนุมัติ --</option>
-                                <option value="2" <?= (isset($_GET['status']) && $_GET['status']=='2'?'selected':'') ?>>อนุมัติ</option>
-                                <option value="1" <?= (isset($_GET['status']) && $_GET['status']=='1'?'selected':'') ?>>รอดำเนินการ</option>
-                                <option value="0" <?= (isset($_GET['status']) && $_GET['status']=='0'?'selected':'') ?>>ไม่อนุมัติ</option>
-                            </select>
-                        </div>
+                        <?php if($active=='dealer'){ ?>
+                            <div class="col-auto">
+                                <select name="status" class="form-control">
+                                    <option value="">-- การอนุมัติ --</option>
+                                    <option value="2" <?= (isset($_GET['status']) && $_GET['status']=='2'?'selected':'') ?>>อนุมัติ</option>
+                                    <option value="1" <?= (isset($_GET['status']) && $_GET['status']=='1'?'selected':'') ?>>รอดำเนินการ</option>
+                                    <option value="0" <?= (isset($_GET['status']) && $_GET['status']=='0'?'selected':'') ?>>ไม่อนุมัติ</option>
+                                </select>
+                            </div>
+                        <?php } ?>
                         <div class="col-3">
                             <input type="text" class="form-control" id="keyword" name="keyword" placeholder="ชื่อบริษัท..." value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
                         </div>
@@ -52,8 +54,8 @@
                         <th scope="col">ที่อยู่</th>
                         <th scope="col">อีเมล</th>
                         <th scope="col" width="150">เบอร์โทร</th>
-                        <th scope="col" width="120" class="text-center">การอนุมัติ</th>
                         <?php if($active=='dealer'){ ?>
+                            <th scope="col" width="120" class="text-center">การอนุมัติ</th>
                             <th scope="col" width="150" class="text-center">แสดงหน้า Home</th>
                         <?php } ?>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
@@ -73,21 +75,23 @@
                         <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
                         <td><?= $item['email'] ?></td>
                         <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
-                        <td align="center">
-                            <?php
-                                if($item['type']=='dealer' && $item['approve']=='2' || $item['type']=='member' && $item['approve']=='1'){
-                            ?>
-                                <i class="fas fa-check-circle text-success fs-4"></i>
-                            <?php }elseif($item['type']=='dealer' && $item['approve']=='1'){ ?>
-                                <i class="fas fa-times-circle fs-4"></i>
-                            <?php }else{ ?>
-                                <i class="fas fa-times-circle text-danger fs-4"></i>
-                            <?php } ?>
-                        </td>
 
                         <?php if($active=='dealer'){ ?>
                             <td align="center">
-                                <button type="button" class="btn btn-primary pt-0 pb-0 ps-2 pe-2">เลือก</button>
+                                <?php
+                                    if($item['type']=='dealer' && $item['approve']=='2'){
+                                ?>
+                                    <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
+                                <?php }elseif($item['type']=='dealer' && $item['approve']=='1'){ ?>
+                                    <i class="fas fa-times-circle text-warning fs-4" title="รอดำเนินการ"></i>
+                                <?php }else{ ?>
+                                    <i class="fas fa-times-circle text-danger fs-4" title="ไม่อนุมัติ"></i>
+                                <?php } ?>
+                            </td>
+                            <td align="center">
+                                <button type="button" class="btn pt-0 pb-0 ps-2 pe-2 <?= ($item['member_home']=='1'?'btn-danger' : 'btn-primary') ?>" onClick="MemberHome('<?= $item['id'] ?>','<?= $item['member_home'] ?>')">
+                                    <?= ($item['member_home']=='1'?'ยกเลิก' : 'เลือก') ?>
+                                </button>
                             </td>
                         <?php } ?>
 

@@ -36,7 +36,7 @@ class MemberModel extends Model
         $builder->select('*,a.status as approve');
         $builder->join('tbl_address AS b','b.member_id=a.id');
 		$builder->where('a.type','dealer');
-        if($status!=''){
+        if($status!=null){
             $builder->where('a.status',$status);
         }
         if($keyword!=''){
@@ -56,7 +56,7 @@ class MemberModel extends Model
         $builder->select('*,a.status as approve');
         $builder->join('tbl_address AS b','b.member_id=a.id');
 		$builder->where('a.type','member');
-        if($status!=''){
+        if($status!=null){
             $builder->where('a.status',$status);
         }
         if($keyword!=''){

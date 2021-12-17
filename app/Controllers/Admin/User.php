@@ -53,7 +53,7 @@ class User extends Controller
                     'id' => $admin['id'],
                     'name' => $admin['name'],
                     'lastname' => $admin['lastname'],
-                    'rules' => $admin['rules'],
+                    'permission' => $admin['permission'],
                     'logged_admin' => TRUE
                 ];
 
