@@ -126,7 +126,7 @@ class Banner extends Controller
         $newName = $page.'-'.$file->getRandomName();
         $namemobile = 'mobile-'.$page.'-'.$file->getRandomName();
         $w = 1920;
-        $h = 300;
+        $h = 400;
         if($page == 'home'){
             $h = 700;
         }

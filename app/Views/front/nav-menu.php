@@ -7,6 +7,10 @@
     $userdata = session()->get('userdata');
     $model = new AccountModel();
     $member = $model->where('id',$userdata['id'])->first();
+
+    $db = \Config\Database::connect();
+    $builder = $db->table('tbl_notification');
+    $noti = $builder->where(['member_id'=>$userdata['id'],'status'=>'0'])->orderBy('created_at DESC')->get()->getResultArray();
 ?>
 <div class="top-nav container">
     <div class="logo-top float-start" onclick="location.href='<?= site_url() ?>'">
@@ -79,7 +83,10 @@
                         }
                 ?>
                     <div class="user-login position-relative">
-                        <img src="<?= $profile_pic ?>" class="user-login-name">
+                        <div class="user-login-name">
+                            <img src="<?= $profile_pic ?>">
+                            <i class="fas fa-caret-down fs-2 c-darkgold"></i>
+                        </div>
                         <div class="user-menu-login d-none">
                             <ul>
                                 <?php
@@ -101,6 +108,41 @@
                     <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
                 <?php } ?>
             </div>
+            <?php if($member){ ?>
+                <div class="nav-item show-991 pe-3">
+                    <div class="ac-noti position-relative">
+                        <i class="far fa-bell pt-2 cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification"></i>
+                        <?php
+                            if($noti){
+                                $n=count($noti);
+                        ?>
+                            <div class="box-noti cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification">
+                                <span><?= $n ?></span>
+                            </div>
+                            <div class="noti-list d-none">
+                                <?php
+                                    $n=0;
+                                    foreach ($noti as $list){
+                                        $n++;
+                                        $cBorder ='';
+                                        if($n>1){
+                                            $cBorder = 'noti-border';
+                                ?>
+                                    <div class="noti-item <?= $cBorder ?>">
+                                        <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                        <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
+                                    </div>
+                                <?php }else{ ?>
+                                    <div class="noti-item">
+                                        <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                        <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
+                                    </div>
+                                <?php } } ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topMenu" aria-controls="topMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

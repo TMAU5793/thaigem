@@ -1,15 +1,19 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\BannerModel;
 
 class About extends BaseController
 {
     protected $db;
     protected $builder;
     protected $lang;
+    protected $banner;
     public function __construct() {
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('tbl_information');
+        $bannerModel = new BannerModel();
+        $this->banner = $bannerModel->where('page','about')->first();
 
         $this->lang = 'en';
         if(session()->get('lang')){
@@ -32,7 +36,8 @@ class About extends BaseController
         $data = [
             'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
             'lang' => $this->lang,
-            'info_single' => $query
+            'info_single' => $query,
+            'banner' => $this->banner
         ];
         
         echo view('template/information', $data);
@@ -45,7 +50,8 @@ class About extends BaseController
         $data = [
             'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
             'lang' => $this->lang,
-            'info_single' => $query
+            'info_single' => $query,
+            'banner' => $this->banner
         ];
         
         echo view('template/information', $data);
@@ -58,7 +64,8 @@ class About extends BaseController
         $data = [
             'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
             'lang' => $this->lang,
-            'info_single' => $query
+            'info_single' => $query,
+            'banner' => $this->banner
         ];
         
         echo view('template/information', $data);
@@ -71,7 +78,8 @@ class About extends BaseController
         $data = [
             'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
             'lang' => $this->lang,
-            'info_single' => $query
+            'info_single' => $query,
+            'banner' => $this->banner
         ];
         
         echo view('template/information', $data);
@@ -83,7 +91,8 @@ class About extends BaseController
         $data = [
             'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
             'lang' => $this->lang,
-            'info_single' => $query
+            'info_single' => $query,
+            'banner' => $this->banner
         ];
         
         echo view('template/information', $data);

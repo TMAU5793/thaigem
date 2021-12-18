@@ -15,10 +15,50 @@
                         }
                     ?>
                     <div class="content-body acform-body">
-                        <div class="content-title"><strong class="ff-dbadmanBold fs-3"><?= $meta_title; ?></strong></div>
+                        <div class="content-title text-center mb-3 mt-5"><strong class="ff-dbadmanBold fs-2"><?= lang('MenuLang.invoice'); ?></strong></div>
                         <?php 
                             if($invoices) {
                         ?>
+                            <div class="col-img mb-3">                                
+                                <div class="row">
+                                    <div class="col-md-4 col-6">
+                                        <div class="col-icon text-center">
+                                            <img src="<?= site_url('assets/images/account/icon/file.png') ?>" alt="">
+                                        </div>
+                                        <p>1. กรุณาดาวโหลดใบแจ้งชำระเงินและดำเนินการชำระเงินตามรายละเอียด</p>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="col-icon text-center">
+                                            <img src="<?= site_url('assets/images/account/icon/upload-file.png') ?>" alt="">
+                                        </div>
+                                        <p>2. กรุณาแนบหลักฐานการชำระเงินหรือเอกสารกลับมาที่เมนู UPLOAD YOUR FILE ทางด้านล่าง</p>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="col-icon text-center">
+                                            <img src="<?= site_url('assets/images/account/icon/wait.png') ?>" alt="">
+                                        </div>
+                                        <p>3. กรุณาแนบหลักฐานการชำระเงินหรือเอกสารกลับมาที่เมนู UPLOAD YOUR FILE ทางด้านล่าง</p>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="col-icon text-center">
+                                            <img src="<?= site_url('assets/images/account/icon/operation.png') ?>" alt="">
+                                        </div>
+                                        <p>4. หลังจากผ่านการพิจารณา กรุณาทำการดาวโหลดใบแจ้งหนี้เพื่อทำการชำระเงินค่าสมาชิกได้ที่เมนู ใบแจ้งชำระเงิน</p>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="col-icon text-center">
+                                            <img src="<?= site_url('assets/images/account/icon/email.png') ?>" alt="">
+                                        </div>
+                                        <p>5. รอเจ้าหน้าที่ทำการตรวจสอบ หากผ่านการอนุมัติ ท่านจะได้รับแจ้งเตือนทางอีเมล</p>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="col-icon text-center">
+                                            <img src="<?= site_url('assets/images/account/icon/user.png') ?>" alt="">
+                                        </div>
+                                        <p>6. รอเจ้าหน้าที่ทำการตรวจสอบ หากผ่านการอนุมัติ ท่านจะได้รับแจ้งเตือนทางอีเมล</p>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="list-decimal">
                                 <li>กรุณาดาวโหลดใบแจ้งชำระเงินและดำเนินการชำระเงินตามรายละเอียด</li>
                                 <li>กรุณาแนบหลักฐานการชำระเงินหรือเอกสารกลับมาที่เมนู UPLOAD YOUR FILE ทางด้านล่าง</li>

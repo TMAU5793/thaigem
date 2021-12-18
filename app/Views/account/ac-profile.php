@@ -124,22 +124,22 @@
                             <div class="col-md-6 social-url">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.website') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : http://example.com)</span></label>
-                                    <input type="text" class="form-control" name="txt_website" value="<?= (isset($info)?urldecode($info['website']) : set_value('txt_website')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : http://example.com" onChange="inputURL($(this),'url-website','txt_website')">
-                                    <span class="http-url url-website">http://</span>
+                                    <input type="text" class="form-control" name="txt_website" value="<?= (isset($info)?urldecode($info['website']) : set_value('txt_website')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : http://example.com">
+                                    <!-- <span class="http-url url-website">http://</span> -->
                                 </div>
                             </div>
                             <div class="col-md-6 social-url">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.fb') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.facebook.com/<u>name</u>)</span></label>
-                                    <input type="text" class="form-control" name="txt_facebook" value="<?= (isset($social)?$social->facebook : set_value('txt_facebook')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.facebook.com/name" onChange="inputURL($(this),'url-fb','txt_facebook')">
-                                    <span class="http-url url-fb">http://</span>
+                                    <input type="text" class="form-control" name="txt_facebook" value="<?= (isset($social)?$social->facebook : set_value('txt_facebook')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.facebook.com/name">
+                                    <!-- <span class="http-url url-fb">http://</span> -->
                                 </div>
                             </div>
                             <div class="col-md-6 social-url">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.ig') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.instagram.com/<u>name</u>/)</span></label>
-                                    <input type="text" class="form-control" name="txt_instagram" value="<?= (isset($social)?$social->instagram : set_value('txt_instagram')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.instagram.com/name/" onChange="inputURL($(this),'url-ig','txt_instagram')">
-                                    <span class="http-url url-ig">http://</span>
+                                    <input type="text" class="form-control" name="txt_instagram" value="<?= (isset($social)?$social->instagram : set_value('txt_instagram')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.instagram.com/name/">
+                                    <!-- <span class="http-url url-ig">http://</span> -->
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -151,15 +151,15 @@
                             <div class="col-md-6 social-url">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.linkein') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/<u>name</u>)</span></label>
-                                    <input type="text" class="form-control" name="txt_linkein" value="<?= (isset($social)?$social->linkein : set_value('txt_linkein')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/name" onChange="inputURL($(this),'url-linkein','txt_linkein')">
-                                    <span class="http-url url-linkein">http://</span>
+                                    <input type="text" class="form-control" name="txt_linkein" value="<?= (isset($social)?$social->linkein : set_value('txt_linkein')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/name">
+                                    <!-- <span class="http-url url-linkein">http://</span> -->
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group social-url">
                                     <label for=""><?= lang('GlobalLang.youtube') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.youtube.com/watch?v=<u>name</u>)</span></label>
-                                    <input type="text" class="form-control" name="txt_youtube" value="<?= (isset($social)?$social->youtube : set_value('txt_youtube')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.youtube.com/watch?v=name" onChange="inputURL($(this),'url-yt','txt_youtube')">
-                                    <span class="http-url url-yt">http://</span>
+                                    <input type="text" class="form-control" name="txt_youtube" value="<?= (isset($social)?$social->youtube : set_value('txt_youtube')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.youtube.com/watch?v=name">
+                                    <!-- <span class="http-url url-yt">http://</span> -->
                                 </div>
                             </div>
                             

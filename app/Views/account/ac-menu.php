@@ -51,7 +51,7 @@
         <li class="nav-item">
             <a class="nav-link <?= (isset($ac_webboard)?'active':''); ?>" href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item hide-991">
             <div class="ac-noti position-relative">
                 <i class="far fa-bell pt-2 cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification"></i>
                 <?php

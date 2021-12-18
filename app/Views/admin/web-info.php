@@ -10,12 +10,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">ข้อมูลเว็บไซต์</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <div class="text-end">
-                        <a href="<?= base_url('admin/articles/informationform') ?>" class="btn btn-success">เพิ่ม</a>
-                    </div>
-                </div><!-- /.col -->
+                </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -27,7 +22,6 @@
             <table class="table table-striped" id="tbl-article">
                 <thead>
                     <tr>
-                        <th scope="col" width="150">หน้าเพจข้อมูล</th>
                         <th scope="col">หัวข้อ</th>                        
                         <th scope="col" width="150" class="text-center">สถานะ</th>
                         <th scope="col" width="200">วันที่สร้าง</th>
@@ -41,15 +35,14 @@
                                 
                     ?>
                     <tr>
-                        <th><?= $item['page'] ?></th>
                         <td><?= $item['title_th'] ?></td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-status <?= ($item['status']=='1'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='1'?'เปิด' : 'ปิด') ?></button>
+                            <i class="fas fa-check-circle fs-4 <?= ($item['status']=='1'?'text-success' : 'text-danger') ?>" title="<?= ($item['status']=='1'?'เปิด' : 'ปิด') ?>"></i>
                         </td>
                         <td><?= $item['created_at'] ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/articles/informationform?id='.$item['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/articles/delinfo');">ลบ</a>
+                            <a href="<?= base_url('admin/articles/informationform?id='.$item['id']); ?>">อัพเดต</a>
+                            <!-- <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/articles/delinfo');">ลบ</a> -->
                         </td>
                     </tr>
                     <?php } }else{ ?>

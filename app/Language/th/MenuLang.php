@@ -28,8 +28,8 @@ return [
     'privileges' => 'สิทธิประโยชน์',
     'membership' => 'สมัครสมาชิกสมาคมฯ',
     'directory' => 'สมาชิกทั้งหมด',
-    'my-event' => 'My Event',
-    'events-list' => 'Event List',
+    'my-event' => 'อีเว้นท์ของฉัน',
+    'events-list' => 'อีเว้นท์ทั้งหมด',
 
     //Webboard community
     'forum' => 'หัวข้อ',

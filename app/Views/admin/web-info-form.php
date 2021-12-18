@@ -38,10 +38,10 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="row">
                         
-                        <div class="col-12 mb-3">
+                        <!-- <div class="col-12 mb-3">
                             <label class="form-label me-3">สถานะการใช้งาน</label>
                             <input type="checkbox" name="txt_status" data-toggle="toggle" data-onstyle="success" data-offstyle="secondary" <?= (isset($info_single) && $info_single->status=='1'? 'checked' : (!isset($info_single)?'checked' : '')) ?>>
-                        </div>
+                        </div> -->
 
                         <div class="col-12 mb-3">
                             <label class="form-label">หน้าเพจที่ต้องการแสดงข้อมูล</label>

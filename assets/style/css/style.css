@@ -244,6 +244,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .show-575 {
   display: none; }
 
+.line-height-18px {
+  line-height: 18px; }
+
+.mt-minus-5px {
+  margin-top: -5px; }
+
 .navbar {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
@@ -428,9 +434,6 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     text-transform: uppercase;
     margin-right: 1rem;
     font-size: .9rem; }
-    .account-menu .navbar-nav .nav-link.active {
-      border-bottom: 2px solid #000000;
-      padding-bottom: 0; }
 .account-menu .noti-list {
   padding: .5rem 1rem;
   width: 250px;
@@ -731,7 +734,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .account-logged .mobile-menu-right .user-managed {
   padding-top: 1px;
-  margin-right: 15px; }
+  margin-right: 40px; }
 .account-logged .mobile-menu-right .user-login {
   padding-top: 0; }
   .account-logged .mobile-menu-right .user-login img {
@@ -814,8 +817,42 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     bottom: .5rem;
     padding: 0 .5rem;
     border-radius: 3px; }
-.profile-form .social-url input {
-  padding-left: 6rem; }
+
+.files-form .col-icon,
+.invoice-body .col-icon {
+  margin-bottom: 1rem; }
+  .files-form .col-icon img,
+  .invoice-body .col-icon img {
+    max-width: 80px; }
+.files-form .col-img,
+.invoice-body .col-img {
+  border: 4px solid #665f4f;
+  padding: 1.5rem; }
+  .files-form .col-img .col-md-4,
+  .invoice-body .col-img .col-md-4 {
+    margin: 1rem auto; }
+    .files-form .col-img .col-md-4 p,
+    .invoice-body .col-img .col-md-4 p {
+      margin-bottom: 0;
+      padding: 0 2.5rem; }
+  .files-form .col-img .col-md-3,
+  .invoice-body .col-img .col-md-3 {
+    margin: 1rem auto; }
+    .files-form .col-img .col-md-3 p,
+    .invoice-body .col-img .col-md-3 p {
+      margin-bottom: 0;
+      word-break: break-word; }
+
+.user-login-name {
+  position: relative; }
+  .user-login-name .fa-caret-down {
+    position: absolute;
+    right: -1.75rem;
+    top: 50%;
+    transform: translateY(-50%); }
+
+.clearfix {
+  float: none; }
 
 @keyframes left-to-right {
   0% {
@@ -1381,8 +1418,11 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .show-991 {
   display: none; }
 
-.information-center table {
-  width: 100%; }
+.information-center {
+  background-image: url("../../images/about-bg.jpg");
+  background-repeat: repeat-y; }
+  .information-center table {
+    width: 100%; }
 
 .register-back:hover {
   text-decoration: underline; }

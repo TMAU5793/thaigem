@@ -243,9 +243,9 @@
                             </div>
                             <div class="w-50 position-relative">
                                 <div class="ps-3 text-center">
-                                    <h2 class="ff-dbamanBold fs-5 text-uppercase letter-spacing-1 mb-0 text-line-1 text-nowrap"><?= $row['company'] ?></h2>
+                                    <h2 class="ff-dbamanBold fs-6 text-uppercase letter-spacing-1 mb-0 text-line-1 text-nowrap"><?= $row['company'] ?></h2>
                                     <div class="cate-type">
-                                        <strong class="ff-dbadmanBold c-darkgold"><?= lang('GlobalLang.product-type') ?></strong>
+                                        <strong class="ff-dbadmanBold c-darkgold fs-5"><?= lang('GlobalLang.product-type') ?></strong>
                                         <?php
                                             if($cate_prod){
                                                 $n=0;                                                
@@ -254,13 +254,13 @@
                                                         $n++;
                                                         
                                         ?>
-                                            <p class="text-line-1 mb-0"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></span>
                                         <?php } } }else{ ?>
-                                            <p class="text-line-1 mb-0"><?= $row['product'] ?></p>
+                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= $row['product'] ?></span>
                                         <?php } ?>
                                     </div>
                                     <div class="cate-type">
-                                        <strong class="ff-dbadmanBold c-darkgold"><?= lang('GlobalLang.business-type') ?></strong>
+                                        <strong class="ff-dbadmanBold c-darkgold fs-5"><?= lang('GlobalLang.business-type') ?></strong>
                                         <?php
                                             if($cate_bus){
                                                 $n=0;
@@ -268,9 +268,9 @@
                                                     if($n<1 && $row['id']==$cate['member_id']){
                                                         $n++;
                                         ?>
-                                            <p class="text-line-1"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></span>
                                         <?php } } }else{ ?>
-                                            <p class="text-line-1 mb-0"><?= $row['business'] ?></p>
+                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= $row['business'] ?></span>
                                         <?php } ?>
                                     </div>
                                     <div class="event-action mt-3">

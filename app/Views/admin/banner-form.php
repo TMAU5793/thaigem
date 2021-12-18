@@ -24,12 +24,12 @@
                 <div class="mb-3 pt-5">
                     <label for="ddl_page" class="d-block">เลือกหน้าเว็บเพจสำหรับแบนเนอร์</label>
                     <select name="ddl_page" id="ddl_page" class="form-control">
-                        <option value="home"> หน้า Home </option>
-                        <option value="about"> หน้า About Us </option>
-                        <option value="member"> หน้า Member </option>
-                        <option value="article"> หน้า Knowledge & News </option>
-                        <option value="event"> หน้า Event </option>
-                        <option value="webboard"> หน้า Business Community </option>
+                        <option value="home" <?= isset($info) && $info['page']=='home'?'selected' : '' ?>> หน้า Home </option>
+                        <option value="about" <?= isset($info) && $info['page']=='about'?'selected' : '' ?>> หน้า About Us </option>
+                        <option value="member" <?= isset($info) && $info['page']=='member'?'selected' : '' ?>> หน้า Member </option>
+                        <option value="article" <?= isset($info) && $info['page']=='article'?'selected' : '' ?>> หน้า Knowledge & News </option>
+                        <option value="event" <?= isset($info) && $info['page']=='event'?'selected' : '' ?>> หน้า Event </option>
+                        <option value="webboard" <?= isset($info) && $info['page']=='webboard'?'selected' : '' ?>> หน้า Business Community </option>
                     </select>
                 </div>
                 <div class="row banner-item">

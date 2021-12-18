@@ -316,7 +316,7 @@ class Articles extends Controller
                     'seo_desc_th' => $postdata['seo_desc_th'],
                     'seo_title_en' => $postdata['seo_title_en'],
                     'seo_desc_en' => $postdata['seo_desc_en'],
-                    'status' => $status,
+                    //'status' => $status,
                     'updated_at' => $datetime
                 ];
                 $builder->where('id',$postdata['hd_id']);
@@ -334,7 +334,7 @@ class Articles extends Controller
                     'seo_desc_th' => $postdata['seo_desc_th'],
                     'seo_title_en' => $postdata['seo_title_en'],
                     'seo_desc_en' => $postdata['seo_desc_en'],
-                    'status' => $status,
+                    //'status' => $status,
                     'created_at' => $datetime,
                     'updated_at' => $datetime
                 ];

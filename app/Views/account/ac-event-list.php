@@ -5,7 +5,7 @@
         <?= $this->include('account/ac-banner') ?>
     </section> 
 
-    <section class="event-body mb-5">
+    <section class="event-body files-form mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -15,7 +15,7 @@
                         }
                     ?>
                     <div class="content-body">
-                        <div class="content-title"><strong class="ff-semibold fs-3"><?= $meta_title ?></strong></div>
+                        <div class="content-title text-center mb-3 mt-5"><strong class="ff-semibold fs-2"><?= lang('MenuLang.events-list'); ?></strong></div>
                         <div class="event-section mt-4">
                             <div class="event-nav-list slick-dotted">
                                 <?php

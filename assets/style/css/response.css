@@ -13,7 +13,10 @@
     height: 100px; }
 
   .account-menu .navbar-nav .nav-link {
-    font-size: .8rem; } }
+    font-size: .8rem; }
+
+  .files-form .col-img .col-md-4 p {
+    padding: 0 1.5rem; } }
 @media (max-width: 991px) {
   .account-logged .account-menu .navbar-nav {
     display: inline-block; }
@@ -25,7 +28,14 @@
 
   .ac-menu-left .personal-info #pic_profile {
     width: 75px;
-    height: 75px; } }
+    height: 75px; }
+
+  .files-form .col-img .col-md-4 p,
+  .invoice-body .col-img .col-md-4 p {
+    padding: 0 .5rem; }
+  .files-form .content-title.mt-5,
+  .invoice-body .content-title.mt-5 {
+    margin-top: 1rem !important; } }
 @media (max-width: 767px) {
   .account-logged .account-menu {
     margin-left: -7px; }
@@ -92,7 +102,7 @@
       height: 34px;
       right: 0rem; }
 
-  .navbar-nav {
+  .account-logged .account-menu .navbar-nav {
     display: block; }
 
   .account-body .account-menu .navbar-nav {
@@ -115,7 +125,10 @@
 
   .dealer-head .dealer-id {
     font-size: 1rem;
-    padding-top: 6px; } }
+    padding-top: 6px; }
+
+  .files-form .col-img {
+    padding: .5rem; } }
 @media (max-width: 1399px) {
   .singup-home .head-sect span,
   .singup-home .head-sect strong {
@@ -240,7 +253,7 @@
       z-index: 999;
       background: #fff;
       width: 200px;
-      right: 0;
+      right: -16px;
       top: 2.85rem;
       border-radius: 6px;
       box-shadow: 0px 0px 8px 2px #cec6b2; }
