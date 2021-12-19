@@ -110,6 +110,7 @@ return [
     'membersince' => 'Member Since',
     'btnmember' => 'Create a Membership Account',
     'btnjoin' => 'Join Now',
-    'example' => 'Example'
+    'example' => 'Example',
+    'map' => 'Map'
 
 ];

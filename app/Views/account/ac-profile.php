@@ -25,10 +25,11 @@
                         <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true"><?= lang('GlobalLang.companyinfo') ?></button>
                         <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content2" type="button" role="tab" aria-controls="nav-content2" aria-selected="true"><?= lang('GlobalLang.personcontact') ?></button>
                         <button class="nav-link" id="nav-tab3" data-bs-toggle="tab" data-bs-target="#nav-content3" type="button" role="tab" aria-controls="nav-content3" aria-selected="false"><?= lang('GlobalLang.profile').' & '.lang('GlobalLang.gallery') ?></button>
+                        <button class="nav-link" id="nav-tab4" data-bs-toggle="tab" data-bs-target="#nav-content4" type="button" role="tab" aria-controls="nav-content4" aria-selected="false"><?= lang('GlobalLang.map') ?></button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-content1" role="tabpanel" aria-labelledby="nav-tab1">
+                    <div class="tab-pane fade" id="nav-content1" role="tabpanel" aria-labelledby="nav-tab1">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -315,6 +316,15 @@
                             <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 20 รูป </small>
                         </div>
                     </div>
+
+                    <div class="tab-pane fade show active" id="nav-content4" role="tabpanel" aria-labelledby="nav-tab4">
+
+                        <div class="form-group">
+                            <label for="txt_map">ป้อน Iframe Google map</label> <a href="#" data-bs-toggle="modal" data-bs-target="#mapModal">(ดูตัวอย่าง)</a>
+                            <input type="text" name="txt_map" id="txt_map" class="form-control">
+                        </div>
+                        <div id="map-iframe"></div>
+                    </div>
                 </div>
                 <div class="btn-submit text-center mt-4">
                     <button type="submit" class="btn btn-black-border"><?= lang('GlobalLang.save') ?></button>
@@ -324,6 +334,33 @@
         </div>
     </section>
 
+    <!-- Modal Map -->
+    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 750px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="text-center w-100 ps-4 ff-dbadmanBold">ตัวอย่างการใช้ Iframe จาก Google Map</div>
+                    <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+                </div>
+                <div class="modal-body mt-0">
+                    <div class="">
+                        <ul class="list-unstyled">
+                            <li>- เข้าเว็บไซต์ <a href="https://www.google.co.th/maps/" target="_blank" class="c-black">Google Map</a></li>
+                            <li>1. ค้นหาสถานที่ที่ต้องการ</li>
+                            <li>2. หาไอคอนแชร์ จากนั้นให้กดที่ไอคอนแชร์</li>
+                            <li>3. เมื่อป๊อบอัพแชร์แสดงขึ้นให้เลือกแถบเมนู "ฝังแผนที่ / Embed a map"</li>
+                            <li>4. จากนั้นกด "คัดลอก HTML / COPY HTML"</li>
+                            <li>5. นำโค้ดที่คัดลอกมากป้อนในช่องกรอกข้อมูล</li>
+                        </ul>
+                        <img src="<?= site_url('assets/images/map.jpg') ?>" alt="">
+                    </div>
+                    <div class="text-center mb-3 mt-3">
+                        <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <?= $this->endSection() ?>
 
 <?= $this->section("scripts") ?>

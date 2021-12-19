@@ -358,6 +358,12 @@
             $('#myevent-desc').removeClass('myevent-desc');
         });
         
+
+        //Google map
+        $('#txt_map').on('change',function(){
+            var map = $(this).val();
+            $('#map-iframe').html(map);
+        });
     });
     //End Ready function
 
