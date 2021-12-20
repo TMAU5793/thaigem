@@ -29,7 +29,7 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade" id="nav-content1" role="tabpanel" aria-labelledby="nav-tab1">
+                    <div class="tab-pane fade show active" id="nav-content1" role="tabpanel" aria-labelledby="nav-tab1">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -118,7 +118,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.companyEmail') ?> <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" name="txt_email" value="<?= (isset($info)?$info['email'] : set_value('txt_email')) ?>">
+                                    <input type="text" class="form-control" name="txt_email" value="<?= (isset($info)?$info['email'] : set_value('txt_email')) ?>">
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_email')?'* '.$validation->getError('txt_email'):'') ?></small>
                                 </div>
                             </div>
@@ -317,7 +317,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade show active" id="nav-content4" role="tabpanel" aria-labelledby="nav-tab4">
+                    <div class="tab-pane fade" id="nav-content4" role="tabpanel" aria-labelledby="nav-tab4">
 
                         <div class="form-group">
                             <label for="txt_map">ป้อน Iframe Google map</label> <a href="#" data-bs-toggle="modal" data-bs-target="#mapModal">(ดูตัวอย่าง)</a>

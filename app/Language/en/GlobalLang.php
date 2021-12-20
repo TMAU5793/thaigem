@@ -111,6 +111,11 @@ return [
     'btnmember' => 'Create a Membership Account',
     'btnjoin' => 'Join Now',
     'example' => 'Example',
-    'map' => 'Map'
+    'map' => 'Map',
+    'duration1' => 'less than 1 year',
+    'duration2' => '1 year - 2 years',
+    'duration3' => '2 years - 4 years',
+    'duration4' => 'more than 4 years',
+    'cookie' => 'This website uses cookies. By continuing to use this website, you consent to the use of cookies. Details please read'
 
 ];

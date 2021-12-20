@@ -6,6 +6,14 @@ use CodeIgniter\Controller;
 use App\Models\Account\AccountModel;
 use App\Models\Account\AlbumModel;
 use App\Models\Account\MemberModel;
+use App\Models\Admin\ProductCategoryModel;
+use App\Models\Admin\EventModel;
+use App\Models\MemberModel as MemberModel2;
+use App\Models\BookingModel;
+use App\Models\KnowledgeModel;
+use App\Models\MemberBusinessModel;
+use App\Models\BannerModel;
+
 use App\Models\FunctionModel;
 use CodeIgniter\I18n\Time;
   
@@ -133,7 +141,39 @@ class Account extends Controller
                 return redirect()->to(site_url('account'));
             }
         }else{
-            $data['signup_valid'] = $this->validator;
+            $ctModel = new ProductCategoryModel();
+            $evModel = new EventModel();
+            $mbModel = new MemberModel2();
+            $abModel = new AlbumModel();
+            $acModel= new KnowledgeModel();
+            $mbBusiness = new MemberBusinessModel();
+            $banner = new BannerModel();
+            $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
+                                    ->where('tbl_member_business.type','product')
+                                    ->findAll();
+
+            $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
+                                    ->where('tbl_member_business.type','business')
+                                    ->findAll();
+
+            $info = $mbModel->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
+                    ->where(['tbl_member.member_home'=>'1','tbl_member.status'=>'2'])->findAll(9);
+
+            $data = [
+                'meta_title' => 'Thai Gem and Jewelry Traders Association',
+                'lang' => $this->lang,
+                'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->orderBy('sortby ASC')->findAll(6),
+                'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
+                'dealers' => $info,
+                'albums' => $abModel->findAll(),
+                'member' => $mbModel->where('id',$this->member_id)->first(),
+                'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3),
+                'cate_prod' => $cate_prod,
+                'cate_bus' => $cate_bus,
+                'userdata' => $this->userdata,
+                'banner' => $banner->where('page','home')->first(),
+                'signin_valid' => $this->validator
+            ];
             echo view('front/home',$data);
         }
     }
@@ -158,7 +198,7 @@ class Account extends Controller
 
     public function login()
     {
-        //helper(['form','text']);
+        helper(['form','text']);
         $model = new AccountModel();
         $request = service('request');
         if (!$request->getPost()) {
@@ -215,7 +255,40 @@ class Account extends Controller
             session()->set('userdata',$sess);
             return redirect()->to('account');
         }else{
-            $data['signin_valid'] = $this->validator;
+            $ctModel = new ProductCategoryModel();
+            $evModel = new EventModel();
+            $mbModel = new MemberModel2();
+            $abModel = new AlbumModel();
+            $acModel= new KnowledgeModel();
+            $mbBusiness = new MemberBusinessModel();
+            $banner = new BannerModel();
+            $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
+                                    ->where('tbl_member_business.type','product')
+                                    ->findAll();
+
+            $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
+                                    ->where('tbl_member_business.type','business')
+                                    ->findAll();
+
+            $info = $mbModel->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
+                    ->where(['tbl_member.member_home'=>'1','tbl_member.status'=>'2'])->findAll(9);
+
+            $data = [
+                'meta_title' => 'Thai Gem and Jewelry Traders Association',
+                'lang' => $this->lang,
+                'catergory' => $ctModel->where(['maincate_id'=>'0','status'=>'1'])->orderBy('sortby ASC')->findAll(6),
+                'events' => $evModel->where(['home_show'=>'on','status'=>'on'])->findAll(),
+                'dealers' => $info,
+                'albums' => $abModel->findAll(),
+                'member' => $mbModel->where('id',$this->member_id)->first(),
+                'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3),
+                'cate_prod' => $cate_prod,
+                'cate_bus' => $cate_bus,
+                'userdata' => $this->userdata,
+                'banner' => $banner->where('page','home')->first(),
+                'signin_valid' => $this->validator
+            ];
+
             echo view('front/home',$data);
         }
     }

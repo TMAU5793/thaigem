@@ -117,6 +117,16 @@ ul,
     background-color: #000000;
     color: #ffffff; }
 
+.btn-black {
+  border: 2px solid #000000;
+  padding: 0 10px;
+  background-color: #000000;
+  color: #ffffff; }
+  .btn-black:hover {
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    color: #000000; }
+
 .btn-white-border {
   border: 2px solid #ffffff;
   padding: 0 10px; }
@@ -246,6 +256,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .line-height-24px {
   line-height: 24px; }
+
+.line-height-22px {
+  line-height: 22px; }
 
 .line-height-18px {
   line-height: 18px; }
@@ -860,6 +873,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .clearfix {
   float: none; }
 
+.map-iframe iframe {
+  width: 100%; }
+
 @keyframes left-to-right {
   0% {
     width: 0px; }
@@ -1441,5 +1457,16 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 
 .apply-member [class*='col-'] {
   margin-bottom: 1rem; }
+
+.cookie-policy {
+  background-color: #665f4f;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: #fff; }
+  .cookie-policy a {
+    color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

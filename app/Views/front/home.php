@@ -312,7 +312,7 @@
                         <?php 
                             if($member){
                         ?>
-                            <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" onclick="location.href='<?= site_url('account') ?>'"><?= lang('GlobalLang.viewProfile'); ?></button>
+                            
                         <?php }else{ ?>                                
                             <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-tgjta" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.btnmember') ?></button>
                         <?php } ?>
@@ -328,7 +328,7 @@
                             <?php 
                                 if($member){
                             ?>
-                                <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white" onclick="location.href='<?= site_url('account') ?>'"><?= lang('GlobalLang.viewProfile'); ?></button>
+                                
                             <?php }else{ ?>                                
                                 <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-personal" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('GlobalLang.btnjoin') ?></button>
                             <?php } ?>

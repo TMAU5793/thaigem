@@ -826,3 +826,16 @@
         margin-bottom: 1rem;
     }
 }
+
+.cookie-policy {
+    background-color: $c-darkgold;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    color: #fff;
+    a {
+        color: #fff;
+    }
+}

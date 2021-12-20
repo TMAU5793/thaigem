@@ -49,8 +49,7 @@ class Member extends Controller
         
         if(!$info){
             return redirect()->to('account');
-        }
-        
+        }        
         $data = [
             'ac_account' => TRUE,
             'lang' => $this->lang,
@@ -66,7 +65,7 @@ class Member extends Controller
             'membercontact' => $mbModel->getMemberContact(),
             'memberbusiness' => $mbModel->getMemberBusiness()
         ];
-        //print_r($data['social']);
+        //print_r($data['memberbusiness']);
         echo view('account/ac-profile',$data);
     }
 
@@ -89,13 +88,6 @@ class Member extends Controller
             }
             if($post['txt_email'] == $email){
                 $rules = [
-                    'txt_email' => [
-                        'rules' => 'required|valid_email',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกอีเมล',
-                            'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง'
-                        ]
-                    ],
                     
                     'txt_company' => [
                         'rules' => 'required',
@@ -124,15 +116,7 @@ class Member extends Controller
                 ];
             }else{
                 $rules = [
-                    'txt_email' => [
-                        'rules' => 'required|valid_email|is_unique[tbl_member.email]',
-                        'errors' =>  [
-                            'required' => 'กรุณากรอกอีเมล',
-                            'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง',
-                            'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
-                        ]
-                    ],
-                    
+                   
                     'txt_company' => [
                         'rules' => 'required',
                         'errors' =>  [

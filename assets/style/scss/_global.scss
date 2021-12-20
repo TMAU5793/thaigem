@@ -173,6 +173,18 @@ ul,
     }
 }
 
+.btn-black {
+    border: 2px solid $c-black;
+    padding: 0 10px;
+    background-color: $c-black;
+    color: $c-white;
+    &:hover {
+        border: 2px solid $c-white;
+        background-color: $c-white;
+        color: $c-black;
+    }
+}
+
 .btn-white-border {
     border: 2px solid $c-white;
     padding: 0 10px;
@@ -356,6 +368,10 @@ button.bg-darkgold {
 
 .line-height-24px {
     line-height: 24px;
+}
+
+.line-height-22px {
+    line-height: 22px;
 }
 
 .line-height-18px {

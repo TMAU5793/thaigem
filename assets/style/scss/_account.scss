@@ -585,3 +585,9 @@
 .clearfix {
     float: none;
 }
+
+.map-iframe {
+    iframe {
+        width: 100%;
+    }
+}

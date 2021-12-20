@@ -24,7 +24,7 @@
                 <?php } ?>
             </div>
         </div>
-        <div class="col-6 text-uppercase text-end dealer-id">ID TGJTA<?= ($info['code']!="" ? $info['code'] : $info['id']) ?></div>
+        <div class="col-6 text-uppercase text-end dealer-id">Membership ID : <?= ($info['dealer_code']!="" ? $info['dealer_code'] : $info['code']) ?></div>
     </div>
     <div class="border-b">
         <div class="row personal-info">
@@ -49,7 +49,7 @@
                     <h2 class="ff-dbadmanBold mb-0"><?= $info['company']; ?></h2>
                     <div class="person-email">
                         <i class="far fa-envelope pe-3"></i>
-                        <?= $info['email']; ?>
+                        <span class="line-height-22px d-inline-block"><?= $info['email']; ?></span>
                     </div>
                     <div class="phone-contact">
                         <i class="fas fa-phone-volume pe-3 rotate-25ngt"></i>
@@ -217,6 +217,10 @@
         <?php if($social->youtube!=""){ ?>
             <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>
         <?php } ?>
+    </div>
+
+    <div class="map-iframe">
+        <?= ($info['map']!=''?$info['map']:'') ?>
     </div>
     
     <div class="text-center mt-4 text-center ac-btn-action">

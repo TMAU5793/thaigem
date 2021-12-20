@@ -260,7 +260,8 @@ class MemberModel extends Model
             'company_phone' => $data['txt_companyphone'],
             'company' => $data['txt_company'],
             'about' => $data['txt_ac_about'],
-            'website' => urlencode($ws)
+            'website' => urlencode($ws),
+            'map' => $data['txt_map']
         ];
         $builder = $this->db->table('tbl_member');
         $builder->where('id', $data['hd_id']);

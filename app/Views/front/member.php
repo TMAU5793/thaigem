@@ -68,10 +68,10 @@
                             <div class="input-group">
                                 <select name="ddl_duration" id="ddl_duration" class="w-100">
                                     <option value=""> --membership duration-- </option>
-                                    <option value="1" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='1'?'selected':'') ?>> น้อยกว่า 1ปี </option>
-                                    <option value="2" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='2'?'selected':'') ?>> 1ปี - 2ปี </option>
-                                    <option value="3" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='3'?'selected':'') ?>> 2ปี - 4ปี  </option>
-                                    <option value="4" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='4'?'selected':'') ?>> มากว่า 4ปี  </option>
+                                    <option value="1" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='1'?'selected':'') ?>> <?= lang('GlobalLang.duration1') ?> </option>
+                                    <option value="2" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='2'?'selected':'') ?>> <?= lang('GlobalLang.duration2') ?> </option>
+                                    <option value="3" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='3'?'selected':'') ?>> <?= lang('GlobalLang.duration3') ?>  </option>
+                                    <option value="4" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='4'?'selected':'') ?>> <?= lang('GlobalLang.duration4') ?>  </option>
                                 </select>
                             </div>
                         </div>
