@@ -244,8 +244,14 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .show-575 {
   display: none; }
 
+.line-height-24px {
+  line-height: 24px; }
+
 .line-height-18px {
   line-height: 18px; }
+
+.line-height-16px {
+  line-height: 16px; }
 
 .mt-minus-5px {
   margin-top: -5px; }
@@ -1423,11 +1429,17 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   background-repeat: repeat-y; }
   .information-center table {
     width: 100%; }
+  .information-center .advisory .col-lg-3 {
+    margin-top: 2rem;
+    padding: 0 1.5rem; }
 
 .register-back:hover {
   text-decoration: underline; }
 
 .text-nowrap {
   text-overflow: ellipsis; }
+
+.apply-member [class*='col-'] {
+  margin-bottom: 1rem; }
 
 /*# sourceMappingURL=style.css.map */

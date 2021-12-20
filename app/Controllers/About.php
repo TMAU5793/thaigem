@@ -59,12 +59,13 @@ class About extends BaseController
 
     public function advisory()
     {
-        $query = $this->getInformation('about','3'); //page, data category
-        
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_position');
+
         $data = [
-            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'meta_title' => ($this->lang=='en' ? 'Advisory' : 'รายนามที่ปรึกษาสมาคมฯ'),
             'lang' => $this->lang,
-            'info_single' => $query,
+            'advisory' => $builder->where('type','advisory')->get()->getResultArray(),
             'banner' => $this->banner
         ];
         
@@ -73,12 +74,13 @@ class About extends BaseController
 
     public function directors()
     {
-        $query = $this->getInformation('about','4'); //page, data category
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_position');
         
         $data = [
-            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'meta_title' => ($this->lang=='en' ? 'Director': 'รายนามกรรมการสมาคมฯ'),
             'lang' => $this->lang,
-            'info_single' => $query,
+            'director' => $builder->where('type','director')->orderBy('sortby ASC')->get()->getResultArray(),
             'banner' => $this->banner
         ];
         

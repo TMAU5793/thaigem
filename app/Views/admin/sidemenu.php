@@ -68,6 +68,13 @@
                                 <p>ข้อมูลเว็บไซต์</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/articles/advisory'); ?>" class="nav-link <?= ($uri->getSegment(3)=='advisoryform' || $uri->getSegment(3)=='advisory'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>รายนามสมาคมฯ</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

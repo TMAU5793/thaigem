@@ -42,7 +42,9 @@
                         <td><?= $item['created_at'] ?></td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/articles/informationform?id='.$item['id']); ?>">อัพเดต</a>
-                            <!-- <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/articles/delinfo');">ลบ</a> -->
+                            <?php if(session()->get('admindata')['permission']=='superadmin'){ ?>
+                                | <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/articles/delinfo');">ลบ</a>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php } }else{ ?>

@@ -485,10 +485,9 @@
   .singup-home .singup-form {
     border-right: none;
     border-bottom: 2px solid #665f4f;
-    padding: 0 0 3rem;
-    margin-bottom: 3rem; }
+    padding-bottom: 3rem; }
   .singup-home .sign-member {
-    padding: 0; }
+    padding-top: 3rem; }
   .singup-home .col-md-6 {
     padding: 0 1rem !important; }
 
@@ -686,7 +685,10 @@
     right: 0.75rem; }
 
   .copy-right a {
-    display: block; } }
+    display: block; }
+
+  .information-center .advisory .col-lg-3 {
+    padding: 0 1rem; } }
 @media (max-width: 360px) {
   .navbar-brand .mobile-logo {
     max-width: 75px; } }

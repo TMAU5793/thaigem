@@ -123,6 +123,18 @@
             }
         });
 
+        // $('#ddl_type').on('change',function(){
+        //     var val = $(this).val();
+            
+        //     if(val == 'director'){
+        //         $('.position-text').removeClass('d-none');
+        //         $('.position-ddl').addClass('d-none');
+        //     }else{
+        //         $('.position-ddl').removeClass('d-none');
+        //         $('.position-text').addClass('d-none');
+        //     }
+        // });
+
         //date picker rang
         <?php if(isset($info)) { ?>
             $('input[name="txt_date"]').daterangepicker({

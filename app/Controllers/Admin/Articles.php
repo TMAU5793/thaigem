@@ -382,4 +382,152 @@ class Articles extends Controller
             return redirect()->to(site_url('admin/articles/information'));
         }
     }
+
+    public function advisory()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_position');
+        $data = [
+            'info' => $builder->get()->getResultArray()
+        ];
+        return view('admin/advisory',$data);
+    }
+
+    public function advisoryform()
+    {
+        helper(['form']);
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_position');
+        $request = service('request');
+
+        $getdata = $request->getGet('id');
+        if($getdata){
+            $builder->where('id',$getdata);
+            $builder->limit(1);
+            $data = [
+                'meta_title' => 'อัพเดตข้อมูล',
+                'info' => $builder->get()->getRowArray()
+            ];
+        }else{
+            
+            $data = [
+                'meta_title' => 'เพิ่มข้อมูล'
+            ];
+        }
+        return view('admin/advisory-form',$data);
+    }
+
+    public function advisoryUpdate()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_position');
+        $request = service('request');
+        helper(['form']);
+
+        $datetime = new Time('now');
+
+        $rules = [
+            'txt_name' => [
+                'rules' => 'required',
+                'errors'    =>  [
+                    'required'  =>  'กรุณากรอกข้อมูลชื่อ - นามสกุล'
+                ]
+            ]
+        ];
+        
+        if(!$this->validate($rules)){
+            $data['validation'] = $this->validator;
+            echo view('admin/advisory-form',$data);
+        }else{
+
+            $postdata = $request->getPost();                       
+            $id = $postdata['hd_id']; //เก็บค่า id            
+            $position = $postdata['txt_position'];
+
+            if($postdata['hd_id']!=""){
+                $arrdata = [
+                    'name' => $postdata['txt_name'],
+                    'name_en' => $postdata['txt_name_en'],
+                    'position' => $postdata['txt_position'],
+                    'position_en' => $postdata['txt_position_en'],
+                    'type' => $postdata['ddl_type'],
+                    'sortby' => $postdata['sortby'],
+                    'updated_at' => $datetime
+                ];
+                $builder->where('id',$postdata['hd_id']);
+                $builder->update($arrdata);
+            }else{
+                $arrdata = [
+                    'name' => $postdata['txt_name'],
+                    'name_en' => $postdata['txt_name_en'],
+                    'position' => $postdata['txt_position'],
+                    'position_en' => $postdata['txt_position_en'],
+                    'type' => $postdata['ddl_type'],
+                    'sortby' => $postdata['sortby'],
+                    'created_at' => $datetime,
+                    'updated_at' => $datetime
+                ];
+                $builder->insert($arrdata);
+                $id = $db->insertID();
+            }
+            
+            $thumb = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
+            $hd_profile = $postdata['hd_profile']; //เก็บไฟล์รูปเดิม เพื่อนำมาเช็คว่ามีการเปลี่ยนรูปใหม่หรือไม่
+            $hd_profile_del = $postdata['hd_profile_del']; //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
+            
+            if ($hd_profile!=$hd_profile_del){
+                if(is_file($hd_profile_del)){
+                    unlink($hd_profile_del); //ลบรูปเก่าออก
+                }
+                
+                if (!is_dir('uploads/articles/advisory')) {
+					mkdir('uploads/articles/advisory', 0777, TRUE);
+                    $this->uploadIMG($id,$thumb,350,357,'uploads/articles/advisory','profile'); //file,width,height,path
+				}else{
+                    $this->uploadIMG($id,$thumb,350,357,'uploads/articles/advisory','profile'); //file,width,height,path
+                }
+            }
+            
+            return redirect()->to('admin/articles/advisory');
+        }
+    }
+
+    public function uploadIMG($id,$file,$w,$h,$path,$field)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_position');
+        $newName = $id.'-'.$file->getRandomName();
+
+        $image = \Config\Services::image();
+        $image->withFile($file)
+        ->fit($w, $h, 'center')
+        ->save($path.'/'.$newName);
+
+        $thumb = [
+            "profile" => $path.'/'.$newName
+        ];
+        $builder->where('id',$id);
+        $builder->update($thumb);
+        print_r($builder->error);
+    }
+
+    public function deleteAdvisory()
+    {
+        $request = service('request');
+        $db      = \Config\Database::connect();
+        $builder = $db->table('tbl_position');
+
+		if($request->getPost('id')){
+			$id = $request->getPost('id');
+            $delImg = $builder->where('id',$id)->get()->getRowArray();
+			if(is_file($delImg['profile'])){
+				unlink($delImg['profile']); //ลบรูปเก่าออก
+			}            
+            $builder->where('id', $id)->delete();
+			echo TRUE;
+            
+        }else{
+            return redirect()->to(site_url('admin/articles/advisory'));
+        }
+    }
 }

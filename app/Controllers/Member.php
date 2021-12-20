@@ -8,7 +8,7 @@ use App\Models\Account\AlbumModel;
 use App\Models\Admin\ProductCategoryModel;
 use App\Models\Admin\BusinessModel;
 use App\Models\MemberBusinessModel;
-use App\Models\FunctionModel;
+use App\Models\BannerModel;
 use DateTime;
 
 //use CodeIgniter\I18n\Time;
@@ -252,11 +252,13 @@ class Member extends BaseController
 
     public function privileges()
     {
+        $banner = new BannerModel();
         $query = $this->getInformation('member','1'); //page, data category
         $data = [
             'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
             'lang' => $this->lang,
-            'info_single' => $query
+            'info_single' => $query,
+            'banner' => $banner->where('page','member')->first()
         ];
         
         echo view('template/information', $data);
@@ -264,14 +266,16 @@ class Member extends BaseController
 
     public function membership()
     {
+        $banner = new BannerModel();
         $query = $this->getInformation('member','2'); //page, data category
         $data = [
             'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
             'lang' => $this->lang,
-            'info_single' => $query
+            'info_single' => $query,
+            'banner' => $banner->where('page','member')->first()
         ];
         
-        echo view('template/information', $data);
+        echo view('template/apply-member', $data);
     }
 
     public function getInformation($page,$cate)

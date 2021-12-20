@@ -803,6 +803,12 @@
     table {
         width: 100%;
     }
+    .advisory {
+        .col-lg-3 {
+            margin-top: 2rem;
+            padding: 0 1.5rem;
+        }
+    }
 }
 
 .register-back {
@@ -813,4 +819,10 @@
 
 .text-nowrap {
     text-overflow: ellipsis;
+}
+
+.apply-member {
+    [class*='col-'] {
+        margin-bottom: 1rem;
+    }
 }
