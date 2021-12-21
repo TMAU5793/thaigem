@@ -60,6 +60,11 @@
     }
 } //end medi 1399
 @include media-max(1199px) {
+    .member-content {
+        // .shadow-lightgold {
+        //     height: 250px;
+        // }
+    }
     .singup-home .head-sect {
         span,
         strong {
@@ -462,6 +467,9 @@
     }
     .member-content {
         margin-bottom: 2rem;
+        // .shadow-lightgold {
+        //     height: 290px;
+        // }
     }
 } //end medi 991
 @include media-max(767px) {
@@ -753,6 +761,13 @@
                 line-height: 1rem;
             }
         }
+        // .shadow-lightgold {
+        //     height: auto;
+        //     .event-action {
+        //         position: static;
+        //         transform: none;
+        //     }
+        // }
     }
     .category-home {
         .bg-title {

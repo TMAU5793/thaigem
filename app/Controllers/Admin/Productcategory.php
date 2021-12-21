@@ -7,8 +7,21 @@ use App\Models\Admin\ProductCategoryModel;
 class Productcategory extends Controller
 {
 
+	protected $logged;
+	public function __construct()
+    {
+        $admindata = session()->get('admindata');
+        if($admindata){
+            $this->logged = $admindata;
+        }
+    }
+
 	public function index()
 	{	
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		helper('form');
 		$model = new ProductCategoryModel();
         $request = service('request');
@@ -28,6 +41,10 @@ class Productcategory extends Controller
 
 	public function form()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		helper('form');
 		$model = new ProductCategoryModel();
 		$data = [
@@ -64,6 +81,10 @@ class Productcategory extends Controller
 
 	public function savedata()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		$model = new ProductCategoryModel();
 		helper('form');
 		$request = service('request');
@@ -123,6 +144,10 @@ class Productcategory extends Controller
 
 	public function resizeImg($id,$file,$w,$h,$path)
     {
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $model = new ProductCategoryModel();
         $newName = 'cate-'.$file->getRandomName();
 
@@ -139,6 +164,10 @@ class Productcategory extends Controller
 
 	public function delete()
     {
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+		
         $request = service('request');
         $model = new ProductCategoryModel();
         if($request->getPost('id')){

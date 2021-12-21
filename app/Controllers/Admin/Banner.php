@@ -122,6 +122,10 @@ class Banner extends Controller
 
     public function upload($id,$file,$path,$page,$size)
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $model = new BannerModel();
         $newName = $page.'-'.$file->getRandomName();
         $namemobile = 'mobile-'.$page.'-'.$file->getRandomName();
@@ -151,6 +155,10 @@ class Banner extends Controller
 
     public function delete()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+        
         $request = service('request');
         $model = new BannerModel();
         if($request->getPost('id')){

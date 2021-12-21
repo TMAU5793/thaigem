@@ -7,9 +7,13 @@ use App\Models\Account\MemberModel as acMemberModel;
 
 class Member extends Controller
 {
+	protected $logged;
 	public function __construct()
     {
-        
+        $admindata = session()->get('admindata');
+        if($admindata){
+            $this->logged = $admindata;
+        }
     }
 	
 	public function index()
@@ -19,6 +23,10 @@ class Member extends Controller
 
 	public function dealer()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		$model = new MemberModel();
 		$request = service('request');
 		$pager = \Config\Services::pager();
@@ -52,6 +60,10 @@ class Member extends Controller
 
 	public function subscribe()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		$model = new MemberModel();
 		$request = service('request');
 		$pager = \Config\Services::pager();
@@ -143,6 +155,10 @@ class Member extends Controller
 
 	public function save()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		//print_r($_POST);
 		helper(['form']);
 		$request = service('request');
@@ -183,6 +199,10 @@ class Member extends Controller
 
 	public function update()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		helper(['form','filesystem']);
 		$model = new MemberModel();
 		$request = service('request');
@@ -299,6 +319,10 @@ class Member extends Controller
 	
 	public function upload($id,$profile,$img_del)
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		helper(['form','fileystem']);
 		$model = new MemberModel();
 		
@@ -325,6 +349,10 @@ class Member extends Controller
 
 	public function display()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		$model = new MemberModel();
 		$request = service('request');
 
@@ -342,6 +370,10 @@ class Member extends Controller
 
 	public function show()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+		
 		$model = new MemberModel();
 		$request = service('request');
 

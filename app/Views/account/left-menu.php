@@ -24,6 +24,7 @@
                 <?php } ?>
             </div>
         </div>
+       
         <div class="col-6 text-uppercase text-end dealer-id">Membership ID : <?= ($info['dealer_code']!="" ? $info['dealer_code'] : $info['code']) ?></div>
     </div>
     <div class="border-b">

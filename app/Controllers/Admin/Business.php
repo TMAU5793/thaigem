@@ -6,9 +6,21 @@ use App\Models\Admin\BusinessModel;
 
 class Business extends Controller
 {
+	protected $logged;
+	public function __construct()
+    {
+        $admindata = session()->get('admindata');
+        if($admindata){
+            $this->logged = $admindata;
+        }
+    }
 
 	public function index()
 	{	
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		helper('form');
 		$model = new BusinessModel();
 		$request = service('request');
@@ -29,6 +41,10 @@ class Business extends Controller
 
 	public function form()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		helper('form');
 		$model = new BusinessModel();
 		$data = [
@@ -65,6 +81,10 @@ class Business extends Controller
 
 	public function savedata()
 	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		$model = new BusinessModel();
 		helper('form');
 		$request = service('request');
@@ -115,6 +135,10 @@ class Business extends Controller
 
 	public function delete()
     {
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+		
         $request = service('request');
         $model = new BusinessModel();
         if($request->getPost('id')){

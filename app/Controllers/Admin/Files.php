@@ -18,6 +18,9 @@ class Files extends Controller
 
     public function index()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
         $model = new FilesModel();
         $mbModel = new MemberModel();
 		$data = [
@@ -30,6 +33,9 @@ class Files extends Controller
 
     public function memberfiles()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
         $model = new FilesModel();
         $mbModel = new MemberModel();
 		$data = [
@@ -43,7 +49,9 @@ class Files extends Controller
 
 	public function form()
 	{
-		
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
 		$data = [
             'meta_title' => 'อัปโหลดเอกสาร'
         ];
@@ -140,6 +148,10 @@ class Files extends Controller
 
     public function upload($id,$file,$path,$name,$type)
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
 		helper(['form','filesystem']);
         $model = new FilesModel();
         $newName = $name.'.'.$type;
@@ -157,6 +169,9 @@ class Files extends Controller
 
     public function downloadFiles()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
         helper('download');
         $request = service('request');
         $model = new FilesModel();
@@ -179,6 +194,9 @@ class Files extends Controller
 
     public function delete()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
         $request = service('request');
         $model = new FilesModel();
         if($request->getPost('id')){

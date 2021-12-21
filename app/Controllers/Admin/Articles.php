@@ -7,13 +7,21 @@ use CodeIgniter\I18n\Time;
 
 class Articles extends Controller
 {
+	protected $logged;
 	public function __construct()
     {
-        
+        $admindata = session()->get('admindata');
+        if($admindata){
+            $this->logged = $admindata;
+        }
     }
 	
 	public function index()
 	{	
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $model = new ArticlesModel();
         $request = service('request');
 		$keyword = $request->getGet('keyword');
@@ -46,6 +54,9 @@ class Articles extends Controller
 
     public function save()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
         helper(['form']);
         $model = new ArticlesModel();
         $request = service('request');
@@ -147,6 +158,10 @@ class Articles extends Controller
 
     public function update()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         helper(['form']);
         helper('filesystem');
         $request = service('request');
@@ -208,6 +223,10 @@ class Articles extends Controller
 
     public function resizeImg($id,$file,$w,$h,$path)
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $model = new ArticlesModel();
         $newName = $id.'-'.$file->getRandomName();
 
@@ -224,6 +243,10 @@ class Articles extends Controller
 
     public function information()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_information');
         $query = $builder->get()->getresultArray();
@@ -238,6 +261,10 @@ class Articles extends Controller
 
     public function informationform()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         helper(['form']);
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_information');
@@ -265,6 +292,10 @@ class Articles extends Controller
 
     public function saveInformation()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_information');
         $request = service('request');
@@ -347,6 +378,10 @@ class Articles extends Controller
 
     public function delete()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $request = service('request');
         $model = new ArticlesModel();
         if($request->getPost('id')){
@@ -365,6 +400,10 @@ class Articles extends Controller
 
     public function delinfo()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $request = service('request');
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_information');
@@ -385,6 +424,10 @@ class Articles extends Controller
 
     public function advisory()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_position');
         $data = [
@@ -395,6 +438,10 @@ class Articles extends Controller
 
     public function advisoryform()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         helper(['form']);
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_position');
@@ -419,6 +466,10 @@ class Articles extends Controller
 
     public function advisoryUpdate()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_position');
         $request = service('request');
@@ -494,6 +545,10 @@ class Articles extends Controller
 
     public function uploadIMG($id,$file,$w,$h,$path,$field)
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_position');
         $newName = $id.'-'.$file->getRandomName();
@@ -513,6 +568,10 @@ class Articles extends Controller
 
     public function deleteAdvisory()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+        
         $request = service('request');
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_position');

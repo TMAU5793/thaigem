@@ -49,8 +49,8 @@ class Member extends BaseController
                                 ->where('tbl_member_business.type','business')
                                 ->findAll();
 
-        $info = $model->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
-                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->paginate(20);
+        $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
+                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at DESC')->paginate(20);
         $data = [
             'meta_title' => 'Member directory',
             'lang' => $this->lang,

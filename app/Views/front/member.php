@@ -122,7 +122,7 @@
                                     </li>
                                 <?php } } } if($n==0){ for($i=1;$i<4;$i++){ ?>
                                     
-                                    <li class="album-item">
+                                    <li class="album-item invisible">
                                         <img src="<?= (site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                     </li>
                                 <?php } } ?>

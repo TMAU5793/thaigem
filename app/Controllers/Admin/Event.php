@@ -8,13 +8,21 @@ use App\Models\MemberModel;
 
 class Event extends Controller
 {
+	protected $logged;
 	public function __construct()
     {
-        
+        $admindata = session()->get('admindata');
+        if($admindata){
+            $this->logged = $admindata;
+        }
     }
 	
 	public function index()
 	{	
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $model = new EventModel();
         $request = service('request');
 		$keyword = $request->getGet('keyword');
@@ -47,6 +55,10 @@ class Event extends Controller
 
     public function save()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         helper(['form']);
         $model = new EventModel();
         $request = service('request');
@@ -151,6 +163,10 @@ class Event extends Controller
 
     public function update()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         helper(['form']);
         helper('filesystem');
         $request = service('request');
@@ -216,6 +232,10 @@ class Event extends Controller
 
     public function resizeImg($id,$file,$w,$h,$path)
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $model = new EventModel();
         $newName = $id.'-'.$file->getRandomName();
 
@@ -233,6 +253,10 @@ class Event extends Controller
 
     public function booking()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $pager = \Config\Services::pager();
         $evModel = new EventModel();
         $bkModel = new BookingModel();
@@ -263,6 +287,10 @@ class Event extends Controller
 
     public function bookinginfo()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $request = service('request');
         $evModel = new EventModel();
         $bkModel = new BookingModel();
@@ -285,6 +313,10 @@ class Event extends Controller
 
     public function bookingstatus()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
         $bkModel = new BookingModel();
         $request = service('request');
         $post = $request->getPost();
@@ -306,6 +338,10 @@ class Event extends Controller
 
     public function delete()
     {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+        
         $request = service('request');
         $model = new EventModel();
         if($request->getPost('id')){
