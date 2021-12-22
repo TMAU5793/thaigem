@@ -6,7 +6,7 @@
         <img src="<?= (is_file($banner['banner_mobile'])?site_url($banner['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" class="show-575" alt="thai gem">
     </section>
     
-    <section class="information-center pb-5">
+    <section class="information-center yt-iframe pb-5">
         <div class="container">
             <!-- <div class="title text-center pt-5"><h1 class="fs-3 ff-semibold"><?= $meta_title ?></h1></div> -->
             <div class="content-body mt-3">

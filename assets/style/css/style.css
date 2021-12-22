@@ -304,16 +304,17 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   .top-nav span {
     text-decoration: none;
     color: #000000;
-    font-size: 17px;
     padding: 0 6px; }
     .top-nav a:hover,
     .top-nav span:hover {
       box-shadow: 1px 1px 1px 0px #665f4f; }
-    .top-nav a i,
-    .top-nav span i {
-      font-size: 14px; }
   .top-nav span {
     font-size: 17px; }
+  .top-nav .login-text {
+    font-size: 1.35rem;
+    line-height: 20px; }
+    .top-nav .login-text i {
+      font-size: 18px; }
 
 .top-more-menu .user-menu-login {
   position: absolute;
@@ -1068,6 +1069,14 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   font-weight: 600; }
 .member-home .ac-album {
   overflow: hidden; }
+.member-home .shadow-lightgold {
+  height: 270px; }
+.member-home .event-action {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-40%);
+  width: 100%;
+  bottom: 0; }
 
 .singup-home {
   background-image: url("../../images/home/newsletter-bg.jpg");

@@ -36,7 +36,7 @@ class Member extends Controller
 
     public function edit()
     {        
-        
+        helper('form');
         $request = service('request');
         $model = new AccountModel();
         $albummodel = new AlbumModel();
@@ -49,7 +49,8 @@ class Member extends Controller
         
         if(!$info){
             return redirect()->to('account');
-        }        
+        }
+ 
         $data = [
             'ac_account' => TRUE,
             'lang' => $this->lang,
@@ -65,7 +66,7 @@ class Member extends Controller
             'membercontact' => $mbModel->getMemberContact(),
             'memberbusiness' => $mbModel->getMemberBusiness()
         ];
-        //print_r($data['memberbusiness']);
+        //print_r($address);
         echo view('account/ac-profile',$data);
     }
 

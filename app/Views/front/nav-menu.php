@@ -16,8 +16,8 @@
     <div class="logo-top float-start" onclick="location.href='<?= site_url() ?>'">
         <img src="<?= site_url('assets/images/logo.png') ?>" alt="Logo">
     </div>
-    <div class="top-more-menu float-end ff-dbadman text-end">
-        <div class="lang mt-3">
+    <div class="top-more-menu float-end text-end">
+        <div class="lang mt-4">
             <?php 
                 if(session()->get('lang')=='th'){
             ?>
@@ -30,13 +30,13 @@
                 <a href="javascript:void(0)" class="ff-dbadmanBold">EN</a>
             <?php } ?>            
         </div>
-        <div class="user-managed mt-3 d-inline-flex">
+        <div class="user-managed">
             <?php 
                 if($member){
             ?>
-                <a href="javascript:void(0)" class="cs-pointer user-login-name text-uppercase">
+                <a href="javascript:void(0)" class="cs-pointer user-login-name text-uppercase login-text">
                     <i class="far fa-user-circle"></i> 
-                    <?= ($member['status']=='2' && $member['company']!='' ? $member['company'] : $member['name']); ?>
+                    <?= ($member['status']=='2' && $member['company']!='' ? $member['company'] : $member['dealer_code']); ?>
                 </a>
                 <div class="user-login me-3 position-relative">
                     <div class="user-menu-login d-none">
@@ -57,9 +57,9 @@
                     </div>
                 </div>
             <?php }else{ ?>
-                <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
+                <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase login-text"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
             <?php } ?>
-            <a href="<?= site_url('help-center') ?>" class="ms-3 text-uppercase help-center"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a>
+            <!-- <a href="<?= site_url('help-center') ?>" class="ms-3 text-uppercase help-center"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a> -->
         </div>
     </div>
     <div class="clearfix"></div>

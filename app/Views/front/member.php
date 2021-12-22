@@ -5,7 +5,7 @@
 
         <div class="container mt-3">
             <div class="text-center title">
-                <h1 class="text-uppercase ff-dbamanBold fs-2 letter-spacing-1"><?= lang('GlobalLang.searchMember'); ?></h1>
+                <h1 class="text-uppercase ff-dbadmanBold fs-2 letter-spacing-1"><?= lang('GlobalLang.searchMember'); ?></h1>
             </div>
 
             <div class="search-member mt-4">
@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="col-md-6 toggle-slow">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-dbamanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-dbadmanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>
                         </div>                        
 
                         <div class="col-md-6 search-show d-none">
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="col-md-6 search-show d-none">
-                            <button type="button" class="btn bg-darkgold c-white w-100 ff-dbamanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>
+                            <button type="button" class="btn bg-darkgold c-white w-100 ff-dbadmanBold btn-search-member letter-spacing-1 text-uppercase"><?= lang('GlobalLang.search'); ?></button>
                         </div>  
 
                         <div class="col-md-12 btn-avd text-center">
@@ -130,10 +130,10 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="w-50 position-relative">
-                            <div class="position-absolute translate-middle top-50 start-50 w-100 ps-3 text-center">
-                                <h5 class="ff-dbamanBold fs-4 text-uppercase letter-spacing-1 mb-0"><?= $row['company'] ?></h5>
-                                <div class="cate-type">
-                                    <strong class="ff-dbadmanBold"><?= lang('GlobalLang.product-type') ?></strong>
+                            <div class="w-100 ps-3 text-center">
+                                <h5 class="ff-dbadmanBold text-uppercase mb-0 line-height-18px mb-2 fz-1-2rem-575"><?= $row['company'] ?></h5>
+                                <div class="cate-type mb-2">
+                                    <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.product-type') ?></strong>
                                     <?php
                                         if($cate_prod){
                                             $n=0;
@@ -141,13 +141,13 @@
                                                 if($n<1 && $member_id==$cate['member_id']){
                                                     $n++;
                                     ?>
-                                        <p class="text-line-1 mb-0"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                        <p class="text-line-1 mb-0 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
                                     <?php } } }else{ ?>
-                                        <p class="text-line-1 mb-0"><?= $row['product'] ?></p>
+                                        <p class="text-line-1 mb-0 line-height-20px"><?= $row['product'] ?></p>
                                     <?php } ?>
                                 </div>
                                 <div class="cate-type">
-                                    <strong class="ff-dbadmanBold"><?= lang('GlobalLang.business-type') ?></strong>
+                                    <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.business-type') ?></strong>
                                     <?php
                                         if($cate_bus){
                                             $n=0;
@@ -155,12 +155,12 @@
                                                 if($n<1 && $member_id==$cate['member_id']){
                                                     $n++;
                                     ?>
-                                        <p class="text-line-1"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                        <p class="text-line-1 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
                                     <?php } } }else{ ?>
-                                        <p class="text-line-1 mb-0"><?= $row['business'] ?></p>
+                                        <p class="text-line-1 line-height-20px mb-0"><?= $row['business'] ?></p>
                                     <?php } ?>
                                 </div>
-                                <div class="event-action mt-3">
+                                <div class="event-action position-absolute start-50 translate-middle-x bottom-0 ms-2">
                                     <?php
                                         $member_id = $row['id'];
                                         if($row['code']){

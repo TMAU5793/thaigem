@@ -14,7 +14,7 @@
             "underLineBottomColor": "rgba(41, 98, 255, 0)",
             "isTransparent": false,
             "autosize": true,
-            "largeChartUrl": ""
+            "largeChartUrl": "<?= site_url('price-update') ?>"
         }
   </script>
 </div>

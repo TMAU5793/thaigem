@@ -1,7 +1,7 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
-    <section class="banner-home">
+    <section class="banner-home <?= (isset($banner)? 'cursor-pointer' : '') ?>" onClick="location.href='<?= (isset($banner)?$banner['link'] : '') ?>'" title="<?= (isset($banner)?$banner['link'] : '') ?>">
         <img src="<?= (is_file($banner['banner'])?site_url($banner['banner']):site_url('assets/images/img-default.jpg')) ?>" class="hide-575" alt="thai gem">
         <img src="<?= (is_file($banner['banner_mobile'])?site_url($banner['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" class="show-575" alt="thai gem">
     </section>
@@ -234,7 +234,7 @@
                                             <img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                         </li>
                                     <?php } } } if($n==0){ for($i=1;$i<4;$i++){ ?>
-                                        <li class="album-item">
+                                        <li class="album-item invisible">
                                             <img src="<?= (site_url('assets/images/default-1000x750.jpg')) ?>" alt="<?= $row['company'] ?>">
                                         </li>
                                     <?php } } ?>

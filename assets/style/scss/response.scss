@@ -60,10 +60,10 @@
     }
 } //end medi 1399
 @include media-max(1199px) {
-    .member-content {
-        // .shadow-lightgold {
-        //     height: 250px;
-        // }
+    .member-home {
+        .shadow-lightgold {
+            height: 250px;
+        }
     }
     .singup-home .head-sect {
         span,
@@ -219,6 +219,13 @@
     }
 } //end medi 1199
 @include media-max(991px) {
+    .knowledge-desc,
+    .yt-iframe {
+        iframe {
+            width: 100%;
+            height: 392px;
+        }
+    }
     #registerModal .modal-dialog .modal-content {
         padding: 1rem;
     }
@@ -465,14 +472,20 @@
     .member-home .member-list .slick-list.draggable {
         margin: 0;
     }
-    .member-content {
+    .member-home {
         margin-bottom: 2rem;
-        // .shadow-lightgold {
-        //     height: 290px;
-        // }
+        .shadow-lightgold {
+            height: 290px;
+        }
     }
 } //end medi 991
 @include media-max(767px) {
+    .knowledge-desc,
+    .yt-iframe {
+        iframe {
+            height: 290px;
+        }
+    }
     .relate-list {
         .row {
             .col-md-4 {
@@ -646,6 +659,15 @@
     }
 } //end medi 767
 @include media-max(575px) {
+    .fz-1-2rem-575 {
+        font-size: 1.2rem;
+    }
+    .knowledge-desc,
+    .yt-iframe {
+        iframe {
+            height: 197px;
+        }
+    }
     .hide-575 {
         display: none;
     }
@@ -760,14 +782,21 @@
                 margin-bottom: 0;
                 line-height: 1rem;
             }
+            .event-action {
+                position: static !important;
+                transform: none !important;
+                margin-left: 0 !important;
+            }
         }
-        // .shadow-lightgold {
-        //     height: auto;
-        //     .event-action {
-        //         position: static;
-        //         transform: none;
-        //     }
-        // }
+    }
+    .member-home {
+        .shadow-lightgold {
+            height: auto;
+            .event-action {
+                position: static;
+                transform: none;
+            }
+        }
     }
     .category-home {
         .bg-title {

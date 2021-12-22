@@ -7,7 +7,7 @@ return [
     'navMembers' => 'สมาชิก',
     'navKnowledge' => 'สาระน่ารู้และข่าวสาร',
     'navEvents' => 'งานแสดงสินค้า',
-    'navBusiness' => 'เจรจาการค้า',
+    'navBusiness' => 'เจรจาธุรกิจ',
     'navContactus' => 'ติดต่อเรา',
     'navPriceUpdate' => 'ราคาล่าสุด',
 

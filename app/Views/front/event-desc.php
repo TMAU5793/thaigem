@@ -25,9 +25,7 @@
         
         <div class="event-booking pt-4 pb-4 bg-lightgray">
             <div class="container">
-                <p>Lorem Ipsum is simply dummy text of the printingand typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printingand typesetting industry.</p>
-
-                <div class="text-center mb-3">
+                <div class="text-center">
                     <?php
                         if($member['type']=='dealer' && $member['status']=='2'){
                     ?>

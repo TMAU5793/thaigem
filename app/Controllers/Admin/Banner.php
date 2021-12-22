@@ -79,7 +79,8 @@ class Banner extends Controller
             $hd_banner_mobile = $post['hd_banner_mobile']; //เก็บไฟล์รูปเดิม เพื่อนำมาเช็คว่ามีการเปลี่ยนรูปใหม่หรือไม่
             $hd_banner_mobile_del = $post['hd_banner_mobile_del']; //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
             $data = [
-                'page' => $post['ddl_page']
+                'page' => $post['ddl_page'],
+                'link' => urldecode($post['txt_link'])
             ];
             if($post['hd_id']){
                 $model->update($post['hd_id'],$data);

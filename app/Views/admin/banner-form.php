@@ -32,6 +32,10 @@
                         <option value="webboard" <?= isset($info) && $info['page']=='webboard'?'selected' : '' ?>> หน้า Business Community </option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="txt_link">แบนเนอร์ลิงก์</label>
+                    <input type="text" name="txt_link"  class="form-control" value="<?= (isset($info)?$info['link']:set_value('txt_link')) ?>" placeholder="ตัวอย่างลิงก์ : https://example.com/event/post/vicenzaoro-january-2022">
+                </div>
                 <div class="row banner-item">
                     <div class="col-md-3">
                         <h6 class="mb-3 ff-bold">รูปแบนเนอร์ (Desktop)</h6>
