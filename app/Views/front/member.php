@@ -13,7 +13,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <div class="input-group">
-                                <input type="text" name="txt_keyword" class="form-control" placeholder="company name" value="<?= (isset($_GET['txt_keyword'])?$_GET['txt_keyword']:'') ?>">
+                                <input type="text" name="txt_keyword" class="form-control" placeholder="<?= lang('GlobalLang.company') ?>" value="<?= (isset($_GET['txt_keyword'])?$_GET['txt_keyword']:'') ?>">
                                 <div class="input-group-append btn-search-member cursor-pointer">
                                     <span class="input-group-text bg-darkgold c-white"><i class="fas fa-search"></i></span>
                                 </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_product_type" id="ddl_product_type" class="w-100">
-                                    <option value=""> --product type-- </option>
+                                    <option value=""> --<?= lang('GlobalLang.product-type') ?>-- </option>
                                     <?php
                                         if($category){
                                             foreach($category as $row){
@@ -41,7 +41,7 @@
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_business" id="ddl_business" class="w-100">
-                                    <option value=""> --business type-- </option>
+                                    <option value=""> --<?= lang('GlobalLang.business-type') ?>-- </option>
                                     <?php
                                         if($business){
                                             foreach($business as $row){
@@ -54,7 +54,7 @@
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_province" id="ddl_province" class="w-100">
-                                    <option value=""> --province-- </option>
+                                    <option value=""> --<?= lang('GlobalLang.province') ?>-- </option>
                                     <?php
                                         if($province){
                                             foreach($province as $row){
@@ -67,7 +67,7 @@
                         <div class="col-md-6 search-show d-none">
                             <div class="input-group">
                                 <select name="ddl_duration" id="ddl_duration" class="w-100">
-                                    <option value=""> --membership duration-- </option>
+                                    <option value=""> --<?= lang('GlobalLang.mb-duration') ?>-- </option>
                                     <option value="1" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='1'?'selected':'') ?>> <?= lang('GlobalLang.duration1') ?> </option>
                                     <option value="2" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='2'?'selected':'') ?>> <?= lang('GlobalLang.duration2') ?> </option>
                                     <option value="3" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='3'?'selected':'') ?>> <?= lang('GlobalLang.duration3') ?>  </option>

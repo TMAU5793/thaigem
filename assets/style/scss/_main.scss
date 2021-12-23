@@ -100,7 +100,7 @@
         background-color: $c-lightgold;
         .slick-dots {
             width: 50%;
-            bottom: 5rem;
+            bottom: 1.5rem;
             right: 0;
             li {
                 background-color: $c-white;
@@ -478,13 +478,20 @@
             }
         }
         select {
-            padding: .375rem .75rem;
+            padding: 6px .75rem;
             border-radius: .25rem;
             border: 1px solid #ced4da;
+        }
+        input {
+            padding: 4px .75rem 0;
         }
         .col-md-6 {
             margin-bottom: 1rem;
         }
+    }
+    .btn.btn-search-member,
+    .btn_advance {
+        padding: 2px .75rem 0;
     }
 }
 

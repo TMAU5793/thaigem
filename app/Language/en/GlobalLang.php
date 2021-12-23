@@ -116,6 +116,17 @@ return [
     'duration2' => '1 year - 2 years',
     'duration3' => '2 years - 4 years',
     'duration4' => 'more than 4 years',
-    'cookie' => 'This website uses cookies. By continuing to use this website, you consent to the use of cookies. Details please read'
-
+    'cookie' => 'This website uses cookies. By continuing to use this website, you consent to the use of cookies. Details please read',
+    'mb-duration' => 'Member Duration',
+    'related-post' => 'Related Post',
+    'publish' => 'Publish',
+    'bookingFail' => 'All rights reserved for members of the association. that has been certified successfully only',
+    'bookingSuccess' => 'The event booth reservation has been completed. We will contact you back as soon as possible',
+    'checkstatus' => 'Check status',
+    'bookedEvent' => 'You have already booked this event',
+    'bookedList' => 'List Booked',
+    'close' => 'Close',
+    'delSuccess' => 'Success, Remove your data',
+    'success' => 'The operation is complete',
+    'cancelText' => 'the transaction'
 ];

@@ -118,10 +118,13 @@
                                 <img src="<?= (is_file($event['thumbnail'])?site_url($event['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($lang=='en'?$event['name_en']:$event['name']) ?>">
                             </div>
                             <div class="col-md-6 position-relative">
-                                <div class="event-date text-end pt-3 pe-4"><span><?= substr($event['created_at'],0,10) ?></span></div>
+                                <div class="event-date text-end pt-3 pe-4">
+                                    <span><?= lang('GlobalLang.eventDate') ?> : </span>
+                                    <span><?= $event['start_event'] ?></span>
+                                </div>
                                 <div class="absolute-center text-center w-75">
-                                    <h2 class="ff-semibold fs-4"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>
-                                    <p><?= ($lang=='en'?character_limiter($event['shortdesc_en'],100):character_limiter($event['shortdesc'],100)) ?></p>
+                                    <h2 class="ff-semibold fs-4 text-line-3"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>
+                                    <p class="text-line-3 line-height-22px"><?= ($lang=='en'?character_limiter($event['shortdesc_en'],100):character_limiter($event['shortdesc'],100)) ?></p>
                                     <div class="btn-tg-group text-center">
                                         <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
                                         <?php

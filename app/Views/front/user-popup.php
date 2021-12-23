@@ -186,13 +186,13 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-lightgold border-0">
             <div class="modal-header pb-0">
-                <span class="ff-dbadmanBold text-center d-inline-block w-100"> <strong class="ff-dbadmanBold">ยืนยัน :</strong> การทำรายการ </span>
+                <span class="ff-dbadmanBold text-center d-inline-block w-100"> <strong class="ff-dbadmanBold"><?= lang('GlobalLang.comfirm') ?> :</strong> <?= lang('GlobalLang.cancelText') ?> </span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="p-4 text-center">
-                    <button class="btn btn-black-border" id="confirmEvent">ยืนยัน</button>
-                    <button type="button" class="btn btn-black-border" data-bs-dismiss="modal" aria-label="Close">ยกเลิก</button>
+                    <button class="btn btn-black-border" id="confirmEvent"><?= lang('GlobalLang.comfirm') ?></button>
+                    <button type="button" class="btn btn-black-border" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.cancel') ?></button>
                 </div>
             </div>
         </div>
@@ -204,13 +204,13 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-lightgold border-0">
             <div class="modal-header pb-0">
-                <span class="ff-dbadmanBold text-center d-inline-block w-100"> ท่านได้จองอีเว้นท์นี้ไปแล้ว </span>
+                <span class="ff-dbadmanBold text-center d-inline-block w-100"> <?= lang('GlobalLang.bookedEvent') ?> </span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="p-4 text-center">
-                    <a href="<?= site_url('account/event') ?>" class="btn btn-black-border w-25" id="confirmEvent">รายการจอง</a>
-                    <button type="button" class="btn btn-black-border w-25" data-bs-dismiss="modal" aria-label="Close">ปิด</button>
+                    <a href="<?= site_url('account/event') ?>" class="btn btn-black-border w-25" id="confirmEvent"><?= lang('GlobalLang.bookedList') ?></a>
+                    <button type="button" class="btn btn-black-border w-25" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></button>
                 </div>
             </div>
         </div>
@@ -228,10 +228,10 @@
             <div class="modal-body">
                 <div class="p-4 text-center">
                     <p class="c-black">
-                        สงวนสิทธิ์เฉพาะสมาชิกของสมาคมฯ ที่ได้รับการรับรองสถานะเรียบร้อยแล้วเท่านั้น
+                        <?= lang('GlobalLang.bookingFail') ?>
                     </p>
                     <?php if(session()->get('userdata')['user_type']=='dealer') { ?>
-                        <a href="<?= site_url('account') ?>" class="btn btn-black-border">ตรวจสอบสถานะสมาชิก</a>
+                        <a href="<?= site_url('account') ?>" class="btn btn-black-border"><?= lang('GlobalLang.checkstatus') ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -250,7 +250,7 @@
             <div class="modal-body">
                 <div class="p-4">
                     <p class="c-black">
-                        การจองบูธงานอีเว้นท์เรียบร้อยแล้ว ทางเราจะติดต่อกลับไปหาท่านโดยเร็วที่สุด
+                    <?= lang('GlobalLang.bookingSuccess') ?>
                     </p>
                 </div>
             </div>
@@ -267,11 +267,10 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <p>ระบบลบข้อมูลเรียบร้อยแล้ว</p>
-                    <p>Success, Remove your data</p>
+                    <p><?= lang('GlobalLang.delSuccess') ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
                 </div>
             </div>
         </div>
@@ -288,11 +287,10 @@
             <div class="modal-body">
                 <i class="fas fa-check-circle text-success fs-1 d-block text-center mb-3"></i>
                 <div class="text-center" id="modalSuccessMSG">                    
-                    <p>ระบบดำเนินการเรียบร้อยแล้ว</p>
-                    <p>The operation is complete.</p>
+                    <p><?= lang('GlobalLang.success') ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
                 </div>
             </div>
         </div>
@@ -308,11 +306,10 @@
             </div>
             <div class="modal-body">
                 <div class="text-center" id="reply_msg">
-                    <p>ระบบอัพเดตสถานะเรียบร้อยแล้ว</p>
-                    <p>Success, Update plubilc item.</p>
+                    <p><?= lang('GlobalLang.success') ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
                 </div>
             </div>
         </div>

@@ -10,13 +10,13 @@
                     <?php
                         if($info['type']=='dealer' && $info['status']==2){
                     ?>
-                        <div class="fs-3">ระบบบันทึกข้อมูลเรียบร้อยแล้ว</div>
+                        <div class="fs-3"><?= lang('accountLang.success') ?></div>
                     <?php }else{ ?>
-                        <div class="fs-3 line-h-34px">ระบบบันทึกข้อมูลเรียบร้อยแล้ว <br>กรุณาดาวน์โหลดใบสมัครที่เมนูดาวโหลด เพื่อทำการกรอกเอกสารดำเนินการขั้นต่อไป</div>
+                        <div class="fs-3 line-h-34px"><?= lang('accountLang.success') ?> <br><?= lang('accountLang.successText') ?></div>
                     <?php } ?>
                 </div>
                 <div class="text-center mb-3 mt-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
                 </div>
             </div>
         </div>
@@ -32,11 +32,10 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <p>ระบบลบข้อมูลเรียบร้อยแล้ว</p>
-                    <p>Success, Remove your data</p>
+                    <p><?= lang('accountLang.delSuccess') ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
                 </div>
             </div>
         </div>
@@ -55,16 +54,16 @@
                     <?php
                         $msg = '';
                         if(session('msg_upload')){
-                            $msg = 'ระบบบันทึกข้อมูลเรียบร้อยแล้ว <br>กรุณารอเจ้าหน้าที่ทำการตรวจสอบภายใน 30 วันหากเอกสารผ่านการพิจารณาท่านจะได้รับอีเมลแจ้งเตือน';
+                            $msg = lang('accountLang.msg_upload');
                         }
                         if(session('msg_invoice')){
-                            $msg = 'ระบบบันทึกข้อมูลเรียบร้อยแล้ว <br>กรุณารอเจ้าหน้าที่ดำเนินการตรวจสอบ หากบัญชีของคุณผ่านการอนุมัติท่านจะได้รับแจ้งทางอีเมล';
+                            $msg = lang('accountLang.msg_invoice');
                         }
                     ?>
                     <p><?= $msg ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
                 </div>
             </div>
         </div>
@@ -80,10 +79,10 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <p>กรุณาดาวโหลดใบสมัครงานแสดงสินค้า เพื่อทำการกรอกข้อมูล และแนบไฟล์กลับมาได้จากเมนู อัพโหลดไฟล์</p>
+                    <p><?= lang('accountLang.msg_booking'); ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-semibold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.close') ?></a>
                 </div>
             </div>
         </div>

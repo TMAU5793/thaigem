@@ -48,8 +48,6 @@
                                         </div>
                                         <div class="event-booking pt-4 pb-2 bg-lightgray">
                                             <div class="container">
-                                                <p>Lorem Ipsum is simply dummy text of the printingand typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printingand typesetting industry.</p>
-
                                                 <div class="text-center mb-3">
                                                     <a href="javascript:void(0)" class="btn btn-black-border booking_event" id="booking_event" data-event="<?= $event['id']; ?>"><?= lang('GlobalLang.bookevent') ?></a>
                                                 </div>

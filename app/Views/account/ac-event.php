@@ -31,11 +31,11 @@
                                                 <?php
                                                     if($booking['status']=='2'){
                                                 ?>
-                                                    <span>ดำเนินการสำเร็จแล้ว</span>
+                                                    <span><?= lang('accountLang.complete') ?></span>
                                                 <?php }else if($booking['status']=='1'){ ?>
-                                                    <span>รอดำเนินการ</span>
+                                                    <span><?= lang('accountLang.process') ?></span>
                                                 <?php }else{ ?>
-                                                    <span>ไม่อนุมัติ</span>
+                                                    <span><?= lang('accountLang.disapproved') ?></span>
                                                 <?php } ?>
                                             </div>
                                             <strong class="ff-semibold text-line-2"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></strong>

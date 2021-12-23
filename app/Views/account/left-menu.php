@@ -18,14 +18,14 @@
                 <?php
                     if($info['status']=='2'){
                 ?>
-                    <span>ดำเนินการสำเร็จแล้ว <i class="fas fa-circle"></i></span>
+                    <span><?= lang('accountLang.complete') ?> <i class="fas fa-circle"></i></span>
                 <?php }else if($info['status']=='1'){ ?>
-                    <span>รอดำเนินการ <i class="fas fa-circle text-warning"></i></span>
+                    <span><?= lang('accountLang.process') ?> <i class="fas fa-circle text-warning"></i></span>
                 <?php } ?>
             </div>
         </div>
        
-        <div class="col-6 text-uppercase text-end dealer-id">Membership ID : <?= ($info['dealer_code']!="" ? $info['dealer_code'] : $info['code']) ?></div>
+        <div class="col-6 text-uppercase text-end dealer-id"><?= lang('accountLang.mbshId') ?> : <?= ($info['dealer_code']!="" ? $info['dealer_code'] : $info['code']) ?></div>
     </div>
     <div class="border-b">
         <div class="row personal-info">
@@ -234,10 +234,10 @@
         <a href="<?= site_url('account/member/edit?u='.$edit_id) ?>" class="btn btn-black-border" id="edit_ac_info"><?= lang('accountLang.e-info') ?></a>
         <button type="botton" id="btn-member-more" class="btn btn-black-border show-767">
             <span class="more-info">
-                เพิ่มเติม <i class="fas fa-caret-down"></i>
+                <?= lang('accountLang.more') ?> <i class="fas fa-caret-down"></i>
             </span>
             <span class="more-info hide-767">
-                ซ่อน <i class="fas fa-caret-up"></i>
+                <?= lang('accountLang.hide') ?> <i class="fas fa-caret-up"></i>
             </span>
         </button>
     </div>

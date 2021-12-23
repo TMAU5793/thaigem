@@ -454,6 +454,29 @@
         .slick-1-item.mt-4 {
             margin-top: .5rem !important;
         }
+        .event-item {
+            .absolute-center {
+                position: static !important;
+                transform: none !important;
+                width: 100% !important;
+                padding-right: 1rem;
+                h2 {
+                    font-size: 1.25rem !important;
+                    line-height: 22px;
+                }
+            }
+            img {
+                padding: 15px 0 0 9px !important;
+            }
+            .event-date {
+                padding-top: .5rem !important;
+            }
+            .btn-tg-group {
+                a {
+                    padding: 4px .5rem 0;
+                }
+            }
+        }
     }
     .member-home {
         .member-list.mt-3 {
@@ -616,7 +639,7 @@
                 position: static;
                 transform: none;
                 width: 100% !important;
-                padding: 2rem;
+                padding: .5rem 2rem 1.5rem;
                 .btn-tg-group {
                     display: block !important;
                 }
@@ -659,6 +682,9 @@
     }
 } //end medi 767
 @include media-max(575px) {
+    .event-home .event-item .absolute-center {
+        padding: .5rem 1rem 1.5rem;
+    }
     .fz-1-2rem-575 {
         font-size: 1.2rem;
     }

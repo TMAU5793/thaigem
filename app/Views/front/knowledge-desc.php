@@ -18,14 +18,14 @@
             <div class="share-post text-end mt-4 mb-4">
                 <span class="ff-dbadmanBold share-social" data-url="<?= site_url('knowledge/post/'.($info['slug']!=""?$info['slug']:$info['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
             </div>
-            <div class="event-date mt-3 mb-3">เผยแพร่ : <?= substr($info['created_at'],0,10) ?></div>
+            <div class="event-date mt-3 mb-3"><?= lang('GlobalLang.publish') ?> : <?= substr($info['created_at'],0,10) ?></div>
         </div>
         
     </section>
 
     <section class="relate-list mb-5">
         <div class="container">
-            <div class="title"><h3>Related Post</h3></div>
+            <div class="title"><h3><?= lang('GlobalLang.related-post') ?></h3></div>
             <div class="row">
                 <?php
                     if($related){
