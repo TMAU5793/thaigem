@@ -15,12 +15,12 @@
                         }
                     ?>
                     <div class="content-body acform-body">
-                        <div class="content-title mb-3"><strong class="ff-semibold fs-3"><?= $title; ?></strong></div>
+                        <div class="content-title mb-3"><strong class="ff-semibold fs-3"><?= lang('accountLang.create_wb'); ?></strong></div>
                         <form action="<?= site_url('account/webboard/save') ?>" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="hd_id" value="<?= (isset($info)?$info['id']:'') ?>">
                             <div class="form-group mb-3">
                                 <select name="ddl_cate" id="ddl_cate" class="form-control">
-                                    <option value="">-- select category --</option>
+                                    <option value="">-- <?= lang('accountLang.sl-cate') ?> --</option>
                                     <?php
                                         if($cates){
                                             foreach($cates as $cate){
@@ -30,11 +30,11 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
-                                <input type="text" name="txt_topic" class="form-control" placeholder="Topic" value="<?= (isset($info)?$info['topic']:'') ?>">
+                                <input type="text" name="txt_topic" class="form-control" placeholder="<?= lang('accountLang.topic') ?>" value="<?= (isset($info)?$info['topic']:'') ?>">
                             </div>
 
                             <div class="form-group mb-3">
-                                <textarea name="txt_desc" id="txt_desc" class="form-control" placeholder="Webboard detail"><?= (isset($info)?$info['desc']:'') ?></textarea>
+                                <textarea name="txt_desc" id="txt_desc" class="form-control" placeholder="<?= lang('accountLang.wb-detail') ?>"><?= (isset($info)?$info['desc']:'') ?></textarea>
                             </div>
                             <button type="submit" class="btn btn-black-border"><?= lang('accountLang.comfirm') ?></button>
                             <a href="<?= site_url('account/webboard') ?>" class="ff-semibold text-danger ms-5"><?= lang('accountLang.cancel') ?></a>

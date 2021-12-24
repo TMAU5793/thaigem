@@ -19,5 +19,13 @@ return [
     'delSuccess' => 'Success, Remove your data',
     'msg_upload' => 'The operation is complete <br>Please wait for the staff to check within 30 days. If the documents are considered, you will receive an email notification.',
     'msg_invoice' => 'The operation is complete <br>Please wait for the staff to check. If your account is approved you will be notified by email.',
-    'msg_booking' => 'Please download the trade show application form. to fill out and attach files back from the File Upload menu'
+    'msg_booking' => 'Please download the trade show application form. to fill out and attach files back from the File Upload menu',
+    'sl-cate' => 'Select Category',
+    'create_wb' => 'Create Webboard',
+    'topic' => 'Topic',
+    'wb-detail' => 'Webboard detail',
+    'my-wb' => 'My Webboard',
+    'employee' => 'Number of employees',
+    'person' => 'person',
+    'peopleUp' => 'People Up'
 ];

@@ -424,6 +424,18 @@
             }
         }
     }
+    .webboard-item {
+        .col-lg-5 {
+            padding-left: 0;
+        }
+        .forum-body {
+            .row {
+                border-bottom: 1px solid $c-darkgold;
+                margin: 0;
+                padding: 1rem 0;
+            }
+        }
+    }
 }
 
 .ck-editor {

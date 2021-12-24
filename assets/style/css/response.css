@@ -37,6 +37,13 @@
   .invoice-body .content-title.mt-5 {
     margin-top: 1rem !important; } }
 @media (max-width: 767px) {
+  .webboard-item .action-group a {
+    margin: auto !important;
+    width: 100%;
+    display: block; }
+    .webboard-item .action-group a .far.fa-edit {
+      padding-left: 4px; }
+
   .account-logged .account-menu {
     margin-left: -7px; }
     .account-logged .account-menu .ac-ul-menu ul li:last-child {
@@ -128,7 +135,13 @@
     padding-top: 6px; }
 
   .files-form .col-img {
-    padding: .5rem; } }
+    padding: .5rem; }
+
+  .webboard-body .webboard-item .col-12 {
+    padding: 0; }
+  .webboard-body .webboard-item .forum-body .row.wbd-action {
+    border: none;
+    padding-bottom: 0; } }
 @media (max-width: 1399px) {
   .singup-home .head-sect span,
   .singup-home .head-sect strong {
@@ -665,6 +678,9 @@
     margin: 0 1rem; }
     .community-content .list-forum .row {
       margin: 0; }
+    .community-content .forum-body .row.wbd-action {
+      border: none;
+      padding: 0; }
 
   .social-item a {
     width: 100%; }

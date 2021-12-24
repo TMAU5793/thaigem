@@ -68,4 +68,51 @@ class MemberModel extends Model
         $builder->orderBy('a.status DESC');
         return $builder->get()->getResultArray();
 	}
+
+	public function searchMember($data,$perPage=null,$offset=null)
+	{
+		$db      = db_connect();
+        $builder = $db->table('tbl_member AS a');
+        $builder->select('*,a.status as approve');
+        $builder->join('tbl_address AS b','b.member_id=a.id');
+		$builder->join('tbl_member_business AS c','c.member_id=a.id');
+		$builder->where(['a.type'=>'dealer','a.status'=>'2']);
+		
+		if($data['province']!=''){
+            $builder->where('b.province_id',$data['province']);
+        }
+		if($data['duration']!=''){
+			if($data['duration']!='10up'){
+				$duration = explode('-',$data['duration']);
+				$start = $duration['0'];
+				$end = $duration['1'];
+				if($start=='1'){
+					$start = '0';
+				}
+				
+				$builder->where('member_start >= DATE_SUB(NOW(),INTERVAL '.$end.' YEAR)');
+				$builder->where('member_start < DATE_SUB(NOW(),INTERVAL '.$start.' YEAR)');
+			}else{
+				$builder->where('member_start < DATE_SUB(NOW(),INTERVAL 10 YEAR)');
+			}
+        }
+		if($data['employee']!=''){
+            $builder->where('a.employee',$data['employee']);
+        }
+        if($data['keyword']!=''){
+            $builder->like('a.company',$data['keyword']);
+        }
+        if($data['product']!=''){
+            $builder->like('c.product',$data['product']);
+        }
+		if($data['business']!=''){
+            $builder->like('c.business',$data['business']);
+        }		
+		if($perPage!=null){
+			$builder->limit($perPage, $offset);
+		}
+        $builder->orderBy('a.updated_at DESC');
+        return $builder->get()->getResultArray();
+		//return $builder->where('DATEDIFF(member_start,"'.$now.'")');		
+	}
 }

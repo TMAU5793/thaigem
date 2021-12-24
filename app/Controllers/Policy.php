@@ -33,11 +33,10 @@ class Policy extends BaseController
         return view('template/policy',$data);
 	}
 
-    public function cookie()
+    public function cookiePopup()
     {
-        $cookie_name = "policy";
-        $cookie_value = "popup";
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+        helper('cookie');
+        set_cookie('ckpopup','policy','3600');
         return TRUE;
     }
 }

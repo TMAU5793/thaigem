@@ -12,12 +12,13 @@
     </div>
 </div>
 
-<?php    
-    if(!$_COOKIE['policy']) {
+<?php
+    helper('cookie');
+    if(!get_cookie('ckpopup')) {
 ?>
     <div class="cookie-policy">
         <span class="d-block"><?= lang('GlobalLang.cookie') ?> <a href="<?= site_url('policy') ?>"><?= lang('GlobalLang.policy') ?></a></span>
-        <button class="btn btn-black mt-3 fs-5" id="btn-cookie" onClick="setCookie()"><?= lang('GlobalLang.comfirm') ?></button>
+        <button class="btn btn-black mt-3 fs-5" id="btn-cookie" onclick="setCookie()"><?= lang('GlobalLang.comfirm') ?></button>
     </div>
 <?php } ?>
 <!-- Loading event -->

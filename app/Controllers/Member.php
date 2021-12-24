@@ -133,30 +133,35 @@ class Member extends BaseController
         $get = $request->getGet();
 
         if($get){
-            $keyword = $get['txt_keyword'];
-            $product = $get['ddl_product_type'];
-            $business = $get['ddl_business'];
-            $province = $get['ddl_province'];
-            $duration = $get['ddl_duration'];
-            
-            $pager = '';
-            if($keyword=="" && $product!="" || $business!="" || $province!=""){
-                $result = $mbModel->join('tbl_member_business', 'tbl_member_business.member_id = tbl_member.id')
-                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
-                            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])
-                            ->like('tbl_member.company',$keyword)
-                            ->like('tbl_address.province_id',$province)
-                            ->like('tbl_member_business.product',$product)
-                            ->paginate(20);
-                $pager = $mbModel->pager;
-                $avd = TRUE;
+            $pager = \Config\Services::pager();
 
-            }else if($keyword!="" && $product=="" && $business=="" && $province==""){
-                $result = $mbModel->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
-                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->like('tbl_member.company',$keyword)->orderBy('tbl_member.created_at DESC')->paginate(20);
-                $pager = $mbModel->pager;
-            }else{
+            $search_arr = [
+                'keyword' => $get['txt_keyword'],
+                'product' => $get['ddl_product_type'],
+                'business' => $get['ddl_business'],
+                'province' => $get['ddl_province'],
+                'duration' => $get['ddl_duration'],
+                'employee' => $get['ddl_employee']
+            ];
+            if($search_arr['keyword'] == '' && $search_arr['product'] == '' && $search_arr['business'] == '' && $search_arr['province'] == '' && $search_arr['duration'] == '' && $search_arr['employee'] == ''){
                 return redirect()->to('member');
+            }else if ($search_arr['keyword'] != '' && $search_arr['product'] == '' && $search_arr['business'] == '' && $search_arr['province'] == '' && $search_arr['duration'] == '' && $search_arr['employee'] == ''){
+                $info = $mbModel->searchMember($search_arr);
+                $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
+                $perPage =  20;
+                $total = count($info);
+                $pager->makeLinks($page+1, $perPage, $total);
+                $offset = $page * $perPage;
+                $result = $mbModel->searchMember($search_arr,$perPage,$offset);
+            }else{
+                $info = $mbModel->searchMember($search_arr);
+                $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
+                $perPage =  20;
+                $total = count($info);
+                $pager->makeLinks($page+1, $perPage, $total);
+                $offset = $page * $perPage;
+                $result = $mbModel->searchMember($search_arr,$perPage,$offset);
+                $avd = TRUE;
             }
             
             $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
@@ -182,8 +187,8 @@ class Member extends BaseController
                 'userdata' => $this->userdata
             ];
             // print_r('<pre>');
-            // print_r($result);
-            // print_r('</pre>');
+            //print_r($result);
+            // print_r('</pre>');            
             echo view('front/member', $data);
         }else{
             return redirect()->to('member');

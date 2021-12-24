@@ -67,6 +67,18 @@ $ff-dbadman: 'DBAdmanX';
 }
 
 @include media-max(767px) {
+    .webboard-item {
+        .action-group {
+            a {
+                margin: auto !important;
+                width: 100%;
+                display: block;
+                .far.fa-edit {
+                    padding-left: 4px;
+                }
+            }
+        }
+    }
     .account-logged .account-menu {
         margin-left: -7px;
         .ac-ul-menu ul li:last-child {
@@ -190,5 +202,16 @@ $ff-dbadman: 'DBAdmanX';
     }
     .files-form .col-img {
         padding: .5rem;
+    }
+    .webboard-body {
+        .webboard-item {
+            .col-12 {
+                padding: 0;
+            }
+            .forum-body .row.wbd-action {
+                border: none;
+                padding-bottom: 0;
+            }
+        }
     }
 }

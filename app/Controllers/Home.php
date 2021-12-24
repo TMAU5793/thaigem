@@ -30,7 +30,7 @@ class Home extends BaseController
 
 	public function index()
 	{                
-        helper('text');
+        helper(['text','cookie']);
         $ctModel = new ProductCategoryModel();
         $evModel = new EventModel();
         $mbModel = new MemberModel();
@@ -64,7 +64,7 @@ class Home extends BaseController
             'userdata' => $this->userdata,
             'banner' => $banner->where('page','home')->first()
         ];
-        
+                
         // print_r('<pre>');
         // print_r($data['dealers']);
         // print_r('</pre>');

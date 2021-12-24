@@ -59,6 +59,10 @@
                                             <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.membersince') ?> : </strong>
                                             <span><?= ($info['member_start']==''?'-':$info['member_start']); ?></span>
                                         </div>
+                                        <div class="employee">
+                                            <strong class="ff-dbadmanBold pe-3"><?= lang('accountLang.employee') ?> : </strong>
+                                            <span><?= ($info['employee']==''?'-':$info['employee']); ?> <?= ($info['employee']=='1000'?lang('accountLang.peopleUp') : lang('accountLang.person')) ?></span>
+                                        </div>
                                     </div>           
                                 </div>
                             </div>

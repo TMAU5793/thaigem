@@ -22,7 +22,7 @@
                                             <?= ($lang=='en' && $row['name_en']!=""?$row['name_en']:$row['name']) ?>
                                         </a>
                                     </h2>
-                                    <p class="text-line-3 text-line-3"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
+                                    <p class="text-line-3 line-height-22px"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
                                     
                                 </div>
                                 <div class="event-action mt-2">

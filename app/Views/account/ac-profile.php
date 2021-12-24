@@ -110,6 +110,23 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for=""><?= lang('accountLang.employee') ?> <span class="text-danger">*</span></label>
+                                    <!-- <input type="text" class="form-control" name="txt_employee" value="<?= (isset($info)?$info['employee'] : set_value('txt_employee')) ?>"> -->
+                                    <select name="ddl_employee" id="ddl_employee" class="form-control">
+                                        <option value="">-- <?= lang('accountLang.employee') ?> --</option>
+                                        <option value="1-10" <?= (isset($info) && $info['employee']=='1-10'?'selected' : '') ?>>1 - 10 <?= lang('accountLang.person') ?></option>
+                                        <option value="11-30" <?= (isset($info) && $info['employee']=='11-30'?'selected' : '') ?>>11 - 30 <?= lang('accountLang.person') ?></option>
+                                        <option value="31-50" <?= (isset($info) && $info['employee']=='31-50'?'selected' : '') ?>>31 - 50 <?= lang('accountLang.person') ?></option>
+                                        <option value="51-100" <?= (isset($info) && $info['employee']=='51-100'?'selected' : '') ?>>51 - 100 <?= lang('accountLang.person') ?></option>
+                                        <option value="101-500" <?= (isset($info) && $info['employee']=='101-500'?'selected' : '') ?>>101 - 500 <?= lang('accountLang.person') ?></option>
+                                        <option value="501-1000" <?= (isset($info) && $info['employee']=='501-1000'?'selected' : '') ?>>501 - 1000 <?= lang('accountLang.person') ?></option>
+                                        <option value="1000" <?= (isset($info) && $info['employee']=='1000'?'selected' : '') ?>>1000 <?= lang('accountLang.peopleUp') ?></option>
+                                    </select>
+                                    <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_employee')?'* '.$validation->getError('txt_employee'):'') ?></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.companyPhone') ?> <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="txt_companyphone" value="<?= (isset($info)?$info['company_phone'] : set_value('txt_companyphone')) ?>">
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_companyphone')?'* '.$validation->getError('txt_companyphone'):'') ?></small>

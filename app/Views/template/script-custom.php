@@ -223,13 +223,11 @@ use Google\Service\Adsense\Site;
         $('#'+form).submit();
     }
 
-    function setCookie(){        
-        var now = new Date();
-        now.setTime(now.getTime() + 1 * 3600 * 1000);
-        cookievalue = "policy"
-
-        document.cookie="name=" + cookievalue;
-        document.cookie = "expires=" + now.toUTCString() + ";"
-        $('.cookie-policy').remove();
+    function setCookie(){
+        $.post('<?= site_url('policy/cookiePopup') ?>', {},
+            function (resp) {
+                $('.cookie-policy').remove();
+            }
+        );
     }
 </script>

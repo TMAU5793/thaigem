@@ -269,6 +269,9 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .mt-minus-5px {
   margin-top: -5px; }
 
+.btn-padding {
+  padding: 2px 1rem 0; }
+
 .navbar {
   border-top: 2px solid #c1c1c1;
   border-bottom: 2px solid #c1c1c1;
@@ -748,6 +751,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   min-height: 150px; }
 .webboard-body .head-sect .btn-create a {
   padding: 1px 1rem 0; }
+.webboard-body .webboard-item .col-lg-5 {
+  padding-left: 0; }
+.webboard-body .webboard-item .forum-body .row {
+  border-bottom: 1px solid #665f4f;
+  margin: 0;
+  padding: 1rem 0; }
 
 .ck-editor .ck-content {
   min-height: 250px; }
@@ -1224,7 +1233,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   padding-top: 1.5rem; }
 
 .event-text h2 {
-  line-height: 33px; }
+  line-height: 26px; }
   .event-text h2:hover {
     box-shadow: 0px 1px 0px 0px #665f4f; }
   .event-text h2 a {
@@ -1375,6 +1384,10 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .price-update iframe {
   height: 400px !important;
   width: 100% !important; }
+
+.form-reply-webboard .btn-darkgold {
+  padding: 2px 1.5rem 0;
+  line-height: 30px; }
 
 .btn-search-webboard {
   cursor: pointer; }

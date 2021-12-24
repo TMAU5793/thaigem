@@ -270,7 +270,7 @@
                     <p><?= lang('GlobalLang.delSuccess') ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
                 </div>
             </div>
         </div>
@@ -290,7 +290,7 @@
                     <p><?= lang('GlobalLang.success') ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
                 </div>
             </div>
         </div>
@@ -309,7 +309,7 @@
                     <p><?= lang('GlobalLang.success') ?></p>
                 </div>
                 <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase fs-7" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
+                    <a href="javascript:void(0)" class="btn bg-lightgold ff-dbadmanBold text-uppercase btn-padding" data-bs-dismiss="modal" aria-label="Close"><?= lang('GlobalLang.close') ?></a>
                 </div>
             </div>
         </div>

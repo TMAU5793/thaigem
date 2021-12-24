@@ -50,7 +50,7 @@
                                             <?= ($lang=='en' && $row['title_en']!=""?$row['title_en']:$row['title']) ?>
                                         </a>
                                     </h2>
-                                    <p class="text-line-3"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>                                    
+                                    <p class="text-line-3 line-height-22px"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>                                    
                                 </div>
                                 <div class="event-action mt-2">
                                     <div class="event-date"><small><?= lang('GlobalLang.date').' : '.substr($row['created_at'],0,10) ?></small></div>

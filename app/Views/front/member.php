@@ -68,10 +68,25 @@
                             <div class="input-group">
                                 <select name="ddl_duration" id="ddl_duration" class="w-100">
                                     <option value=""> --<?= lang('GlobalLang.mb-duration') ?>-- </option>
-                                    <option value="1" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='1'?'selected':'') ?>> <?= lang('GlobalLang.duration1') ?> </option>
-                                    <option value="2" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='2'?'selected':'') ?>> <?= lang('GlobalLang.duration2') ?> </option>
-                                    <option value="3" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='3'?'selected':'') ?>> <?= lang('GlobalLang.duration3') ?>  </option>
-                                    <option value="4" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='4'?'selected':'') ?>> <?= lang('GlobalLang.duration4') ?>  </option>
+                                    <option value="1-3" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='1-3'?'selected':'') ?>> 1-3 <?= lang('GlobalLang.year') ?> </option>
+                                    <option value="3-5" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='3-5'?'selected':'') ?>> 3-5 <?= lang('GlobalLang.year') ?> </option>
+                                    <option value="5-10" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='5-10'?'selected':'') ?>> 5-10 <?= lang('GlobalLang.year') ?>  </option>
+                                    <option value="10up" <?= (isset($_GET['ddl_duration'])&&$_GET['ddl_duration']=='10up'?'selected':'') ?>> 10 <?= lang('GlobalLang.yearUp') ?>  </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 search-show d-none">
+                            <div class="input-group">
+                                <select name="ddl_employee" id="ddl_employee" class="w-100">
+                                    <option value="">-- <?= lang('accountLang.employee') ?> --</option>
+                                    <option value="1-10" <?= (isset($_GET['ddl_employee'])&&$_GET['ddl_employee']=='1-10'?'selected' : '') ?>>1 - 10 <?= lang('accountLang.person') ?></option>
+                                    <option value="11-30" <?= (isset($_GET['ddl_employee'])&&$_GET['ddl_employee']=='11-30'?'selected' : '') ?>>11 - 30 <?= lang('accountLang.person') ?></option>
+                                    <option value="31-50" <?= (isset($_GET['ddl_employee'])&&$_GET['ddl_employee']=='31-50'?'selected' : '') ?>>31 - 50 <?= lang('accountLang.person') ?></option>
+                                    <option value="51-100" <?= (isset($_GET['ddl_employee'])&&$_GET['ddl_employee']=='51-100'?'selected' : '') ?>>51 - 100 <?= lang('accountLang.person') ?></option>
+                                    <option value="101-500" <?= (isset($_GET['ddl_employee'])&&$_GET['ddl_employee']=='101-500'?'selected' : '') ?>>101 - 500 <?= lang('accountLang.person') ?></option>
+                                    <option value="501-1000" <?= (isset($_GET['ddl_employee'])&&$_GET['ddl_employee']=='501-1000'?'selected' : '') ?>>501 - 1000 <?= lang('accountLang.person') ?></option>
+                                    <option value="1000" <?= (isset($_GET['ddl_employee'])&&$_GET['ddl_employee']=='1000'?'selected' : '') ?>>1000 <?= lang('accountLang.peopleUp') ?></option>
                                 </select>
                             </div>
                         </div>
@@ -130,6 +145,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="w-50 position-relative">
+                            <?= $rowp['DateDiff']; ?>
                             <div class="w-100 ps-3 text-center">
                                 <h5 class="ff-dbadmanBold text-uppercase mb-0 line-height-18px mb-2 fz-1-2rem-575"><?= $row['company'] ?></h5>
                                 <div class="cate-type mb-2">
@@ -184,7 +200,10 @@
                 <?php } ?>
             </div>
 
-            <?php if(isset($pager)) { ?>
+            <?php
+                $pager = \Config\Services::pager();
+                if(isset($pager)) {
+            ?>
                 <nav class="navigation-center mt-5 border-none">
                     <?= $pager->links(); ?>
                 </nav>

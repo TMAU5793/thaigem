@@ -128,5 +128,7 @@ return [
     'close' => 'Close',
     'delSuccess' => 'Success, Remove your data',
     'success' => 'The operation is complete',
-    'cancelText' => 'the transaction'
+    'cancelText' => 'the transaction',
+    'year' => 'Year',
+    'yearUp' => 'Year Up'
 ];
