@@ -62,7 +62,7 @@
 
     <section class="dimon-price mt-5 mb-5">
         <div class="container">
-            <h3 class="ff-semibold mb-3">Diamon price</h3>
+            <h3 class="ff-semibold mb-3">Diamond price</h3>
             <h4>Rounds Shapes</h4>
             <div class="row mb-4">
                 <?php for($i=3;$i<6;$i++){ ?>

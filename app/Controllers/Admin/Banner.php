@@ -24,13 +24,14 @@ class Banner extends Controller
         $model = new BannerModel();
 		$data = [
             'meta_title' => 'ระบบจัดการข้อมูลแบนเนอร์',
-            'info' => $model->findAll()
+            'info' => $model->orderBy('page DESC')->findAll()
         ];
 		echo view('admin/banner',$data);
     }
 
     public function form()
     {
+        helper('form');
         if(!$this->logged['logged_admin']){
             return redirect()->to('admin');
         }

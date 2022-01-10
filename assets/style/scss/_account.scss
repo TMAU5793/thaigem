@@ -554,6 +554,25 @@
             border-radius: 3px;
         }
     }
+    nav {
+        border-bottom: 5px solid $c-lightgold;
+    }
+    .nav-tabs {
+        .nav-link {
+            width: 50%;
+            border: 1px solid #dee2e6;
+            padding: 4px 0;
+            border-radius: 0;
+            color: $c-darkgold;
+            font-size: 1.25rem;
+        }
+        .nav-link.active {
+            border-color: #dee2e6;
+            background-color: $c-darkgold;
+            border: 1px solid $c-darkgold;
+            color: $c-white;
+        }
+    }
 }
 
 .files-form,

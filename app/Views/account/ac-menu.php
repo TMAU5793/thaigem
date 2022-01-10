@@ -14,7 +14,8 @@
     }
     
 ?>
-<div class="account-menu ptb-1rem navbar-light">
+<div class="show-575 ff-dbadmanBold fs-3 ac-menu-mobile mb-3"><?= lang('accountLang.menu') ?><i class="fas fa-caret-down ms-2"></i></div>
+<div class="account-menu ptb-1rem navbar-light hide-575">
     <ul class="navbar-nav fs-5 justify-content-center">
         <?php if($status['type']=='dealer'){ ?>
             <li class="nav-item">            

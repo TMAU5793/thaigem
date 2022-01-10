@@ -219,6 +219,9 @@
     }
 } //end medi 1199
 @include media-max(991px) {
+    .banner-home .slick-dots {
+        bottom: 1.5rem;
+    }
     .knowledge-desc,
     .yt-iframe {
         iframe {

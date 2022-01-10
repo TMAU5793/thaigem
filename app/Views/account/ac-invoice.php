@@ -19,7 +19,8 @@
                         <?php 
                             if($invoices) {
                         ?>
-                            <div class="col-img mb-3">                                
+                            <img src="<?= site_url('assets/images/account/infographic/invoice.jpg') ?>" alt="">
+                            <!-- <div class="col-img mb-3">                                
                                 <div class="row">
                                     <div class="col-md-4 col-6">
                                         <div class="col-icon text-center">
@@ -66,7 +67,7 @@
                                 <li>หลังจากผ่านการพิจารณา กรุณาทำการดาวโหลดใบแจ้งหนี้เพื่อทำการชำระเงินค่าสมาชิกได้ที่เมนู ใบแจ้งชำระเงิน</li>
                                 <li>รอเจ้าหน้าที่ทำการตรวจสอบ หากผ่านการอนุมัติ ท่านจะได้รับแจ้งเตือนทางอีเมล </li>
                                 <li>เมื่อผ่านการอนุมัติท่านสามารถเข้าสู่ระบบเพื่อตรวจสอบสถานะของท่านได้จากเมนูบัญชีของฉัน</li>
-                            </ul>
+                            </ul> -->
                         <?php } ?>
                         <div class="invoice-section mt-4">
                             <form id="frm-file-download" action="<?= site_url('account/invoice/download'); ?>" method="POST">

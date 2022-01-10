@@ -336,7 +336,7 @@
                 width: 20px;
             }
             &:hover {
-                font-family: $ff-semibold;
+                font-family: $ff-dbadmanBold;
             }
         }
     }
@@ -861,5 +861,11 @@
     color: #fff;
     a {
         color: #fff;
+    }
+}
+
+.banner-home {
+    .slick-dots {
+        bottom: 2.5rem;
     }
 }

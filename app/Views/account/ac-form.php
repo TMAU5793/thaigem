@@ -16,12 +16,13 @@
                     ?>
                     <div class="content-body">
                         <div class="content-title text-center mb-3 mt-5">
-                            <strong class="ff-dbadmanBold fs-2"><?= lang('MenuLang.downloadUploadForm'); ?></strong>
+                            <strong class="ff-dbadmanBold fs-2"><?= $subject; ?></strong>
                         </div>
                         <?php
                             if(isset($formmember)){
                         ?>
-                            <div class="col-img mb-3">                                
+                            <img src="<?= site_url('assets/images/account/infographic/'.($member['status']=='2' && $member['type']=='dealer'?'info-dashboard.jpg':'member.jpg')) ?>" alt="">
+                            <!-- <div class="col-img mb-3">                                
                                 <div class="row">
                                     <div class="col-md-4 col-6">
                                         <div class="col-icon text-center">
@@ -68,13 +69,14 @@
                                 <li>หลังจากผ่านการพิจารณา กรุณาทำการดาวโหลดใบแจ้งหนี้เพื่อทำการชำระเงินค่าสมาชิกได้ที่เมนู ใบแจ้งชำระเงิน</li>
                                 <li>รอเจ้าหน้าที่ทำการตรวจสอบ หากผ่านการอนุมัติ ท่านจะได้รับแจ้งเตือนทางอีเมล</li>
                                 <li>เมื่อผ่านการอนุมัติท่านสามารถเข้าสู่ระบบเพื่อตรวจสอบสถานะของท่านได้จากเมนูบัญชีของฉัน</li>
-                            </ul>
+                            </ul> -->
                         <?php } ?>
 
                         <?php
                             if(isset($formevent)){
                         ?>
-                            <div class="col-img text-center mb-3">
+                            <img src="<?= site_url('assets/images/account/infographic/'.($member['status']=='2' && $member['type']=='dealer'?'info-dashboard.jpg':'event.jpg')) ?>" alt="">
+                            <!-- <div class="col-img text-center mb-3">
                                 <div class="row">
                                     <div class="col-md-3 col-6">
                                         <div class="col-icon text-center">
@@ -135,7 +137,7 @@
                                 <li>กรุณาดาวโหลด ไฟล์กรอกรายละเอียดเพื่อทำบัตร Exhibitor (1 บูธ/4 คน, 2 บูธ/6 คน) (รายละเอียดตามแบบฟอร์มแนบ Form Badges)</li>
                                 <li>กรอกรายละเอียดร้านเพื่อทำ Directory ของแต่ละ Event (รายละเอียดตามแบบฟอร์มแนบ Form1.Show_Directory_Entry )</li>
                                 <li>หากการจองบูธผ่านการอนุมัติ ท่านสามารถเช็คสถานะได้จากเมนู การจองของฉัน</li>
-                            </ul>
+                            </ul> -->
                         <?php } ?>
 
                         <div class="acform-section mt-4">

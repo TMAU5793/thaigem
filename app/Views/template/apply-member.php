@@ -10,7 +10,8 @@
         <div class="container">
             <!-- <div class="title text-center pt-5"><h1 class="fs-3 ff-semibold"><?= $meta_title ?></h1></div> -->
             <div class="content-body apply-member mt-3">
-                <div class="p-4">
+                <img src="<?= site_url('assets/images/account/infographic/'.($lang=='en'?'member-eng.jpg':'member-th.jpg')) ?>" alt="">
+                <!-- <div class="p-4">
                     <div class="row">
                         <div class="col-12">
                             <div class="col-img">
@@ -103,7 +104,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

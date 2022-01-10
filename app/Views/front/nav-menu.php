@@ -36,7 +36,7 @@
             ?>
                 <a href="javascript:void(0)" class="cs-pointer user-login-name text-uppercase login-text">
                     <i class="far fa-user-circle"></i> 
-                    <?= ($member['status']=='2' && $member['company']!='' ? $member['company'] : $member['name'].' '.$member['lastname']); ?>
+                    <?= ($member['company']!='' ? $member['company'] : $member['name'].' '.$member['lastname']); ?>
                 </a>
                 <div class="user-login me-3 position-relative">
                     <div class="user-menu-login d-none">
@@ -158,9 +158,8 @@
                         <?= lang('MenuLang.navAboutus'); ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navAbout">
-                        <!-- <li><a class="dropdown-item" href="<?= site_url('about'); ?>"><?= lang('MenuLang.navAboutus'); ?></a></li> -->
                         <li><a class="dropdown-item" href="<?= site_url('about/history'); ?>"><?= lang('MenuLang.history'); ?></a></li>
-                        <li><a class="dropdown-item" href="<?= site_url('about/regulation'); ?>"><?= lang('MenuLang.regulation'); ?></a></li>
+                        <!-- <li><a class="dropdown-item" href="<?= site_url('about/regulation'); ?>"><?= lang('MenuLang.regulation'); ?></a></li> -->
                         <li><a class="dropdown-item" href="<?= site_url('about/advisory'); ?>"><?= lang('MenuLang.advisory'); ?></a></li>
                         <li><a class="dropdown-item" href="<?= site_url('about/directors'); ?>"><?= lang('MenuLang.directors'); ?></a></li>
                         <li><a class="dropdown-item" href="<?= site_url('about/policy'); ?>"><?= lang('MenuLang.policy'); ?></a></li>

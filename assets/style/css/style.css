@@ -846,6 +846,20 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     bottom: .5rem;
     padding: 0 .5rem;
     border-radius: 3px; }
+.profile-form nav {
+  border-bottom: 5px solid #cec6b2; }
+.profile-form .nav-tabs .nav-link {
+  width: 50%;
+  border: 1px solid #dee2e6;
+  padding: 4px 0;
+  border-radius: 0;
+  color: #665f4f;
+  font-size: 1.25rem; }
+.profile-form .nav-tabs .nav-link.active {
+  border-color: #dee2e6;
+  background-color: #665f4f;
+  border: 1px solid #665f4f;
+  color: #ffffff; }
 
 .files-form .col-icon,
 .invoice-body .col-icon {
@@ -1155,7 +1169,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       margin-right: .5rem;
       width: 20px; }
     .contact-home .social-contact a:hover {
-      font-family: "Montserrat-SemiBold"; }
+      font-family: "DBAdmanXBold"; }
   .contact-home .follow-us strong,
   .contact-home .follow-us a {
     margin-right: 1rem;
@@ -1495,5 +1509,8 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   color: #fff; }
   .cookie-policy a {
     color: #fff; }
+
+.banner-home .slick-dots {
+  bottom: 2.5rem; }
 
 /*# sourceMappingURL=style.css.map */

@@ -33,6 +33,7 @@ class Accountform extends Controller
             'formFiles' => $model->where(['filefor'=>'dealer','member_id'=>null,'status'=>'on'])->findAll(),
             'fileFor' => 'dealer',
             'member' => $member,
+            'subject' => lang('MenuLang.downloadUploadForm'),
             'formmember' => TRUE
         ];
         echo view('account/ac-form',$data);
@@ -45,11 +46,14 @@ class Accountform extends Controller
         }
 
         $model = new FilesModel();
+        $acModel = new AccountModel();
         $data = [
             'ac_form' => TRUE,
             'meta_title' => 'Download Form Event',
             'formFiles' => $model->where(['filefor'=>'event','member_id'=>null,'status'=>'on'])->findAll(),
             'fileFor' => 'event',
+            'member' => $acModel->where('id',$this->member_id)->first(),
+            'subject' => lang('MenuLang.downloadFormEvent'),
             'formevent' => TRUE
         ];
         echo view('account/ac-form',$data);

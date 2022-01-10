@@ -1,9 +1,28 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
-    <section class="banner-home <?= (isset($banner)? 'cursor-pointer' : '') ?>" onClick="location.href='<?= (isset($banner)?$banner['link'] : '') ?>'" title="<?= (isset($banner)?$banner['link'] : '') ?>">
-        <img src="<?= (is_file($banner['banner'])?site_url($banner['banner']):site_url('assets/images/img-default.jpg')) ?>" class="hide-575" alt="thai gem">
-        <img src="<?= (is_file($banner['banner_mobile'])?site_url($banner['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" class="show-575" alt="thai gem">
+    <section class="banner-home">
+        <div class="slick-1-item slick-dots-2 hide-575">
+            <?php
+                if($banner){
+                    foreach($banner as $row) { 
+            ?>
+                <div class="banner-slide <?= ($row['link']!=''? 'cursor-pointer' : '') ?>" onClick="location.href='<?= ($row['link']!=''?$row['link'] : '') ?>'" title="<?= ($row['link']!=''?$row['link'] : '') ?>">
+                    <img src="<?= (is_file($row['banner'])?site_url($row['banner']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                </div>
+            <?php } } ?>
+        </div>
+
+        <div class="slick-1-item slick-dots-2 show-575">
+            <?php
+                if($banner){
+                    foreach($banner as $row) { 
+            ?>
+                <div class="banner-slide <?= ($row['link']!=''? 'cursor-pointer' : '') ?>" onClick="location.href='<?= ($row['link']!=''?$row['link'] : '') ?>'" title="<?= ($row['link']!=''?$row['link'] : '') ?>">
+                    <img src="<?= (is_file($row['banner_mobile'])?site_url($row['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                </div>
+            <?php } } ?>
+        </div>
     </section>
     
     <section class="category-home">
@@ -61,12 +80,12 @@
                         <li class="nav-item" role="presentation">
                             <strong class="ff-bold nav-link active" data-bs-toggle="pill" data-bs-target="#pills-1"><i class="fas fa-square"></i> <?= lang('GlobalLang.diamonds'); ?></strong>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <!-- <li class="nav-item" role="presentation">
                             <strong class="ff-bold nav-link" data-bs-toggle="pill" data-bs-target="#pills-2"><i class="fas fa-square"></i> <?= lang('GlobalLang.ruby'); ?></strong>
                         </li>
                         <li class="nav-item" role="presentation">
                             <strong class="ff-bold nav-link" data-bs-toggle="pill" data-bs-target="#pills-3"><i class="fas fa-square"></i> <?= lang('GlobalLang.sapphire'); ?></strong>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>

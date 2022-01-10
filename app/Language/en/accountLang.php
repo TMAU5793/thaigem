@@ -27,5 +27,6 @@ return [
     'my-wb' => 'My Webboard',
     'employee' => 'Number of employees',
     'person' => 'person',
-    'peopleUp' => 'People Up'
+    'peopleUp' => 'People Up',
+    'menu' => 'Menu'
 ];

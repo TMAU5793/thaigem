@@ -141,7 +141,12 @@
     padding: 0; }
   .webboard-body .webboard-item .forum-body .row.wbd-action {
     border: none;
-    padding-bottom: 0; } }
+    padding-bottom: 0; }
+
+  .account-logged .account-menu {
+    padding-top: 0; }
+    .account-logged .account-menu .navbar-nav li {
+      float: none; } }
 @media (max-width: 1399px) {
   .singup-home .head-sect span,
   .singup-home .head-sect strong {
@@ -298,6 +303,9 @@
     .event-home .slick-1-item .slick-dots li {
       background: #cec6b2; } }
 @media (max-width: 991px) {
+  .banner-home .slick-dots {
+    bottom: 1.5rem; }
+
   .knowledge-desc iframe,
   .yt-iframe iframe {
     width: 100%;

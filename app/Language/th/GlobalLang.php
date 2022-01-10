@@ -46,7 +46,7 @@ return [
     'viewProfile' => 'ดูโปรไฟล์',
     'contactForm' => 'ติดต่อเรา',
     'followUs' => 'ติดตาม',
-    'submit' => 'Submit',
+    'submit' => 'ยืนยัน',
     'policy' => 'นโยบายความเป็นส่วนตัว',
     'termServices' => 'เงื่อนไขการให้บริการ',
     'addressInfo' => '919/119, 919/615-621 Jewelry Trade Center Bld., <br> 52nd Fl., Silom Rd., Bangkok 10500',

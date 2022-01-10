@@ -15,7 +15,7 @@
                     }
                 ?>
             </div>
-            <div class="tg-title mt-5">
+            <div class="tg-title">
                 <h3><?= lang('GlobalLang.editinfo').' : '.$info['account'] ?></h3>
             </div>
             <form action="<?= site_url('account/member/updateprofile') ?>" method="POST" enctype="multipart/form-data">

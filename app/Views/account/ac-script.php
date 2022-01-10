@@ -364,6 +364,11 @@
             var map = $(this).val();
             $('#map-iframe').html(map);
         });
+
+        $('.ac-menu-mobile').on('click',function(){
+            $(this).toggleClass('mb-3');
+            $('.account-menu').toggleClass('hide-575');
+        });
     });
     //End Ready function
 

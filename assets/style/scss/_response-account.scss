@@ -214,4 +214,12 @@ $ff-dbadman: 'DBAdmanX';
             }
         }
     }
+    .account-logged {
+        .account-menu {
+            padding-top: 0;
+            .navbar-nav li {
+                float: none;
+            }
+        }
+    }
 }
