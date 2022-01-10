@@ -30,10 +30,50 @@
                                     <option value=""> --<?= lang('GlobalLang.product-type') ?>-- </option>
                                     <?php
                                         if($category){
-                                            foreach($category as $row){
                                     ?>
-                                        <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
-                                    <?php } } ?>
+                                        <optgroup label="Diamonds">
+                                            <?php
+                                                foreach($category as $row){
+                                                    if($row['maincate_id']==1){ ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                        <optgroup label="Gemstones">
+                                            <?php
+                                                foreach($category as $row){
+                                                    if($row['maincate_id']==2){ ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                        <optgroup label="Gold & Platinum Jewelry">
+                                            <?php
+                                                foreach($category as $row){
+                                                    if($row['maincate_id']==3){ ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                        <optgroup label="Silver Jewelry">
+                                            <?php
+                                                foreach($category as $row){
+                                                    if($row['maincate_id']==4){ ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                        <optgroup label="Equipment & Tools">
+                                            <?php
+                                                foreach($category as $row){
+                                                    if($row['maincate_id']==5){ ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                        <optgroup label="Others">
+                                            <?php
+                                                foreach($category as $row){
+                                                    if($row['maincate_id']==6){ ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -44,10 +84,32 @@
                                     <option value=""> --<?= lang('GlobalLang.business-type') ?>-- </option>
                                     <?php
                                         if($business){
-                                            foreach($business as $row){
                                     ?>
-                                        <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
-                                    <?php } } ?>
+                                        <optgroup label="Manufacturing">
+                                            <?php
+                                                foreach($business as $row){
+                                                    if($row['main_type']==1){ 
+                                            ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                        <optgroup label="Trading">
+                                            <?php
+                                                foreach($business as $row){
+                                                    if($row['main_type']==2){ 
+                                            ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                        <optgroup label="Services">
+                                            <?php
+                                                foreach($business as $row){
+                                                    if($row['main_type']==3){ 
+                                            ?>
+                                                <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
+                                            <?php } } ?>
+                                        </optgroup>
+                                    <?php }  ?>
                                 </select>
                             </div>
                         </div>
