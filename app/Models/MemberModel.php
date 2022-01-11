@@ -33,7 +33,7 @@ class MemberModel extends Model
 	{
 		$db      = db_connect();
         $builder = $db->table('tbl_member AS a');
-        $builder->select('*,a.status as approve');
+        $builder->select('*,a.id as m_id,a.status as approve');
         $builder->join('tbl_address AS b','b.member_id=a.id');
 		$builder->where('a.type','dealer');
         if($status!=null){
@@ -53,7 +53,7 @@ class MemberModel extends Model
 	{
 		$db      = db_connect();
         $builder = $db->table('tbl_member AS a');
-        $builder->select('*,a.status as approve');
+        $builder->select('*,a.id as m_id,a.status as approve');
         $builder->join('tbl_address AS b','b.member_id=a.id');
 		$builder->where('a.type','member');
         if($status!=null){
@@ -73,7 +73,7 @@ class MemberModel extends Model
 	{
 		$db      = db_connect();
         $builder = $db->table('tbl_member AS a');
-        $builder->select('*,a.status as approve');
+        $builder->select('*,a.id as m_id,a.status as approve');
         $builder->join('tbl_address AS b','b.member_id=a.id');
 		$builder->join('tbl_member_business AS c','c.member_id=a.id');
 		$builder->where(['a.type'=>'dealer','a.status'=>'2']);

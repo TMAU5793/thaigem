@@ -59,7 +59,8 @@ class Account extends Controller
                 'district' => $mbModel->getDistrict(),
                 'social' => $mbModel->getSocial(),
                 'membercontact' => $mbModel->getMemberContact(),
-                'memberbusiness' => $mbModel->getMemberBusiness()
+                'memberbusiness' => $mbModel->getMemberBusiness(),
+                'shareImg' => $info['profile']
             ];
             // print_r($model->error());
             // print_r($info);

@@ -19,13 +19,12 @@
                     <?php
                         if(isset($advisory)){
                     ?>
-                        <div class="row justify-content-center advisory">
+                        <div class="row advisory">
                             <div class="col-12 text-center">
-                                <h2 class="ff-dbadmanBold mb-0">NAMES CONSULTANTS ASSOCIATION</h2>
+                                <h2 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.consult') ?></h2>
                             </div>
                             <?php
                                 foreach($advisory as $row){
-                                    if($row['sortby']==1){
                             ?>                                
                                 <div class="col-lg-3 col-md-4 col-6">
                                     <div class="col-img">
@@ -36,10 +35,10 @@
                                         <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
                                     </div>
                                 </div>
-                            <?php } } ?>
+                            <?php } ?>
                         </div>
 
-                        <div class="row justify-content-center advisory">
+                        <!-- <div class="row justify-content-center advisory">
                             <?php
                                 foreach($advisory as $row){
                                     if($row['sortby']==2){
@@ -71,7 +70,7 @@
                                     </div>
                                 </div>
                             <?php } }  ?>
-                        </div>
+                        </div> -->
                     <?php } ?>
 
                     <div class="row justify-content-center advisory">

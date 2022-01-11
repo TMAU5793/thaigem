@@ -93,8 +93,9 @@ class Member extends BaseController
             }
             
             $data = [
-                'meta_title' => $member['name'].' '.$member['lastname'],
+                'meta_title' => ($member['company']!=''?$member['company']:'TGJTA Member'),
                 'meta_desc' => $member['about'],
+                'shareImg' => $member['profile'],
                 'lang' => $this->lang,
                 'info' => $member,
                 'album' => $albumModel->where('member_id',$member['member_id'])->findAll(),

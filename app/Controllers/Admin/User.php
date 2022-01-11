@@ -58,7 +58,7 @@ class User extends Controller
                 ];
 
                 session()->set('admindata',$sess);
-                return redirect()->to(site_url('admin/dashboard'));
+                return redirect()->to(site_url('admin/productcategory'));
             }else{
                 $data['validation'] = $this->validator;
                 echo view('admin/login',$data);

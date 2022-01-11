@@ -49,7 +49,6 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col" width="50">ลำดับ</th>
                         <th scope="col">ชื่อบริษัท</th>
                         <th scope="col">ที่อยู่</th>
                         <th scope="col">อีเมล</th>
@@ -64,13 +63,10 @@
                 <tbody>
                     <?php
                         if($info){
-                            $n = 0;
                             $page  = $_GET['page'];
                             foreach ($info as $item) {
-                                $n++;
                     ?>
-                    <tr>
-                        <td class="text-center"><?= $n ?></td>                
+                    <tr>     
                         <td><?= ($item['company']!=''?$item['company']:'-') ?></td>
                         <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
                         <td><?= $item['email'] ?></td>
@@ -96,7 +92,7 @@
                         <?php } ?>
 
                         <td class="text-center">
-                            <a href="<?= base_url('admin/member/edit?id='.$item['id']); ?>">อัตเดต</a>
+                            <a href="<?= base_url('admin/member/edit?id='.$item['m_id']); ?>">อัตเดต</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>

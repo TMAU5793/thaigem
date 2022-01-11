@@ -130,5 +130,6 @@ return [
     'success' => 'The operation is complete',
     'cancelText' => 'the transaction',
     'year' => 'Year',
-    'yearUp' => 'Year Up'
+    'yearUp' => 'Year Up',
+    'consult' => 'NAMES CONSULTANTS ASSOCIATION'
 ];

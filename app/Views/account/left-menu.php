@@ -222,6 +222,7 @@
         <?php if($social->youtube!=""){ ?>
             <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>
         <?php } ?>
+        <span class="ff-dbadmanBold share-social" data-url="<?= site_url('member/id/'.$info['id']); ?>" data-image="<?= $profile_pic; ?>" title="<?= lang('GlobalLang.share'); ?>"><i class="fas fa-share-alt"></i></span>
     </div>
 
     <div class="map-iframe">
