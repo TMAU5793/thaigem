@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 use CodeIgniter\Controller;
 use App\Models\MemberModel;
+use App\Models\SettingModel;
 use App\Models\Account\MemberModel as acMemberModel;
 
 class Member extends Controller
@@ -387,6 +388,35 @@ class Member extends Controller
 			}
 			$model->update($id,['member_home'=>$show]);
 			echo TRUE;
+		}
+	}
+
+	public function setting()
+	{
+		$request = service('request');
+		$model = new SettingModel();
+
+		$post = $request->getPost();
+
+		if(!$post){
+			$data = [
+				'info' => $model->where('type','member_filter')->first()
+			];
+			echo view('admin/member-setting',$data);
+		}else{
+			$member_filter = $model->where('type','member_filter')->first();			
+			$data = [
+				'page' => 'member',
+				'type' => 'member_filter',
+				'desc' => $post['filter_member']
+			];
+
+			if($member_filter){
+				$model->update($member_filter['id'],$data);
+			}else{
+				$model->save($data);
+			}
+			return redirect()->to('admin/member/dealer');
 		}
 	}
 }

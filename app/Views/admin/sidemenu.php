@@ -24,12 +24,12 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?= base_url('admin/dashboard'); ?>" class="nav-link <?= ($uri->getSegment(2)=='dashboard'?'active':''); ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="<?= base_url('admin/productcategory'); ?>" class="nav-link <?= ($uri->getSegment(2)=='productcategory'?'active':''); ?>">
                         <i class="nav-icon fas fa-list-ul"></i>
@@ -163,7 +163,12 @@
                     </a>
                 </li>
                 <?php } ?>
-
+                <!-- <li class="nav-item">
+                    <a href="<?= base_url('admin/setting'); ?>" class="nav-link <?= ($uri->getSegment(2)=='setting'?'active':''); ?>">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>การตั้งค่า</p>
+                    </a>
+                </li> -->
                 <li class="nav-item">
                     <a href="<?= base_url('admin/logout'); ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

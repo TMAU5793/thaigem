@@ -3,7 +3,7 @@
 <?= $this->section("content") ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper member-content">
 <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -24,9 +24,10 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
+            <a href="<?= base_url('admin/member/setting'); ?>" class="btn btn-setting"><i class="fas fa-cog me-2"></i>ตั้งค่าการแสดง</a>
             <div class="mb-3">
                 <form action="" method="GET">
-                    <div class="form-row align-items-center justify-content-end">
+                    <div class="form-row align-items-center justify-content-end">                        
                         <?php if($active=='dealer'){ ?>
                             <div class="col-auto">
                                 <select name="status" class="form-control">

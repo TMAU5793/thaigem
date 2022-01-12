@@ -582,4 +582,13 @@ table .btn-danger {
 table .fa-times-circle {
   text-shadow: 0px 0px 2px #000; }
 
+.member-content .btn-setting {
+  position: absolute;
+  padding-left: 0;
+  padding-right: 0; }
+  .member-content .btn-setting:hover {
+    color: #665f4f;
+    border-bottom: 1px solid #665f4f;
+    border-radius: 0; }
+
 /*# sourceMappingURL=back-office.css.map */
