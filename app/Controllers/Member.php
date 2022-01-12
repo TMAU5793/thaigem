@@ -34,6 +34,8 @@ class Member extends BaseController
 
 	public function index()
 	{   
+        $request = service('service');
+        $pager = \Config\Services::pager();
         $model = new MemberModel();
         $albumModel = new AlbumModel();
         $pvModel = new ProvinceModel();
@@ -51,6 +53,7 @@ class Member extends BaseController
 
         $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
                 ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at DESC')->paginate(20);
+                
         $data = [
             'meta_title' => 'Member directory',
             'lang' => $this->lang,
@@ -65,7 +68,7 @@ class Member extends BaseController
             'userdata' => $this->userdata
         ];
         // print_r('<pre>');
-        // print_r($info);
+        // print_r($result);
         // print_r('</pre>');
         echo view('front/member', $data);
 	}
@@ -199,6 +202,7 @@ class Member extends BaseController
     public function filter()
     {
         helper('text');
+        $pager = \Config\Services::pager();
         $request = service('request');
         $mbModel = new MemberModel();
         $albumModel = new AlbumModel();
@@ -218,26 +222,31 @@ class Member extends BaseController
                                 ->where('tbl_member_business.type','business')
                                 ->findAll();
         if($id){
-            $db      = \Config\Database::connect();
-            $builder = $db->table('member_filter');
+            // $cate = $cateModel->select('name_th')->where('maincate_id',$id)->findAll();
+            // $query = [];
+            // foreach($cate as $row){
+            //     $arr = $mbModel->join('tbl_member_business as B', 'tbl_member.id = B.member_id')
+            //                 ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])                            
+            //                 ->like('B.product',$row['name_th'])
+            //                 ->findAll();
+            //     foreach ($arr as $item){
+            //         $query[] = $item;
+            //     }
+            // }
 
-            $cate = $cateModel->select('name_th')->where('maincate_id',$id)->findAll();
-            $query = [];
-            foreach($cate as $row){
-                $arr = $mbModel->join('tbl_member_business as B', 'tbl_member.id = B.member_id')
-                            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])                            
-                            ->like('B.product',$row['name_th'])
-                            ->findAll();
-                foreach ($arr as $item){
-                    $query[] = $item;
-                }
-            }
+            $info = $mbModel->filterMember($id);
+            $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
+            $perPage =  20;
+            $total = count($info);
+            $pager->makeLinks($page+1, $perPage, $total);
+            $offset = $page * $perPage;
+            $result = $mbModel->filterMember($id,$perPage,$offset);
 
             $data = [
                 'meta_title' => 'Filter Member',
                 'lang' => $this->lang,
-                'info' => $query,
-                'pager' => $mbModel->pager,
+                'info' => $result,
+                'pager' => $pager,
                 'album' => $albumModel->findAll(),
                 'province' => $pvModel->findAll(),
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
@@ -248,7 +257,7 @@ class Member extends BaseController
             ];
 
             // print_r('<pre>');
-            // print_r($query);
+            // print_r($info);
             // print_r('</pre>');
             echo view('front/member', $data);
         }else{

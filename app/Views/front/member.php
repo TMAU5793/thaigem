@@ -262,8 +262,7 @@
                 <?php } ?>
             </div>
 
-            <?php
-                $pager = \Config\Services::pager();
+            <?php                
                 if(isset($pager)) {
             ?>
                 <nav class="navigation-center mt-5 border-none">

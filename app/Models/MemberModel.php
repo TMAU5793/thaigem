@@ -115,4 +115,32 @@ class MemberModel extends Model
         return $builder->get()->getResultArray();
 		//return $builder->where('DATEDIFF(member_start,"'.$now.'")');		
 	}
+
+	public function filterMember($id,$perPage=null,$offset=null)
+	{
+		$db      = \Config\Database::connect();
+		$builder = $db->table('tbl_member AS a');
+		$builder2 = $db->table('tbl_productcategory');
+
+		$cate = $builder2->select('name_th')->where('maincate_id',$id)->get()->getResultArray();
+		$query = [];
+		foreach($cate as $row){
+			$builder->join('tbl_member_business as b', 'a.id = b.member_id')
+						->where(['a.type'=>'dealer','a.status'=>'2'])                            
+						->like('b.product',$row['name_th']);
+			if($perPage!=null){
+				$builder->limit($perPage, $offset);
+			}
+			$arr = $builder->get()->getResultArray();
+			foreach ($arr as $item){
+				$query[] = $item;
+			}
+		}
+		// print_r('<pre>');
+		// print_r($query);
+		// print_r('</pre>');
+		// echo count($query);
+		
+        return $query;
+	}
 }
