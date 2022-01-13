@@ -356,18 +356,65 @@
     .fallback {
         border: 1px solid $c-gray;
         border-radius: 4px;
-        padding: 1rem;
         margin-bottom: 15px;
         min-height: 150px;
-        img {
-            width: 14.95%;
-            margin: .5rem;
+        padding: 1.25rem .5rem 0;
+        [class*='gl-img'] {
+            position: relative;
+            width: 16.66%;
+            padding-bottom: 1.25rem;
+            i {
+                position: absolute;
+                top: .5rem;
+                right: 1.25rem;
+                font-size: 1.25rem;
+                background: #fff;
+                color: #dc3545;
+                padding: 4px;
+                border-radius: 6px;
+                cursor: pointer;
+                &:hover {
+                    background: #dc3545;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .fileup-theme2 {
+        border-top: 2px solid $c-lightgold;
+        padding: .5rem 0;
+        margin: 0 -.5rem;
+        .fileup-btn {
+            width: auto;
+            height: auto;
+            &::before,
+            &::after {
+                content: none;
+            }
+        }
+        .fileup-queue {
+            .fileup-controls {
+                .fileup-upload {
+                    display: none;
+                }
+            }
+            .fileup-progress {
+                display: none;
+            }
+            .fileup-file {
+                margin: .5rem;
+                height: auto;
+            }
+        }
+        .fileup-file.fileup-image .fileup-preview img {
+            object-fit: contain;
         }
     }
 }
 
 .album-managed {
     margin: 0 -.5rem;
+    padding-bottom: 1rem;
     .managed-item {
         position: relative;
         width: 12.47%;
@@ -559,7 +606,7 @@
     }
     .nav-tabs {
         .nav-link {
-            width: 50%;
+            width: 25%;
             border: 1px solid #dee2e6;
             padding: 4px 0;
             border-radius: 0;

@@ -9,6 +9,7 @@ use App\Models\Admin\ProductCategoryModel;
 use App\Models\Admin\BusinessModel;
 use App\Models\MemberBusinessModel;
 use App\Models\BannerModel;
+use App\Models\SettingModel;
 use DateTime;
 
 //use CodeIgniter\I18n\Time;
@@ -43,6 +44,7 @@ class Member extends BaseController
         $bnModel = new BusinessModel();
         $mbModel = new AcMemberModel();
         $mbBusiness = new MemberBusinessModel();
+        $settingModel = new SettingModel();
         $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
                                 ->where('tbl_member_business.type','product')
                                 ->findAll();
@@ -51,8 +53,24 @@ class Member extends BaseController
                                 ->where('tbl_member_business.type','business')
                                 ->findAll();
 
-        $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
-                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at DESC')->paginate(20);
+        $mb_filter =  $settingModel->where('type','member_filter')->first();
+        if($mb_filter['desc']=='2'){
+            //ระยะเวลาการเป็นสมาชิก จากมากไปน้อย
+            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
+            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','ASC')->paginate(20);
+        }elseif($mb_filter['desc']=='3'){
+            //ระยะเวลาการเป็นสมาชิก จากน้อยไปมาก
+            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
+            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','DESC')->paginate(20);
+        }elseif($mb_filter['desc']=='4'){
+            //การสุ่ม
+            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
+                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.id','RANDOM')->paginate(20);
+        }else{
+            //อัพเดตล่าสุด
+            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
+                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at','DESC')->paginate(20);
+        }
                 
         $data = [
             'meta_title' => 'Member directory',

@@ -319,18 +319,27 @@
                                 <?php } } ?>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="fallback" id="album_fallback">
+                            <!-- <div class="fallback row m-0" id="album_fallback">
                                 <?php
                                     $count = count($album);
-                                    if($count == 9){
+                                    if($count == 20){
                                 ?>
                                     <span class="d-block text-center text-danger mt-4">*จำนวนรูปเต็มแล้ว กรุณาลบรูปเก่าหากต้องการเพิ่มรูปใหม่</span>
                                 <?php } ?>
+                                
+                            </div> -->
+
+                            <div class="fileup-theme2">
+                                <div id="file_album_queue" class="fileup-queue"></div>
+                                <div class="clearfix"></div>
                             </div>
-                            <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple accept="image/*">
-                            <label for="file_album" class="label-file-img">Choose Images</label>
-                            <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
-                            <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 20 รูป </small>
+
+                            <div class="d-block">
+                                <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple accept="image/*">
+                                <label for="file_album" class="label-file-img d-inline-block mt-2">Choose Images</label>
+                                <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
+                                <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 20 รูป </small>
+                            </div>
                         </div>
                     </div>
 

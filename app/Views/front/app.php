@@ -27,6 +27,10 @@
     <!-- Fancybox -->
     <link rel="stylesheet" href="<?= base_url('assets/fancybox/jquery.fancybox.css'); ?>">
 
+    <!-- fileup-master -->
+    <link rel="stylesheet" href="<?= base_url('assets/fileup-master/fileup.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/fileup-master/fileup.theme2.min.css'); ?>">
+
     <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/style.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/style/css/response.css'); ?>">
@@ -75,6 +79,9 @@
 
     <!-- Fancybox -->
     <script src="<?= site_url('assets/fancybox/jquery.fancybox.js'); ?>"></script>
+
+    <!-- fileup-master -->
+    <script src="<?= site_url('assets/fileup-master/fileup.min.js'); ?>"></script>
 
     <!-- Load the JS SDK asynchronously -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v12.0&appId=367105081821305&autoLogAppEvents=1" nonce="yH6j5ziR"></script>

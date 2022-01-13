@@ -14,16 +14,26 @@
     function multiImg(input,el,limit) {
         $(el).html('');
         if (input.files && input.files[0]) {
-            for (var i = 0; i < limit; i++) {
+            for (var i = 0 ; i < limit; i++) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $(el).append('<img src=' + e.target.result + '>');
+                    $(el).append('<div class="col-md-2 gl-img"><i class="far fa-trash-alt" title="Delete Image" onClick="galleryDel($(this))"></i><img src=' + e.target.result + '></div>');
                 }
                 reader.readAsDataURL(input.files[i]);
             }
         }
     }
 
+    function galleryDel(el){
+        el.closest('.gl-img').remove();
+    }
+
+    $.fileup({
+        url: '<?= site_url('account/member/updateprofile') ?>',
+        inputID: 'file_album',
+        queueID: 'file_album_queue'
+    });
+    
     $(function(){
         //display profile image
         $("#txt_profile").change(function () {
@@ -368,7 +378,7 @@
         $('.ac-menu-mobile').on('click',function(){
             $(this).toggleClass('mb-3');
             $('.account-menu').toggleClass('hide-575');
-        });
+        });        
     });
     //End Ready function
 
