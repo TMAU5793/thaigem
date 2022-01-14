@@ -10,102 +10,18 @@
         <div class="container">
             <!-- <div class="title text-center pt-5"><h1 class="fs-3 ff-semibold"><?= $meta_title ?></h1></div> -->
             <div class="content-body apply-member mt-3">
-                <img src="<?= site_url('assets/images/account/infographic/'.($lang=='en'?'member-eng.jpg':'member-th.jpg')) ?>" alt="">
-                <!-- <div class="p-4">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/1.jpg') ?>" alt="">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-5">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/2.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-7">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/3.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-5">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/4.jpg') ?>" alt="">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-7">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/5.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/6.jpg') ?>" alt="">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/7.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/8.jpg') ?>" alt="">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/9.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/10.jpg') ?>" alt="">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/11.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/12.jpg') ?>" alt="">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/13.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/14.jpg') ?>" alt="">
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <div class="col-img">
-                                <img src="<?= site_url('assets/images/apply-member/15.jpg') ?>" alt="">
-                            </div>
-                        </div>
-
-                    </div>
-                </div> -->
+                <img src="<?= site_url('assets/images/account/infographic/'.($lang=='en'?'member-eng.jpg':'member-th.jpg')) ?>" alt="">                
             </div>
+            <?php
+                $sess = session()->get('userdata');
+                if(!$sess){
+            ?>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-3">
+                        <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-tgjta" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('MenuLang.membership') ?></button>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </section>
     <!-- echo lang('GlobalLang.notfound'); -->

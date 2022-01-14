@@ -37,10 +37,37 @@
                                 </div>
                             <?php } ?>
                         </div>
+                    <?php } ?>
 
-                        <!-- <div class="row justify-content-center advisory">
+                    <?php
+                        if(isset($director)){
+                    ?>
+                        <div class="row advisory">
+                            <div class="col-12 text-center">
+                                <h2 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.director') ?></h2>
+                            </div>
+                        </div>
+
+                        <div class="row advisory">
                             <?php
-                                foreach($advisory as $row){
+                                foreach($director as $row){
+                                    if($row['sortby']==1){
+                            ?>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="col-img">
+                                        <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    </div>
+                                    <div class="col-text mt-3">
+                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
+                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                    </div>
+                                </div>
+                            <?php } } ?>
+                        </div>
+
+                        <div class="row advisory">
+                            <?php
+                                foreach($director as $row){
                                     if($row['sortby']==2){
                             ?>
                                 <div class="col-lg-3 col-md-4 col-6">
@@ -52,13 +79,13 @@
                                         <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
                                     </div>
                                 </div>
-                            <?php } }  ?>
+                            <?php } } ?>
                         </div>
-                    
-                        <div class="row justify-content-center advisory">
+
+                        <div class="row advisory">
                             <?php
-                                foreach($advisory as $row){
-                                    if($row['sortby']>2 ){
+                                foreach($director as $row){
+                                    if($row['sortby']==3){
                             ?>
                                 <div class="col-lg-3 col-md-4 col-6">
                                     <div class="col-img">
@@ -69,32 +96,112 @@
                                         <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
                                     </div>
                                 </div>
-                            <?php } }  ?>
-                        </div> -->
-                    <?php } ?>
+                            <?php } } ?>
+                        </div>
 
-                    <div class="row justify-content-center advisory">
-                        <?php
-                            if(isset($director)){
-                        ?>
-                            <div class="col-12 text-center">
-                                <h2 class="ff-dbadmanBold mb-0">The list of the Elected TGJTA Board of Directors in fiscal year 2019-2021</h2>
-                            </div>
+                        <div class="row advisory">
                             <?php
                                 foreach($director as $row){
-                            ?>                            
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="col-img">
-                                    <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    if($row['sortby']==4){
+                            ?>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="col-img">
+                                        <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    </div>
+                                    <div class="col-text mt-3">
+                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
+                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                    </div>
                                 </div>
-                                <div class="col-text mt-3">
-                                    <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                    <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                            <?php } } ?>
+                        </div>
+
+                        <div class="row advisory">
+                            <?php
+                                foreach($director as $row){
+                                    if($row['sortby']==5){
+                            ?>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="col-img">
+                                        <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    </div>
+                                    <div class="col-text mt-3">
+                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
+                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php } } ?>
-                    </div>
-                    
+                            <?php } } ?>
+                        </div>
+
+                        <div class="row advisory">
+                            <?php
+                                foreach($director as $row){
+                                    if($row['sortby']==6){
+                            ?>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="col-img">
+                                        <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    </div>
+                                    <div class="col-text mt-3">
+                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
+                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                    </div>
+                                </div>
+                            <?php } } ?>
+                        </div>
+
+                        <div class="row advisory">
+                            <?php
+                                foreach($director as $row){
+                                    if($row['sortby']==7){
+                            ?>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="col-img">
+                                        <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    </div>
+                                    <div class="col-text mt-3">
+                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
+                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                    </div>
+                                </div>
+                            <?php } } ?>
+                        </div>
+
+                        <div class="row advisory">
+                            <?php
+                                foreach($director as $row){
+                                    if($row['sortby']==8){
+                            ?>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="col-img">
+                                        <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    </div>
+                                    <div class="col-text mt-3">
+                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
+                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                    </div>
+                                </div>
+                            <?php } } ?>
+                        </div>
+
+                        <div class="row advisory">
+                            <?php
+                                foreach($director as $row){
+                                    if($row['sortby']>8){
+                            ?>
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="col-img">
+                                        <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
+                                    </div>
+                                    <div class="col-text mt-3">
+                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
+                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                    </div>
+                                </div>
+                            <?php } } ?>
+                        </div>
+                        
+                    <?php } ?>
                 </div>
             </div>
         </div>

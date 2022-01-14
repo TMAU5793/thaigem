@@ -16,7 +16,10 @@
     font-size: .8rem; }
 
   .files-form .col-img .col-md-4 p {
-    padding: 0 1.5rem; } }
+    padding: 0 1.5rem; }
+
+  .album-managed .managed-item {
+    width: 18.22%; } }
 @media (max-width: 991px) {
   .account-logged .account-menu .navbar-nav {
     display: inline-block; }
@@ -35,8 +38,17 @@
     padding: 0 .5rem; }
   .files-form .content-title.mt-5,
   .invoice-body .content-title.mt-5 {
-    margin-top: 1rem !important; } }
+    margin-top: 1rem !important; }
+
+  .album-managed .managed-item {
+    width: 22.55%; } }
 @media (max-width: 767px) {
+  .album-managed .managed-item {
+    width: 30%; }
+
+  .profile-form .nav-tabs .nav-link {
+    width: 50%; }
+
   .webboard-item .action-group a {
     margin: auto !important;
     width: 100%;
@@ -124,6 +136,12 @@
   .account-body .ac-about.mt-5 {
     margin-top: 1.5rem !important; } }
 @media (max-width: 575px) {
+  .album-managed .managed-item {
+    width: 28.84%; }
+
+  .account-body .tab-content .user-profile {
+    text-align: center; }
+
   .ac-menu-left .ac-profile-img {
     margin-top: -4rem; }
     .ac-menu-left .ac-profile-img img {
@@ -146,10 +164,7 @@
   .account-logged .account-menu {
     padding-top: 0; }
     .account-logged .account-menu .navbar-nav li {
-      float: none; }
-
-  .profile-form .nav-tabs .nav-link {
-    width: 50%; } }
+      float: none; } }
 @media (max-width: 1399px) {
   .singup-home .head-sect span,
   .singup-home .head-sect strong {
@@ -649,6 +664,11 @@
   .knowledge-desc iframe,
   .yt-iframe iframe {
     height: 197px; }
+
+  .knowledge-desc img,
+  .event-desc img {
+    width: 100% !important;
+    height: auto !important; }
 
   .hide-575 {
     display: none; }

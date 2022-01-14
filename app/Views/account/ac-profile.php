@@ -329,10 +329,12 @@
                                 
                             </div> -->
 
-                            <div class="fileup-theme2">
+                            <!-- <div class="fileup-theme2">
                                 <div id="file_album_queue" class="fileup-queue"></div>
                                 <div class="clearfix"></div>
-                            </div>
+                            </div> -->
+
+                            <div class="input-images"></div>
 
                             <div class="d-block">
                                 <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple accept="image/*">

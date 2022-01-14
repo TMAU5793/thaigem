@@ -29,6 +29,9 @@ $ff-dbadman: 'DBAdmanX';
             padding: 0 1.5rem;
         }
     }
+    .album-managed .managed-item {
+        width: 18.22%;
+    }
 }
 
 @include media-max(991px) {
@@ -64,9 +67,22 @@ $ff-dbadman: 'DBAdmanX';
             margin-top: 1rem !important;
         }
     }
+    .album-managed .managed-item {
+        width: 22.55%;
+    }
 }
 
 @include media-max(767px) {
+    .album-managed .managed-item {
+        width: 30%;
+    }
+    .profile-form {
+        .nav-tabs {
+            .nav-link {
+                width: 50%;
+            }
+        }
+    }
     .webboard-item {
         .action-group {
             a {
@@ -187,6 +203,12 @@ $ff-dbadman: 'DBAdmanX';
 }
 
 @include media-max(575px) {
+    .album-managed .managed-item {
+        width: 28.84%;
+    }
+    .account-body .tab-content .user-profile {
+        text-align: center;
+    }
     .ac-menu-left .ac-profile-img {
         margin-top: -4rem;
         img {
@@ -219,13 +241,6 @@ $ff-dbadman: 'DBAdmanX';
             padding-top: 0;
             .navbar-nav li {
                 float: none;
-            }
-        }
-    }
-    .profile-form {
-        .nav-tabs {
-            .nav-link {
-                width: 50%;
             }
         }
     }

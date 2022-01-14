@@ -697,6 +697,13 @@
             height: 197px;
         }
     }
+    .knowledge-desc,
+    .event-desc {
+        img {
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
     .hide-575 {
         display: none;
     }

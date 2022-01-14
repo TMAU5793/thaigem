@@ -28,11 +28,11 @@
         el.closest('.gl-img').remove();
     }
 
-    $.fileup({
-        url: '<?= site_url('account/member/updateprofile') ?>',
-        inputID: 'file_album',
-        queueID: 'file_album_queue'
-    });
+    // $.fileup({
+    //     url: '<?= site_url('account/member/updateprofile') ?>',
+    //     inputID: 'file_album',
+    //     queueID: 'file_album_queue'
+    // });
     
     $(function(){
         //display profile image
@@ -378,7 +378,9 @@
         $('.ac-menu-mobile').on('click',function(){
             $(this).toggleClass('mb-3');
             $('.account-menu').toggleClass('hide-575');
-        });        
+        });
+
+        $('.input-images').imageUploader();
     });
     //End Ready function
 

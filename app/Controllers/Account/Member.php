@@ -152,7 +152,7 @@ class Member extends Controller
                 }
 
                 $file_upload = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
-                $file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป                
+                $file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
                 $this->upload($post['hd_id'],$file_upload,$file_del);
                 
                 $albummodel = new AlbumModel();

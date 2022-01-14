@@ -4,6 +4,7 @@ namespace App\Controllers\Account;
   
 use CodeIgniter\Controller;
 use App\Models\FilesModel;
+use App\Models\Account\AccountModel;
   
 class Invoice extends Controller
 {   
@@ -25,11 +26,14 @@ class Invoice extends Controller
         }
         
         $model = new FilesModel();
+        $acModel = new AccountModel();
+        $member = $acModel->where('id',$this->member_id)->first();
         $data = [
             'ac_invoice' => TRUE,
             'meta_title' => 'Download invoice',
             'invoices' => $model->where(['filefor'=>'invoice','member_id'=>null,'status'=>'on'])->findAll(),
-            'fileFor' => 'invoice'
+            'fileFor' => 'invoice',
+            'member' => $member
         ];
         echo view('account/ac-invoice',$data);
     }

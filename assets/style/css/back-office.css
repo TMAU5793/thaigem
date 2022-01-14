@@ -591,4 +591,41 @@ table .fa-times-circle {
     border-bottom: 1px solid #665f4f;
     border-radius: 0; }
 
+.input-hide {
+  visibility: hidden;
+  height: 0;
+  padding: 0; }
+
+.label-file-img {
+  background-color: #cec6b2;
+  padding: 6px 1rem;
+  border-radius: 6px;
+  text-align: center;
+  min-width: 150px;
+  cursor: pointer; }
+
+.album-managed {
+  margin: 0 -.5rem;
+  padding-bottom: 1rem; }
+  .album-managed .managed-item {
+    position: relative;
+    width: 15.33%;
+    margin: .5rem;
+    float: left; }
+    .album-managed .managed-item i {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      font-size: 1.25rem;
+      background: #fff;
+      color: #dc3545;
+      padding: 4px;
+      border-radius: 6px;
+      cursor: pointer; }
+      .album-managed .managed-item i:hover {
+        background: #dc3545;
+        color: #fff; }
+    .album-managed .managed-item img {
+      width: 100%; }
+
 /*# sourceMappingURL=back-office.css.map */

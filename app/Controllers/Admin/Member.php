@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 use App\Models\MemberModel;
 use App\Models\SettingModel;
 use App\Models\Account\MemberModel as acMemberModel;
+use App\Models\Account\AlbumModel;
 
 class Member extends Controller
 {
@@ -112,6 +113,7 @@ class Member extends Controller
         }
 
 		helper(['form']);
+		$albummodel = new AlbumModel();
 		$db = \Config\Database::connect();
 		$query   = $db->query('SELECT * FROM tbl_provinces');
 		$results = $query->getResultArray();
@@ -119,7 +121,8 @@ class Member extends Controller
 		$data = [
             'meta_title' => 'เพิ่มบัญชีสมาชิกเว็บไซต์',
 			'action' => 'save',
-			'provinces' => $results
+			'provinces' => $results,
+			'album' => $albummodel->where('member_id',$this->member_id)->findAll(),
         ];
 		echo view('admin/member-form',$data);
 	}
@@ -131,10 +134,12 @@ class Member extends Controller
         }
         
         //include helper form
-        helper(['form']);
+        helper(['form','fileystem']);
         $request = service('request');
         $model = new MemberModel();
 		$acmbModel = new acMemberModel();
+		$albummodel = new AlbumModel();
+
 		$db = db_connect();
 		$social = $db->table('tbl_social');
 
@@ -149,7 +154,9 @@ class Member extends Controller
 			'amphure' => $acmbModel->getAmphureById($address->amphure_id),
 			'district' => $acmbModel->getDistrictById($address->district_id),
 			'address' =>  $address,
-			'social' => $get_social
+			'social' => $get_social,
+			'album' => $albummodel->where('member_id',$id)->findAll(),
+			'membercontact' => $acmbModel->getMemberContact()
         ];
         echo view('admin/member-form', $data);
     }
@@ -206,6 +213,8 @@ class Member extends Controller
 
 		helper(['form','filesystem']);
 		$model = new MemberModel();
+		$acModel = new acMemberModel();
+		$albummodel = new AlbumModel();
 		$request = service('request');
 
 		$post = $request->getPost();
@@ -213,6 +222,17 @@ class Member extends Controller
         if ($post) {
 
 			$id = $post['hd_id'];
+			$arr = explode(" ",$post['txt_mainperson']);
+			$name = $arr[0];
+			$lastname = $arr[1];
+			$ws = explode('//',$post['txt_website']);
+			//echo count($ws);
+			if(count($ws) > 1){
+				$ws = $post['txt_website'];
+			}else{
+				$ws = 'http://'.$post['txt_website'];
+			}
+
 			if($post['txt_password']!=''){
 				$rules = [
 					'txt_password' => [
@@ -231,12 +251,14 @@ class Member extends Controller
 				];
         
 				if($this->validate($rules)){
-					$data = [
+					$data = [						
 						'password' => password_hash($post['txt_password'], PASSWORD_DEFAULT),
 						'company' => $post['txt_company'],
+						'name' => $name,
+            			'lastname' => $lastname,
 						'email' => $post['txt_email'],
 						'phone' => $post['txt_phone'],
-						'website' => $post['txt_website'],
+						'website' => $ws,
 						'type' => $post['rd_type'],
 						'dealer_code' => $post['dealer_code'],
 						'renew' => $post['member_start'],
@@ -245,6 +267,22 @@ class Member extends Controller
 					];
 					$model->update($id, $data);
 
+					$acModel->updateAddress($post);
+					
+					$file_upload = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
+					$file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
+					$this->upload($post['hd_id'],$file_upload,$file_del);
+					$album = $albummodel->where('member_id',$post['hd_id'])->findAll();
+					$no = 20-count($album);
+					if ($request->getFileMultiple('file_album')) {
+						$n=0;
+						foreach($request->getFileMultiple('file_album') as $file) {
+							$n++;
+							if($n<=$no){
+								$this->uploadAlbum($post['hd_id'],$file);
+							}
+						}
+					}
 				}else{
 					helper(['form']);
 					$model = new MemberModel();
@@ -271,11 +309,14 @@ class Member extends Controller
 				}
 			}else{
 				//print_r($post);
+				
 				$arr = [
 					'company' => $post['txt_company'],
 					'email' => $post['txt_email'],
+					'name' => $name,
+            		'lastname' => $lastname,
 					'phone' => $post['txt_phone'],
-					'website' => $post['txt_website'],
+					'website' => $ws,
 					'type' => $post['rd_type'],
 					'dealer_code' => $post['dealer_code'],
 					'renew' => $post['member_start'],
@@ -284,6 +325,24 @@ class Member extends Controller
 				];
 				$model->update($id, $arr);
 				print_r($model->errors());
+
+				$acModel->updateAddress($post);
+
+				$file_upload = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
+                $file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
+                $this->upload($post['hd_id'],$file_upload,$file_del);
+
+				$album = $albummodel->where('member_id',$post['hd_id'])->findAll();
+				$no = 20-count($album);
+				if ($request->getFileMultiple('file_album')) {
+					$n=0;
+					foreach($request->getFileMultiple('file_album') as $file) {
+						$n++;
+						if($n<=$no){
+							$this->uploadAlbum($post['hd_id'],$file);
+						}
+					}
+				}
 			}
 
 			$db = db_connect();
@@ -326,6 +385,7 @@ class Member extends Controller
 
 		helper(['form','fileystem']);
 		$model = new MemberModel();
+		$image = \Config\Services::image();
 		
 		$allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
 		$ext = $profile->getExtension();
@@ -334,17 +394,47 @@ class Member extends Controller
 			if($img_del){
 				unlink($img_del); //ลบรูปเก่าออก
 			}
-			$newName = $profile->getRandomName();
+			
+			$newName = 'profile-'.$profile->getRandomName();
+            $path = 'uploads/member/'.$id;
 			if (!is_dir('uploads/member/'.$id)) {
 				mkdir('uploads/member/'.$id, 0777, TRUE);
-				$profile->move('uploads/member/'.$id,$newName);
+				$image->withFile($profile)->fit(1000, 750, 'center')->save($path.'/'.$newName);
 			}else{
-				$profile->move('uploads/member/'.$id,$newName);
+				$image->withFile($profile)->fit(1000, 750, 'center')->save($path.'/'.$newName);
 			}
 			$thumb = [
 				'profile' => 'uploads/member/'.$id.'/'.$newName
 			];
 			$model->update($id, $thumb);
+		}
+	}
+
+	public function uploadAlbum($id,$file)
+	{
+		helper(['form','fileystem']);
+        $image = \Config\Services::image();
+		$model = new AlbumModel();
+		
+		$allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
+		$ext = $file->getExtension();        
+
+		if ($file->isValid() && !$file->hasMoved() && in_array($ext, $allowed)){
+			$newName = $id.'-'.$file->getRandomName();
+            $path = 'uploads/member/'.$id.'/album';
+			if (!is_dir($path)) {
+				mkdir($path, 0777, TRUE);
+				//$file->move($path,$newName);
+                $image->withFile($file)->fit(1000, 750, 'center')->save($path.'/'.$newName);
+			}else{
+				$image->withFile($file)->fit(1000, 750, 'center')->save($path.'/'.$newName);
+			}
+			$thumb = [
+                'member_id' => $id,
+				'images' => $path.'/'.$newName
+			];
+            
+            $model->save($thumb);
 		}
 	}
 

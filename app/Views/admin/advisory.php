@@ -41,6 +41,7 @@
                     <tr>
                         <th scope="col">ชื่อ - นามสกุล</th>
                         <th scope="col">ตำแหน่ง</th>
+                        <th scope="col" width="150" class="text-center">ลำดับ</th>
                         <th scope="col" width="150" class="text-center">สถานะ</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
@@ -53,6 +54,7 @@
                     <tr>
                         <td><?= $item['name'].' '.$item['lastname'] ?></td>
                         <td><?= $item['position'] ?></td>
+                        <td class="text-center"><?= $item['sortby'] ?></td>
                         <td class="text-center">
                             <i class="fas fa-check-circle fs-4 <?= ($item['status']=='1'?'text-success' : 'text-danger') ?>" title="<?= ($item['status']=='1'?'เปิด' : 'ปิด') ?>"></i>
                         </td>

@@ -71,6 +71,13 @@
             arrows: false
         });
 
+        $('.banner-slick').slick({
+            slidesToShow: 1,
+            dots: true,
+            arrows: false,
+            autoplay: true
+        });
+
         $('.slick-2-item').slick({
             slidesToShow: 2,
             slidesToScroll: 1,

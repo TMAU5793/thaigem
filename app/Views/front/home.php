@@ -2,7 +2,7 @@
 <?= $this->section("content") ?>
 
     <section class="banner-home">
-        <div class="slick-1-item slick-dots-2 hide-575">
+        <div class="banner-slick slick-dots-2 hide-575">
             <?php
                 if($banner){
                     foreach($banner as $row) { 
@@ -13,7 +13,7 @@
             <?php } } ?>
         </div>
 
-        <div class="slick-1-item slick-dots-2 show-575">
+        <div class="banner-slick slick-dots-2 show-575">
             <?php
                 if($banner){
                     foreach($banner as $row) { 

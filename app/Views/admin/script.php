@@ -219,8 +219,64 @@
             }
         });
         
+        $('.input-images').imageUploader();
+
+        //Account Album delete image
+        $('.managed-item i').on('click',function(){
+            var id = $(this).data('id');
+            var result = deleteAlbum(id);
+            if(result){
+                $(this).closest(".managed-item").remove();
+            }
+        });
+
+        //display profile image
+        $("#txt_profile").change(function () {
+            readURL(this);
+        });
+
+        //เพิ่มฟิลด์ Person contact
+        $('#btn-add-person').click(function(){
+            var html = '';
+            html +=  '<div class="row">';
+            html +=  '<div class="col-md-6">';
+            html +=  '<div class="form-group">';
+            html +=  '<label for="">ชื่อ - นามสกุล</label>';
+            html +=  '<input type="text" class="form-control" name="txt_person[]"></div></div>';
+            html +=  '<div class="col-md-6">';
+            html +=  '<div class="form-group">';
+            html +=  '<label for="">เบอร์โทร</label>';
+            html +=  '<input type="text" class="form-control" name="txt_personphone[]"></div></div></div>';
+
+            $('#person-more').append(html);
+        });
     });
     //End ready function
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#pic_profile').attr('src', e.target.result);
+                $('#hd_profile').val(input.files[0].name);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function deleteAlbum(id){
+        var result = confirm("ยืนยันการลบ?");
+        if(result){
+            $.post("<?= site_url('account/member/deleteAlbum') ?>", {id:id},
+                function (resp) {
+                    if(resp){
+                        $('#removeImgModal').modal('show');                        
+                    }
+                }
+            );
+            return true;
+        }
+    }
 
     //Function delete data
     function Delete(id){
@@ -243,6 +299,22 @@
 			});
 		}
 	}
+
+    function delPersonContact(id,tbl,el){ //id, tbl = table, el = element for romove
+        var result = confirm("ยืนยันการลบ?");
+        if(result){
+            $.post("<?= site_url('account/member/deleteRow') ?>", {id:id,tbl:tbl},
+                function (resp) {
+                    if(resp){
+                        $('#removeImgModal').modal('show');
+                        $('#'+el).remove();
+                    }
+                }
+            );
+            return true;
+        }
+        //console.log(id);
+    }
 
     function downloadFile(id){
         var r = confirm("ยืนยันการดาวน์โหลด");

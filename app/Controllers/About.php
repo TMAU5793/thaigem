@@ -81,9 +81,11 @@ class About extends BaseController
             'meta_title' => ($this->lang=='en' ? 'Director': 'รายนามกรรมการสมาคมฯ'),
             'lang' => $this->lang,
             'director' => $builder->where('type','director')->orderBy('sortby ASC')->get()->getResultArray(),
-            'banner' => $this->banner
+            'banner' => $this->banner,
+            'sortby' => $builder->where('type','director')->groupBy('sortby')->get()->getResultArray()
         ];
         
+        //print_r($data['sortby']);
         echo view('template/information', $data);
     }
 

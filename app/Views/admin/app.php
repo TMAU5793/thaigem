@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="<?= base_url('assets/adminlte/css/adminlte.min.css'); ?>">
 
     <!-- tags input style -->
-    <link rel="stylesheet" href="<?= base_url('assets/tagsinput/bootstrap-tagsinput.css'); ?>">    
+    <link rel="stylesheet" href="<?= base_url('assets/tagsinput/bootstrap-tagsinput.css'); ?>">
+    
+    <!-- image-uploader -->
+    <link rel="stylesheet" href="<?= base_url('assets/drag-drop-image/dist/image-uploader.min.css'); ?>">
 
     <!-- Custom style -->
     <link rel="stylesheet" href="<?= base_url('assets/style/css/back-office.css'); ?>">
@@ -63,6 +66,9 @@
     <script src="<?= base_url('assets/daterangepicker/moment.min.js'); ?>"></script>
     <script src="<?= base_url('assets/daterangepicker/daterangepicker.js'); ?>"></script>
 
+    <!-- image-uploader -->
+    <script src="<?= site_url('assets/drag-drop-image/dist/image-uploader.min.js'); ?>"></script>
+    
     <?= $this->include('admin/script') ?>
     
     <?= $this->renderSection("scripts") ?>
