@@ -250,6 +250,14 @@
 
             $('#person-more').append(html);
         });
+
+        $('.btn-save').on('click',function(){
+            $('#frm-files').submit();
+        });
+
+        $('.btn-download').on('click',function(){
+            $('#frm-download').submit();
+        });
     });
     //End ready function
 

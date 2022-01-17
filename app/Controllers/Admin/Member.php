@@ -6,6 +6,8 @@ use App\Models\MemberModel;
 use App\Models\SettingModel;
 use App\Models\Account\MemberModel as acMemberModel;
 use App\Models\Account\AlbumModel;
+use App\Models\FilesModel;
+use App\Models\NotiModel;
 
 class Member extends Controller
 {
@@ -52,7 +54,7 @@ class Member extends Controller
         //         ->where('tbl_member.type','dealer')->paginate(25);
 		// }
 		$data = [
-            'meta_title' => 'สมาชิกเว็บไซต์',
+            'meta_title' => 'สมาชิกสมาคมฯ',
 			'info' =>  $result,
 			'active' => 'dealer'
         ];
@@ -72,7 +74,12 @@ class Member extends Controller
 		
 		$keyword = $request->getGet('keyword');
 		$status = $request->getGet('status');
-        
+        if($keyword==''){
+			$keyword = null;
+		}
+		if($status==''){
+			$status = null;
+		}
 		$info = $model->getMember($status,$keyword);
         $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
         $perPage =  25;
@@ -508,5 +515,57 @@ class Member extends Controller
 			}
 			return redirect()->to('admin/member/dealer');
 		}
+	}
+
+	public function fileupload()
+	{
+		if (!session()->get('admindata')) {
+            return redirect()->to('/admin');
+        }
+        
+        //include helper form
+        helper(['form','fileystem']);
+        $request = service('request');
+        $model = new MemberModel();
+		$filesModel = new FilesModel();
+		$db = db_connect();
+		$files = $db->table('tbl_files');
+
+        $id = $request->getGet('id');
+		$member = $model->where('id',$id)->first();
+
+		$data = [
+			'member' => $member,
+			'info' => $filesModel->where('member_id',$id)->orderBy('created_at DESC')->paginate(25),
+            'pager' => $filesModel->pager,
+		];
+		//print_r($data['m_doc']);
+		echo view('admin/member-file',$data);
+	}
+
+	public function notification()
+	{
+		if (!session()->get('admindata')) {
+            return redirect()->to('/admin');
+        }
+        
+        //include helper form
+        helper(['form','fileystem']);
+        $request = service('request');
+        $model = new MemberModel();
+		$notiModel = new NotiModel();
+		$db = db_connect();
+		$noti = $db->table('tbl_notification');
+
+        $id = $request->getGet('id');
+		$member = $model->where('id',$id)->first();
+
+		$data = [
+			'member' => $member,
+			'info' => $notiModel->where('member_id',$id)->orderBy('created_at DESC')->paginate(25),
+            'pager' => $notiModel->pager,
+		];
+		//print_r($data['m_doc']);
+		echo view('admin/member-noti',$data);
 	}
 }

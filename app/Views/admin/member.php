@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">สมาชิกเว็บไซต์</h1>
+                    <h1 class="m-0"><?= $meta_title; ?></h1>
                 </div><!-- /.col -->
                 <!-- <div class="col-sm-6">
                     <div class="text-end">
@@ -47,61 +47,64 @@
                     </div>
                 </form>
             </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">ชื่อบริษัท</th>
-                        <th scope="col">ที่อยู่</th>
-                        <th scope="col">อีเมล</th>
-                        <th scope="col" width="150">เบอร์โทร</th>
-                        <?php if($active=='dealer'){ ?>
-                            <th scope="col" width="120" class="text-center">การอนุมัติ</th>
-                            <th scope="col" width="150" class="text-center">แสดงหน้า Home</th>
-                        <?php } ?>
-                        <th scope="col" width="150" class="text-center">การจัดการ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        if($info){
-                            $page  = $_GET['page'];
-                            foreach ($info as $item) {
-                    ?>
-                    <tr>     
-                        <td><?= ($item['company']!=''?$item['company']:'-') ?></td>
-                        <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
-                        <td><?= $item['email'] ?></td>
-                        <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
+            <div class="overx-scroll">
+                <table class="table table-striped">
+                    <thead style="white-space: nowrap;">
+                        <tr>
+                            <th scope="col">ชื่อบริษัท</th>
+                            <th scope="col">ที่อยู่</th>
+                            <th scope="col" width="200">อีเมล</th>
+                            <th scope="col" width="150">เบอร์โทร</th>
+                            <?php if($active=='dealer'){ ?>
+                                <th scope="col" width="120" class="text-center">การอนุมัติ</th>
+                                <th scope="col" width="150" class="text-center">แสดงหน้า Home</th>
+                            <?php } ?>
+                            <th scope="col" width="100" class="text-center">การจัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            if($info){
+                                $page  = $_GET['page'];
+                                foreach ($info as $item) {
+                        ?>
+                        <tr>     
+                            <td><?= ($item['company']!=''?$item['company']:'-') ?></td>
+                            <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
+                            <td style="word-break: break-word;"><?= $item['email'] ?></td>
+                            <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
 
-                        <?php if($active=='dealer'){ ?>
-                            <td align="center">
-                                <?php
-                                    if($item['type']=='dealer' && $item['approve']=='2'){
-                                ?>
-                                    <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
-                                <?php }elseif($item['type']=='dealer' && $item['approve']=='1'){ ?>
-                                    <i class="fas fa-times-circle text-warning fs-4" title="รอดำเนินการ"></i>
-                                <?php }else{ ?>
-                                    <i class="fas fa-times-circle text-danger fs-4" title="ไม่อนุมัติ"></i>
-                                <?php } ?>
+                            <?php if($active=='dealer'){ ?>
+                                <td align="center">
+                                    <?php
+                                        if($item['type']=='dealer' && $item['approve']=='2'){
+                                    ?>
+                                        <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
+                                    <?php }elseif($item['type']=='dealer' && $item['approve']=='1'){ ?>
+                                        <i class="fas fa-times-circle text-warning fs-4" title="รอดำเนินการ"></i>
+                                    <?php }else{ ?>
+                                        <i class="fas fa-times-circle text-danger fs-4" title="ไม่อนุมัติ"></i>
+                                    <?php } ?>
+                                </td>
+                                <td align="center">
+                                    <button type="button" class="btn pt-0 pb-0 ps-2 pe-2 <?= ($item['member_home']=='1'?'btn-danger' : 'btn-primary') ?>" onClick="MemberHome('<?= $item['id'] ?>','<?= $item['member_home'] ?>')">
+                                        <?= ($item['member_home']=='1'?'ยกเลิก' : 'เลือก') ?>
+                                    </button>
+                                </td>
+                            <?php } ?>
+
+                            <td class="text-center">
+                                <a href="<?= base_url('admin/member/edit?id='.$item['m_id']); ?>">อัปเดต</a>
+                                <a href="<?= base_url('admin/member/fileupload?id='.$item['m_id']); ?>">เอกสาร</a>
+                                <a href="<?= base_url('admin/member/notification?id='.$item['m_id']); ?>">แจ้งเตือน</a>
                             </td>
-                            <td align="center">
-                                <button type="button" class="btn pt-0 pb-0 ps-2 pe-2 <?= ($item['member_home']=='1'?'btn-danger' : 'btn-primary') ?>" onClick="MemberHome('<?= $item['id'] ?>','<?= $item['member_home'] ?>')">
-                                    <?= ($item['member_home']=='1'?'ยกเลิก' : 'เลือก') ?>
-                                </button>
-                            </td>
+                        </tr>
+                        <?php } }else{ ?>
+                            <tr><td align="center" colspan="9">ไม่พบข้อมูล</td></tr>
                         <?php } ?>
-
-                        <td class="text-center">
-                            <a href="<?= base_url('admin/member/edit?id='.$item['m_id']); ?>">อัตเดต</a>
-                        </td>
-                    </tr>
-                    <?php } }else{ ?>
-                        <tr><td align="center" colspan="9">ไม่พบข้อมูล</td></tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-
+                    </tbody>
+                </table>
+            </div>
             <?php
                 $pager = \Config\Services::pager();
                 if($pager){

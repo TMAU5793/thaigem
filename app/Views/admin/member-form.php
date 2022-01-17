@@ -29,8 +29,7 @@
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-1" data-bs-toggle="tab" data-bs-target="#nav-content-1" type="button" role="tab" aria-controls="nav-content-1" aria-selected="true">ข้อมูลสมาชิก</button>
                         <button class="nav-link" id="nav-2" data-bs-toggle="tab" data-bs-target="#nav-content-2" type="button" role="tab" aria-controls="nav-content-2" aria-selected="false">ผู้ติดต่อ</button>
-                        <button class="nav-link" id="nav-3" data-bs-toggle="tab" data-bs-target="#nav-content-3" type="button" role="tab" aria-controls="nav-content-3" aria-selected="false">รูปภาพ</button>
-                        <button class="nav-link" id="nav-4" data-bs-toggle="tab" data-bs-target="#nav-content-4" type="button" role="tab" aria-controls="nav-content-4" aria-selected="false">ไฟล์</button>
+                        <button class="nav-link" id="nav-3" data-bs-toggle="tab" data-bs-target="#nav-content-3" type="button" role="tab" aria-controls="nav-content-3" aria-selected="false">รูปภาพ</button>                        
                     </div>
                     <div class="btn-action-fixed text-center">
                         <button type="submit" class="btn btn-primary me-2">บันทึก</button>
@@ -38,7 +37,7 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
+                    <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="ddl_status" class="form-label">การอนุมัติ</label>
@@ -278,10 +277,6 @@
                             <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 20 รูป </small>
                         </div>
 
-                    </div>
-
-                    <div class="tab-pane fade show active" id="nav-content-4" role="tabpanel" aria-labelledby="nav-4">
-                        
                     </div>
                 </div>
             </form>

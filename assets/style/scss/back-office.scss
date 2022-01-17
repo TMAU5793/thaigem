@@ -255,6 +255,43 @@ table {
             border-radius: 0;
         }
     }
+    table {
+        td {
+            a {
+                display: block;
+            }
+        }
+    }
+}
+
+.member-files {
+    .acform-item {
+        background-color: #ebebeb;
+        padding: 1rem;
+        border-radius: 6px;
+        .ac-form-file {
+            i {
+                font-size: 4.5rem;
+            }
+        }
+    }
+    .acform-upload {
+        background-color: #ebebeb;
+        padding: 1rem 2rem;
+        border-radius: 6px;
+        i {
+            display: none;
+        }
+    }
+}
+
+.btn-download {
+    border: 1px solid #000;
+    padding: 2px 10px 4px;
+    &:hover {
+        background-color: #000;
+        color: #fff;
+    }
 }
 
 .input-hide {
@@ -297,6 +334,17 @@ table {
         }
         img {
             width: 100%;
+        }
+    }
+}
+
+@media (max-width: 1399px) {
+    .content-wrapper {
+        .content-header {
+            padding: 3rem 1.5rem 0;
+        }
+        .content {
+            padding: 1.5rem !important;
         }
     }
 }

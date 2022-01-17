@@ -23,10 +23,22 @@ class Files extends Controller
         }
         $model = new FilesModel();
         $mbModel = new MemberModel();
+        $request = service('request');
+        $keyword = $request->getGet('keyword');
+
+        $info = '';
+        if($keyword!=''){
+            $info = $model->join('tbl_member as b','tbl_files.member_id = b.id')
+                ->where('tbl_files.uploadby','admin')->like('b.company',$keyword)->orderBy('tbl_files.created_at DESC')->paginate(25);
+        }else{
+            $info = $model->where('uploadby','admin')->orderBy('created_at DESC')->paginate(25);
+        }
 		$data = [
             'meta_title' => 'รายการเอกสาร',
-			'info' => $model->where('member_id',null)->paginate(25),
-            'pager' => $model->pager
+			'info' => $info,
+            'pager' => $model->pager,
+            'member' => $mbModel->where('type','dealer')->orderBy('created_at DESC')->findAll(),
+            'm_upload' => TRUE
         ];
 		echo view('admin/formfiles',$data);
     }
@@ -38,12 +50,24 @@ class Files extends Controller
         }
         $model = new FilesModel();
         $mbModel = new MemberModel();
+        $request = service('request');
+        $keyword = $request->getGet('keyword');
+        
+        $info = '';
+        if($keyword!=''){
+            $info = $model->join('tbl_member as b','tbl_files.member_id = b.id')
+                ->where('tbl_files.uploadby',null)->like('b.company',$keyword)->orderBy('tbl_files.created_at DESC')->paginate(25);
+        }else{
+            $info = $model->join('tbl_member as b','tbl_files.member_id = b.id')
+                ->where('tbl_files.uploadby',null)->orderBy('tbl_files.created_at DESC')->paginate(25);
+        }
 		$data = [
             'meta_title' => 'เอกสารลูกค้า',
-			'info' => $model->where('member_id !=',null)->paginate(25),
+			'info' => $info,
             'pager' => $model->pager,
-            'member' => $mbModel->where('type','dealer')->findAll()
+            'member' => $mbModel->where('type','dealer')->orderBy('created_at DESC')->findAll()            
         ];
+        //print_r($info);
 		echo view('admin/formfiles',$data);
     }
 
@@ -114,8 +138,18 @@ class Files extends Controller
                 $fileType = $post['hd_file_type'];
                 $data = [
                     'filename' => $fileName,
-                    'filefor' => $post['ddl_filefor'],                    
+                    'filefor' => $post['ddl_filefor'],
+                    'uploadby' => 'admin'
                 ];
+                if($post['hd_member']){
+                    $data = [
+                        'filename' => $fileName,
+                        'filefor' => $post['ddl_filefor'],
+                        'member_id' => $post['hd_member'],
+                        'uploadby' => 'admin'
+                    ];
+                }
+
                 if($post['hd_id']){
                     $model->update($post['hd_id'],$data);
                     $id = $post['hd_id'];
@@ -136,7 +170,11 @@ class Files extends Controller
                         $this->upload($id,$file,'uploads/files',$fileName,$fileType); //id, file, path, file name
                     }
                 }
-                return redirect()->to('admin/files');
+                if($post['hd_member']){
+                    return redirect()->to('admin/member/fileupload?id='.$post['hd_member']);
+                }else{
+                    return redirect()->to('admin/files');
+                }
             }else{
                 $data['validation'] = $this->validator;
                 echo view('admin/formfiles-form',$data);

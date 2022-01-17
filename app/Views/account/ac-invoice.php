@@ -43,7 +43,8 @@
                                                 </div>
                                                 <div class="w-75">
                                                     <strong class="ff-dbadmanBold d-block"><?= $file['filename']; ?></strong>
-                                                    <button type="button" class="btn btn-black-border fs-6 mt-3 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
+                                                    <span class="d-block fs-6"><?= lang('GlobalLang.date').' : '.substr($file['created_at'],0,10) ?></span>
+                                                    <button type="button" class="btn btn-black-border fs-6 mt-2 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
                                                 </div>
                                             </div>
                                         </div>

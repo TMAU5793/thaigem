@@ -31,7 +31,7 @@ class Invoice extends Controller
         $data = [
             'ac_invoice' => TRUE,
             'meta_title' => 'Download invoice',
-            'invoices' => $model->where(['filefor'=>'invoice','member_id'=>null,'status'=>'on'])->findAll(),
+            'invoices' => $model->where(['filefor'=>'invoice','uploadby'=>'admin','status'=>'on'])->orderBy('created_at DESC')->findAll(),
             'fileFor' => 'invoice',
             'member' => $member
         ];
