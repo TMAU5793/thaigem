@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">บัญชีผู้ดูแล</h1>
+                    <h1 class="m-0">รายนามที่ปรึกษา</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <div class="text-end">
-                        <a href="<?= base_url('admin/account/register') ?>" class="btn btn-success">เพิ่มบัญชี</a>
+                        <a href="<?= base_url('admin/articles/advisoryform') ?>" class="btn btn-success">เพิ่มรายชื่อ</a>
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,7 +24,7 @@
     <!-- Main content -->
     <section class="content p-5">
         <div class="container-fluid">
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <form action="" method="GET">
                     <div class="form-row align-items-center justify-content-end">
                         <div class="col-3">
@@ -35,14 +35,13 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> -->
             <table class="table table-striped" id="tbl-account">
                 <thead>
                     <tr>
-                        <th scope="col" width="50" class="text-end">ลำดับ</th>
-                        <th scope="col">ชื่อบัญชี (อีเมล)</th>
                         <th scope="col">ชื่อ - นามสกุล</th>
-                        <th scope="col">เบอร์โทร</th>
+                        <th scope="col">ตำแหน่ง</th>
+                        <th scope="col" width="150" class="text-center">ลำดับ</th>
                         <th scope="col" width="150" class="text-center">สถานะ</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
@@ -50,27 +49,18 @@
                 <tbody>
                     <?php
                         if($info){
-                            $n=0;
                             foreach ($info as $item) {
-                                $n++;
                     ?>
                     <tr>
-                        <th scope="row" class="text-end"><?= $n ?></th>
-                        <td><?= $item['account'] ?></td>
                         <td><?= $item['name'].' '.$item['lastname'] ?></td>
-                        <td><?= $item['tel'] ?></td>
+                        <td><?= $item['position'] ?></td>
+                        <td class="text-center"><?= $item['sortby'] ?></td>
                         <td class="text-center">
-                            <?php
-                                if($item['status']=='1'){
-                            ?>
-                                <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
-                            <?php }else{ ?>
-                                <i class="fas fa-times-circle text-danger fs-4" title="ไม่อนุมัติ"></i>
-                            <?php } ?>
+                            <i class="fas fa-check-circle fs-4 <?= ($item['status']=='1'?'text-success' : 'text-danger') ?>" title="<?= ($item['status']=='1'?'เปิด' : 'ปิด') ?>"></i>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/account/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/account/delete');">ลบ</a>
+                            <a href="<?= base_url('admin/articles/advisoryform?id='.$item['id']); ?>">แก้ไข</a> |
+                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/articles/deleteAdvisory');">ลบ</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>

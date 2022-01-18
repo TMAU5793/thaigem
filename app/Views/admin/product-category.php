@@ -63,7 +63,13 @@
                                 ?>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-status <?= ($item['status']=='1'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='1'?'เปิด' : 'ปิด') ?></button>
+                                <?php
+                                    if($item['status']=='1'){
+                                ?>
+                                    <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
+                                <?php }else{ ?>
+                                    <i class="fas fa-times-circle text-danger fs-4" title="ไม่อนุมัติ"></i>
+                                <?php } ?>
                             </td>
                             <td><?= $item['created_at'] ?></td>
                             <td class="text-center">

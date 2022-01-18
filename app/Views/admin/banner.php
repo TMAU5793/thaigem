@@ -31,6 +31,7 @@
                 <thead>
                     <tr>
                         <th scope="col">แบนเนอร์</th>
+                        <th scope="col" width="150" class="text-center">ลำดับ</th>
                         <th scope="col" width="150" class="text-center">สถานะ</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
@@ -42,8 +43,15 @@
                     ?>
                     <tr>
                         <td><?= $row['page'] ?></td>
+                        <td class="text-center"><?= $row['sortby'] ?></td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-status <?= ($row['status']=='1'?'btn-success' : 'btn-danger') ?>"><?= ($row['status']=='1'?'เปิด' : 'ปิด') ?></button>
+                            <?php
+                                if($row['status']=='1'){
+                            ?>
+                                <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
+                            <?php }else{ ?>
+                                <i class="fas fa-times-circle text-danger fs-4" title="ไม่อนุมัติ"></i>
+                            <?php } ?>
                         </td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/banner/edit?id='.$row['id']); ?>">แก้ไข</a> |

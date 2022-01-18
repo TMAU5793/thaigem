@@ -10,12 +10,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0"><?= $meta_title; ?></h1>
-                </div><!-- /.col -->
-                <!-- <div class="col-sm-6">
-                    <div class="text-end">
-                        <a href="" class="btn btn-success">เพิ่มบัญชี</a>
-                    </div>
-                </div> -->
+                </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -50,16 +45,20 @@
             <div class="overx-scroll">
                 <table class="table table-striped">
                     <thead style="white-space: nowrap;">
-                        <tr>
-                            <th scope="col">ชื่อบริษัท</th>
-                            <th scope="col">ที่อยู่</th>
-                            <th scope="col" width="200">อีเมล</th>
-                            <th scope="col" width="150">เบอร์โทร</th>
+                        <tr>                            
                             <?php if($active=='dealer'){ ?>
+                                <th scope="col">ชื่อบริษัท</th>
+                                <th scope="col">ที่อยู่</th>
+                                <th scope="col" width="200">อีเมล</th>
+                                <th scope="col" width="150">เบอร์โทร</th>
                                 <th scope="col" width="120" class="text-center">การอนุมัติ</th>
                                 <th scope="col" width="150" class="text-center">แสดงหน้า Home</th>
+                                <th scope="col" width="100" class="text-center">การจัดการ</th>
+                            <?php }else{ ?>
+                                <th scope="col">ชื่อ-นามสกุล</th>
+                                <th scope="col">อีเมล</th>
+                                <th scope="col">สมัครผ่าน</th>
                             <?php } ?>
-                            <th scope="col" width="100" class="text-center">การจัดการ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,13 +67,12 @@
                                 $page  = $_GET['page'];
                                 foreach ($info as $item) {
                         ?>
-                        <tr>     
-                            <td><?= ($item['company']!=''?$item['company']:'-') ?></td>
-                            <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
-                            <td style="word-break: break-word;"><?= $item['email'] ?></td>
-                            <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
-
+                        <tr>
                             <?php if($active=='dealer'){ ?>
+                                <td><?= ($item['company']!=''?$item['company']:'-') ?></td>
+                                <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
+                                <td style="word-break: break-word;"><?= $item['email'] ?></td>
+                                <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
                                 <td align="center">
                                     <?php
                                         if($item['type']=='dealer' && $item['approve']=='2'){
@@ -91,13 +89,16 @@
                                         <?= ($item['member_home']=='1'?'ยกเลิก' : 'เลือก') ?>
                                     </button>
                                 </td>
+                                <td class="text-center">
+                                    <a href="<?= base_url('admin/member/edit?id='.$item['m_id']); ?>">อัปเดต</a>
+                                    <a href="<?= base_url('admin/member/fileupload?id='.$item['m_id']); ?>">เอกสาร</a>
+                                    <a href="<?= base_url('admin/member/notification?id='.$item['m_id']); ?>">แจ้งเตือน</a>
+                                </td>
+                            <?php }else{ ?>
+                                <td><?= $item['name'].' '.$item['lastname']; ?></td>
+                                <td><?= ($item['email']!=''?$item['email']:'-'); ?></td>
+                                <td><?= ($item['social_type']!=''?$item['social_type']:'เว็บไซต์') ?></td>
                             <?php } ?>
-
-                            <td class="text-center">
-                                <a href="<?= base_url('admin/member/edit?id='.$item['m_id']); ?>">อัปเดต</a>
-                                <a href="<?= base_url('admin/member/fileupload?id='.$item['m_id']); ?>">เอกสาร</a>
-                                <a href="<?= base_url('admin/member/notification?id='.$item['m_id']); ?>">แจ้งเตือน</a>
-                            </td>
                         </tr>
                         <?php } }else{ ?>
                             <tr><td align="center" colspan="9">ไม่พบข้อมูล</td></tr>

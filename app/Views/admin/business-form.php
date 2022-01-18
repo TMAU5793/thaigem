@@ -38,31 +38,27 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <?php
-                        if($info['main_type']!=0 || !isset($info)){
-                    ?>
-                        <div class="p2rem pb-0">
-                            <label for="txt_name" class="form-label">ประเภทธุรกิจหลัก <span class="text-primary">(*เลือกประเภทธุรกิจหลัก หากใช้ข้อมูลนี้เป็นประเภทธุรกิจย่อย)</span></label>
-                            <select name="ddl_cate" id="ddl_cate" class="form-control">
-                                <option value="">-- ประเภท --</option>
-                                <?php
-                                    if(isset($cates)){
-                                        foreach($cates as $cate){
-                                ?>
-                                    <option value="<?= $cate['id'] ?>" <?= (isset($info)&&$info['main_type']==$cate['id']?"selected='selected'":''); ?>><?= $cate['name_th'] ?></option>
-                                <?php } } ?>
-                            </select>
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <div class="mb-3">
+                                <label for="txt_name" class="form-label">ประเภทธุรกิจหลัก <span class="text-primary">(*เลือกประเภทธุรกิจหลัก หากใช้ข้อมูลนี้เป็นประเภทธุรกิจย่อย)</span></label>
+                                <select name="ddl_cate" id="ddl_cate" class="form-control">
+                                    <option value="">-- ประเภท --</option>
+                                    <?php
+                                        if(isset($cates)){
+                                            foreach($cates as $cate){
+                                    ?>
+                                        <option value="<?= $cate['id'] ?>" <?= (isset($info)&&$info['main_type']==$cate['id']?"selected='selected'":''); ?>><?= $cate['name_th'] ?></option>
+                                    <?php } } ?>
+                                </select>
+                            </div>
                         </div>
-                    <?php } ?>
+                    </div>
                     <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
-                        <div class="row">                            
+                        <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="txt_name" class="form-label">ชื่อประเภทธุรกิจ <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="txt_name" name="txt_name" value="<?= (isset($info)? $info['name_th'] : set_value('txt_name')) ?>">                        
-                            </div>
-                            <div class="col-12">
-                                <label for="txt_tags" class="form-label">แท็ก (Tags)</label>
-                                <input type="text" class="form-control" id="txt_tags" name="txt_tags" value="<?= (isset($info)? $info['tags_th'] : set_value('txt_tags')) ?>">
                             </div>
                         </div>
                     </div>
@@ -72,10 +68,6 @@
                             <div class="col-12 mb-3">
                                 <label for="txt_name_en" class="form-label">ชื่อประเภทธุรกิจ</label>
                                 <input type="text" class="form-control" id="txt_name_en" name="txt_name_en" value="<?= (isset($info)? $info['name_en'] : set_value('txt_name_en')) ?>">                        
-                            </div>
-                            <div class="col-12">
-                                <label for="txt_tags_en" class="form-label">แท็ก (Tags)</label>
-                                <input type="text" class="form-control" id="txt_tags_en" name="txt_tags_en" value="<?= (isset($info)? $info['tags_en'] : set_value('txt_tags_en')) ?>">
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ class Banner extends Controller
         $model = new BannerModel();
 		$data = [
             'meta_title' => 'ระบบจัดการข้อมูลแบนเนอร์',
-            'info' => $model->orderBy('page DESC')->findAll()
+            'info' => $model->orderBy('page ASC, sortby ASC')->findAll()
         ];
 		echo view('admin/banner',$data);
     }
@@ -81,7 +81,8 @@ class Banner extends Controller
             $hd_banner_mobile_del = $post['hd_banner_mobile_del']; //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
             $data = [
                 'page' => $post['ddl_page'],
-                'link' => urldecode($post['txt_link'])
+                'link' => urldecode($post['txt_link']),
+                'sortby' => $post['sortby']
             ];
             if($post['hd_id']){
                 $model->update($post['hd_id'],$data);

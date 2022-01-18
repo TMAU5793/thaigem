@@ -62,7 +62,7 @@ class Home extends BaseController
             'cate_prod' => $cate_prod,
             'cate_bus' => $cate_bus,
             'userdata' => $this->userdata,
-            'banner' => $banner->where('page','home')->orderBy('created_at DESC')->findAll(5)
+            'banner' => $banner->where('page','home')->orderBy('sortby ASC')->findAll(5)
         ];
                 
         // print_r('<pre>');

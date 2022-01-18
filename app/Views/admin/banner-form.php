@@ -32,9 +32,13 @@
                         <option value="webboard" <?= isset($info) && $info['page']=='webboard'?'selected' : '' ?>> หน้า Business Community </option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="txt_link">แบนเนอร์ลิงก์</label>
                     <input type="text" name="txt_link"  class="form-control" value="<?= (isset($info)?$info['link']:set_value('txt_link')) ?>" placeholder="ตัวอย่างลิงก์ : https://example.com/event/post/vicenzaoro-january-2022">
+                </div>
+                <div class="mb-3">
+                    <label for="sortby">ลำดับ</label>
+                    <input type="text" name="sortby"  class="form-control" value="<?= (isset($info)?$info['sortby']:set_value('sortby')) ?>">
                 </div>
                 <div class="row banner-item">
                     <div class="col-md-3">

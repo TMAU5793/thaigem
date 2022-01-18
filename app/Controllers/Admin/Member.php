@@ -45,14 +45,7 @@ class Member extends Controller
         $pager->makeLinks($page+1, $perPage, $total);
         $offset = $page * $perPage;
         $result = $model->getDealer($status,$keyword,$perPage,$offset);
-		// $info = [];
-		// if($keyword!='' || $status!=''){
-		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-		// 	->where(['tbl_member.type'=>'dealer','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
-		// }else{
-		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-        //         ->where('tbl_member.type','dealer')->paginate(25);
-		// }
+		
 		$data = [
             'meta_title' => 'สมาชิกสมาคมฯ',
 			'info' =>  $result,
@@ -77,32 +70,14 @@ class Member extends Controller
         if($keyword==''){
 			$keyword = null;
 		}
-		if($status==''){
-			$status = null;
-		}
-		$info = $model->getMember($status,$keyword);
+		$info = $model->getMember($keyword);
         $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
         $perPage =  25;
         $total = count($info);
         $pager->makeLinks($page+1, $perPage, $total);
         $offset = $page * $perPage;
-        $result = $model->getMember($status,$keyword,$perPage,$offset);
-
-		// $info = [];
-		// if($keyword!='' || $status!=''){
-		// 	if($status=='2'){
-		// 		$status = '1';
-		// 	}elseif($status=='1'){
-		// 		$status = '';
-		// 	}else{
-		// 		$status = '0';
-		// 	}
-		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-		// 	->where(['tbl_member.type'=>'member','tbl_member.status'=>$status])->like('tbl_member.company',$keyword)->paginate(25);
-		// }else{
-		// 	$info = $model->select('*,tbl_member.status as approve')->join('tbl_address as B','B.member_id = tbl_member.id')
-        //         ->where('tbl_member.type','member')->paginate(25);
-		// }
+        $result = $model->getMember($keyword,$perPage,$offset);
+		
 		$data = [
             'meta_title' => 'สมาชิกเว็บไซต์',
 			'info' => $result,

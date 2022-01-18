@@ -49,23 +49,18 @@ class MemberModel extends Model
         return $builder->get()->getResultArray();
 	}
 
-	public function getMember($status=null,$keyword=null,$perPage=null,$offset=null)
+	public function getMember($keyword=null,$perPage=null,$offset=null)
 	{
 		$db      = db_connect();
-        $builder = $db->table('tbl_member AS a');
-        $builder->select('*,a.id as m_id,a.status as approve');
-        $builder->join('tbl_address AS b','b.member_id=a.id');
-		$builder->where('a.type','member');
-        if($status!=null){
-            $builder->where('a.status',$status);
-        }
+        $builder = $db->table('tbl_member');
+		$builder->where('type','member');
         if($keyword!=''){
-            $builder->like('a.company',$keyword);
+            $builder->like('company',$keyword);
         }
 		if($perPage!=null){
 			$builder->limit($perPage, $offset);
 		}
-        $builder->orderBy('a.status DESC');
+        $builder->orderBy('status DESC');
         return $builder->get()->getResultArray();
 	}
 
@@ -126,7 +121,7 @@ class MemberModel extends Model
 		$query = [];
 		foreach($cate as $row){
 			$builder->join('tbl_member_business as b', 'a.id = b.member_id')
-						->where(['a.type'=>'dealer','a.status'=>'2'])                            
+						->where(['a.type'=>'dealer','a.status'=>'2'])
 						->like('b.product',$row['name_th']);
 			if($perPage!=null){
 				$builder->limit($perPage, $offset);
@@ -136,10 +131,6 @@ class MemberModel extends Model
 				$query[] = $item;
 			}
 		}
-		// print_r('<pre>');
-		// print_r($query);
-		// print_r('</pre>');
-		// echo count($query);
 		
         return $query;
 	}

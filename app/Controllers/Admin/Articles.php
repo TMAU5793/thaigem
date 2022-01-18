@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 use CodeIgniter\Controller;
 use App\Models\Admin\ArticlesModel;
+use App\Models\PositionModel;
 use CodeIgniter\I18n\Time;
 
 class Articles extends Controller
@@ -428,12 +429,26 @@ class Articles extends Controller
             return redirect()->to('admin');
         }
 
-        $db      = \Config\Database::connect();
-        $builder = $db->table('tbl_position');
+        $ptModel = new PositionModel();
         $data = [
-            'info' => $builder->get()->getResultArray()
+            'info' => $ptModel->where('type','advisory')->paginate(25),
+            'pager' => $ptModel->pager
         ];
         return view('admin/advisory',$data);
+    }
+
+    public function director()
+    {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
+        $ptModel = new PositionModel();
+        $data = [
+            'info' => $ptModel->where('type','director')->paginate(25),
+            'pager' => $ptModel->pager
+        ];
+        return view('admin/director',$data);
     }
 
     public function advisoryform()

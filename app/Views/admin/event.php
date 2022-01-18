@@ -63,7 +63,13 @@
                         <td align="center"><?= str_replace('-','/',$item['start_event']).' - '.str_replace('-','/',$item['end_event']) ?></td>
                         <td align="right"><?= $item['view'] ?></td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-status <?= ($item['status']=='on'?'btn-success' : 'btn-danger') ?>"><?= ($item['status']=='on'?'เปิด' : 'ปิด') ?></button>
+                            <?php
+                                if($item['status']=='on'){
+                            ?>
+                                <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
+                            <?php }else{ ?>
+                                <i class="fas fa-times-circle text-danger fs-4" title="ไม่อนุมัติ"></i>
+                            <?php } ?>
                         </td>
                         <td align="center"><?= $item['created_at'] ?></td>
                         <td class="text-center">
