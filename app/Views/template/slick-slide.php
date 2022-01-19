@@ -68,7 +68,8 @@
         $('.slick-1-item').slick({
             slidesToShow: 1,
             dots: true,
-            arrows: false
+            arrows: false,
+            autoplay: true
         });
 
         $('.banner-slick').slick({
@@ -114,7 +115,8 @@
             slidesToScroll: 3,
             dots: true,
             arrows: false,
-            infinite:false,
+            infinite:true,
+            autoplay: true,
             responsive: [
                 {
                     breakpoint: 1200,
