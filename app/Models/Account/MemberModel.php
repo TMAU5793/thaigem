@@ -466,8 +466,8 @@ class MemberModel extends Model
                 $phone = $data['txt_personphone'][$i];
                 $info = [
                     'member_id' => $data['hd_id'],
-                    'name' => $name,
-                    'lastname' => $lastname,
+                    'name' => $data['txt_person'][$i],
+                    //'lastname' => $lastname,
                     'phone' => $phone,
                     'created_at' => $datetime,
                     'updated_at' => $datetime
