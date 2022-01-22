@@ -12,5 +12,5 @@ return [
     'category' => '<strong class="ff-bold">Member</strong> <span class="ff-reg"> Category</span>',
 
     'memberTgjtaText' => 'Apply for membership to create an online store and receive many benefits from the association.',
-    'memberPersonText' => 'Sign up for news View member information and exchange information.',
+    'memberPersonText' => 'Sign up for News, View member profile and Exchange information',
 ];

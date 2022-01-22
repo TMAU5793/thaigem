@@ -4,7 +4,7 @@
     <section class="event-content ptb-2rem">
         <div class="container">
             <div class="text-center title">
-                <h1 class="text-uppercase ff-dbadmanBold"><?= lang('GlobalLang.event'); ?></h1>
+                <h1 class="text-uppercase ff-dbadmanBold"><?= lang('GlobalLang.events'); ?></h1>
             </div>
 
             <div class="row">

@@ -265,7 +265,7 @@
                             </div>
                             <div class="w-50 position-relative">
                                 <div class="ps-3 text-center">
-                                    <h2 class="ff-dbamanBold fs-6 text-uppercase letter-spacing-1 mb-0 line-height-16px"><?= $row['company'] ?></h2>
+                                    <h2 class="ff-dbamanBold fs-6 text-uppercase letter-spacing-1 mb-0 line-height-16px text-line-4"><?= $row['company'] ?></h2>
                                     <div class="cate-type">
                                         <strong class="ff-dbadmanBold c-darkgold fs-5"><?= lang('GlobalLang.product-type') ?></strong>
                                         <?php

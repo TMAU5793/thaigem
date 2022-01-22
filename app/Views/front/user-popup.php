@@ -45,7 +45,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="register-back cursor-pointer input-nobg d-none">กลับ</span>
+                <span class="register-back cursor-pointer input-nobg d-none"><?= lang('GlobalLang.back') ?></span>
                 <div class="text-center w-100">
                     <strong class="ff-dbadmanBold fs-2 ms-4 d-block"><?= lang('GlobalLang.createAccount') ?></strong>                    
                 </div>
@@ -59,10 +59,10 @@
                                 <div class="singup-form text-center">
                                     <div class="head-sect">
                                         <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberTgjta') ?></h4>
-                                        <p>สมัครสมาชิกเพื่อสร้างหน้าร้านออนไลน์และรับสิทธิ์ประโยชน์จากทางสมาคมอีกมากมาย</p>
+                                        <p><?= lang('HomeLang.memberTgjtaText') ?></p>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-register member-tgjta fs-6">Create a Membership Account</button>
+                                        <button type="button" class="btn btn-register member-tgjta fs-6"><?= lang('GlobalLang.btnmember') ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -70,10 +70,10 @@
                                 <div class="sign-member text-center">
                                     <div class="head-sect">
                                         <h4 class="ff-dbadmanBold"><?= lang('GlobalLang.memberPerson') ?></h4>
-                                        <p>ลงทะเบียนเพื่อรับข่าวสาร ดูข้อมูลสมาชิกและแลกเปลี่ยนข้อมูล</p>
+                                        <p><?= lang('HomeLang.memberPersonText') ?></p>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-register member-personal fs-6">Join Now</button>
+                                        <button type="button" class="btn btn-register member-personal fs-6"><?= lang('GlobalLang.btnjoin') ?></button>
                                     </div>
                                 </div>
                             </div>

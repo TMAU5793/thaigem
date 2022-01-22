@@ -1122,7 +1122,10 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .member-home .member-list .slick-dots {
   bottom: -3rem; }
 .member-home .member-list h2.ff-dbamanBold {
-  font-weight: 600; }
+  font-weight: 600;
+  min-height: 50px; }
+.member-home .member-list .cate-type {
+  height: 65px; }
 .member-home .ac-album {
   overflow: hidden; }
 .member-home .shadow-lightgold {
@@ -1130,7 +1133,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .member-home .event-action {
   position: absolute;
   left: 50%;
-  transform: translateX(-40%);
+  transform: translateX(-45%);
   width: 100%;
   bottom: 0; }
 
@@ -1321,6 +1324,12 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     padding: 0 .15rem; }
   .member-content .box-member ul li:nth-child(3) {
     padding-left: .3rem; }
+.member-content .member-text h5 {
+  min-height: 60px; }
+.member-content .member-text .cate-type {
+  height: 65px; }
+.member-content .member-text .btn-black-border {
+  font-size: 1.25rem; }
 
 .contact-content .map-location iframe {
   width: 100%; }

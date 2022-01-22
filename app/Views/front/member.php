@@ -31,42 +31,42 @@
                                     <?php
                                         if($category){
                                     ?>
-                                        <optgroup label="Diamonds">
+                                        <optgroup label="DIAMONDS">
                                             <?php
                                                 foreach($category as $row){
                                                     if($row['maincate_id']==1){ ?>
                                                 <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                             <?php } } ?>
                                         </optgroup>
-                                        <optgroup label="Gemstones">
+                                        <optgroup label="GEMSTONES">
                                             <?php
                                                 foreach($category as $row){
                                                     if($row['maincate_id']==2){ ?>
                                                 <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                             <?php } } ?>
                                         </optgroup>
-                                        <optgroup label="Gold & Platinum Jewelry">
+                                        <optgroup label="GOLD & PLATINUM JEWELRY">
                                             <?php
                                                 foreach($category as $row){
                                                     if($row['maincate_id']==3){ ?>
                                                 <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                             <?php } } ?>
                                         </optgroup>
-                                        <optgroup label="Silver Jewelry">
+                                        <optgroup label="SILVER JEWELRY">
                                             <?php
                                                 foreach($category as $row){
                                                     if($row['maincate_id']==4){ ?>
                                                 <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                             <?php } } ?>
                                         </optgroup>
-                                        <optgroup label="Equipment & Tools">
+                                        <optgroup label="EQUIPMENT & TOOLS">
                                             <?php
                                                 foreach($category as $row){
                                                     if($row['maincate_id']==5){ ?>
                                                 <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_product_type'])&&$_GET['ddl_product_type']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                             <?php } } ?>
                                         </optgroup>
-                                        <optgroup label="Others">
+                                        <optgroup label="OTHER">
                                             <?php
                                                 foreach($category as $row){
                                                     if($row['maincate_id']==6){ ?>
@@ -85,7 +85,7 @@
                                     <?php
                                         if($business){
                                     ?>
-                                        <optgroup label="Manufacturing">
+                                        <optgroup label="MANUFACTURING">
                                             <?php
                                                 foreach($business as $row){
                                                     if($row['main_type']==1){ 
@@ -93,7 +93,7 @@
                                                 <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                             <?php } } ?>
                                         </optgroup>
-                                        <optgroup label="Trading">
+                                        <optgroup label="TRADING">
                                             <?php
                                                 foreach($business as $row){
                                                     if($row['main_type']==2){ 
@@ -101,7 +101,7 @@
                                                 <option value="<?= $row['name_th'] ?>" <?= (isset($_GET['ddl_business'])&&$_GET['ddl_business']==$row['name_th']?'selected':'') ?>><?= ($row['name_en']=="" && $lang=='en' ? $row['name_th']:$row['name_'.$lang]) ?></option>
                                             <?php } } ?>
                                         </optgroup>
-                                        <optgroup label="Services">
+                                        <optgroup label="SERVICE">
                                             <?php
                                                 foreach($business as $row){
                                                     if($row['main_type']==3){ 
@@ -206,10 +206,10 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="w-50 position-relative">
+                        <div class="w-50 position-relative member-text">
                             <?= $rowp['DateDiff']; ?>
                             <div class="w-100 ps-3 text-center">
-                                <h5 class="ff-dbadmanBold text-uppercase mb-0 line-height-18px mb-2 fz-1-2rem-575"><?= $row['company'] ?></h5>
+                                <h5 class="ff-dbadmanBold text-uppercase mb-0 line-height-18px mb-2 fz-1-2rem-575 text-line-4"><?= $row['company'] ?></h5>
                                 <div class="cate-type mb-2">
                                     <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.product-type') ?></strong>
                                     <?php
@@ -219,9 +219,9 @@
                                                 if($n<1 && $member_id==$cate['member_id']){
                                                     $n++;
                                     ?>
-                                        <p class="text-line-1 mb-0 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                        <p class="text-line-2 mb-0 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
                                     <?php } } }else{ ?>
-                                        <p class="text-line-1 mb-0 line-height-20px"><?= $row['product'] ?></p>
+                                        <p class="text-line-2 mb-0 line-height-20px"><?= $row['product'] ?></p>
                                     <?php } ?>
                                 </div>
                                 <div class="cate-type">
@@ -233,9 +233,9 @@
                                                 if($n<1 && $member_id==$cate['member_id']){
                                                     $n++;
                                     ?>
-                                        <p class="text-line-1 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
+                                        <p class="text-line-2 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
                                     <?php } } }else{ ?>
-                                        <p class="text-line-1 line-height-20px mb-0"><?= $row['business'] ?></p>
+                                        <p class="text-line-2 line-height-20px mb-0"><?= $row['business'] ?></p>
                                     <?php } ?>
                                 </div>
                                 <div class="event-action position-absolute start-50 translate-middle-x bottom-0 ms-2">
