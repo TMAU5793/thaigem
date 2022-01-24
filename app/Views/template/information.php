@@ -11,11 +11,14 @@
             <!-- <div class="title text-center pt-5"><h1 class="fs-3 ff-semibold"><?= $meta_title ?></h1></div> -->
             <div class="content-body mt-3">
                 <div class="p-4">
-                    <?php
-                        if(isset($info_single) && $info_single->desc_en!='' || $info_single->desc_th!=''){
-                            echo ($lang=='en' && $info_single->desc_en!='' ? $info_single->desc_en : $info_single->desc_th );
-                        }
-                    ?>
+                    <div class="single-infomation">
+                        <?php
+                            if(isset($info_single) && $info_single->desc_en!='' || $info_single->desc_th!=''){
+                                echo ($lang=='en' && $info_single->desc_en!='' ? $info_single->desc_en : $info_single->desc_th );
+                            }
+                        ?>
+                    </div>
+                    
                     <?php
                         if(isset($advisory)){
                     ?>
@@ -31,8 +34,8 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } ?>
@@ -42,13 +45,13 @@
                     <?php
                         if(isset($director)){
                     ?>
-                        <div class="row advisory">
+                        <div class="row director">
                             <div class="col-12 text-center">
                                 <h2 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.director') ?></h2>
                             </div>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==1){
@@ -58,14 +61,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==2){
@@ -75,14 +78,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==3){
@@ -92,14 +95,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==4){
@@ -109,14 +112,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==5){
@@ -126,14 +129,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==6){
@@ -143,14 +146,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==7){
@@ -160,14 +163,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']==8){
@@ -177,14 +180,14 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>
                         </div>
 
-                        <div class="row advisory">
+                        <div class="row director">
                             <?php
                                 foreach($director as $row){
                                     if($row['sortby']>8){
@@ -194,8 +197,8 @@
                                         <img src="<?= site_url($row['profile']) ?>" alt="<?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?>">
                                     </div>
                                     <div class="col-text mt-3">
-                                        <strong class="d-block ff-dbadmanBold fs-4 line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></strong>
-                                        <span class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></span>
+                                        <strong class="d-block line-height-18px"><?= ($lang=='en' && $row['name_en']!=''?$row['name_en']:$row['name']) ?></strong>
+                                        <span class="d-block line-height-24px"><?= ($lang=='en' && $row['position_en']!=''?$row['position_en']:$row['position']) ?></span>                                        
                                     </div>
                                 </div>
                             <?php } } ?>

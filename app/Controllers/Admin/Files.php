@@ -249,5 +249,5 @@ class Files extends Controller
         }else{
             return redirect()->to(site_url('admin/files'));
         }
-    }
+    }    
 }

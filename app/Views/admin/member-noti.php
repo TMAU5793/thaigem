@@ -22,7 +22,7 @@
             <?php if(isset($validation)): ?>
                 <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
             <?php endif;?>
-            <form id="frm-files" action="<?= site_url('admin/files/update') ?>" method="POST" enctype="multipart/form-data">
+            <form id="frm-files" action="<?= site_url('admin/member/savenotification') ?>" method="POST" enctype="multipart/form-data">
                 <nav class="content-nav mt-4">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-1" data-bs-toggle="tab" data-bs-target="#nav-content-1" type="button" role="tab" aria-controls="nav-content-1" aria-selected="true">ภาษาไทย</button>
@@ -33,8 +33,8 @@
                     <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
                         <input type="hidden" name="hd_member" value="<?= $member['id'] ?>">
                         <div class="mb-3">
-                            <label for="txt_name" class="d-block">หัวข้อ (TH)</label>
-                            <input type="text" name="txt_name" class="form-control" value="<?= (isset($info)?$info['filename']:'') ?>">
+                            <label for="txt_title" class="d-block">หัวข้อ (TH)</label>
+                            <input type="text" name="txt_title" class="form-control" value="<?= (isset($info)?$info['filename']:'') ?>">
                         </div>
                         <div class="mb-3">
                             <label for="txt_msg" class="d-block">ข้อความ (TH)</label>
@@ -44,12 +44,12 @@
 
                     <div class="tab-pane fade" id="nav-content-2" role="tabpanel" aria-labelledby="nav-2">
                         <div class="mb-3">
-                            <label for="txt_name" class="d-block">หัวข้อ (EN)</label>
-                            <input type="text" name="txt_name" class="form-control" value="<?= (isset($info)?$info['filename']:'') ?>">
+                            <label for="txt_title_en" class="d-block">หัวข้อ (EN)</label>
+                            <input type="text" name="txt_title_en" class="form-control" value="<?= (isset($info)?$info['filename']:'') ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="txt_msg" class="d-block">ข้อความ (EN)</label>
-                            <textarea name="txt_msg" id="txt_msg" class="form-control"></textarea>
+                            <label for="txt_msg_en" class="d-block">ข้อความ (EN)</label>
+                            <textarea name="txt_msg_en" id="txt_msg_en" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="text-center mt-4">

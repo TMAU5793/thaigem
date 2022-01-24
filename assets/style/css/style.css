@@ -1524,13 +1524,38 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   display: none; }
 
 .information-center {
-  background-image: url("../../images/about-bg.jpg");
   background-repeat: repeat-y; }
   .information-center table {
     width: 100%; }
   .information-center .advisory .col-lg-3 {
     margin-top: 2rem;
     padding: 0 1.5rem; }
+    .information-center .advisory .col-lg-3 .col-text {
+      text-align: center; }
+      .information-center .advisory .col-lg-3 .col-text strong {
+        color: #665f4f;
+        font-size: 1.25rem; }
+      .information-center .advisory .col-lg-3 .col-text span {
+        font-size: 1.25rem; }
+  .information-center .director {
+    justify-content: center; }
+    .information-center .director .col-lg-3 {
+      margin-top: 2rem;
+      padding: 0 1.5rem; }
+      .information-center .director .col-lg-3 .col-text {
+        text-align: center; }
+        .information-center .director .col-lg-3 .col-text strong {
+          color: #665f4f;
+          font-size: 1.25rem; }
+        .information-center .director .col-lg-3 .col-text span {
+          font-size: 1.25rem; }
+      .information-center .director .col-lg-3 .col-img {
+        transition: all .25s; }
+        .information-center .director .col-lg-3 .col-img:hover {
+          transition: all .25s;
+          border: 4px solid #665f4f;
+          padding: 4px;
+          border-radius: 6px; }
 
 .register-back:hover {
   text-decoration: underline; }

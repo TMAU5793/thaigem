@@ -14,7 +14,7 @@ class FunctionModel extends Model
 
     public function getProvinceAll()
     {
-        $sql = "SELECT * FROM tbl_provinces ORDER BY code ASC";
+        $sql = "SELECT * FROM tbl_provinces ORDER BY sortby ASC, name_th ASC";
         $query = $this->db->query($sql);
         if($query){
             return $query->getResult();

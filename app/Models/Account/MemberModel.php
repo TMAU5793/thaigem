@@ -86,7 +86,7 @@ class MemberModel extends Model
 
     public function getProvince()
     {        
-        $sql = "SELECT * FROM tbl_provinces";
+        $sql = "SELECT * FROM tbl_provinces ORDER BY sortby ASC, name_th ASC";
         $query = $this->db->query($sql);
         if($query){
             return $query->getResult();
@@ -97,7 +97,7 @@ class MemberModel extends Model
 
     public function getProvinceById($id)
     {        
-        $sql = "SELECT * FROM tbl_provinces  WHERE id >= ?";
+        $sql = "SELECT * FROM tbl_provinces  WHERE id = ?";
         $query = $this->db->query($sql,[$id]);
         if($query){
             return $query->getRow();

@@ -338,6 +338,21 @@ table {
     }
 }
 
+.add-item {
+    button {
+        background-color: #665f4f;
+        color: #fff;
+        border: 1px solid #665f4f;
+        padding: 3px .5rem 0;
+        font-size: .85rem;
+        &:hover {
+            color: #fff;
+            box-shadow: inset 0px 0px 1px 2px #cec6b2;
+            border: 1px solid #cec6b2;
+        }
+    }
+}
+
 @media (max-width: 1399px) {
     .content-wrapper {
         .content-header {

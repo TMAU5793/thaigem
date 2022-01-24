@@ -78,7 +78,12 @@
                 <div class="col-md-8 col-sm-8">
                     <ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <strong class="ff-bold nav-link active" data-bs-toggle="pill" data-bs-target="#pills-1"><i class="fas fa-square"></i> <?= lang('GlobalLang.diamonds'); ?></strong>
+                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                                <strong class="ff-bold nav-link active" data-bs-toggle="pill" data-bs-target="#pills-1">
+                                    <i class="fas fa-square"></i>
+                                    <?= lang('GlobalLang.diamonds'); ?>
+                                </strong>
+                            </a>
                         </li>
                         <!-- <li class="nav-item" role="presentation">
                             <strong class="ff-bold nav-link" data-bs-toggle="pill" data-bs-target="#pills-2"><i class="fas fa-square"></i> <?= lang('GlobalLang.ruby'); ?></strong>
@@ -93,7 +98,9 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
                     <div class="table-price">
-                        <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                        <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                            <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                        </a>
                     </div>
                 </div>
 

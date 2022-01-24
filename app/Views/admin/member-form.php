@@ -91,6 +91,58 @@
                             <div class="col-12 mb-3">
                                 <button type="button" id="btn_changepwd" class="btn btn-warning"><?= (isset($validation)?'ยกเลิก':'แก้ไขรหัสผ่าน') ?></button>
                             </div>
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">ประเภทสินค้า</label>
+                                    <span class="d-block mb-2"><?= (isset($mb_bus) ? $mb_bus['product'] : '') ?></span>
+                                    <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='product'){ ?>
+                                        <div class="select-item position-relative" id="mb-pcate-<?= $row->id ?>">
+                                            
+                                            <?php
+                                                foreach($subcates as $subcate){
+                                                    foreach($maincates as $maincate){
+                                                        if($subcate->maincate_id == $maincate->id && $row->cate_id == $subcate->id){
+                                            ?>
+                                                <i class="fas fa-trash-alt text-danger pe-3 cursor-pointer" onclick="deleteRow('<?= $row->id ?>','tbl_member_business','mb-pcate-<?= $row->id ?>')" title='delete'></i>
+                                                <span><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></span>                                                
+                                            <?php } } }  ?>
+                                        </div>
+                                    <?php } } } ?>
+                                    <div id="cate-more"></div>
+                                    <div class="add-item">
+                                        <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> ประเภทสินค้า</button>                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group pe-5">
+                                    <label for="">ประเภทธุรกิจ</label>
+                                    <span class="d-block mb-2"><?= (isset($mb_bus) ? $mb_bus['business'] : '') ?></span>
+                                    <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='business'){ ?>
+                                        <div class="select-item position-relative" id="mb-bcate-<?= $row->id ?>">
+                                            
+                                            <?php
+                                                foreach($subbusniess as $subcate){
+                                                    foreach($mainbusniess as $maincate){
+                                                        if($subcate->main_type == $maincate->id && $row->cate_id == $subcate->id){
+                                            ?>
+                                                <i class="fas fa-trash-alt text-danger pe-3 cursor-pointer" onclick="deleteRow('<?= $row->id ?>','tbl_member_business','mb-bcate-<?= $row->id ?>')" title='delete'></i>
+                                                <span><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></span>                                                
+                                            <?php } } } ?>
+                                                
+                                        </div>
+                                    <?php } } } ?>
+                                    <div id="business-more"></div>
+                                    <div class="add-item">
+                                        <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> ประเภทธุรกิจ</button>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="col-6 mb-3">
                                 <label for="txt_company" class="form-label">ชื่อบริษัท</label>
                                 <input type="text" name="txt_company" class="form-control" value="<?= (isset($info_member)? $info_member['company'] : '') ?>">
@@ -156,6 +208,12 @@
                                 <label for="ddl_province" class="form-label">จังหวัด</label>
                                 <select name="ddl_province" id="ddl_province" class="form-control">
                                     <option value="">-- เลือกจังหวัด --</option>
+                                    <?php 
+                                        if($provinces){
+                                            foreach($provinces as $province){
+                                    ?>
+                                        <option value="<?= $province['id'] ?>" <?= (isset($provinceId) && $provinceId->id==$province['id']?'selected':'') ?>><?= $province['name_th'] ?></option>
+                                    <?php } } ?>
                                 </select>
                             </div>
                             <!-- <div class="col-6 mb-3">

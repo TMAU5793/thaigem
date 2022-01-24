@@ -97,7 +97,7 @@ class Member extends Controller
 		helper(['form']);
 		$albummodel = new AlbumModel();
 		$db = \Config\Database::connect();
-		$query   = $db->query('SELECT * FROM tbl_provinces');
+		$query   = $db->query('SELECT * FROM tbl_provinces ORDER BY sortby ASC AND name_th ASC');
 		$results = $query->getResultArray();
 
 		$data = [
@@ -124,6 +124,8 @@ class Member extends Controller
 
 		$db = db_connect();
 		$social = $db->table('tbl_social');
+		$tbl_provinces = $db->table('tbl_provinces');
+		$tbl_mb_bus = $db->table('tbl_member_business');
 
         $id = $request->getGet('id');
         $address = $acmbModel->getAddressById($id);
@@ -132,13 +134,20 @@ class Member extends Controller
             'meta_title' => 'แก้ไขข้อมูล',
             'action'    =>  'update',
             'info_member'  =>  $model->where('id',$id)->first(),
-			'province' => $acmbModel->getProvinceById($address->province_id),
+			'provinces' => $tbl_provinces->orderBy('sortby ASC, name_th ASC')->get()->getResultArray(),
+			'provinceId' => $acmbModel->getProvinceById($address->province_id),
 			'amphure' => $acmbModel->getAmphureById($address->amphure_id),
 			'district' => $acmbModel->getDistrictById($address->district_id),
 			'address' =>  $address,
 			'social' => $get_social,
 			'album' => $albummodel->where('member_id',$id)->findAll(),
-			'membercontact' => $acmbModel->getMemberContact()
+			'membercontact' => $acmbModel->getMemberContact(),
+			'memberbusiness' => $acmbModel->getMemberBusiness(),
+			'maincates' => $acmbModel->getProductMainType(),
+			'subcates' => $acmbModel->getSubCategory(),
+			'mainbusniess' => $acmbModel->getBusinessMainType(),
+			'subbusniess' => $acmbModel->getSubBusiness(),
+			'mb_bus' => $tbl_mb_bus->where('member_id',$id)->get()->getRowArray()
         ];
         echo view('admin/member-form', $data);
     }
@@ -542,5 +551,28 @@ class Member extends Controller
 		];
 		//print_r($data['m_doc']);
 		echo view('admin/member-noti',$data);
+	}
+
+	public function savenotification()
+	{
+		if (!session()->get('admindata')) {
+            return redirect()->to('/admin');
+        }
+
+		$notiModel = new NotiModel();
+		$request = service('request');
+		$post = $request->getPost();
+		if($post){
+			$data = [
+				'member_id' => $post['hd_member'],
+				'title_th' => $post['txt_title'],
+				'title_en' => $post['txt_title_en'],
+				'desc_th' => $post['txt_msg'],
+				'desc_en' => $post['txt_msg_en']
+			];
+			$notiModel->save($data);
+		}
+		
+		return redirect()->to('/admin/member');
 	}
 }
