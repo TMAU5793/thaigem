@@ -27,7 +27,7 @@
             <table class="table table-striped" id="tbl-article">
                 <thead>
                     <tr>
-                        <th scope="col">หัวข้อ</th>
+                        <th scope="col">ประเภทราคา</th>
                         <th scope="col" width="150" class="text-center">สถานะ</th>
                         <th scope="col" width="200">วันที่สร้าง</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
@@ -39,10 +39,10 @@
                             foreach ($info as $item) {
                     ?>
                     <tr>
-                        <td><?= $item['title'] ?></td>
+                        <td><?= $item['type'] ?></td>
                         <td class="text-center">
                             <?php
-                                if($item['status']=='on'){
+                                if($item['status']=='1'){
                             ?>
                                 <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
                             <?php }else{ ?>
@@ -51,8 +51,8 @@
                         </td>
                         <td><?= $item['created_at'] ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/articles/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/articles/delete');">ลบ</a>
+                            <a href="<?= base_url('admin/price/form?id='.$item['id']); ?>">แก้ไข</a> |
+                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/price/delete');">ลบ</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>

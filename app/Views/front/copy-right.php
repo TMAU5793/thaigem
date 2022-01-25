@@ -5,8 +5,8 @@
                 <span class="fs-19px">© 2021 TGJTA All Rights Reserved.</span>
             </div>
             <div class="col-6 text-end">
-                <a href="<?= site_url('privacy'); ?>" class="fs-19px"><?= lang('GlobalLang.policy') ?></a>
-                <a href="<?= site_url('terms'); ?>" class="fs-19px"><?= lang('GlobalLang.termServices') ?></a>
+                <a href="<?= site_url('about/policy'); ?>" class="fs-19px"><?= lang('GlobalLang.policy') ?></a>
+                <!-- <a href="<?= site_url('terms'); ?>" class="fs-19px"><?= lang('GlobalLang.termServices') ?></a> -->
             </div>
         </div>
     </div>

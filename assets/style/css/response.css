@@ -331,6 +331,10 @@
     .event-home .slick-1-item .slick-dots li {
       background: #cec6b2; } }
 @media (max-width: 991px) {
+  .information-center .single-infomation img {
+    width: 100% !important;
+    height: auto !important; }
+
   .member-home .member-list .cate-type {
     height: 60px; }
   .member-home .member-list h2.ff-dbamanBold {

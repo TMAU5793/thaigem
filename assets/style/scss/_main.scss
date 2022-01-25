@@ -884,6 +884,17 @@
             }
         }
     }
+    .single-infomation {
+        span {
+            font-family: $ff-dbadman !important;
+            word-wrap: break-word;
+            font-size: 1.35rem;
+        }
+        strong {
+            font-family: $ff-dbadmanBold !important;
+            font-size: 1.35rem;
+        }
+    }
 }
 
 .register-back {

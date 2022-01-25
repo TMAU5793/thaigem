@@ -9,7 +9,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">รายนามสมาคมฯ</h1>
+                    <h1>รายนามสมาคมฯ</h1>
+                    <span>อัพเดตหัวข้อ : </span>
+                    <input type="text" id="txt_subject" class="w-50 subject-setting" placeholder="ตัวอย่าง : NAMES CONSULTANTS ASSOCIATION" value="<?= ($subject?$subject['desc']:'') ?>">
+                    <span id="span-update" data-page='advisory'>อัพเดต</span>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <div class="text-end">

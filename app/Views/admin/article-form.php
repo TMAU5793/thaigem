@@ -31,7 +31,7 @@
                         <button class="nav-link" id="nav-3" data-bs-toggle="tab" data-bs-target="#nav-content-3" type="button" role="tab" aria-controls="nav-content-3" aria-selected="false">ข้อมูล SEO</button>
                         <button class="nav-link" id="nav-4" data-bs-toggle="tab" data-bs-target="#nav-content-4" type="button" role="tab" aria-controls="nav-content-4" aria-selected="false">รูป (Thumbnail)</button>
                     </div>
-                    <div class="btn-action-fixed text-center">                        
+                    <div class="btn-action-fixed text-center">
                         <button type="submit" class="btn btn-primary me-2">บันทึก</button>
                         <a href="<?= base_url('admin/articles'); ?>" class="btn btn-warning">ยกเลิก</a>
                     </div>

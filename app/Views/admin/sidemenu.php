@@ -163,7 +163,7 @@
                 <li class="nav-item">
                     <a href="<?= base_url('admin/price'); ?>" class="nav-link <?= ($uri->getSegment(2)=='price'?'active':''); ?>">
                         <i class="nav-icon fas fa-image"></i>
-                        <p>อัพเดตราคา</p>
+                        <p>ตารางราคา</p>
                     </a>
                 </li>
 

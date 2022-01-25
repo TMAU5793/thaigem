@@ -89,6 +89,7 @@ return [
     'cancel' => 'ยกเลิก',
     'companyinfo' => 'ข้อมูลบริษัท',
     'personcontact' => 'ติดต่อ',
+    'contactperson' => 'ผู้ติดต่อ',
     'gallery' => 'แกลลอรี่',
     'profile' => 'โปรไฟล์',
     'editinfo' => 'อัพเดตข้อมูล',

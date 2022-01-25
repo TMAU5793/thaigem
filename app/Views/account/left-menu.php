@@ -57,7 +57,7 @@
                         <span><?= ($info['company_phone']==''?'-':$info['company_phone']); ?></span>
                     </div>
                     <div class="person-phone">
-                        <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.personcontact') ?> : </strong>
+                        <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.contactperson') ?> : </strong>
                         <span><?= ($info['phone']==''?'-':'<span class="ff-dbadmanBold">'.$info['name'].'</span> '.$info['phone']); ?></span>
                         <?php
                             if(isset($membercontact)){

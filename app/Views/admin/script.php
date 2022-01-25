@@ -283,6 +283,23 @@
                 $('#business-more').append(html);
             });
         <?php } ?>
+
+        $('#cb_status').on('change',function(){
+            let checked = $(this).is(':checked');
+            if(checked){
+                $('#text-status').text('เปิด');
+                $('#text-status').removeClass('text-danger');
+            }else{
+                $('#text-status').text('ปิด');
+                $('#text-status').addClass('text-danger');
+            }
+        });
+
+        $('#span-update').on('click',function(){
+            let page = $(this).data('page');
+            let subject = $('#txt_subject').val();
+            $.post("<?= site_url('admin/setting/updateAdvisory') ?>", {page:page,subject:subject});
+        });
     });
     //End ready function
 

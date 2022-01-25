@@ -17,7 +17,7 @@
                 if(!$sess){
             ?>
                 <div class="row justify-content-center mt-5">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-4 col-8">
                         <button type="button" class="btn btn-darkgold c-white w-100 a-hover-white btn-register member-tgjta" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal"><?= lang('MenuLang.membership') ?></button>
                     </div>
                 </div>

@@ -39,6 +39,9 @@ class Home extends BaseController
         $acModel= new KnowledgeModel();
         $mbBusiness = new MemberBusinessModel();
         $banner = new BannerModel();
+        $db = db_connect();
+        $tbl_price = $db->table('tbl_price');
+        
         $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
                                 ->where('tbl_member_business.type','product')
                                 ->findAll();
@@ -62,7 +65,8 @@ class Home extends BaseController
             'cate_prod' => $cate_prod,
             'cate_bus' => $cate_bus,
             'userdata' => $this->userdata,
-            'banner' => $banner->where('page','home')->orderBy('sortby ASC')->findAll(5)
+            'banner' => $banner->where('page','home')->orderBy('sortby ASC')->findAll(5),
+            'tbl_price' => $tbl_price->where('status','1')->orderBy('created_at DESC')->get()->getResultArray()
         ];
                 
         // print_r('<pre>');

@@ -1556,6 +1556,13 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
           border: 4px solid #665f4f;
           padding: 4px;
           border-radius: 6px; }
+  .information-center .single-infomation span {
+    font-family: "DBAdmanX" !important;
+    word-wrap: break-word;
+    font-size: 1.35rem; }
+  .information-center .single-infomation strong {
+    font-family: "DBAdmanXBold" !important;
+    font-size: 1.35rem; }
 
 .register-back:hover {
   text-decoration: underline; }

@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 use CodeIgniter\Controller;
 use App\Models\Admin\ArticlesModel;
 use App\Models\PositionModel;
+use App\Models\SettingModel;
 use CodeIgniter\I18n\Time;
 
 class Articles extends Controller
@@ -430,9 +431,11 @@ class Articles extends Controller
         }
 
         $ptModel = new PositionModel();
+        $stModel = new SettingModel();
         $data = [
             'info' => $ptModel->where('type','advisory')->paginate(25),
-            'pager' => $ptModel->pager
+            'pager' => $ptModel->pager,
+            'subject' => $stModel->where('page','advisory')->first()
         ];
         return view('admin/advisory',$data);
     }

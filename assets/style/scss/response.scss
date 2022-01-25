@@ -233,6 +233,14 @@
     }
 } //end medi 1199
 @include media-max(991px) {
+    .information-center {
+        .single-infomation {
+            img {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    }
     .member-home .member-list {
         .cate-type {
             height: 60px;

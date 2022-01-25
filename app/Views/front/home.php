@@ -98,21 +98,49 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
                     <div class="table-price">
-                        <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
-                            <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
-                        </a>
+                        <?php
+                            if($tbl_price){
+                                $n=0;
+                                foreach ($tbl_price as $row){                                    
+                                    if($row['type']=='diamonds' && $n<1){
+                                        $n++;
+                        ?>
+                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                                <img src="<?= site_url($row['file']) ?>" alt="<?= $row['type']; ?>">
+                            </a>
+                        <?php } } } ?>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
                     <div class="table-price">
-                        <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                        <?php
+                            if($tbl_price){
+                                $n=0;
+                                foreach ($tbl_price as $row){                                    
+                                    if($row['type']=='ruby' && $n<1){
+                                        $n++;
+                        ?>
+                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                                <img src="<?= site_url($row['file']) ?>" alt="<?= $row['type']; ?>">
+                            </a>
+                        <?php } } } ?>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
                     <div class="table-price">
-                        <img src="<?= site_url('assets/images/home/tbl-price.jpg') ?>" alt="<?= lang('GlobalLang.diamonds'); ?>">
+                        <?php
+                            if($tbl_price){
+                                $n=0;
+                                foreach ($tbl_price as $row){                                    
+                                    if($row['type']=='sapphire' && $n<1){
+                                        $n++;
+                        ?>
+                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                                <img src="<?= site_url($row['file']) ?>" alt="<?= $row['type']; ?>">
+                            </a>
+                        <?php } } } ?>
                     </div>
                 </div>
             </div>
@@ -203,7 +231,7 @@
                                         </a>
                                     </h2>
                                     <p class="text-line-3"><?= ($lang=='en' && $row['shortdesc_en']!=""?$row['shortdesc_en']:$row['shortdesc']) ?></p>
-                                    <div class="event-date"><?= substr($row['created_at'],0,10) ?></div>
+                                    <!-- <div class="event-date"><?= substr($row['created_at'],0,10) ?></div> -->
                                 </div>
                                 <div class="event-action mt-2">
                                     <a href="<?= site_url('knowledge/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
