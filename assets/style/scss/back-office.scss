@@ -422,11 +422,16 @@ table {
     }
 }
 
-#span-update {
+.subject-update {
     border: 1px solid #000;
     border-radius: 4px;
-    padding: 0 6px;
+    padding: 0 6px 2px;
     cursor: pointer;
+    display: block;
+    width: 125px;
+    text-align: center;
+    margin-top: 10px;
+    color: #000;
     &:hover {
         background-color: #000;
         color: #fff;

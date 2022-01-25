@@ -606,5 +606,5 @@ class Articles extends Controller
         }else{
             return redirect()->to(site_url('admin/articles/advisory'));
         }
-    }
+    }    
 }

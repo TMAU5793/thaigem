@@ -90,6 +90,7 @@ assets/ckeditor4
 assets/ckfinder
 assets/style/.sass-cache
 uploads/
+PhpOffice/
 
 #-------------------------
 # IDE / Development Files

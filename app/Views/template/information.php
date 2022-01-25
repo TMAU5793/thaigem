@@ -24,7 +24,7 @@
                     ?>
                         <div class="row advisory">
                             <div class="col-12 text-center">
-                                <h2 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.consult') ?></h2>
+                                <h2 class="ff-dbadmanBold mb-0"><?= ($lang=='en'?$subject['desc_en']:$subject['desc']) ?></h2>
                             </div>
                             <?php
                                 foreach($advisory as $row){
@@ -47,7 +47,7 @@
                     ?>
                         <div class="row director">
                             <div class="col-12 text-center">
-                                <h2 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.director') ?></h2>
+                                <h2 class="ff-dbadmanBold mb-0"><?= ($lang=='en'?$subject['desc_en']:$subject['desc']) ?></h2>
                             </div>
                         </div>
 

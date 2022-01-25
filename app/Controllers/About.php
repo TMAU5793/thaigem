@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\BannerModel;
+use App\Models\SettingModel;
 
 class About extends BaseController
 {
@@ -59,6 +60,7 @@ class About extends BaseController
 
     public function advisory()
     {
+        $stModel = new SettingModel();
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_position');
 
@@ -66,6 +68,7 @@ class About extends BaseController
             'meta_title' => ($this->lang=='en' ? 'Advisory' : 'รายนามที่ปรึกษาสมาคมฯ'),
             'lang' => $this->lang,
             'advisory' => $builder->where('type','advisory')->get()->getResultArray(),
+            'subject' => $stModel->where('page','advisory')->first(),
             'banner' => $this->banner
         ];
         
@@ -74,6 +77,7 @@ class About extends BaseController
 
     public function directors()
     {
+        $stModel = new SettingModel();
         $db      = \Config\Database::connect();
         $builder = $db->table('tbl_position');
         
@@ -81,6 +85,7 @@ class About extends BaseController
             'meta_title' => ($this->lang=='en' ? 'Director': 'รายนามกรรมการสมาคมฯ'),
             'lang' => $this->lang,
             'director' => $builder->where('type','director')->orderBy('sortby ASC')->get()->getResultArray(),
+            'subject' => $stModel->where('page','director')->first(),
             'banner' => $this->banner,
             'sortby' => $builder->where('type','director')->groupBy('sortby')->get()->getResultArray()
         ];

@@ -38,6 +38,7 @@
                         </div>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary">ค้นหา</button>
+                            <a href="<?= site_url('admin/exportexcel') ?>">Export to Excel</a>
                         </div>
                     </div>
                 </form>
