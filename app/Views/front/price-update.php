@@ -65,24 +65,32 @@
             <h3 class="ff-semibold mb-3">Diamond price</h3>
             <h4>Rounds Shapes</h4>
             <div class="row mb-4">
-                <?php for($i=3;$i<6;$i++){ ?>
+                <?php 
+                    if($price){
+                        foreach ($price as $row) {
+                            if($row['type']=='rounds'){
+                ?>
                     <div class="col-md-4 col-6 mb-3">
-                        <a class="fancybox" data-fancybox="plans" data-width="1400" data-caption="" href="<?= site_url('assets/images/dimon-price/dimon-'.$i.'.jpg') ?>" title="">
-                            <div class="zoom-in"><img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/dimon-price/dimon-'.$i.'.jpg')) ?>" alt="dimon price"></div>
+                        <a class="fancybox" data-fancybox="plans" data-width="1400" data-caption="" href="<?= (is_file($row['file'])?site_url($row['file']):'') ?>" title="">
+                            <div class="zoom-in"><img src="<?= (is_file($row['file'])?site_url($row['file']):'') ?>" alt="dimon price"></div>
                         </a>
                     </div>
-                <?php } ?>
+                <?php } } } ?>
             </div>
 
             <h4>Fancy Shapes</h4>
             <div class="row">
-                <?php for($i=1;$i<3;$i++){ ?>
+                <?php 
+                    if($price){
+                        foreach ($price as $row) {
+                            if($row['type']=='fancy'){
+                ?>
                     <div class="col-md-4 col-6 mb-3">
-                        <a class="fancybox" data-fancybox="plans" data-width="1400" data-caption="" href="<?= site_url('assets/images/dimon-price/dimon-'.$i.'.jpg') ?>" title="">
-                            <div class="zoom-in"><img src="<?= (is_file($img['images'])?site_url($img['images']):site_url('assets/images/dimon-price/dimon-'.$i.'.jpg')) ?>" alt="dimon price"></div>
+                        <a class="fancybox" data-fancybox="plans" data-width="1400" data-caption="" href="<?= (is_file($row['file'])?site_url($row['file']):'') ?>" title="">
+                            <div class="zoom-in"><img src="<?= (is_file($row['file'])?site_url($row['file']):'') ?>" alt="dimon price"></div>
                         </a>
                     </div>
-                <?php } ?>
+                <?php } } } ?>
             </div>
         </div>
     </section>

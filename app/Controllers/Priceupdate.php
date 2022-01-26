@@ -15,9 +15,13 @@ class Priceupdate extends BaseController
 
 	public function index()
 	{        
+        $db = db_connect();
+        $tbl_price = $db->table('tbl_price');
+
         $data = [
             'meta_title' => 'Price update',
             'lang' => $this->lang,
+            'price' => $tbl_price->where('status','1')->get()->getResultArray()
         ];
         
         echo view('front/price-update', $data);

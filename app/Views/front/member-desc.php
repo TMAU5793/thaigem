@@ -44,7 +44,7 @@
                                             <a href="tel:<?= $info['company_phone'] ?>" class="text-decoration-none c-black"><?= ($info['company_phone']==''?'-':$info['company_phone']); ?></a>
                                         </div>
                                         <div class="person-phone">
-                                            <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.personcontact') ?> : </strong>
+                                            <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.contactperson') ?> : </strong>
                                             <span class="ff-dbadmanBold"><?= ($info['phone']==''?'-':$info['name']); ?></span>
                                             <a href="tel:<?= $info['phone'] ?>" class="text-decoration-none c-black"><?= $info['phone'] ?></a>
                                             <?php
@@ -212,7 +212,11 @@
                             <?php if($social->youtube!=""){ ?>
                                 <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>
                             <?php } ?>
-                        </div>    
+                        </div>
+                        
+                        <div class="map-iframe more-info hide-767">
+                            <?= ($info['map']!=''?$info['map']:'') ?>
+                        </div>
                         
                         <div class="text-center mt-2 show-767">
                             <button type="botton" id="btn-member-more" class="fs-5 btn btn-black-border pt-1">

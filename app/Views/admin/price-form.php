@@ -46,6 +46,14 @@
                             <input class="form-check-input" type="radio" name="rd_type" id="rd_type3" value="sapphire" <?= (isset($info) && $info['type']=='sapphire' ? 'checked' : '') ?>>
                             <label class="form-check-label" for="rd_type3">Sapphire</label>
                         </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rd_type" id="rd_type4" value="rounds" <?= (isset($info) && $info['type']=='rounds' ? 'checked' : '') ?>>
+                            <label class="form-check-label" for="rd_type4">Rounds Shapes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rd_type" id="rd_type5" value="fancy" <?= (isset($info) && $info['type']=='fancy' ? 'checked' : '') ?>>
+                            <label class="form-check-label" for="rd_type5">Fancy Shapes</label>
+                        </div>
                     </div>
 
                     <div class="col-12 mb-3">

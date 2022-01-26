@@ -510,9 +510,6 @@ body:not(.layout-fixed) .main-sidebar {
   .form-switch label.form-check-label {
     padding-left: 2.5rem; }
 
-.form-check-inline {
-  width: 100px; }
-
 .content-banner .col-md-4,
 .content-banner .col-md-6 {
   margin-bottom: 1.5rem; }

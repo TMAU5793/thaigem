@@ -317,8 +317,7 @@ class MemberModel extends Model
     {
         $datetime = new Time('now');
         $builder = $this->db->table('tbl_member_business');
-        $builder->where('member_id', $data['hd_id']);
-        $member = $builder->get()->getRow();        
+        $builder->where('member_id', $data['hd_id']);        
         
         if(isset($data['ddl_productcate'])){
             $product = count($data['ddl_productcate']);
@@ -331,7 +330,8 @@ class MemberModel extends Model
                 $pdata .= $sb.$data['ddl_productcate'][$i];
             }
             //echo $pdata;
-            if($member->member_id){
+            $member = $builder->get()->getRow();
+            if($member->member_id!=''){
                 $info = [
                     'product' => $pdata,
                     'updated_at' => $datetime
@@ -359,8 +359,9 @@ class MemberModel extends Model
                 }
                 $bdata .= $sb.$data['ddl_business'][$i];
             }
-
-            if($member->member_id){
+            
+            $member = $builder->get()->getRow();
+            if($member->member_id!=''){
                 $info = [
                     'business' => $bdata,
                     'updated_at' => $datetime

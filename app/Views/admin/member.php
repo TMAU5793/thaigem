@@ -38,7 +38,11 @@
                         </div>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary">ค้นหา</button>
-                            <a href="<?= site_url('admin/exportexcel') ?>">Export to Excel</a>
+                            <?php if($active=='dealer'){ ?>
+                                <a href="<?= site_url('admin/excelexport/dealer') ?>" class="btn btn-success"><i class="fas fa-file-excel"></i> Export</a>
+                            <?php }else{ ?>
+                                <a href="<?= site_url('admin/excelexport/subscribe') ?>" class="btn btn-success"><i class="fas fa-file-excel"></i> Export</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </form>

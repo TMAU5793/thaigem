@@ -51,7 +51,7 @@
                         if($catergory){
                             foreach($catergory as $row){
                     ?>
-                        <div class="col-lg-2 col-md-4 col-4 cateory-item mb-3">
+                        <div class="col-lg-2 col-md-4 col-4 cateory-item">
                             <div class="box-shadow-lightgold cursor-pointer zoom-in" onclick="location.href='<?= site_url('member/filter?c='.$row['id']) ?>'">
                                 <div class="item-img">
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">

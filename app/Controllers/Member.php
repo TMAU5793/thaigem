@@ -98,7 +98,7 @@ class Member extends BaseController
         $model = new MemberModel();
         $albumModel = new AlbumModel();
         $mbModel = new AcMemberModel();
-        
+        //$status = $model->where(['code'=>$segment3])->first();
         if($segment3){
             $member = $model->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
                             ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
