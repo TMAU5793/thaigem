@@ -110,7 +110,7 @@
                                 ?>
                             </span>
                         <?php } } ?>
-                        <p class="text-line-1 mb-0"><?= $info['product'] ?></p>
+                        <p class="mb-0"><?= $info['product'] ?></p>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                                 ?>
                             </span>
                         <?php } } ?>
-                        <p class="text-line-1 mb-0"><?= $info['business'] ?></p>
+                        <p class="mb-0"><?= $info['business'] ?></p>
                     </div>
                 </div>
             </div>

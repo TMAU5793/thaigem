@@ -1,6 +1,13 @@
 <?= $this->extend("front/app") ?>
 <?= $this->section("content") ?>
 
+    <?php if($banner){ ?>
+        <section class="banner-home">
+            <img src="<?= (is_file($banner['banner'])?site_url($banner['banner']):site_url('assets/images/img-default.jpg')) ?>" class="hide-575" alt="thai gem">
+            <img src="<?= (is_file($banner['banner_mobile'])?site_url($banner['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" class="show-575" alt="thai gem">
+        </section>
+    <?php } ?>
+
     <section class="event-content ptb-2rem">
         <div class="container">
             <div class="text-center title">

@@ -79,10 +79,13 @@ class Banner extends Controller
             $banner_mobile = $request->getFile('banner_mobile'); //เก็บไฟล์รูปอัพโหลด
             $hd_banner_mobile = $post['hd_banner_mobile']; //เก็บไฟล์รูปเดิม เพื่อนำมาเช็คว่ามีการเปลี่ยนรูปใหม่หรือไม่
             $hd_banner_mobile_del = $post['hd_banner_mobile_del']; //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
+
+            $status = ($post['cb_status']=='on'?'1':'0');
             $data = [
                 'page' => $post['ddl_page'],
                 'link' => urldecode($post['txt_link']),
-                'sortby' => $post['sortby']
+                'sortby' => $post['sortby'],
+                'status' => $status
             ];
             if($post['hd_id']){
                 $model->update($post['hd_id'],$data);

@@ -62,7 +62,7 @@
                                         <p><?= lang('HomeLang.memberTgjtaText') ?></p>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-register member-tgjta fs-6"><?= lang('GlobalLang.btnmember') ?></button>
+                                        <button type="button" class="btn btn-register member-tgjta"><?= lang('GlobalLang.btnmember') ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                         <p><?= lang('HomeLang.memberPersonText') ?></p>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-register member-personal fs-6"><?= lang('GlobalLang.btnjoin') ?></button>
+                                        <button type="button" class="btn btn-register member-personal"><?= lang('GlobalLang.btnjoin') ?></button>
                                     </div>
                                 </div>
                             </div>

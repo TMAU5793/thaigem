@@ -364,6 +364,8 @@
   .category-home .tg-title {
     margin-top: 6rem;
     margin-bottom: 2rem; }
+  .category-home .category-list {
+    padding: 2rem 0 !important; }
 
   .hide-991 {
     display: none; }

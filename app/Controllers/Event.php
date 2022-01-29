@@ -6,6 +6,7 @@ use App\Models\Admin\EventModel;
 use App\Models\BookingModel;
 use App\Models\MemberModel;
 use App\Models\Account\MemberModel as MemberFucntion;
+use App\Models\BannerModel;
 
 class Event extends BaseController
 {
@@ -28,12 +29,14 @@ class Event extends BaseController
 	public function index()
 	{   
         $model = new EventModel();
+        $banner =new BannerModel();
 
         $data = [
             'meta_title' => 'Event',
             'info' => $model->where('status','on')->orderby('created_at','DESC')->paginate(9),
 			'pager' => $model->pager,
-            'lang' => $this->lang
+            'lang' => $this->lang,
+            'banner' => $banner->where(['page'=>'event','status'=>'1'])->orderBy('sortby ASC, created_at DESC')->first()
         ];
         
         echo view('front/event', $data);

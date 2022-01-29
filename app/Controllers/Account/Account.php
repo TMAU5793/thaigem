@@ -139,7 +139,12 @@ class Account extends Controller
                 ];
 
                 session()->set('userdata',$sess);
-                return redirect()->to(site_url('account'));
+                //return redirect()->to(site_url('account'));
+                $edit_id = $member['id'];
+                if($member['code']!=''){
+                    $edit_id = 'TGJTA-'.$member['code'];
+                }
+                return redirect()->to('account/member/edit?u='.$edit_id);
             }
         }else{
             $ctModel = new ProductCategoryModel();

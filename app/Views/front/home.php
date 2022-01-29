@@ -46,12 +46,12 @@
         </div>
         <div class="category-list ptb-2rem">
             <div class="container">
-                <div class="row">
+                <div class="cate-slide slick-dots-2">
                     <?php
                         if($catergory){
                             foreach($catergory as $row){
                     ?>
-                        <div class="col-lg-2 col-md-4 col-4 cateory-item">
+                        <div class="cateory-item">
                             <div class="box-shadow-lightgold cursor-pointer zoom-in" onclick="location.href='<?= site_url('member/filter?c='.$row['id']) ?>'">
                                 <div class="item-img">
                                     <img src="<?= (is_file($row['thumbnail'])?site_url($row['thumbnail']):site_url('assets/images/img-default.jpg')) ?>" alt="<?= ($row['name_en']==""?$row['name_th'] : $row['name_'.$lang] ) ?>">
@@ -78,7 +78,7 @@
                 <div class="col-md-8 col-sm-8">
                     <ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                            <a href="<?= site_url('price-update#dimon-price') ?>" class="text-decoration-none">
                                 <strong class="ff-bold nav-link active" data-bs-toggle="pill" data-bs-target="#pills-1">
                                     <i class="fas fa-square"></i>
                                     <?= lang('GlobalLang.diamonds'); ?>
@@ -105,7 +105,7 @@
                                     if($row['type']=='diamonds' && $n<1){
                                         $n++;
                         ?>
-                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                            <a href="<?= site_url('price-update#dimon-price') ?>" class="text-decoration-none">
                                 <img src="<?= site_url($row['file']) ?>" alt="<?= $row['type']; ?>">
                             </a>
                         <?php } } } ?>
@@ -121,7 +121,7 @@
                                     if($row['type']=='ruby' && $n<1){
                                         $n++;
                         ?>
-                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                            <a href="<?= site_url('price-update#dimon-price') ?>" class="text-decoration-none">
                                 <img src="<?= site_url($row['file']) ?>" alt="<?= $row['type']; ?>">
                             </a>
                         <?php } } } ?>
@@ -137,7 +137,7 @@
                                     if($row['type']=='sapphire' && $n<1){
                                         $n++;
                         ?>
-                            <a href="<?= site_url('price-update') ?>" class="text-decoration-none">
+                            <a href="<?= site_url('price-update#dimon-price') ?>" class="text-decoration-none">
                                 <img src="<?= site_url($row['file']) ?>" alt="<?= $row['type']; ?>">
                             </a>
                         <?php } } } ?>

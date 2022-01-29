@@ -76,12 +76,20 @@
                         <label for="sortby" class="form-label">ลำดับการแสดง (*ระบบจะแสดงเรียงจากค่าน้อยไปมาก)</label>
                         <input type="text" class="form-control" id="sortby" name="sortby" value="<?= (isset($info)? $info['sortby'] : set_value('sortby')) ?>" placeholder="กรอกตัวเลข เช่น 1">                        
                     </div>
-                    <div class="pt-1">
+                    <!-- <div class="pt-1">
                         <label for="ddl_status" class="form-label">สถานะการใช้งาน</label>
                         <select name="ddl_status" id="ddl_status" class="form-control">
                             <option value="1" <?= (isset($info) && $info['status']=='1' ? 'selected' : '') ?>>เปิดใช้งาน</option>
                             <option value="0" <?= (isset($info) && $info['status']=='0' ? 'selected' : '') ?>>ปิดใช้งาน</option>
                         </select>
+                    </div> -->
+
+                    <div class="mb-3">
+                        <label for="">สถานะ : <span id="text-status" class="text-success">เปิด</span></label>
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="cb_status" class="onoffswitch-checkbox" id="cb_status" tabindex="0" <?= (isset($info)?($info['status']=='1' ? 'checked' : ''):'checked') ?>>
+                            <label class="onoffswitch-label" for="cb_status"></label>
+                        </div>
                     </div>
 
                     <div class="img-thumbnail mt-3">

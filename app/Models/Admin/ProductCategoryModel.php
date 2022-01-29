@@ -26,12 +26,13 @@ class ProductCategoryModel extends Model
 
     public function productCategory($data)
     {
+        $status = ($data['cb_status']=='on'?'1':'0');
         $info=[
             'maincate_id' => $data['ddl_cate'],
             'name_th' => $data['txt_name'],
             'name_en' => $data['txt_name_en'],
 			'sortby' => $data['sortby'],
-            'status' => $data['ddl_status']
+            'status' => $status
         ];
         if($data['hd_id']==""){
             $result = $this->insert($info);

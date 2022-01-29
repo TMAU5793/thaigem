@@ -1402,10 +1402,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
   margin-right: 0;
   padding-left: 33px; }
   #registerModal .form-check label {
-    line-height: 33px;
-    font-size: 19px; }
-    #registerModal .form-check label a {
-      font-size: 19px; }
+    line-height: 33px; }
 #registerModal .modal-dialog {
   max-width: 800px;
   margin: auto;

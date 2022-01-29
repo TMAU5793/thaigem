@@ -40,6 +40,13 @@
                     <label for="sortby">ลำดับ</label>
                     <input type="text" name="sortby"  class="form-control" value="<?= (isset($info)?$info['sortby']:set_value('sortby')) ?>">
                 </div>
+                <div class="mb-3">
+                    <label for="">สถานะ : <span id="text-status" class="text-success">เปิด</span></label>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="cb_status" class="onoffswitch-checkbox" id="cb_status" tabindex="0" <?= (isset($info)?($info['status']=='1' ? 'checked' : ''):'checked') ?>>
+                        <label class="onoffswitch-label" for="cb_status"></label>
+                    </div>
+                </div>
                 <div class="row banner-item">
                     <div class="col-md-3">
                         <h6 class="mb-3 ff-bold">รูปแบนเนอร์ (Desktop)</h6>

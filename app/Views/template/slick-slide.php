@@ -254,5 +254,28 @@
                 }
             ]
         });
+
+        $('.cate-slide').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            dots: true,
+            arrows: false,
+            infinite:true,
+            autoplay: true,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }
+            ]
+        });
     });    
 </script>

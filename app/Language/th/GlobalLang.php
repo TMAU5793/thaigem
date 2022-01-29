@@ -10,7 +10,7 @@ return [
     'forgot' => 'ลืมรหัสผ่าน',
     'signFacebook' => 'เข้าสู่ระบบด้วย Facebook',
     'signGmail' => 'เข้าสู่ระบบด้วย Gmail',
-    'createAccount' => 'สร้างบัญชี',
+    'createAccount' => 'ลงทะเบียน ฟรี !',
     'register' => 'ลงทะเบียน',
     'notMember' => 'คุณยังไม่มีบัญชีใช่ไหม?',    
     'newsletter' => 'รับข่าวสาร',
