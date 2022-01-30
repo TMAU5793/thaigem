@@ -93,6 +93,11 @@ class Member extends BaseController
 
     public function id()
     {
+        $sess = session()->get('userdata');
+        if(!$sess){
+            return redirect()->to('member');
+        }
+
         $uri = service('uri');
         $segment3 = $uri->getSegment(3);
         $model = new MemberModel();

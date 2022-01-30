@@ -261,19 +261,21 @@
 
         <?php if(isset($subcates)){ ?>
             $('#btn-add-cate').click(function(){
-                var html = '';
+                var html = '<div class="add-cate position-relative">';
+                html += '<i class="fas fa-times text-danger" title="ลบ" onclick="DeleteEl(this);"></i>';
                 html +=  '<select name="ddl_productcate[]" class="form-control mt-3">';
                 html +=  '<option value="">-- เลือก --</option>';
                 <?php foreach($subcates as $subcate){ foreach($maincates as $maincate){ if($subcate->maincate_id == $maincate->id){ ?>
                 html +=  '<option value="<?= $subcate->name_th ?>"><?= ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?$maincate->name_en.' > '.$subcate->name_en : $maincate->name_th.' > '.$subcate->name_th) ?></option>';
                 <?php } } } ?>
-                html +=  '</select>';
+                html +=  '</select></div>';
                 $('#cate-more').append(html);
             });
 
             //เพิ่มฟิลด์ business Type
             $('#btn-add-business').click(function(){
-                var html = '';
+                var html = '<div class="add-cate position-relative">';
+                html += '<i class="fas fa-times text-danger" title="ลบ" onclick="DeleteEl(this);"></i>';
                 html +=  '<select name="ddl_business[]" class="form-control mt-3">';
                 html +=  '<option value="">-- เลือก --</option>';
                 <?php foreach($subbusniess as $subcate){ foreach($mainbusniess as $maincate){ if($subcate->main_type == $maincate->id){ ?>
@@ -282,7 +284,7 @@
                 html +=  '</select>';
                 $('#business-more').append(html);
             });
-        <?php } ?>
+        <?php } ?>        
 
         $('#cb_status').on('change',function(){
             let checked = $(this).is(':checked');
@@ -412,5 +414,9 @@
 			});
 		}
     }
+
+    function DeleteEl(el){
+        el.closest(".add-cate").remove();
+    }    
 
 </script>

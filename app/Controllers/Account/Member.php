@@ -51,6 +51,9 @@ class Member extends Controller
             return redirect()->to('account');
         }
  
+        $db = db_connect();
+		$tbl_mb_bus = $db->table('tbl_member_business');
+
         $data = [
             'ac_account' => TRUE,
             'lang' => $this->lang,
@@ -64,7 +67,8 @@ class Member extends Controller
             'address' => $mbModel->getAddress(),
             'social' => $mbModel->getSocial(),
             'membercontact' => $mbModel->getMemberContact(),
-            'memberbusiness' => $mbModel->getMemberBusiness()
+            'memberbusiness' => $mbModel->getMemberBusiness(),
+            'mb_bus' => $tbl_mb_bus->where('member_id',$this->member_id)->get()->getRowArray()
         ];
         //print_r($address);
         echo view('account/ac-profile',$data);

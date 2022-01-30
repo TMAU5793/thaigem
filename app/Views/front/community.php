@@ -52,9 +52,12 @@
                                 <?php
                                     foreach($member as $item){
                                         if($row['member_id']==$item['id']){
+                                            if(is_file($item['profile'])){
                                 ?>
-                                    <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : site_url('assets/images/img-default.png')) ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
-                                <?php } } ?>
+                                    <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : '') ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
+                                <?php }else{ ?>
+                                    <i class="fas fa-user-circle"></i>
+                                <?php } } } ?>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-5 col-sm-5">

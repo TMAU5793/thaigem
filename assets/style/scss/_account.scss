@@ -600,6 +600,9 @@
             padding: 0 .5rem;
             border-radius: 3px;
         }
+        span {
+            line-height: 24px;
+        }
     }
     nav {
         border-bottom: 5px solid $c-lightgold;
@@ -618,6 +621,14 @@
             background-color: $c-darkgold;
             border: 1px solid $c-darkgold;
             color: $c-white;
+        }
+    }
+    .add-cate {
+        .fa-times {
+            position: absolute;
+            right: 0;
+            padding: .7rem;
+            cursor: pointer;
         }
     }
 }

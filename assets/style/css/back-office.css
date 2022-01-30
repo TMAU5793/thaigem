@@ -731,6 +731,12 @@ table .fa-times-circle {
     background-color: #000;
     color: #fff; }
 
+.member-desc .add-cate .fa-times {
+  position: absolute;
+  right: 0;
+  padding: .7rem;
+  cursor: pointer; }
+
 @media (max-width: 1399px) {
   .content-wrapper .content-header {
     padding: 3rem 1.5rem 0; }

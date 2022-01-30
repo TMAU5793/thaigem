@@ -304,7 +304,8 @@
         //เพิ่มฟิลด์ Product Type
         <?php if(isset($subcates)){ ?>
         $('#btn-add-cate').click(function(){
-            var html = '';
+            var html = '<div class="add-cate position-relative">';
+            html += '<i class="fas fa-times text-danger" title="ลบ" onclick="DeleteEl(this);"></i>';
             html +=  '<select name="ddl_productcate[]" class="form-control mt-3">';
             html +=  '<option value="">-- <?= lang('GlobalLang.select') ?> --</option>';
             <?php foreach($subcates as $subcate){ foreach($maincates as $maincate){ if($subcate->maincate_id == $maincate->id){ ?>
@@ -316,7 +317,8 @@
 
         //เพิ่มฟิลด์ business Type
         $('#btn-add-business').click(function(){
-            var html = '';
+            var html = '<div class="add-cate position-relative">';
+            html += '<i class="fas fa-times text-danger" title="ลบ" onclick="DeleteEl(this);"></i>';
             html +=  '<select name="ddl_business[]" class="form-control mt-3">';
             html +=  '<option value="">-- <?= lang('GlobalLang.select') ?> --</option>';
             <?php foreach($subbusniess as $subcate){ foreach($mainbusniess as $maincate){ if($subcate->main_type == $maincate->id){ ?>
@@ -444,6 +446,10 @@
         }
         //console.log(id);
     }
+
+    function DeleteEl(el){
+        el.closest(".add-cate").remove();
+    } 
 
     // Ckediter 
     ClassicEditor

@@ -34,6 +34,17 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.product-type') ?> <span class="text-danger">*</span></label>
+                                   
+                                   <?php
+                                        $arr = explode(',',$mb_bus['product']);
+                                        foreach ($arr as $item){
+                                    ?>
+                                        <span class="d-block">
+                                            <i class="fas fa-times text-danger" title="ลบ" onclick="DeleteEl(this);"></i>
+                                            <?= $item; ?>
+                                        </span>
+                                    <?php } ?>
+
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_productcate')?$validation->getError('ddl_productcate'):'') ?></small>
                                     <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='product'){ ?>
                                         <div class="select-item position-relative" id="mb-pcate-<?= $row->id ?>">
@@ -66,8 +77,15 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group pe-5">
+                                <div class="form-group pe-5 edit-business">
                                     <label for=""><?= lang('GlobalLang.business-type') ?> <span class="text-danger">*</span></label>
+                                    <?php
+                                        $arr = explode(',',$mb_bus['business']);
+                                        foreach ($arr as $item){
+                                    ?>
+                                        <span class="d-block"><?= $item; ?></span>
+                                    <?php } ?>
+
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_business')?$validation->getError('ddl_business'):'') ?></small>
                                     <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='business'){ ?>
                                         <div class="select-item position-relative" id="mb-bcate-<?= $row->id ?>">
@@ -205,31 +223,6 @@
                                         <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_province')?'* '.$validation->getError('ddl_province'):'') ?></small>
                                     </div>                                    
                                 </div>
-                                <!-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.amphur') ?></label>
-                                        <select name="ddl_amphure" id="ddl_amphure" class="form-control">
-                                            <option value="">--</option>
-                                        </select>
-                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_amphure')?'* '.$validation->getError('ddl_amphure'):'') ?></small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.district') ?></label>
-                                        <select name="ddl_district" id="ddl_district" class="form-control">
-                                            <option value="">--</option>
-                                        </select>
-                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_district')?'* '.$validation->getError('ddl_district'):'') ?></small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for=""><?= lang('GlobalLang.postcode') ?></label>
-                                        <input type="text" name="txt_zipcode" id="txt_zipcode" class="form-control" value="<?= (isset($address) ? $address->zipcode : '') ?>">
-                                        <small class="text-danger"><?= (isset($validation) && $validation->hasError('txt_zipcode')?'* '.$validation->getError('txt_zipcode'):'') ?></small>
-                                    </div>
-                                </div> -->
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.address') ?> <span class="text-danger">*</span></label>
