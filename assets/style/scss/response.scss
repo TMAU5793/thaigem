@@ -530,6 +530,15 @@
                 }
             }
         }
+        .slick-1-item {
+            .event-item img {
+                padding: 0 !important;
+            }
+            .btn-tg-group a img {
+                width: 121px;
+                height: 33px;
+            }
+        }
     }
     .member-home {
         .member-list.mt-3 {
@@ -791,6 +800,13 @@
     .price-update {
         .nav-pills {
             justify-content: center !important;
+        }
+    }
+    .community-content {
+        .wbd-title {
+            a {
+                font-size: 2rem;
+            }
         }
     }
     .community-desc .col-lg-9.col-md-8 .ps-5.pt-3 {

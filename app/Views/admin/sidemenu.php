@@ -126,11 +126,26 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('admin/banner'); ?>" class="nav-link <?= ($uri->getSegment(2)=='banner'?'active':''); ?>">
+                
+                <li class="nav-item <?= ($uri->getSegment(2)=='banner'?'menu-open':''); ?>">
+                    <a href="#" class="nav-link <?= ($uri->getSegment(2)=='banner'?'active':''); ?>">
                         <i class="nav-icon fas fa-image"></i>
-                        <p>แบนเนอร์</p>
+                        <p>แบนเนอร์ <i class="right fas fa-angle-left"></i></p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/banner'); ?>" class="nav-link <?= ($uri->getSegment(2)=='banner' && $uri->getSegment(3)!='ads' && $uri->getSegment(3)!='adsform'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>แบนเนอร์เว็บไซต์</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/banner/ads'); ?>" class="nav-link <?= ($uri->getSegment(3)=='ads' || $uri->getSegment(3)=='adsform'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>แบนเนอร์โฆษณา</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item <?= ($uri->getSegment(2)=='member'?'menu-open':''); ?>">
@@ -162,7 +177,7 @@
 
                 <li class="nav-item">
                     <a href="<?= base_url('admin/price'); ?>" class="nav-link <?= ($uri->getSegment(2)=='price'?'active':''); ?>">
-                        <i class="nav-icon fas fa-image"></i>
+                        <i class="nav-icon fas fa-table"></i>
                         <p>ตารางราคา</p>
                     </a>
                 </li>

@@ -302,6 +302,22 @@
             let subject = $('#txt_subject').val();
             $.post("<?= site_url('admin/setting/updateAdvisory') ?>", {page:page,subject:subject});
         });
+
+        $('.list-item .fa-times').on('click',function(){
+            let id = $(this).data('id');
+            let key = $(this).data('key');
+            let type = $(this).data('type');
+            let el = $(this);
+
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('account/member/removestr') ?>",
+                data: {id:id,key:key,type:type},
+                success: function (response) {
+                    el.closest(".list-item").remove();
+                }
+            });
+        });
     });
     //End ready function
 

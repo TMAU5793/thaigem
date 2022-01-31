@@ -546,6 +546,11 @@
     padding-top: .5rem !important; }
   .event-home .event-item .btn-tg-group a {
     padding: 4px .5rem 0; }
+  .event-home .slick-1-item .event-item img {
+    padding: 0 !important; }
+  .event-home .slick-1-item .btn-tg-group a img {
+    width: 121px;
+    height: 33px; }
 
   .member-home .member-list.mt-3 {
     margin-top: .5rem !important; }
@@ -727,6 +732,9 @@
 
   .price-update .nav-pills {
     justify-content: center !important; }
+
+  .community-content .wbd-title a {
+    font-size: 2rem; }
 
   .community-desc .col-lg-9.col-md-8 .ps-5.pt-3 {
     padding-left: 0 !important; }

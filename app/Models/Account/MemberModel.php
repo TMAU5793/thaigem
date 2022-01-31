@@ -317,16 +317,19 @@ class MemberModel extends Model
     {
         $datetime = new Time('now');
         $builder = $this->db->table('tbl_member_business');
-        $builder->where('member_id', $data['hd_id']);        
+        $builder->where('member_id', $data['hd_id']);
+        $info = $builder->get()->getRowArray();
         
         if(isset($data['ddl_productcate'])){
-            $product = count($data['ddl_productcate']);
             $pdata = '';
+            $arr = explode(',',$info['product']);
+            foreach ($arr as $item){
+                $pdata .= $item.',';
+            }
+            $pdata = substr($pdata,0,-1);
+            $product = count($data['ddl_productcate']);
             for ($i=0; $i < $product; $i++) {
-                $sb = '';
-                if($i>0){
-                    $sb = ', ';
-                }
+                $sb = ',';
                 $pdata .= $sb.$data['ddl_productcate'][$i];
             }
             //echo $pdata;
@@ -350,14 +353,21 @@ class MemberModel extends Model
         }
 
         if(isset($data['ddl_business'])){
-            $business = count($data['ddl_business']);
             $bdata = '';
-            for ($i=0; $i < $business; $i++) {
+            $arr = explode(',',$info['business']);
+            foreach ($arr as $item){
+                $bdata .= $item.',';
+            }
+            $bdata = substr($bdata,0,-1);
+            $business = count($data['ddl_business']);
+            
+            $sb = ',';
+            if($bdata==''){
                 $sb = '';
-                if($i>0){
-                    $sb = ', ';
-                }
+            }
+            for ($i=0; $i < $business; $i++) {
                 $bdata .= $sb.$data['ddl_business'][$i];
+                $sb = ',';
             }
             
             $member = $builder->get()->getRow();

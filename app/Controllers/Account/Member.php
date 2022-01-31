@@ -7,8 +7,10 @@ use App\Models\Account\MemberModel;
 use App\Models\Account\AlbumModel;
 use App\Models\Account\AccountModel;
 use App\Models\FunctionModel;
+use App\Models\MemberBusinessModel;
 use CodeIgniter\I18n\Time;
-  
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Replace;
+
 class Member extends Controller
 {
     protected $member_id;
@@ -298,6 +300,36 @@ class Member extends Controller
             if($query){
                 echo true;
             }
+        }else{
+            return redirect()->to('account');
+        }
+    }
+
+    public function removeStr()
+    {
+        $request = service('request');
+        $model = new MemberBusinessModel();
+
+        $post = $request->getPost();
+        if($post){
+            $id = $post['id'];
+            $key = $post['key'];
+            $type = $post['type'];
+
+            $info = $model->where('member_id',$id)->first();
+            $arr = explode(',',$info[$type]);
+            $arrdata = array_diff($arr,[$key,' '.$key]);
+
+            $pdata = '';
+            foreach ($arrdata as $item){
+                $pdata .= $item.',';
+            }
+            
+            $data = [
+                $type => substr($pdata,0,-1)
+            ];
+            $model->update($id,$data);
+            echo TRUE;
         }else{
             return redirect()->to('account');
         }

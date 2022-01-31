@@ -38,7 +38,7 @@
                     <div class="col-lg-2 col-md-2 col-sm-2 text-end"><strong><?= lang('MenuLang.reply'); ?></strong></div>
                     <div class="col-lg-1 col-md-1 col-sm-1 text-end"><strong><?= lang('MenuLang.read'); ?></strong></div>
                     <div class="col-lg-2 col-md-3 col-sm-3 community-name"><strong class="ps-3"><?= lang('MenuLang.owner'); ?></strong></div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 text-cente hide-991"><strong><?= lang('MenuLang.recent'); ?></strong></div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center hide-991"><strong><?= lang('MenuLang.recent'); ?></strong></div>
                 </div>
 
                 <div class="forum-body">
@@ -56,7 +56,7 @@
                                 ?>
                                     <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : '') ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
                                 <?php }else{ ?>
-                                    <i class="fas fa-user-circle"></i>
+                                    <img src="<?= site_url('assets/images/diamond.png'); ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
                                 <?php } } } ?>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                 foreach($member as $item){
                                     if($row['member_id']==$item['id']){
                             ?>
-                                <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : site_url('assets/images/img-default.png')) ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
+                                <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : site_url('assets/images/diamond.png')) ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
                             <?php } } ?>
                         </div>
                         <div class="col-10">                            

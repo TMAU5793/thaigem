@@ -180,15 +180,21 @@
                                     <h2 class="ff-semibold fs-4 text-line-3"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>
                                     <p class="text-line-3 line-height-22px"><?= ($lang=='en'?character_limiter($event['shortdesc_en'],100):character_limiter($event['shortdesc'],100)) ?></p>
                                     <div class="btn-tg-group text-center">
-                                        <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
+                                        <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
                                         <?php
                                             if($member['type']=='dealer' && $member['status']=='2'){
                                         ?>
-                                            <a href="javascript:void(0)" class="btn btn-booking btn-black-border booking_event text-uppercase letter-spacing-1" data-event="<?= $event['id']; ?>"><?= lang('GlobalLang.bookNow'); ?></a>
+                                            <a href="javascript:void(0)" class="btn-booking booking_event text-uppercase letter-spacing-1" data-event="<?= $event['id']; ?>">
+                                                <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="">
+                                            </a>
                                         <?php }elseif($member['type']=='dealer' && $member['status']=='1'){ ?>
-                                            <a href="" class="btn btn-booking btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#eventModal"><?= lang('GlobalLang.bookNow'); ?></a>
+                                            <a href="" class="btn-booking text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#eventModal">
+                                                <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="">
+                                            </a>
                                         <?php }else{ ?>
-                                            <a href="" class="btn btn-booking btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.bookNow'); ?></a>
+                                            <a href="" class="btn-booking text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="">
+                                            </a>
                                         <?php } ?>
                                     </div>
                                 </div>

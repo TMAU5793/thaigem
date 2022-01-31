@@ -443,6 +443,11 @@ table {
             cursor: pointer;
         }
     }
+    .list-item {
+        .fa-times {
+            cursor: pointer;
+        }
+    }
 }
 
 @media (max-width: 1399px) {

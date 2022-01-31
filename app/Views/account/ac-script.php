@@ -382,7 +382,25 @@
             $('.account-menu').toggleClass('hide-575');
         });
 
+        //Images Upload
         $('.input-images').imageUploader();
+
+        $('.list-item .fa-times').on('click',function(){
+            let id = $(this).data('id');
+            let key = $(this).data('key');
+            let type = $(this).data('type');
+            let el = $(this);
+
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('account/member/removestr') ?>",
+                data: {id:id,key:key,type:type},
+                success: function (response) {
+                    el.closest(".list-item").remove();
+                }
+            });
+        });
+
     });
     //End Ready function
 
@@ -449,7 +467,7 @@
 
     function DeleteEl(el){
         el.closest(".add-cate").remove();
-    } 
+    }
 
     // Ckediter 
     ClassicEditor

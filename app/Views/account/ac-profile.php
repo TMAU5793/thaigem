@@ -38,12 +38,13 @@
                                    <?php
                                         $arr = explode(',',$mb_bus['product']);
                                         foreach ($arr as $item){
+                                            if($item!=''){
                                     ?>
-                                        <span class="d-block">
-                                            <i class="fas fa-times text-danger" title="ลบ" onclick="DeleteEl(this);"></i>
+                                        <span class="d-block list-item">
+                                            <i class="fas fa-times text-danger fs-6" title="ลบ" data-id="<?= $info['id']; ?>" data-key="<?= $item; ?>" data-type="product"></i>
                                             <?= $item; ?>
                                         </span>
-                                    <?php } ?>
+                                    <?php } } ?>
 
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_productcate')?$validation->getError('ddl_productcate'):'') ?></small>
                                     <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='product'){ ?>
@@ -82,9 +83,13 @@
                                     <?php
                                         $arr = explode(',',$mb_bus['business']);
                                         foreach ($arr as $item){
+                                            if($item!=''){
                                     ?>
-                                        <span class="d-block"><?= $item; ?></span>
-                                    <?php } ?>
+                                        <span class="d-block list-item">
+                                            <i class="fas fa-times text-danger fs-6" title="ลบ" data-id="<?= $info['id']; ?>" data-key="<?= $item; ?>" data-type="business"></i>
+                                            <?= $item; ?>
+                                        </span>
+                                    <?php } } ?>
 
                                     <small class="text-danger"><?= (isset($validation) && $validation->hasError('ddl_business')?$validation->getError('ddl_business'):'') ?></small>
                                     <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='business'){ ?>

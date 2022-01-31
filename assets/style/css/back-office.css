@@ -736,6 +736,8 @@ table .fa-times-circle {
   right: 0;
   padding: .7rem;
   cursor: pointer; }
+.member-desc .list-item .fa-times {
+  cursor: pointer; }
 
 @media (max-width: 1399px) {
   .content-wrapper .content-header {

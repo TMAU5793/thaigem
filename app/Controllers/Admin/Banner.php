@@ -24,7 +24,7 @@ class Banner extends Controller
         $model = new BannerModel();
 		$data = [
             'meta_title' => 'ระบบจัดการข้อมูลแบนเนอร์',
-            'info' => $model->orderBy('page ASC, sortby ASC')->findAll()
+            'info' => $model->where('page !=','ads')->orderBy('page ASC, sortby ASC')->findAll()
         ];
 		echo view('admin/banner',$data);
     }
@@ -182,5 +182,30 @@ class Banner extends Controller
         }else{
             return redirect()->to(site_url('admin/articles'));
         }
+    }
+
+    public function ads()
+    {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
+        $model = new BannerModel();
+		$data = [
+            'meta_title' => 'ระบบจัดการข้อมูลแบนเนอร์',
+            'info' => $model->where('page','ads')->orderBy('page ASC, sortby ASC')->findAll()
+        ];
+        return view('admin/ads-banner',$data);
+    }
+
+    public function adsform()
+    {
+        helper('form');
+        return view('admin/ads-form');
+    }
+
+    public function adsupdate()
+    {
+        # code...
     }
 }

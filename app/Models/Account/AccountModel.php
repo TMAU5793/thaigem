@@ -45,6 +45,7 @@ class AccountModel extends Model
             'email' => $data['txt_username'],
             'password' => password_hash($data['txt_password'], PASSWORD_DEFAULT),
 			'type' => $data['rd_member'],
+			'member_start' => $datetime,
 			'last_login' => $datetime
         ];
 

@@ -97,7 +97,18 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">ประเภทสินค้า</label>
-                                    <span class="d-block mb-2"><?= (isset($mb_bus) ? $mb_bus['product'] : '') ?></span>
+
+                                    <?php
+                                        $arr = explode(',',$mb_bus['product']);
+                                        foreach ($arr as $item){
+                                            if($item!=''){
+                                    ?>
+                                        <span class="d-block list-item">
+                                            <i class="fas fa-times text-danger fs-6" title="ลบ" data-id="<?= $info_member['id']; ?>" data-key="<?= $item; ?>" data-type="product"></i>
+                                            <?= $item; ?>
+                                        </span>
+                                    <?php } } ?>
+
                                     <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='product'){ ?>
                                         <div class="select-item position-relative" id="mb-pcate-<?= $row->id ?>">
                                             
@@ -111,7 +122,7 @@
                                             <?php } } }  ?>
                                         </div>
                                     <?php } } } ?>
-                                    <div id="cate-more"></div>
+                                    <div id="cate-more" class="mt-3"></div>
                                     <div class="add-item">
                                         <button type="button" id="btn-add-cate" class="btn"><i class="fas fa-plus"></i> ประเภทสินค้า</button>                                        
                                     </div>
@@ -121,7 +132,18 @@
                             <div class="col-md-6">
                                 <div class="form-group pe-5">
                                     <label for="">ประเภทธุรกิจ</label>
-                                    <span class="d-block mb-2"><?= (isset($mb_bus) ? $mb_bus['business'] : '') ?></span>
+                                    
+                                    <?php
+                                        $arr = explode(',',$mb_bus['business']);
+                                        foreach ($arr as $item){
+                                            if($item!=''){
+                                    ?>
+                                        <span class="d-block list-item">
+                                            <i class="fas fa-times text-danger fs-6" title="ลบ" data-id="<?= $info_member['id']; ?>" data-key="<?= $item; ?>" data-type="business"></i>
+                                            <?= $item; ?>
+                                        </span>
+                                    <?php } } ?>
+
                                     <?php if($memberbusiness) { foreach ($memberbusiness as $row) { if($row->type=='business'){ ?>
                                         <div class="select-item position-relative" id="mb-bcate-<?= $row->id ?>">
                                             
@@ -136,7 +158,7 @@
                                                 
                                         </div>
                                     <?php } } } ?>
-                                    <div id="business-more"></div>
+                                    <div id="business-more" class="mt-3"></div>
                                     <div class="add-item">
                                         <button type="button" id="btn-add-business" class="btn"><i class="fas fa-plus"></i> ประเภทธุรกิจ</button>                                        
                                     </div>

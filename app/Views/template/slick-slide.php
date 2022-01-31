@@ -69,7 +69,7 @@
             slidesToShow: 1,
             dots: true,
             arrows: false,
-            autoplay: true
+            autoplay: false
         });
 
         $('.banner-slick').slick({

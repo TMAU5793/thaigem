@@ -23,7 +23,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 gradient-gold-y">
                         <div class="forum-profile text-center">
                             <?php
-                                $profile_pic = (is_file($member['profile'])?site_url($member['profile']):site_url('assets/images/img-default.png'));
+                                $profile_pic = (is_file($member['profile'])?site_url($member['profile']):site_url('assets/images/diamond.png'));
                                 if(!is_file($member['profile'])){
                                     if($member['social_type'] == 'facebook'){
                                         $profile_pic = 'https://graph.facebook.com/'.$member['id'].'/picture?width=400&height=400';
