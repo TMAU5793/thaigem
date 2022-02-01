@@ -135,6 +135,11 @@
                 margin: 1rem auto 0;
                 object-fit: contain;
                 border-radius: 6px;
+                transition: all .35s;
+                &:hover {
+                    transition: all .35s;
+                    transform: scale(1.1);
+                }
             }
         }
     }
@@ -958,5 +963,24 @@
 .banner-home {
     .slick-dots {
         bottom: 2.5rem;
+    }
+    .slick-dotted.slick-slider {
+        margin-bottom: 0;
+    }
+}
+
+.event-desc {
+    .event-booking {
+        a {
+            img {
+                max-width: 150px;
+                border-radius: 6px;
+                transition: all .5s;
+                &:hover {
+                    transform: scale(1.1);
+                    transition: all .5s;
+                }
+            }
+        }
     }
 }

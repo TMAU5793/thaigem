@@ -29,9 +29,15 @@
                     <?php
                         if($member['type']=='dealer' && $member['status']=='2'){
                     ?>
-                        <a href="javascript:void(0)" class="btn btn-black-border booking_event" id="booking_event" data-event="<?= $info['id']; ?>"><?= lang('GlobalLang.bookevent') ?></a>
+                        <a href="javascript:void(0)" class="booking_event" id="booking_event" data-event="<?= $info['id']; ?>">
+                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">
+                            <!-- <?= lang('GlobalLang.bookevent') ?> -->
+                        </a>
                     <?php }else{ ?>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#eventModal" class="btn btn-black-border"><?= lang('GlobalLang.bookevent') ?></a>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#eventModal" class="">
+                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">
+                            <!-- <?= lang('GlobalLang.bookevent') ?> -->
+                        </a>
                     <?php } ?>
                 </div>
             </div>

@@ -42,7 +42,18 @@
                             foreach ($info as $row) {
                     ?>
                     <tr>
-                        <td><?= $row['page'] ?></td>
+                        <td>
+                            <?php
+                                if($row['position']=='p1'){
+                                    $p = 'ตำแหน่ง1';
+                                }else if($row['position']=='p2'){
+                                    $p = 'ตำแหน่ง2';
+                                }else{
+                                    $p = 'ตำแหน่ง3';
+                                }
+                                echo $row['page'].'-'.$p;
+                            ?>
+                        </td>
                         <td class="text-center"><?= $row['sortby'] ?></td>
                         <td class="text-center">
                             <?php
@@ -54,7 +65,7 @@
                             <?php } ?>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/banner/edit?id='.$row['id']); ?>">แก้ไข</a> |
+                            <a href="<?= base_url('admin/banner/adsform?id='.$row['id']); ?>">แก้ไข</a> |
                             <a href="javascript:void(0)" class="del-item" data-id="<?= $row['id'] ?>" onClick="DeleteRow('<?= $row['id'] ?>','/admin/banner/delete');">ลบ</a>
                         </td>
                     </tr>

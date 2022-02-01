@@ -67,6 +67,20 @@
         </div>
     </section>
 
+    <section class="banner-ads pt-5">
+        <div class="container">
+            <?php
+                //print_r($adsbanner);
+                if($adsbanner){
+                    foreach ($adsbanner as $ads){
+                        //echo $ads['position'];
+                        if($ads['position']=='p1'){
+            ?>
+                <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+            <?php } } } ?>
+        </div>
+    </section>
+
     <section class="price-update ptb-2rem">
         <div class="container">
             <div class="row">
@@ -206,6 +220,20 @@
         </div>
     </section>
 
+    <section class="banner-ads">
+        <div class="container">
+            <?php
+                //print_r($adsbanner);
+                if($adsbanner){
+                    foreach ($adsbanner as $ads){
+                        //echo $ads['position'];
+                        if($ads['position']=='p2'){
+            ?>
+                <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+            <?php } } } ?>
+        </div>
+    </section>
+
     <section class="news-home ptb-2rem">
         <div class="container">
             <div class="row">
@@ -265,7 +293,7 @@
                     </div>
                 </div>
             </div>
-            <div class="member-list mb-5">
+            <div class="member-list">
                 <div class="slick-3-home slick-dots-2">
                     <?php
                         if($dealers){
@@ -360,6 +388,20 @@
                     <?php } ?>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="banner-ads pb-5">
+        <div class="container">
+            <?php
+                //print_r($adsbanner);
+                if($adsbanner){
+                    foreach ($adsbanner as $ads){
+                        //echo $ads['position'];
+                        if($ads['position']=='p3'){
+            ?>
+                <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+            <?php } } } ?>
         </div>
     </section>
 

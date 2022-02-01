@@ -135,6 +135,7 @@ class Banner extends Controller
         $model = new BannerModel();
         $newName = $page.'-'.$file->getRandomName();
         $namemobile = 'mobile-'.$page.'-'.$file->getRandomName();
+        $nameAds = 'ads-'.$file->getRandomName();
         $w = 1920;
         $h = 400;
         if($page == 'home'){
@@ -150,10 +151,18 @@ class Banner extends Controller
             $data = [
                 'banner' => $path.'/'.$newName,
             ];
-        }else{
+        }
+        if($size=='mobile'){
             $image->withFile($file)->fit(600, 400, 'center')->save($path.'/'.$namemobile);
             $data = [
                 'banner_mobile' => $path.'/'.$namemobile,
+            ];
+        }
+
+        if($size=='ads'){
+            $image->withFile($file)->fit(1298, 276, 'center')->save($path.'/'.$nameAds);
+            $data = [
+                'banner' => $path.'/'.$nameAds,
             ];
         }
         $model->update($id, $data);
@@ -201,11 +210,67 @@ class Banner extends Controller
     public function adsform()
     {
         helper('form');
-        return view('admin/ads-form');
+        $request = service('request');
+        $model = new BannerModel();
+        $id = $request->getGet('id');
+        if($id){
+            $data = [
+                'meta_title' => 'แก้ไขข้อมูล',
+                'info'  =>  $model->where('id',$id)->first()
+            ];
+            return view('admin/ads-form', $data);
+        }else{
+            return view('admin/ads-form');
+        }
     }
 
     public function adsupdate()
     {
-        # code...
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
+        helper(['form', 'url']);
+        $request = service('request');
+        $model = new BannerModel();
+
+        $post = $request->getPost();
+        if($post){
+            $banner = $request->getFile('txt_banner'); //เก็บไฟล์รูปอัพโหลด
+            $hd_banner = $post['hd_banner']; //เก็บไฟล์รูปเดิม เพื่อนำมาเช็คว่ามีการเปลี่ยนรูปใหม่หรือไม่
+            $hd_banner_del = $post['hd_banner_del']; //เก็บข้อมูลรูป เพื่อจะนำไปเช็คว่ามีรูปอยู่ไหม
+
+            $status = ($post['cb_status']=='on'?'1':'0');
+            $data = [
+                'page' => $post['hd_page'],
+                'position' => $post['ddl_position'],
+                'link' => urldecode($post['txt_link']),
+                'sortby' => $post['sortby'],
+                'status' => $status
+            ];
+            if($post['hd_id']){
+                $model->update($post['hd_id'],$data);
+                $id = $post['hd_id'];
+            }else{
+                $model->save($data);
+                $id = $model->getInsertID();
+            }
+
+            if ($hd_banner!=$hd_banner_del){
+                if(is_file($hd_banner_del)){
+                    unlink($hd_banner_del); //ลบรูปเก่าออก
+                }
+                
+                if (!is_dir('uploads/banner/ads')) {
+					mkdir('uploads/banner/ads', 0777, TRUE);
+                    $this->upload($id,$banner,'uploads/banner/ads',$post['hd_page'],'ads'); //id, file, path, web page
+				}else{
+                    $this->upload($id,$banner,'uploads/banner/ads',$post['hd_page'],'ads'); //id, file, path, web page
+                }
+            }            
+            //print_r($model->errors());
+        }
+        
+        return redirect()->to('admin/banner/ads');
     }
 }

@@ -66,6 +66,7 @@ class Home extends BaseController
             'cate_bus' => $cate_bus,
             'userdata' => $this->userdata,
             'banner' => $banner->where('page','home')->orderBy('sortby ASC')->findAll(5),
+            'adsbanner' => $banner->where(['page'=>'ads','status'=>'1'])->orderBy('sortby ASC, created_at DESC')->groupBy('position')->findAll(),
             'tbl_price' => $tbl_price->where('status','1')->orderBy('created_at DESC')->get()->getResultArray()
         ];
                 
