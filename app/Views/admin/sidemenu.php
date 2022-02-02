@@ -60,14 +60,7 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>บทความ</p>
                             </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/articles/information'); ?>" class="nav-link <?= ($uri->getSegment(3)=='informationform' || $uri->getSegment(3)=='information'?'active':''); ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>ข้อมูลเว็บไซต์</p>
-                            </a>
-                        </li>
+                        </li>                                                
 
                         <li class="nav-item">
                             <a href="<?= base_url('admin/articles/advisory'); ?>" class="nav-link <?= ($uri->getSegment(3)=='advisoryform' || $uri->getSegment(3)=='advisory'?'active':''); ?>">
@@ -80,6 +73,13 @@
                             <a href="<?= base_url('admin/articles/director'); ?>" class="nav-link <?= ($uri->getSegment(3)=='directorform' || $uri->getSegment(3)=='director'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>รายนามที่ปรึกษา</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/articles/information'); ?>" class="nav-link <?= ($uri->getSegment(3)=='informationform' || $uri->getSegment(3)=='information'?'active':''); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>ข้อมูลเว็บไซต์</p>
                             </a>
                         </li>
                     </ul>

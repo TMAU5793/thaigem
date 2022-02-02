@@ -49,7 +49,9 @@
                                         <div class="event-booking pt-4 pb-2 bg-lightgray">
                                             <div class="container">
                                                 <div class="text-center mb-3">
-                                                    <a href="javascript:void(0)" class="btn btn-black-border booking_event" id="booking_event" data-event="<?= $event['id']; ?>"><?= lang('GlobalLang.bookevent') ?></a>
+                                                    <a href="javascript:void(0)" class="booking_event" id="booking_event" data-event="<?= $event['id']; ?>">                                                        
+                                                        <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

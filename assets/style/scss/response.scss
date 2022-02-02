@@ -811,6 +811,8 @@
     }
     .community-desc .col-lg-9.col-md-8 .ps-5.pt-3 {
         padding-left: 0 !important;
+        margin-top: 1.5rem;
+        border-top: 1px solid #665f4f;
     }
     .forum-box {
         .forum-head {
@@ -818,9 +820,25 @@
         }
         .forum-body {
             .col-lg-3.col-md-4 {
-                display: none;
+                display: block;
+                .forum-profile {
+                    width: 25%;
+                    float: left;
+                    padding-right: 2rem;
+                }
+                .member-info {
+                    width: 75%;
+                    float: left;
+                    .info-item-block {
+                        line-height: 20px;
+                    }
+                }
             }
         }
+    }
+    .community-desc #pic_profile {
+        width: 60px;
+        height: 60px;
     }
     .list-forum {
         .desc-head {

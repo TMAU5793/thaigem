@@ -9,7 +9,6 @@ use App\Models\Account\AccountModel;
 use App\Models\FunctionModel;
 use App\Models\MemberBusinessModel;
 use CodeIgniter\I18n\Time;
-use PhpOffice\PhpSpreadsheet\Calculation\TextData\Replace;
 
 class Member extends Controller
 {
@@ -44,7 +43,7 @@ class Member extends Controller
         $albummodel = new AlbumModel();
         $mbModel = new MemberModel();
 
-        $getuser = $request->getGet('u');        
+        $getuser = $request->getGet('u');
         $code = explode('-',$getuser);
         $edituser = $code[1];
         $info = $model->where(['id'=>$this->member_id,'code'=>$edituser])->first();
@@ -330,6 +329,104 @@ class Member extends Controller
             ];
             $model->update($id,$data);
             echo TRUE;
+        }else{
+            return redirect()->to('account');
+        }
+    }
+
+    public function account()
+    {
+        helper('form');
+        $request = service('request');
+        $model = new AccountModel();
+        $mbModel = new MemberModel();
+
+        $getuser = $request->getGet('u');
+        $code = explode('-',$getuser);
+        $edituser = $code[1];
+        $info = $model->where(['id'=>$this->member_id,'code'=>$edituser])->first();
+        
+        if(!$info){
+            return redirect()->to('account');
+        }
+
+        $data = [
+            'ac_account' => TRUE,
+            'lang' => $this->lang,
+            'info' => $info,
+            'provinces' => $mbModel->getProvince()
+        ];
+        echo view('account/ac-profile-2',$data);
+
+        //print_r($info);
+    }
+
+    public function updateAccount()
+    {
+        helper(['form','fileystem']);
+        $model = new AccountModel();
+        $request = service('request');        
+
+        $post = $request->getPost();
+        if($post){
+            $rules = [
+                'txt_name' => [
+                    'rules' => 'required',
+                    'errors' =>  [
+                        'required' => 'กรุณากรอกชื่อ'
+                    ]
+                ],
+                'txt_phone' => [
+                    'rules' => 'required',
+                    'errors' =>  [
+                        'required' => 'กรุณากรอกเบอร์โทรศัพท์'
+                    ]
+                ],
+                'txt_email' => [
+                    'rules' => 'required|valid_email',
+                    'errors' =>  [
+                        'required' => 'กรุณากรอกที่อยู่',
+                        'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง'
+                    ]
+                ],
+                'txt_country' => [
+                    'rules' => 'required',
+                    'errors' =>  [
+                        'required' => 'กรุณากรอกประเทศ'
+                    ]
+                ]
+            ];
+            if($this->validate($rules)){
+                $arr = explode(" ",$post['txt_name']);
+                $name = $arr[0];
+                $lastname = $arr[1];
+                $data = [
+                    'name' => $name,
+                    'lastname' => $lastname,
+                    'phone' => $post['txt_phone'],
+                    'email' => $post['txt_email'],
+                    'company' => $post['txt_company'],
+                    'country' => $post['txt_country']
+                ];
+                $model->update($post['hd_id'],$data);
+
+                $file_upload = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
+                $file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
+                $this->upload($post['hd_id'],$file_upload,$file_del);
+
+                return redirect()->to('account')->with('msg_done',true);
+                //print_r($post);
+            }else{
+                $info = $model->where('id',$this->member_id)->first();
+                $data = [
+                    'ac_account' => TRUE,
+                    'lang' => $this->lang,
+                    'info' => $info,
+                    'validation' => $this->validator
+                ];
+
+                echo view('account/ac-profile-2',$data);
+            }
         }else{
             return redirect()->to('account');
         }

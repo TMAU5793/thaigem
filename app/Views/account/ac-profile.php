@@ -346,7 +346,7 @@
                     <div class="tab-pane fade" id="nav-content4" role="tabpanel" aria-labelledby="nav-tab4">
 
                         <div class="form-group">
-                            <label for="txt_map">ป้อน Iframe Google map</label> <a href="#" data-bs-toggle="modal" data-bs-target="#mapModal">(ดูตัวอย่าง)</a>
+                            <label for="txt_map"><?= lang('accountLang.map-iframe') ?></label> <a href="#" data-bs-toggle="modal" data-bs-target="#mapModal">(<?= lang('accountLang.preview') ?>)</a>
                             <input type="text" name="txt_map" id="txt_map" class="form-control">
                         </div>
                         <div id="map-iframe"></div>
@@ -365,19 +365,20 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 750px;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="text-center w-100 ps-4 ff-dbadmanBold">ตัวอย่างการใช้ Iframe จาก Google Map</div>
+                    <div class="text-center w-100 ps-4 ff-dbadmanBold"><?= lang('accountLang.map-title'); ?></div>
                     <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
                 </div>
                 <div class="modal-body mt-0">
                     <div class="">
-                        <ul class="list-unstyled">
+                        <!-- <ul class="list-unstyled">
                             <li>- เข้าเว็บไซต์ <a href="https://www.google.co.th/maps/" target="_blank" class="c-black">Google Map</a></li>
                             <li>1. ค้นหาสถานที่ที่ต้องการ</li>
                             <li>2. หาไอคอนแชร์ จากนั้นให้กดที่ไอคอนแชร์</li>
                             <li>3. เมื่อป๊อบอัพแชร์แสดงขึ้นให้เลือกแถบเมนู "ฝังแผนที่ / Embed a map"</li>
                             <li>4. จากนั้นกด "คัดลอก HTML / COPY HTML"</li>
                             <li>5. นำโค้ดที่คัดลอกมากป้อนในช่องกรอกข้อมูล</li>
-                        </ul>
+                        </ul> -->
+                        <?= lang('accountLang.map-detail'); ?>
                         <img src="<?= site_url('assets/images/map.jpg') ?>" alt="">
                     </div>
                     <div class="text-center mb-3 mt-3">

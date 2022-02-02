@@ -928,6 +928,15 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
       margin-bottom: 0;
       word-break: break-word; }
 
+.files-form .event-booking .booking_event img {
+  max-width: 150px;
+  border-radius: 6px;
+  margin: auto;
+  transition: all .25s; }
+  .files-form .event-booking .booking_event img:hover {
+    transition: all .25s;
+    transform: scale(1.1); }
+
 .user-login-name {
   position: relative; }
   .user-login-name .fa-caret-down {
@@ -1533,10 +1542,7 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     display: inline-flex;
     width: 100%; }
   .forum-box .forum-body .member-info .info-item-block {
-    margin-bottom: 10px; }
-  .forum-box .forum-body .member-info span,
-  .forum-box .forum-body .member-info strong {
-    line-height: 24px; }
+    line-height: 25px; }
   .forum-box .forum-body .member-info span {
     margin-left: 10px; }
   .forum-box .forum-body .member-info strong {

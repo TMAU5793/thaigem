@@ -41,10 +41,10 @@
                 <div class="user-login me-3 position-relative">
                     <div class="user-menu-login d-none">
                         <ul>
+                            <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
                             <?php
                                 if($member['type']=='dealer'){
-                            ?>
-                                <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
+                            ?>                                
                                 <?php if($member['status']=='2' && $member['type']=='dealer'){ ?>
                                     <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
                                 <?php } ?>
@@ -59,7 +59,6 @@
             <?php }else{ ?>
                 <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-uppercase login-text"><i class="far fa-user-circle"></i> <?= lang('GlobalLang.login'); ?></a>
             <?php } ?>
-            <!-- <a href="<?= site_url('help-center') ?>" class="ms-3 text-uppercase help-center"><i class="far fa-handshake"></i> <?= lang('GlobalLang.helpCenter'); ?></a> -->
         </div>
     </div>
     <div class="clearfix"></div>
@@ -89,10 +88,10 @@
                         </div>
                         <div class="user-menu-login d-none">
                             <ul>
+                                <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
                                 <?php
                                     if($member['type']=='dealer'){
-                                ?>
-                                    <li><a href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a></li>
+                                ?>                                    
                                     <?php if($member['status']=='2' && $member['type']=='dealer'){ ?>
                                         <li><a href="<?= site_url('account/event'); ?>"><?= lang('MenuLang.bookEvent'); ?></a></li>
                                     <?php } ?>

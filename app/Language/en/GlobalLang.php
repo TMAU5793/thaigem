@@ -134,5 +134,6 @@ return [
     'yearUp' => 'Year Up',
     'consult' => 'NAMES CONSULTANTS ASSOCIATION',
     'director' => 'The list of the TGJTA Board of Directors in fiscal year 2019-2021',
-    'back' => 'Back'
+    'back' => 'Back',
+    'country' => 'Country'
 ];

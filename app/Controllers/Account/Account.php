@@ -39,7 +39,7 @@ class Account extends Controller
     
     public function index()
     {   
-        if($this->member_id!="" && $this->udata['user_type']=='dealer'){
+        if($this->member_id!=""){
             $model = new AccountModel();
             $albummodel = new AlbumModel();
             $mbModel = new MemberModel();
@@ -62,8 +62,7 @@ class Account extends Controller
                 'memberbusiness' => $mbModel->getMemberBusiness(),
                 'shareImg' => $info['profile']
             ];
-            // print_r($model->error());
-            // print_r($info);
+            
             echo view('account/ac-account',$data);
         }else{
             return redirect()->to('');
@@ -144,7 +143,11 @@ class Account extends Controller
                 if($member['code']!=''){
                     $edit_id = 'TGJTA-'.$member['code'];
                 }
-                return redirect()->to('account/member/edit?u='.$edit_id);
+                if($member['type']=='dealer'){
+                    return redirect()->to('account/member/edit?u='.$edit_id);
+                }else{
+                    return redirect()->to('account/member/account?u='.$edit_id);
+                }
             }
         }else{
             $ctModel = new ProductCategoryModel();

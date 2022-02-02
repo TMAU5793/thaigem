@@ -36,36 +36,37 @@
                         </div>
                         <div class="member-info">
                             <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.company') ?></strong>
-                                <span class="d-block"><?= $member['company'] ?></span>
+                                <strong ><?= lang('GlobalLang.company') ?></strong>
+                                <span ><?= $member['company'] ?></span>
                             </div>
                             <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.email') ?></strong>
-                                <span class="d-block"><?= ($member['email']!=''?$member['email']:'-') ?></span>
+                                <strong ><?= lang('GlobalLang.email') ?></strong>
+                                <span ><?= ($member['email']!=''?$member['email']:'-') ?></span>
                             </div>
                             <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.phoneNumber') ?></strong>
-                                <span class="d-block"><?= ($member['company_phone']!=''?$member['company_phone']:'-') ?></span>
+                                <?php
+                                    if($member['type']=='dealer'){
+                                ?>
+                                    <strong ><?= lang('GlobalLang.companyPhone') ?></strong>
+                                    <span ><?= ($member['company_phone']!=''?$member['company_phone']:'-') ?></span>
+                                <?php }else{ ?>
+                                    <strong ><?= lang('GlobalLang.phoneNumber') ?></strong>
+                                    <span ><?= ($member['phone']!=''?$member['phone']:'-') ?></span>
+                                <?php } ?>
                             </div>
-                            
-                            <!-- <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.product-type') ?></strong>
-                                <span class="d-block"><?= $category['name_th'] ?></span>
-                            </div>
-                            <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.business-type') ?></strong>
-                                <span class="d-block"><?= $business['name_th'] ?></span>
-                            </div> -->
 
                             <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.province') ?></strong>
-                                <span class="d-block th-fz-1-4rem"><?= ($lang=='en' ? $province->name_en:$province->name_th) ?></span>
+                                <?php
+                                    if($member['type']=='dealer'){
+                                ?>
+                                    <strong ><?= lang('GlobalLang.province') ?></strong>
+                                    <span><?= ($lang=='en' ? $province->name_en:$province->name_th) ?></span>
+                                <?php }else{ ?>
+                                    <strong ><?= lang('GlobalLang.country') ?></strong>
+                                    <span><?= $member['country'] ?></span>
+                                <?php } ?>
                             </div>
-                            <div class="info-item-block">
-                                <strong class="d-block"><?= lang('GlobalLang.member-since') ?></strong>
-                                <span class="d-block"><?= substr($member['created_at'],0,4) ?></span>
-                            </div>
-                            <div class="">
+                            <div class="mt-3">
                                 <?php
                                     $member_id = $member['id'];
                                     if($member['code']){
@@ -81,6 +82,7 @@
                                 <?php } ?>
                             </div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="col-lg-9 col-md-8 col-sm-8">
                         <div class="ps-5 pt-3">

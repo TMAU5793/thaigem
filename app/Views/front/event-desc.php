@@ -30,13 +30,11 @@
                         if($member['type']=='dealer' && $member['status']=='2'){
                     ?>
                         <a href="javascript:void(0)" class="booking_event" id="booking_event" data-event="<?= $info['id']; ?>">
-                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">
-                            <!-- <?= lang('GlobalLang.bookevent') ?> -->
+                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">                            
                         </a>
                     <?php }else{ ?>
                         <a href="" data-bs-toggle="modal" data-bs-target="#eventModal" class="">
-                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">
-                            <!-- <?= lang('GlobalLang.bookevent') ?> -->
+                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">                            
                         </a>
                     <?php } ?>
                 </div>

@@ -666,6 +666,23 @@
     }
 }
 
+.files-form {
+    .event-booking {
+        .booking_event {
+            img {
+                max-width: 150px;
+                border-radius: 6px;
+                margin: auto;
+                transition: all .25s;
+                &:hover {
+                    transition: all .25s;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
+
 .user-login-name {
     position: relative;
     .fa-caret-down {

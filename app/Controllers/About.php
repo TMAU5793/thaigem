@@ -96,15 +96,13 @@ class About extends BaseController
 
     public function policy()
     {
-        $query = $this->getInformation('about','5'); //page, data category
         $data = [
-            'meta_title' => ($this->lang=='en' && $query->title_en!='' ? $query->title_en : $query->title_th),
+            'meta_title' => ($this->lang=='en' ? 'Cookies Policy' : 'นโยบายการใช้คุกกี้'),
             'lang' => $this->lang,
-            'info_single' => $query,
             'banner' => $this->banner
         ];
         
-        echo view('template/information', $data);
+        echo view('template/policy', $data);
     }
 
     public function getInformation($page,$cate)

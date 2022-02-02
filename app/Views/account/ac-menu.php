@@ -17,10 +17,11 @@
 <div class="show-575 ff-dbadmanBold fs-3 ac-menu-mobile mb-3"><?= lang('accountLang.menu') ?><i class="fas fa-caret-down ms-2"></i></div>
 <div class="account-menu ptb-1rem navbar-light hide-575">
     <ul class="navbar-nav fs-5 justify-content-center">
-        <?php if($status['type']=='dealer'){ ?>
-            <li class="nav-item">            
-                <a class="nav-link <?= (isset($ac_account)?'active':''); ?>" href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a>
-            </li>
+        <li class="nav-item">            
+            <a class="nav-link <?= (isset($ac_account)?'active':''); ?>" href="<?= site_url('account'); ?>"><?= lang('MenuLang.myAccount'); ?></a>
+        </li>
+
+        <?php if($status['type']=='dealer'){ ?>            
 
             <?php if($status['status']=='2' && $status['type']=='dealer'){ ?>
                 <li class="nav-item position-relative">
@@ -49,42 +50,46 @@
                 <a class="nav-link <?= (isset($ac_invoice)?'active':''); ?>" href="<?= site_url('account/invoice'); ?>"><?= lang('MenuLang.invoice'); ?></a>
             </li>
         <?php } ?>
+
         <li class="nav-item">
             <a class="nav-link <?= (isset($ac_webboard)?'active':''); ?>" href="<?= site_url('account/webboard'); ?>"><?= lang('MenuLang.webboard'); ?></a>
         </li>
-        <li class="nav-item hide-991">
-            <div class="ac-noti position-relative">
-                <i class="far fa-bell pt-2 cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification"></i>
-                <?php
-                    if($noti){
-                        $n=count($noti);
-                ?>
-                    <div class="box-noti cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification">
-                        <span><?= $n ?></span>
-                    </div>
-                    <div class="noti-list d-none">
-                        <?php
-                            $n=0;
-                            foreach ($noti as $list){
-                                $n++;
-                                $cBorder ='';
-                                if($n>1){
-                                    $cBorder = 'noti-border';
-                        ?>
-                            <div class="noti-item <?= $cBorder ?>">
-                                <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
-                                <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
-                            </div>
-                        <?php }else{ ?>
-                            <div class="noti-item">
-                                <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
-                                <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
-                            </div>
-                        <?php } } ?>
-                    </div>
-                <?php } ?>
-            </div>
-        </li>
+
+        <?php if($status['type']=='dealer'){ ?>
+            <li class="nav-item hide-991">
+                <div class="ac-noti position-relative">
+                    <i class="far fa-bell pt-2 cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification"></i>
+                    <?php
+                        if($noti){
+                            $n=count($noti);
+                    ?>
+                        <div class="box-noti cursor-pointer noti-open" data-id="<?= $userdata['id'] ?>" title="notification">
+                            <span><?= $n ?></span>
+                        </div>
+                        <div class="noti-list d-none">
+                            <?php
+                                $n=0;
+                                foreach ($noti as $list){
+                                    $n++;
+                                    $cBorder ='';
+                                    if($n>1){
+                                        $cBorder = 'noti-border';
+                            ?>
+                                <div class="noti-item <?= $cBorder ?>">
+                                    <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                    <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
+                                </div>
+                            <?php }else{ ?>
+                                <div class="noti-item">
+                                    <strong class="ff-dbadmanBold"><?= ($lang=='en' && $list['title_en']!=''?$list['title_en']:$list['title_th']) ?></strong>
+                                    <p class="fs-6 mb-0"><?= ($lang=='en' && $list['desc_en']!=''?$list['desc_en']:$list['desc_th']) ?></p>
+                                </div>
+                            <?php } } ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            </li>
+        <?php } ?>
     </ul>
     <div class="clearfix"></div>
 </div>

@@ -28,6 +28,17 @@ return [
     'employee' => 'จำนวนพนักงาน',
     'person' => 'คน',
     'peopleUp' => 'คนขึ้นไป',
-    'menu' => 'เมนู'
-    
+    'menu' => 'เมนู',
+    'preview' => 'ดูตัวอย่าง',
+    'map-iframe' => 'ป้อน Iframe Google map',
+    'map-title' => 'ตัวอย่างการใช้ Iframe จาก Google Map',
+    'map-detail' => '
+        <ul class="list-unstyled">
+            <li>- เข้าเว็บไซต์ <a href="https://www.google.co.th/maps/" target="_blank" class="c-black">Google Map</a></li>
+            <li>1. ค้นหาสถานที่ที่ต้องการ</li>
+            <li>2. หาไอคอนแชร์ จากนั้นให้กดที่ไอคอนแชร์</li>
+            <li>3. เมื่อป๊อบอัพแชร์แสดงขึ้นให้เลือกแถบเมนู "ฝังแผนที่ / Embed a map"</li>
+            <li>4. จากนั้นกด "คัดลอก HTML / COPY HTML"</li>
+            <li>5. นำโค้ดที่คัดลอกมากป้อนในช่องกรอกข้อมูล</li>
+        </ul>'
 ];

@@ -15,16 +15,25 @@
                     }
                 ?>
             </div>
-            <div class="row">
+            <div class="row <?= ($info['type']=='member'?'justify-content-center':'') ?>">
                 <div class="col-lg-7 col-md-7">
-                    <?= $this->include('account/left-menu') ?>
+                    <?php
+                        if($info['type']=='member'){
+                            echo $this->include('account/left-menu-2');
+                        }else{
+                            echo $this->include('account/left-menu');
+                        }
+                    ?>
                 </div>
+                <?php
+                        if($info['type']!='member'){
+                ?>
                 <div class="col-lg-5 col-md-5">
                     <div class="ac-about mt-4">                        
                         <div class="content-title"><strong class="ff-dbadmanBoldnn fs-3">About Us</strong></div>
                         <p class="about-edit"><?= ($info['about']==''? '-' : $info['about']) ?></p>
                     </div>
-                                         
+                    
                     <div class="content-body">                        
                         <div class="content-title"><strong class="ff-dbadmanBold fs-3">Gallery</strong></div>
                         <div class="ac-album">
@@ -43,6 +52,7 @@
                         </div>                        
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </section>

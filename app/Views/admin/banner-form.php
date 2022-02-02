@@ -56,7 +56,7 @@
                         <input type="hidden" name="hd_banner_del" id="hd_banner_del" value="<?= (isset($info) && $info['banner']!=""?$info['banner'] : '') ?>">
                         <label for="txt_banner" class="label-img btn-primary">เลือกรูป</label>
                         <p class="text-danger mt-3 mb-0">*ขนาดรูปที่ต้องการหน้า Home <strong>1920 x 700px</strong></p>
-                        <p class="text-danger">*หน้าอื่นๆขนาด <strong>1920 x 300px</strong></p>
+                        <p class="text-danger">*หน้าอื่นๆขนาด <strong>1920 x 400px</strong></p>
                     </div>
                     <div class="col-md-3">
                         <h6 class="mb-3 ff-bold">รูปแบนเนอร์ (Mobile)</h6>

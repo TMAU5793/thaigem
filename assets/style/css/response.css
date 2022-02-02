@@ -737,12 +737,27 @@
     font-size: 2rem; }
 
   .community-desc .col-lg-9.col-md-8 .ps-5.pt-3 {
-    padding-left: 0 !important; }
+    padding-left: 0 !important;
+    margin-top: 1.5rem;
+    border-top: 1px solid #665f4f; }
 
   .forum-box .forum-head {
     display: none; }
   .forum-box .forum-body .col-lg-3.col-md-4 {
-    display: none; }
+    display: block; }
+    .forum-box .forum-body .col-lg-3.col-md-4 .forum-profile {
+      width: 25%;
+      float: left;
+      padding-right: 2rem; }
+    .forum-box .forum-body .col-lg-3.col-md-4 .member-info {
+      width: 75%;
+      float: left; }
+      .forum-box .forum-body .col-lg-3.col-md-4 .member-info .info-item-block {
+        line-height: 20px; }
+
+  .community-desc #pic_profile {
+    width: 60px;
+    height: 60px; }
 
   .list-forum .desc-head img {
     width: 30px;
