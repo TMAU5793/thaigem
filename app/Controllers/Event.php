@@ -30,13 +30,16 @@ class Event extends BaseController
 	{   
         $model = new EventModel();
         $banner =new BannerModel();
+        $db = db_connect();
+        $tbl_month = $db->table('tbl_month');
 
         $data = [
             'meta_title' => 'Event',
             'info' => $model->where('status','on')->orderby('created_at','DESC')->paginate(9),
 			'pager' => $model->pager,
             'lang' => $this->lang,
-            'banner' => $banner->where(['page'=>'event','status'=>'1'])->orderBy('sortby ASC, created_at DESC')->first()
+            'banner' => $banner->where(['page'=>'event','status'=>'1'])->orderBy('sortby ASC, created_at DESC')->first(),
+            'month' => $tbl_month->get()->getResultArray()
         ];
         
         echo view('front/event', $data);
@@ -47,6 +50,9 @@ class Event extends BaseController
         $model = new EventModel();
         $bkModel = new BookingModel();
         $mbModel = new MemberModel();
+        $db = db_connect();
+        $tbl_month = $db->table('tbl_month');
+
         $uri = service('uri');
         $segment3 = $uri->getSegment(3);
         $segment3 = urldecode($segment3);
@@ -67,7 +73,8 @@ class Event extends BaseController
             'info' => $row,
             'lang' => $this->lang,
             'booking' => $bkModel->where(['member_id'=>$this->member_id,'event_id'=>$row['id']])->first(),
-            'member' => $mbModel->where('id',$this->member_id)->first()
+            'member' => $mbModel->where('id',$this->member_id)->first(),
+            'month' => $tbl_month->get()->getResultArray()
         ];
         
         echo view('front/event-desc', $data);

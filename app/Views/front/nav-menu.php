@@ -157,7 +157,7 @@
                         <?= lang('MenuLang.navAboutus'); ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navAbout">
-                        <li><a class="dropdown-item" href="<?= site_url('about/policy'); ?>"><?= lang('MenuLang.policy'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('about/president'); ?>"><?= lang('MenuLang.policy'); ?></a></li>
                         <li><a class="dropdown-item" href="<?= site_url('about/history'); ?>"><?= lang('MenuLang.history'); ?></a></li>
                         <li><a class="dropdown-item" href="<?= site_url('about/directors'); ?>"><?= lang('MenuLang.directors'); ?></a></li>
                         <li><a class="dropdown-item" href="<?= site_url('about/advisory'); ?>"><?= lang('MenuLang.advisory'); ?></a></li>                        

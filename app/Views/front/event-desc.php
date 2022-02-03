@@ -20,7 +20,31 @@
                 <span class="ff-dbadmanBold share-social" data-url="<?= site_url('knowledge/post/'.($info['slug']!=""?$info['slug']:$info['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
             </div>
             
-            <div class="event-date mt-3 <?= ($booking?'mb-5':'mb-3') ?>">เผยแพร่ : <?= substr($info['created_at'],0,10) ?></div>
+            <div class="event-date mt-3 <?= ($booking?'mb-5':'mb-3') ?>">
+                <?php
+                    $start_event = explode('-',$info['start_event']);
+                    $end_event = explode('-',$info['end_event']);
+                    $eventdate = '';
+                    foreach ($month as $item){
+                        if($item['id']==$start_event[1]){
+                            $m1 = ($lang=='en'?$item['name_en']:$item['name_th']);
+                        }
+                        if($item['id']==$end_event[1]){
+                            $m2 = ($lang=='en'?$item['name_en']:$item['name_th']);
+                        }                                            
+                    }
+                    if($start_event[0]==$end_event[0]){
+                        if($start_event[1]==$end_event[1]){
+                            $eventdate = $start_event[2].'-'.$end_event[2].' '.$m1.' '.$start_event[0];
+                        }else{
+                            $eventdate = $start_event[2].' '.$m1.' - '.$end_event[2].' '.$m2.' '.$end_event[0];
+                        }
+                    }else{
+                        $eventdate = $start_event[2].' '.$m1.' '.$start_event[0].' - '.$end_event[2].' '.$m2.' '.$end_event[0];
+                    }
+                ?>
+                <?= lang('GlobalLang.eventDate').' : '.$eventdate ?>
+            </div>
         </div>
         
         <div class="event-booking pt-4 pb-4 bg-lightgray">

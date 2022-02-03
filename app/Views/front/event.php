@@ -33,7 +33,29 @@
                                     
                                 </div>
                                 <div class="event-action mt-2">
-                                    <div class="event-date fs-5"><?= lang('GlobalLang.eventDate').' : '.substr($row['start_event'],0,10) ?></div>                                
+                                    <?php
+                                        $start_event = explode('-',$row['start_event']);
+                                        $end_event = explode('-',$row['end_event']);
+                                        $eventdate = '';
+                                        foreach ($month as $item){
+                                            if($item['id']==$start_event[1]){
+                                                $m1 = ($lang=='en'?$item['name_en']:$item['name_th']);
+                                            }
+                                            if($item['id']==$end_event[1]){
+                                                $m2 = ($lang=='en'?$item['name_en']:$item['name_th']);
+                                            }                                            
+                                        }
+                                        if($start_event[0]==$end_event[0]){
+                                            if($start_event[1]==$end_event[1]){
+                                                $eventdate = $start_event[2].'-'.$end_event[2].' '.$m1.' '.$start_event[0];
+                                            }else{
+                                                $eventdate = $start_event[2].' '.$m1.' - '.$end_event[2].' '.$m2.' '.$end_event[0];
+                                            }
+                                        }else{
+                                            $eventdate = $start_event[2].' '.$m1.' '.$start_event[0].' - '.$end_event[2].' '.$m2.' '.$end_event[0];
+                                        }
+                                    ?>
+                                    <div class="event-date fs-5"><?= lang('GlobalLang.eventDate').' : '.$eventdate ?></div>
                                     <a href="<?= site_url('event/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
                                     <span class="ms-3 ff-dbadmanBold share-social" data-url="<?= site_url('event/post/'.($row['slug']!=""?$row['slug']:$row['id'])) ?>"><i class="fas fa-share-alt"></i> <?= lang('GlobalLang.share'); ?></span>
                                 </div>

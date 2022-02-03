@@ -68,18 +68,19 @@
                             </div>
                             <div class="mt-3">
                                 <?php
-                                    $member_id = $member['id'];
-                                    if($member['code']){
-                                        $member_id = $member['code'];
-                                    }
+                                    if($member['type']=='dealer'){
+                                        $member_id = $member['id'];
+                                        if($member['code']){
+                                            $member_id = $member['code'];
+                                        }
 
-                                    $sess = session()->get('userdata');
-                                    if($sess){
+                                        $sess = session()->get('userdata');
+                                        if($sess){
                                 ?>
                                     <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
                                 <?php }else{ ?>
                                     <a href="javascript:void(0)" class="btn btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal"><?= lang('GlobalLang.viewProfile'); ?></a>
-                                <?php } ?>
+                                <?php } } ?>
                             </div>
                         </div>
                         <div class="clearfix"></div>

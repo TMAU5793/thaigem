@@ -297,14 +297,14 @@ class Event extends Controller
         $mbModel = new MemberModel();
         $id = $request->getGet('id');
         if($id){
-            $booking = $bkModel->where('id',$id)->first();
+            $booking = $bkModel->where('booking_no',$id)->first();
             $data = [
                 'meta_title' => 'รายละเอียดการจอง',
                 'info' => $booking,
                 'member' => $mbModel->where('id',$booking['member_id'])->first(),
                 'event' => $evModel->where('id',$booking['event_id'])->first()
             ];
-            
+            //print_r($booking);
             echo view('admin/event-info',$data);
         }else{
             return redirect()->to('admin/event/booking');
@@ -327,7 +327,7 @@ class Event extends Controller
             $id = $post['hd_id'];
             $data = [
                 'status' => $post['ddl_status'],
-                'form_status' => $post['form_status'],
+                'file_status' => $post['file_status'],
                 'payment' => $post['pay_status'],
                 'updated_at' => $date
             ];

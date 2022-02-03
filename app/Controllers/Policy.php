@@ -27,7 +27,8 @@ class Policy extends BaseController
 		$bannerModel = new BannerModel();
         $banner = $bannerModel->where('page','about')->first();
 		$data = [
-			'banner' => $banner
+			'banner' => $banner,
+            'lang' => $this->lang
 		];
 
         return view('template/policy',$data);

@@ -188,7 +188,27 @@
                             <div class="col-md-6 position-relative">
                                 <div class="event-date text-end pt-3 pe-4">
                                     <span><?= lang('GlobalLang.eventDate') ?> : </span>
-                                    <span><?= $event['start_event'] ?></span>
+                                    <?php
+                                        $start_event = explode('-',$event['start_event']);
+                                        $end_event = explode('-',$event['end_event']);
+                                        foreach ($month as $row){
+                                            if($row['id']==$start_event[1]){
+                                                $m1 = ($lang=='en'?$row['name_en']:$row['name_th']);
+                                            }
+                                            if($row['id']==$end_event[1]){
+                                                $m2 = ($lang=='en'?$row['name_en']:$row['name_th']);
+                                            }                                            
+                                        }
+                                        if($start_event[0]==$end_event[0]){
+                                            if($start_event[1]==$end_event[1]){
+                                                echo $start_event[2].'-'.$end_event[2].' '.$m1.' '.$start_event[0];
+                                            }else{
+                                                echo $start_event[2].' '.$m1.' - '.$end_event[2].' '.$m2.' '.$end_event[0];
+                                            }
+                                        }else{
+                                            echo $start_event[2].' '.$m1.' '.$start_event[0].' - '.$end_event[2].' '.$m2.' '.$end_event[0];
+                                        }
+                                    ?>
                                 </div>
                                 <div class="absolute-center text-center w-75">
                                     <h2 class="ff-semibold fs-4 text-line-3"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>

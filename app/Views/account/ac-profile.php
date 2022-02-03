@@ -347,9 +347,11 @@
 
                         <div class="form-group">
                             <label for="txt_map"><?= lang('accountLang.map-iframe') ?></label> <a href="#" data-bs-toggle="modal" data-bs-target="#mapModal">(<?= lang('accountLang.preview') ?>)</a>
-                            <input type="text" name="txt_map" id="txt_map" class="form-control">
+                            <input type="text" name="txt_map" id="txt_map" class="form-control" value="<?= set_value('txt_map') ?>">
                         </div>
-                        <div id="map-iframe"></div>
+                        <div id="map-iframe">
+                            <?= (isset($info)?$info['map']:'') ?>
+                        </div>
                     </div>
                 </div>
                 <div class="btn-submit text-center mt-4">
@@ -370,14 +372,6 @@
                 </div>
                 <div class="modal-body mt-0">
                     <div class="">
-                        <!-- <ul class="list-unstyled">
-                            <li>- เข้าเว็บไซต์ <a href="https://www.google.co.th/maps/" target="_blank" class="c-black">Google Map</a></li>
-                            <li>1. ค้นหาสถานที่ที่ต้องการ</li>
-                            <li>2. หาไอคอนแชร์ จากนั้นให้กดที่ไอคอนแชร์</li>
-                            <li>3. เมื่อป๊อบอัพแชร์แสดงขึ้นให้เลือกแถบเมนู "ฝังแผนที่ / Embed a map"</li>
-                            <li>4. จากนั้นกด "คัดลอก HTML / COPY HTML"</li>
-                            <li>5. นำโค้ดที่คัดลอกมากป้อนในช่องกรอกข้อมูล</li>
-                        </ul> -->
                         <?= lang('accountLang.map-detail'); ?>
                         <img src="<?= site_url('assets/images/map.jpg') ?>" alt="">
                     </div>

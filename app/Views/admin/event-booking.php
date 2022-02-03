@@ -123,7 +123,7 @@
                             <?php } ?>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/event/bookinginfo?id='.$item['id']); ?>">อัพเดต</a>
+                            <a href="<?= base_url('admin/event/bookinginfo?id='.$item['booking_no']); ?>">อัพเดต</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>
@@ -135,7 +135,6 @@
                 $pager = \Config\Services::pager();
                 if(isset($pager)){
             ?>
-                
                 <div class="pagination-list text-center mt-3 d-flex">
                     <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
                 </div>                

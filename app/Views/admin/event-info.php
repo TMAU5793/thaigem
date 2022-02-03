@@ -25,7 +25,7 @@
                 <nav class="content-nav">
                     <div class="btn-action-fixed top-neg2rem">
                         <button type="submit" class="btn btn-primary me-2">อัพเดต</button>
-                        <a href="<?= base_url('admin/member'); ?>" class="btn btn-warning">ยกเลิก</a>
+                        <a href="<?= base_url('admin/event/booking'); ?>" class="btn btn-warning">ยกเลิก</a>
                     </div>
                 </nav>
                 <div class="form-group">
@@ -37,10 +37,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="form_status">สถานะเอกสาร</label>
-                    <select name="form_status" id="form_status" class="form-control">
-                        <option value="1" <?= ($info['form_status']=='1' ? 'selected' : '') ?>>เอกสารครบแล้ว</option>
-                        <option value="0" <?= ($info['form_status']=='0' ? 'selected' : '') ?>>เอกสารยังไม่ครบ</option>
+                    <label for="file_status">สถานะเอกสาร</label>
+                    <select name="file_status" id="file_status" class="form-control">
+                        <option value="1" <?= ($info['file_status']=='1' ? 'selected' : '') ?>>เอกสารครบแล้ว</option>
+                        <option value="0" <?= ($info['file_status']=='0' ? 'selected' : '') ?>>เอกสารยังไม่ครบ</option>
                     </select>
                 </div>
                 <div class="form-group">
