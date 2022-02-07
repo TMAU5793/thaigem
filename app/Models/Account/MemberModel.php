@@ -193,7 +193,16 @@ class MemberModel extends Model
             return false;
         }
     }
-
+    public function getContactByDealercode($code)
+    {
+        $sql = "SELECT * FROM tbl_member_contact WHERE dealer_code = ?";
+        $query = $this->db->query($sql, $code);
+        if($query){
+            return $query->getResult();
+        }else{
+            return false;
+        }
+    }
     public function getMemberContact()
     {        
         $sql = "SELECT * FROM tbl_member_contact WHERE member_id = ?";
@@ -484,12 +493,16 @@ class MemberModel extends Model
         if(isset($data['txt_person'])){
             $count = count($data['txt_person']);
             for ($i=0; $i < $count; $i++) {
-                $arr = explode(" ",$data['txt_person'][$i]);
-                $name = $arr[0];
-                $lastname = $arr[1];
+                // $arr = explode(" ",$data['txt_person'][$i]);
+                // $name = $arr[0];
+                // $lastname = $arr[1];
+                $code = $data['hd_code'];
+                if($code==''){
+                    $code = $data['hd_id'];
+                }
                 $phone = $data['txt_personphone'][$i];
                 $info = [
-                    'member_id' => $data['hd_id'],
+                    'dealer_code' => $code,
                     'name' => $data['txt_person'][$i],
                     //'lastname' => $lastname,
                     'phone' => $phone,

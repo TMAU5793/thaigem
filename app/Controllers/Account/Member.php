@@ -51,6 +51,10 @@ class Member extends Controller
         if(!$info){
             return redirect()->to('account');
         }
+        $dealer_code = $info['dealer_code'];
+        if($dealer_code==''){
+            $dealer_code = $info['id'];
+        }
  
         $db = db_connect();
 		$tbl_mb_bus = $db->table('tbl_member_business');
@@ -67,7 +71,7 @@ class Member extends Controller
             'subbusniess' => $mbModel->getSubBusiness(),
             'address' => $mbModel->getAddress(),
             'social' => $mbModel->getSocial(),
-            'membercontact' => $mbModel->getMemberContact(),
+            'membercontact' => $mbModel->getContactByDealercode($dealer_code),
             'memberbusiness' => $mbModel->getMemberBusiness(),
             'mb_bus' => $tbl_mb_bus->where('member_id',$this->member_id)->get()->getRowArray()
         ];
@@ -183,6 +187,11 @@ class Member extends Controller
                 $mbModel = new MemberModel();
 
                 $info = $model->where('id',$this->member_id)->first();
+                
+                $dealer_code = $info['dealer_code'];
+                if($dealer_code==''){
+                    $dealer_code = $info['id'];
+                }
                 $data = [
                     'ac_account' => TRUE,
                     'lang' => $this->lang,
@@ -195,7 +204,7 @@ class Member extends Controller
                     'subbusniess' => $mbModel->getSubBusiness(),
                     'address' => $mbModel->getAddress(),
                     'social' => $mbModel->getSocial(),
-                    'membercontact' => $mbModel->getMemberContact(),
+                    'membercontact' => $mbModel->getContactByDealercode($dealer_code),
                     'memberbusiness' => $mbModel->getMemberBusiness(),
                     'validation' => $this->validator
                 ];

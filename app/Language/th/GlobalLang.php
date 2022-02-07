@@ -24,6 +24,7 @@ return [
     'password' => 'รหัสผ่าน',
     'comfirmPassword' => 'ยืนยันรหัสผ่าน',
     'newpassword' => 'รหัสผ่านใหม่',
+    'changepassword' => 'เปลี่ยนรหัสผ่าน',
     'email' => 'อีเมล',
     'companyEmail' => 'อีเมลบริษัท',
     'phoneNumber' => 'เบอร์โทร',

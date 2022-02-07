@@ -88,3 +88,31 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Change password -->
+<div class="modal fade" id="changepasswordModal" tabindex="-1" aria-labelledby="changepasswordLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">                
+                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <form id="frm-changepassword" action="">
+                        <div class="form-group mb-3">
+                            <label for=""><?= lang('GlobalLang.password') ?></label>
+                            <input type="text" class="form-control" name="txt_password">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for=""><?= lang('GlobalLang.comfirmPassword') ?></label>
+                            <input type="text" class="form-control" name="txt_comfirmpassword">
+                        </div>
+                    </form>
+                </div>
+                <div class="text-center mb-3">
+                    <a href="javascript:void(0)" class="btn bg-lightgold text-uppercase btn-padding fs-5" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.cancel') ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@
             </div>
             <form action="<?= site_url('account/member/updateprofile') ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="hd_id" value="<?= $info['id'] ?>">
+                <input type="hidden" name="hd_code" value="<?= $info['dealer_code'] ?>">
                 <nav class="mt-3">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true"><?= lang('GlobalLang.companyinfo') ?></button>

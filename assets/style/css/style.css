@@ -951,6 +951,19 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 .map-iframe iframe {
   width: 100%; }
 
+.btn-changepassword {
+  margin-top: 6px;
+  padding: 2px 6px 0;
+  border: 1px solid #000000; }
+  .btn-changepassword:hover {
+    color: #ffffff;
+    background-color: #665f4f;
+    border: 1px solid #665f4f; }
+
+#changepasswordModal .modal-content {
+  border: 0;
+  background-color: #cec6b2; }
+
 @keyframes left-to-right {
   0% {
     width: 0px; }

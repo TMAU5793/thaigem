@@ -24,6 +24,7 @@ return [
     'password' => 'Password',
     'comfirmPassword' => 'Comfirm password',
     'newpassword' => 'New password',
+    'changepassword' => 'Change password',
     'email' => 'Email',
     'companyEmail' => 'Company Email',
     'phoneNumber' => 'Phone number',

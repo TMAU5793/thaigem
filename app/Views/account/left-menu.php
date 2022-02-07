@@ -29,7 +29,7 @@
     </div>
     <div class="border-b">
         <div class="row personal-info">
-            <div class="col-md-3 col-3">
+            <div class="col-md-3 col-3 text-center">
                 <div class="personal-img">
                     <?php
                         $profile_pic = (is_file($info['profile'])?site_url($info['profile']):site_url('assets/images/img-default.png'));
@@ -43,6 +43,8 @@
                     ?>
                     <img src="<?= $profile_pic; ?>" id="pic_profile" class="rounded-circle">
                 </div>
+
+                <button class="btn btn-changepassword fs-6" data-bs-toggle="modal" data-bs-target="#changepasswordModal"><?= lang('GlobalLang.changepassword') ?></button>
             </div>
 
             <div class="col-md-9 col-9">
