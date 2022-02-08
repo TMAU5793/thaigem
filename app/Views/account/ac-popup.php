@@ -93,25 +93,30 @@
 <div class="modal fade" id="changepasswordModal" tabindex="-1" aria-labelledby="changepasswordLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">                
-                <a href="javascript:void(0)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+            <div class="modal-header text-center">
+                <span class="ff-dbadmanBold text-uppercase d-inline-block m-auto"><?= lang('GlobalLang.changepassword') ?></span>
             </div>
-            <div class="modal-body">
+            <div class="modal-body pt-0">
                 <div class="">
-                    <form id="frm-changepassword" action="">
+                    <form id="frm-changepassword" action="<?= site_url('account/member/update_password') ?>" method="POST">
+                        <?php $failpwd = session()->get('failpwd'); ?>
                         <div class="form-group mb-3">
                             <label for=""><?= lang('GlobalLang.password') ?></label>
-                            <input type="text" class="form-control" name="txt_password">
+                            <input type="password" class="form-control" name="txt_password">
+                            <small class="text-danger"><?= ($failpwd?'* '.$failpwd['password']:'') ?></small>
                         </div>
                         <div class="form-group mb-3">
                             <label for=""><?= lang('GlobalLang.comfirmPassword') ?></label>
-                            <input type="text" class="form-control" name="txt_comfirmpassword">
+                            <input type="password" class="form-control" name="txt_confirmpassword">
+                            <small class="text-danger"><?= ($failpwd?'* '.$failpwd['confirmpassword']:'') ?></small>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn btn-padding fs-5"><?= lang('accountLang.comfirm') ?></button>
+                            <a href="<?= site_url('account') ?>" class="btn bg-lightgold text-uppercase btn-padding fs-5"><?= lang('accountLang.cancel') ?></a>
                         </div>
                     </form>
-                </div>
-                <div class="text-center mb-3">
-                    <a href="javascript:void(0)" class="btn bg-lightgold text-uppercase btn-padding fs-5" data-bs-dismiss="modal" aria-label="Close"><?= lang('accountLang.cancel') ?></a>
-                </div>
+                </div>                
             </div>
         </div>
     </div>

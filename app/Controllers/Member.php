@@ -117,7 +117,10 @@ class Member extends BaseController
                                 ->groupBy('tbl_member_business.member_id')
                                 ->first();
             }
-            
+            $dealer_code = $member['dealer_code'];
+            if($dealer_code==''){
+                $dealer_code = $member['member_id'];
+            }
             $data = [
                 'meta_title' => ($member['company']!=''?$member['company']:'TGJTA Member'),
                 'meta_desc' => $member['about'],
@@ -130,7 +133,7 @@ class Member extends BaseController
                 'amphure' => $mbModel->getAmphure(),
                 'district' => $mbModel->getDistrict(),
                 'social' => $mbModel->getSocialById($member['member_id']),
-                'membercontact' => $mbModel->getMemberContactById($member['member_id']),
+                'membercontact' => $mbModel->getContactByDealercode($dealer_code),
                 'memberbusiness' => $mbModel->getMemberBusinessById($member['member_id']),
                 'pMaincate' => $mbModel->getProductMainType(),
                 'pSubcate' => $mbModel->getProductType(),

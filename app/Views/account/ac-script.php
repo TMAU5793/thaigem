@@ -27,12 +27,6 @@
     function galleryDel(el){
         el.closest('.gl-img').remove();
     }
-
-    // $.fileup({
-    //     url: '<?= site_url('account/member/updateprofile') ?>',
-    //     inputID: 'file_album',
-    //     queueID: 'file_album_queue'
-    // });
     
     $(function(){
         //display profile image
@@ -122,6 +116,11 @@
         //Modal upload
         <?php if (session('msg_upload') || session('msg_invoice')){ ?>
             $('#uploadModal').modal('show');
+        <?php } ?>
+
+        //Modal password
+        <?php if (session('failpwd')){ ?>
+            $('#changepasswordModal').modal('show');
         <?php } ?>
 
         //Click to download file

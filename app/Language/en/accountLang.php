@@ -40,5 +40,10 @@ return [
             <li>3. When the share pop-up is shown, select the menu "Quick" / Embed a map.</li>
             <li>4. Researcher presses "Copy HTML / COPY HTML"</li>
             <li>5. The code that has been copied a lot can be put in the code.</li>
-        </ul>'
+        </ul>',
+
+    // Validate password Text
+    'pwd-limit' => 'Password at least 6 characters',
+    'pwd-put' => 'Please enter your password',
+    'pwd-match' => 'Passwords don\'t match'
 ];

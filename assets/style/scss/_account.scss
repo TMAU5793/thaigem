@@ -719,4 +719,11 @@
         border: 0;
         background-color: $c-lightgold;
     }
+    .btn {
+        border: 1px solid $c-darkgold;
+        &:hover {
+            color: $c-white;
+            background: $c-darkgold;
+        }
+    }
 }

@@ -963,6 +963,11 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
 #changepasswordModal .modal-content {
   border: 0;
   background-color: #cec6b2; }
+#changepasswordModal .btn {
+  border: 1px solid #665f4f; }
+  #changepasswordModal .btn:hover {
+    color: #ffffff;
+    background: #665f4f; }
 
 @keyframes left-to-right {
   0% {

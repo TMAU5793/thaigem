@@ -440,4 +440,44 @@ class Member extends Controller
             return redirect()->to('account');
         }
     }
+
+    public function update_password()
+    {
+        helper('form');
+        $request = service('request');
+        $model = new AccountModel();
+
+        $post = $request->getPost();
+        $rules = [
+            'txt_password'       => [
+                'rules' =>  'required|min_length[6]|max_length[200]',
+                'errors'    =>  [
+                    'required'  =>  lang('accountLang.pwd-put'),
+                    'min_length'   =>  lang('accountLang.pwd-limit')
+                ]
+            ],
+            'txt_confirmpassword'    => [
+                'rules' =>  'matches[txt_password]',
+                'errors'    =>  [
+                    'matches'  =>  lang('accountLang.pwd-match')
+                ]
+            ],
+        ];
+        
+        if($this->validate($rules)){
+            $id = $this->member_id;
+            $pwd_arr = [
+                'password' => password_hash($post['txt_password'], PASSWORD_DEFAULT)
+            ];
+            
+            $model->update($id,$pwd_arr);
+            return redirect()->to('account')->with('msg_done',TRUE);
+        }else{
+            $validator = [
+                'password' => $this->validator->getError('txt_password'),
+                'confirmpassword' => $this->validator->getError('txt_password')
+            ];
+            return redirect()->to('account')->with('failpwd',$validator);            
+        }
+    }
 }
