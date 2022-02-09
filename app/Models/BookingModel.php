@@ -38,7 +38,7 @@ class BookingModel extends Model
             $builder->where('a.status',$status);
         }
         if($file!=''){
-            $builder->where('a.form_status',$file);
+            $builder->where('a.file_status',$file);
         }
         if($pay!=''){
             $builder->where('a.payment',$pay);

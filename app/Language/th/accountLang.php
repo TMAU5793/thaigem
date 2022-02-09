@@ -31,7 +31,7 @@ return [
     'menu' => 'เมนู',
     'preview' => 'ดูตัวอย่าง',
     'map-iframe' => 'ป้อน Iframe Google map',
-    'map-title' => 'ตัวอย่างการใช้ Iframe จาก Google Map',
+    'map-title' => 'วิธีเพิ่ม Google Maps ในโปรไฟล์บริษัทของคุณ',
     'map-detail' => '
         <ul class="list-unstyled">
             <li>- เข้าเว็บไซต์ <a href="https://www.google.co.th/maps/" target="_blank" class="c-black">Google Map</a></li>

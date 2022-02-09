@@ -350,6 +350,12 @@ class MemberModel extends Model
             }
             $pdata = substr($pdata,0,-1);
             $product = count($data['ddl_productcate']);
+
+            $sb = ',';
+            if($pdata==''){
+                $sb = '';
+            }
+
             for ($i=0; $i < $product; $i++) {
                 $sb = ',';
                 $pdata .= $sb.$data['ddl_productcate'][$i];

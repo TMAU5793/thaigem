@@ -31,15 +31,15 @@ return [
     'menu' => 'Menu',
     'preview' => 'Preview',
     'map-iframe' => 'Enter Iframe Google map.',
-    'map-title' => 'Example of using Iframe from Google Map',
+    'map-title' => 'How to add Responsive Google Maps to Your Company Profile',
     'map-detail' => '
         <ul class="list-unstyled">
             <li>- Go to the Google Map website <a href="https://www.google.co.th/maps/" target="_blank" class="c-black">Google Map</a></li>
-            <li>1. place, place</li>
-            <li>2. Find a free share icon, press the share icon.</li>
-            <li>3. When the share pop-up is shown, select the menu "Quick" / Embed a map.</li>
-            <li>4. Researcher presses "Copy HTML / COPY HTML"</li>
-            <li>5. The code that has been copied a lot can be put in the code.</li>
+            <li>1. Go to Google Maps</li>
+            <li>2. Enter the business address in the search bar, then click the search button</li>
+            <li>3. Click on the Share icon</li>
+            <li>4. Choose "Embed a map" and Click "COPY HTML" button</li>
+            <li>5. Paste the embed code into a box.</li>
         </ul>',
 
     // Validate password Text

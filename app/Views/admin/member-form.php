@@ -293,8 +293,9 @@
                             </div>
                             <div class="border-bottom mb-3 mt-3"></div>
                             <?php
-                                foreach ($membercontact as $contact) {
-                                    $el = 'person-contact-'.$contact->id;
+                                if($membercontact){
+                                    foreach ($membercontact as $contact) {
+                                        $el = 'person-contact-'.$contact->id;
                             ?>
                                 <div class="row" id="<?= $el ?>">
                                     <div class="col-md-6">
@@ -309,9 +310,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php } } ?>
                             <div id="person-more"></div>
-                            <div class="add-item">
+                            <div class="add-item mt-3">
                                 <button type="button" id="btn-add-person" class="btn"><i class="fas fa-plus"></i> เพิ่มผู้ติดต่อ</button>
                             </div>
                         </div>

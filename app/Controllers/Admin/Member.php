@@ -130,10 +130,16 @@ class Member extends Controller
         $id = $request->getGet('id');
         $address = $acmbModel->getAddressById($id);
 		$get_social = $social->where('member_id',$id)->get()->getRowArray();
+
+		$member = $model->where('id',$id)->first();
+		$dealer_code = $member['dealer_code'];
+		if($dealer_code==''){
+			$dealer_code = $member['id'];
+		}
         $data = [
             'meta_title' => 'แก้ไขข้อมูล',
             'action'    =>  'update',
-            'info_member'  =>  $model->where('id',$id)->first(),
+            'info_member'  =>  $member,
 			'provinces' => $tbl_provinces->orderBy('sortby ASC, name_th ASC')->get()->getResultArray(),
 			'provinceId' => $acmbModel->getProvinceById($address->province_id),
 			'amphure' => $acmbModel->getAmphureById($address->amphure_id),
@@ -141,7 +147,7 @@ class Member extends Controller
 			'address' =>  $address,
 			'social' => $get_social,
 			'album' => $albummodel->where('member_id',$id)->findAll(),
-			'membercontact' => $acmbModel->getMemberContact(),
+			'membercontact' => $acmbModel->getContactByDealercode($dealer_code),
 			'memberbusiness' => $acmbModel->getMemberBusiness(),
 			'maincates' => $acmbModel->getProductMainType(),
 			'subcates' => $acmbModel->getSubCategory(),
@@ -150,6 +156,8 @@ class Member extends Controller
 			'mb_bus' => $tbl_mb_bus->where('member_id',$id)->get()->getRowArray()
         ];
         echo view('admin/member-form', $data);
+		// print_r($data['membercontact']);
+		// echo $member['id'];
     }
 
 	public function save()

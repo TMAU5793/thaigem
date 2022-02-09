@@ -43,9 +43,15 @@ class Account extends Controller
             $model = new AccountModel();
             $albummodel = new AlbumModel();
             $mbModel = new MemberModel();
+            
             $info = $model->join('tbl_member_business as B','B.dealer_code = tbl_member.dealer_code')
                         ->where('tbl_member.id',$this->member_id)->first();
             if(!$info){
+                $info2 = $model->join('tbl_member_business as B','B.member_id = tbl_member.id')
+                        ->where('tbl_member.id',$this->member_id)->first();
+                $info = $info2;
+            }
+            if(!$info2){
                 $info = $model->where('id',$this->member_id)->first();
             }
             $dealer_code = $info['dealer_code'];
@@ -67,7 +73,9 @@ class Account extends Controller
                 'memberbusiness' => $mbModel->getMemberBusiness(),
                 'shareImg' => $info['profile']
             ];
-            
+            // print_r('<pre>');
+            // print_r($info);
+            // print_r('</pre>');
             echo view('account/ac-account',$data);
         }else{
             return redirect()->to('');

@@ -55,7 +55,8 @@ class MemberModel extends Model
         $builder = $db->table('tbl_member');
 		$builder->where('type','member');
         if($keyword!=''){
-            $builder->like('company',$keyword);
+            $builder->like('name',$keyword);
+			$builder->orLike('lastname',$keyword);
         }
 		if($perPage!=null){
 			$builder->limit($perPage, $offset);
