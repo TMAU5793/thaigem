@@ -231,6 +231,7 @@ class Account extends Controller
             return redirect()->to('account');
         }
 
+        $post = $request->getPost();
         $rules = [
             'txt_username' => [
                 'rules' => 'required|memberAccount[txt_username]|memberStatus[txt_username]',
@@ -275,7 +276,11 @@ class Account extends Controller
                 ->set('last_login' , new Time('now'))
                 ->update();
             session()->set('userdata',$sess);
-            return redirect()->to('account');
+            if($post['hd_member']==''){
+                return redirect()->to('account');
+            }else{
+                return redirect()->to(site_url('member/id/'.$post['hd_member']));
+            }
         }else{
             $ctModel = new ProductCategoryModel();
             $evModel = new EventModel();

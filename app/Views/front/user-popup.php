@@ -11,6 +11,7 @@
             <div class="modal-body">                
                 <form action="<?= base_url('account/login'); ?>" method="POST" autocomplete="off">
                     <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
+                    <input type="hidden" id="hd_member" name="hd_member" value="">
                     <div class="input-nobg plr-2rem">
                         <?php if(isset($signin_valid)): ?>
                             <div class="alert alert-danger"><?= $signin_valid->listErrors(); ?></div>

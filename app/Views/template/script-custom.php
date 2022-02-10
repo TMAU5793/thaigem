@@ -179,7 +179,7 @@ use Google\Service\Adsense\Site;
         <?php if (session('msg_mail') || session('msg_done')){ ?>
             $('#successModal').modal('show');
         <?php } ?>
-
+        
     });
     //End Ready function
 
@@ -229,5 +229,10 @@ use Google\Service\Adsense\Site;
                 $('.cookie-policy').remove();
             }
         );
+    }
+
+    // View member profile
+    function viewMember(el){
+        $('#hd_member').val(el);
     }
 </script>
