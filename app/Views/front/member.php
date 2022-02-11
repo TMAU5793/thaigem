@@ -248,7 +248,7 @@
                                     <?php if($userdata['logged_member']){ ?>
                                         <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
                                     <?php }else{ ?>
-                                        <a href="javascript:void(0)" id="viewMember" class="btn btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="viewMember('<?= $member_id; ?>');"><?= lang('GlobalLang.viewProfile'); ?></a>
+                                        <a href="javascript:void(0)" class="btn btn-black-border text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="viewMember('<?= $member_id; ?>');"><?= lang('GlobalLang.viewProfile'); ?></a>
                                     <?php } ?>
                                 </div>
                             </div>
