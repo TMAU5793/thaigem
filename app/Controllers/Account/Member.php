@@ -325,13 +325,12 @@ class Member extends Controller
             $type = $post['type'];
 
             $info = $model->where('member_id',$id)->first();
-            $str = str_replace(', ',',',$info[$type]);
-            $arr = explode(',',$str);
-            $arrdata = array_diff($arr,[$key,$key]);
+            $arr = explode(',',$info[$type]);
+            $arrdata = array_diff($arr,[$key, ' '.$key]);
 
-            // $pdata = '';
+            $pdata = '';
             foreach ($arr as $item){
-                //$pdata .= $item.',';
+                $pdata .= $item.',';
                 //echo $item;
             }
             
@@ -340,7 +339,7 @@ class Member extends Controller
             // ];
             // $model->update($id,$data);
             // echo $key;
-            print_r(substr($str,0,-1));
+            print_r($pdata);
         }else{
             return redirect()->to('account');
         }
