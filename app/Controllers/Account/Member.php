@@ -325,19 +325,22 @@ class Member extends Controller
             $type = $post['type'];
 
             $info = $model->where('member_id',$id)->first();
-            $arr = explode(',',$info[$type]);
-            $arrdata = array_diff($arr,[$key,' '.$key]);
+            $str = str_replace(', ',',',$info[$type]);
+            $arr = explode(',',$str);
+            $arrdata = array_diff($arr,[$key,$key]);
 
-            $pdata = '';
-            foreach ($arrdata as $item){
-                $pdata .= $item.',';
+            // $pdata = '';
+            foreach ($arr as $item){
+                //$pdata .= $item.',';
+                //echo $item;
             }
             
-            $data = [
-                $type => substr($pdata,0,-1)
-            ];
-            $model->update($id,$data);
-            echo TRUE;
+            // $data = [
+            //     $type => substr($pdata,0,-1)
+            // ];
+            // $model->update($id,$data);
+            // echo $key;
+            print_r(substr($str,0,-1));
         }else{
             return redirect()->to('account');
         }

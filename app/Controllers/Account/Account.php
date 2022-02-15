@@ -253,13 +253,17 @@ class Account extends Controller
         ];
 
         if($this->validate($rules)){
+            $db = db_connect();
+            $tbl = $db->table('tbl_member');
             $member = $model->where('account', $request->getVar('txt_username'))->first();
             if($member['code']==''){
                 $str_rand = random_string('alnum', 11);
-                $model
-                    ->where('account', $member['account'])
-                    ->set('code' , $str_rand)
-                    ->update();
+                // $model
+                //     ->where('account', $member['account'])
+                //     ->set('code' , $str_rand)
+                //     ->update();
+
+                $tbl->where('account', $member['account'])->set('code' , $str_rand)->update();
             }
             $sess = [
                 'id' => $member['id'],
@@ -271,8 +275,12 @@ class Account extends Controller
                 'user_type' => $member['type'],
                 'logged_member' => TRUE
             ];
-            $model
-                ->where('account', $member['account'])
+            // $model
+            //     ->where('account', $member['account'])
+            //     ->set('last_login' , new Time('now'))
+            //     ->update();
+
+            $tbl->where('account', $member['account'])
                 ->set('last_login' , new Time('now'))
                 ->update();
             session()->set('userdata',$sess);

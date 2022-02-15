@@ -314,7 +314,8 @@
                 url: "<?= site_url('account/member/removestr') ?>",
                 data: {id:id,key:key,type:type},
                 success: function (response) {
-                    el.closest(".list-item").remove();
+                    //el.closest(".list-item").remove();
+                    console.log(response);
                 }
             });
         });
