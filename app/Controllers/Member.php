@@ -248,17 +248,6 @@ class Member extends BaseController
                                 ->where('tbl_member_business.type','business')
                                 ->findAll();
         if($id){
-            // $cate = $cateModel->select('name_th')->where('maincate_id',$id)->findAll();
-            // $query = [];
-            // foreach($cate as $row){
-            //     $arr = $mbModel->join('tbl_member_business as B', 'tbl_member.id = B.member_id')
-            //                 ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])                            
-            //                 ->like('B.product',$row['name_th'])
-            //                 ->findAll();
-            //     foreach ($arr as $item){
-            //         $query[] = $item;
-            //     }
-            // }
 
             $info = $mbModel->filterMember($id);
             $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
@@ -286,6 +275,7 @@ class Member extends BaseController
             // print_r($info);
             // print_r('</pre>');
             echo view('front/member', $data);
+                        
         }else{
             return redirect()->to('member');
         }

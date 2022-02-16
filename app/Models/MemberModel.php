@@ -128,11 +128,11 @@ class MemberModel extends Model
 				$builder->limit($perPage, $offset);
 			}
 			$arr = $builder->get()->getResultArray();
-			foreach ($arr as $item){
+			foreach ($arr as $item){				
 				$query[] = $item;
 			}
 		}
-		
+
         return $query;
 	}
 }

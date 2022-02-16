@@ -168,10 +168,10 @@
                     <a class="nav-link dropdown-toggle <?= ($segment=='member'?'active':'') ?>" href="#" id="navMember" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?= lang('MenuLang.navMembers'); ?>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navMember">                        
-                        <li><a class="dropdown-item" href="<?= site_url('member/privileges'); ?>"><?= lang('MenuLang.privileges'); ?></a></li>
-                        <li><a class="dropdown-item" href="<?= site_url('member/membership'); ?>"><?= lang('MenuLang.membership'); ?></a></li>
+                    <ul class="dropdown-menu" aria-labelledby="navMember">
                         <li><a class="dropdown-item" href="<?= site_url('member'); ?>"><?= lang('MenuLang.directory'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('member/privileges'); ?>"><?= lang('MenuLang.privileges'); ?></a></li>
+                        <li><a class="dropdown-item" href="<?= site_url('member/membership'); ?>"><?= lang('MenuLang.membership'); ?></a></li>                        
                     </ul>
                 </li>
 

@@ -169,8 +169,13 @@
             <div class="row">
                 <?php
                     if($info){
+                        $n=0;
+						$mid = [];
                         foreach($info as $row){
                             $member_id = $row['id'];
+                            if(!in_array($row['id'], $mid)){
+                                $mid[] = $row['id'];
+                                $n++;
                 ?>
                 <div class="col-lg-6 col-md-12 position-relative mt-4">
                     <div class="shadow-lightgold box-member d-flex">
@@ -255,7 +260,7 @@
                         </div>
                     </div>
                 </div>
-                <?php } }else{ ?>
+                <?php } } }else{ ?>
                     <div class="col-12 mt-4 text-center">
                         <span>ไม่พบข้อมูล</span>
                     </div>
