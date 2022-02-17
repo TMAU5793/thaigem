@@ -24,7 +24,7 @@
                 <nav class="mt-3">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-content1" type="button" role="tab" aria-controls="nav-content1" aria-selected="true"><?= lang('GlobalLang.companyinfo') ?></button>
-                        <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content2" type="button" role="tab" aria-controls="nav-content2" aria-selected="true"><?= lang('GlobalLang.personcontact') ?></button>
+                        <button class="nav-link" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-content2" type="button" role="tab" aria-controls="nav-content2" aria-selected="true"><?= lang('GlobalLang.contactperson') ?></button>
                         <button class="nav-link" id="nav-tab3" data-bs-toggle="tab" data-bs-target="#nav-content3" type="button" role="tab" aria-controls="nav-content3" aria-selected="false"><?= lang('GlobalLang.profile').' & '.lang('GlobalLang.gallery') ?></button>
                         <button class="nav-link" id="nav-tab4" data-bs-toggle="tab" data-bs-target="#nav-content4" type="button" role="tab" aria-controls="nav-content4" aria-selected="false"><?= lang('GlobalLang.map') ?></button>
                     </div>
@@ -190,18 +190,33 @@
                                     <input type="text" class="form-control" name="txt_line" value="<?= (isset($social)?$social->line : set_value('txt_line')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : @line">
                                 </div>
                             </div>
-                            <div class="col-md-6 social-url">
-                                <div class="form-group">
-                                    <label for=""><?= lang('GlobalLang.linkein') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/<u>name</u>)</span></label>
-                                    <input type="text" class="form-control" name="txt_linkein" value="<?= (isset($social)?$social->linkein : set_value('txt_linkein')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/name">
-                                    <!-- <span class="http-url url-linkein">http://</span> -->
-                                </div>
-                            </div>
+                            
                             <div class="col-md-6">
                                 <div class="form-group social-url">
                                     <label for=""><?= lang('GlobalLang.youtube') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.youtube.com/watch?v=<u>name</u>)</span></label>
                                     <input type="text" class="form-control" name="txt_youtube" value="<?= (isset($social)?$social->youtube : set_value('txt_youtube')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.youtube.com/watch?v=name">
                                     <!-- <span class="http-url url-yt">http://</span> -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 social-url">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.wechat') ?></label>
+                                    <input type="text" class="form-control" name="txt_wechat" value="<?= (isset($social)?$social->wechat : set_value('txt_wechat')) ?>" placeholder="<?= lang('GlobalLang.wechat') ?> link">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group social-url">
+                                    <label for=""><?= lang('GlobalLang.whatsapp') ?><span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://api.whatsapp.com/send/?phone=id</span></label>
+                                    <input type="text" class="form-control" name="txt_whatsapp" value="<?= (isset($social)?$social->whatsapp : set_value('txt_whatsapp')) ?>" placeholder="<?= lang('GlobalLang.whatsapp') ?> : https://api.whatsapp.com/send/?phone=id">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 social-url">
+                                <div class="form-group">
+                                    <label for=""><?= lang('GlobalLang.linkein') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/<u>name</u>)</span></label>
+                                    <input type="text" class="form-control" name="txt_linkein" value="<?= (isset($social)?$social->linkein : set_value('txt_linkein')) ?>" placeholder="<?= lang('GlobalLang.example') ?> : https://www.linkedin.com/in/name">
+                                    <!-- <span class="http-url url-linkein">http://</span> -->
                                 </div>
                             </div>
                             
@@ -279,7 +294,7 @@
                             <?php } } ?>
                             <div id="person-more"></div>
                             <div class="add-item">
-                                <button type="button" id="btn-add-person" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.personcontact') ?></button>
+                                <button type="button" id="btn-add-person" class="btn"><i class="fas fa-plus"></i> <?= lang('GlobalLang.add').' '.lang('GlobalLang.contactperson') ?></button>
                             </div>
                         </div>
                     </div>

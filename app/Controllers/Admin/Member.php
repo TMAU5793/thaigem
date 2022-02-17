@@ -260,7 +260,8 @@ class Member extends Controller
 						'website' => $ws,
 						'type' => $post['rd_type'],
 						'dealer_code' => $post['dealer_code'],
-						'renew' => $post['member_start'],
+						'member_start' => $post['member_start'],
+						'renew' => $post['member_renew'],
 						'member_expired' => $post['member_expired'],
 						'status' => $post['ddl_status']
 					];
@@ -282,6 +283,7 @@ class Member extends Controller
 							}
 						}
 					}
+
 				}else{
 					helper(['form']);
 					$model = new MemberModel();
@@ -318,7 +320,8 @@ class Member extends Controller
 					'website' => $ws,
 					'type' => $post['rd_type'],
 					'dealer_code' => $post['dealer_code'],
-					'renew' => $post['member_start'],
+					'member_start' => $post['member_start'],
+					'renew' => $post['member_renew'],
 					'member_expired' => $post['member_expired'],
 					'status' => $post['ddl_status']
 				];

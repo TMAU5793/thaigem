@@ -55,7 +55,7 @@ class Member extends Controller
         if($dealer_code==''){
             $dealer_code = $info['id'];
         }
- 
+        
         $db = db_connect();
 		$tbl_mb_bus = $db->table('tbl_member_business');
 
@@ -317,7 +317,8 @@ class Member extends Controller
     {
         $request = service('request');
         $model = new MemberBusinessModel();
-
+        $db = db_connect();
+        $tbl = $db->table('tbl_member_business');
         $post = $request->getPost();
         if($post){
             $id = $post['id'];
@@ -329,17 +330,23 @@ class Member extends Controller
             $arrdata = array_diff($arr,[$key, ' '.$key]);
 
             $pdata = '';
-            foreach ($arr as $item){
+            foreach ($arrdata as $item){
                 $pdata .= $item.',';
                 //echo $item;
             }
             
-            // $data = [
-            //     $type => substr($pdata,0,-1)
-            // ];
-            // $model->update($id,$data);
-            // echo $key;
-            print_r($pdata);
+            $data = [
+                $type => substr($pdata,0,-1)
+            ];
+            if($pdata!=''){
+                $tbl->where('member_id',$id);
+                $update = $tbl->update($data);
+                if(!$update){
+                    $tbl->where('dealer_code',$id);
+                    $update = $tbl->update($data);
+                }
+            }
+            echo true;
         }else{
             return redirect()->to('account');
         }

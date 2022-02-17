@@ -16,10 +16,10 @@
         <div class="col-6">            
             <div class="status-dealer">
                 <?php
-                    if($info['status']=='2'){
+                    if($info['m_status']=='2'){
                 ?>
                     <span><?= lang('accountLang.complete') ?> <i class="fas fa-circle"></i></span>
-                <?php }else if($info['status']=='1'){ ?>
+                <?php }else if($info['m_status']=='1'){ ?>
                     <span><?= lang('accountLang.process') ?> <i class="fas fa-circle text-warning"></i></span>
                 <?php } ?>
             </div>
@@ -166,19 +166,25 @@
     <div class="social-contact border-b more-info hide-767">
         <strong class="ff-dbadmanBold pe-2"><?= lang('GlobalLang.socialmedia') ?></strong>
         <?php if($social->facebook!=""){ ?>
-            <a href="<?= $social->facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="<?= $social->facebook ?>" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
         <?php } ?>
         <?php if($social->instagram!=""){ ?>
-            <a href="<?= $social->instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="<?= $social->instagram ?>" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         <?php } ?>
         <?php if($social->line!=""){ ?>
-            <a href="http://line.me/ti/p/<?= $social->line ?>" target="_blank"><i class="fab fa-line"></i></a>
+            <a href="http://line.me/ti/p/<?= $social->line ?>" target="_blank" title="Line"><i class="fab fa-line"></i></a>
         <?php } ?>
         <?php if($social->linkein!=""){ ?>
-            <a href="<?= $social->linkein ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="<?= $social->linkein ?>" target="_blank" title="Linkein"><i class="fab fa-linkedin"></i></a>
         <?php } ?>
         <?php if($social->youtube!=""){ ?>
-            <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="<?= $social->youtube ?>" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a>
+        <?php } ?>
+        <?php if($social->wechat!=""){ ?>
+            <a href="<?= $social->wechat ?>" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a>
+        <?php } ?>
+        <?php if($social->whatsapp!=""){ ?>
+            <a href="<?= $social->whatsapp ?>" target="_blank" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
         <?php } ?>
         <span class="ff-dbadmanBold share-social" data-url="<?= site_url('member/id/'.$info['id']); ?>" data-image="<?= $profile_pic; ?>" title="<?= lang('GlobalLang.share'); ?>"><i class="fas fa-share-alt"></i></span>
     </div>

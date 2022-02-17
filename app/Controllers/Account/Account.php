@@ -44,19 +44,21 @@ class Account extends Controller
             $albummodel = new AlbumModel();
             $mbModel = new MemberModel();
             
-            $info = $model->join('tbl_member_business as B','B.dealer_code = tbl_member.dealer_code')
-                        ->where('tbl_member.id',$this->member_id)->first();
+            $info = $model->select('*, tbl_member.dealer_code as m_code')
+                        ->join('tbl_member_business','tbl_member.id = tbl_member_business.member_id')
+                        ->where('tbl_member.code',$this->member_id)->first();
             if(!$info){
-                $info2 = $model->join('tbl_member_business as B','B.member_id = tbl_member.id')
+                $info2 = $model->select('*, tbl_member.dealer_code as m_code')
+                        ->join('tbl_member_business','tbl_member.id = tbl_member_business.member_id')
                         ->where('tbl_member.id',$this->member_id)->first();
                 $info = $info2;
             }
             if(!$info2){
                 $info = $model->where('id',$this->member_id)->first();
             }
-            $dealer_code = $info['dealer_code'];
+            $dealer_code = $info['m_code'];
             if($dealer_code==''){
-                $dealer_code = $info['id'];
+                $dealer_code = $info['member_id'];
             }
             
             $data = [

@@ -81,6 +81,8 @@ return [
     'ig' => 'Instagram',
     'linkein' => 'Linkedin',
     'youtube' => 'Youtube',
+    'wechat' => 'Wechat',
+    'whatsapp' => 'Whatsapp',
     'companyAddress' => 'ที่อยู่บริษัท',
     'aboutus' => 'เกี่ยวกับเรา',
     'address' => 'ที่อยู่',

@@ -37,22 +37,22 @@
                                         <h2 class="ff-dbadmanBold mb-0"><?= $info['company']; ?></h2>
                                         <div class="person-email">
                                             <i class="far fa-envelope pe-3"></i>
-                                            <a href="mailto:<?= $info['email']; ?>" class="text-decoration-none c-black"><?= $info['email']; ?></a>
+                                            <a href="mailto:<?= $info['email']; ?>" class="c-black"><?= $info['email']; ?></a>
                                         </div>
                                         <div class="phone-contact">
                                             <i class="fas fa-phone-volume pe-3 rotate-25ngt"></i>
-                                            <a href="tel:<?= $info['company_phone'] ?>" class="text-decoration-none c-black"><?= ($info['company_phone']==''?'-':$info['company_phone']); ?></a>
+                                            <a href="tel:<?= $info['company_phone'] ?>" class="c-black"><?= ($info['company_phone']==''?'-':$info['company_phone']); ?></a>
                                         </div>
                                         <div class="person-phone">
                                             <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.contactperson') ?> : </strong>
                                             <span class="ff-dbadmanBold"><?= ($info['phone']==''?'-':$info['name']); ?></span>
-                                            <a href="tel:<?= $info['phone'] ?>" class="text-decoration-none c-black"><?= $info['phone'] ?></a>
+                                            <a href="tel:<?= $info['phone'] ?>" class="c-black"><?= $info['phone'] ?></a>
                                             <?php
                                                 if(isset($membercontact)){
                                                     foreach ($membercontact as $contact) {
                                             ?>
                                                 <span class="ff-dbadmanBold"><?= ' , '.$contact->name ?></span>
-                                                <a href="tel:<?= $contact->phone ?>" class="text-decoration-none c-black"><?= $contact->phone ?></a>
+                                                <a href="tel:<?= $contact->phone ?>" class="c-black"><?= $contact->phone ?></a>
                                             <?php } } ?>
                                         </div>
                                         <div class="member-since">

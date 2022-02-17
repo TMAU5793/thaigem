@@ -22,6 +22,7 @@
             <form id="form_member" action="<?= base_url('admin/member/'.$action); ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="hd_account" value="<?= (isset($info_member)? $info_member['account'] : '') ?>">
                 <input type="hidden" name="hd_id" value="<?= (isset($info_member)? $info_member['id'] : '') ?>">
+                <input type="hidden" name="hd_code" value="<?= (isset($info_member)?$info_member['dealer_code']:'') ?>">
                 <?php if(isset($validation)): ?>
                     <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
                 <?php endif;?>
@@ -70,6 +71,10 @@
                             <div class="col-2 mb-3">
                                 <label for="ac_email" class="form-label d-block">เริ่มต้นเป็นสมาชิก</label>
                                 <input type="text" class="form-control" id="member_start" name="member_start" value="">
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="ac_email" class="form-label d-block">ต่ออายุสมาชิก</label>
+                                <input type="text" class="form-control" id="member_renew" name="member_renew" value="">
                             </div>
                             <div class="col-2 mb-3">
                                 <label for="ac_email" class="form-label d-block">สิ้นสุดการเป็นสมาชิก</label>

@@ -262,7 +262,7 @@ class MemberModel extends Model
         //echo $ws;
         if($data['txt_map']!=''){
             $info = [
-                'name' => $name,
+                'name' => $data['txt_mainperson'],
                 'lastname' => $lastname,
                 'email' => $data['txt_email'],
                 'phone' => $data['txt_mainphone'],
@@ -275,7 +275,7 @@ class MemberModel extends Model
             ];
         }else{
             $info = [
-                'name' => $name,
+                'name' => $data['txt_mainperson'],
                 'lastname' => $lastname,
                 'email' => $data['txt_email'],
                 'phone' => $data['txt_mainphone'],
@@ -448,11 +448,11 @@ class MemberModel extends Model
             $linkedin = 'https://www.linkedin.com/in/'.$data['txt_linkein'];
         }
 
-        $linkedin = explode('//',$data['txt_youtube']);
-        if(count($linkedin) > 1){
-            $linkedin = $data['txt_youtube'];
+        $youtube = explode('//',$data['txt_youtube']);
+        if(count($youtube) > 1){
+            $youtube = $data['txt_youtube'];
         }else{
-            $linkedin = 'https://www.youtube.com/'.$data['txt_youtube'];
+            $youtube = 'https://www.youtube.com/'.$data['txt_youtube'];
         }
 
         if($member->member_id){
@@ -462,6 +462,8 @@ class MemberModel extends Model
                 'instagram' => $data['txt_instagram'],
                 'linkein' => $data['txt_linkein'],
                 'youtube' => $data['txt_youtube'],
+                'wechat' => $data['txt_wechat'],
+                'whatsapp' => $data['txt_whatsapp'],
                 'updated_at' => $datetime
             ];
             $builder->where('member_id', $data['hd_id']);
@@ -474,6 +476,8 @@ class MemberModel extends Model
                 'instagram' => $data['txt_instagram'],
                 'linkein' => $data['txt_linkein'],
                 'youtube' => $data['txt_youtube'],
+                'wechat' => $data['txt_wechat'],
+                'whatsapp' => $data['txt_whatsapp'],
                 'created_at' => $datetime,
                 'updated_at' => $datetime
             ];
@@ -502,7 +506,10 @@ class MemberModel extends Model
                 // $arr = explode(" ",$data['txt_person'][$i]);
                 // $name = $arr[0];
                 // $lastname = $arr[1];
-                $code = $data['hd_code'];
+                $code = '';
+                if(isset($data['hd_code'])){
+                    $code = $data['hd_code'];
+                }
                 if($code==''){
                     $code = $data['hd_id'];
                 }

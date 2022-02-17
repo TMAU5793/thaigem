@@ -105,22 +105,25 @@ class Member extends BaseController
         $mbModel = new AcMemberModel();
         //$status = $model->where(['code'=>$segment3])->first();
         if($segment3){
-            $member = $model->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
+            $member = $model->select('*, tbl_member.dealer_code as m_code')
+                            ->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
                             ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
                             ->where(['tbl_member.status'=>'2','tbl_member.code'=>$segment3])
                             ->groupBy('tbl_member_business.member_id')
                             ->first();
             if(!$member){
-                $member = $model->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
+                $member = $model->select('*, tbl_member.dealer_code as m_code')
+                                ->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
                                 ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
                                 ->where(['tbl_member.status'=>'2','tbl_member.id'=>$segment3])
                                 ->groupBy('tbl_member_business.member_id')
                                 ->first();
             }
-            $dealer_code = $member['dealer_code'];
+            $dealer_code = $member['m_code'];
             if($dealer_code==''){
                 $dealer_code = $member['member_id'];
             }
+            
             $data = [
                 'meta_title' => ($member['company']!=''?$member['company']:'TGJTA Member'),
                 'meta_desc' => $member['about'],
