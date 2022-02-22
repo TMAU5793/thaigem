@@ -13,7 +13,7 @@
 ?>
 <div class="ac-menu-left p-4">
     <div class="row dealer-head">
-        <div class="col-12 text-uppercase text-end dealer-id"><?= lang('accountLang.mbshId') ?> : <?= ($info['dealer_code']!="" ? $info['dealer_code'] : $info['code']) ?></div>
+        <div class="col-12 text-uppercase text-end dealer-id"><?= lang('accountLang.mbshId') ?> : <?= ($info['m_code']!="" ? $info['m_code'] : $info['code']) ?></div>
     </div>
     <div class="border-b">
         <div class="row personal-info">

@@ -286,7 +286,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">ชื่อ - นามสกุล</label>
-                                        <input type="text" class="form-control" name="txt_mainperson" value="<?= $info_member['name'].' '.$info_member['lastname'] ?>">
+                                        <input type="text" class="form-control" name="txt_mainperson" value="<?= $info_member['name'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

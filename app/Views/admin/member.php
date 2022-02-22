@@ -53,12 +53,12 @@
                         <tr>                            
                             <?php if($active=='dealer'){ ?>
                                 <th scope="col">ชื่อบริษัท</th>
-                                <th scope="col">ที่อยู่</th>
-                                <th scope="col" width="200">อีเมล</th>
+                                <th scope="col">รหัส</th>
+                                <th scope="col">อีเมล</th>
                                 <th scope="col" width="150">เบอร์โทร</th>
                                 <th scope="col" width="120" class="text-center">การอนุมัติ</th>
                                 <th scope="col" width="150" class="text-center">แสดงหน้า Home</th>
-                                <th scope="col" width="100" class="text-center">การจัดการ</th>
+                                <th scope="col" width="100" class="text-center" colspan="2">การจัดการ</th>
                             <?php }else{ ?>
                                 <th scope="col">ชื่อ-นามสกุล</th>
                                 <th scope="col">อีเมล</th>
@@ -75,7 +75,7 @@
                         <tr>
                             <?php if($active=='dealer'){ ?>
                                 <td><?= ($item['company']!=''?$item['company']:'-') ?></td>
-                                <td><?= ($item['address']!=''?$item['address']:'-') ?></td>
+                                <td><?= ($item['dealer_code']!=''?$item['dealer_code']:'-') ?></td>
                                 <td style="word-break: break-word;"><?= $item['email'] ?></td>
                                 <td><?= ($item['phone']!=""?$item['phone']:'-') ?></td>
                                 <td align="center">
@@ -98,6 +98,11 @@
                                     <a href="<?= base_url('admin/member/edit?id='.$item['m_id']); ?>">อัปเดต</a>
                                     <a href="<?= base_url('admin/member/fileupload?id='.$item['m_id']); ?>">เอกสาร</a>
                                     <a href="<?= base_url('admin/member/notification?id='.$item['m_id']); ?>">แจ้งเตือน</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/member/delete');">
+                                        <i class="fas fa-trash text-danger" title="ลบ"></i>
+                                    </a>
                                 </td>
                             <?php }else{ ?>
                                 <td><?= $item['name'].' '.$item['lastname']; ?></td>

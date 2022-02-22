@@ -253,7 +253,7 @@ class Member extends Controller
 					$data = [						
 						'password' => password_hash($post['txt_password'], PASSWORD_DEFAULT),
 						'company' => $post['txt_company'],
-						'name' => $name,
+						'name' => $post['txt_mainperson'],
             			'lastname' => $lastname,
 						'email' => $post['txt_email'],
 						'phone' => $post['txt_phone'],
@@ -314,7 +314,7 @@ class Member extends Controller
 				$arr = [
 					'company' => $post['txt_company'],
 					'email' => $post['txt_email'],
-					'name' => $name,
+					'name' => $post['txt_mainperson'],
             		'lastname' => $lastname,
 					'phone' => $post['txt_phone'],
 					'website' => $ws,
@@ -586,4 +586,44 @@ class Member extends Controller
 		
 		return redirect()->to('/admin/member');
 	}
+
+	public function delete()
+    {
+        $request = service('request');
+        $model = new MemberModel();
+        if($request->getPost('id')){
+            $id = $request->getPost('id');
+			$member = $model->where('id', $id)->first();
+            $deleted = $model->where('id', $id)->delete($id);
+            if($deleted){
+				$db = db_connect();
+				$address = $db->table('tbl_address');
+				$address->where('member_id',$member['id']);
+				$address_del = $address->delete();
+				if(!$address_del){
+					$address->where('dealer_code',$member['dealer_code']);
+					$address_del = $address->delete();
+				}
+
+				$business = $db->table('tbl_member_business');
+				$business->where('member_id',$member['id']);
+				$business_del = $business->delete();
+				if(!$business_del){
+					$business->where('dealer_code',$member['dealer_code']);
+					$business_del = $business->delete();
+				}
+
+				$contact = $db->table('tbl_member_contact');
+				$contact->where('dealer_code',$member['id']);
+				$contact_del = $contact->delete();
+				if(!$contact_del){
+					$contact->where('dealer_code',$member['dealer_code']);
+					$contact_del = $contact->delete();
+				}
+			}
+			return TRUE;
+        }else{
+            return redirect()->to(site_url('admin/member'));
+        }
+    }
 }
