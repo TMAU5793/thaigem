@@ -172,6 +172,10 @@ class Account extends Controller
             $acModel= new KnowledgeModel();
             $mbBusiness = new MemberBusinessModel();
             $banner = new BannerModel();
+            $db = db_connect();
+            $tbl_price = $db->table('tbl_price');
+            $tbl_month = $db->table('tbl_month');
+            
             $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
                                     ->where('tbl_member_business.type','product')
                                     ->findAll();
@@ -195,7 +199,10 @@ class Account extends Controller
                 'cate_prod' => $cate_prod,
                 'cate_bus' => $cate_bus,
                 'userdata' => $this->userdata,
-                'banner' => $banner->where('page','home')->first(),
+                'banner' => $banner->where('page','home')->orderBy('sortby ASC')->findAll(5),
+                'adsbanner' => $banner->where(['page'=>'ads','status'=>'1'])->orderBy('sortby ASC, created_at DESC')->groupBy('position')->findAll(),
+                'tbl_price' => $tbl_price->where('status','1')->orderBy('created_at DESC')->get()->getResultArray(),
+                'month' => $tbl_month->get()->getResultArray(),
                 'signin_valid' => $this->validator
             ];
             echo view('front/home',$data);
