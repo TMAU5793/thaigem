@@ -182,6 +182,14 @@
                     </a>
                 </li>
 
+                
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/webboard'); ?>" class="nav-link <?= ($uri->getSegment(2)=='webboard'?'active':''); ?>">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>เว็บบอร์ด</p>
+                    </a>
+                </li>
+
                 <?php
                     if ($admindata['permission']=='superadmin') {
                 ?>
