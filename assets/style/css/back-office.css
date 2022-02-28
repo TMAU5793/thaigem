@@ -739,6 +739,9 @@ table .fa-times-circle {
 .member-desc .list-item .fa-times {
   cursor: pointer; }
 
+.content-webboard .wb_reply .card {
+  padding: .5rem 1.5rem; }
+
 @media (max-width: 1399px) {
   .content-wrapper .content-header {
     padding: 3rem 1.5rem 0; }

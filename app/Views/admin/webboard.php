@@ -37,10 +37,10 @@
                     ?>
                     <tr>
                         <td><?= $row['topic'] ?></td>
-                        <td class="text-center"><?= $row['member_id'] ?></td>
+                        <td class="text-center"><?= ($row['company']!=''?$row['company']:$row['name']) ?></td>
                         <td class="text-center">
                             <?php
-                                if($row['status']=='1'){
+                                if($row['wb_status']=='1'){
                             ?>
                                 <i class="fas fa-check-circle text-success fs-4" title="อนุมัติ"></i>
                             <?php }else{ ?>
@@ -48,8 +48,8 @@
                             <?php } ?>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/webboard/edit?id='.$row['id']); ?>">แก้ไข</a> |
-                            <a href="javascript:void(0)" class="del-item" data-id="<?= $row['id'] ?>" onClick="DeleteRow('<?= $row['id'] ?>','/admin/webboard/delete');">ลบ</a>
+                            <a href="<?= base_url('admin/webboard/info?id='.$row['wb_id']); ?>">ข้อมูล</a> |
+                            <a href="javascript:void(0)" class="del-item" data-id="<?= $row['wb_id'] ?>" onClick="DeleteRow('<?= $row['wb_id'] ?>','/admin/webboard/delete');">ลบ</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>
@@ -57,6 +57,13 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <?php
+                if($pager){
+            ?>
+                <div class="pagination-list text-center mt-3 d-flex">
+                    <strong class="pe-3">หน้า</strong><?= $pager->links() ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 </div>

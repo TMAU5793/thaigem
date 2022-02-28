@@ -450,6 +450,14 @@ table {
     }
 }
 
+.content-webboard {
+    .wb_reply {
+        .card {
+            padding: .5rem 1.5rem;
+        }
+    }
+}
+
 @media (max-width: 1399px) {
     .content-wrapper {
         .content-header {
