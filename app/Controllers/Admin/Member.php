@@ -147,7 +147,7 @@ class Member extends Controller
 			'address' =>  $address,
 			'social' => $get_social,
 			'album' => $albummodel->where('member_id',$id)->findAll(),
-			'membercontact' => $acmbModel->getContactByDealercode($dealer_code),
+			'membercontact' => $acmbModel->getMemberContactById($member['id']),
 			'memberbusiness' => $acmbModel->getMemberBusiness(),
 			'maincates' => $acmbModel->getProductMainType(),
 			'subcates' => $acmbModel->getSubCategory(),

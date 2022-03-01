@@ -71,7 +71,7 @@ class Member extends Controller
             'subbusniess' => $mbModel->getSubBusiness(),
             'address' => $mbModel->getAddress(),
             'social' => $mbModel->getSocial(),
-            'membercontact' => $mbModel->getContactByDealercode($dealer_code),
+            'membercontact' => $mbModel->getMemberContactById($this->member_id),
             'memberbusiness' => $mbModel->getMemberBusiness(),
             'mb_bus' => $tbl_mb_bus->where('member_id',$this->member_id)->get()->getRowArray()
         ];
@@ -178,8 +178,6 @@ class Member extends Controller
                 }
                 //print_r($db->error());
                 return redirect()->to('account')->with('msg_done',true);
-
-                //print_r($post);
             }else{
                 $model = new AccountModel();
                 $albummodel = new AlbumModel();
@@ -204,7 +202,7 @@ class Member extends Controller
                     'subbusniess' => $mbModel->getSubBusiness(),
                     'address' => $mbModel->getAddress(),
                     'social' => $mbModel->getSocial(),
-                    'membercontact' => $mbModel->getContactByDealercode($dealer_code),
+                    'membercontact' => $mbModel->getMemberContactById($info['id']),
                     'memberbusiness' => $mbModel->getMemberBusiness(),
                     'validation' => $this->validator
                 ];

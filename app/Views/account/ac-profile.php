@@ -262,7 +262,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for=""><?= lang('GlobalLang.name') ?></label>
-                                        <input type="text" class="form-control" name="txt_mainperson" value="<?= $info['name'].' '.$info['lastname'] ?>">
+                                        <input type="text" class="form-control" name="txt_mainperson" value="<?= $info['name'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

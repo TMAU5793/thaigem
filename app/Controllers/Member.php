@@ -103,8 +103,10 @@ class Member extends BaseController
         $model = new MemberModel();
         $albumModel = new AlbumModel();
         $mbModel = new AcMemberModel();
-        //$status = $model->where(['code'=>$segment3])->first();
+        
         if($segment3){
+            $member2 = '';
+            $member3 = '';
             $member = $model->select('*, tbl_member.dealer_code as m_code')
                             ->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
                             ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
@@ -112,16 +114,28 @@ class Member extends BaseController
                             ->groupBy('tbl_member_business.member_id')
                             ->first();
             if(!$member){
-                $member = $model->select('*, tbl_member.dealer_code as m_code')
+                $member2 = $model->select('*, tbl_member.dealer_code as m_code')
                                 ->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
                                 ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
                                 ->where(['tbl_member.status'=>'2','tbl_member.id'=>$segment3])
                                 ->groupBy('tbl_member_business.member_id')
                                 ->first();
+                $member = $member2;
             }
-            $dealer_code = $member['m_code'];
-            if($dealer_code==''){
-                $dealer_code = $member['member_id'];
+            
+            if(!$member2){
+                $member3 = $model->select('*, tbl_member.dealer_code as m_code')
+                            ->where(['tbl_member.status'=>'2','tbl_member.code'=>$segment3])
+                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
+                            ->first();
+                $member = $member3;
+            }
+
+            if(!$member3){
+                $member = $model->select('*, tbl_member.dealer_code as m_code')
+                            ->where(['tbl_member.status'=>'2','tbl_member.id'=>$segment3])
+                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
+                            ->first();
             }
             
             $data = [
@@ -136,7 +150,7 @@ class Member extends BaseController
                 'amphure' => $mbModel->getAmphure(),
                 'district' => $mbModel->getDistrict(),
                 'social' => $mbModel->getSocialById($member['member_id']),
-                'membercontact' => $mbModel->getContactByDealercode($dealer_code),
+                'membercontact' => $mbModel->getMemberContactById($member['member_id']),
                 'memberbusiness' => $mbModel->getMemberBusinessById($member['member_id']),
                 'pMaincate' => $mbModel->getProductMainType(),
                 'pSubcate' => $mbModel->getProductType(),
@@ -220,7 +234,7 @@ class Member extends BaseController
                 'userdata' => $this->userdata
             ];
             // print_r('<pre>');
-            //print_r($result);
+            // print_r($result);
             // print_r('</pre>');            
             echo view('front/member', $data);
         }else{

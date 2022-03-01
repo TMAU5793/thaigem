@@ -357,32 +357,11 @@
                                     <h2 class="ff-dbamanBold fs-6 text-uppercase letter-spacing-1 mb-0 line-height-16px text-line-4"><?= $row['company'] ?></h2>
                                     <div class="cate-type">
                                         <strong class="ff-dbadmanBold c-darkgold fs-5"><?= lang('GlobalLang.product-type') ?></strong>
-                                        <?php
-                                            if($cate_prod){
-                                                $n=0;                                                
-                                                foreach ($cate_prod as $cate){
-                                                    if($n<1 && $row['id']==$cate['member_id']){
-                                                        $n++;
-                                                        
-                                        ?>
-                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></span>
-                                        <?php } } }else{ ?>
-                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= $row['product'] ?></span>
-                                        <?php } ?>
+                                        <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= $row['product'] ?></span>
                                     </div>
                                     <div class="cate-type">
                                         <strong class="ff-dbadmanBold c-darkgold fs-5"><?= lang('GlobalLang.business-type') ?></strong>
-                                        <?php
-                                            if($cate_bus){
-                                                $n=0;
-                                                foreach ($cate_bus as $cate){
-                                                    if($n<1 && $row['id']==$cate['member_id']){
-                                                        $n++;
-                                        ?>
-                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></span>
-                                        <?php } } }else{ ?>
-                                            <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= $row['business'] ?></span>
-                                        <?php } ?>
+                                        <span class="text-line-2 line-height-18px mt-minus-5px fs-5"><?= $row['business'] ?></span>
                                     </div>
                                     <div class="event-action">
                                         <?php

@@ -43,22 +43,16 @@ class Account extends Controller
             $model = new AccountModel();
             $albummodel = new AlbumModel();
             $mbModel = new MemberModel();
-            
-            $info = $model->select('*, tbl_member.dealer_code as m_code')
-                        ->join('tbl_member_business','tbl_member.id = tbl_member_business.member_id')
-                        ->where('tbl_member.code',$this->member_id)->first();
-            if(!$info){
-                $info2 = $model->select('*, tbl_member.dealer_code as m_code')
+                        
+            $info = $model->select('*, tbl_member.id as m_id, tbl_member.dealer_code as m_code')
                         ->join('tbl_member_business','tbl_member.id = tbl_member_business.member_id')
                         ->where('tbl_member.id',$this->member_id)->first();
-                $info = $info2;
-            }
-            if(!$info2){
-                $info = $model->where('id',$this->member_id)->first();
+            if(!$info){
+                $info = $model->select('*, tbl_member.id as m_id, tbl_member.dealer_code as m_code')->where('id',$this->member_id)->first();
             }
             $dealer_code = $info['m_code'];
             if($dealer_code==''){
-                $dealer_code = $info['member_id'];
+                $dealer_code = $info['m_id'];
             }
             
             $data = [
@@ -71,7 +65,7 @@ class Account extends Controller
                 'amphure' => $mbModel->getAmphure(),
                 'district' => $mbModel->getDistrict(),
                 'social' => $mbModel->getSocial(),
-                'membercontact' => $mbModel->getContactByDealercode($dealer_code),
+                'membercontact' => $mbModel->getMemberContactById($info['m_id']),
                 'memberbusiness' => $mbModel->getMemberBusiness(),
                 'shareImg' => $info['profile']
             ];
@@ -267,11 +261,6 @@ class Account extends Controller
             $member = $model->where('account', $request->getVar('txt_username'))->first();
             if($member['code']==''){
                 $str_rand = random_string('alnum', 11);
-                // $model
-                //     ->where('account', $member['account'])
-                //     ->set('code' , $str_rand)
-                //     ->update();
-
                 $tbl->where('account', $member['account'])->set('code' , $str_rand)->update();
             }
             $sess = [
@@ -284,10 +273,6 @@ class Account extends Controller
                 'user_type' => $member['type'],
                 'logged_member' => TRUE
             ];
-            // $model
-            //     ->where('account', $member['account'])
-            //     ->set('last_login' , new Time('now'))
-            //     ->update();
 
             $tbl->where('account', $member['account'])
                 ->set('last_login' , new Time('now'))

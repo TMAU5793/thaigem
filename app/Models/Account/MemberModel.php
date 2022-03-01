@@ -253,13 +253,13 @@ class MemberModel extends Model
 		$name = $arr[0];
 		$lastname = $arr[1];
         $ws = explode('//',$data['txt_website']);
-        echo count($ws);
+        $ws_url = '';
         if(count($ws) > 1){
-            $ws = $data['txt_website'];
+            $ws_url = $data['txt_website'];
         }else{
-            $ws = 'http://'.$data['txt_website'];
+            $ws_url = 'http://'.$data['txt_website'];
         }
-        //echo $ws;
+        
         if($data['txt_map']!=''){
             $info = [
                 'name' => $data['txt_mainperson'],
@@ -269,11 +269,12 @@ class MemberModel extends Model
                 'company_phone' => $data['txt_companyphone'],
                 'company' => $data['txt_company'],
                 'about' => $data['txt_ac_about'],
-                'website' => urlencode($ws),
+                'website' => urlencode($ws_url),
                 'map' => $data['txt_map'],
                 'employee' => $data['ddl_employee']
             ];
         }else{
+            
             $info = [
                 'name' => $data['txt_mainperson'],
                 'lastname' => $lastname,
@@ -282,7 +283,7 @@ class MemberModel extends Model
                 'company_phone' => $data['txt_companyphone'],
                 'company' => $data['txt_company'],
                 'about' => $data['txt_ac_about'],
-                'website' => urlencode($ws),
+                'website' => urlencode($ws_url),
                 'employee' => $data['ddl_employee']
             ];
         }
@@ -503,21 +504,10 @@ class MemberModel extends Model
         if(isset($data['txt_person'])){
             $count = count($data['txt_person']);
             for ($i=0; $i < $count; $i++) {
-                // $arr = explode(" ",$data['txt_person'][$i]);
-                // $name = $arr[0];
-                // $lastname = $arr[1];
-                $code = '';
-                if(isset($data['hd_code'])){
-                    $code = $data['hd_code'];
-                }
-                if($code==''){
-                    $code = $data['hd_id'];
-                }
                 $phone = $data['txt_personphone'][$i];
                 $info = [
-                    'dealer_code' => $code,
+                    'member_id' => $data['hd_id'],
                     'name' => $data['txt_person'][$i],
-                    //'lastname' => $lastname,
                     'phone' => $phone,
                     'created_at' => $datetime,
                     'updated_at' => $datetime

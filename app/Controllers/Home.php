@@ -35,23 +35,13 @@ class Home extends BaseController
         $evModel = new EventModel();
         $mbModel = new MemberModel();
         $abModel = new AlbumModel();
-        $bkModel = new BookingModel();
         $acModel= new KnowledgeModel();
-        $mbBusiness = new MemberBusinessModel();
         $banner = new BannerModel();
         $db = db_connect();
         $tbl_price = $db->table('tbl_price');
-        $tbl_month = $db->table('tbl_month');
-        
-        $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','product')
-                                ->findAll();
+        $tbl_month = $db->table('tbl_month');                
 
-        $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','business')
-                                ->findAll();
-
-        $info = $mbModel->join('tbl_member_business as tbl1','tbl1.dealer_code = tbl_member.dealer_code')
+        $info = $mbModel->join('tbl_member_business as tbl1','tbl1.id = tbl_member.id')
                 ->where(['tbl_member.member_home'=>'1','tbl_member.status'=>'2'])->findAll(9);
 
         $data = [
@@ -63,8 +53,6 @@ class Home extends BaseController
             'albums' => $abModel->findAll(),
             'member' => $mbModel->where('id',$this->member_id)->first(),
             'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3),
-            'cate_prod' => $cate_prod,
-            'cate_bus' => $cate_bus,
             'userdata' => $this->userdata,
             'banner' => $banner->where('page','home')->orderBy('sortby ASC')->findAll(5),
             'adsbanner' => $banner->where(['page'=>'ads','status'=>'1'])->orderBy('sortby ASC, created_at DESC')->groupBy('position')->findAll(),
