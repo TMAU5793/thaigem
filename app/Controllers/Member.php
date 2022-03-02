@@ -105,6 +105,7 @@ class Member extends BaseController
         $mbModel = new AcMemberModel();
         
         if($segment3){
+            $member = '';
             $member2 = '';
             $member3 = '';
             $member = $model->select('*, tbl_member.dealer_code as m_code')
@@ -123,7 +124,7 @@ class Member extends BaseController
                 $member = $member2;
             }
             
-            if(!$member2){
+            if(!$member2 && !$member){
                 $member3 = $model->select('*, tbl_member.dealer_code as m_code')
                             ->where(['tbl_member.status'=>'2','tbl_member.code'=>$segment3])
                             ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
@@ -131,7 +132,7 @@ class Member extends BaseController
                 $member = $member3;
             }
 
-            if(!$member3){
+            if(!$member3 && !$member){
                 $member = $model->select('*, tbl_member.dealer_code as m_code')
                             ->where(['tbl_member.status'=>'2','tbl_member.id'=>$segment3])
                             ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')

@@ -77,28 +77,7 @@
                                     <div class="item-desc">
                                         <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.product-type') ?></h4>
                                         <div class="box-info">
-                                            <?php
-                                                $n=0;
-                                                foreach($memberbusiness as $row){
-                                                    if($row->type == 'product' && $row->member_id == $info['member_id']){
-                                            ?>
-                                                <span class="fs-5 d-inline">
-                                                    <?php
-                                                        $n++;
-                                                        if($n > 1){
-                                                            echo ' , ';
-                                                        }
-                                                        foreach($pSubcate as $subcate){
-                                                            foreach($pMaincate as $maincate){
-                                                                if($subcate->maincate_id == $maincate->id && $row->cate_id == $subcate->id){
-                                                                    echo ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''?'<span class="ff-dbadmanBold d-inline">'.$maincate->name_en.'</span> > '.$subcate->name_en : '<span class="ff-dbadmanBold d-inline">'.$maincate->name_th.'</span> > '.$subcate->name_th);
-                                                                }
-
-                                                            }
-                                                        }
-                                                    ?>
-                                                </span>
-                                            <?php } } ?>
+                                            
                                             <p class="mb-0"><?= $info['product'] ?></p>
                                         </div>
                                     </div>

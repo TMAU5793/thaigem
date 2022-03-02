@@ -47,6 +47,12 @@
                         <div class="reply-detail">
                             <strong>รายละเอียด : </strong> <?= $row['reply'] ?>
                         </div>
+                        <hr>
+                        <div class="card-manage">
+                            <label for="">สถานะ : </label>                              
+                            <button class="btn btn-success" title="<?= $info['wb_status']=='1' ? 'ปิดคอมเม้นต์' : 'เปิดคอมเม้นต์' ?>"><?= $info['wb_status']=='1' ? 'เปิด' : 'ปิด' ?></button>
+                            <button class="btn btn-danger" title="ลบคอมเม้นต์" data-id="<?= $row['id'] ?>">ลบ</button>
+                        </div>
                     </div>
                 <?php } }else{ ?>
                     <span> -ไม่มีการตอบกลับ</span>

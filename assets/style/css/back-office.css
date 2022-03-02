@@ -741,6 +741,9 @@ table .fa-times-circle {
 
 .content-webboard .wb_reply .card {
   padding: .5rem 1.5rem; }
+.content-webboard .wb_reply .card-manage .btn {
+  font-size: 14px;
+  padding: 2px .5rem 0; }
 
 @media (max-width: 1399px) {
   .content-wrapper .content-header {
