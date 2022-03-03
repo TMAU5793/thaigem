@@ -45,6 +45,7 @@
         if(dealer){
             $('#memberExp').removeClass('d-none');
         }
+
         $('input[name="rd_type"]').on('change',function(){
             let dealerType = $("#rd_type2").is(":checked");
             if(dealerType){
@@ -209,6 +210,7 @@
                 }
             });
         <?php } ?>
+
         $('#txt_file').on('change',function(){
             let file = this.files[0];
             if (this.files && file) {
@@ -336,6 +338,33 @@
                 }
             });
         });
+
+        $('.btn-status-wb').on('click',function(){
+            let id = $(this).data('id');
+            let status = $(this).data('status');
+            if(status=='1'){
+                $msg = 'ปิดคอมเม้นต์';
+            }else{
+                $msg = 'เปิดคอมเม้นต์';
+            }
+            var r = confirm($msg);
+            if (r == true) {
+                $.post("<?= base_url('admin/webboard/updatestatus') ?>",{id:id,status:status},function(resp){
+                    window.location.reload();
+                });
+            }
+        });
+
+        $('.btn-del-wb').on('click',function(){
+            let id = $(this).data('id');
+            var r = confirm('ยืนยันการลบ');
+            if (r == true) {
+                $.post("<?= base_url('admin/webboard/delreply') ?>",{id:id},function(resp){
+                    window.location.reload();
+                });
+            }
+        });
+
     });
     //End ready function
 

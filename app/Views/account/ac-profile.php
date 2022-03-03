@@ -207,8 +207,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group social-url">
-                                    <label for=""><?= lang('GlobalLang.whatsapp') ?><span class="fs-6">(<?= lang('GlobalLang.example') ?> : https://api.whatsapp.com/send/?phone=id</span></label>
-                                    <input type="text" class="form-control" name="txt_whatsapp" value="<?= (isset($social)?$social->whatsapp : set_value('txt_whatsapp')) ?>" placeholder="<?= lang('GlobalLang.whatsapp') ?> : https://api.whatsapp.com/send/?phone=id">
+                                    <label for=""><?= lang('GlobalLang.whatsapp') ?><span class="fs-6">(<?= lang('GlobalLang.example') ?> : http://wa.me/66981023919</span></label>
+                                    <input type="text" class="form-control" name="txt_whatsapp" value="<?= (isset($social)?$social->whatsapp : set_value('txt_whatsapp')) ?>" placeholder="<?= lang('GlobalLang.whatsapp') ?> : http://wa.me/66981023919">
                                 </div>
                             </div>
 

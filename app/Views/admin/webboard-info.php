@@ -50,8 +50,8 @@
                         <hr>
                         <div class="card-manage">
                             <label for="">สถานะ : </label>                              
-                            <button class="btn btn-success" title="<?= $info['wb_status']=='1' ? 'ปิดคอมเม้นต์' : 'เปิดคอมเม้นต์' ?>"><?= $info['wb_status']=='1' ? 'เปิด' : 'ปิด' ?></button>
-                            <button class="btn btn-danger" title="ลบคอมเม้นต์" data-id="<?= $row['id'] ?>">ลบ</button>
+                            <button class="btn btn-status-wb <?= $row['rp_status']=='1' ? 'btn-success' : 'btn-warning' ?>" data-id='<?= $row['rp_id']; ?>' data-status='<?= $row['rp_status']; ?>' title="<?= $row['rp_status']=='1' ? 'ปิดคอมเม้นต์' : 'เปิดคอมเม้นต์' ?>"><?= $row['rp_status']=='1' ? 'เปิด' : 'ปิด' ?></button>
+                            <button class="btn btn-danger btn-del-wb" data-id='<?= $row['rp_id']; ?>' title="ลบคอมเม้นต์" data-id="<?= $row['id'] ?>">ลบ</button>
                         </div>
                     </div>
                 <?php } }else{ ?>

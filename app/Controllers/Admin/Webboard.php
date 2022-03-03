@@ -85,4 +85,37 @@ class Webboard extends Controller
             return redirect()->to(site_url('admin/articles'));
         }
     }
+
+    public function updatestatus()
+    {
+        $request = service('request');
+        $db = db_connect();
+        $tbl_reply = $db->table('tbl_webboard_reply');
+
+        $post = $request->getPost();
+        if($post){
+            $id= $post['id'];
+            $data = [
+                'status' => ($post['status']=='1'?'0':'1')
+            ];
+            $tbl_reply->where('id',$id);
+            $tbl_reply->update($data);
+            echo TRUE;
+        }
+    }
+
+    public function delreply()
+    {
+        $request = service('request');
+        $db = db_connect();
+        $tbl_reply = $db->table('tbl_webboard_reply');
+
+        $post = $request->getPost();
+        if($post){
+            $id= $post['id'];
+            $tbl_reply->where('id',$id);
+            $tbl_reply->delete();
+            echo TRUE;
+        }
+    }
 }
