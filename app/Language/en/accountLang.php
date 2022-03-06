@@ -45,5 +45,11 @@ return [
     // Validate password Text
     'pwd-limit' => 'Password at least 6 characters',
     'pwd-put' => 'Please enter your password',
-    'pwd-match' => 'Passwords don\'t match'
+    'pwd-match' => 'Passwords don\'t match',
+    'primary-contact' => 'Primary contact',
+    'add-contact' => 'The contacts below cannot be edited. But you can delete and add new ones.',
+    'size-request' => 'Image size require',
+    'choose-img' => 'choose image',
+    'limit-img' => 'Limited number of images',
+    'img' => 'Image'
 ];

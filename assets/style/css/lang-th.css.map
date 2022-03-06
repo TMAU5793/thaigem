@@ -1,7 +1,1 @@
-{
-"version": 3,
-"mappings": "AACI,kBAAU;EACN,SAAS,EAAE,MAAM;;AAIzB,mCAAoC;EAChC,SAAS,EAAE,OAAO;EAClB,WAAW,EAAE,CAAC",
-"sources": ["../scss/lang-th.scss"],
-"names": [],
-"file": "lang-th.css"
-}
+{"version":3,"sourceRoot":"","sources":["../scss/lang-th.scss"],"names":[],"mappings":"AACI;EACI;;;AAIR;EACI;EACA","file":"lang-th.css"}

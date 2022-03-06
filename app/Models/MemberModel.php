@@ -46,7 +46,24 @@ class MemberModel extends Model
 			$builder->limit($perPage, $offset);
 		}
         $builder->orderBy('a.status DESC');
-        return $builder->get()->getResultArray();
+		$result = $builder->get()->getResultArray();
+		
+		if(!$result){
+			$builder->select('*,a.id as m_id,a.status as approve');
+			$builder->where('a.type','dealer');
+			if($status!=null){
+				$builder->where('a.status',$status);
+			}
+			if($keyword!=''){
+				$builder->like('a.company',$keyword);
+			}
+			if($perPage!=null){
+				$builder->limit($perPage, $offset);
+			}
+			$builder->orderBy('a.status DESC');
+			$result = $builder->get()->getResultArray();
+		}
+        return $result;
 	}
 
 	public function getMember($keyword=null,$perPage=null,$offset=null)
@@ -154,6 +171,7 @@ class MemberModel extends Model
 
 		$cate = $builder2->select('name_th')->where('maincate_id',$id)->get()->getResultArray();
 		$query = [];
+		$id_arr = [];
 		foreach($cate as $row){
 			$builder->join('tbl_member_business as b', 'a.id = b.member_id')
 						->where(['a.type'=>'dealer','a.status'=>'2'])
@@ -162,8 +180,11 @@ class MemberModel extends Model
 				$builder->limit($perPage, $offset);
 			}
 			$arr = $builder->get()->getResultArray();
-			foreach ($arr as $item){				
-				$query[] = $item;
+			foreach ($arr as $item){
+				if(!in_array($item['id'], $id_arr)){
+					$id_arr[] = $item['id'];
+					$query[] = $item;
+				}
 			}
 		}
 

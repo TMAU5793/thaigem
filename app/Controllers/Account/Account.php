@@ -97,34 +97,34 @@ class Account extends Controller
             'txt_username' => [
                 'rules' => 'required|valid_email|is_unique[tbl_member.account]',
                 'errors'    =>  [
-                'required'  =>  'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
-                'valid_email'   =>  'รูปแบบอีเมลไม่ถูกต้อง',
-                'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว'
+                'required'  =>  lang('validateLang.account-email'),
+                'valid_email'   =>  lang('validateLang.email-format'),
+                'is_unique' => lang('validateLang.email-used')
                 ]
             ],
             'txt_name' => [
                 'rules' => 'required',
                 'errors'    =>  [
-                'required'  =>  'กรุณากรอกชื่อ'
+                'required'  =>  lang('validateLang.enter-name')
                 ]
             ],
             'txt_password'       => [
                 'rules' =>  'required|min_length[6]|max_length[200]',
                 'errors'    =>  [
-                'required'  =>  'กรุณากรอกรหัสผ่าน',
-                'min_length'   =>  'รหัสผ่านอย่างน้อย 6 ตัวอักษร'
+                'required'  =>  lang('validateLang.enter-pwd'),
+                'min_length'   =>  lang('validateLang.pwd-character')
                 ]
             ],
             'txt_confirm_password'    => [
                 'rules' =>  'matches[txt_password]',
                 'errors'    =>  [
-                'matches'  =>  'รหัสผ่านไม่ตรงกัน'
+                'matches'  =>  lang('validateLang.pwd-match')
                 ]
             ],
             'cb_term'    => [
                 'rules' =>  'required',
                 'errors'    =>  [
-                'required'  =>  'กดยอมรับเงื่อนไข สำหรับการลงทะเบียน'
+                'required'  =>  lang('validateLang.accept-terms')
                 ]
             ]
         ];
@@ -239,18 +239,18 @@ class Account extends Controller
             'txt_username' => [
                 'rules' => 'required|memberAccount[txt_username]|memberStatus[txt_username]',
                 'errors' =>  [
-                    'required' => 'กรุณากรอกชื่อบัญชีผู้ใช้ (อีเมล)',
-                    'valid_email' => 'รูปแบบอีเมลไม่ถูกต้อง',
-                    'memberAccount' => 'ไม่พบบัญชีผู้ใช้นี้',
-                    'memberStatus' => 'บัญชีผู้ใช้ถูกปิดใช้งาน'
+                    'required' => lang('validateLang.account-email'),
+                    'valid_email' => lang('validateLang.email-format'),
+                    'memberAccount' => lang('validateLang.not-account'),
+                    'memberStatus' => lang('validateLang.account-disabled')
                 ]
             ],
             'txt_password' => [
                 'rules' => 'required|min_length[6]|max_length[200]|memberPassword[txt_username,txt_password]',
                 'errors' =>  [
-                    'required' => 'กรุณากรอกรหัสผ่าน',
-                    'min_length' => 'รหัสผ่านอย่างน้อย 6 ตัวอักษร',
-                    'memberPassword' => 'รหัสผ่านไม่ถูกต้อง'
+                    'required' => lang('validateLang.enter-pwd'),
+                    'min_length' => lang('validateLang.pwd-character'),
+                    'memberPassword' => lang('validateLang.pwd-incorrect')
                 ]
             ]
         ];

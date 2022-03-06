@@ -251,14 +251,7 @@ class MemberModel extends Model
     {
         $arr = explode(" ",$data['txt_mainperson']);
 		$name = $arr[0];
-		$lastname = $arr[1];
-        $ws = explode('//',$data['txt_website']);
-        $ws_url = '';
-        if(count($ws) > 1){
-            $ws_url = $data['txt_website'];
-        }else{
-            $ws_url = 'http://'.$data['txt_website'];
-        }
+		$lastname = $arr[1];        
         
         if($data['txt_map']!=''){
             $info = [
@@ -269,7 +262,7 @@ class MemberModel extends Model
                 'company_phone' => $data['txt_companyphone'],
                 'company' => $data['txt_company'],
                 'about' => $data['txt_ac_about'],
-                'website' => urlencode($ws_url),
+                'website' => urlencode($data['txt_website']),
                 'map' => $data['txt_map'],
                 'employee' => $data['ddl_employee']
             ];
@@ -283,7 +276,7 @@ class MemberModel extends Model
                 'company_phone' => $data['txt_companyphone'],
                 'company' => $data['txt_company'],
                 'about' => $data['txt_ac_about'],
-                'website' => urlencode($ws_url),
+                'website' => urlencode($data['txt_website']),
                 'employee' => $data['ddl_employee']
             ];
         }
@@ -426,35 +419,7 @@ class MemberModel extends Model
         $builder = $this->db->table('tbl_social');
         $builder->where('member_id', $data['hd_id']);
         $member = $builder->get()->getRow();
-        $datetime = new Time('now');
-        
-        $facebook = explode('//',$data['txt_facebook']);
-        if(count($facebook) > 1){
-            $facebook = $data['txt_facebook'];
-        }else{
-            $facebook = 'https://www.facebook.com/'.$data['txt_facebook'];
-        }
-
-        $instagram = explode('//',$data['txt_instagram']);
-        if(count($instagram) > 1){
-            $instagram = $data['txt_instagram'];
-        }else{
-            $instagram = 'https://www.instagram.com/'.$data['txt_instagram'];
-        }
-
-        $linkedin = explode('//',$data['txt_linkein']);
-        if(count($linkedin) > 1){
-            $linkedin = $data['txt_linkein'];
-        }else{
-            $linkedin = 'https://www.linkedin.com/in/'.$data['txt_linkein'];
-        }
-
-        $youtube = explode('//',$data['txt_youtube']);
-        if(count($youtube) > 1){
-            $youtube = $data['txt_youtube'];
-        }else{
-            $youtube = 'https://www.youtube.com/'.$data['txt_youtube'];
-        }
+        $datetime = new Time('now');               
 
         if($member->member_id){
             $info = [

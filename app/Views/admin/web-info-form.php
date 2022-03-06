@@ -45,9 +45,10 @@
 
                         <div class="col-12 mb-3">
                             <label class="form-label">หน้าเพจที่ต้องการแสดงข้อมูล</label>
-                            <select name="ddl_page" id="ddl_page" class="form-control">
+                            <select name="ddl_page" id="ddl_page" class="form-control">                                
                                 <option value="about" <?= (isset($info_single) && $info_single->page=='about' ? 'selected' : '') ?>>หน้าเกี่ยวกับเรา (About Us)</option>
                                 <option value="member" <?= (isset($info_single) && $info_single->page=='member' ? 'selected' : '') ?>>หน้าสมาชิก (Member)</option>
+                                <option value="terms" <?= (isset($info_single) && $info_single->page=='terms' || !$info_single ? 'selected' : '') ?>>ข้อตกลง และเงื่อนไข</option>
                             </select>
                         </div>
 
@@ -61,6 +62,7 @@
                                 <option value="3" <?= (isset($info_single) && $info_single->cate=='3' ? 'selected' : '') ?>>TGJTA Advisory Board</option>
                                 <option value="4" <?= (isset($info_single) && $info_single->cate=='4' ? 'selected' : '') ?>>TGJTA Board of Directors</option>
                                 <option value="5" <?= (isset($info_single) && $info_single->cate=='5' ? 'selected' : '') ?>>President Policy</option>
+                                <option value="terms" <?= (isset($info_single) && $info_single->cate=='terms' ? 'selected' : '') ?>>Terms & Condition</option>
                             </select>
                         </div>
                         

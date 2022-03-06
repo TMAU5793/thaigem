@@ -199,29 +199,38 @@
                                 <input type="text" name="txt_email" class="form-control" value="<?= (isset($info_member)? $info_member['email'] : '') ?>">
                             </div>
                             <div class="col-6 mb-3">
-                                <label for="txt_website" class="form-label">เว็บไซต์</label>
+                                <label for="txt_website" class="form-label">เว็บไซต์</label> <span class="text-gray">(ตัวอย่าง : http://example.com)</span>
                                 <input type="text" name="txt_website" class="form-control" value="<?= (isset($info_member)? urldecode($info_member['website']) : '') ?>">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="txt_facebook" class="form-label">Facebook</label> <span class="text-gray">(ตัวอย่าง : https://www.facebook.com/name)</span>
+                                <input type="text" name="txt_facebook" class="form-control" value="<?= (isset($social)? $social['facebook'] : '') ?>">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="txt_instagram" class="form-label">Instagram</label> <span class="text-gray">(ตัวอย่าง : https://www.instagram.com/name/)</span>
+                                <input type="text" name="txt_instagram" class="form-control" value="<?= (isset($social)? $social['instagram'] : '') ?>">
                             </div>
                             <div class="col-6 mb-3">
                                 <label for="txt_line" class="form-label">line ID</label>
                                 <input type="text" name="txt_line" class="form-control" value="<?= (isset($social)? $social['line'] : '') ?>">
                             </div>
                             <div class="col-6 mb-3">
-                                <label for="txt_facebook" class="form-label">Facebook</label>
-                                <input type="text" name="txt_facebook" class="form-control" value="<?= (isset($social)? $social['facebook'] : '') ?>">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="txt_instagram" class="form-label">Instagram</label>
-                                <input type="text" name="txt_instagram" class="form-control" value="<?= (isset($social)? $social['instagram'] : '') ?>">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="txt_linkein" class="form-label">Linkedin</label>
-                                <input type="text" name="txt_linkein" class="form-control" value="<?= (isset($social)? $social['linkein'] : '') ?>">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="txt_youtube" class="form-label">Youtube</label>
+                                <label for="txt_youtube" class="form-label">Youtube</label> <span class="text-gray">(ตัวอย่าง : https://www.youtube.com/watch?v=name)</span>
                                 <input type="text" name="txt_youtube" class="form-control" value="<?= (isset($social)? urldecode($social['youtube']) : '') ?>">
                             </div>
+                            <div class="col-md-6 social-url">
+                                <label for="" class="form-label">Wechat ID</label>
+                                <input type="text" class="form-control" name="txt_wechat" value="<?= (isset($social)?$social['wechat'] : set_value('txt_wechat')) ?>">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="" class="form-label">Whatsapp</label> <span class="text-gray">(ตัวอย่าง : http://wa.me/66981023919</span>
+                                <input type="text" class="form-control" name="txt_whatsapp" value="<?= (isset($social)?$social['whatsapp'] : set_value('txt_whatsapp')) ?>">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="txt_linkein" class="form-label">Linkedin</label> <span class="text-gray">(ตัวอย่าง : https://www.linkedin.com/in/name)</span>
+                                <input type="text" name="txt_linkein" class="form-control" value="<?= (isset($social)? $social['linkein'] : '') ?>">
+                            </div>
+                            
                             <div class="col-12">
                                 <div class="ac-about form-group mb-3">
                                     <label for="">เกี่ยวกับบริษัท</label>
@@ -243,22 +252,7 @@
                                     <?php } } ?>
                                 </select>
                             </div>
-                            <!-- <div class="col-6 mb-3">
-                                <label for="ddl_amphure" class="form-label">อำเภอ/เขต</label>
-                                <select name="ddl_amphure" id="ddl_amphure" class="form-control">
-                                    <option value="">-- เลือกอำเภอ/เขต --</option>
-                                </select>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="ddl_district" class="form-label">ตำบล/แขวง</label>
-                                <select name="ddl_district" id="ddl_district" class="form-control">
-                                    <option value="">-- เลือกตำบล/แขวง --</option>
-                                </select>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="txt_zipcode" class="form-label">รหัสไปรษณีย์</label>
-                                <input type="text" name="txt_zipcode" class="form-control" value="<?= (isset($address) ? $address->zipcode : '') ?>">
-                            </div> -->
+                            
                             <div class="col-12 mb-3">
                                 <div class="mb-3">
                                     <label for="txt_address" class="form-label">ที่อยู่/เลขที่</label>
@@ -266,17 +260,6 @@
                                 </div>
                             </div>
                             
-                            <!-- <div class="col-6 mb-3">
-                                <label for="txt_thumb" class="form-label">รูปโปรไฟล์</label>
-                                <div class="img-thumbnail">
-                                    <img src="<?= (isset($info_member) && $info_member['profile']!=""?site_url($info_member['profile']) : site_url('assets/images/img-default.jpg')) ?>" class="show-thumb">
-                                    <input type="file" id="txt_thumb" name="txt_thumb" class="input-img-hide" onchange="ShowThumb(this)">
-                                    <input type="hidden" name="hd_thumb" id="hd_thumb" value="<?= (isset($info_member) && $info_member['profile']!=""?$info_member['profile'] : '') ?>">
-                                    <input type="hidden" name="hd_thumb_del" id="hd_thumb_del" value="<?= (isset($info_member) && $info_member['profile']!=""?$info_member['profile'] : '') ?>">
-                                    <label for="txt_thumb" class="d-block label-img btn-primary">เลือกรูป</label>
-                                </div>
-                                <small class="text-danger">ขนาดรูปที่ต้องการ 1000x750px</small></small>
-                            </div> -->
                         </div>
                     </div>
 

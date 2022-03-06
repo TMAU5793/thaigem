@@ -45,14 +45,18 @@
                                         </div>
                                         <div class="person-phone">
                                             <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.contactperson') ?> : </strong>
-                                            <span class="ff-dbadmanBold"><?= ($info['phone']==''?'-':$info['name']); ?></span>
-                                            <a href="tel:<?= $info['phone'] ?>" class="c-black"><?= $info['phone'] ?></a>
+                                            <div class="contact-item ps-3 lh-1_25rem">
+                                                <span class="fs-5"><?= ($info['phone']==''?'':$info['name'].' : '); ?></span>
+                                                <a href="tel:<?= $info['phone'] ?>" class="c-black"><?= $info['phone'] ?></a>
+                                            </div>
                                             <?php
                                                 if(isset($membercontact)){
                                                     foreach ($membercontact as $contact) {
                                             ?>
-                                                <span class="ff-dbadmanBold"><?= ' , '.$contact->name ?></span>
-                                                <a href="tel:<?= $contact->phone ?>" class="c-black"><?= $contact->phone ?></a>
+                                                <div class="contact-item ps-3 lh-1_25rem">
+                                                    <span class="fs-5"><?= $contact->name ?> : </span>
+                                                    <a href="tel:<?= $contact->phone ?>" class="c-black"><?= $contact->phone ?></a>
+                                                </div>
                                             <?php } } ?>
                                         </div>
                                         <div class="member-since">
@@ -177,19 +181,25 @@
                         <div class="social-contact more-info border-b hide-767">
                             <strong class="ff-dbadmanBold pe-2"><?= lang('GlobalLang.socialmedia') ?></strong>
                             <?php if($social->facebook!=""){ ?>
-                                <a href="https://www.facebook.com/<?= $social->facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="<?= $social->facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             <?php } ?>
                             <?php if($social->instagram!=""){ ?>
-                                <a href="https://www.instagram.com/<?= $social->instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="<?= $social->instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a>
                             <?php } ?>
                             <?php if($social->line!=""){ ?>            
                                 <a href="http://line.me/ti/p/<?= $social->line ?>" target="_blank"><i class="fab fa-line"></i></a>
                             <?php } ?>
-                            <?php if($social->linkein!=""){ ?>
-                                <a href="https://www.linkedin.com/in/<?= $social->linkein ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <?php } ?>
                             <?php if($social->youtube!=""){ ?>
                                 <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <?php } ?>                            
+                            <?php if($social->wechat!=""){ ?>
+                                <a href="<?= $social->wechat ?>" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a>
+                            <?php } ?>
+                            <?php if($social->whatsapp!=""){ ?>
+                                <a href="<?= $social->whatsapp ?>" target="_blank" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                            <?php } ?>
+                            <?php if($social->linkein!=""){ ?>
+                                <a href="<?= $social->linkein ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
                             <?php } ?>
                         </div>
                         

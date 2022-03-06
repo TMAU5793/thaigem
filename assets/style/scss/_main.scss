@@ -20,12 +20,19 @@
     }
     .row {
         position: relative;
-        .col-md-8 {
+        .col-md-7 {
             div.fs-1 {
                 line-height: 40px;
             }
+            a.btn-darkgold{
+                padding: 2px 1rem 0;
+                &:hover{
+                    color: $c-white;
+                    box-shadow: 3px 3px 3px $c-lightgold;
+                }
+            }
         }
-        .col-md-4 {
+        .col-md-5 {
             iframe,
             .tradingview-widget-container {
                 width: 100% !important;

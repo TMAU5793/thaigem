@@ -223,14 +223,7 @@ class Member extends Controller
 			$id = $post['hd_id'];
 			$arr = explode(" ",$post['txt_mainperson']);
 			$name = $arr[0];
-			$lastname = $arr[1];
-			$ws = explode('//',$post['txt_website']);
-			//echo count($ws);
-			if(count($ws) > 1){
-				$ws = $post['txt_website'];
-			}else{
-				$ws = 'http://'.$post['txt_website'];
-			}
+			$lastname = $arr[1];			
 
 			if($post['txt_password']!=''){
 				$rules = [
@@ -257,7 +250,7 @@ class Member extends Controller
             			'lastname' => $lastname,
 						'email' => $post['txt_email'],
 						'phone' => $post['txt_phone'],
-						'website' => $ws,
+						'website' => urlencode($post['txt_website']),
 						'type' => $post['rd_type'],
 						'dealer_code' => $post['dealer_code'],
 						'member_start' => $post['member_start'],
@@ -317,7 +310,7 @@ class Member extends Controller
 					'name' => $post['txt_mainperson'],
             		'lastname' => $lastname,
 					'phone' => $post['txt_phone'],
-					'website' => $ws,
+					'website' => urlencode($post['txt_website']),
 					'type' => $post['rd_type'],
 					'dealer_code' => $post['dealer_code'],
 					'member_start' => $post['member_start'],

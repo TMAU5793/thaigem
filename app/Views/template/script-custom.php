@@ -33,6 +33,7 @@ use Google\Service\Adsense\Site;
             }
         });
     }
+
     $(document).on("click", function(event) {
         if ($(event.target).closest(".user-login-name").length === 0) {
             $('.user-menu-login').addClass('d-none');
@@ -178,8 +179,7 @@ use Google\Service\Adsense\Site;
 
         <?php if (session('msg_mail') || session('msg_done')){ ?>
             $('#successModal').modal('show');
-        <?php } ?>
-        
+        <?php } ?>        
     });
     //End Ready function
 

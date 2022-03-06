@@ -202,12 +202,12 @@
                             <div class="col-md-6 social-url">
                                 <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.wechat') ?></label>
-                                    <input type="text" class="form-control" name="txt_wechat" value="<?= (isset($social)?$social->wechat : set_value('txt_wechat')) ?>" placeholder="<?= lang('GlobalLang.wechat') ?> link">
+                                    <input type="text" class="form-control" name="txt_wechat" value="<?= (isset($social)?$social->wechat : set_value('txt_wechat')) ?>" placeholder="<?= lang('GlobalLang.wechat') ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group social-url">
-                                    <label for=""><?= lang('GlobalLang.whatsapp') ?><span class="fs-6">(<?= lang('GlobalLang.example') ?> : http://wa.me/66981023919</span></label>
+                                    <label for=""><?= lang('GlobalLang.whatsapp') ?> <span class="fs-6">(<?= lang('GlobalLang.example') ?> : http://wa.me/66981023919</span></label>
                                     <input type="text" class="form-control" name="txt_whatsapp" value="<?= (isset($social)?$social->whatsapp : set_value('txt_whatsapp')) ?>" placeholder="<?= lang('GlobalLang.whatsapp') ?> : http://wa.me/66981023919">
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
 
                     <div class="tab-pane fade" id="nav-content2" role="tabpanel" aria-labelledby="nav-tab2">
                         <div class="person-contact">
-                            <div class="border-bottom mb-3">Primary contact</div>
+                            <div class="border-bottom mb-3"><?= lang('accountLang.primary-contact') ?></div>
                             <div class="row">                                
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -272,7 +272,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border-bottom mb-3 mt-3">The contacts below cannot be edited. But you can delete and add new ones.</div>
+                            <div class="border-bottom mb-3 mt-3"><?= lang('accountLang.add-contact') ?></div>
                             <?php
                                 if($membercontact){
                                     foreach ($membercontact as $contact) {
@@ -316,8 +316,8 @@
                             <input id="txt_profile" name="txt_profile" type="file" class="form-control input-hide" accept="image/*">
                             <input type="hidden" name="hd_profile" id="hd_profile" value="<?= $info['profile'] ?>">
                             <input type="hidden" name="hd_profile_del" value="<?= $info['profile'] ?>">
-                            <label for="txt_profile" class="label-file-img mt-3">Choose Images</label>
-                            <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
+                            <label for="txt_profile" class="label-file-img mt-3"><?= lang('accountLang.choose-img') ?></label>
+                            <small class="text-danger mt-2 d-block">*<?= lang('accountLang.size-request') ?> 1000 x 750 px </small>
                         </div>
 
                         <div class="about-edit ac-album-form mt-3">
@@ -334,28 +334,14 @@
                                 <?php } } ?>
                                 <div class="clearfix"></div>
                             </div>
-                            <!-- <div class="fallback row m-0" id="album_fallback">
-                                <?php
-                                    $count = count($album);
-                                    if($count == 20){
-                                ?>
-                                    <span class="d-block text-center text-danger mt-4">*จำนวนรูปเต็มแล้ว กรุณาลบรูปเก่าหากต้องการเพิ่มรูปใหม่</span>
-                                <?php } ?>
-                                
-                            </div> -->
-
-                            <!-- <div class="fileup-theme2">
-                                <div id="file_album_queue" class="fileup-queue"></div>
-                                <div class="clearfix"></div>
-                            </div> -->
 
                             <div class="input-images"></div>
 
                             <div class="d-block">
                                 <input id="file_album" name="file_album[]" type="file" class="form-control input-hide" multiple accept="image/*">
-                                <label for="file_album" class="label-file-img d-inline-block mt-2">Choose Images</label>
-                                <small class="text-danger mt-2 d-block">*ขนาดรูปที่ต้องการ 1000 x 750 px </small>
-                                <small class="text-danger d-block">*จำกัดจำนวนรูปทั้งหมด 20 รูป </small>
+                                <label for="file_album" class="label-file-img d-inline-block mt-2"><?= lang('accountLang.choose-img') ?></label>
+                                <small class="text-danger mt-2 d-block">*<?= lang('accountLang.size-request') ?> 1000 x 750 px </small>
+                                <small class="text-danger d-block">*<?= lang('accountLang.limit-img') ?> 20 <?= lang('accountLang.img') ?> </small>
                             </div>
                         </div>
                     </div>

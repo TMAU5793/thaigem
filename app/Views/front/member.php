@@ -167,15 +167,11 @@
             </div>
 
             <div class="row">
-                <?php
-                    if($info){
-                        $n=0;
-						$mid = [];
+                <?php                    
+                    if($info){                       
                         foreach($info as $row){
                             $member_id = $row['id'];
-                            if(!in_array($row['id'], $mid)){
-                                $mid[] = $row['id'];
-                                $n++;
+                                
                 ?>
                 <div class="col-lg-6 col-md-12 position-relative mt-4">
                     <div class="shadow-lightgold box-member d-flex">
@@ -260,26 +256,40 @@
                         </div>
                     </div>
                 </div>
-                <?php } } }else{ ?>
+                <?php } } else{ ?>
                     <div class="col-12 mt-4 text-center">
                         <span>ไม่พบข้อมูล</span>
                     </div>
                 <?php } ?>
             </div>
 
-            <?php                
-                if(isset($pager)) {
-            ?>
-                <nav class="navigation-center mt-5 border-none">
+            <?php if(isset($pager)) { ?>
+                <nav class="navigation-center mt-5">
                     <?= $pager->links(); ?>
+                </nav>
+            <?php } ?>
+
+            <?php if(isset($total_page)) { ?>
+                <nav class="navigation-center mt-5 border-none">
+                    <?php
+                        $cate = $_GET['c'];
+                    ?>
+                    <ul class="pagination">
+                        <?php
+                            for($i=1;$i<=$total_page;$i++){
+                        ?>
+                            <li class="<?= ($page==$i?'active':'') ?>"><a href="<?= site_url('member/filter?c='.$cate.'&page='.$i) ?>"><?= $i; ?></a></li>
+                        <?php } ?>
+                    </ul>
                 </nav>
             <?php } ?>
         </div>
         
     </section>
-
+    
 <?= $this->endSection() ?>
 
 <?= $this->section("scripts") ?>
-    <?= $this->include('template/slick-slide') ?>
+    <script src="<?= base_url('assets/jquery/pagination.js'); ?>"></script>
+    <?= $this->include('template/slick-slide') ?>    
 <?= $this->endSection() ?>

@@ -59,12 +59,16 @@
                     </div>
                     <div class="person-phone">
                         <strong class="ff-dbadmanBold pe-3"><?= lang('GlobalLang.contactperson') ?> : </strong>
-                        <span><?= ($info['phone']==''?'-':'<span class="ff-dbadmanBold">'.$info['name'].'</span> '.$info['phone']); ?></span>
+                        <div class="contact-item ps-3 lh-1_25rem">
+                            <span><?= ($info['phone']==''?'':'<span class="fs-5">'.$info['name'].' : </span> '.$info['phone']); ?></span>
+                        </div>
                         <?php
-                            if(isset($membercontact)){
+                            if(isset($membercontact) && $membercontact){
                                 foreach ($membercontact as $contact) {
                         ?>
-                            <span><?= '<span class="ff-dbadmanBold"> , '.$contact->name.'</span> '.$contact->phone; ?></span>
+                            <div class="contact-item ps-3 lh-1_25rem">
+                                <span><?= '<span class="fs-5">'.$contact->name.' : </span> '.$contact->phone; ?></span>
+                            </div>
                         <?php } } ?>
                     </div>
                     <div class="member-since">
@@ -172,10 +176,7 @@
         <?php } ?>
         <?php if($social->line!=""){ ?>
             <a href="http://line.me/ti/p/<?= $social->line ?>" target="_blank" title="Line"><i class="fab fa-line"></i></a>
-        <?php } ?>
-        <?php if($social->linkein!=""){ ?>
-            <a href="<?= $social->linkein ?>" target="_blank" title="Linkein"><i class="fab fa-linkedin"></i></a>
-        <?php } ?>
+        <?php } ?>        
         <?php if($social->youtube!=""){ ?>
             <a href="<?= $social->youtube ?>" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a>
         <?php } ?>
@@ -184,6 +185,9 @@
         <?php } ?>
         <?php if($social->whatsapp!=""){ ?>
             <a href="<?= $social->whatsapp ?>" target="_blank" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <?php } ?>
+        <?php if($social->linkein!=""){ ?>
+            <a href="<?= $social->linkein ?>" target="_blank" title="Linkein"><i class="fab fa-linkedin"></i></a>
         <?php } ?>
         <span class="ff-dbadmanBold share-social" data-url="<?= site_url('member/id/'.$info['id']); ?>" data-image="<?= $profile_pic; ?>" title="<?= lang('GlobalLang.share'); ?>"><i class="fas fa-share-alt"></i></span>
     </div>

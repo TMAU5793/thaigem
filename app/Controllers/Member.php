@@ -268,18 +268,25 @@ class Member extends BaseController
         if($id){
 
             $info = $mbModel->filterMember($id);
-            $page=(int)(($request->getVar('page')!==null)?$request->getVar('page'):1)-1;
-            $perPage =  20;
-            $total = count($info);
-            $pager->makeLinks($page+1, $perPage, $total);
-            $offset = $page * $perPage;
-            $result = $mbModel->filterMember($id,$perPage,$offset);
+            $page = intval($_GET['page']);
+            $page_size = 20;
+            $total_records = count($info);
+            $total_page   = ceil($total_records / $page_size);
+            if ($page > $total_page) {
+                $page = $total_page;
+            }
+            if ($page < 1) {
+                $page = 1;
+            }
+            $offset = ($page - 1) * $page_size;
+            $result = array_slice($info, $offset, $page_size);
 
             $data = [
                 'meta_title' => 'Filter Member',
                 'lang' => $this->lang,
                 'info' => $result,
-                'pager' => $pager,
+                'page' => $page,
+                'total_page' => $total_page,
                 'album' => $albumModel->findAll(),
                 'province' => $pvModel->orderBy('sortby ASC, name_'.$this->lang.' ASC')->findAll(),
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),

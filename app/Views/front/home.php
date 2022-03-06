@@ -34,6 +34,7 @@
                             <h3 class="mb-0 fs-1">Fulfill your business opportunities</h3>
                             <h4 class="mb-0">with our trusted and reliable members.</h4>
                         </div>
+                        <a href="<?= site_url('member') ?>" class="btn btn-darkgold c-white fs-5">TGJTA Members Search</a>
                         <div class="tg-title">
                             <h3 class="c-darkgold mb-0"><?= lang('HomeLang.category'); ?></span></h3>
                         </div>

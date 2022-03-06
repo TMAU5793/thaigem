@@ -113,13 +113,19 @@
                     option += '<option value="1">The Privileges of TGJTA members</option>';
                     option += '<option value="2">Apply for Membership</option>';
                 $('#ddl_cate').html(option);
-            }else{
+            }
+            if(val=='about'){
                 var option = '<option value=""> -- เลือก -- </option>';
                     option += '<option value="1">History';
                     option += '<option value="2">Regulation & Objective</option>';
                     option += '<option value="3">TGJTA Advisory Board</option>';
                     option += '<option value="4">TGJTA Board of Directors</option>';
                     option += '<option value="5">President Policy</option>';
+                $('#ddl_cate').html(option);
+            }
+            if(val=='terms'){
+                var option = '<option value=""> -- เลือก -- </option>';
+                    option += '<option value="terms">Terms & Condition</option>';
                 $('#ddl_cate').html(option);
             }
         });
