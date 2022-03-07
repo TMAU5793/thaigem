@@ -65,14 +65,14 @@
                         <li class="nav-item">
                             <a href="<?= base_url('admin/articles/advisory'); ?>" class="nav-link <?= ($uri->getSegment(3)=='advisoryform' || $uri->getSegment(3)=='advisory'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>รายนามสมาคมฯ</p>
+                                <p>รายนามที่ปรึกษา</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="<?= base_url('admin/articles/director'); ?>" class="nav-link <?= ($uri->getSegment(3)=='directorform' || $uri->getSegment(3)=='director'?'active':''); ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>รายนามที่ปรึกษา</p>
+                                <p>รายนามสมาคมฯ</p>
                             </a>
                         </li>
 

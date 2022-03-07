@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">รายนามที่ปรึกษา</h1>
+                    <h1 class="m-0">รายนามสมาคมฯ</h1>
                     <a href="<?= site_url('admin/setting/subjecttext?p=director') ?>" class="subject-update">อัพเดตหัวข้อ</a>
                 </div><!-- /.col -->
                 <div class="col-sm-6">

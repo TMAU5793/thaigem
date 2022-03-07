@@ -43,6 +43,7 @@
                     <tr>
                         <th scope="col">บริษัท</th>
                         <th scope="col">ชื่อเอกสาร</th>
+                        <th scope="col" width="120" class="text-end">วันที่</th>
                         <th scope="col" width="150" class="text-end">ประเภทเอกสาร</th>
                         <th scope="col" width="150" class="text-center">การจัดการ</th>
                     </tr>
@@ -69,6 +70,7 @@
                             <span><?= $company; ?></span>
                         </td>
                         <td><?= $item['filename'] ?></td>
+                        <td align="right"><?= $item['created_at'] ?></td>
                         <td align="right"><?= $item['filefor'] ?></td>
                         <td class="text-center">
                             <?php
