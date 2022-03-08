@@ -33,13 +33,13 @@ class Database extends Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		/*'username' => 'root',
+		'username' => 'root',
 		'password' => '',
-		'database' => 'thaigem_db',*/
+		'database' => 'thaigem_db',
 
-		'username' => 'xncbiblw_thaigem',
-		'password' => 'Zf9wzfg5',
-		'database' => 'xncbiblw_thaigem',
+		// 'username' => 'thaigemj_db',
+		// 'password' => 'QYs7DkKQao',
+		// 'database' => 'thaigemj_db',
 
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
