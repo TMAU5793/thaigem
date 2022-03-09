@@ -23,8 +23,8 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	//public $baseURL = 'http://localhost/thaigem/';
-	public $baseURL = 'http://www.thaigemjewelry.or.th/';
+	public $baseURL = 'http://localhost/thaigem/';
+	//public $baseURL = 'http://www.thaigemjewelry.or.th/';
 	/**
 	 * --------------------------------------------------------------------------
 	 * Index File

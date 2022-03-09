@@ -90,7 +90,7 @@
                                     <?php } ?>
                                 </td>
                                 <td align="center">
-                                    <button type="button" class="btn pt-0 pb-0 ps-2 pe-2 <?= ($item['member_home']=='1'?'btn-danger' : 'btn-primary') ?>" onClick="MemberHome('<?= $item['id'] ?>','<?= $item['member_home'] ?>')">
+                                    <button type="button" class="btn pt-0 pb-0 ps-2 pe-2 <?= ($item['member_home']=='1'?'btn-danger' : 'btn-primary') ?>" onClick="MemberHome('<?= $item['m_id'] ?>','<?= $item['member_home'] ?>')">
                                         <?= ($item['member_home']=='1'?'ยกเลิก' : 'เลือก') ?>
                                     </button>
                                 </td>
