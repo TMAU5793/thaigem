@@ -160,7 +160,7 @@
         <?php } ?>
 
         //Member Start and Expired date
-        <?php if(isset($info_member) && $info_member['member_expired']!='') { ?>
+        <?php if(isset($info_member) && $info_member['member_expired']!='' && $info_member['member_start'] != '0000-00-00' && $info_member['member_renew'] != '0000-00-00') { ?>
             var start_date = '<?= $info_member['member_start'] ?>';
 
             $('#member_start').daterangepicker({
