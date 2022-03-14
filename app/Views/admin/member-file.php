@@ -79,7 +79,7 @@
                                 <form id="frm-download" action="<?= base_url('admin/files/downloadFiles') ?>" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="hd_id" value="<?= $item['id'] ?>">
                                     <button type="button" class="btn btn-primary btn-download">ดาวน์โหลด</button>
-                                </form>
+                                </form>                                
                             </td>
                         </tr>
                         <?php } }else{ ?>

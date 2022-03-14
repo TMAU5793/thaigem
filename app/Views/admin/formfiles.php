@@ -45,7 +45,7 @@
                         <th scope="col">ชื่อเอกสาร</th>
                         <th scope="col" width="120" class="text-end">วันที่</th>
                         <th scope="col" width="150" class="text-end">ประเภทเอกสาร</th>
-                        <th scope="col" width="150" class="text-center">การจัดการ</th>
+                        <th scope="col" width="250" class="text-center">การจัดการ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,18 +73,13 @@
                         <td align="right"><?= $item['created_at'] ?></td>
                         <td align="right"><?= $item['filefor'] ?></td>
                         <td class="text-center">
-                            <?php
-                                if(isset($member)){
-                            ?>
+                            <div class="btn-action d-flex justify-content-center">
                                 <form action="<?= base_url('admin/files/downloadFiles') ?>" method="POST" enctype="multipart/form-data">
-                                    <!-- <a href="javascript:void(0)" data-id="<?= $item['id'] ?>" onclick="downloadFile('<?= $item['id'] ?>')">ดาวน์โหลด</a> -->
                                     <input type="hidden" name="hd_id" value="<?= $item['id'] ?>">
                                     <button type="submit" class="btn btn-primary">ดาวน์โหลด</button>
                                 </form>
-                            <?php }else{ ?>
-                                <a href="<?= base_url('admin/files/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/files/delete');">ลบ</a>
-                            <?php } ?>
+                                <button type="button" class="btn btn-danger del-item ms-3 ps-3 pe-3" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/files/delete');">ลบ</button>
+                            </div>
                         </td>
                     </tr>
                     <?php } }else{ ?>

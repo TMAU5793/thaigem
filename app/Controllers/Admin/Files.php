@@ -55,10 +55,12 @@ class Files extends Controller
         
         $info = '';
         if($keyword!=''){
-            $info = $model->join('tbl_member as b','tbl_files.member_id = b.id')
+            $info = $model
+                ->join('tbl_member as b','tbl_files.member_id = b.id')
                 ->where('tbl_files.uploadby',null)->like('b.company',$keyword)->orderBy('tbl_files.created_at DESC')->paginate(25);
         }else{
-            $info = $model->join('tbl_member as b','tbl_files.member_id = b.id')
+            $info = $model
+                ->join('tbl_member as b','tbl_files.member_id = b.id')
                 ->where('tbl_files.uploadby',null)->orderBy('tbl_files.created_at DESC')->paginate(25);
         }
 		$data = [
@@ -244,7 +246,7 @@ class Files extends Controller
 				unlink($delImg['path']); //ลบรูปเก่าออก
 			}            
             $deleted = $model->where('id', $id)->delete($id);				
-			echo TRUE;
+			echo $deleted;
             
         }else{
             return redirect()->to(site_url('admin/files'));

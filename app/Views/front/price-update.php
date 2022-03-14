@@ -60,7 +60,7 @@
         </div>
     </section>
 
-    <section id="dimon-price" class="dimon-price mt-5 mb-5">
+    <section id="diamond-price" class="dimon-price mt-5 mb-5">
         <div class="container">
             <h3 class="ff-semibold mb-3">Diamond price</h3>
             <h4>Rounds Shapes</h4>

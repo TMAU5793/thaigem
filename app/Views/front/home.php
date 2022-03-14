@@ -93,7 +93,7 @@
                 <div class="col-md-8 col-sm-8">
                     <ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a href="<?= site_url('price-update#dimon-price') ?>" class="text-decoration-none">
+                            <a href="<?= site_url('price-update#diamond-price') ?>" class="text-decoration-none">
                                 <strong class="ff-bold nav-link active" data-bs-toggle="pill" data-bs-target="#pills-1">
                                     <i class="fas fa-square"></i>
                                     <?= lang('GlobalLang.diamonds'); ?>
