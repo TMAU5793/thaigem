@@ -120,7 +120,7 @@
                                     if($row['type']=='diamonds' && $n<1){
                                         $n++;
                         ?>
-                            <a href="<?= site_url('price-update#dimon-price') ?>" class="text-decoration-none">
+                            <a href="<?= site_url('price-update#diamond-price') ?>" class="text-decoration-none">
                                 <img src="<?= site_url($row['file']) ?>" alt="<?= $row['type']; ?>">
                             </a>
                         <?php } } } ?>
@@ -162,6 +162,7 @@
         </div>
     </section>
 
+    <?php if($events){ ?>
     <section class="event-home ptb-2rem">
         <div class="container">
             <div class="row">
@@ -177,9 +178,8 @@
                 </div>
             </div>
             <div class="slick-1-item">
-                <?php
-                    if($events){
-                        foreach ($events as $event){
+                <?php                    
+                    foreach ($events as $event){
                 ?>
                     <div class="event-item">
                         <div class="row">
@@ -236,10 +236,11 @@
                             </div>
                         </div>
                     </div>
-                <?php } } ?>
+                <?php } ?>
             </div>
         </div>
     </section>
+     <?php } ?>
 
     <section class="banner-ads">
         <div class="container">
@@ -255,6 +256,7 @@
         </div>
     </section>
 
+    <?php if($articles){ ?>
     <section class="news-home ptb-2rem">
         <div class="container">
             <div class="row">
@@ -270,10 +272,8 @@
                 </div>
             </div>
             <div class="row">
-                <?php
-                    if($articles){
-                        foreach($articles as $row){
-
+                <?php                    
+                    foreach($articles as $row){
                 ?>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="shadow-lightgold h-100 rounded">
@@ -295,11 +295,12 @@
                             </div>
                         </div>
                     </div>
-                <?php } } ?>
+                <?php } ?>
             </div>
         </div>
     </section>
-
+    <?php } ?>
+    
     <section class="member-home member-content ptb-2rem">
         <div class="container">
             <div class="row">

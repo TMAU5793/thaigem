@@ -245,6 +245,9 @@
                                         if($row['code']){
                                             $member_id = $row['code'];
                                         }
+                                        if($row['m_id']){
+                                            $member_id = $row['m_id'];
+                                        }
                                     ?>
                                     <?php if($userdata['logged_member']){ ?>
                                         <a href="<?= site_url('member/id/'.$member_id); ?>" class="btn btn-black-border text-uppercase letter-spacing-1"><?= lang('GlobalLang.viewProfile'); ?></a>
