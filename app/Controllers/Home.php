@@ -65,9 +65,4 @@ class Home extends BaseController
         // print_r('</pre>');
         echo view('front/home', $data);
 	}
-
-    public function relink()
-    {
-        return redirect()->to('https://www.thaigemjewelry.or.th/');
-    }
 }

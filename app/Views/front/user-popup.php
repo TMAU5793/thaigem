@@ -174,6 +174,7 @@
                     <?= ($terms?($lang=='en'?$terms->desc_en:$terms->desc_th):'') ?>
                 </div>
             </div>
+            <button class="btn btn-primary" id="terms-accept"><?= lang('GlobalLang.accept') ?></button>
         </div>
     </div>
 </div>

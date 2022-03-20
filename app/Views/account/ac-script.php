@@ -400,6 +400,22 @@
             });
         });
 
+        <?php
+            if(isset($terms) && $terms=='0'){
+        ?>
+            $('#termsModal').modal('show');
+        <?php } ?>
+        $('#terms-accept').on('click',function(){
+            let id = '<?= $info['m_id'] ?>';
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('account/member/updateTerms') ?>",
+                data: {id:id},
+                success: function (response) {
+                    location.reload();
+                }
+            });
+        });
     });
     //End Ready function
 

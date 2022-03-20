@@ -487,4 +487,22 @@ class Member extends Controller
             return redirect()->to('account')->with('failpwd',$validator);            
         }
     }
+
+    public function updateTerms()
+    {
+        $model = new AccountModel();
+        $request = service('request');
+
+        $post = $request->getPost();
+        if($post){
+            $id= $post['id'];
+            $data = [
+                'terms' => '1'
+            ];
+            $model->update($id,$data);
+            return TRUE;
+        }else{
+            return redirect()->to('account');
+        }
+    }
 }

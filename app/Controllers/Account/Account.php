@@ -67,7 +67,8 @@ class Account extends Controller
                 'social' => $mbModel->getSocial(),
                 'membercontact' => $mbModel->getMemberContactById($info['m_id']),
                 'memberbusiness' => $mbModel->getMemberBusiness(),
-                'shareImg' => $info['profile']
+                'shareImg' => $info['profile'],
+                'terms' => $info['terms']
             ];
             // print_r('<pre>');
             // print_r($info);

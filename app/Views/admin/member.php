@@ -10,6 +10,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0"><?= $meta_title; ?></h1>
+                    <span>จำนวนสมาชิก <?= number_format($count); ?> บริษัท</small>
                 </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -100,7 +101,7 @@
                                     <a href="<?= base_url('admin/member/notification?id='.$item['m_id']); ?>">แจ้งเตือน</a>
                                 </td>
                                 <td>
-                                    <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/member/delete');">
+                                    <a href="javascript:void(0)" class="del-item" data-id="<?= $item['m_id'] ?>" onClick="DeleteRow('<?= $item['m_id'] ?>','/admin/member/delete');">
                                         <i class="fas fa-trash text-danger" title="ลบ"></i>
                                     </a>
                                 </td>

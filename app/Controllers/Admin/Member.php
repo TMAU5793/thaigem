@@ -45,12 +45,15 @@ class Member extends Controller
         $pager->makeLinks($page+1, $perPage, $total);
         $offset = $page * $perPage;
         $result = $model->getDealer($status,$keyword,$perPage,$offset);
-		
+
+		$c_member = $model->where('type','dealer')->findAll();
 		$data = [
             'meta_title' => 'สมาชิกสมาคมฯ',
 			'info' =>  $result,
-			'active' => 'dealer'
+			'active' => 'dealer',
+			'count' => count($c_member)
         ];
+		
 		//print_r($info);
 		echo view('admin/member',$data);
 	}
@@ -77,12 +80,13 @@ class Member extends Controller
         $pager->makeLinks($page+1, $perPage, $total);
         $offset = $page * $perPage;
         $result = $model->getMember($keyword,$perPage,$offset);
-		
+		$c_member = $model->where('type','member')->findAll();
 		$data = [
             'meta_title' => 'สมาชิกเว็บไซต์',
 			'info' => $result,
             'pager' => $model->pager,
-			'active' => 'member'
+			'active' => 'member',
+			'count' => count($c_member)
         ];
 		echo view('admin/member',$data);
 	}
@@ -256,7 +260,8 @@ class Member extends Controller
 						'member_start' => $post['member_start'],
 						'renew' => $post['member_renew'],
 						'member_expired' => $post['member_expired'],
-						'status' => $post['ddl_status']
+						'status' => $post['ddl_status'],
+						'about' => $post['txt_about']
 					];
 					$model->update($id, $data);
 
@@ -316,7 +321,8 @@ class Member extends Controller
 					'member_start' => $post['member_start'],
 					'renew' => $post['member_renew'],
 					'member_expired' => $post['member_expired'],
-					'status' => $post['ddl_status']
+					'status' => $post['ddl_status'],
+					'about' => $post['txt_about']
 				];
 				$model->update($id, $arr);
 				print_r($model->errors());

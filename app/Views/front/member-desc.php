@@ -81,8 +81,7 @@
                                     <div class="item-desc">
                                         <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.product-type') ?></h4>
                                         <div class="box-info">
-                                            
-                                            <p class="mb-0"><?= $info['product'] ?></p>
+                                            <p class="mb-0"><?= ($cate_prod && $cate_prod['product']!=''?$cate_prod['product']:'-') ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -98,30 +97,7 @@
                                     <div class="item-desc">
                                         <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.business-type') ?></h4>
                                         <div class="box-info">
-                                            <?php
-                                                $n=0;
-                                                if($memberbusiness){
-                                                foreach($memberbusiness as $row){
-                                                    if($row->type == 'business' && $row->member_id == $info['member_id']){
-                                            ?>
-                                                <span class="fs-5 d-inline">
-                                                    <?php
-                                                        $n++;
-                                                        if($n > 1){
-                                                            echo ' , ';
-                                                        }
-                                                        foreach($bSubcate as $subcate){
-                                                            foreach($bMaincate as $maincate){
-                                                                if($subcate->main_type == $maincate->id && $row->cate_id == $subcate->id){
-                                                                    echo ($lang=='en' && $subcate->name_en!='' && $maincate->name_en != ''? '<span class="ff-dbadmanBold d-inline">'.$maincate->name_en.'</span> > '.$subcate->name_en : '<span class="ff-dbadmanBold d-inline">'.$maincate->name_th.'</span> > '.$subcate->name_th);
-                                                                }
-
-                                                            }
-                                                        }
-                                                    ?>
-                                                </span>
-                                            <?php } } } ?>                                            
-                                            <p class="mb-0"><?= $info['business'] ?></p>
+                                            <p class="mb-0"><?= ($cate_prod && $cate_prod['product']!=''?$cate_prod['business']:'-') ?></p>
                                         </div>
                                     </div>
                                 </div>

@@ -214,30 +214,24 @@
                                 <div class="cate-type mb-2">
                                     <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.product-type') ?></strong>
                                     <?php
-                                        if($cate_prod){
-                                            $n=0;
-                                            foreach ($cate_prod as $cate){
-                                                if($n<1 && $member_id==$cate['member_id']){
-                                                    $n++;
+                                        foreach($cate_prod as $cate){
+                                            if($cate['member_id'] == $member_id){
+                                                $str = $cate['product'];
+                                            
                                     ?>
-                                        <p class="text-line-2 mb-0 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
-                                    <?php } } }else{ ?>
-                                        <p class="text-line-2 mb-0 line-height-20px"><?= $row['product'] ?></p>
-                                    <?php } ?>
+                                        <p class="text-line-2 mb-0 line-height-20px"><?= ($str==''?'-':$str) ?></p>
+                                    <?php } } ?>
                                 </div>
                                 <div class="cate-type">
                                     <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.business-type') ?></strong>
                                     <?php
-                                        if($cate_bus){
-                                            $n=0;
-                                            foreach ($cate_bus as $cate){
-                                                if($n<1 && $member_id==$cate['member_id']){
-                                                    $n++;
+                                        foreach($cate_prod as $cate){
+                                            if($cate['member_id'] == $member_id){
+                                                $str = $cate['business'];
+                                            
                                     ?>
-                                        <p class="text-line-2 line-height-20px"><?= ($lang=='en' && $cate['name_en']!='' ? $cate['name_en'] : $cate['name_th']) ?></p>
-                                    <?php } } }else{ ?>
-                                        <p class="text-line-2 line-height-20px mb-0"><?= $row['business'] ?></p>
-                                    <?php } ?>
+                                        <p class="text-line-2 mb-0 line-height-20px"><?= ($str==''?'-':$str) ?></p>
+                                    <?php } } ?>
                                 </div>
                                 <div class="event-action position-absolute start-50 translate-middle-x bottom-0 ms-2">
                                     <?php

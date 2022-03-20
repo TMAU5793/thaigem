@@ -45,31 +45,21 @@ class Member extends BaseController
         $mbModel = new AcMemberModel();
         $mbBusiness = new MemberBusinessModel();
         $settingModel = new SettingModel();
-        $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','product')
-                                ->findAll();
-
-        $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','business')
-                                ->findAll();
+        $cate_prod = $mbBusiness->findAll();
 
         $mb_filter =  $settingModel->where('type','member_filter')->first();
         if($mb_filter['desc']=='2'){
             //ระยะเวลาการเป็นสมาชิก จากมากไปน้อย
-            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
-            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','ASC')->paginate(20);
+            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','ASC')->paginate(20);
         }elseif($mb_filter['desc']=='3'){
             //ระยะเวลาการเป็นสมาชิก จากน้อยไปมาก
-            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
-            ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','DESC')->paginate(20);
+            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','DESC')->paginate(20);
         }elseif($mb_filter['desc']=='4'){
             //การสุ่ม
-            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
-                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.id','RANDOM')->paginate(20);
+            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.id','RANDOM')->paginate(20);
         }else{
             //อัพเดตล่าสุด
-            $info = $model->join('tbl_member_business as tbl1','tbl1.member_id = tbl_member.id')
-                ->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at','DESC')->paginate(20);
+            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at','DESC')->paginate(20);
         }
                 
         $data = [
@@ -82,7 +72,6 @@ class Member extends BaseController
             'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
             'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
             'cate_prod' => $cate_prod,
-            'cate_bus' => $cate_bus,
             'userdata' => $this->userdata
         ];
         // print_r('<pre>');
@@ -103,40 +92,15 @@ class Member extends BaseController
         $model = new MemberModel();
         $albumModel = new AlbumModel();
         $mbModel = new AcMemberModel();
+        $mbBusiness = new MemberBusinessModel();
         
         if($segment3){
-            $member = '';
-            $member2 = '';
-            $member3 = '';
-            $member = $model->select('*, tbl_member.dealer_code as m_code')
-                            ->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
-                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
-                            ->where(['tbl_member.status'=>'2','tbl_member.code'=>$segment3])
-                            ->groupBy('tbl_member_business.member_id')
-                            ->first();
+            $member = $model->where(['status'=>'2','id'=>$segment3])->first();
             if(!$member){
-                $member2 = $model->select('*, tbl_member.dealer_code as m_code')
-                                ->join('tbl_member_business', 'tbl_member.id = tbl_member_business.member_id')
-                                ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
-                                ->where(['tbl_member.status'=>'2','tbl_member.id'=>$segment3])
-                                ->groupBy('tbl_member_business.member_id')
-                                ->first();
-                $member = $member2;
-            }
-            
-            if(!$member2 && !$member){
-                $member3 = $model->select('*, tbl_member.dealer_code as m_code')
-                            ->where(['tbl_member.status'=>'2','tbl_member.code'=>$segment3])
-                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
-                            ->first();
-                $member = $member3;
-            }
-
-            if(!$member3 && !$member){
-                $member = $model->select('*, tbl_member.dealer_code as m_code')
-                            ->where(['tbl_member.status'=>'2','tbl_member.id'=>$segment3])
-                            ->join('tbl_address', 'tbl_member.id = tbl_address.member_id')
-                            ->first();
+                $member = $model->where(['status'=>'2','code'=>$segment3])->first();
+                if(!$member){
+                    return redirect()->to('member');
+                }
             }
             
             $data = [
@@ -145,18 +109,19 @@ class Member extends BaseController
                 'shareImg' => $member['profile'],
                 'lang' => $this->lang,
                 'info' => $member,
-                'album' => $albumModel->where('member_id',$member['member_id'])->findAll(),
-                'address' => $mbModel->getAddressById($member['member_id']),
+                'album' => $albumModel->where('member_id',$member['id'])->findAll(),
+                'address' => $mbModel->getAddressById($member['id']),
                 'province' => $mbModel->getProvince(),
                 'amphure' => $mbModel->getAmphure(),
                 'district' => $mbModel->getDistrict(),
-                'social' => $mbModel->getSocialById($member['member_id']),
-                'membercontact' => $mbModel->getMemberContactById($member['member_id']),
-                'memberbusiness' => $mbModel->getMemberBusinessById($member['member_id']),
+                'social' => $mbModel->getSocialById($member['id']),
+                'membercontact' => $mbModel->getMemberContactById($member['id']),
+                'memberbusiness' => $mbModel->getMemberBusinessById($member['id']),
                 'pMaincate' => $mbModel->getProductMainType(),
                 'pSubcate' => $mbModel->getProductType(),
                 'bMaincate' => $mbModel->getBusinessMainType(),
-                'bSubcate' => $mbModel->getBusinessType()
+                'bSubcate' => $mbModel->getBusinessType(),
+                'cate_prod' => $mbBusiness->where('member_id',$member['id'])->first(),
             ];
             
             // print_r('<pre>');
@@ -212,13 +177,7 @@ class Member extends BaseController
                 $avd = TRUE;
             }
             
-            $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','product')
-                                ->findAll();
-
-            $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','business')
-                                ->findAll();
+            $cate_prod = $mbBusiness->findAll();
 
             $data = [
                 'meta_title' => 'Member',
@@ -231,7 +190,6 @@ class Member extends BaseController
                 'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
                 'avd' => $avd,
                 'cate_prod' => $cate_prod,
-                'cate_bus' => $cate_bus,
                 'userdata' => $this->userdata
             ];
             // print_r('<pre>');
@@ -258,13 +216,8 @@ class Member extends BaseController
 
         $id = $request->getGet('c');
         
-        $cate_prod = $mbBusiness->join('tbl_productcategory as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','product')
-                                ->findAll();
+        $cate_prod = $mbBusiness->findAll();
 
-        $cate_bus = $mbBusiness->join('tbl_business as cate', 'cate.id = tbl_member_business.cate_id')
-                                ->where('tbl_member_business.type','business')
-                                ->findAll();
         if($id){
 
             $info = $mbModel->filterMember($id);
@@ -292,7 +245,6 @@ class Member extends BaseController
                 'category' => $cateModel->where(['maincate_id !='=>'0','status'=>'1'])->findAll(),
                 'business' => $bnModel->where(['main_type !='=>'0','status'=>'1'])->findAll(),
                 'cate_prod' => $cate_prod,
-                'cate_bus' => $cate_bus,
                 'userdata' => $this->userdata
             ];
 
