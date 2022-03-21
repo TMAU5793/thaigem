@@ -334,17 +334,16 @@ class Member extends Controller
             }
             
             $data = [
-                $type => substr($pdata,0,-1)
+                $type => (substr($pdata,0,-1)==''?'':substr($pdata,0,-1))
             ];
-            if($pdata!=''){
-                $tbl->where('member_id',$id);
+            $tbl->where('member_id',$id);
+            $update = $tbl->update($data);
+            if(!$update){
+                $tbl->where('dealer_code',$id);
                 $update = $tbl->update($data);
-                if(!$update){
-                    $tbl->where('dealer_code',$id);
-                    $update = $tbl->update($data);
-                }
             }
-            echo true;
+            // echo true;
+            print_r(substr($pdata,0,-1));
         }else{
             return redirect()->to('account');
         }

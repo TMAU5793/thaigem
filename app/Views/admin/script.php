@@ -160,29 +160,13 @@
         <?php } ?>
 
         //Member Start and Expired date
-        <?php if(isset($info_member) && $info_member['member_expired']!='' && $info_member['member_start'] != '0000-00-00' && $info_member['member_renew'] != '0000-00-00') { ?>
+        
+
+        <?php if(isset($info_member) && $info_member['member_start'] != '0000-00-00' && $info_member['member_start'] != '') { ?>
             var start_date = '<?= $info_member['member_start'] ?>';
 
             $('#member_start').daterangepicker({
                 startDate: '<?= ($info_member['member_start']=='' ? '1990/01/01' : $info_member['member_start']) ?>',
-                singleDatePicker: true,
-                showDropdowns: true,
-                //minYear: parseInt(moment().format('YYYY')),
-                locale: {
-                    format: 'YYYY/MM/DD'
-                }
-            });
-            $('#member_renew').daterangepicker({
-                startDate: '<?= $info_member['renew'] ?>',
-                singleDatePicker: true,
-                showDropdowns: true,
-                //minYear: parseInt(moment().format('YYYY')),
-                locale: {
-                    format: 'YYYY/MM/DD'
-                }
-            });
-            $('#member_expired').daterangepicker({
-                startDate : '<?= $info_member['member_expired'] ?>',
                 singleDatePicker: true,
                 showDropdowns: true,
                 //minYear: parseInt(moment().format('YYYY')),
@@ -199,6 +183,21 @@
                     format: 'YYYY/MM/DD'
                 }
             });
+        <?php } ?>
+
+        <?php if(isset($info_member) && $info_member['renew'] != '0000-00-00' && $info_member['renew'] != '') { ?>
+            var start_date = '<?= $info_member['renew'] ?>';
+
+            $('#member_renew').daterangepicker({
+                startDate: '<?= ($info_member['renew']=='' ? '1990/01/01' : $info_member['renew']) ?>',
+                singleDatePicker: true,
+                showDropdowns: true,
+                //minYear: parseInt(moment().format('YYYY')),
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+        <?php }else{ ?>
             $('#member_renew').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
@@ -207,6 +206,21 @@
                     format: 'YYYY/MM/DD'
                 }
             });
+        <?php } ?>
+
+        <?php if(isset($info_member) && $info_member['member_expired'] != '0000-00-00' && $info_member['member_expired'] != '') { ?>
+            var start_date = '<?= $info_member['member_expired'] ?>';
+
+            $('#member_expired').daterangepicker({
+                startDate: '<?= ($info_member['member_expired']=='' ? '1990/01/01' : $info_member['member_expired']) ?>',
+                singleDatePicker: true,
+                showDropdowns: true,
+                //minYear: parseInt(moment().format('YYYY')),
+                locale: {
+                    format: 'YYYY/MM/DD'
+                }
+            });
+        <?php }else{ ?>
             $('#member_expired').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,

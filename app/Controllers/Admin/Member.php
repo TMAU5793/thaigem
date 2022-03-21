@@ -221,7 +221,7 @@ class Member extends Controller
 		$request = service('request');
 
 		$post = $request->getPost();
-		
+		//print_r($post);
         if ($post) {
 
 			$id = $post['hd_id'];
@@ -250,10 +250,10 @@ class Member extends Controller
 					$data = [						
 						'password' => password_hash($post['txt_password'], PASSWORD_DEFAULT),
 						'company' => $post['txt_company'],
-						'name' => $post['txt_mainperson'],
-            			'lastname' => $lastname,
 						'email' => $post['txt_email'],
-						'phone' => $post['txt_phone'],
+						'name' => $post['txt_mainperson'],
+						'lastname' => $lastname,
+						'company_phone' => $post['txt_phone'],
 						'website' => urlencode($post['txt_website']),
 						'type' => $post['rd_type'],
 						'dealer_code' => $post['dealer_code'],
@@ -261,7 +261,8 @@ class Member extends Controller
 						'renew' => $post['member_renew'],
 						'member_expired' => $post['member_expired'],
 						'status' => $post['ddl_status'],
-						'about' => $post['txt_about']
+						'about' => $post['txt_about'],
+						'employee' => $post['ddl_employee']
 					];
 					$model->update($id, $data);
 
@@ -314,7 +315,8 @@ class Member extends Controller
 					'email' => $post['txt_email'],
 					'name' => $post['txt_mainperson'],
             		'lastname' => $lastname,
-					'phone' => $post['txt_phone'],
+					'phone' => $post['txt_mainphone'],
+					'company_phone' => $post['txt_phone'],
 					'website' => urlencode($post['txt_website']),
 					'type' => $post['rd_type'],
 					'dealer_code' => $post['dealer_code'],
@@ -322,7 +324,8 @@ class Member extends Controller
 					'renew' => $post['member_renew'],
 					'member_expired' => $post['member_expired'],
 					'status' => $post['ddl_status'],
-					'about' => $post['txt_about']
+					'about' => $post['txt_about'],
+					'employee' => $post['ddl_employee']
 				];
 				$model->update($id, $arr);
 				print_r($model->errors());
@@ -344,38 +347,10 @@ class Member extends Controller
 						}
 					}
 				}
-			}
-
-			$db = db_connect();
-			$builder = $db->table('tbl_social');
-			$ckd = $builder->where('member_id',$id)->get()->getRow();
-			$date = date('Y-m-d H:i:s');
-			if($ckd){
-				$social = [
-					'line' => $post['txt_line'],
-					'facebook' => $post['txt_facebook'],
-					'instagram' => $post['txt_instagram'],
-					'linkein' => $post['txt_linkein'],
-					'youtube' => $post['txt_youtube'],
-					'updated_at' => $date
-				];
-				$builder->where('id',$id)->update($social);
-			}else{
-				$social = [
-					'member_id' => $id,
-					'line' => $post['txt_line'],
-					'facebook' => $post['txt_facebook'],
-					'instagram' => $post['txt_instagram'],
-					'linkein' => $post['txt_linkein'],
-					'youtube' => $post['txt_youtube'],
-					'created_at' => $date,
-					'updated_at' => $date
-				];
-				$builder->where('id',$id)->update($social);
-			}
+			}			
 		}
 		
-		return redirect()->to('admin/member');
+		//return redirect()->to('admin/member');
 	}
 	
 	public function upload($id,$profile,$img_del)

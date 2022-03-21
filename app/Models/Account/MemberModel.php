@@ -283,11 +283,12 @@ class MemberModel extends Model
         $builder = $this->db->table('tbl_member');
         $builder->where('id', $data['hd_id']);
         $query = $builder->update($info);
-        if($query){
-            $this->updateAddress($data);
-        }else{
-            return false;
-        }
+        // if($query){
+        //     $this->updateAddress($data);
+        // }else{
+        //     return false;
+        // }
+        $this->updateAddress($data);
     }
 
     public function updateAddress($data)
@@ -322,11 +323,13 @@ class MemberModel extends Model
             $query = $builder->insert($info);
         }
         
-        if($query){
-            $this->updateBusiness($data);
-        }else{
-            return false;
-        }
+        // if($query){
+        //     $this->updateBusiness($data);
+        // }else{
+        //     return false;
+        // }
+
+        $this->updateBusiness($data);
     }
 
     public function updateBusiness($data)
@@ -336,45 +339,48 @@ class MemberModel extends Model
         $builder->where('member_id', $data['hd_id']);
         $info = $builder->get()->getRowArray();
         
-        if(isset($data['ddl_productcate'])){
+        if($data['ddl_productcate']){
             $pdata = '';
             $arr = explode(',',$info['product']);
+            $count_arr = count($arr);
             foreach ($arr as $item){
-                $pdata .= $item.',';
+                if($count_arr>1){
+                    $pdata .= $item.',';
+                }else{
+                    $pdata = $item;
+                }
             }
             $pdata = substr($pdata,0,-1);
             $product = count($data['ddl_productcate']);
 
-            $sb = ',';
-            if($pdata==''){
-                $sb = '';
-            }
-
             for ($i=0; $i < $product; $i++) {
                 $sb = ',';
-                $pdata .= $sb.$data['ddl_productcate'][$i];
+                if($pdata){
+                    $pdata .= $sb.$data['ddl_productcate'][$i];
+                }else{
+                    $pdata .= $data['ddl_productcate'][$i].$sb;
+                }
             }
-            //echo $pdata;
-            $member = $builder->get()->getRow();
-            if($member->member_id!=''){
-                $info = [
+            echo $pdata;
+            if($info){
+                $update_data = [
                     'product' => $pdata,
                     'updated_at' => $datetime
                 ];
                 $builder->where('member_id', $data['hd_id']);
-                $builder->update($info);
+                $builder->update($update_data);
             }else{
-                $info = [
+                $update_data = [
                     'member_id' => $data['hd_id'],
                     'product' => $pdata,
                     'created_at' => $datetime,
                     'updated_at' => $datetime
                 ];
-                $builder->insert($info);
+                $builder->insert($update_data);
             }
         }
 
-        if(isset($data['ddl_business'])){
+        if($data['ddl_business']){
             $bdata = '';
             $arr = explode(',',$info['business']);
             foreach ($arr as $item){
@@ -383,35 +389,39 @@ class MemberModel extends Model
             $bdata = substr($bdata,0,-1);
             $business = count($data['ddl_business']);
             
-            $sb = ',';
-            if($bdata==''){
-                $sb = '';
-            }
             for ($i=0; $i < $business; $i++) {
-                $bdata .= $sb.$data['ddl_business'][$i];
                 $sb = ',';
+                if($business==1){
+                    $bdata = $data['ddl_business'][$i];
+                }else{
+                    if($i<1){
+                        $bdata = $data['ddl_business'][$i];
+                    }else{
+                        $bdata .= $sb.$data['ddl_business'][$i];
+                    }
+                }
             }
-            
-            $member = $builder->get()->getRow();
-            if($member->member_id!=''){
-                $info = [
+             
+            echo $bdata;
+            if($info){
+                $update_data = [
                     'business' => $bdata,
                     'updated_at' => $datetime
                 ];
                 $builder->where('member_id', $data['hd_id']);
-                $builder->update($info);
+                $builder->update($update_data);
             }else{
-                $info = [
+                $update_data = [
                     'member_id' => $data['hd_id'],
                     'business' => $bdata,
                     'created_at' => $datetime,
                     'updated_at' => $datetime
                 ];
-                $builder->insert($info);
+                $builder->insert($update_data);
             }
         }
 
-        $this->updateSocial($data);
+        //$this->updateSocial($data);
     }
 
     public function updateSocial($data)
@@ -450,11 +460,13 @@ class MemberModel extends Model
             $query = $builder->insert($info);
         }
         
-        if($query){
-            $this->updateContact($data);
-        }else{
-            return false;
-        }
+        // if($query){
+        //     $this->updateContact($data);
+        // }else{
+        //     return false;
+        // }
+
+        $this->updateContact($data);
     }
 
     public function updateContact($data)
@@ -466,7 +478,7 @@ class MemberModel extends Model
         $lastname = '';
         $phone = '';
         
-        if(isset($data['txt_person'])){
+        if($data['txt_person']){
             $count = count($data['txt_person']);
             for ($i=0; $i < $count; $i++) {
                 $phone = $data['txt_personphone'][$i];
