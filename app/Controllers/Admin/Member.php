@@ -350,7 +350,7 @@ class Member extends Controller
 			}			
 		}
 		
-		//return redirect()->to('admin/member');
+		return redirect()->to('admin/member');
 	}
 	
 	public function upload($id,$profile,$img_del)

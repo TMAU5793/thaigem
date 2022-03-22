@@ -342,23 +342,20 @@ class MemberModel extends Model
         if($data['ddl_productcate']){
             $pdata = '';
             $arr = explode(',',$info['product']);
-            $count_arr = count($arr);
             foreach ($arr as $item){
-                if($count_arr>1){
+                if($item){
                     $pdata .= $item.',';
-                }else{
-                    $pdata = $item;
                 }
             }
             $pdata = substr($pdata,0,-1);
             $product = count($data['ddl_productcate']);
-
+            echo $pdata.'<br>';
             for ($i=0; $i < $product; $i++) {
                 $sb = ',';
                 if($pdata){
                     $pdata .= $sb.$data['ddl_productcate'][$i];
                 }else{
-                    $pdata .= $data['ddl_productcate'][$i].$sb;
+                    $pdata .= $data['ddl_productcate'][$i];
                 }
             }
             echo $pdata;
@@ -384,25 +381,23 @@ class MemberModel extends Model
             $bdata = '';
             $arr = explode(',',$info['business']);
             foreach ($arr as $item){
-                $bdata .= $item.',';
+                if($item){
+                    $bdata .= $item.',';
+                }
             }
             $bdata = substr($bdata,0,-1);
             $business = count($data['ddl_business']);
-            
+            // echo $bdata.'1<br>';
             for ($i=0; $i < $business; $i++) {
                 $sb = ',';
-                if($business==1){
-                    $bdata = $data['ddl_business'][$i];
+                if($bdata){
+                    $bdata .= $sb.$data['ddl_business'][$i];
                 }else{
-                    if($i<1){
-                        $bdata = $data['ddl_business'][$i];
-                    }else{
-                        $bdata .= $sb.$data['ddl_business'][$i];
-                    }
+                    $bdata .= $data['ddl_business'][$i];
                 }
             }
              
-            echo $bdata;
+            // echo $bdata;
             if($info){
                 $update_data = [
                     'business' => $bdata,

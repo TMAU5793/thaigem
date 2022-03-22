@@ -102,7 +102,7 @@ class Member extends BaseController
                     return redirect()->to('member');
                 }
             }
-            
+            //echo $member['id'];
             $data = [
                 'meta_title' => ($member['company']!=''?$member['company']:'TGJTA Member'),
                 'meta_desc' => $member['about'],

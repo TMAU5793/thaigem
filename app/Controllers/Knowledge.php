@@ -58,7 +58,8 @@ class Knowledge extends BaseController
             'meta_desc' => ($this->lang=='en' && $row['meta_desc_en']!=""?$row['meta_desc_en']:$row['meta_desc']),
             'info' => $row,
             'lang' => $this->lang,
-            'related' => $related
+            'related' => $related,
+            'shareImg' => $row['thumbnail']
         ];
         
         //print_r($related);

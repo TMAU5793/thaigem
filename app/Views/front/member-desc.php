@@ -97,7 +97,7 @@
                                     <div class="item-desc">
                                         <h4 class="ff-dbadmanBold mb-0"><?= lang('GlobalLang.business-type') ?></h4>
                                         <div class="box-info">
-                                            <p class="mb-0"><?= ($cate_prod && $cate_prod['product']!=''?$cate_prod['business']:'-') ?></p>
+                                            <p class="mb-0"><?= ($cate_prod && $cate_prod['business']!=''?$cate_prod['business']:'-') ?></p>
                                         </div>
                                     </div>
                                 </div>
