@@ -37,6 +37,15 @@
         <link rel="stylesheet" href="<?= base_url('assets/style/css/lang-th.css'); ?>">
     <?php } ?>
     
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZJ7K3EYFB"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NZJ7K3EYFB');
+    </script>
 </head>
 <body class="<?= (session()->get('userdata')['logged_member']?'account-logged':'') ?>">
 
