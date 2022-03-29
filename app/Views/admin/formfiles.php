@@ -73,18 +73,15 @@
                         <td align="right"><?= $item['created_at'] ?></td>
                         <td align="right"><?= $item['filefor'] ?></td>
                         <td class="text-center">
-                            <?php
-                                if(isset($member)){
-                            ?>
                                 <form action="<?= base_url('admin/files/downloadFiles') ?>" method="POST" enctype="multipart/form-data">
                                     <!-- <a href="javascript:void(0)" data-id="<?= $item['id'] ?>" onclick="downloadFile('<?= $item['id'] ?>')">ดาวน์โหลด</a> -->
-                                    <input type="hidden" name="hd_id" value="<?= $item['id'] ?>">
+                                    <input type="hidden" name="hd_id" value="<?= $item['f_id'] ?>">
                                     <button type="submit" class="btn btn-primary">ดาวน์โหลด</button>
                                 </form>
-                            <?php }else{ ?>
-                                <a href="<?= base_url('admin/files/edit?id='.$item['id']); ?>">แก้ไข</a> |
-                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['id'] ?>" onClick="DeleteRow('<?= $item['id'] ?>','/admin/files/delete');">ลบ</a>
-                            <?php } ?>
+                                
+                                <!-- <a href="<?= base_url('admin/files/edit?id='.$item['id']); ?>">แก้ไข</a> | -->
+                                <a href="javascript:void(0)" class="del-item" data-id="<?= $item['f_id'] ?>" onClick="DeleteRow('<?= $item['f_id'] ?>','/admin/files/delete');">ลบ</a>
+                            
                         </td>
                     </tr>
                     <?php } }else{ ?>

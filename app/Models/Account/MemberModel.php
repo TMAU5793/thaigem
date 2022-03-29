@@ -349,7 +349,7 @@ class MemberModel extends Model
             }
             $pdata = substr($pdata,0,-1);
             $product = count($data['ddl_productcate']);
-            echo $pdata.'<br>';
+            //echo $pdata.'<br>';
             for ($i=0; $i < $product; $i++) {
                 $sb = ',';
                 if($pdata){
@@ -358,7 +358,7 @@ class MemberModel extends Model
                     $pdata .= $data['ddl_productcate'][$i];
                 }
             }
-            echo $pdata;
+            //echo $pdata;
             if($info){
                 $update_data = [
                     'product' => $pdata,
@@ -416,7 +416,7 @@ class MemberModel extends Model
             }
         }
 
-        //$this->updateSocial($data);
+        $this->updateSocial($data);
     }
 
     public function updateSocial($data)
@@ -425,7 +425,7 @@ class MemberModel extends Model
         $builder->where('member_id', $data['hd_id']);
         $member = $builder->get()->getRow();
         $datetime = new Time('now');               
-
+        
         if($member->member_id){
             $info = [
                 'line' => $data['txt_line'],
