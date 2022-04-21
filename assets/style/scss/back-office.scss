@@ -464,6 +464,19 @@ table {
     }
 }
 
+#accountEdit {
+    cursor: pointer;
+    &:hover {
+        color: #ffc107;
+    }
+}
+
+#updateAccountModal {
+    #ckd_account {
+        cursor: pointer;
+    }
+}
+
 @media (max-width: 1399px) {
     .content-wrapper {
         .content-header {

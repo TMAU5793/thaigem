@@ -130,7 +130,7 @@ class MemberModel extends Model
 		if(!$result){
 			$builder2 = $db->table('tbl_member AS a');
 			$builder2->select('*,a.id as m_id,a.status as approve');
-			$builder->where(['a.type'=>'dealer','a.status'=>'2']);
+			$builder2->where(['a.type'=>'dealer','a.status'=>'2']);
 			if($data['duration']!=''){
 				if($data['duration']!='10up'){
 					$duration = explode('-',$data['duration']);

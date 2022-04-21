@@ -41,6 +41,22 @@
                     <div class="tab-pane fade show active" id="nav-content-1" role="tabpanel" aria-labelledby="nav-1">
                         <div class="row">
                             <div class="col-12 mb-3">
+                                <label for="" class="form-label">บัญชีผู้ใช้ <i class="fas fa-edit ps-2" id="accountEdit" title="อัพเดตบัญชีผู้ใช้" data-bs-toggle="modal" data-bs-target="#updateAccountModal"></i></label>
+                                <span class="d-block"><?= (isset($info_member)? $info_member['account'] : '') ?> </span>
+                            </div>
+                            <div class="col-6 mb-3 pwd-input <?= (isset($info_member) && !isset($validation)?'d-none':'') ?>">
+                                <label for="txt_password" class="form-label">รหัสผ่าน</label>
+                                <input type="password" class="form-control" id="txt_password" name="txt_password" autocomplete="new-password" <?= (isset($validation)?'':'disabled') ?>>
+                            </div>
+                            <div class="col-6 mb-3 pwd-input <?= (isset($info_member) && !isset($validation)?'d-none':'') ?>">
+                                <label for="txt_password_cf" class="form-label">ยืนยันรหัสผ่าน</label>
+                                <input type="password" class="form-control" id="txt_password_cf" name="txt_password_cf" <?= (isset($validation)?'':'disabled') ?>>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <button type="button" id="btn_changepwd" class="btn btn-warning"><?= (isset($validation)?'ยกเลิก':'แก้ไขรหัสผ่าน') ?></button>
+                            </div>
+
+                            <div class="col-12 mb-3">
                                 <label for="ddl_status" class="form-label">การอนุมัติ</label>
                                 <select name="ddl_status" id="ddl_status" class="form-control">
                                     <option value="2" <?= (isset($info_member) && $info_member['type']=='dealer' && $info_member['status']=='2' || $info_member['type']=='member' && $info_member['status']=='1' ? 'selected' : '') ?>>อนุมัติ</option>
@@ -81,21 +97,6 @@
                                 <input type="text" class="form-control" id="member_expired" name="member_expired" value="">
                             </div>
 
-                            <div class="col-12 mb-3">
-                                <label for="txt_account" class="form-label">บัญชีผู้ใช้ (อีเมล)</label>                        
-                                <span class="d-block"><?= (isset($info_member)? $info_member['account'] : '') ?></span>
-                            </div>
-                            <div class="col-6 mb-3 pwd-input <?= (isset($info_member) && !isset($validation)?'d-none':'') ?>">
-                                <label for="txt_password" class="form-label">รหัสผ่าน</label>
-                                <input type="password" class="form-control" id="txt_password" name="txt_password" autocomplete="new-password" <?= (isset($validation)?'':'disabled') ?>>
-                            </div>
-                            <div class="col-6 mb-3 pwd-input <?= (isset($info_member) && !isset($validation)?'d-none':'') ?>">
-                                <label for="txt_password_cf" class="form-label">ยืนยันรหัสผ่าน</label>
-                                <input type="password" class="form-control" id="txt_password_cf" name="txt_password_cf" <?= (isset($validation)?'':'disabled') ?>>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <button type="button" id="btn_changepwd" class="btn btn-warning"><?= (isset($validation)?'ยกเลิก':'แก้ไขรหัสผ่าน') ?></button>
-                            </div>
                             <div class="col-12">
                                 <hr>
                             </div>
@@ -352,5 +353,28 @@
         </div>
     </section>
 </div>
-
+<!-- Modal Update account -->
+<div class="modal fade" id="updateAccountModal" tabindex="-1" aria-labelledby="updateAccountLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateAccountLabel">อัพเดตบัญชีผู้ใช้</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmUpdateAccount" action="" method="post">
+                    <label for="">บัญชีผู้ใช้</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="txt_account">
+                        <span class="input-group-text" id="ckd_account">เช็ค</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?= $this->endSection() ?>

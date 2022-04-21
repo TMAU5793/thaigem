@@ -600,4 +600,18 @@ class Member extends Controller
             return redirect()->to(site_url('admin/member'));
         }
     }
+
+	public function checkAccount()
+    {
+        $request = service('request');
+        $model = new MemberModel();
+		$account = $request->getPost('val');
+		$result = $model->where('account','2203')->first();
+		// if($result){
+		// 	echo TRUE;
+		// }else{
+		// 	echo FALSE;
+		// }
+		echo $request->getPost('val');
+    }
 }

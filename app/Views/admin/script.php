@@ -385,6 +385,18 @@
             }
         });
 
+        $('#ckd_account').on('click',function(){
+            let val = $('input[name=txt_account]').val();
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('admin/member/checkaccount') ?>",
+                data: {val:val},
+                dataType: "JSON",
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        });
     });
     //End ready function
 

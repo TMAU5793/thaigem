@@ -208,7 +208,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="w-50 position-relative member-text">
-                            <?= $rowp['DateDiff']; ?>
+                            
                             <div class="w-100 ps-3 text-center">
                                 <h5 class="ff-dbadmanBold text-uppercase mb-0 line-height-18px mb-2 fz-1-2rem-575 text-line-4"><?= $row['company'] ?></h5>
                                 <div class="cate-type mb-2">
