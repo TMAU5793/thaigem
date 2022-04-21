@@ -606,12 +606,11 @@ class Member extends Controller
         $request = service('request');
         $model = new MemberModel();
 		$account = $request->getPost('val');
-		$result = $model->where('account','2203')->first();
-		// if($result){
-		// 	echo TRUE;
-		// }else{
-		// 	echo FALSE;
-		// }
-		echo $request->getPost('val');
+		$result = $model->where('account',$account)->first();
+		if($result){
+			echo TRUE;
+		}else{
+			echo FALSE;
+		}
     }
 }

@@ -386,16 +386,32 @@
         });
 
         $('#ckd_account').on('click',function(){
+            let el = $(this);
             let val = $('input[name=txt_account]').val();
+            //console.log(val);
+            let ckeng = TextEng(val);
+            if(!ckeng){
+                $('#errTextAccount').html('*ใช้ภาษาอังกฤษ กับตัวเลข');
+            }else{
+                $('#errTextAccount').html('');
+            }
             $.ajax({
                 type: "POST",
                 url: "<?= site_url('admin/member/checkaccount') ?>",
                 data: {val:val},
-                dataType: "JSON",
+                //dataType: "JSON",
                 success: function (response) {
                     console.log(response);
+                    if(response){
+                        el.html('บัญชีถูกใช้แล้ว'); //TRUE ชื่อบัญชีถูกใช้แล้ว
+                    }else{
+                        el.html('บัญชีใช้ได้'); //FALSE ชื่อบัญชียังไม่ถูกใช้
+                    }
                 }
             });
+        });
+        $('input[name=txt_account]').on('change',function(){
+            $('#ckd_account').html('เช็ค');
         });
     });
     //End ready function
@@ -514,4 +530,8 @@
         el.closest(".add-cate").remove();
     }    
 
+    function TextEng(data){
+        let str = /^[a-zA-Z0-9$@$!%*?&#^-_. +]+$/;
+        return str.test(data);
+    }
 </script>

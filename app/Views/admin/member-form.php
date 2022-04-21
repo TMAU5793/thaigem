@@ -366,8 +366,9 @@
                     <label for="">บัญชีผู้ใช้</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="txt_account">
-                        <span class="input-group-text" id="ckd_account">เช็ค</span>
+                        <span class="input-group-text ckd_success" id="ckd_account">เช็ค</span>
                     </div>
+                    <span class="text-danger" id="errTextAccount"></span>
                 </form>
             </div>
             <div class="modal-footer">
