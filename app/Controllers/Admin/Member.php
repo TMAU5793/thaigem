@@ -613,4 +613,19 @@ class Member extends Controller
 			echo FALSE;
 		}
     }
+
+	public function updateAccount()
+	{
+		$request = service('request');
+        $model = new MemberModel();
+		$post = $request->getPost();
+		if($post){
+			$data = [
+				'account' => $post['txt_account']
+			];
+			$id = $post['hd_account'];
+			$model->update($id,$data);
+			return redirect()->to($post['hd_burl'].'?id='.$id);
+		}
+	}
 }

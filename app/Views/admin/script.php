@@ -386,32 +386,20 @@
         });
 
         $('#ckd_account').on('click',function(){
-            let el = $(this);
-            let val = $('input[name=txt_account]').val();
-            //console.log(val);
-            let ckeng = TextEng(val);
-            if(!ckeng){
-                $('#errTextAccount').html('*ใช้ภาษาอังกฤษ กับตัวเลข');
-            }else{
-                $('#errTextAccount').html('');
-            }
-            $.ajax({
-                type: "POST",
-                url: "<?= site_url('admin/member/checkaccount') ?>",
-                data: {val:val},
-                //dataType: "JSON",
-                success: function (response) {
-                    console.log(response);
-                    if(response){
-                        el.html('บัญชีถูกใช้แล้ว'); //TRUE ชื่อบัญชีถูกใช้แล้ว
-                    }else{
-                        el.html('บัญชีใช้ได้'); //FALSE ชื่อบัญชียังไม่ถูกใช้
-                    }
-                }
-            });
+            let val = $('input[name=txt_account]').val(); //รับ input
+            checkAccount(val,function(callback){});
         });
         $('input[name=txt_account]').on('change',function(){
             $('#ckd_account').html('เช็ค');
+        });
+
+        $('#btn_updateaccount').on('click',function(){
+            let val = $('input[name=txt_account]').val(); //รับ input
+            checkAccount(val,function(callback){
+                if(callback){
+                    $('#frmUpdateAccount').submit();
+                }
+            });
         });
     });
     //End ready function
@@ -533,5 +521,36 @@
     function TextEng(data){
         let str = /^[a-zA-Z0-9$@$!%*?&#^-_. +]+$/;
         return str.test(data);
+    }
+
+    function checkAccount(val,callback){
+        var el = $('#errTextAccount');        
+        var acc= val.replace(/\s+/g, '').trim(); // ตัดช่องว่าง
+        var ckeng = TextEng(val); // เช็คภาษาอังกฤษ ตัวเลข
+        var returnValue = null;
+        $('input[name=txt_account]').val(acc);
+        if(!ckeng){
+            el.html('<span class="text-danger">*ใช้ภาษาอังกฤษ กับตัวเลข</span>');
+            returnValue = 0;
+        }else{
+            el.html('');
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url('admin/member/checkaccount') ?>",
+                data: {val:acc},
+                //dataType: "JSON",
+                success: function (response) {
+                    if(response){
+                        el.html('<span class="text-danger">*ชื่อบัญชีถูกใช้แล้ว</span>');//TRUE ชื่อบัญชีถูกใช้แล้ว
+                        callback(0);
+                    }else{
+                        el.html('<span class="text-success">*ชื่อบัญชีสามารถใช้ได้</span>'); //FALSE ชื่อบัญชียังไม่ถูกใช้
+                        callback(1);
+                    }
+                }
+            });
+            //return returnValue;
+        }
+        //return returnValue;
     }
 </script>

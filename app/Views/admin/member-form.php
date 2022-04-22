@@ -362,18 +362,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="frmUpdateAccount" action="" method="post">
+                <form id="frmUpdateAccount" action="<?= site_url('admin/member/updateAccount') ?>" method="post">
                     <label for="">บัญชีผู้ใช้</label>
                     <div class="input-group mb-3">
+                        <input type="hidden" name="hd_account" value="<?= (isset($info_member)? $info_member['id'] : '') ?>">
+                        <input type="hidden" name="hd_burl" value="<?= current_url(); ?>">
                         <input type="text" class="form-control" name="txt_account">
-                        <span class="input-group-text ckd_success" id="ckd_account">เช็ค</span>
+                        <span class="input-group-text" id="ckd_account">เช็ค</span>
                     </div>
-                    <span class="text-danger" id="errTextAccount"></span>
+                    <div id="errTextAccount"></div>
+                    <!-- <span class="text-danger" id="errTextAccount"></span> -->
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
-                <button type="button" class="btn btn-primary">บันทึก</button>
+                <button type="button" class="btn btn-primary" id="btn_updateaccount">บันทึก</button>
             </div>
         </div>
     </div>
