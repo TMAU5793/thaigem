@@ -753,6 +753,17 @@ table .fa-times-circle {
 #updateAccountModal #ckd_account {
   cursor: pointer; }
 
+.label-file {
+  padding: .4rem 1rem;
+  margin-top: -2px;
+  margin-bottom: 0;
+  background-color: #ccc;
+  cursor: pointer;
+  border-radius: .2rem; }
+  .label-file:hover {
+    background-color: #656565;
+    color: #fff; }
+
 @media (max-width: 1399px) {
   .content-wrapper .content-header {
     padding: 3rem 1.5rem 0; }

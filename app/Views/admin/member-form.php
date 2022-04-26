@@ -220,8 +220,13 @@
                                 <input type="text" name="txt_youtube" class="form-control" value="<?= (isset($social)? urldecode($social['youtube']) : '') ?>">
                             </div>
                             <div class="col-md-6 social-url">
-                                <label for="" class="form-label">Wechat ID</label>
-                                <input type="text" class="form-control" name="txt_wechat" value="<?= (isset($social)?$social['wechat'] : set_value('txt_wechat')) ?>">
+                                <label for="" class="form-label">Wechat QR-Code</label>
+                                <input type="file" name="txt_wechat" id="txt_wechat" class="form-control input-hide" accept="image/*">
+                                <input type="hidden" name="hd_wechat" value="<?= (isset($social)?$social['wechat'] : set_value('txt_wechat')) ?>">
+                                <div class="file-cs">
+                                    <label for="txt_wechat" class="label-file">เลือกรูป</label>
+                                    <span id="wechat-filename" class="ps-2"><?= (isset($social)?$social['wechat'] : set_value('txt_wechat')) ?></span>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="form-label">Whatsapp</label> <span class="text-gray">(ตัวอย่าง : http://wa.me/66981023919</span>
@@ -381,4 +386,16 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section("scripts") ?>
+    <script>
+        $(function(){
+            $('#txt_wechat').on('change',function(){
+                let input = $(this);
+                let inputname = input[0].files[0].name;
+                $('#wechat-filename').html(inputname);
+            });
+        });
+    </script>    
 <?= $this->endSection() ?>
