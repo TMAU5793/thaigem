@@ -226,6 +226,7 @@
                                 <div class="file-cs">
                                     <label for="txt_wechat" class="label-file">เลือกรูป</label>
                                     <span id="wechat-filename" class="ps-2"><?= (isset($social)?$social['wechat'] : set_value('txt_wechat')) ?></span>
+                                    <button type="button" class="btn btn-primary btn-pvwechat d-none" data-bs-toggle="modal" data-bs-target="#wechatPreviewModal" style="padding: 0 .5rem 3px; margin-left: 1rem;">ดูรูป</button>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -386,6 +387,21 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Wechat Preview -->
+<div class="modal fade" id="wechatPreviewModal" tabindex="-1" aria-labelledby="wechatPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="wechatPreviewLabel">ตัวอย่าง Wechat QR-Code</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="" id="wechatPreviewImg" class="w-100">
+            </div>
+        </div>
+    </div>
+</div>
 <?= $this->endSection() ?>
 
 <?= $this->section("scripts") ?>
@@ -393,8 +409,18 @@
         $(function(){
             $('#txt_wechat').on('change',function(){
                 let input = $(this);
-                let inputname = input[0].files[0].name;
-                $('#wechat-filename').html(inputname);
+                let file = input[0].files[0];
+                $('#wechat-filename').html(file.name);
+ 
+                if(file){
+                    var reader = new FileReader();        
+                    reader.onload = function(){
+                        $("#wechatPreviewImg").attr("src", reader.result);
+                    }
+                    reader.readAsDataURL(file);
+
+                    $('.btn-pvwechat').removeClass('d-none');
+                }
             });
         });
     </script>    

@@ -209,9 +209,10 @@ class Account extends Controller
         $email = \Config\Services::email();
                 
         $email->setFrom('info@thaigemjewelry.org', 'Thai gem and jewelry');
-        $email->setTo($account);                
+        $email->setTo($account);
+        $email->setCC('info@thaigemjewelry.org');
         $email->setSubject(($this->lang=='en'?'Register account complete':'การสมัครสมาชิกเรียบร้อย'));
-        $msg = "<p>ท่านได้ทำการสร้างบัญชีสำหรับใช้งานเว็บไซต์สมาคมอัญมณีเรียบร้อยแล้ว ชื่อบัญชี : ".$account."</p>";
+        $msg = "<p>การสร้างบัญชีสำหรับใช้งานเว็บไซต์สมาคมอัญมณีเรียบร้อยแล้ว ชื่อบัญชี : ".$account."</p>";
         $msg .= "สามารถเข้าใช้งานได้ที่ <a href=\"".site_url()."\">".lang('GlobalLang.website')."</a>";
         $email->setMessage($msg);
         //echo $msg;

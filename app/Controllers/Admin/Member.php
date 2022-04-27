@@ -253,6 +253,7 @@ class Member extends Controller
 						'email' => $post['txt_email'],
 						'name' => $post['txt_mainperson'],
 						'lastname' => $lastname,
+						'phone' => $post['txt_mainphone'],
 						'company_phone' => $post['txt_phone'],
 						'website' => urlencode($post['txt_website']),
 						'type' => $post['rd_type'],
@@ -332,6 +333,17 @@ class Member extends Controller
 
 				$acModel->updateAddress($post);
 
+				// รูป QR-Code Wechat
+				$wechat_arr = [
+					'userid' => $post['hd_id'],
+					'qrcode_wechat' => $request->getFile('txt_wechat'), //เก็บไฟล์รูปอัพโหลด
+					'del_qrcode' => $request->getVar('hd_wechat'), //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
+					'tbl' => 'tbl_social', // ชื่อตารางข้อมูล
+					'field' => 'wechat' // ชื่อฟิลด์ข้อมูล
+				];				                
+                $this->uploadFile($wechat_arr);
+
+				// รูปโปรไฟล์
 				$file_upload = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
                 $file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
                 $this->upload($post['hd_id'],$file_upload,$file_del);
@@ -626,6 +638,44 @@ class Member extends Controller
 			$id = $post['hd_account'];
 			$model->update($id,$data);
 			return redirect()->to($post['hd_burl'].'?id='.$id);
+		}
+	}
+
+	public function uploadFile($data)
+	{
+		if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+
+		helper(['form','fileystem']);
+		$model = new MemberModel();
+		$db = db_connect();
+		$upload_tbl = $db->table($data['tbl']);
+		$image = \Config\Services::image();
+		
+		$file = $data['qrcode_wechat'];
+		$allowed = ['png','jpg','jpeg']; //ไฟล์รูปที่อนุญาติให้อัพโหลด
+		$ext = $file->getExtension();
+
+		if ($file->isValid() && !$file->hasMoved() && in_array($ext, $allowed)){
+			if($data['del_qrcode']){
+				unlink($data['del_qrcode']); //ลบรูปเก่าออก
+			}
+			
+			$newName = $data['field'].'-'.$file->getRandomName();
+            $path = 'uploads/member/'.$data['userid'];
+			if (!is_dir('uploads/member/'.$data['userid'])) {
+				mkdir('uploads/member/'.$data['userid'], 0777, TRUE);
+				$image->withFile($file)->save($path.'/'.$newName);
+			}else{
+				$image->withFile($file)->save($path.'/'.$newName);
+			}
+			$thumb = [
+				$data['field'] => 'uploads/member/'.$data['userid'].'/'.$newName
+			];
+			//$model->update($data['userid'], $thumb);
+			$upload_tbl->where('member_id',$data['userid']);
+			$upload_tbl->update($thumb);
 		}
 	}
 }

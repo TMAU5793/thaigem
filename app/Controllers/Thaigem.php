@@ -118,4 +118,24 @@ class Thaigem extends BaseController
         }
     }
 
+    public function testMail()
+    {
+        $email = \Config\Services::email();
+        $request = service('request');
+        $mailTo = 'thank@grasp.asia';
+
+        $email->setFrom('thank@grasp.asia', 'thank@grasp.asia');
+        $email->setTo($mailTo);
+        // $email->setCC($mailCC);
+        // $email->setBCC($mailBCC);
+        $email->setSubject('Test Mail');
+        $email->setMessage('Test Mail');
+        //echo $msg;
+        if($email->send()){
+            //return redirect()->to('')->with('msg_done','true');
+        }else{
+            $email->printDebugger();
+        }
+    }
+
 }
