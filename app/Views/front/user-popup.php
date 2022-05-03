@@ -107,6 +107,9 @@
                             <input type="email" class="form-control" name="txt_username" placeholder="<?= lang('GlobalLang.userName').' ('.lang('GlobalLang.email').')' ?> *" value="<?= (isset($signup_valid)?set_value('txt_username'):''); ?>">
                         </div>
                         <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="txt_company" placeholder="<?= lang('GlobalLang.company') ?> *" value="<?= (isset($signup_valid)?set_value('txt_company'):''); ?>">
+                        </div>
+                        <div class="form-group mb-3">
                             <input type="text" class="form-control" name="txt_name" placeholder="<?= lang('GlobalLang.name') ?> *" value="<?= (isset($signup_valid)?set_value('txt_name'):''); ?>">
                         </div>
                         <div class="form-group mb-3">

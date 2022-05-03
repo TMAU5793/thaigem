@@ -727,3 +727,22 @@
         }
     }
 }
+
+.label-file {
+    padding: .4rem 1rem;
+    margin-top: -2px;
+    margin-bottom: 0;
+    background-color: #ccc;
+    cursor: pointer;
+    border-radius: .2rem;
+    &:hover {
+        background-color: rgb(101, 101, 101);
+        color: #fff;
+    }
+}
+
+.btn-pvwechat {
+    padding: .4rem 1rem .2rem;
+    margin-left: 1rem;
+    margin-top: -3px;
+}

@@ -200,9 +200,17 @@
                             </div>
 
                             <div class="col-md-6 social-url">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for=""><?= lang('GlobalLang.wechat') ?></label>
                                     <input type="text" class="form-control" name="txt_wechat" value="<?= (isset($social)?$social->wechat : set_value('txt_wechat')) ?>" placeholder="<?= lang('GlobalLang.wechat') ?>">
+                                </div> -->
+                                <label for="" class="form-label mb-0">Wechat QR-Code</label>
+                                <input type="file" name="txt_wechat" id="txt_wechat" class="form-control input-hide" accept="image/*">
+                                <input type="hidden" name="hd_wechat" value="<?= (isset($social)?$social->wechat : set_value('txt_wechat')) ?>">
+                                <div class="file-cs">
+                                    <label for="txt_wechat" class="label-file">เลือกรูป</label>
+                                    <span id="wechat-filename" class="ps-2 <?= (!$social->wechat?'':'d-none') ?>"><?= (isset($social)?$social->wechat : set_value('txt_wechat')) ?></span>
+                                    <button type="button" class="btn btn-primary btn-pvwechat <?= ($social->wechat?'':'d-none') ?>" data-bs-toggle="modal" data-bs-target="#wechatPreviewModal">ดูรูป</button>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -385,8 +393,42 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Wechat Preview -->
+    <div class="modal fade" id="wechatPreviewModal" tabindex="-1" aria-labelledby="wechatPreviewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="wechatPreviewLabel">ตัวอย่าง Wechat QR-Code</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="<?= (isset($social)?site_url($social->wechat) : '') ?>" id="wechatPreviewImg" class="w-100">
+                </div>
+            </div>
+        </div>
+    </div>
 <?= $this->endSection() ?>
 
 <?= $this->section("scripts") ?>
     <?= $this->include('account/ac-script') ?>
+    <script>
+        $(function(){
+            $('#txt_wechat').on('change',function(){
+                let input = $(this);
+                let file = input[0].files[0];
+                $('#wechat-filename').html(file.name);
+                $('#wechat-filename').removeClass('d-none');
+                if(file){
+                    var reader = new FileReader();        
+                    reader.onload = function(){
+                        $("#wechatPreviewImg").attr("src", reader.result);
+                    }
+                    reader.readAsDataURL(file);
+
+                    $('.btn-pvwechat').removeClass('d-none');
+                }
+            });
+        });
+    </script>
 <?= $this->endSection() ?>

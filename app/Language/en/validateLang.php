@@ -13,4 +13,5 @@ return [
     'not-account' => 'This account could not be found',
     'account-disabled' => 'The user account is disabled',
     'pwd-incorrect' => 'Incorrect password',
+    'valid-company' => 'Please enter company name'
 ];

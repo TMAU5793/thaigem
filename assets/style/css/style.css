@@ -975,6 +975,22 @@ button.bg-darkgold:hover, button.bg-darkgold:focus {
     color: #ffffff;
     background: #665f4f; }
 
+.label-file {
+  padding: .4rem 1rem;
+  margin-top: -2px;
+  margin-bottom: 0;
+  background-color: #ccc;
+  cursor: pointer;
+  border-radius: .2rem; }
+  .label-file:hover {
+    background-color: #656565;
+    color: #fff; }
+
+.btn-pvwechat {
+  padding: .4rem 1rem .2rem;
+  margin-left: 1rem;
+  margin-top: -3px; }
+
 @keyframes left-to-right {
   0% {
     width: 0px; }

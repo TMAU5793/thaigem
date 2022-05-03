@@ -268,6 +268,16 @@ class Member extends Controller
 					$model->update($id, $data);
 
 					$acModel->updateAddress($post);
+
+					// รูป QR-Code Wechat
+					$wechat_arr = [
+						'userid' => $post['hd_id'],
+						'qrcode_wechat' => $request->getFile('txt_wechat'), //เก็บไฟล์รูปอัพโหลด
+						'del_qrcode' => $request->getVar('hd_wechat'), //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
+						'tbl' => 'tbl_social', // ชื่อตารางข้อมูล
+						'field' => 'wechat' // ชื่อฟิลด์ข้อมูล
+					];
+					$this->uploadFile($wechat_arr);
 					
 					$file_upload = $request->getFile('txt_profile'); //เก็บไฟล์รูปอัพโหลด
 					$file_del = $request->getVar('hd_profile_del'); //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
@@ -340,7 +350,7 @@ class Member extends Controller
 					'del_qrcode' => $request->getVar('hd_wechat'), //เก็บค่าใว้เช็คถ้ามีรูปอยู่ ให้ลบรูป
 					'tbl' => 'tbl_social', // ชื่อตารางข้อมูล
 					'field' => 'wechat' // ชื่อฟิลด์ข้อมูล
-				];				                
+				];
                 $this->uploadFile($wechat_arr);
 
 				// รูปโปรไฟล์

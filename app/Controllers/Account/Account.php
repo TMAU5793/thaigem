@@ -103,6 +103,12 @@ class Account extends Controller
                 'is_unique' => lang('validateLang.email-used')
                 ]
             ],
+            'txt_company' => [
+                'rules' => 'required',
+                'errors'    =>  [
+                'required'  =>  lang('validateLang.valid-company')
+                ]
+            ],
             'txt_name' => [
                 'rules' => 'required',
                 'errors'    =>  [

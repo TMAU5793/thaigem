@@ -40,6 +40,7 @@ class AccountModel extends Model
         $info=[
             'account' => $data['txt_username'],
 			'code' => $str_rand,
+			'company' => $data['txt_company'],
             'name' => $name,
 			'lastname' => $lastname,
             'email' => $data['txt_username'],
