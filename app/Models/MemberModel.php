@@ -41,6 +41,7 @@ class MemberModel extends Model
         }
         if($keyword!=''){
             $builder->like('a.company',$keyword);
+			$builder->orLike('a.email',$keyword);
         }
 		if($perPage!=null){
 			$builder->limit($perPage, $offset);
@@ -56,6 +57,7 @@ class MemberModel extends Model
 			}
 			if($keyword!=''){
 				$builder->like('a.company',$keyword);
+				$builder->orLike('a.email',$keyword);
 			}
 			if($perPage!=null){
 				$builder->limit($perPage, $offset);

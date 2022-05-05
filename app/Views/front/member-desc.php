@@ -169,7 +169,7 @@
                                 <a href="<?= $social->youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a>
                             <?php } ?>                            
                             <?php if($social->wechat!=""){ ?>
-                                <a href="<?= $social->wechat ?>" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a>
+                                <a href="<?= site_url($social->wechat) ?>" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a>
                             <?php } ?>
                             <?php if($social->whatsapp!=""){ ?>
                                 <a href="<?= $social->whatsapp ?>" target="_blank" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>

@@ -35,7 +35,7 @@
                             </div>
                         <?php } ?>
                         <div class="col-3">
-                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="<?= ($active=='dealer'?'ชื่อบริษัท...':'ชื่อสมาชิก...') ?>" value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
+                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="คีย์เวิร์ด" value="<?= (isset($_GET['keyword'])?$_GET['keyword']:'') ?>">
                         </div>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary">ค้นหา</button>
