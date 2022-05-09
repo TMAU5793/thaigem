@@ -28,10 +28,10 @@ class Files extends Controller
 
         $info = '';
         if($keyword!=''){
-            $info = $model->join('tbl_member as b','tbl_files.member_id = b.id')
+            $info = $model->select('*,tbl_files.id as f_id')->join('tbl_member as b','tbl_files.member_id = b.id')
                 ->where('tbl_files.uploadby','admin')->like('b.company',$keyword)->orderBy('tbl_files.created_at DESC')->paginate(25);
         }else{
-            $info = $model->where('uploadby','admin')->orderBy('created_at DESC')->paginate(25);
+            $info = $model->select('*,id as f_id')->where('uploadby','admin')->orderBy('created_at DESC')->paginate(25);
         }
 		$data = [
             'meta_title' => 'รายการเอกสาร',
