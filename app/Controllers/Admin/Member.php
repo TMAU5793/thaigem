@@ -262,7 +262,7 @@ class Member extends Controller
 						'renew' => $post['member_renew'],
 						'member_expired' => $post['member_expired'],
 						'status' => $post['ddl_status'],
-						'about' => $post['txt_about'],
+						'about' => strip_tags($post['txt_about']),
 						'employee' => $post['ddl_employee']
 					];
 					$model->update($id, $data);
@@ -335,7 +335,7 @@ class Member extends Controller
 					'renew' => $post['member_renew'],
 					'member_expired' => $post['member_expired'],
 					'status' => $post['ddl_status'],
-					'about' => $post['txt_about'],
+					'about' => strip_tags($post['txt_about']),
 					'employee' => $post['ddl_employee']
 				];
 				$model->update($id, $arr);

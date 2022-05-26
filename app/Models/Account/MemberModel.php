@@ -261,7 +261,7 @@ class MemberModel extends Model
                 'phone' => $data['txt_mainphone'],
                 'company_phone' => $data['txt_companyphone'],
                 'company' => $data['txt_company'],
-                'about' => $data['txt_ac_about'],
+                'about' => strip_tags($data['txt_ac_about']),
                 'website' => urlencode($data['txt_website']),
                 'map' => $data['txt_map'],
                 'employee' => $data['ddl_employee']
@@ -275,7 +275,7 @@ class MemberModel extends Model
                 'phone' => $data['txt_mainphone'],
                 'company_phone' => $data['txt_companyphone'],
                 'company' => $data['txt_company'],
-                'about' => $data['txt_ac_about'],
+                'about' => strip_tags($data['txt_ac_about']),
                 'website' => urlencode($data['txt_website']),
                 'employee' => $data['ddl_employee']
             ];
@@ -304,7 +304,7 @@ class MemberModel extends Model
                 'amphure_id' => $data['ddl_amphure'],
                 'district_id' => $data['ddl_district'],
                 'zipcode' => $data['txt_zipcode'],
-                'address' => $data['txt_address'],
+                'address' => strip_tags($data['txt_address']),
                 'updated_at' => $datetime
             ];
             $builder->where('member_id', $data['hd_id']);
@@ -316,7 +316,7 @@ class MemberModel extends Model
                 'amphure_id' => $data['ddl_amphure'],
                 'district_id' => $data['ddl_district'],
                 'zipcode' => $data['txt_zipcode'],
-                'address' => $data['txt_address'],
+                'address' => strip_tags($data['txt_address']),
                 'created_at' => $datetime,
                 'updated_at' => $datetime
             ];
