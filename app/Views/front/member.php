@@ -217,7 +217,6 @@
                                         foreach($cate_prod as $cate){
                                             if($cate['member_id'] == $member_id){
                                                 $str = $cate['product'];
-                                            
                                     ?>
                                         <p class="text-line-2 mb-0 line-height-20px"><?= ($str==''?'-':$str) ?></p>
                                     <?php } } ?>
@@ -225,22 +224,27 @@
                                 <div class="cate-type">
                                     <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.business-type') ?></strong>
                                     <?php
+                                        $n=0;
                                         foreach($cate_prod as $cate){
-                                            if($cate['member_id'] == $member_id){
-                                                $str = $cate['business'];
-                                            
+                                            if($cate['member_id'] == $member_id){      
+                                                $n++;
+                                                if($n<2){
+                                                    $str = $cate['business'];
                                     ?>
-                                        <p class="text-line-2 mb-0 line-height-20px"><?= ($str==''?'-':$str) ?></p>
-                                    <?php } } ?>
+                                        <p class="text-line-2 mb-0 line-height-20px"><?= ($str==""?"-":$str); ?></p>
+                                    <?php } } } ?>
                                 </div>
                                 <div class="event-action position-absolute start-50 translate-middle-x bottom-0 ms-2">
                                     <?php
-                                        $member_id = $row['id'];
+                                        
                                         if($row['code']){
                                             $member_id = $row['code'];
-                                        }
-                                        if($row['m_id']){
-                                            $member_id = $row['m_id'];
+                                        }else{
+                                            if($row['m_id']){
+                                                $member_id = $row['m_id'];
+                                            }else{
+                                                $member_id = $row['id'];
+                                            }
                                         }
                                     ?>
                                     <?php if($userdata['logged_member']){ ?>

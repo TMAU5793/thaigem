@@ -50,16 +50,16 @@ class Member extends BaseController
         $mb_filter =  $settingModel->where('type','member_filter')->first();
         if($mb_filter['desc']=='2'){
             //ระยะเวลาการเป็นสมาชิก จากมากไปน้อย
-            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','ASC')->paginate(20);
+            $info = $model->select('*,id as m_id')->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','ASC')->paginate(20);
         }elseif($mb_filter['desc']=='3'){
             //ระยะเวลาการเป็นสมาชิก จากน้อยไปมาก
-            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','DESC')->paginate(20);
+            $info = $model->select('*,id as m_id')->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.member_start','DESC')->paginate(20);
         }elseif($mb_filter['desc']=='4'){
             //การสุ่ม
-            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.id','RANDOM')->paginate(20);
+            $info = $model->select('*,id as m_id')->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.id','RANDOM')->paginate(20);
         }else{
             //อัพเดตล่าสุด
-            $info = $model->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at','DESC')->paginate(20);
+            $info = $model->select('*,id as m_id')->where(['tbl_member.type'=>'dealer','tbl_member.status'=>'2'])->orderBy('tbl_member.updated_at','DESC')->paginate(20);
         }
                 
         $data = [
@@ -95,9 +95,10 @@ class Member extends BaseController
         $mbBusiness = new MemberBusinessModel();
         
         if($segment3){
-            $member = $model->where(['status'=>'2','id'=>$segment3])->first();
+            
+            $member = $model->where(['status'=>'2','code'=>$segment3])->first();
             if(!$member){
-                $member = $model->where(['status'=>'2','code'=>$segment3])->first();
+                $member = $model->where(['status'=>'2','id'=>$segment3])->first();
                 if(!$member){
                     return redirect()->to('member');
                 }
