@@ -194,12 +194,12 @@ class Event extends Controller
 
             $date = explode('-',$request->getPost('txt_date'));
             $slug = url_title(strtolower($request->getVar('txt_slug')));
-            if($request->getVar('txt_slug')=="" && $request->getVar('txt_title_en')==""){
+            if($slug==""){
                 $slug = url_title(strtolower($request->getVar('txt_title')));
-            }else{
-                $slug = url_title(strtolower($request->getVar('txt_title_en')));
+                if($slug==""){
+                    $slug = url_title(strtolower($request->getVar('txt_title_en')));
+                }
             }
-            //echo $date[0];
             $update = [
                 'name' => $request->getVar('txt_title'),
                 'name_en' => $request->getVar('txt_title_en'),

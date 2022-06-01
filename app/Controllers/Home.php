@@ -54,7 +54,7 @@ class Home extends BaseController
             'member' => $mbModel->where('id',$this->member_id)->first(),
             'articles' => $acModel->where('status','on')->orderby('created_at','DESC')->findAll(3),
             'userdata' => $this->userdata,
-            'banner' => $banner->where('page','home')->orderBy('sortby ASC')->findAll(5),
+            'banner' => $banner->where(['page'=>'home','status'=>'1'])->orderBy('sortby ASC')->findAll(5),
             'adsbanner' => $banner->where(['page'=>'ads','status'=>'1'])->orderBy('sortby ASC, created_at DESC')->groupBy('position')->findAll(),
             'tbl_price' => $tbl_price->where('status','1')->orderBy('created_at DESC')->get()->getResultArray(),
             'month' => $tbl_month->get()->getResultArray()

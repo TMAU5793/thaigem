@@ -122,9 +122,9 @@ class Thaigem extends BaseController
     {
         $email = \Config\Services::email();
         $request = service('request');
-        $mailTo = 'thank@grasp.asia';
+        $mailTo = 'thip@grasp.asia';
 
-        $email->setFrom('thank@grasp.asia', 'thank@grasp.asia');
+        $email->setFrom('thip@grasp.asia', 'thip@grasp.asia');
         $email->setTo($mailTo);
         // $email->setCC($mailCC);
         // $email->setBCC($mailBCC);
