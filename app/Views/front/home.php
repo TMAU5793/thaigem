@@ -212,8 +212,8 @@
                                     ?>
                                 </div>
                                 <div class="absolute-center text-center w-75">
-                                    <h2 class="ff-semibold fs-4 text-line-3"><?= ($lang=='en'?$event['name_en']:$event['name']) ?></h2>
-                                    <p class="text-line-3 line-height-22px"><?= ($lang=='en'?character_limiter($event['shortdesc_en'],100):character_limiter($event['shortdesc'],100)) ?></p>
+                                    <h2 class="ff-semibold fs-4 text-line-3"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></h2>
+                                    <p class="text-line-3 line-height-22px"><?= ($lang=='en' && $event['shortdesc_en']!=""?character_limiter($event['shortdesc_en'],100):character_limiter($event['shortdesc'],100)) ?></p>
                                     <div class="btn-tg-group text-center">
                                         <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
                                         <?php

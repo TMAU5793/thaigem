@@ -56,7 +56,7 @@
                                 ?>
                                     <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : '') ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
                                 <?php }else{ ?>
-                                    <img src="<?= site_url('assets/images/diamond.png'); ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
+                                    <img src="<?= site_url('assets/images/diamond.jpg'); ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
                                 <?php } } } ?>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                 foreach($member as $item){
                                     if($row['member_id']==$item['id']){
                             ?>
-                                <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : site_url('assets/images/diamond.png')) ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
+                                <img src="<?= (is_file($item['profile'])?site_url($item['profile']) : site_url('assets/images/diamond.jpg')) ?>" class="rounded-circle" alt="<?= $row['topic']; ?>">
                             <?php } } ?>
                         </div>
                         <div class="col-10">                            
