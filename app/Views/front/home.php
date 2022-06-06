@@ -7,8 +7,14 @@
                 if($banner){
                     foreach($banner as $row) { 
             ?>
-                <div class="banner-slide <?= ($row['link']!=''? 'cursor-pointer' : '') ?>" onClick="location.href='<?= ($row['link']!=''?$row['link'] : '') ?>'" title="<?= ($row['link']!=''?$row['link'] : '') ?>">
-                    <img src="<?= (is_file($row['banner'])?site_url($row['banner']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                <div class="banner-slide <?= ($row['link']!=''? 'cursor-pointer' : '') ?>" title="<?= ($row['link']!=''?$row['link'] : '') ?>">
+                    <?php if($row['link']!=''){ ?>
+                        <a href="<?= $row['link'] ?>" target="_blank">
+                            <img src="<?= (is_file($row['banner'])?site_url($row['banner']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                        </a>
+                    <?php }else{ ?>
+                            <img src="<?= (is_file($row['banner'])?site_url($row['banner']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                    <?php } ?>
                 </div>
             <?php } } ?>
         </div>
@@ -18,8 +24,14 @@
                 if($banner){
                     foreach($banner as $row) { 
             ?>
-                <div class="banner-slide <?= ($row['link']!=''? 'cursor-pointer' : '') ?>" onClick="location.href='<?= ($row['link']!=''?$row['link'] : '') ?>'" title="<?= ($row['link']!=''?$row['link'] : '') ?>">
-                    <img src="<?= (is_file($row['banner_mobile'])?site_url($row['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                <div class="banner-slide <?= ($row['link']!=''? 'cursor-pointer' : '') ?>" title="<?= ($row['link']!=''?$row['link'] : '') ?>">                   
+                    <?php if($row['link']!=''){ ?>
+                        <a href="<?= $row['link'] ?>" target="_blank">
+                            <img src="<?= (is_file($row['banner_mobile'])?site_url($row['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                        </a>
+                    <?php }else{ ?>
+                            <img src="<?= (is_file($row['banner_mobile'])?site_url($row['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" alt="thai gem">
+                    <?php } ?>
                 </div>
             <?php } } ?>
         </div>
@@ -77,7 +89,9 @@
                         //echo $ads['position'];
                         if($ads['position']=='p1'){
             ?>
-                <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+                <a href="<?= $ads['link'] ?>" target="_blank">
+                    <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+                </a>
             <?php } } } ?>
         </div>
     </section>
@@ -251,7 +265,9 @@
                         //echo $ads['position'];
                         if($ads['position']=='p2'){
             ?>
-                <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+                <a href="<?= $ads['link'] ?>" target="_blank">
+                    <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+                </a>
             <?php } } } ?>
         </div>
     </section>
@@ -401,7 +417,9 @@
                         //echo $ads['position'];
                         if($ads['position']=='p3'){
             ?>
-                <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+                <a href="<?= $ads['link'] ?>" target="_blank">
+                    <img src="<?= (is_file($ads['banner'])?site_url($ads['banner']):site_url('assets/images/ads-1298x276.jpg')); ?>" alt="">
+                </a>
             <?php } } } ?>
         </div>
     </section>
