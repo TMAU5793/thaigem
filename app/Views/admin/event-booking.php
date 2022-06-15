@@ -124,6 +124,7 @@
                         </td>
                         <td class="text-center">
                             <a href="<?= base_url('admin/event/bookinginfo?id='.$item['booking_no']); ?>">อัพเดต</a>
+                            | <a href="">ลบ</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>
