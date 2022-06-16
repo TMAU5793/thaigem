@@ -123,8 +123,8 @@
                             <?php } ?>
                         </td>
                         <td class="text-center">
-                            <a href="<?= base_url('admin/event/bookinginfo?id='.$item['booking_no']); ?>">อัพเดต</a>
-                            | <a href="">ลบ</a>
+                            <a href="<?= base_url('admin/event/bookinginfo?id='.$item['booking_no']); ?>">อัพเดต</a> | 
+                            <a href="javascript:void(0)" class="del-item" data-id="<?= $item['b_id'] ?>" onClick="DeleteRow('<?= $item['b_id'] ?>','/admin/event/delbooking');">ลบ</a>
                         </td>
                     </tr>
                     <?php } }else{ ?>

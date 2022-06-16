@@ -349,12 +349,30 @@ class Event extends Controller
             $delImg = $model->where('id',$id)->first();
 			if(is_file($delImg['thumbnail'])){
 				unlink($delImg['thumbnail']); //ลบรูปเก่าออก
-			}            
+			}
             $deleted = $model->where('id', $id)->delete($id);				
 			echo TRUE;
             
         }else{
             return redirect()->to(site_url('admin/event'));
+        }
+    }
+
+    public function delbooking()
+    {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+        
+        $request = service('request');
+        $model = new BookingModel();
+        if($request->getPost('id')){
+			$id = $request->getPost('id');
+            $deleted = $model->where('id', $id)->delete($id);
+			echo TRUE;
+            
+        }else{
+            return redirect()->to(site_url('admin/event/booking'));
         }
     }
 }

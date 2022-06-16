@@ -32,7 +32,7 @@ class BookingModel extends Model
 	{
 		$db      = db_connect();
         $builder = $db->table('tbl_booking AS a');
-        $builder->select('*,a.status AS bstatus');
+        $builder->select('*,a.id as b_id, a.status AS bstatus');
         $builder->join('tbl_member AS b','b.id=a.member_id');
         if($status!=''){
             $builder->where('a.status',$status);
