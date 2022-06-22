@@ -324,8 +324,9 @@
                 html +=  '</select>';
                 $('#business-more').append(html);
             });
-        <?php } ?>        
-
+        <?php } ?>  
+              
+        // $('#cb_status')
         $('#cb_status').on('change',function(){
             let checked = $(this).is(':checked');
             if(checked){

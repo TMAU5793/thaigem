@@ -46,6 +46,10 @@
                             <label class="form-label d-block w-100">แสดงบนหน้าหลัก (Home page)</label>
                             <input type="checkbox" name="txt_home_show" data-toggle="toggle" data-onstyle="success" data-offstyle="secondary" <?= (isset($info) && $info['home_show']=='on'? 'checked' : (!isset($info)?'checked' : '')) ?>>
                         </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label d-block w-100">ปุ่มการจอง</label>
+                            <input type="checkbox" name="txt_booking" data-toggle="toggle" data-onstyle="success" data-offstyle="secondary" <?= (isset($info) && $info['btn_booking']=='on'? 'checked' : (!isset($info)?'checked' : '')) ?>>
+                        </div>
                     </div>
 
                     <div class="row">

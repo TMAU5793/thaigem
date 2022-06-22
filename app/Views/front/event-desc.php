@@ -47,23 +47,25 @@
             </div>
         </div>
         
-        <div class="event-booking pt-4 pb-4 bg-lightgray">
-            <div class="container">
-                <div class="text-center">
-                    <?php
-                        if($member['type']=='dealer' && $member['status']=='2'){
-                    ?>
-                        <a href="javascript:void(0)" class="booking_event" id="booking_event" data-event="<?= $info['id']; ?>">
-                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">                            
-                        </a>
-                    <?php }else{ ?>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#eventModal" class="">
-                            <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">                            
-                        </a>
-                    <?php } ?>
+        <?php if($info['btn_booking']=='on'){ ?>
+            <div class="event-booking pt-4 pb-4 bg-lightgray">
+                <div class="container">
+                    <div class="text-center">
+                        <?php
+                            if($member['type']=='dealer' && $member['status']=='2'){
+                        ?>
+                            <a href="javascript:void(0)" class="booking_event" id="booking_event" data-event="<?= $info['id']; ?>">
+                                <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">                            
+                            </a>
+                        <?php }else{ ?>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#eventModal" class="">
+                                <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="" class="img-book">                            
+                            </a>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
         
     </section>
 <?= $this->endSection() ?>

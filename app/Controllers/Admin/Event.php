@@ -119,7 +119,8 @@ class Event extends Controller
                     'home_show' => $request->getVar('txt_home_show'),
                     'start_event' => $date[0],
                     'end_event' => $date[1],
-                    'booth' => $request->getVar('txt_booth')
+                    'booth' => $request->getVar('txt_booth'),
+                    'btn_booking' => $request->getVar('txt_booking')
                 ];
                 $model->save($data);
                 $id = $model->getInsertID();
@@ -216,7 +217,8 @@ class Event extends Controller
                 'home_show' => $request->getVar('txt_home_show'),
                 'start_event' => $date[0],
                 'end_event' => $date[1],
-                'booth' => $request->getVar('txt_booth')
+                'booth' => $request->getVar('txt_booth'),
+                'btn_booking' => $request->getVar('txt_booking')
             ];
             if($model->update($id, $update)){
                 return redirect()->to(site_url('admin/event'));
