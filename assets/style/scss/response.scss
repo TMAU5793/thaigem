@@ -563,6 +563,15 @@
             height: 290px;
         }
     }
+    .event-desc {
+        img {
+            width: 100% !important;
+            height: auto !important;
+        }
+        table {
+            width: 100% !important;
+        }
+    }
 } //end medi 991
 @include media-max(767px) {
     .knowledge-desc,

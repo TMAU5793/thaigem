@@ -570,7 +570,13 @@
   .member-home {
     margin-bottom: 2rem; }
     .member-home .shadow-lightgold {
-      height: 290px; } }
+      height: 290px; }
+
+  .event-desc img {
+    width: 100% !important;
+    height: auto !important; }
+  .event-desc table {
+    width: 100% !important; } }
 @media (max-width: 767px) {
   .knowledge-desc iframe,
   .yt-iframe iframe {
