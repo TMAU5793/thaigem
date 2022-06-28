@@ -30,7 +30,7 @@ class Accountform extends Controller
         $data = [
             'ac_form' => TRUE,
             'meta_title' => 'Download Form Dealer',
-            'formFiles' => $model->where(['filefor'=>'dealer','member_id'=>null,'status'=>'on'])->findAll(),
+            'formFiles' => $model->where(['filefor'=>'dealer','member_id'=>null,'status'=>'on'])->orWhere('member_id',$this->member_id)->findAll(),
             'fileFor' => 'dealer',
             'member' => $member,
             'subject' => lang('MenuLang.downloadUploadForm'),
@@ -50,7 +50,7 @@ class Accountform extends Controller
         $data = [
             'ac_form' => TRUE,
             'meta_title' => 'Download Form Event',
-            'formFiles' => $model->where(['filefor'=>'event','member_id'=>null,'status'=>'on'])->findAll(),
+            'formFiles' => $model->where(['filefor'=>'event','member_id'=>null,'status'=>'on'])->orWhere(['member_id'=>$this->member_id])->findAll(),
             'fileFor' => 'event',
             'member' => $acModel->where('id',$this->member_id)->first(),
             'subject' => lang('MenuLang.downloadFormEvent'),

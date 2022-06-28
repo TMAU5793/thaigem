@@ -477,6 +477,7 @@
                         <p class="mt-4"><?= lang('GlobalLang.addressInfo'); ?></p>
                         <div class="social-contact">
                             <a href="tel:02-630-1390"><i class="fas fa-mobile-alt"></i> 02-630-1390</a>
+                            <a href="http://wa.me/66981023919" target="_blank"><i class="fab fa-weixin"></i> http://wa.me/66981023919</a>
                             <a href="http://www.thaigemjewelry.or.th/"><i class="fas fa-globe"></i> http://www.thaigemjewelry.or.th/</a>
                             <a href="mailto:info@thaigemjewelry.org"><i class="far fa-envelope"></i> info@thaigemjewelry.org</a>
                         </div>
