@@ -228,10 +228,12 @@
                                 <div class="absolute-center text-center w-75">
                                     <h2 class="ff-semibold fs-4 text-line-3"><?= ($lang=='en' && $event['name_en']!=""?$event['name_en']:$event['name']) ?></h2>
                                     <p class="text-line-3 line-height-22px"><?= ($lang=='en' && $event['shortdesc_en']!=""?character_limiter($event['shortdesc_en'],100):character_limiter($event['shortdesc'],100)) ?></p>
+                                    
                                     <div class="btn-tg-group text-center">
                                         <a href="<?= site_url('event/post/'.($event['slug']!=""?$event['slug']:$event['id'])) ?>" class="btn btn-redmore text-uppercase letter-spacing-1"><?= lang('GlobalLang.readMore'); ?></a>
                                         <?php
-                                            if($member['type']=='dealer' && $member['status']=='2'){
+                                            if($event['btn_booking']=='on'){
+                                                if($member['type']=='dealer' && $member['status']=='2'){
                                         ?>
                                             <a href="javascript:void(0)" class="btn-booking booking_event text-uppercase letter-spacing-1" data-event="<?= $event['id']; ?>">
                                                 <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="">
@@ -244,7 +246,7 @@
                                             <a href="" class="btn-booking text-uppercase letter-spacing-1" data-bs-toggle="modal" data-bs-target="#loginModal">
                                                 <img src="<?= site_url('assets/images/'.($lang=='en'?'book.gif':'book-th.gif')); ?>" alt="">
                                             </a>
-                                        <?php } ?>
+                                        <?php } } ?>
                                     </div>
                                 </div>
                             </div>
@@ -477,7 +479,7 @@
                         <p class="mt-4"><?= lang('GlobalLang.addressInfo'); ?></p>
                         <div class="social-contact">
                             <a href="tel:02-630-1390"><i class="fas fa-mobile-alt"></i> 02-630-1390</a>
-                            <a href="http://wa.me/66981023919" target="_blank"><i class="fab fa-weixin"></i> http://wa.me/66981023919</a>
+                            <a href="http://wa.me/66981023919" target="_blank"><i class="fab fa-whatsapp"></i> http://wa.me/66981023919</a>
                             <a href="http://www.thaigemjewelry.or.th/"><i class="fas fa-globe"></i> http://www.thaigemjewelry.or.th/</a>
                             <a href="mailto:info@thaigemjewelry.org"><i class="far fa-envelope"></i> info@thaigemjewelry.org</a>
                         </div>
