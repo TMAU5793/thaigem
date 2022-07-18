@@ -9,12 +9,18 @@ class Accountform extends Controller
 {       
     protected $member_id;
     protected $udata;
+    protected $lang;
     public function __construct()
     {
         $sess = session()->get('userdata');
         if($sess){
             $this->udata = $sess;
             $this->member_id = $sess['id'];
+        }
+
+        $this->lang = 'en';
+        if(session()->get('lang')){
+            $this->lang = session()->get('lang');
         }
     }
     
@@ -34,7 +40,8 @@ class Accountform extends Controller
             'fileFor' => 'dealer',
             'member' => $member,
             'subject' => lang('MenuLang.downloadUploadForm'),
-            'formmember' => TRUE
+            'formmember' => TRUE,
+            'lang' => $this->lang
         ];
         echo view('account/ac-form',$data);
     }
@@ -54,7 +61,8 @@ class Accountform extends Controller
             'fileFor' => 'event',
             'member' => $acModel->where('id',$this->member_id)->first(),
             'subject' => lang('MenuLang.downloadFormEvent'),
-            'formevent' => TRUE
+            'formevent' => TRUE,
+            'lang' => $this->lang
         ];
         echo view('account/ac-form',$data);
     }

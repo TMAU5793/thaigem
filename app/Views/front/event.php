@@ -3,8 +3,15 @@
 
     <?php if($banner){ ?>
         <section class="banner-home">
+        <?php if($banner['link']!=''){ ?>
+            <a href="<?= $banner['link'] ?>" target="_blank">
+                <img src="<?= (is_file($banner['banner'])?site_url($banner['banner']):site_url('assets/images/img-default.jpg')) ?>" class="hide-575" alt="thai gem">
+                <img src="<?= (is_file($banner['banner_mobile'])?site_url($banner['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" class="show-575" alt="thai gem">
+            </a>
+        <?php }else{ ?>
             <img src="<?= (is_file($banner['banner'])?site_url($banner['banner']):site_url('assets/images/img-default.jpg')) ?>" class="hide-575" alt="thai gem">
             <img src="<?= (is_file($banner['banner_mobile'])?site_url($banner['banner_mobile']):site_url('assets/images/img-default.jpg')) ?>" class="show-575" alt="thai gem">
+        <?php } ?>
         </section>
     <?php } ?>
 

@@ -20,15 +20,23 @@
                         </div>
                         <?php
                             if(isset($formmember)){
+                                $file_method = 'info-dashboard.jpg';
+                                if($lang=='en'){
+                                    $file_method = 'info-dashboard-en.jpg';
+                                }
                         ?>
-                            <img src="<?= site_url('assets/images/account/infographic/'.($member['status']=='2' && $member['type']=='dealer'?'info-dashboard.jpg':'member.jpg')) ?>" alt="">
+                            <img src="<?= site_url('assets/images/account/infographic/'.($member['status']=='2' && $member['type']=='dealer'?$file_method:'member.jpg')) ?>" alt="">
                             
                         <?php } ?>
 
                         <?php
                             if(isset($formevent)){
+                                $file_method = 'info-dashboard.jpg';
+                                if($lang=='en'){
+                                    $file_method = 'info-dashboard-en.jpg';
+                                }
                         ?>
-                            <img src="<?= site_url('assets/images/account/infographic/'.($member['status']=='2' && $member['type']=='dealer'?'info-dashboard.jpg':'event.jpg')) ?>" alt="">
+                            <img src="<?= site_url('assets/images/account/infographic/'.($member['status']=='2' && $member['type']=='dealer'?$file_method:'event.jpg')) ?>" alt="">
                             
                         <?php } ?>
 
