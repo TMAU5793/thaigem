@@ -100,5 +100,21 @@ class Excelexport extends Controller
         $writer->save('php://output');
 
     }
+
+    public function export_excel()
+    {
+        if(!$this->logged['logged_admin']){
+            return redirect()->to('admin');
+        }
+        $request = service('request');
+        $type = $request->getGet('type');
+        if($type){
+            $model = new MemberModel();
+            $data['info'] = $model->where('type',$type)->findAll();
+            $data['type'] = $type;
+            
+            echo view('report/member',$data);
+        }
+    }
  
 }

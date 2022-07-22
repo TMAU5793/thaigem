@@ -40,9 +40,9 @@
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary">ค้นหา</button>
                             <?php if($active=='dealer'){ ?>
-                                <a href="<?= site_url('admin/excelexport/dealer') ?>" class="btn btn-success"><i class="fas fa-file-excel"></i> Export</a>
+                                <a href="<?= site_url('admin/excelexport/export_excel?type=dealer') ?>" class="btn btn-success"><i class="fas fa-file-excel"></i> Export</a>
                             <?php }else{ ?>
-                                <a href="<?= site_url('admin/excelexport/subscribe') ?>" class="btn btn-success"><i class="fas fa-file-excel"></i> Export</a>
+                                <a href="<?= site_url('admin/excelexport/export_excel?type=member') ?>" class="btn btn-success"><i class="fas fa-file-excel"></i> Export</a>
                             <?php } ?>
                         </div>
                     </div>
