@@ -282,12 +282,8 @@ class MemberModel extends Model
         }
         $builder = $this->db->table('tbl_member');
         $builder->where('id', $data['hd_id']);
-        $query = $builder->update($info);
-        // if($query){
-        //     $this->updateAddress($data);
-        // }else{
-        //     return false;
-        // }
+        $builder->update($info);
+        
         $this->updateAddress($data);
     }
 
@@ -308,7 +304,7 @@ class MemberModel extends Model
                 'updated_at' => $datetime
             ];
             $builder->where('member_id', $data['hd_id']);
-            $query = $builder->update($info);
+            $builder->update($info);
         }else{
             $info = [
                 'member_id' => $data['hd_id'],
@@ -320,14 +316,8 @@ class MemberModel extends Model
                 'created_at' => $datetime,
                 'updated_at' => $datetime
             ];
-            $query = $builder->insert($info);
+            $builder->insert($info);
         }
-        
-        // if($query){
-        //     $this->updateBusiness($data);
-        // }else{
-        //     return false;
-        // }
 
         $this->updateBusiness($data);
     }
@@ -336,10 +326,10 @@ class MemberModel extends Model
     {
         $datetime = new Time('now');
         $builder = $this->db->table('tbl_member_business');
-        $builder->where('member_id', $data['hd_id']);
+        $builder->where('member_id', $data['hd_id']);        
         $info = $builder->get()->getRowArray();
         
-        if($data['ddl_productcate']){
+        if($data['ddl_productcate']){            
             $pdata = '';
             $arr = explode(',',$info['product']);
             foreach ($arr as $item){
@@ -349,7 +339,7 @@ class MemberModel extends Model
             }
             $pdata = substr($pdata,0,-1);
             $product = count($data['ddl_productcate']);
-            //echo $pdata.'<br>';
+            echo $pdata.'<br>';
             for ($i=0; $i < $product; $i++) {
                 $sb = ',';
                 if($pdata){
@@ -358,7 +348,6 @@ class MemberModel extends Model
                     $pdata .= $data['ddl_productcate'][$i];
                 }
             }
-            //echo $pdata;
             if($info){
                 $update_data = [
                     'product' => $pdata,
@@ -375,7 +364,17 @@ class MemberModel extends Model
                 ];
                 $builder->insert($update_data);
             }
-        }
+        }        
+
+        $this->updateBusinessType($data);
+    }
+
+    public function updateBusinessType($data)
+    {
+        $datetime = new Time('now');
+        $builder = $this->db->table('tbl_member_business');
+        $builder->where('member_id', $data['hd_id']);        
+        $info = $builder->get()->getRowArray();                
 
         if($data['ddl_business']){
             $bdata = '';
@@ -387,7 +386,7 @@ class MemberModel extends Model
             }
             $bdata = substr($bdata,0,-1);
             $business = count($data['ddl_business']);
-            // echo $bdata.'1<br>';
+            echo $bdata.'1<br>';
             for ($i=0; $i < $business; $i++) {
                 $sb = ',';
                 if($bdata){
@@ -396,8 +395,7 @@ class MemberModel extends Model
                     $bdata .= $data['ddl_business'][$i];
                 }
             }
-             
-            // echo $bdata;
+
             if($info){
                 $update_data = [
                     'business' => $bdata,
@@ -405,7 +403,7 @@ class MemberModel extends Model
                 ];
                 $builder->where('member_id', $data['hd_id']);
                 $builder->update($update_data);
-            }else{
+            }else{            
                 $update_data = [
                     'member_id' => $data['hd_id'],
                     'business' => $bdata,
@@ -433,7 +431,7 @@ class MemberModel extends Model
                 'instagram' => $data['txt_instagram'],
                 'linkein' => $data['txt_linkein'],
                 'youtube' => $data['txt_youtube'],
-                'wechat' => $data['txt_wechat'],
+                //'wechat' => $data['txt_wechat'],
                 'whatsapp' => $data['txt_whatsapp'],
                 'updated_at' => $datetime
             ];
@@ -447,7 +445,7 @@ class MemberModel extends Model
                 'instagram' => $data['txt_instagram'],
                 'linkein' => $data['txt_linkein'],
                 'youtube' => $data['txt_youtube'],
-                'wechat' => $data['txt_wechat'],
+                //'wechat' => $data['txt_wechat'],
                 'whatsapp' => $data['txt_whatsapp'],
                 'created_at' => $datetime,
                 'updated_at' => $datetime

@@ -186,7 +186,7 @@ class Member extends Controller
                         }
                     }
                 }
-                //print_r($db->error());
+                
                 return redirect()->to('account')->with('msg_done',true);
             }else{
                 $model = new AccountModel();

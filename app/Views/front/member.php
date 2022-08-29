@@ -214,15 +214,12 @@
                                 <div class="cate-type mb-2">
                                     <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.product-type') ?></strong>
                                     <?php
-                                        $n=0;
                                         foreach($cate_prod as $cate){
                                             if($cate['member_id'] == $member_id){
-                                                $n++;
-                                                if($n<2){
-                                                    $str = $cate['product'];
+                                                $str = $cate['product'];
                                     ?>
                                         <p class="text-line-2 mb-0 line-height-20px"><?= ($str==''?'-':$str) ?></p>
-                                    <?php } } } ?>
+                                    <?php } } ?>
                                 </div>
                                 <div class="cate-type">
                                     <strong class="ff-dbadmanBold c-darkgold d-block line-height-16px fz-1-2rem-575"><?= lang('GlobalLang.business-type') ?></strong>
