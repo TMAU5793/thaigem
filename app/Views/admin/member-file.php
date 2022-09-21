@@ -76,10 +76,14 @@
                             <td><?= $item['filename'] ?></td>
                             <td align="right"><?= $item['filefor'] ?></td>
                             <td class="text-center">
-                                <form id="frm-download" action="<?= base_url('admin/files/downloadFiles') ?>" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="hd_id" value="<?= $item['id'] ?>">
-                                    <button type="button" class="btn btn-primary btn-download">ดาวน์โหลด</button>
-                                </form>
+                                <?php if(is_file($item['path'])){ ?>
+                                    <form id="frm-download<?= $item['id'] ?>" action="<?= base_url('admin/files/downloadFiles') ?>" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="hd_id" value="<?= $item['id'] ?>">
+                                        <button type="button" class="btn btn-primary btn-download" data-id="<?= $item['id'] ?>">ดาวน์โหลด</button>
+                                    </form>
+                                <?php }else{ ?>
+                                    ไม่มีไฟล์
+                                <?php } ?>
                             </td>
                         </tr>
                         <?php } }else{ ?>

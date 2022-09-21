@@ -296,7 +296,9 @@
         });
 
         $('.btn-download').on('click',function(){
-            $('#frm-download').submit();
+            let id = $(this).data('id');
+            $('#frm-download'+id).submit();
+            //console.log(id);
         });
 
         <?php if(isset($subcates)){ ?>
