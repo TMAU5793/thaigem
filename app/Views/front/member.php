@@ -159,7 +159,7 @@
 
                         <div class="col-md-12 btn-avd text-center">
                             <button type="button" class="btn bg-darkgold c-white search-show btn_advance letter-spacing-1" id="btn_advance"><?= lang('GlobalLang.advanceSearch'); ?></button>
-                            <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white search-show d-none a-hover-white btn_advance letter-spacing-1"><?= lang('GlobalLang.advanceclose'); ?></a>
+                            <a href="<?= site_url('member') ?>" class="btn bg-darkgold c-white search-show d-none a-hover-white btn_advance letter-spacing-1 text-uppercase fs-1-2rem"><?= lang('GlobalLang.advanceclose'); ?></a>
                         </div>
                     </div>
                 </form>
@@ -259,12 +259,15 @@
                 </div>
                 <?php } } else{ ?>
                     <div class="col-12 mt-4 text-center">
-                        <span>ไม่พบข้อมูล</span>
+                        <span><?= lang('GlobalLang.notfound') ?></span>
                     </div>
                 <?php } ?>
             </div>
 
-            <?php if(isset($pager)) { ?>
+            
+            <?php                
+                if(isset($pager)) {
+            ?>
                 <nav class="navigation-center mt-5">
                     <?= $pager->links(); ?>
                 </nav>
@@ -284,6 +287,7 @@
                     </ul>
                 </nav>
             <?php } ?>
+
         </div>
         
     </section>

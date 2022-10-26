@@ -50,7 +50,7 @@ class Productcategory extends Controller
 		$data = [
             'meta_title' => 'เพิ่มหมวดหมู่สินค้า',
 			'action' => 'savedata',
-			'cates' => $model->where(['maincate_id'=>0,'status'=>'1'])->findAll()
+			'cates' => $model->where(['maincate_id'=>0])->findAll()
         ];
 		echo view('admin/product-categoryform',$data);
 	}
@@ -71,7 +71,7 @@ class Productcategory extends Controller
 				'meta_title' => 'แก้ไขหมวดหมู่สินค้า',
 				'action' => 'savedata',
 				'info' => $getcate,
-				'cates' => $model->where(['maincate_id'=>0,'status'=>'1'])->findAll()
+				'cates' => $model->where(['maincate_id'=>0])->findAll()
 			];
 			echo view('admin/product-categoryform',$data);
 		}else{

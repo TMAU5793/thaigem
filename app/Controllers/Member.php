@@ -36,7 +36,7 @@ class Member extends BaseController
 	public function index()
 	{   
         $request = service('service');
-        $pager = \Config\Services::pager();
+        $pager = service('pager');
         $model = new MemberModel();
         $albumModel = new AlbumModel();
         $pvModel = new ProvinceModel();
@@ -148,7 +148,7 @@ class Member extends BaseController
 
         if($get){
             $pager = \Config\Services::pager();
-
+            
             $search_arr = [
                 'keyword' => $get['txt_keyword'],
                 'product' => $get['ddl_product_type'],
