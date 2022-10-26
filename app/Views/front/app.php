@@ -84,7 +84,7 @@
     <!-- <script src="<?= base_url('assets/style/js/custom-script.js'); ?>"></script> -->
 
     <!-- เรียกใช้ ckeditor -->
-    <!-- <script src="<?= site_url('assets/ckeditor5/ckeditor.js'); ?>"></script> -->
+    <script src="<?= site_url('assets/ckeditor5/ckeditor.js'); ?>"></script>
 
     <!-- เรียกใช้ ckfinder -->
     <script src="<?= site_url('assets/ckfinder/ckfinder.js'); ?>"></script>
