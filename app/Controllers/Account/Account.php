@@ -44,11 +44,11 @@ class Account extends Controller
             $albummodel = new AlbumModel();
             $mbModel = new MemberModel();
                         
-            $info = $model->select('*, tbl_member.id as m_id, tbl_member.dealer_code as m_code')
+            $info = $model->select('*, tbl_member.id as m_id, tbl_member.dealer_code as m_code, tbl_member.status as m_status')
                         ->join('tbl_member_business','tbl_member.id = tbl_member_business.member_id')
                         ->where('tbl_member.id',$this->member_id)->first();
             if(!$info){
-                $info = $model->select('*, tbl_member.id as m_id, tbl_member.dealer_code as m_code')->where('id',$this->member_id)->first();
+                $info = $model->select('*, tbl_member.id as m_id, tbl_member.dealer_code as m_code, tbl_member.status as m_status')->where('id',$this->member_id)->first();
             }
             $dealer_code = $info['m_code'];
             if($dealer_code==''){
@@ -216,10 +216,15 @@ class Account extends Controller
                 
         $email->setFrom('info@thaigemjewelry.org', 'Thai gem and jewelry');
         $email->setTo($account);
-        $email->setCC('info@thaigemjewelry.org');
+        //$email->setCC('info@thaigemjewelry.org');
         $email->setSubject(($this->lang=='en'?'Register account complete':'การสมัครสมาชิกเรียบร้อย'));
-        $msg = "<p>การสร้างบัญชีสำหรับใช้งานเว็บไซต์สมาคมอัญมณีเรียบร้อยแล้ว ชื่อบัญชี : ".$account."</p>";
-        $msg .= "สามารถเข้าใช้งานได้ที่ <a href=\"".site_url()."\">".lang('GlobalLang.website')."</a>";
+        if($this->lang=='en'){
+            $msg = "<p>An account has been created for using the Thai gem and Jewelry Traders Association website. Account : ".$account."</p>";
+            $msg .= "Click link to website <a href=\"".site_url()."\">".lang('GlobalLang.website')."</a>";
+        }else{
+            $msg = "<p>การสร้างบัญชีสำหรับใช้งานเว็บไซต์สมาคมอัญมณีเรียบร้อยแล้ว ชื่อบัญชี : ".$account."</p>";
+            $msg .= "สามารถเข้าใช้งานได้ที่ <a href=\"".site_url()."\">".lang('GlobalLang.website')."</a>";
+        }
         $email->setMessage($msg);
         //echo $msg;
         if($email->send()){

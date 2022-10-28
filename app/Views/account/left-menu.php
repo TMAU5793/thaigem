@@ -21,6 +21,8 @@
                     <span><?= lang('accountLang.complete') ?> <i class="fas fa-circle"></i></span>
                 <?php }else if($info['m_status']=='1'){ ?>
                     <span><?= lang('accountLang.process') ?> <i class="fas fa-circle text-warning"></i></span>
+                <?php }else{ ?>
+                    <span><?= lang('accountLang.process') ?> <i class="fas fa-circle text-warning"></i></span>
                 <?php } ?>
             </div>
         </div>

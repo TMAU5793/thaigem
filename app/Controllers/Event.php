@@ -110,7 +110,7 @@ class Event extends BaseController
 
                 ];
                 $mbFunction->notification($noti_arr);
-                //$this->mailBooking($savedata);
+                $this->mailBooking($savedata);
                 echo true;
             }
         }
@@ -138,18 +138,18 @@ class Event extends BaseController
             $booking = $bkModel->where('booking_no',$data['booking_no'])->first();
             $event = $evModel->where('id',$booking['event_id'])->first();
             //print_r($event);
-            $mailTo = 'thank@grasp.asia';
-            $mailCC = 'jan@grasp.asia';
-            $mailBCC = 'thip@grasp.asia';
+            $mailTo = $member['email'];
+            $mailCC = 'info@thaigemjewelry.org';
+            // $mailBCC = '';
 
             $email->setFrom($member['email'], $member['company']);
             $email->setTo($mailTo);
             $email->setCC($mailCC);
-            $email->setBCC($mailBCC);
+            // $email->setBCC($mailBCC);
             if($this->lang=='en'){
                 $email->setSubject('TGJTA : Event Booking');
                 $msg = "<strong>reservation information</strong>";
-                $msg .= "<p>event : ".$event['name_en']."</p>";
+                $msg .= "<p>event : ".($event['name_en']==''?$event['name_th']:$event['name_en'])."</p>";
                 $msg .= "<p>booker : ".$member['company']."</p>";
                 $msg .= "<p>phone : ".$member['company_phone']."</p>";
                 $msg .= "<p>email : ".$member['email']."</p>";

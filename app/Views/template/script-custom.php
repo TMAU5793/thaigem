@@ -154,8 +154,11 @@ use Google\Service\Adsense\Site;
                         }else{
                             $('#eventBookingModal').modal('show');
                             localStorage.setItem("book-event", 'TRUE');
-                            setTimeout(function(){
-                                location.href='<?= site_url('account/form/event') ?>'
+
+                            // var lang = '<?= (session()->get('lang')=='th' ? 'th': 'en') ?>';
+                            // var burl = '<?= site_url('lang/en?burl='.current_url()); ?>';
+                            setTimeout(function(){                                
+                                location.href='<?= site_url('account/form/event') ?>';
                             },1200);
                         }
                     }

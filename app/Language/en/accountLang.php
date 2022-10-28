@@ -9,7 +9,7 @@ return [
     'create' => 'Create',
     'close' => 'Close',
     'process' => 'On Process',
-    'complete' => 'Complete',
+    'complete' => 'Account Approve',
     'disapproved' => 'Disapproved',
     'mbshId' => 'Membership ID',
     'more' => 'More',
