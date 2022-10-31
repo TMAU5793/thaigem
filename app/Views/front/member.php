@@ -269,7 +269,7 @@
                 if(isset($pager)) {
             ?>
                 <nav class="navigation-center mt-5">
-                    <?= $pager->links(); ?>
+                    <?= $pager->Links(); ?>
                 </nav>
             <?php } ?>
 

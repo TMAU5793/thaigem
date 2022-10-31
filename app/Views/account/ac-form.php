@@ -86,9 +86,9 @@
                             </div>
                             
                             <div class="acform-upload text-center mb-3">
-                                <label for="" class="mb-3 ff-dbadmanBold d-block text-uppercase letter-spacing-1 fs-2">Upload your files</label>                                
-                                <label for="file_upload" class="ff-dbadmanBold btn-file btn-padding pointer">Choose files</label>
-                                <small class="text-danger ms-2 d-block"> *Maximun file size 5MB</small>
+                                <label for="" class="mb-3 ff-dbadmanBold d-block text-uppercase letter-spacing-1 fs-2"><?= lang('accountLang.upload-file') ?></label>                                
+                                <label for="file_upload" class="ff-dbadmanBold btn-file btn-padding pointer"><?= lang('accountLang.choose-file') ?></label>
+                                <small class="text-danger ms-2 d-block"> *<?= lang('accountLang.max5mb') ?></small>
                                 <div class="file-type">
                                     <i class="fas fa-file-pdf display-4 text-danger"></i>
                                     <i class="fas fa-file-word display-4 text-primary"></i>

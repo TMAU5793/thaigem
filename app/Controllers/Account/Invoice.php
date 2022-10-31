@@ -24,14 +24,15 @@ class Invoice extends Controller
         if($this->udata['user_type']!='dealer'){
             return redirect()->to('');
         }
-        
+        echo $this->member_id;
         $model = new FilesModel();
         $acModel = new AccountModel();
         $member = $acModel->where('id',$this->member_id)->first();
         $data = [
             'ac_invoice' => TRUE,
             'meta_title' => 'Download invoice',
-            'invoices' => $model->where(['filefor'=>'invoice','uploadby'=>'admin','status'=>'on'])->orderBy('created_at DESC')->findAll(),
+            'invoices' => $model->where(['filefor'=>'invoice','uploadby'=>'admin','status'=>'on','member_id'=>null])->orderBy('created_at DESC')->findAll(),
+            'iv_onlymember' => $model->where(['filefor'=>'invoice','uploadby'=>'admin','status'=>'on','member_id'=>$this->member_id])->orderBy('created_at DESC')->findAll(),
             'fileFor' => 'invoice',
             'member' => $member
         ];

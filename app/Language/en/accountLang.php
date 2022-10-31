@@ -51,5 +51,8 @@ return [
     'size-request' => 'Image size require',
     'choose-img' => 'choose image',
     'limit-img' => 'Limited number of images',
-    'img' => 'Image'
+    'img' => 'Image',
+    'upload-file' => 'UPLOAD YOUR FILES',
+    'choose-file' => 'Choose file',
+    'max5mb' => 'Maximun file size 5MB'
 ];

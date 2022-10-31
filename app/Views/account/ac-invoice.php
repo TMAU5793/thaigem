@@ -17,11 +17,12 @@
                     <div class="content-body acform-body">
                         <div class="content-title text-center mb-3 mt-5"><strong class="ff-dbadmanBold fs-2"><?= lang('MenuLang.invoice'); ?></strong></div>
                         <?php 
-                            if($invoices) {
+                            if($invoices || $iv_onlymember) {
                         ?>
                             <img src="<?= site_url('assets/images/account/infographic/'.($member['status']=='2' && $member['type']=='dealer'?'invoice-approve.jpg':'invoice.jpg')) ?>" alt="">
                             
                         <?php } ?>
+
                         <div class="invoice-section mt-4">
                             <form id="frm-file-download" action="<?= site_url('account/invoice/download'); ?>" method="POST">
                                 <input type="hidden" name="hd_file_id" id="hd_file_id">
@@ -48,7 +49,32 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php } }else{ ?>
+                                    <?php } } ?>
+
+                                    <?php 
+                                        if($iv_onlymember) {
+                                            foreach($iv_onlymember as $file){
+                                                $filetype = array_pop(explode('.',$file['path']));
+                                    ?>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="acform-item d-flex">
+                                                <div class="w-25 ac-form-file position-relative">
+                                                    <?php if($filetype=='pdf'){ ?>
+                                                        <i class="fas fa-file-pdf text-danger"></i>
+                                                    <?php }else{ ?>
+                                                        <i class="fas fa-file-word text-primary"></i>
+                                                    <?php } ?>
+                                                </div>
+                                                <div class="w-75">
+                                                    <strong class="ff-dbadmanBold d-block"><?= $file['filename']; ?></strong>
+                                                    <span class="d-block fs-6"><?= lang('GlobalLang.date').' : '.substr($file['created_at'],0,10) ?></span>
+                                                    <button type="button" class="btn btn-black-border fs-6 mt-2 btn_ac_download" data-id="<?= $file['id'] ?>"><?= lang('accountLang.d-form') ?></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } } ?>
+
+                                    <?php if(!$invoices && !$iv_onlymember) { ?>
                                         <div class="col-md-12 mb-4">
                                             <div class="acform-item d-flex">
                                                 <span class="text-danger"><?= lang('GlobalLang.notfound') ?></span>
@@ -56,6 +82,7 @@
                                         </div>
                                     <?php } ?>
                                 </div>
+
                             </form>
                         </div>
 
@@ -69,9 +96,9 @@
                             </div>
                             
                             <div class="acform-upload text-center mb-3">
-                                <label for="" class="mb-3 ff-dbadmanBold d-block text-uppercase letter-spacing-1 fs-2">Upload your files</label>                                
-                                <label for="file_upload" class="ff-dbadmanBold btn-file btn-padding pointer">Choose files</label>
-                                <small class="text-danger ms-2 d-block"> *Maximun file size 5MB</small>
+                                <label for="" class="mb-3 ff-dbadmanBold d-block text-uppercase letter-spacing-1 fs-2"><?= lang('accountLang.upload-file') ?></label>                                
+                                <label for="file_upload" class="ff-dbadmanBold btn-file btn-padding pointer"><?= lang('accountLang.choose-file') ?></label>
+                                <small class="text-danger ms-2 d-block"> *<?= lang('accountLang.max5mb') ?></small>
                                 <div class="file-type">
                                     <i class="fas fa-file-pdf display-4 text-danger"></i>
                                     <i class="fas fa-file-word display-4 text-primary"></i>

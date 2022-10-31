@@ -146,21 +146,20 @@ class Event extends BaseController
             $email->setTo($mailTo);
             $email->setCC($mailCC);
             // $email->setBCC($mailBCC);
-            if($this->lang=='en'){
-                $email->setSubject('TGJTA : Event Booking');
-                $msg = "<strong>reservation information</strong>";
-                $msg .= "<p>event : ".($event['name_en']==''?$event['name_th']:$event['name_en'])."</p>";
-                $msg .= "<p>booker : ".$member['company']."</p>";
-                $msg .= "<p>phone : ".$member['company_phone']."</p>";
-                $msg .= "<p>email : ".$member['email']."</p>";
-            }else{
-                $email->setSubject('TGJTA : การจองงานอีเว้นท์');
-                $msg = "<strong>ข้อมูลการจอง</strong>";
-                $msg .= "<p>งานอีเว้นท์ : ".$event['name']."</p>";
-                $msg .= "<p>ผู้จอง : ".$member['company']."</p>";
-                $msg .= "<p>เบอร์โทร : ".$member['company_phone']."</p>";
-                $msg .= "<p>อีเมล : ".$member['email']."</p>";
-            }
+            
+            $email->setSubject('TGJTA : การจองงานอีเว้นท์ ( Event Booking )');
+            $msg = "<strong>ข้อมูลการจอง</strong>";
+            $msg .= "<p>งานอีเว้นท์ : ".($event['name']==''?$event['name_en']:$event['name'])."</p>";
+            $msg .= "<p>ผู้จอง : ".$member['company']."</p>";
+            $msg .= "<p>เบอร์โทร : ".$member['company_phone']."</p>";
+            $msg .= "<p style='margin-bottom:1.5rem;'>อีเมล : ".$member['email']."</p>";
+            $msg .= "<hr>";
+            $msg .= "<strong style='margin-top:1.5rem;'>reservation information</strong>";
+            $msg .= "<p>event : ".($event['name_en']==''?$event['name']:$event['name_en'])."</p>";
+            $msg .= "<p>booker : ".$member['company']."</p>";
+            $msg .= "<p>phone : ".$member['company_phone']."</p>";
+            $msg .= "<p>email : ".$member['email']."</p>";
+            
             $email->setMessage($msg);
             //echo $msg;
             if($email->send()){
