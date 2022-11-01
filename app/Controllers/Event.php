@@ -138,11 +138,13 @@ class Event extends BaseController
             $booking = $bkModel->where('booking_no',$data['booking_no'])->first();
             $event = $evModel->where('id',$booking['event_id'])->first();
             //print_r($event);
-            $mailTo = $member['email'];
+            $mailevent = explode(',',$member['email']);
+
+            $mailTo = $mailevent[0];
             $mailCC = 'info@thaigemjewelry.org';
             // $mailBCC = '';
 
-            $email->setFrom($member['email'], $member['company']);
+            $email->setFrom($mailevent[0], $member['company']);
             $email->setTo($mailTo);
             $email->setCC($mailCC);
             // $email->setBCC($mailBCC);
